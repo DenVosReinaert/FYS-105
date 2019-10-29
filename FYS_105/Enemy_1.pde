@@ -1,13 +1,13 @@
 class Enemy1 {
 
-  float spawnX=width-50;
-  float spawnY=height-height/9;
+  float spawnX=(width-50) / 1920f * width;
+  float spawnY=(height-height/9) / 1080f * height;
   float enemyPosX, enemyPosY, playerPosX, playerPosY;
-  float radius=50;
-  float move=4;
-  float run=7;
+  float radius=50 / 1920f * width / 1080f * height;
+  float move=4 / 1920f * width;
+  float run=7 / 1920f * width;
   float moveUp;
-  float eyeSight=50;
+  float eyeSight=50 / 1920f * width;
   boolean lockedOn = false;
   Enemy1() {
   }

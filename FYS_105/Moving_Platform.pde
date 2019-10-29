@@ -3,9 +3,9 @@ class Moving_Platform {
   float pSpeed, sizeX, sizeY, limitLeft, limitRight, posX, posY;
 
   Moving_Platform() {
-    sizeX = 250;
-    sizeY = 20;
-    pSpeed = 4;
+    sizeX = 250 / 1920f * width;
+    sizeY = 20 / 1080f * height;
+    pSpeed = 4 / 1920f * width;
     hitLimitLeft = true;
   }
 
@@ -13,8 +13,8 @@ class Moving_Platform {
     fill(0);
     rect(posXInit, posYInit, sizeX, sizeY); // Platform
 
-    posX = posXInit;
-    posY = posYInit;
+    posX = posXInit / 1920f * width;
+    posY = posYInit / 1080f * height;
   }
 
   void move()

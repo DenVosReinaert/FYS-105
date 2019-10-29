@@ -2,7 +2,7 @@ class Gun
 {
   float gunPosX = thePlayer.playerPosX+thePlayer.sizeX;
   float gunPosY = thePlayer.playerPosY+thePlayer.sizeY/4;
-  int gunBarrelLength = 25;
+  float gunBarrelLength = 25 / 1920f * width;
   
   void display()
   {

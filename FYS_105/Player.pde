@@ -6,17 +6,17 @@ class Player
 
   Player() 
   {
-    sizeX = 60;
-    sizeY = 80;
+    sizeX = 60 / 1920f * width;
+    sizeY = 80 / 1080f * height;
 
-    playerPosX = width/2 - sizeX/2;
-    playerPosY = height-height/12 - sizeY;
+    playerPosX = (width/2 - sizeX/2) / 1920f * width;
+    playerPosY = (height-height/12 - sizeY) / 1080f * height;
 
-    playerVelX = 5;
-    gravity = 1.1;
+    playerVelX = 5 / 1920f * width;
+    gravity = 1.1 / 1080f * height;
 
     playerPosY -= jumpForce;
-    jumpForce = 30;
+    jumpForce = 30 / 1080f * height;
   }
 
 
@@ -33,7 +33,7 @@ class Player
     {
       playerGrav = 0;
       jumpForce = 0;
-    } else playerGrav = 3;
+    } else playerGrav = 3 / 1080f * height;
 
     if(keyPressed)
     setMove(keyCode, true);
@@ -65,8 +65,8 @@ class Player
 
       if (jump && isGrounded())
       {
-        jumpForce = 30;
-        playerGrav = 3;
+        jumpForce = 30 / 1080f * height;
+        playerGrav = 5 / 1080f * height;
       }
   }
 
@@ -75,7 +75,7 @@ class Player
   {
     if (playerPosY + sizeY >= vHoogte)
       return true;
-    else if (platform.playerOnPlatform)
+    else if (platformM.playerOnPlatform)
       return true;
     else return false;
   }
