@@ -6,6 +6,7 @@ float vHoogte;
 Player thePlayer;
 Moving_Platform platformM;
 Highscore highscore;
+healthBar healthbar;
 Map map;
 
 void setup()
@@ -16,6 +17,7 @@ void setup()
   thePlayer = new Player();
   highscore = new Highscore();
   map = new Map();
+  healthbar = new healthBar();
 
   pushStyle();
   fill(255);
@@ -32,4 +34,5 @@ void draw()
   highscore.draw();
   thePlayer.draw();
   thePlayer.keyReleased();
+  healthbar.draw();
 }
