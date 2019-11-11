@@ -54,7 +54,7 @@ class Player
   {
     if (playerPosY + sizeY >= vHoogte)
       return true;
-    else if (platformM.playerOnPlatform)
+    else if (platform.playerOnPlatform)
       return true;
     else return false;
   }

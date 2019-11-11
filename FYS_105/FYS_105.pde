@@ -4,7 +4,7 @@
 float vHoogte;
 
 Player thePlayer;
-Moving_Platform platformM;
+Platform platform;
 Highscore highscore;
 Map map;
 
@@ -19,7 +19,7 @@ void setup()
 
   pushStyle();
   fill(255);
-  platformM = new Moving_Platform();
+  platform = new Platform();
   popStyle();
 }
 
@@ -28,7 +28,7 @@ void draw()
   clear();
   map.mapDraw();
 
-  platformM.draw((width/2 - platformM.sizeX/2) / 1920f * width, ((height/2 + 300f) / 1080f * height));
+  platform.draw((width/2 - platform.sizeX/2) / 1920f * width, ((height/2 + 300f) / 1080f * height));
   highscore.draw();
   thePlayer.draw();
   thePlayer.keyReleased();
