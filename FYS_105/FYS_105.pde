@@ -35,4 +35,5 @@ void draw()
   thePlayer.draw();
   thePlayer.keyReleased();
   healthbar.draw();
+  thePlayer.Move();
 }
