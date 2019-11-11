@@ -1,5 +1,5 @@
 class Platform {
-  //boolean playerOnPlatform;
+  //boolean playerOnPlatform = false;
 
 
   //Platform(float x, float y) {

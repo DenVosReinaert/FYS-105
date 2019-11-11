@@ -32,4 +32,5 @@ void draw()
   highscore.draw();
   thePlayer.draw();
   thePlayer.keyReleased();
+  thePlayer.Move();
 }

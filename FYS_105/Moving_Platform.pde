@@ -7,6 +7,7 @@ class Moving_Platform {
     sizeY = 20 / 1080f * height;
     pSpeed = 4 / 1920f * width;
     hitLimitLeft = true;
+    playerOnPlatform = false;
   }
 
   void draw(float posXInit, float posYInit) {
@@ -15,17 +16,22 @@ class Moving_Platform {
 
     posX = posXInit / 1920f * width;
     posY = posYInit / 1080f * height;
+    
+    if(thePlayer.playerPosY + thePlayer.sizeY < posY + sizeY && thePlayer.playerPosY > posY && thePlayer.playerPosX + thePlayer.sizeX > posX && thePlayer.playerPosX < posX + sizeX)
+    {
+      playerOnPlatform = true;
+    } else playerOnPlatform = false;
   }
 
   void move()
   {
-    if (posX < limitRight && hitLimitLeft)
-    {
-      posX += pSpeed;
-    } else if ( posX < limitLeft && !hitLimitLeft)
-    {
-      posX -= pSpeed;
-    }
+    //if (posX < limitRight && hitLimitLeft)
+    //{
+    //  posX += pSpeed;
+    //} else if ( posX < limitLeft && !hitLimitLeft)
+    //{
+    //  posX -= pSpeed;
+    //}
 
     //posX += pSpeed;
     //if (posX > 800) {
@@ -35,9 +41,9 @@ class Moving_Platform {
     //  pSpeed = -pSpeed;
     //}
 
-    if (hitLimitLeft && posX + sizeX >= limitRight)
-      hitLimitLeft = !hitLimitLeft;
-    else if (!hitLimitLeft && posX < limitLeft)
-      hitLimitLeft = !hitLimitLeft;
+    //if (hitLimitLeft && posX + sizeX >= limitRight)
+    //  hitLimitLeft = !hitLimitLeft;
+    //else if (!hitLimitLeft && posX < limitLeft)
+    //  hitLimitLeft = !hitLimitLeft;
   }
 }
