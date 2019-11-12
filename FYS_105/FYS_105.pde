@@ -2,17 +2,24 @@
 
 
 float vHoogte;
+boolean game;
+boolean dood;
+boolean mainMenu;
+
 
 Player thePlayer;
 Moving_Platform platformM;
 Highscore highscore;
 healthBar healthbar;
 Map map;
+gameMngr gamemngr;
 
 void setup()
 {
   size(1920, 1080);
 
+  game = true;
+  gamemngr = new gameMngr();
   vHoogte = 1000f / 1080f * height;
   thePlayer = new Player();
   highscore = new Highscore();
@@ -28,12 +35,5 @@ void setup()
 void draw()
 {
   clear();
-  map.mapDraw();
-
-  platformM.draw((width/2 - platformM.sizeX/2) / 1920f * width, ((height/2 + 300f) / 1080f * height));
-  highscore.draw();
-  thePlayer.draw();
-  thePlayer.keyReleased();
-  healthbar.draw();
-  thePlayer.Move();
+  gamemngr.draw();
 }
