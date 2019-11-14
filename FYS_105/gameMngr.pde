@@ -2,7 +2,7 @@ class gameMngr {
   PImage backgr;
 
   gameMngr() {
-    backgr = loadImage("./img/mainMenu_backgr.jpg");
+    backgr = loadImage("./img/mainMenu_backgr.png");
     backgr.resize(width, height);
   }
 
