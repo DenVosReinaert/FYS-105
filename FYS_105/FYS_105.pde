@@ -12,14 +12,14 @@ Moving_Platform platformM;
 Highscore highscore;
 healthBar healthbar;
 Map map;
-gameMngr gamemngr;
+Game_Manager gamemngr;
 
 void setup()
 {
   size(1920, 1080);
 
   game = true;
-  gamemngr = new gameMngr();
+  gamemngr = new Game_Manager();
   vHoogte = 1000f / 1080f * height;
   thePlayer = new Player();
   highscore = new Highscore();

@@ -1,7 +1,7 @@
-class gameMngr {
+class Game_Manager {
   PImage backgr;
 
-  gameMngr() {
+  Game_Manager() {
     backgr = loadImage("./img/mainMenu_backgr.png");
     backgr.resize(width, height);
   }
