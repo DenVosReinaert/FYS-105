@@ -23,14 +23,14 @@ class Bullet
     {
       lookingRight = false;
       gun.gunBarrelLength = -25;
-      gun.gunPosX = thePlayer.playerPosX;
+      gun.gunPosX = thePlayer.xPosition;
     }
 
     if (lookingRight == true)
     {
       lookingLeft = false;
       gun.gunBarrelLength = 25;
-      gun.gunPosX = thePlayer.playerPosX+thePlayer.sizeX;
+      gun.gunPosX = thePlayer.xPosition+thePlayer.playerSize;
     }
 
     gun.display();
@@ -66,7 +66,7 @@ class Bullet
     {
       lookingLeft = false;
       lookingRight = true;
-      thePlayer.playerPosX = thePlayer.playerPosX+5;
+      thePlayer.xPosition = thePlayer.xPosition+5;
       gun.gunPosX = gun.gunPosX+5;
     }
 
@@ -74,7 +74,7 @@ class Bullet
     {
       lookingRight = false;
       lookingLeft = true;
-      thePlayer.playerPosX = thePlayer.playerPosX-5;
+      thePlayer.xPosition = thePlayer.xPosition-5;
       gun.gunPosX = gun.gunPosX-5;
     }
   }

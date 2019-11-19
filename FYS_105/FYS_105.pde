@@ -1,10 +1,10 @@
 //Halleluyah we got GitHub
-
+final int KEY_LIMIT = 1024;
+boolean[] keysPressed = new boolean[KEY_LIMIT];
 
 int vHoogte;
 
 Player thePlayer;
-Moving_Platform platform;
 Highscore highscore;
 Map map;
 
@@ -19,7 +19,6 @@ void setup()
 
   pushStyle();
   fill(255);
-  platform = new Moving_Platform();
   popStyle();
 }
 
@@ -28,8 +27,18 @@ void draw()
   clear();
   map.mapDraw();
 
-  platform.draw(width/2 - platform.sizeX/2, height/2 + 300);
   highscore.draw();
-  thePlayer.draw();
-  thePlayer.keyReleased();
+  thePlayer.move();
+  thePlayer.display();
+}
+void keyPressed() {
+  if (keyCode >= KEY_LIMIT) return;
+  keysPressed[keyCode] = true;
+  thePlayer.setMove(keyCode, true);
+}
+
+void keyReleased() {
+  if (keyCode >= KEY_LIMIT) return;
+  keysPressed[keyCode] = false;
+  thePlayer.setMove(keyCode, false);
 }

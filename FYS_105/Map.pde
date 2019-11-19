@@ -5,32 +5,28 @@ class Map {
   
   void mapDraw() {
 
-    background(142, 203, 232); // Lucht
+  background(200, 255, 200);
 
-    pushStyle();
-    fill(145, 74, 33);
-    rect(0, height - height /12, width, width);  // Aarde
-    popStyle();
+  //boundries van het scherm
+  noStroke();
+  fill(50, 50, 50); //de kleur van de muren en pilaren
+  rect(0, -450, width/3, 500); //vierkant linksboven - naar rechts
+  rect(width/3 + width/3, -450, width/3, 500); //vierkant rechtsboven - naar links
 
-    pushStyle();
-    fill(97, 217, 78);
-    rect(0, height - height /10 + 10, width, 25);  // Gras
-    popStyle();
+  rect(0, height - 75, width/3, 500); //vierkant linksonder - naar rechts
+  rect(width/3 + width/3, height - 75, width/3, 500); //vierkant rechtsonder - naar links
 
-    pushStyle();
-    fill(89, 47, 32);
-    rect(400, height/2, 160, 442); // Boomstam
-    popStyle();
+  rect(-450, 0, 500, height/3); //vierkant linksboven - naar onder
+  rect(width -50, 0, 500, height/3); //vierkant rechtsboven - naar onder
 
-    pushStyle();
-    fill(84, 194, 62);
-    ellipse(478, height/2 - 200, 380, 442); // Boom "bladeren"
-    popStyle();
+  rect(-450, height/3 + height/3, 500, height/3); //vierkant linksonder - naar boven
+  rect(width - 50, height/3 + height/3, 500, height/3); //vierkant rechtsonder - naar boven
 
-    pushStyle();
-    fill(234, 237, 19);
-    ellipse(100, 100, 150, 150); // Zon
-    popStyle();
+  //pilaren
+  circle(width/4, height/4, 150); //circle linksboven
+  circle(width - width/4, height/4, 150); //circle rechtsboven
 
+  circle(width/4, height - height/4, 150); //circle linksonder
+  circle(width - width/4, height - height/4, 150);
   }
 }
