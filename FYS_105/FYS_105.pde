@@ -5,7 +5,7 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 int vHoogte;
 
 Player thePlayer;
-Highscore highscore;
+//Highscore highscore;
 Map map;
 
 void setup()
@@ -14,7 +14,7 @@ void setup()
 
   vHoogte = 1000;
   thePlayer = new Player();
-  highscore = new Highscore();
+  //highscore = new Highscore();
   map = new Map();
 
   pushStyle();
@@ -27,7 +27,7 @@ void draw()
   clear();
   map.mapDraw();
 
-  highscore.draw();
+  //highscore.draw();
   thePlayer.move();
   thePlayer.display();
 }
