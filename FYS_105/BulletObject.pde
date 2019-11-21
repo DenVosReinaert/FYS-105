@@ -22,15 +22,15 @@ class Bullet
     if (lookingLeft == true)
     {
       lookingRight = false;
-      gun.gunBarrelLength = -25 / 1920 * width;
-      gun.gunPosX = thePlayer.playerPosX;
+      gun.gunBarrelLength = -25;
+      gun.gunPosX = thePlayer.xPosition;
     }
 
     if (lookingRight == true)
     {
       lookingLeft = false;
-      gun.gunBarrelLength = 25 / 1920 * width;
-      gun.gunPosX = thePlayer.playerPosX+thePlayer.sizeX;
+      gun.gunBarrelLength = 25;
+      gun.gunPosX = thePlayer.xPosition+thePlayer.playerSize;
     }
 
     gun.display();
@@ -66,16 +66,16 @@ class Bullet
     {
       lookingLeft = false;
       lookingRight = true;
-      thePlayer.playerPosX = thePlayer.playerPosX+5;
-      gun.gunPosX = (gun.gunPosX+5) / 1920f * width;
+      thePlayer.xPosition = thePlayer.xPosition+5;
+      gun.gunPosX = gun.gunPosX+5;
     }
 
     if (key == 'a')
     {
       lookingRight = false;
       lookingLeft = true;
-      thePlayer.playerPosX = (thePlayer.playerPosX-5) / 1920f * width;
-      gun.gunPosX = (gun.gunPosX-5) / 1920f * width;
+      thePlayer.xPosition = thePlayer.xPosition-5;
+      gun.gunPosX = gun.gunPosX-5;
     }
   }
 
