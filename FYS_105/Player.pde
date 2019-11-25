@@ -1,12 +1,15 @@
 class Player
 {
-boolean isLeft, isRight, isUp, isDown;
+  PImage mainChar;
+
+  boolean isLeft, isRight, isUp, isDown;
   float xPosition, yPosition;
   float playerSize, speed;
   float defaultSpeed = 5;
   float diaSpeed = (defaultSpeed * (sqrt(pow(10, 2) + pow(10, 2)) / 20)); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
   Player() {
+    mainChar = loadImage("/data/img/Last_Stand_Character_1_14x20.png");
     playerSize = 40;
     speed = defaultSpeed;
     xPosition = (width/2) - playerSize/2;
@@ -16,7 +19,9 @@ boolean isLeft, isRight, isUp, isDown;
   void display() {
     noStroke();
     fill(40, 40, 255);
-    rect(xPosition, yPosition, playerSize, playerSize);
+    mainChar.resize(56,80);
+    image(mainChar, xPosition, yPosition);
+    //  rect(xPosition, yPosition, playerSize, playerSize);
   }
 
   void move() {
@@ -33,19 +38,19 @@ boolean isLeft, isRight, isUp, isDown;
   boolean setMove(final int keyy, final boolean bool) {
     switch (keyy) {
     case +'W':
-    //case UP:
+      //case UP:
       return isUp = bool;
 
     case +'S':
-    //case DOWN:
+      //case DOWN:
       return isDown = bool;
 
     case +'A':
-    //case LEFT:
+      //case LEFT:
       return isLeft = bool;
 
     case +'D':
-    //case RIGHT:
+      //case RIGHT:
       return isRight = bool;
 
     default:
