@@ -2,10 +2,8 @@
 public class database {
 
 
-  database() { 
+  database() {
   }
   void draw() {
-    if (msql.connect() ) {
-    }
   }
 }

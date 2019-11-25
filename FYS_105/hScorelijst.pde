@@ -3,7 +3,8 @@
 
 class hScorelijst {
   int hScoreH = height/3; // Hoogte van text
-  int Asc = 0;
+  int Asc = 0; // 'Array Score'
+  int Ans = 0; // 'Array name & score'
   String[] scores = new String[Asc];
   String score;
   String name;
@@ -11,17 +12,15 @@ class hScorelijst {
 
   hScorelijst() {
 
-    if (msql.connect() && Asc < 10) {
+    if (msql.connect() && Ans < 10) { // Als geconnect is met database & Ans kleiner is dan 10
       msql.query( "SELECT name,score FROM scores ORDER BY score DESC");
-      while ( msql.next() ) {
-        for (int i = 0; i < Asc; i++) {
-          name = msql.getString("name");
-          names = append(names, name);
-          score = msql.getString("score");
-          scores = append(scores, score);
-          Asc++;
-          println("Names & scores are being attached to array");
-        }
+      println("Executed query!");
+      while ( msql.next() && Ans < 10) {
+        name = msql.getString("name"); // string name is 'name' uit database
+        names = append(names, name); // Voeg name toe aan de array names
+        score = msql.getString("score"); // string score is 'score' uit database
+        scores = append(scores, score); // Voeg score toe aan de array scores
+        Ans++;
       }
     } else { 
       println("ERROR: Couldn't fetch scores, names & id");
@@ -38,11 +37,9 @@ class hScorelijst {
     fill(0);
     text("Highscores", width/3, height/5);
     fill(0);
-    if (Asc < 10) {
-      for (int i = 0; i < Asc; i++) { 
-        text(""+scores[i], width/3, hScoreH + 25*i);
-        text(""+names[i], width/3+80, hScoreH + 25*i);
-      }
+    for (int i = 0; i < 10; i++) { 
+      text(""+scores[i], width/3, hScoreH + 25*i);
+      text(""+names[i], width/3+80, hScoreH + 25*i);
     }
   }
 }
