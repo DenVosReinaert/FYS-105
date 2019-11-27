@@ -7,10 +7,9 @@ class aScore {
   String idh;
   // String[] idha = new String[ids];
 
-  int deadC;
   boolean dead;
   String typing = "";
-  String name = "";
+  String name;
   int nameC;
 
   aScore() {
@@ -20,16 +19,6 @@ class aScore {
     if (!dead) {
       fill(255);
       text(""+score, 20, 30);
-    }
-    if (dead) {
-      if (deadC > 31) {
-        deadC = 31;
-      }
-      fill(255);
-      textSize(40);
-      typing.toUpperCase();
-      text("" + typing, width/2 - 90, height/2 - 10);
-      deadC++;
     }
   }
 
@@ -59,17 +48,6 @@ class aScore {
         }
       }
       healthbar.levens = -1;
-    }
-  }
-  void keyPressed() {
-    if (dead && deadC > 30) {
-      if (key == '\n' || nameC == 4) {
-        name = typing;
-        saveScore();
-      } else {
-        nameC++;
-        typing = typing + key;
-      }
     }
   }
 }

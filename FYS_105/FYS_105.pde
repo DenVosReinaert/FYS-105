@@ -18,6 +18,7 @@ int vHoogte;
 
 Player thePlayer;
 healthBar healthbar;
+GameOver gameover;
 //database db;
 aScore ascore;
 Map map;
@@ -29,6 +30,7 @@ void setup()
   size(1920, 1080);
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   game = true;
+  gameover = new GameOver();
   healthbar = new healthBar();
   gamemngr = new Game_Manager();
   vHoogte = 1000;

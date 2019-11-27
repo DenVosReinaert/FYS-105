@@ -12,8 +12,14 @@ class Game_Manager {
       thePlayer.move();
       thePlayer.display();
     }
-    //if (dead) {
-    //  game = false;
-    //}
+    if (dead) {
+      game = false;
+      gameover.draw();
+    }
+  }
+  void keyPressed() {
+    if (dead) {
+      gameover.keyPressed();
+    }
   }
 }
