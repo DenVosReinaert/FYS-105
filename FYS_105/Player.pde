@@ -1,4 +1,8 @@
-class Player { 
+class Player
+{
+  PImage mainChar;
+
+  boolean isLeft, isRight, isUp, isDown;
   float xPosition, yPosition;
   float playerSize, speed;
   float defaultSpeed = 5;
@@ -14,8 +18,10 @@ class Player {
   ArrayList  <Bullet> bulletList = new ArrayList<Bullet>();
 
   Player() {
+
     bulletCount = 20;
-    playerSize = 25;
+    mainChar = loadImage("/data/img/Last_Stand_Character_1_14x20.png");
+    playerSize = 40;
     speed = defaultSpeed;
     xPosition = (width/2) - playerSize/2;
     yPosition = (height/2) - playerSize/2;
@@ -27,6 +33,9 @@ class Player {
     pushStyle();
     stroke(200, 90, 90);
     fill(40, 40, 255);
+    mainChar.resize(56,80);
+    image(mainChar, xPosition, yPosition);
+
     rect(xPosition, yPosition, playerSize, playerSize);
     popStyle();
 
@@ -53,6 +62,7 @@ class Player {
     for (Bullet bullets : bulletList) {
       bullets.draw();
     }
+
   }
 
   void move() {
