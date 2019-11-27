@@ -1,8 +1,8 @@
 class Player
 {
   PImage mainChar;
+  Gun myGun;
 
-  boolean isLeft, isRight, isUp, isDown;
   float xPosition, yPosition;
   float playerSize, speed;
   float defaultSpeed = 5;
@@ -12,9 +12,8 @@ class Player
   boolean shootLeft, shootRight, shootUp, shootDown;
 
   int bulletCount = 19;
-  int cooldown = 20;
 
-  Bullet bulletO;
+  Bullet bullet;
   ArrayList  <Bullet> bulletList = new ArrayList<Bullet>();
 
   Player() {
@@ -25,11 +24,18 @@ class Player
     speed = defaultSpeed;
     xPosition = (width/2) - playerSize/2;
     yPosition = (height/2) - playerSize/2;
+
+        myGun = new Pistol();
+
+            //TO DO: als je 1 indrukt: BasicGun();,
+    // als je 2 indrukt: MachineGun();,
+    // als je 3 indrukt: Shotgun();.
   }
 
   void draw() {
 
     move();
+    bullet.removeBullet();
     pushStyle();
     stroke(200, 90, 90);
     fill(40, 40, 255);
@@ -76,24 +82,38 @@ class Player
     yPosition = constrain(yPosition + speed*(int(isDown)  - int(isUp)), int(0), int(height) - playerSize);
   }
 
-  boolean outOfBounds(boolean outOfScreen) {
-    if (bullet.bulletPosX > width || bullet.bulletPosX > 0 || bullet.bulletPosY > height || bullet.bulletPosY < 0 || (bullet.bulletXVelocity == 0 && bullet.bulletYVelocity == 0)) {
-      outOfScreen = true;
-    } else { 
-      return false;
+ void act() {
+    
+    if (onekey) {
+      myGun = new Pistol();
+      onekey = false;
     }
-    return outOfScreen;
-  }
+    
+    else if (twokey) {
+      myGun = new MachineGun();
+      twokey = false;
+    }
+    
+    else if (threekey) {
+      myGun = new Shotgun();
+      threekey = false;
+    }
 
-  void collision() {
-    //Checks if the bullet is out of the screen and removes those that are.
-    for (int i = bulletList.size() -1; i >= 0; i--) {
-      Bullet b = bulletList.get(i);
-      if (b.outOfBounds()) {
-        bulletList.remove(i);
-      }
+    if (leftKey) {
+            myGun.shoot();
     }
-  }
+    
+    if (rightKey) {
+            myGun.shoot();
+    }
+    if (upKey) {
+            myGun.shoot();
+    }
+    if (downKey) {
+            myGun.shoot();
+    }
+    
+      myGun.recharge();
 
   boolean setMove(final int keyy, final boolean bool) {
     switch (keyy) {
@@ -117,27 +137,3 @@ class Player
       return bool;
     }
   }
-
-  boolean setDirection(final int keyyS, final boolean boolS) {
-    switch (keyyS) {
-      //case +'W':
-    case UP:
-      return shootUp = boolS;
-
-      //case +'S':
-    case DOWN:
-      return shootDown = boolS;
-
-      //case +'A':
-    case LEFT:
-      return shootLeft = boolS;
-
-      //case +'D':
-    case RIGHT:
-      return shootRight = boolS;
-
-    default:
-      return boolS;
-    }
-  }
-}

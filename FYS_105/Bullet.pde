@@ -28,6 +28,16 @@ class Bullet {
       bulletXVelocity = -velocity;
     }
   }
+
+    Bullet(float incomingDX, float incomingDY) {
+    x = myPlayer.x;  //x position of bullet begins on y position of player
+    y = myPlayer.y;  //y position of bullet begins on y position of player
+    dx = incomingDX;    
+    dy = incomingDY;  // shooting bullet straight up
+    w = 20;
+    h = 20;
+  }
+
   void draw() {
     //this is the bullet
     fill(bulletFill);
@@ -36,6 +46,21 @@ class Bullet {
     bulletPosY += bulletYVelocity;
   }
 
+  void removeBullet() {
+  timer = timer + 1;
+  
+  int i = engine.size() - 1;
+  while (i >= 0) {
+    GameObject thing = engine.get(i);
+    thing.show();
+    thing.act();
+    if (thing.hasDied()) {
+      engine.remove(i);
+    }
+    i--;
+  }
+
+  }
+
   void collision() {
   }
-}
