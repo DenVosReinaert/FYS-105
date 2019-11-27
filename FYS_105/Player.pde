@@ -1,109 +1,66 @@
-class Player
-{
-  float sizeX, sizeY, jumpForce;
-  float playerPosX, playerPosY, playerVelX, gravity, playerGrav;
-  boolean left, right, jump;
+class Player extends GameObject {
 
-  Player() 
-  {
-    sizeX = 60;
-    sizeY = 80;
+  Gun myGun;
 
-    playerPosX = width/2 - sizeX/2;
-    playerPosY = height-height/12 - sizeY;
-
-    playerVelX = 5;
-    gravity = 1.1;
-
-    playerPosY -= jumpForce;
-    jumpForce = 30;
+  Player() {
+    x = width/2;
+    y = height/2;
+    dx = 0;
+    dy = 0;
+    w = 50;
+    h = 50;
+    myGun = new Pistol();
+    
+    //TO DO: als je 1 indrukt: BasicGun();,
+    // als je 2 indrukt: MachineGun();,
+    // als je 3 indrukt: Shotgun();.
   }
 
+  void show() {
+    fill(255, 100, 0);
+    rect(x, y, 50, 50);
+  }
 
-  void draw()
-  {
-    jumpForce /= gravity;
-    playerPosY -= jumpForce;
-    playerPosY += playerGrav;
-    playerGrav *= gravity;
-
-
-
-    if (isGrounded())
-    {
-      playerGrav = 0;
-      jumpForce = 0;
-    } else playerGrav = 3;
-
-    if(keyPressed)
-    setMove(keyCode, true);
-
-    if (playerPosY > (vHoogte - sizeY)) {
-      playerPosY = vHoogte - sizeY;
-      jumpForce = 0;
-      playerGrav = 0;
+  void act() {
+    
+    if (onekey) {
+      myGun = new Pistol();
+      onekey = false;
+    }
+    
+    else if (twokey) {
+      myGun = new MachineGun();
+      twokey = false;
+    }
+    
+    else if (threekey) {
+      myGun = new Shotgun();
+      threekey = false;
     }
 
+    
+    dx = 0;
+    dy = 0;
 
-    noStroke();
-    fill(255, 0, 0);
-    rect(playerPosX, playerPosY, sizeX, sizeY);
-
-
-    //KeyPressed
-      if (left)
-      {
-        playerPosX -= playerVelX;
-      }
-
-
-      if (right)
-      {
-        playerPosX += playerVelX;
-      }
-
-
-      if (jump && isGrounded())
-      {
-        jumpForce = 30;
-        playerGrav = 3;
-      }
-  }
-
-
-  boolean isGrounded()
-  {
-    if (playerPosY + sizeY >= vHoogte)
-      return true;
-    else if (platform.playerOnPlatform)
-      return true;
-    else return false;
-  }
-//For list of keyCodes:
-//http://gcctech.org/csc/javascript/javascript_keycodes.htm
-  boolean setMove(int keycode, boolean move)
-  {
-    if (keycode == LEFT)
-    {
-      return left = move;
+    if (akey) {
+      dx = -5;
     }
-    else 
-    if ( keycode == RIGHT)
-    {
-    return right = move;
+    
+    if (dkey) {
+      dx = 5;
     }
-    else
-    //32 == SPACEBAR
-    if( keycode == UP)
-    {
-    return jump = move;
+    if (wkey) {
+      dy = -5;
     }
-    else
-      return move;
+    if (skey) {
+      dy = 5;
+    }
+    if (spacekey) {
+      myGun.shoot();      
+    }
+    
+      x = x + dx;
+      y = y + dy;
+      myGun.recharge();
+    }
   }
-  
-  void keyReleased()
-  {
-    setMove(keyCode, false);
-  }
-}

@@ -1,32 +1,84 @@
-int vHoogte;
+ArrayList<GameObject> engine;
+boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
 
-Player thePlayer;
-Moving_Platform platform;
-Highscore highscore;
-Map map;
+boolean lookingDown, lookingLeft, lookingRight = false;
+boolean lookingUp = true;
 
-void setup()
-{
-  size(1920, 1080);
+Player myPlayer;
+Gun myGun;
 
-  vHoogte = 1000;
-  thePlayer = new Player();
-  highscore = new Highscore();
-  map = new Map();
+int timer = 0;
 
-  pushStyle();
-  fill(255);
-  platform = new Moving_Platform();
-  popStyle();
+void setup(){
+  size(1280, 720);
+  engine = new ArrayList<GameObject>(10000);
+  myPlayer = new Player();
+  engine.add(myPlayer);
+  
+  rectMode(CENTER);
 }
 
-void draw()
-{
-  clear();
-  map.mapDraw();
+void draw() {
+  background(0, 0, 0);
+  timer = timer + 1;
+  
+  int i = engine.size() - 1;
+  while (i >= 0) {
+    GameObject thing = engine.get(i);
+    thing.show();
+    thing.act();
+    if (thing.hasDied()) {
+      engine.remove(i);
+    }
+    i--;
+  }
+}
 
-  platform.draw(width/2 - platform.sizeX/2, height/2 + 300);
-  highscore.draw();
-  thePlayer.draw();
-  thePlayer.keyReleased();
+void keyPressed() {
+  if (key == 'a') {
+    akey = true;
+    lookingLeft = true;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = false;
+  }
+  if (key == 's') {
+    skey = true;
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = true;
+  }
+  if (key == 'd') {
+    dkey = true;
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = true;
+    lookingDown = false;
+  }
+  if (key == 'w') {
+    wkey = true;
+    lookingLeft = false;
+    lookingUp = true;
+    lookingRight = false;
+    lookingDown = false;
+  }
+  
+  if (key == 'i') upkey = true;
+  if (key == ' ') spacekey = true;
+  if (key == '1') onekey = true;
+  if (key == '2') twokey = true;
+  if (key == '3') threekey = true;
+}
+
+void keyReleased() {
+  if (key == 'a') akey = false;
+  if (key == 's') skey = false;
+  if (key == 'd') dkey = false;
+  if (key == 'w') wkey = false;
+  if (key == ' ') spacekey = false;
+  if (key == '1') onekey = true;
+  if (key == '2') twokey = true;
+  if (key == '3') threekey = true;
+
 }
