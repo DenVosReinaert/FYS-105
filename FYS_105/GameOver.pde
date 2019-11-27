@@ -78,7 +78,7 @@ class GameOver {
       text(""+letter2, xPos2, height/2 - 20);
       text(""+letter3, xPos3, height/2 - 20);
       text(""+letter4, xPos4, height/2 - 20);
-      text("Press '' to save name!", width/2, height/2);
+      text("Press '' to save name!", width/2, height/2 + 50);
     }
   }
 
