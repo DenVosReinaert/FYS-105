@@ -6,20 +6,20 @@ class MachineGun extends Gun {
   }
 
   void shoot() {
-    if (cooldown == threshold && lookingUp) {
-      engine.add(new Bullet(0, -15));
+    if (cooldown == threshold && upKey) {
+      player.bulletList.add(new Bullet(0, -15));
       cooldown = 0;
     } 
-    else if (cooldown == threshold && lookingDown) {
-      engine.add(new Bullet(0, 15));
+    else if (cooldown == threshold && downKey) {
+      player.bulletList.add(new Bullet(0, 15));
       cooldown = 0;
     } 
-    else if (cooldown == threshold && lookingLeft) {
-      engine.add(new Bullet(-15, 0));
+    else if (cooldown == threshold && leftKey) {
+      player.bulletList.add(new Bullet(-15, 0));
       cooldown = 0;
     } 
-    else if (cooldown == threshold && lookingRight) {
-      engine.add(new Bullet(15, 0));
+    else if (cooldown == threshold && rightKey) {
+      player.bulletList.add(new Bullet(15, 0));
       cooldown = 0;
     }
   }

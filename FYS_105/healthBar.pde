@@ -8,8 +8,6 @@ class healthBar {
   int lY1 = height/20;
   int lY2 = 10;
 
-  aScore ascore;
-
   void spelerhit() { // Als speler geraakt word dan gaan er levens van af
     levens--;
   }

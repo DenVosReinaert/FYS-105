@@ -15,11 +15,13 @@ String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP stand
 String dbName = "zkoeneqt"; // replace with database name
 //
 
-Player thePlayer;
+Player player;
+Gun myGun;
 healthBar healthbar;
 GameOver gameover;
 //database db;
 aScore ascore;
+Bullet bullet;
 Map map;
 Game_Manager gamemngr;
 MySQL msql;
@@ -32,7 +34,7 @@ void setup()
   gameover = new GameOver();
   healthbar = new healthBar();
   gamemngr = new Game_Manager();
-  thePlayer = new Player();
+  player = new Player();
   ascore = new aScore();
   map = new Map();
 
@@ -45,43 +47,26 @@ void draw()
 {
   clear();
   gamemngr.draw();
-  
 }
 void keyPressed() {
   //Walking
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
-  thePlayer.setMove(keyCode, true);
+  player.setMove(keyCode, true);
   //Shooting
-   if (key == 'LEFT') {
+  if (keyCode == LEFT) {
     leftKey = true;
-    lookingLeft = true;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = false;
   }
-  if (key == 'DOWN') {
+  if (keyCode == DOWN) {
     downKey = true;
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = true;
   }
-  if (key == 'RIGHT') {
-    rigthKey = true;
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = true;
-    lookingDown = false;
+  if (keyCode == RIGHT) {
+    rightKey = true;
   }
-  if (key == 'UP') {
+  if (keyCode == UP) {
     upKey = true;
-    lookingLeft = false;
-    lookingUp = true;
-    lookingRight = false;
-    lookingDown = false;
   }
-  
+
   if (key == 'i') upkey = true;
   if (key == '1') onekey = true;
   if (key == '2') twokey = true;
@@ -92,12 +77,12 @@ void keyReleased() {
   //Walking
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
-  thePlayer.setMove(keyCode, false);
+  player.setMove(keyCode, false);
   //Shooting
-  if (key == 'LEFT') leftKey = false;
-  if (key == 'DOWN') downKey = false;
-  if (key == 'RIGHT') rightKey = false;
-  if (key == 'UP') upKey = false;
+  if (keyCode == LEFT) leftKey = false;
+  if (keyCode == DOWN) downKey = false;
+  if (keyCode == RIGHT) rightKey = false;
+  if (keyCode == UP) upKey = false;
   if (key == '1') onekey = true;
   if (key == '2') twokey = true;
   if (key == '3') threekey = true;

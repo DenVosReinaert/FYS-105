@@ -1,5 +1,5 @@
 class Bullet {
-
+  
   float bulletPosX;
   float bulletPosY;
   float bulletWidth;
@@ -7,7 +7,10 @@ class Bullet {
   float bulletXVelocity;
   float bulletYVelocity;
   float velocity;
+  float timer;
   PVector startPos;
+  
+  boolean bulletHit = false;
 
   Bullet(PVector startPos) {
     this.startPos = startPos;
@@ -29,13 +32,12 @@ class Bullet {
     }
   }
 
-    Bullet(float incomingDX, float incomingDY) {
-    x = myPlayer.x;  //x position of bullet begins on y position of player
-    y = myPlayer.y;  //y position of bullet begins on y position of player
-    dx = incomingDX;    
-    dy = incomingDY;  // shooting bullet straight up
-    w = 20;
-    h = 20;
+  Bullet(float incomingDX, float incomingDY) {
+   // x = player.xPosition;  //x position of bullet begins on y position of player
+  //  y = player.yPosition;  //y position of bullet begins on y position of player
+//    dx = incomingDX;    
+  //  dy = incomingDY;  // shooting bullet straight up
+    bulletWidth = 20;
   }
 
   void draw() {
@@ -44,23 +46,27 @@ class Bullet {
     rect(bulletPosX, bulletPosY, bulletWidth, bulletWidth);
     bulletPosX += bulletXVelocity;
     bulletPosY += bulletYVelocity;
-  }
-
-  void removeBullet() {
-  timer = timer + 1;
-  
-  int i = engine.size() - 1;
-  while (i >= 0) {
-    GameObject thing = engine.get(i);
-    thing.show();
-    thing.act();
-    if (thing.hasDied()) {
-      engine.remove(i);
+    
+    //ENTER BULLET COLLISION IN STATEMENT BELOW
+    if(1 > 0)
+    {
+      bulletHit = true;
     }
-    i--;
+    else bulletHit = false;
   }
 
-  }
+  //void removeBullet() {
 
-  void collision() {
-  }
+  //  int i = player.bulletList.size() - 1;
+  //  while (i >= 0) {
+  //    //GameObject thing = player.bulletList.get(i);
+  //    GameObject thing = this.bulletList.get(i);
+  //    thing.show();
+  //    thing.act();
+  //    if (thing.hasDied()) {
+  //      player.bulletList.remove(i);
+  //    }
+  //    i--;
+  //  }
+  //}
+}

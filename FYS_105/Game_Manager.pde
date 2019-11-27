@@ -9,8 +9,8 @@ class Game_Manager {
       map.mapDraw();
 
       ascore.draw();
-      thePlayer.move();
-      thePlayer.display();
+      player.move();
+      player.draw();
     }
     if (dead) {
       game = false;
