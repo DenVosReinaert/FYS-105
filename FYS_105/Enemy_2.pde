@@ -1,16 +1,15 @@
 //Ruben de Jager
-class Grunt extends Enemys{
-  
-  
-  Grunt(){
+class Speedster extends Enemys{
+ 
+  Speedster(){
     enemyW=40;
     enemyH=40;
-    enemyHP=30;
-    enemySpeedX=2;
-    enemySpeedY=2;
-  }//constructor Grunt
+    enemyHP=20;
+    enemySpeedX=5;
+    enemySpeedY=5;
+  }//constructor Speedster
     void enemyShow(){
-    fill(65,17,96);
+    fill(229,143,23);
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
   }//enemyShow
   
@@ -20,10 +19,10 @@ class Grunt extends Enemys{
   
   void pulseCheck(){
     
-  }// pulseCheck
+  }//pulseCheck
   
   boolean Dead(){
     return enemyHP<=0;
   }//boolean Dead
   
-}//class Grunt
+}
