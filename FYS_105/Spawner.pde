@@ -33,19 +33,19 @@ class Spawner{
   }//spawnerUpdate
   void straightLine1(){
     if(frameCount %100==0){//modulus
-    AI.add(new Grunt());
+    gamemngr.AI.add(new Grunt());
     }
   }
   
   void straightLine2(){
     if(frameCount %50==0){//modulus
-    AI.add(new Speedster());
+    gamemngr.AI.add(new Speedster());
     }
   }
   
   void straightLine3(){
     if(frameCount %30==0){//modulus
-    AI.add(new Heavy());
+    gamemngr.AI.add(new Heavy());
     }
   }
   

@@ -11,16 +11,16 @@ abstract class Enemys{
   }//enemyShow
   
   void enemyUpdate(){
-    if (dist(playerPosX, playerPosY, enemyPosX, enemyPosY) < 800) { 
-      if (playerPosX > enemyPosX) {
+    if (dist(myPlayer.x, myPlayer.y, enemyPosX, enemyPosY) < 1000) { 
+      if (myPlayer.x > enemyPosX) {
         enemyPosX += enemySpeedX;
         
       }//if
-      if(playerPosX < enemyPosX) {
+      if(myPlayer.x < enemyPosX) {
         enemyPosX -= enemySpeedX;
         
       }//if
-      if (playerPosY< enemyPosY) {
+      if (myPlayer.y < enemyPosY) {
         enemyPosY -= enemySpeedY;
         
       } //if
@@ -34,14 +34,14 @@ abstract class Enemys{
   
   void checkPulse(){//Checks the enemy's collision with the player's bullet
     int i = 0;
-    while (i<AI.size()){
-      GameObject thing =bulletList.get(i);
+    while (i<gamemngr.AI.size()){
+      GameObject thing = bengine.engine.get(i);
       if(thing instanceof Bullet){
         if(rectRect(enemyPosX,enemyPosY,enemyW,enemyH,thing.x,thing.y,5,5)){
           enemyHP=enemyHP-1;
           thing.hp=0;
           for(int j=0;j<5;j++){
-          AI.add(new Particle(thing.x,thing.y));
+          gamemngr.AI.add(new Particle(thing.x,thing.y));
           }//for
         }//if
       }//if
