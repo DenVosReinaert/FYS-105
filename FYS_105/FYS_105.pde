@@ -16,27 +16,29 @@ String dbName = "zkoeneqt"; // replace with database name
 
 int vHoogte;
 
-Player thePlayer;
 healthBar healthbar;
 GameOver gameover;
 //database db;
 aScore ascore;
-Map map;
 Game_Manager gamemngr;
 MySQL msql;
+BulletEngine bengine;
+Player myPlayer;
+Gun myGun;
+
 
 void setup()
 {
-  size(1920, 1080);
+  size(1280, 720);
+  myPlayer = new Player();
+  bengine = new BulletEngine();
+  gamemngr = new Game_Manager();
+  ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   game = true;
   gameover = new GameOver();
   healthbar = new healthBar();
-  gamemngr = new Game_Manager();
-  vHoogte = 1000;
-  thePlayer = new Player();
-  ascore = new aScore();
-  map = new Map();
+  // vHoogte = 1000;
 
   pushStyle();
   fill(255);
@@ -51,11 +53,13 @@ void draw()
 void keyPressed() {
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
-  thePlayer.setMove(keyCode, true);
+  // thePlayer.setMove(keyCode, true);
+  gamemngr.keyPressed();
 }
 
 void keyReleased() {
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
-  thePlayer.setMove(keyCode, false);
+  // thePlayer.setMove(keyCode, false);
+  gamemngr.keyReleased();
 }

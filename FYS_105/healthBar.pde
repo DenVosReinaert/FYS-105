@@ -16,7 +16,7 @@ class healthBar {
 
   void draw() {
 
-    if (!ascore.dead) {
+    if (game) {
       if (levens > 0) {
         fill(0, 255, 0);
         rect(lX1, lY1, lX2, lY2);

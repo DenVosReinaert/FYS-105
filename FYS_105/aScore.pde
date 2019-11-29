@@ -18,7 +18,8 @@ class aScore {
   void draw() {
     if (!dead) {
       fill(255);
-      text(""+score, 20, 30);
+      textSize(20);
+      text(""+score, width/9, height/10);
     }
   }
 

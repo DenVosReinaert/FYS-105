@@ -6,11 +6,14 @@ class Game_Manager {
 
   void draw() {
     if (game) {
-      map.mapDraw();
-
+      bengine.draw();
       ascore.draw();
-      thePlayer.move();
-      thePlayer.display();
+      healthbar.draw();
+      //map.mapDraw();
+
+      //ascore.draw();
+      //thePlayer.move();
+      //thePlayer.display();
     }
     if (dead) {
       game = false;
@@ -20,6 +23,14 @@ class Game_Manager {
   void keyPressed() {
     if (dead) {
       gameover.keyPressed();
+    }
+    if (game) {
+      bengine.keyPressed();
+    }
+  }
+  void keyReleased() {
+    if (game) {
+      bengine.keyReleased();
     }
   }
 }

@@ -1,60 +1,66 @@
-class Player
-{
-  PImage mainChar;
+class Player extends GameObject {
 
-  boolean isLeft, isRight, isUp, isDown;
-  float xPosition, yPosition;
-  float playerSize, speed;
-  float defaultSpeed = 5;
-  float diaSpeed = (defaultSpeed * (sqrt(pow(10, 2) + pow(10, 2)) / 20)); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+  Gun myGun;
 
   Player() {
-    mainChar = loadImage("/data/img/Last_Stand_Character_1_14x20.png");
-    playerSize = 40;
-    speed = defaultSpeed;
-    xPosition = (width/2) - playerSize/2;
-    yPosition = (height/2) - playerSize/2;
+    x = width/2;
+    y = height/2;
+    dx = 0;
+    dy = 0;
+    w = 50;
+    h = 50;
+    myGun = new Pistol();
+    
+    //TO DO: als je 1 indrukt: BasicGun();,
+    // als je 2 indrukt: MachineGun();,
+    // als je 3 indrukt: Shotgun();.
   }
 
-  void display() {
-    noStroke();
-    fill(40, 40, 255);
-    mainChar.resize(56,80);
-    image(mainChar, xPosition, yPosition);
-    //  rect(xPosition, yPosition, playerSize, playerSize);
+  void show() {
+    fill(255, 100, 0);
+    rect(x, y, 50, 50);
   }
 
-  void move() {
-    if (isUp && isLeft || isLeft && isDown || isDown && isRight || isRight && isUp) {
-      speed = diaSpeed;
-    } else {
-      speed = defaultSpeed;
+  void act() {
+    
+    if (bengine.onekey) {
+      myGun = new Pistol();
+      bengine.onekey = false;
     }
-    xPosition = constrain(xPosition + speed*(int(isRight) - int(isLeft)), int(0), int(width) - playerSize);
-    yPosition = constrain(yPosition + speed*(int(isDown)  - int(isUp)), int(0), int(height) - playerSize*2);
-  }
+    
+    else if (bengine.twokey) {
+      myGun = new MachineGun();
+      bengine.twokey = false;
+    }
+    
+    else if (bengine.threekey) {
+      myGun = new Shotgun();
+      bengine.threekey = false;
+    }
 
+    
+    dx = 0;
+    dy = 0;
 
-  boolean setMove(final int keyy, final boolean bool) {
-    switch (keyy) {
-    case +'W':
-      //case UP:
-      return isUp = bool;
-
-    case +'S':
-      //case DOWN:
-      return isDown = bool;
-
-    case +'A':
-      //case LEFT:
-      return isLeft = bool;
-
-    case +'D':
-      //case RIGHT:
-      return isRight = bool;
-
-    default:
-      return bool;
+    if (bengine.akey) {
+      dx = -5;
+    }
+    
+    if (bengine.dkey) {
+      dx = 5;
+    }
+    if (bengine.wkey) {
+      dy = -5;
+    }
+    if (bengine.skey) {
+      dy = 5;
+    }
+    if (bengine.spacekey) {
+      myGun.shoot();      
+    }
+    
+      x = x + dx;
+      y = y + dy;
+      myGun.recharge();
     }
   }
-}
