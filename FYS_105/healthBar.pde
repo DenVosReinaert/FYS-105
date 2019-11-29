@@ -37,6 +37,7 @@ class healthBar {
           }
         }
       }
+
       if (levens == 0) { // Is het aantal levens 0?
         // highscore = score;// NEW EDIT, dit heette 'score' in mijn versie van begin dus geen idee of dit werkt zo.. // haalt de current highscore erbij
         // highscore.saveScore(); // roept de saveScore functie op
