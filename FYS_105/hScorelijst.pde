@@ -9,12 +9,14 @@ class hScorelijst {
   String score;
   String name;
   String[] names = new String[Asc];
+  PImage scrBgr;
 
   hScorelijst() {
 
+    scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
+
     if (msql.connect() && Ans < 10) { // Als geconnect is met database & Ans kleiner is dan 10
       msql.query( "SELECT name,score FROM scores ORDER BY score DESC");
-      println("Executed query!");
       while ( msql.next() && Ans < 10) {
         name = msql.getString("name"); // string name is 'name' uit database
         names = append(names, name); // Voeg name toe aan de array names
@@ -31,15 +33,20 @@ class hScorelijst {
   }
 
   void draw() {
-    background(0);
-    fill(255);
-    rect(width/4, height/8, width/2, height - height/4);
-    fill(0);
-    text("Highscores", width/3, height/5);
-    fill(0);
-    for (int i = 0; i < 10; i++) { 
-      text(""+scores[i], width/3, hScoreH + 25*i);
-      text(""+names[i], width/3+80, hScoreH + 25*i);
+    if (gamemngr.hscore) {
+      scrBgr.resize(width, height);
+      image(scrBgr, 0, 0);
+      textSize(40);
+      if (scores.length == 0) {
+        text("Huh? It's empty!", width/2 - 150, hScoreH+100); 
+        text("Play now and be the first!", width/4 + 80, hScoreH+160);
+      }
+      for (int i = 0; i < 10; i++) { 
+        if (scores.length > 0 && names.length > 0) {
+        text(""+scores[i], width/3, hScoreH + 40*i);
+        text(""+names[i], width/3+300, hScoreH + 40*i);
+        }
+      }
     }
   }
 }

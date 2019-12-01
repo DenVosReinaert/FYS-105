@@ -16,7 +16,9 @@ String dbName = "zkoeneqt"; // replace with database name
 
 int vHoogte;
 
+hScorelijst hscorel;
 healthBar healthbar;
+UI UI;
 GameOver gameover;
 //database db;
 aScore ascore;
@@ -31,11 +33,12 @@ void setup()
 {
   size(1280, 720);
   myPlayer = new Player();
+  UI = new UI();
   bengine = new BulletEngine();
   gamemngr = new Game_Manager();
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
-  game = true;
+  gamemngr.home = true;
   gameover = new GameOver();
   healthbar = new healthBar();
   // vHoogte = 1000;
