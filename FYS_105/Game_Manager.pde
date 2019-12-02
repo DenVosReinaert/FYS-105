@@ -39,9 +39,6 @@ class Game_Manager {
     }
     if (dead) {
       gameover.keyPressed();
-      if (key == 'p') {
-       ascore.score++; 
-      }
     }
     if (game) {
       bengine.keyPressed();
