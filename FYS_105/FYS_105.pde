@@ -28,7 +28,6 @@ BulletEngine bengine;
 Player myPlayer;
 Gun myGun;
 
-
 void setup()
 {
   size(1280, 720);

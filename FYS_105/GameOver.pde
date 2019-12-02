@@ -79,6 +79,7 @@ class GameOver {
 
       // Draw all letters on screen
       textSize(80);
+      fill(200);
       text(""+letter1, xPos1, height/2 - 20);
       text(""+letter2, xPos2, height/2 - 20);
       text(""+letter3, xPos3, height/2 - 20);
@@ -93,8 +94,10 @@ class GameOver {
       // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
       ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
       ascore.saveScore();
-      gamemngr.dead = false;
+      // Reset everything back to how the game was in the beginning
+      gamemngr.hscoreA = 0;
       ascore.score = 0;
+      gamemngr.dead = false;
       healthbar.levens = 3;
       gamemngr.hscore = true;
     }

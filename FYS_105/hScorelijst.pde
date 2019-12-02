@@ -22,6 +22,7 @@ class hScorelijst {
         names = append(names, name); // Voeg name toe aan de array names
         score = msql.getString("score"); // string score is 'score' uit database
         scores = append(scores, score); // Voeg score toe aan de array scores
+        Asc++;
         Ans++;
       }
     } else { 
@@ -41,10 +42,10 @@ class hScorelijst {
         text("Huh? It's empty!", width/2 - 150, hScoreH+100); 
         text("Play now and be the first!", width/4 + 80, hScoreH+160);
       }
-      for (int i = 0; i < 10; i++) { 
-        if (scores.length > 0 && names.length > 0) {
-        text(""+scores[i], width/3, hScoreH + 40*i);
-        text(""+names[i], width/3+300, hScoreH + 40*i);
+      for (int i = 0; i < Asc; i++) { 
+        if (names.length > 0 && scores.length > 0) {
+          text(""+scores[i], width/3, hScoreH + 40*i);
+          text(""+names[i], width/3+300, hScoreH + 40*i);
         }
       }
     }

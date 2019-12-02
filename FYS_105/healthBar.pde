@@ -42,7 +42,6 @@ class healthBar {
         // highscore = score;// NEW EDIT, dit heette 'score' in mijn versie van begin dus geen idee of dit werkt zo.. // haalt de current highscore erbij
         // highscore.saveScore(); // roept de saveScore functie op
         gamemngr.dead = true;
-        levens = -1; // Zet levens op -1 zodat ie niet continue dit blijft doen :)
       }
     }
     //  highscore = score;
