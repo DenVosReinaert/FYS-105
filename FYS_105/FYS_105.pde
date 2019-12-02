@@ -1,44 +1,46 @@
-//Halleluyah we got GitHub
-final int KEY_LIMIT = 1024;
-boolean[] keysPressed = new boolean[KEY_LIMIT];
+Player thePlayer = new Player();
+LevelManager lvlMngr = new LevelManager();
 
-int vHoogte;
 
-Player thePlayer;
-//Highscore highscore;
-Map map;
+
+
+
+
 
 void setup()
 {
-  size(1920, 1080);
-
-  vHoogte = 1000;
-  thePlayer = new Player();
-  //highscore = new Highscore();
-  map = new Map();
-
-  pushStyle();
-  fill(255);
-  popStyle();
+  size(1280, 720);
+  
+  LoadAssets();
+  lvlMngr.setup();
 }
+
+
+
 
 void draw()
 {
-  clear();
-  map.mapDraw();
-
-  //highscore.draw();
-  thePlayer.move();
-  thePlayer.display();
-}
-void keyPressed() {
-  if (keyCode >= KEY_LIMIT) return;
-  keysPressed[keyCode] = true;
-  thePlayer.setMove(keyCode, true);
+  image(background, 0 , 0);
+  background.resize(width, height);
+  
+  lvlMngr.draw();
+  thePlayer.draw();
 }
 
-void keyReleased() {
-  if (keyCode >= KEY_LIMIT) return;
-  keysPressed[keyCode] = false;
-  thePlayer.setMove(keyCode, false);
+
+
+public float Calculate(String orientation, float size)
+{
+  float result = 0;
+
+  if (orientation == "x" || orientation == "X")
+  {
+    result = size / 1280 * width;
+  } else 
+  if (orientation == "y" || orientation == "Y")
+  {
+    result = size / 720 * height;
+  }
+
+  return result;
 }

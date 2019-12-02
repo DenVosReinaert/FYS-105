@@ -1,55 +1,41 @@
 class Player
 {
-boolean isLeft, isRight, isUp, isDown;
-  float xPosition, yPosition;
-  float playerSize, speed;
-  float defaultSpeed = 5;
-  float diaSpeed = (defaultSpeed * (sqrt(pow(10, 2) + pow(10, 2)) / 20)); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
-
-  Player() {
-    playerSize = 40;
-    speed = defaultSpeed;
-    xPosition = (width/2) - playerSize/2;
-    yPosition = (height/2) - playerSize/2;
+  float playerPosX, playerPosY, playerWidth, playerHeight;
+  
+  
+  void setup()
+  {
+    playerWidth = 16;
+    playerHeight = 20;
+    
+    playerPosX = width/2;
+    playerPosY = height/2;
   }
-
-  void display() {
-    noStroke();
-    fill(40, 40, 255);
-    rect(xPosition, yPosition, playerSize, playerSize);
-  }
-
-  void move() {
-    if (isUp && isLeft || isLeft && isDown || isDown && isRight || isRight && isUp) {
-      speed = diaSpeed;
-    } else {
-      speed = defaultSpeed;
+  
+  
+  void draw()
+  {
+        
+    fill(0);
+    rect(playerPosX, playerPosY, playerWidth, playerHeight);
+    
+    if(keyPressed && keyCode == LEFT)
+    {
+      playerPosX += -2;
     }
-    xPosition = constrain(xPosition + speed*(int(isRight) - int(isLeft)), int(0), int(width) - playerSize);
-    yPosition = constrain(yPosition + speed*(int(isDown)  - int(isUp)), int(0), int(height) - playerSize*2);
-  }
-
-
-  boolean setMove(final int keyy, final boolean bool) {
-    switch (keyy) {
-    case +'W':
-    //case UP:
-      return isUp = bool;
-
-    case +'S':
-    //case DOWN:
-      return isDown = bool;
-
-    case +'A':
-    //case LEFT:
-      return isLeft = bool;
-
-    case +'D':
-    //case RIGHT:
-      return isRight = bool;
-
-    default:
-      return bool;
+    else if (keyPressed && keyCode == RIGHT)
+    {
+     playerPosX += 2; 
     }
+    else if (keyPressed && keyCode == UP)
+    {
+     playerPosY += -2; 
+    }
+    else if (keyPressed && keyCode == DOWN)
+    {
+     playerPosY += 2; 
+    }
+
   }
+  
 }
