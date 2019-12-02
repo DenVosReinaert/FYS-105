@@ -4,23 +4,27 @@
 
 class GameOver {
 
+  // char containing the letter on screen
   char letter1;
   char letter2;
   char letter3;
   char letter4;
 
+  // All x positions of the letters
   int xPos1;
   int xPos2;
   int xPos3;
   int xPos4;
 
   int state = 1;
+  // All letter states based on where they are in line
   int l1s;
   int l2s;
   int l3s;
   int l4s;
 
 
+  // Array containing all available letters
   char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
   void setup() {
@@ -30,7 +34,8 @@ class GameOver {
 
   void draw() {
     clear();
-    if (ascore.dead) {
+    if (gamemngr.dead) {
+      // The dot under the letters depending on which state they are
       if (state == 1) {
         circle(width/2-135, height/2 + 20, 10);
       }
@@ -44,7 +49,7 @@ class GameOver {
         circle(width/2 + 105, height/2 + 20, 10);
       }
 
-      // Make all letters writable
+      // Make all letters writable (So you can write them with text)
       letter1 = letters[l1s]; 
       letter2 = letters[l2s];
       letter3 = letters[l3s];
@@ -88,6 +93,10 @@ class GameOver {
       // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
       ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
       ascore.saveScore();
+      gamemngr.dead = false;
+      ascore.score = 0;
+      healthbar.levens = 3;
+      gamemngr.hscore = true;
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {
