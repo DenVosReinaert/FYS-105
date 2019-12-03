@@ -1,14 +1,12 @@
 class Player extends GameObject {
 
-  Gun myGun;
-
   Player() {
     x = width/2;
     y = height/2;
     dx = 0;
     dy = 0;
-    w = 50;
-    h = 50;
+    w = 35;
+    h = 35;
     myGun = new Pistol();
     
     //TO DO: als je 1 indrukt: BasicGun();,
@@ -37,7 +35,6 @@ class Player extends GameObject {
       myGun = new Shotgun();
       bengine.threekey = false;
     }
-
     
     dx = 0;
     dy = 0;
@@ -58,7 +55,6 @@ class Player extends GameObject {
     if (bengine.spacekey) {
       myGun.shoot();      
     }
-    
       x = x + dx;
       y = y + dy;
       myGun.recharge();

@@ -8,7 +8,7 @@ class BulletEngine {
   int timer = 0;
 
   BulletEngine() {
-    engine = new ArrayList<GameObject>(10000);
+    engine = new ArrayList<GameObject>(20);
     engine.add(myPlayer);
     rectMode(CENTER);
   }

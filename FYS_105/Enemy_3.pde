@@ -1,5 +1,5 @@
 //Ruben de Jager
-class Heavy extends Enemys{
+class Heavy extends Enemies{
   
   Heavy(){
     enemyW=60;
@@ -12,14 +12,6 @@ class Heavy extends Enemys{
     fill(91,80,80);
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
   }//enemyShow
-  
-  void enemyUpdate(){
-    
-  }//enemyUpdate
-  
-  void pulseCheck(){
-    
-  }//pulseCheck
   
   boolean Dead(){
     return enemyHP<=0;

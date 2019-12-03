@@ -1,9 +1,9 @@
 class Game_Manager {
   boolean dead;
-  ArrayList<Enemys> AI;
+  ArrayList<Enemies> AI;
 
   Game_Manager() {
-    AI= new ArrayList<Enemys>(10000);
+    AI= new ArrayList<Enemies>(30);
   }
 
   void draw() {
@@ -15,11 +15,13 @@ class Game_Manager {
       bengine.draw();
       ascore.draw();
       healthbar.draw();
+      spawn.spawnerShow();
+      spawn.spawnerUpdate();
 
       int i = AI.size()-1;
       while (i >= 0) {
         print(AI);
-        Enemys enm= AI.get(i);
+        Enemies enm= AI.get(i);
         enm.enemyShow();
         enm.enemyUpdate();
         enm.checkPulse();

@@ -1,9 +1,9 @@
 //Ruben de Jager
-abstract class Enemys{
+abstract class Enemies{
   
  float enemyPosX,enemyPosY,enemyW,enemyH,enemyHP,enemySpeedX,enemySpeedY;
   
-  Enemys(){
+  Enemies(){
   }//constructor Enemys
   
   void enemyShow(){
@@ -33,8 +33,7 @@ abstract class Enemys{
   }//enemyUpdate
   
   void checkPulse(){//Checks the enemy's collision with the player's bullet
-    int i = 0;
-    while (i<gamemngr.AI.size()){
+    for (int i = 0; i > gamemngr.AI.size(); i++){
       GameObject thing = bengine.engine.get(i);
       if(thing instanceof Bullet){
         if(rectRect(enemyPosX,enemyPosY,enemyW,enemyH,thing.x,thing.y,5,5)){
@@ -54,7 +53,7 @@ abstract class Enemys{
   }//boolean Dead
 }//abstract class Enemys
 
-class Particle extends Enemys{
+class Particle extends Enemies{
   Particle(float incomingX,float incomingY){
     enemyPosX=incomingX;
     enemyPosY=incomingY;

@@ -1,5 +1,5 @@
 //Ruben de Jager
-class Speedster extends Enemys{
+class Speedster extends Enemies{
  
   Speedster(){
     enemyW=40;
@@ -12,14 +12,6 @@ class Speedster extends Enemys{
     fill(229,143,23);
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
   }//enemyShow
-  
-  void enemyUpdate(){
-    
-  }//enemyUpdate
-  
-  void pulseCheck(){
-    
-  }//pulseCheck
   
   boolean Dead(){
     return enemyHP<=0;
