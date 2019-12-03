@@ -21,11 +21,14 @@ class Game_Manager {
       hscorel.draw();
     }
     if (game) {
+
+
+      lvlMngr.lvlNum = 2;
+
+
       bengine.draw();
       ascore.draw();
       healthbar.draw();
-      myPlayer.show();
-      lvlMngr.lvlNum = 1;
     }
     if (dead) {
       game = false;

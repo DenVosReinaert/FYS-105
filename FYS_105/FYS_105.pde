@@ -43,13 +43,15 @@ void setup()
   UI = new UI();
   bengine = new BulletEngine();
   gamemngr = new Game_Manager();
-  ascore = new aScore();
-  msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
+
   gamemngr.home = true;
   //gamemngr.dead = true;
+  lvlMngr = new LevelManager();
+  ascore = new aScore();
+  msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   healthbar = new healthBar();
-  lvlMngr = new LevelManager();
+
 
 
   lvlMngr.setup();
@@ -60,8 +62,12 @@ void setup()
 void draw()
 {
   clear();
-  gamemngr.draw();
   lvlMngr.draw();
+  gamemngr.draw();
+
+
+  if (game)
+    myPlayer.show();
 }
 
 
