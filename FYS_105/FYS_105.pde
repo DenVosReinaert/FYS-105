@@ -1,3 +1,4 @@
+
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
@@ -14,7 +15,8 @@ String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP stand
 String dbName = "zkoeneqt"; // replace with database name
 //
 
-int vHoogte;
+
+LevelManager lvlMngr;
 
 hScorelijst hscorel;
 healthBar healthbar;
@@ -28,9 +30,15 @@ BulletEngine bengine;
 Player myPlayer;
 Gun myGun;
 
+
+
 void setup()
 {
   size(1280, 720);
+
+  LoadAssets();
+
+  lvlMngr = new LevelManager();
   myPlayer = new Player();
   UI = new UI();
   bengine = new BulletEngine();
@@ -41,18 +49,20 @@ void setup()
   //gamemngr.dead = true;
   gameover = new GameOver();
   healthbar = new healthBar();
-  // vHoogte = 1000;
 
-  pushStyle();
-  fill(255);
-  popStyle();
+
+  lvlMngr.setup();
 }
 
-void draw()
+
+
+  void draw()
 {
   clear();
   gamemngr.draw();
 }
+
+
 void keyPressed() {
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
@@ -65,4 +75,27 @@ void keyReleased() {
   keysPressed[keyCode] = false;
   // thePlayer.setMove(keyCode, false);
   gamemngr.keyReleased();
+
+  background.resize(width, height);
+
+  lvlMngr.draw();
+  thePlayer.draw();
+}
+
+
+
+public float Calculate(String orientation, float size)
+{
+  float result = 0;
+
+  if (orientation == "x" || orientation == "X")
+  {
+    result = size / 1280 * width;
+  } else 
+  if (orientation == "y" || orientation == "Y")
+  {
+    result = size / 720 * height;
+  }
+
+  return result;
 }

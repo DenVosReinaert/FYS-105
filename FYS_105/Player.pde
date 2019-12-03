@@ -1,3 +1,4 @@
+
 class Player extends GameObject {
 
   Gun myGun;
@@ -7,8 +8,8 @@ class Player extends GameObject {
     playerPosY = height/2;
     moveVelX = 0;
     moveVelY = 0;
-    playerWidth = 50;
-    playerHeight = 50;
+    playerWidth = 16;
+    playerHeight = 20;
     myGun = new Pistol();
 
     //TO DO: als je 1 indrukt: BasicGun();,
@@ -72,12 +73,12 @@ class Player extends GameObject {
       } else 
       moveVelY = defaultSpeed;
     }
-    
+
     //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
     if (bengine.wkey && bengine.akey || bengine.akey && bengine.skey || bengine.skey && bengine.dkey || bengine.dkey && bengine.wkey) {
       defaultSpeed = diaSpeed;
     }
-    
+
     if (bengine.spacekey) {
       myGun.shoot();
     }
