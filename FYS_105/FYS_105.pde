@@ -37,7 +37,8 @@ void setup()
   gamemngr = new Game_Manager();
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
-  gamemngr.home = true;
+  //gamemngr.home = true;
+  gamemngr.dead = true;
   gameover = new GameOver();
   healthbar = new healthBar();
   // vHoogte = 1000;
