@@ -28,22 +28,22 @@ class Pillar
 
 
     //BOUNDARIES
-    if (thePlayer.playerPosX + thePlayer.playerWidth > pillarPosX)
+    if (myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX)
     {
-      thePlayer.playerPosX = pillarPosX - thePlayer.playerWidth;
+      myPlayer.playerPosX = pillarPosX - myPlayer.playerWidth;
     } else
-      if (thePlayer.playerPosX < pillarPosX + pillarWidth)
+      if (myPlayer.playerPosX < pillarPosX + pillarWidth)
       {
-        thePlayer.playerPosX = pillarPosX + pillarWidth;
+        myPlayer.playerPosX = pillarPosX + pillarWidth;
       }
 
-    if (thePlayer.playerPosY + thePlayer.playerHeight > pillarBoundY)
+    if (myPlayer.playerPosY + myPlayer.playerHeight > pillarBoundY)
     {
-      thePlayer.playerPosY = pillarBoundY - thePlayer.playerHeight;
+      myPlayer.playerPosY = pillarBoundY - myPlayer.playerHeight;
     } else
-      if (thePlayer.playerPosY < pillarHeight)
+      if (myPlayer.playerPosY < pillarHeight)
       {
-        thePlayer.playerPosY = pillarHeight;
+        myPlayer.playerPosY = pillarHeight;
       }
   }
 }

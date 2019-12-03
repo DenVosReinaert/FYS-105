@@ -24,6 +24,7 @@ class Game_Manager {
       bengine.draw();
       ascore.draw();
       healthbar.draw();
+      lvlMngr.lvlNum = 1;
     }
     if (dead) {
       game = false;

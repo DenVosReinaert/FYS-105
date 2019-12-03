@@ -38,7 +38,7 @@ void setup()
 
   LoadAssets();
 
-  lvlMngr = new LevelManager();
+
   myPlayer = new Player();
   UI = new UI();
   bengine = new BulletEngine();
@@ -49,6 +49,7 @@ void setup()
   //gamemngr.dead = true;
   gameover = new GameOver();
   healthbar = new healthBar();
+  lvlMngr = new LevelManager();
 
 
   lvlMngr.setup();
@@ -56,7 +57,7 @@ void setup()
 
 
 
-  void draw()
+void draw()
 {
   clear();
   gamemngr.draw();
@@ -79,7 +80,7 @@ void keyReleased() {
   background.resize(width, height);
 
   lvlMngr.draw();
-  thePlayer.draw();
+  myPlayer.show();
 }
 
 

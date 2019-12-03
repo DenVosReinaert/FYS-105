@@ -28,8 +28,7 @@ class GameOver {
   char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
   void setup() {
-    size(800, 500);
-    background(0);
+
   }
 
   void draw() {

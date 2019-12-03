@@ -9,6 +9,6 @@ class Level2
 
   void draw()
   {
-
+     image(background, 0, 0);
   }
 }

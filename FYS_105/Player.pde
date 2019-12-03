@@ -6,8 +6,6 @@ class Player extends GameObject {
   Player() {
     playerPosX = width/2;
     playerPosY = height/2;
-    moveVelX = 0;
-    moveVelY = 0;
     playerWidth = 16;
     playerHeight = 20;
     myGun = new Pistol();
@@ -20,8 +18,6 @@ class Player extends GameObject {
   void show() {
     fill(255, 100, 0);
     rect(playerPosX, playerPosY, 50, 50);
-
-    //COLLISION WITH EDGES OF SCREEN
   }
 
   void act() {
@@ -36,10 +32,8 @@ class Player extends GameObject {
       myGun = new Shotgun();
       bengine.threekey = false;
     }
-
-
-    moveVelX = 0;
-    moveVelY = 0;
+    
+    
 
     if (bengine.akey) {
       if (playerPosX + moveVelX < playerWidth/2)
@@ -83,8 +77,6 @@ class Player extends GameObject {
       myGun.shoot();
     }
 
-    playerPosX = playerPosX + moveVelX;
-    playerPosY = playerPosY + moveVelY;
     myGun.recharge();
   }
 }
