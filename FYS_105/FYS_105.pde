@@ -61,6 +61,7 @@ void draw()
 {
   clear();
   gamemngr.draw();
+  lvlMngr.draw();
 }
 
 
@@ -78,9 +79,6 @@ void keyReleased() {
   gamemngr.keyReleased();
 
   background.resize(width, height);
-
-  lvlMngr.draw();
-  myPlayer.show();
 }
 
 
