@@ -11,7 +11,7 @@ class Player extends GameObject {
 
     playerWidth = 16;
     playerHeight = 20;
-    
+
     myGun = new Pistol();
 
     //TO DO: als je 1 indrukt: BasicGun();,
@@ -39,9 +39,9 @@ class Player extends GameObject {
 
     moveVelX = 0;
     moveVelY = 0;
-
+    //240
     if (bengine.akey) {
-      if (playerPosX + moveVelX < playerWidth/2)
+      if ((playerPosX + moveVelX < playerWidth/2) || (playerPosX + moveVelX < 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + moveVelX < 580 + playerWidth && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
       {
         moveVelX = 0;
       } else
@@ -50,7 +50,7 @@ class Player extends GameObject {
     }
 
     if (bengine.dkey) {
-      if (playerPosX + moveVelX > width - playerWidth/2)
+      if ((playerPosX + moveVelX > width - playerWidth/2) || (playerPosX + playerWidth/2 + moveVelX > width - 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + playerWidth/2 + moveVelX > 700 && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
       {
         moveVelX = 0;
       } else 
@@ -58,7 +58,7 @@ class Player extends GameObject {
     }
 
     if (bengine.wkey) {
-      if (playerPosY + moveVelY < playerHeight/2)
+      if ((playerPosY + moveVelY < playerHeight/2) || (playerPosY + moveVelY < 280 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + moveVelY < 16 && (playerPosX < 580 || playerPosX > 700))
       {
         moveVelY = 0;
       } else 
@@ -66,7 +66,7 @@ class Player extends GameObject {
     }
 
     if (bengine.skey) {
-      if (playerPosY + moveVelY > height - playerHeight/2)
+      if ((playerPosY + moveVelY > height - playerHeight/2) || (playerPosY + moveVelY > 440 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + playerHeight + moveVelY > height - 16 && (playerPosX < 580 || playerPosX + playerWidth > 700))
       {
         moveVelY = 0;
       } else 
@@ -81,7 +81,7 @@ class Player extends GameObject {
     if (bengine.spacekey) {
       myGun.shoot();
     }
-    
+
     playerPosX += moveVelX;
     playerPosY += moveVelY;
 
