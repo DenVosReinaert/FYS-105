@@ -2,7 +2,7 @@ class Bullet extends GameObject {
   
   Bullet() {
     playerPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player
-    playerPosY = myPlayer.playerPosY;  //y position of bullet begins on y position of player
+   playerPosY = myPlayer.playerPosY;  //y position of bullet begins on y position of player
     moveVelX = 0;    
     moveVelY = -15;   // shooting bullet straight up
     //hp = 1;
@@ -14,7 +14,7 @@ class Bullet extends GameObject {
     playerPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player
     playerPosY = myPlayer.playerPosY;  //y position of bullet begins on y position of player
     moveVelX = incomingDX;    
-    moveVelY = incomingDY;
+    moveVelY= incomingDY;
     //hp = 1;
     playerWidth = 15;
     playerHeight = 15;
