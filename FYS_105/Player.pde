@@ -74,9 +74,10 @@ class Player extends GameObject {
     }
 
     //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
-    if (bengine.wkey && bengine.akey || bengine.akey && bengine.skey || bengine.skey && bengine.dkey || bengine.dkey && bengine.wkey) {
+    if ((bengine.wkey && bengine.akey) || (bengine.akey && bengine.skey) || (bengine.skey && bengine.dkey) || (bengine.dkey && bengine.wkey)) {
       defaultSpeed = diaSpeed;
     }
+    else defaultSpeed = 5;
 
     if (bengine.spacekey) {
       myGun.shoot();
