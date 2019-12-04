@@ -28,12 +28,13 @@ class GameOver {
   char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
   void setup() {
-
   }
 
   void draw() {
     clear();
     if (gamemngr.dead) {
+      death.play();
+
       // The dot under the letters depending on which state they are
       if (state == 1) {
         circle(width/2-135, height/2 + 20, 10);
@@ -84,7 +85,7 @@ class GameOver {
       text(""+letter3, xPos3, height/2 - 20);
       text(""+letter4, xPos4, height/2 - 20);
       textSize(15);
-      text("Press '' to save name!", width/2 - 90, height/2 + 50);
+      text("Press ENTER to save name!", width/2 - 100, height/2 + 50);
     }
   }
 
