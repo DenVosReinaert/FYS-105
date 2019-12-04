@@ -23,7 +23,7 @@ class Game_Manager {
     if (game) {
 
 
-      lvlMngr.lvlNum = 2;
+      lvlMngr.lvlNum = 1;
 
 
       bengine.draw();

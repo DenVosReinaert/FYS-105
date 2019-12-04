@@ -8,8 +8,7 @@ Minim minim;
 
 
 
-PImage background;
-PImage pillar;
+PImage background, pillar;
 
 
 
