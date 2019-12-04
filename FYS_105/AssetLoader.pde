@@ -6,7 +6,7 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun;
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd;
 
 PImage main, pillar, background, scrBgr; //controlImg;
 
@@ -21,4 +21,8 @@ void LoadAssets()
   background = loadImage("/Graphics/background.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
+  ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
+  LMG = minim.loadFile("/data/sound/LMG.mp3");
+  Pistol = minim.loadFile("/data/sound/Pistol.mp3");
+  homeSnd = minim.loadFile("/data/sound/homeSnd.mp3");
 }
