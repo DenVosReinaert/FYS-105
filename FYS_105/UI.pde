@@ -2,14 +2,11 @@
 // Quinn Koene
 
 class UI {
-  PImage main; //controlImg;
   int state = 2;
   //boolean controls;
   //int timer = 0;
 
   UI() {
-    //  controlImg = loadImage("/data/img/controls.png");
-    main = loadImage("/data/img/LastStand-MainMenu.png");
   }
   void draw() {
     // show depending on boolean
