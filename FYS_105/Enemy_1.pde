@@ -54,7 +54,19 @@ class Grunt extends Enemies {
   }
 
 void pulseCheck(){
-  
+  for (int i = 0; i > gamemngr.AI.size(); i++){
+      GameObject thing = bengine.engine.get(i);
+      if(thing instanceof Bullet){
+        if(rectRect(enemyPosX,enemyPosY,enemyW,enemyH,thing.x,thing.y,5,5)){
+          enemyHP=enemyHP-1;
+          thing.hp=0;
+          for(int j=0;j<5;j++){
+          gamemngr.AI.add(new Particle(thing.x,thing.y));
+          }//for
+        }//if
+      }//if
+      i++; 
+    }//whileloop
 }//pulseCheck
 
   boolean Dead() {
