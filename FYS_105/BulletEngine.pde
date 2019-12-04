@@ -14,7 +14,6 @@ class BulletEngine {
   }
 
   void draw() {
-    background(0, 0, 0);
     timer = timer + 1;
 
     int i = engine.size() - 1;
