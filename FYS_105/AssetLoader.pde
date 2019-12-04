@@ -6,6 +6,8 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
+AudioPlayer Shotgun;
+
 PImage main, pillar, background, scrBgr; //controlImg;
 
 
@@ -18,4 +20,5 @@ void LoadAssets()
   main = loadImage("/data/img/LastStand-MainMenu.png");
   background = loadImage("/Graphics/background.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
+  Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
 }

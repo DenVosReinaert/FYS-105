@@ -7,6 +7,8 @@ class Shotgun extends Gun {
 
   void shoot() {
     if (cooldown == threshold && bengine.lookingUp) {
+      Shotgun.play();
+      Shotgun.rewind();
       bengine.engine.add(new Bullet(-2, -14));
       bengine.engine.add(new Bullet(-1, -15));
       bengine.engine.add(new Bullet(0, -16));
@@ -14,6 +16,8 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(2, -14));
       cooldown = 0;
     } else if (cooldown == threshold && bengine.lookingDown) {
+      Shotgun.play();
+      Shotgun.rewind();
       bengine.engine.add(new Bullet(-2, 14));
       bengine.engine.add(new Bullet(-1, 15));
       bengine.engine.add(new Bullet(0, 16));
@@ -21,6 +25,8 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(2, 14));
       cooldown = 0;
     } else if (cooldown == threshold && bengine.lookingRight) {
+      Shotgun.play();
+      Shotgun.rewind();
       bengine.engine.add(new Bullet(14, -2));
       bengine.engine.add(new Bullet(15, -1));
       bengine.engine.add(new Bullet(16, 0));
@@ -28,6 +34,8 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(14, 2));
       cooldown = 0;
     } else if (cooldown == threshold && bengine.lookingLeft) {
+      Shotgun.play();
+      Shotgun.rewind();
       bengine.engine.add(new Bullet(-14, -2));
       bengine.engine.add(new Bullet(-15, -1));
       bengine.engine.add(new Bullet(-16, 0));

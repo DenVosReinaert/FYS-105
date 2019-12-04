@@ -35,7 +35,7 @@ class Game_Manager {
 
       int i = AI.size()-1;
       while (i >= 0) {
-        print(AI);
+       // print(AI);
         Enemies enm= AI.get(i);
         enm.enemyShow();
         enm.enemyUpdate();
