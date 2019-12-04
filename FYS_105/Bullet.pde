@@ -5,7 +5,7 @@ class Bullet extends GameObject {
     y = myPlayer.y;  //y position of bullet begins on y position of player
     dx = 0;    
     dy = -15;   // shooting bullet straight up
-    //hp = 1;
+    hp = 1;
     w = 20;
     h = 20;
   }
@@ -15,7 +15,7 @@ class Bullet extends GameObject {
     y = myPlayer.y;  //y position of bullet begins on y position of player
     dx = incomingDX;    
     dy = incomingDY;
-    //hp = 1;
+    hp = 1;
     w = 15;
     h = 15;
   }
@@ -31,6 +31,6 @@ class Bullet extends GameObject {
   }
   
     boolean hasDied() {
-      return y < 0 || y > height || x < 0 || x > width;
+      return y < 0 || y > height || x < 0 || x > width || hp<=0;
     }
 }

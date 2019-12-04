@@ -1,12 +1,12 @@
 //Ruben de Jager
-class Speedster extends Enemies{
+class Speedster extends Grunt{
  
   Speedster(){
     enemyW=40;
     enemyH=40;
-    enemyHP=20;
-    enemySpeedX=5;
-    enemySpeedY=5;
+    enemyHP=1;
+    enemySpeedX=4;
+    enemySpeedY=4;
   }//constructor Speedster
     void enemyShow(){
     fill(229,143,23);

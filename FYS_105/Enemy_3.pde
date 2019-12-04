@@ -1,12 +1,12 @@
 //Ruben de Jager
-class Heavy extends Enemies{
+class Heavy extends Grunt{
   
   Heavy(){
     enemyW=60;
     enemyH=60;
-    enemyHP=80;
-    enemySpeedX=0.75;
-    enemySpeedY=0.75; 
+    enemyHP=4;
+    enemySpeedX=0.45;
+    enemySpeedY=0.45; 
   }//constructor Heavy
   void enemyShow(){
     fill(91,80,80);

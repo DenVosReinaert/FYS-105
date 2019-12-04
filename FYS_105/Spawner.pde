@@ -45,19 +45,19 @@ class Spawner {
     }
   }//spawnerUpdate
   void straightLine1() {
-    if (frameCount %100==0) {//modulus
+    if (frameCount %150==0) {//modulus
       gamemngr.AI.add(new Grunt());
     }
   }
 
   void straightLine2() {
-    if (frameCount %50==0) {//modulus
+    if (frameCount %360==0) {//modulus
       gamemngr.AI.add(new Speedster());
     }
   }
 
   void straightLine3() {
-    if (frameCount %30==0) {//modulus
+    if (frameCount %450==0) {//modulus
       gamemngr.AI.add(new Heavy());
     }
   }
