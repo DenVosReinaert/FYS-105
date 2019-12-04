@@ -22,13 +22,13 @@ hScorelijst hscorel;
 healthBar healthbar;
 UI UI;
 GameOver gameover;
-//database db;
 aScore ascore;
 Game_Manager gamemngr;
 MySQL msql;
 BulletEngine bengine;
 Player myPlayer;
 Gun myGun;
+Spawner spawn;
 
 
 
@@ -42,10 +42,11 @@ void setup()
   myPlayer = new Player();
   UI = new UI();
   bengine = new BulletEngine();
+  spawn = new Spawner();
   gamemngr = new Game_Manager();
 
   gamemngr.home = true;
-  //gamemngr.dead = true;
+
   lvlMngr = new LevelManager();
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
