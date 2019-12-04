@@ -8,13 +8,12 @@ class BulletEngine {
   int timer = 0;
 
   BulletEngine() {
-    engine = new ArrayList<GameObject>(10000);
+    engine = new ArrayList<GameObject>(20);
     engine.add(myPlayer);
     rectMode(CENTER);
   }
 
   void draw() {
-    background(0, 0, 0);
     timer = timer + 1;
 
     int i = engine.size() - 1;
@@ -58,8 +57,6 @@ class BulletEngine {
       lookingRight = false;
       lookingDown = false;
     }
-
-    if (key == 'i') upkey = true;
     if (key == ' ') spacekey = true;
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
