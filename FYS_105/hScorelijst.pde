@@ -9,11 +9,8 @@ class hScorelijst {
   String score;
   String name;
   String[] names = new String[Asc];
-  PImage scrBgr;
 
   hScorelijst() {
-
-    scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
 
     if (msql.connect() && Ans < 10) { // Als geconnect is met database & Ans kleiner is dan 10
       msql.query( "SELECT name,score FROM scores ORDER BY score DESC");
