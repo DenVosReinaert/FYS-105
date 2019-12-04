@@ -2,6 +2,13 @@
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //Halleluyah we got GitHub
 final int KEY_LIMIT = 1024;
 boolean[] keysPressed = new boolean[KEY_LIMIT];
@@ -22,30 +29,31 @@ hScorelijst hscorel;
 healthBar healthbar;
 UI UI;
 GameOver gameover;
-//database db;
 aScore ascore;
 Game_Manager gamemngr;
 MySQL msql;
 BulletEngine bengine;
 Player myPlayer;
 Gun myGun;
+Spawner spawn;
 
 
 
 void setup()
 {
   size(1280, 720);
+  minim = new Minim(this);
 
   LoadAssets();
-
 
   myPlayer = new Player();
   UI = new UI();
   bengine = new BulletEngine();
+  spawn = new Spawner();
   gamemngr = new Game_Manager();
 
   gamemngr.home = true;
-  //gamemngr.dead = true;
+
   lvlMngr = new LevelManager();
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );

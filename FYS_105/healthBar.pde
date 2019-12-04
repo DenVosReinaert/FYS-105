@@ -2,7 +2,7 @@
 // Quinn Koene
 
 class healthBar {
-  int levens = 3; // Standaard aantal levens
+  int levens = 3; // Standard amount of lives
   int lX1 = width/35;
   int lX2 = 40;
   int lY1 = height/20;
@@ -10,7 +10,7 @@ class healthBar {
 
   aScore ascore;
 
-  void spelerhit() { // Als speler geraakt word dan gaan er levens van af
+  void spelerhit() { // If called, lives -1
     levens--;
   }
 
@@ -38,13 +38,9 @@ class healthBar {
         }
       }
 
-      if (levens == 0) { // Is het aantal levens 0?
-        // highscore = score;// NEW EDIT, dit heette 'score' in mijn versie van begin dus geen idee of dit werkt zo.. // haalt de current highscore erbij
-        // highscore.saveScore(); // roept de saveScore functie op
-        gamemngr.dead = true;
+      if (levens == 0) { // if lives == 0
+        gamemngr.dead = true; // set player to dead
       }
     }
-    //  highscore = score;
-    //  highscore.saveScore();
   }
 }

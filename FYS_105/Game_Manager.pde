@@ -1,10 +1,12 @@
 class Game_Manager {
   boolean dead;
+  ArrayList<Enemies> AI;
   boolean home;
   boolean hscore;
   int hscoreA;
 
   Game_Manager() {
+    AI= new ArrayList<Enemies>(30);
   }
 
   void draw() {
@@ -12,6 +14,11 @@ class Game_Manager {
       UI.draw();
       game = false;
       dead = false;
+      int time = 0;
+      homeSnd.play();
+      if (time == 31140 ) {
+        homeSnd.rewind();
+      }
     }
     if (hscore) {
       if (hscoreA == 0) {
@@ -21,14 +28,29 @@ class Game_Manager {
       hscorel.draw();
     }
     if (game) {
-
+      homeSnd.pause();
 
       lvlMngr.lvlNum = 1;
-
 
       bengine.draw();
       ascore.draw();
       healthbar.draw();
+
+      spawn.spawnerShow();
+      spawn.spawnerUpdate();
+
+      int i = AI.size()-1;
+      while (i >= 0) {
+        // print(AI);
+        Enemies enm= AI.get(i);
+        enm.enemyShow();
+        enm.enemyUpdate();
+        enm.checkPulse();
+        if (enm.Dead()) {
+          AI.remove(i);
+        }
+        i--;
+      }
     }
     if (dead) {
       game = false;
