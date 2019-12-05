@@ -52,7 +52,7 @@ class aScore {
         println("lowest score: "+lscore); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary score
       }
 
-      healthbar.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
+     // healthbar.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     }
   }
 }
