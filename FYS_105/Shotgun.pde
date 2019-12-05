@@ -11,44 +11,44 @@ class Shotgun extends GameObject {
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      gameObject.add(new Bullet(-2, -14));
-      gameObject.add(new Bullet(-1, -15));
-      gameObject.add(new Bullet(0, -16));
-      gameObject.add(new Bullet(1, -15));
-      gameObject.add(new Bullet(2, -14));
+      GameObjectRef.gameObject.add(new Bullet(-2, -14));
+      GameObjectRef.gameObject.add(new Bullet(-1, -15));
+      GameObjectRef.gameObject.add(new Bullet(0, -16));
+      GameObjectRef.gameObject.add(new Bullet(1, -15));
+      GameObjectRef.gameObject.add(new Bullet(2, -14));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingDown) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      gameObject.add(new Bullet(-2, 14));
-      gameObject.add(new Bullet(-1, 15));
-      gameObject.add(new Bullet(0, 16));
-      gameObject.add(new Bullet(1, 15));
-      gameObject.add(new Bullet(2, 14));
+      GameObjectRef.gameObject.add(new Bullet(-2, 14));
+      GameObjectRef.gameObject.add(new Bullet(-1, 15));
+      GameObjectRef.gameObject.add(new Bullet(0, 16));
+      GameObjectRef.gameObject.add(new Bullet(1, 15));
+      GameObjectRef.gameObject.add(new Bullet(2, 14));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingRight) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      gameObject.add(new Bullet(14, -2));
-      gameObject.add(new Bullet(15, -1));
-      gameObject.add(new Bullet(16, 0));
-      gameObject.add(new Bullet(15, 1));
-      gameObject.add(new Bullet(14, 2));
+      GameObjectRef.gameObject.add(new Bullet(14, -2));
+      GameObjectRef.gameObject.add(new Bullet(15, -1));
+      GameObjectRef.gameObject.add(new Bullet(16, 0));
+      GameObjectRef.gameObject.add(new Bullet(15, 1));
+      GameObjectRef.gameObject.add(new Bullet(14, 2));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingLeft) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      gameObject.add(new Bullet(-14, -2));
-      gameObject.add(new Bullet(-15, -1));
-      gameObject.add(new Bullet(-16, 0));
-      gameObject.add(new Bullet(-15, 1));
-      gameObject.add(new Bullet(-14, 2));
+      GameObjectRef.gameObject.add(new Bullet(-14, -2));
+      GameObjectRef.gameObject.add(new Bullet(-15, -1));
+      GameObjectRef.gameObject.add(new Bullet(-16, 0));
+      GameObjectRef.gameObject.add(new Bullet(-15, 1));
+      GameObjectRef.gameObject.add(new Bullet(-14, 2));
       cooldown = 0;
     }
   }

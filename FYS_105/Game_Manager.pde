@@ -27,6 +27,13 @@ class Game_Manager {
       hscoreA = 1;
       hscorel.draw();
     }
+
+
+
+
+
+
+
     if (game) {
       homeSnd.pause();
 
@@ -35,22 +42,43 @@ class Game_Manager {
       ascore.draw();
       healthbar.draw();
 
-      spawn.spawnerShow();
-      spawn.spawnerUpdate();
+      spawn.draw();
 
-      int i = AI.size()-1;
-      while (i >= 0) {
-        // print(AI);
-        Enemies enm= AI.get(i);
-        enm.enemyShow();
-        enm.enemyUpdate();
-        //enm.checkPulse();
-        if (enm.Dead()) {
-          AI.remove(i);
+      if (GameObjectRef.gameObject.size() >= 1)
+      {
+        int i = GameObjectRef.gameObject.size()-1;
+        while (i >= 0) {
+          // print(AI);
+          if (GameObjectRef.gameObject.get(i).tag == "enemy")
+          {
+            GameObjectRef.gameObject.get(i).draw();
+          }
+          //enm.checkPulse();
+          if (GameObjectRef.gameObject.get(i).Dead()) {
+            GameObjectRef.gameObject.remove(i);
+          }
+          i--;
         }
-        i--;
       }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (dead) {
       game = false;
       gameover.draw();

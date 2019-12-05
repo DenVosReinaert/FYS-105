@@ -1,5 +1,5 @@
 //Ruben de Jager
-class Spawner {
+class Spawner extends GameObject{
 
   float spawnerPosX0, spawnerPosY0, spawnerW, spawnerH; //Left
   float spawnerPosX1, spawnerPosY1; //Right
@@ -23,16 +23,15 @@ class Spawner {
     spawnerH=100;
   }//constructor spawner
 
-  void spawnerShow() {
+  void draw() {
     fill(255);
     rect(spawnerPosX0, spawnerPosY0, spawnerW, spawnerH);//Left
     rect(spawnerPosX1, spawnerPosY1, spawnerW, spawnerH);//Right
     rect(spawnerPosX2, spawnerPosY2, spawnerW, spawnerH);//Up
     rect(spawnerPosX3, spawnerPosY3, spawnerW, spawnerH);//Down
-  }//spawnerShow
-
-  void spawnerUpdate() {
-    if (frameCount<100) {
+    
+    
+        if (frameCount<100) {
     } else if (frameCount<400) {
       straightLine1();
     } else if (frameCount<1500) {
@@ -43,22 +42,24 @@ class Spawner {
       straightLine2();
       straightLine3();
     }
-  }//spawnerUpdate
+  }//spawnerShow
+
+
   void straightLine1() {
     if (frameCount %100==0) {//modulus
-      gamemngr.AI.add(new Grunt());
+      GameObjectRef.gameObject.add(new Grunt());
     }
   }
 
   void straightLine2() {
     if (frameCount %50==0) {//modulus
-      gamemngr.AI.add(new Speedster());
+      GameObjectRef.gameObject.add(new Speedster());
     }
   }
 
   void straightLine3() {
     if (frameCount %30==0) {//modulus
-      gamemngr.AI.add(new Heavy());
+      GameObjectRef.gameObject.add(new Heavy());
     }
   }
 }//class Spawner

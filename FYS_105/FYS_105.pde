@@ -12,7 +12,7 @@ import ddf.minim.ugens.*;
 //Halleluyah we got GitHub
 final int KEY_LIMIT = 1024;
 boolean[] keysPressed = new boolean[KEY_LIMIT];
-boolean game;
+boolean game, works;
 
 // DIT MOET NOG ERGENS ANDERS :D
 String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
@@ -35,7 +35,7 @@ MySQL msql;
 Player myPlayer;
 //Gun myGun;
 Spawner spawn;
-
+GameObject GameObjectRef;
 
 
 void setup()
@@ -62,6 +62,18 @@ void setup()
 
   lvlMngr.setup();
 }
+
+
+void Work()
+{
+ if(!works)
+ {
+  works = true;
+ }
+}
+
+
+
 
 
 

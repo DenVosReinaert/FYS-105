@@ -6,8 +6,8 @@ class Bullet extends GameObject {
     moveVelX = incomingDX;    
     moveVelY= incomingDY;
     //hp = 1;
-    playerWidth = 15;
-    playerHeight = 15;
+    bulletWidth = 15;
+    bulletHeight = 15;
   }
 
   void draw() {

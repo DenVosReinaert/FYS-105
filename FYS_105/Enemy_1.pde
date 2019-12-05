@@ -28,7 +28,7 @@ class Grunt extends Enemies {
       enemyPosY = spawn.spawnerPosY3;
     }
   }
-  void enemyShow() {
+  void draw() {
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
   }//enemyShow
