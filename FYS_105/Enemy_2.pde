@@ -10,6 +10,8 @@ class Speedster extends Enemies {
     enemySpeedX=5;
     enemySpeedY=5;
   }//constructor Speedster
+  
+  
   void draw() {
     fill(229, 143, 23);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);

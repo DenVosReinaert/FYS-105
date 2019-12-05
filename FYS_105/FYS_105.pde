@@ -57,6 +57,7 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   healthbar = new healthBar();
+  GameObjectRef = new GameObject();
 
 
 
@@ -66,10 +67,10 @@ void setup()
 
 void Work()
 {
- if(!works)
- {
-  works = true;
- }
+  if (!works)
+  {
+    works = true;
+  }
 }
 
 
@@ -86,6 +87,7 @@ void draw()
 
   if (game)
     myPlayer.draw();
+  GameObjectRef.draw();
 }
 
 

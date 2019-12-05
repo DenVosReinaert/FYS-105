@@ -1,12 +1,10 @@
 class Game_Manager {
   boolean dead;
-  ArrayList<Enemies> AI;
   boolean home;
   boolean hscore;
   int hscoreA;
 
   Game_Manager() {
-    AI= new ArrayList<Enemies>(30);
   }
 
   void draw() {
@@ -43,23 +41,22 @@ class Game_Manager {
       healthbar.draw();
 
       spawn.draw();
-
-      if (GameObjectRef.gameObject.size() >= 1)
-      {
-        int i = GameObjectRef.gameObject.size()-1;
-        while (i >= 0) {
-          // print(AI);
-          if (GameObjectRef.gameObject.get(i).tag == "enemy")
-          {
-            GameObjectRef.gameObject.get(i).draw();
-          }
-          //enm.checkPulse();
-          if (GameObjectRef.gameObject.get(i).Dead()) {
-            GameObjectRef.gameObject.remove(i);
-          }
-          i--;
-        }
-      }
+      //if (GameObjectRef.gameObject.size() >= 1)
+      //{
+      //  int i = GameObjectRef.gameObject.size()-1;
+      //  while (i >= 0) {
+      //    // print(AI);
+      //    if (GameObjectRef.gameObject.get(i).tag == "enemy")
+      //    {
+      //      GameObjectRef.gameObject.get(i).draw();
+      //    }
+      //    //enm.checkPulse();
+      //    if (GameObjectRef.gameObject.get(i).Dead()) {
+      //      GameObjectRef.gameObject.remove(i);
+      //    }
+      //    i--;
+      //  }
+      //}
     }
 
 

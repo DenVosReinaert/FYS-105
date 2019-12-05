@@ -10,6 +10,8 @@ class Heavy extends Enemies {
     enemySpeedX=0.75;
     enemySpeedY=0.75;
   }//constructor Heavy
+  
+  
   void draw() {
     fill(91, 80, 80);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);

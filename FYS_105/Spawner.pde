@@ -47,19 +47,19 @@ class Spawner extends GameObject{
 
   void straightLine1() {
     if (frameCount %100==0) {//modulus
-      GameObjectRef.gameObject.add(new Grunt());
+      Add(new Grunt());
     }
   }
 
   void straightLine2() {
     if (frameCount %50==0) {//modulus
-      GameObjectRef.gameObject.add(new Speedster());
+      Add(new Speedster());
     }
   }
 
   void straightLine3() {
     if (frameCount %30==0) {//modulus
-      GameObjectRef.gameObject.add(new Heavy());
+      Add(new Heavy());
     }
   }
 }//class Spawner

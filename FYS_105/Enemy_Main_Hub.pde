@@ -6,10 +6,6 @@ class Enemies extends GameObject {
   Enemies() {
   }//constructor Enemys
 
-  void enemyShow()
-  {
-  }
-
 
   void draw() {
     //  if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 

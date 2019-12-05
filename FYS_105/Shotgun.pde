@@ -11,44 +11,44 @@ class Shotgun extends GameObject {
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      GameObjectRef.gameObject.add(new Bullet(-2, -14));
-      GameObjectRef.gameObject.add(new Bullet(-1, -15));
-      GameObjectRef.gameObject.add(new Bullet(0, -16));
-      GameObjectRef.gameObject.add(new Bullet(1, -15));
-      GameObjectRef.gameObject.add(new Bullet(2, -14));
+      Add(new Bullet(-2, -14));
+      Add(new Bullet(-1, -15));
+      Add(new Bullet(0, -16));
+      Add(new Bullet(1, -15));
+      Add(new Bullet(2, -14));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingDown) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      GameObjectRef.gameObject.add(new Bullet(-2, 14));
-      GameObjectRef.gameObject.add(new Bullet(-1, 15));
-      GameObjectRef.gameObject.add(new Bullet(0, 16));
-      GameObjectRef.gameObject.add(new Bullet(1, 15));
-      GameObjectRef.gameObject.add(new Bullet(2, 14));
+      Add(new Bullet(-2, 14));
+      Add(new Bullet(-1, 15));
+      Add(new Bullet(0, 16));
+      Add(new Bullet(1, 15));
+      Add(new Bullet(2, 14));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingRight) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      GameObjectRef.gameObject.add(new Bullet(14, -2));
-      GameObjectRef.gameObject.add(new Bullet(15, -1));
-      GameObjectRef.gameObject.add(new Bullet(16, 0));
-      GameObjectRef.gameObject.add(new Bullet(15, 1));
-      GameObjectRef.gameObject.add(new Bullet(14, 2));
+      Add(new Bullet(14, -2));
+      Add(new Bullet(15, -1));
+      Add(new Bullet(16, 0));
+      Add(new Bullet(15, 1));
+      Add(new Bullet(14, 2));
       cooldown = 0;
     } else if (cooldown == threshold && myPlayer.lookingLeft) {
       Shotgun.play();
       Shotgun.rewind();
       ShotgunReload.play();
       ShotgunReload.rewind();
-      GameObjectRef.gameObject.add(new Bullet(-14, -2));
-      GameObjectRef.gameObject.add(new Bullet(-15, -1));
-      GameObjectRef.gameObject.add(new Bullet(-16, 0));
-      GameObjectRef.gameObject.add(new Bullet(-15, 1));
-      GameObjectRef.gameObject.add(new Bullet(-14, 2));
+      Add(new Bullet(-14, -2));
+      Add(new Bullet(-15, -1));
+      Add(new Bullet(-16, 0));
+      Add(new Bullet(-15, 1));
+      Add(new Bullet(-14, 2));
       cooldown = 0;
     }
   }

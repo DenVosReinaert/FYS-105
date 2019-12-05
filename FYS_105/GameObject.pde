@@ -1,4 +1,4 @@
-abstract class GameObject {
+public class GameObject {
 
 
   ArrayList<GameObject> gameObject;
@@ -20,13 +20,22 @@ abstract class GameObject {
 
 
 
-  GameObject() {
- gameObject = new ArrayList<GameObject>(200);
+  GameObject() 
+  {
+
+    gameObject = new ArrayList<GameObject>(200);
+    //for(int i = 0; i < gameObject.size(); i ++)
+    //{
+    //  GameObject gameobject = new GameObject();
+    //}
   }
 
 
   void draw()
   {    
+    drawObjects();
+    //println("I have been drawn");
+
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
       if (myPlayer.playerPosX > enemyPosX) {
@@ -46,5 +55,25 @@ abstract class GameObject {
 
   boolean Dead() {
     return false;
+  }
+
+  void Add(GameObject object)
+  {
+    gameObject.add(object); 
+    println("A new object has been created");
+  }
+
+  void Remove(GameObject object)
+  {
+    gameObject.remove(object);
+  }
+
+  void drawObjects() {
+    println(gameObject.size());
+
+    for (GameObject object : gameObject) {
+      println("2");
+      object.draw();
+    }
   }
 }
