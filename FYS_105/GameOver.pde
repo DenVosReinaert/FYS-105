@@ -97,8 +97,8 @@ class GameOver {
       // Reset everything back to how the game was in the beginning
       gamemngr.hscoreA = 0;
       ascore.score = 0;
-      gamemngr.dead = false;
       healthbar.levens = 3;
+      gamemngr.dead = false;
       gamemngr.hscore = true;
     }
     // Check what state & depending on state move through the letters upwards 
