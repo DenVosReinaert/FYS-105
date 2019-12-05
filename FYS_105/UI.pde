@@ -16,19 +16,22 @@ class UI {
       image(main, 0, 0);
       if (state == 1) {
         fill(200);
-        rect(276, 480, 280, 5);
+        rect(134, 477, 285, 5);
       }
       if (state == 2) {
         fill(200);
-        rect(640, 486, 300, 5);
+        rect(480, 482, 319, 5);
+        // rect(640, 486, 300, 5); // IF RECTMODE(CENTER)
       }
       if (state == 3) {
         fill(200);
-        rect(1002, 480, 280, 5);
+        rect(860, 477, 285, 5);
+        // rect(1002, 480, 280, 5); // IF RECTMODE(CENTER)
       }
       if (state == 4) {
         fill(200);
-        rect(640, 525, 145, 5);
+        rect(563, 522, 153, 5);
+        // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
     }
     //if (controls) {
