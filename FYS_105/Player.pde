@@ -115,9 +115,9 @@ class Player extends GameObject {
     playerPosX += moveVelX;
     playerPosY += moveVelY;
 
-    //pistol.recharge();
-    //machineGun.recharge();
-    //shotGun.recharge();
+    pistol.recharge();
+    machineGun.recharge();
+    shotGun.recharge();
   }
 
 
