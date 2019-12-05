@@ -14,6 +14,11 @@ class Game_Manager {
       UI.draw();
       game = false;
       dead = false;
+      int time = 0;
+      homeSnd.play();
+      if (time == 31140 ) {
+        homeSnd.rewind();
+      }
     }
     if (hscore) {
       if (hscoreA == 0) {
@@ -23,6 +28,7 @@ class Game_Manager {
       hscorel.draw();
     }
     if (game) {
+      homeSnd.pause();
 
       lvlMngr.lvlNum = 1;
 
@@ -35,7 +41,7 @@ class Game_Manager {
 
       int i = AI.size()-1;
       while (i >= 0) {
-        print(AI);
+        // print(AI);
         Enemies enm= AI.get(i);
         enm.enemyShow();
         enm.enemyUpdate();
