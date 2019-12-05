@@ -1,22 +1,11 @@
-abstract class Gun {
+class Gun extends GameObject {
 
-  float cooldown, threshold;
 
-  Gun() {
-    
-  }
-  
-  void shoot() {
-    if (cooldown == threshold) {
-      bengine.engine.add(new Bullet());
-      cooldown = 0;
-    }
-  }
-  
-  void recharge(){
+
+
+  void recharge() {
     if (cooldown < threshold) {
-      cooldown = cooldown + 1;
+      cooldown ++;
     }
   }
-  
 }

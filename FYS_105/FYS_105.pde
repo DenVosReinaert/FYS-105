@@ -32,9 +32,8 @@ GameOver gameover;
 aScore ascore;
 Game_Manager gamemngr;
 MySQL msql;
-BulletEngine bengine;
 Player myPlayer;
-Gun myGun;
+//Gun myGun;
 Spawner spawn;
 
 
@@ -48,7 +47,6 @@ void setup()
 
   myPlayer = new Player();
   UI = new UI();
-  bengine = new BulletEngine();
   spawn = new Spawner();
   gamemngr = new Game_Manager();
 
@@ -75,7 +73,7 @@ void draw()
 
 
   if (game)
-    myPlayer.show();
+    myPlayer.draw();
 }
 
 

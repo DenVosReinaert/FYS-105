@@ -32,7 +32,6 @@ class Game_Manager {
 
       lvlMngr.lvlNum = 1;
 
-      bengine.draw();
       ascore.draw();
       healthbar.draw();
 
@@ -45,7 +44,7 @@ class Game_Manager {
         Enemies enm= AI.get(i);
         enm.enemyShow();
         enm.enemyUpdate();
-        enm.checkPulse();
+        //enm.checkPulse();
         if (enm.Dead()) {
           AI.remove(i);
         }
@@ -68,7 +67,7 @@ class Game_Manager {
       gameover.keyPressed();
     }
     if (game) {
-      bengine.keyPressed();
+      myPlayer.keyPressed();
     }
     if (home) {
       UI.keyPressed();
@@ -76,7 +75,7 @@ class Game_Manager {
   }
   void keyReleased() {
     if (game) {
-      bengine.keyReleased();
+      myPlayer.keyReleased();
     }
   }
 }

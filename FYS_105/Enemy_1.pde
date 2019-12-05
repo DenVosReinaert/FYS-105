@@ -2,6 +2,8 @@
 class Grunt extends Enemies {
 
   Grunt() {
+    tag = "enemy";
+
     enemyW=40;
     enemyH=40;
     enemyHP=30;
