@@ -80,6 +80,10 @@ void draw()
 
 
 void keyPressed() {
+  if (key == 'p') {
+    healthbar.levens = 0;
+  }
+
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   // thePlayer.setMove(keyCode, true);

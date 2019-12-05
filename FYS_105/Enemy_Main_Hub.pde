@@ -44,8 +44,10 @@ class Enemies extends GameObject {
 
         if (dist(enemyPosX, enemyPosY, bengine.engine.get(i).bulletPosX, bengine.engine.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
-          ascore.score += 5;
           bengine.engine.remove(i);
+          if (enemyHP == 0) {
+           ascore.score += 5; 
+          }
           for (int j=0; j<5; j++) {
             gamemngr.AI.add(new Particle(enemyPosX, enemyPosY));
           }//for

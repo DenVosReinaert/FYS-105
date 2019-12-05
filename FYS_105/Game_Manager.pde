@@ -34,17 +34,17 @@ class Game_Manager {
     if (game) {
       homeSnd.pause();
 
-      if (timer == 60) {
+      if (timer > 59) {
         timer = 0;
         sectime += 1;
       }
-      if (mintime == 60) {
+      if (mintime > 59) {
        sectime = 0;
        mintime += 1;
       }
       timer++;
-      fill(0);
-      text("" + mintime + ":" + sectime, width/20, height/10);
+     // fill(0);
+     // text("" + mintime + ":" + sectime, width/20, height/10);
 
       lvlMngr.lvlNum = 1;
 
