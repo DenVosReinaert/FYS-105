@@ -5,8 +5,8 @@ class Speedster extends Enemies{
     enemyW=20;
     enemyH=24;
     enemyHP=1;
-    enemySpeedX=5;
-    enemySpeedY=5;
+    enemySpeedX=4;
+    enemySpeedY=4;
   }//constructor Speedster
     void enemyShow(){
     fill(229,143,23);

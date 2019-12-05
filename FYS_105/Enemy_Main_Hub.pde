@@ -10,7 +10,7 @@ class Enemies extends GameObject {
   }//enemyShow
 
   void enemyUpdate() {
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
         enemyPosX += enemySpeedX;
       }//if

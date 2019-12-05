@@ -33,39 +33,39 @@ class Spawner {
 
   void spawnerUpdate() {
     if (frameCount<100) {
-    } else if (frameCount>400) {
+    } else if (frameCount<400) {
       GruntSpawn();
-    } else if (frameCount>2160) {
-    } else if (frameCount>3060) {
-      GruntSpawn();
-      SpeedsterSpawn();
-    } else if (frameCount>4860) {
-    } else if (frameCount>5760) {
-      GruntSpawn();
-      HeavySpawn();
-    } else if (frameCount>7560) {
-    } else if (frameCount>8460) {
+    } else if (frameCount<2160) {
+    } else if (frameCount<3060) {
       GruntSpawn();
       SpeedsterSpawn();
+    } else if (frameCount<4860) {
+    } else if (frameCount<5760) {
+      GruntSpawn();
       HeavySpawn();
-    } else if (frameCount>10260) {
-    } else if (frameCount>11160) {
+    } else if (frameCount<7560) {
+    } else if (frameCount<8460) {
+      GruntSpawn();
       SpeedsterSpawn();
       HeavySpawn();
-    } else if (frameCount>12960) {
-    } else if (frameCount>13860) {
+    } else if (frameCount<10260) {
+    } else if (frameCount<11160) {
+      SpeedsterSpawn();
+      HeavySpawn();
+    } else if (frameCount<12960) {
+    } else if (frameCount<13860) {
       BruteSpawn();
       GruntSpawn();
-    } else if (frameCount>13950) {
-    } else if (frameCount>14025) {
+    } else if (frameCount<13950) {
+    } else if (frameCount<14025) {
       HeavySpawn();
       BruteSpawn();
       GruntSpawn();
-    } else if (frameCount>15825) {
-    } else if (frameCount>16725) {
+    } else if (frameCount<15825) {
+    } else if (frameCount<16725) {
       SpeedsterSpawn();
       BruteSpawn();
-    } else if (frameCount>18525) {
+    } else if (frameCount<18525) {
     }
   }//spawnerUpdate
   void GruntSpawn() {
