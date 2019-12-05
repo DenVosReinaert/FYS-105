@@ -2,9 +2,9 @@
 class Grunt extends Enemies {
 
   Grunt() {
-    enemyW=40;
-    enemyH=40;
-    enemyHP=30;
+    enemyW=16;
+    enemyH=20;
+    enemyHP=2;
     enemySpeedX=2;
     enemySpeedY=2;
   }//constructor Grunt

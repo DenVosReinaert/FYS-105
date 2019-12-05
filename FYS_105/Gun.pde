@@ -8,7 +8,7 @@ abstract class Gun {
   
   void shoot() {
     if (cooldown == threshold) {
-      bengine.engine.add(new Bullet());
+      bengine.engine.add(new Bullet(myPlayer.playerPosX, myPlayer.playerPosY));
       cooldown = 0;
     }
   }

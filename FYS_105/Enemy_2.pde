@@ -2,9 +2,9 @@
 class Speedster extends Enemies{
  
   Speedster(){
-    enemyW=40;
-    enemyH=40;
-    enemyHP=20;
+    enemyW=20;
+    enemyH=24;
+    enemyHP=1;
     enemySpeedX=5;
     enemySpeedY=5;
   }//constructor Speedster

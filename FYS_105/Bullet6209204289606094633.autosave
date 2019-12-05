@@ -5,20 +5,22 @@ class Bullet extends GameObject {
     bulletPosY = myPlayer.playerPosY;  //y position of bullet begins on y position of player
     moveVelX = incomingDX;    
     moveVelY= incomingDY;
-    // hp = 1;
+    //hp = 1;
     bulletWidth = 5;
     bulletHeight = 5;
   }
 
-  void show() {
-    fill(255);
-    rect(bulletPosX, bulletPosY, bulletWidth, bulletHeight);
-  }
+  void draw() {
 
-  void act() {
     bulletPosX += moveVelX;
     bulletPosY += moveVelY;
+
+    fill(255);
+    rect(bulletPosX, bulletPosY, 5, 5);
+    
+    println(bulletPosX + "" + bulletPosY);
   }
+
 
   boolean hasDied() {
     return bulletPosY < 0 || bulletPosY > height || bulletPosX < 0 || bulletPosX > width;

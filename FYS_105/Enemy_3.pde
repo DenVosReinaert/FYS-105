@@ -3,8 +3,8 @@ class Heavy extends Enemies{
   
   Heavy(){
     enemyW=60;
-    enemyH=60;
-    enemyHP=80;
+    enemyH=50;
+    enemyHP=6;
     enemySpeedX=0.75;
     enemySpeedY=0.75; 
   }//constructor Heavy
