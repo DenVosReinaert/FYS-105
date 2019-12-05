@@ -33,32 +33,77 @@ class Spawner {
 
   void spawnerUpdate() {
     if (frameCount<100) {
-    } else if (frameCount<400) {
-      straightLine1();
-    } else if (frameCount<1500) {
-      straightLine1();
-      straightLine2();
-    } else if (frameCount<2300) {
-      straightLine1();
-      straightLine2();
-      straightLine3();
+    } else if (frameCount>400) {
+      GruntSpawn();
+    } else if(frameCount>2160){
+      
+    }else if (frameCount>3060) {
+      GruntSpawn();
+      SpeedsterSpawn();
+    } else if(frameCount>4860){
+      
+    }else if (frameCount>5760) {
+      GruntSpawn();
+      HeavySpawn();
+    }else if(frameCount>7560){
+      
+    }else if(frameCount>8460){
+      GruntSpawn();
+      SpeedsterSpawn();
+      HeavySpawn();
+    }else if(frameCount>10260){
+      
+    }else if(frameCount>11160){
+      SpeedsterSpawn();
+      HeavySpawn();
+    }else if(frameCount>12960){
+      
+    }else if(frameCount>13860){
+      BruteSpawn();
+      GruntSpawn();
+    }else if(frameCount>13950){
+      
+    }else if(frameCount>14025){
+      HeavySpawn();
+      BruteSpawn();
+      GruntSpawn();
+    }else if(frameCount>15825){
+      
+    }else if(frameCount>16725){
+      SpeedsterSpawn();
+      BruteSpawn();
+    }else if(frameCount>18525){
+      
     }
+    
   }//spawnerUpdate
-  void straightLine1() {
+  void GruntSpawn() {
     if (frameCount %150==0) {//modulus
       gamemngr.AI.add(new Grunt());
     }
   }
 
-  void straightLine2() {
+  void SpeedsterSpawn() {
     if (frameCount %360==0) {//modulus
       gamemngr.AI.add(new Speedster());
     }
   }
 
-  void straightLine3() {
+  void HeavySpawn() {
     if (frameCount %450==0) {//modulus
       gamemngr.AI.add(new Heavy());
     }
+  }//HeavySpawn
+  
+  void BruteSpawn() {
+    if (frameCount %375==0) {//modulus
+      gamemngr.AI.add(new Brute());
+    }
+  }//HeavySpawn
+  
+  void Boss1Spawn(){
+    if(frameCount %60==0){
+      gamemngr.AI.add(new Boss1());
   }
+  }//Boss1Spawn
 }//class Spawner

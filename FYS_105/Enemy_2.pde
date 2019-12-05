@@ -2,8 +2,8 @@
 class Speedster extends Grunt{
  
   Speedster(){
-    enemyW=40;
-    enemyH=40;
+    enemyW=20;
+    enemyH=24;
     enemyHP=1;
     enemySpeedX=4;
     enemySpeedY=4;
@@ -13,8 +13,6 @@ class Speedster extends Grunt{
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
   }//enemyShow
   
-  boolean Dead(){
-    return enemyHP<=0;
-  }//boolean Dead
+  
   
 }

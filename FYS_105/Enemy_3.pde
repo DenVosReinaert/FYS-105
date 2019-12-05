@@ -3,8 +3,8 @@ class Heavy extends Grunt{
   
   Heavy(){
     enemyW=60;
-    enemyH=60;
-    enemyHP=4;
+    enemyH=50;
+    enemyHP=6;
     enemySpeedX=0.45;
     enemySpeedY=0.45; 
   }//constructor Heavy
@@ -13,7 +13,5 @@ class Heavy extends Grunt{
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
   }//enemyShow
   
-  boolean Dead(){
-    return enemyHP<=0;
-  }//boolean Dead
+  
 }
