@@ -4,10 +4,6 @@ class Game_Manager {
   boolean home;
   boolean hscore;
   int hscoreA;
-  
-    int timer = 0;
-    int sectime =0;
-  int mintime = 0;
 
   Game_Manager() {
     AI= new ArrayList<Enemies>(30);
@@ -33,18 +29,6 @@ class Game_Manager {
     }
     if (game) {
       homeSnd.pause();
-
-      if (timer > 59) {
-        timer = 0;
-        sectime += 1;
-      }
-      if (mintime > 59) {
-       sectime = 0;
-       mintime += 1;
-      }
-      timer++;
-     // fill(0);
-     // text("" + mintime + ":" + sectime, width/20, height/10);
 
       lvlMngr.lvlNum = 1;
 

@@ -5,8 +5,6 @@ class BulletEngine {
   boolean lookingDown, lookingLeft, lookingRight = false;
   boolean lookingUp = true;
 
-  int timer = 0;
-
   BulletEngine() {
     engine = new ArrayList<GameObject>(20);
     engine.add(myPlayer);
@@ -14,7 +12,6 @@ class BulletEngine {
   }
 
   void draw() {
-    timer = timer + 1;
 
     int i = engine.size() - 1;
     while (i >= 0) {
