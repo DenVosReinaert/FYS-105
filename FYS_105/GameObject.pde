@@ -1,7 +1,9 @@
 public class GameObject {
 
 
-  ArrayList<GameObject> gameObject;
+  ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
+
+
 
   float cooldown, threshold;
 
@@ -23,7 +25,6 @@ public class GameObject {
   GameObject() 
   {
 
-    gameObject = new ArrayList<GameObject>(200);
     //for(int i = 0; i < gameObject.size(); i ++)
     //{
     //  GameObject gameobject = new GameObject();
@@ -59,19 +60,20 @@ public class GameObject {
 
   void Add(GameObject object)
   {
-    gameObject.add(object); 
+    GameObjectRef.gameObject.add(object); 
     println("A new object has been created");
+    println(GameObjectRef.gameObject.size());
   }
 
   void Remove(GameObject object)
   {
-    gameObject.remove(object);
+    GameObjectRef.gameObject.remove(object);
   }
 
   void drawObjects() {
-    println(gameObject.size());
+    //println(gameObject.size());
 
-    for (GameObject object : gameObject) {
+    for (GameObject object : GameObjectRef.gameObject) {
       println("2");
       object.draw();
     }

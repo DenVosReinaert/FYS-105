@@ -8,37 +8,36 @@ class Enemies extends GameObject {
 
 
   void draw() {
-    //  if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
-    //    if (myPlayer.playerPosX > enemyPosX) {
-    //      enemyPosX += enemySpeedX;
-    //    }//if
-    //    if (myPlayer.playerPosX < enemyPosX) {
-    //      enemyPosX -= enemySpeedX;
-    //    }//if
-    //    if (myPlayer.playerPosY < enemyPosY) {
-    //      enemyPosY -= enemySpeedY;
-    //    } //if
-    //    else {
-    //      enemyPosY += enemySpeedY;
-    //    }//else
-    //  }
-    //}//enemyUpdate
-}
-    void checkPulse() {//Checks the enemy's collision with the player's bullet
-      for (int i = 0; i > GameObjectRef.gameObject.size(); i++) {
-        GameObject bullet = GameObjectRef.gameObject.get(i);
-        if (bullet instanceof Bullet) {
-          if (rectRect(enemyPosX, enemyPosY, enemyW, enemyH, bullet.bulletPosX, bullet.bulletPosY, bullet.bulletWidth, bullet.bulletHeight)) {
-            enemyHP--;
-            bullet.hp=0;
-            for (int j=0; j<5; j++) {
-              GameObjectRef.gameObject.add(new Particle(bullet.playerPosX, bullet.playerPosY));
-            }
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+      if (myPlayer.playerPosX > enemyPosX) {
+        enemyPosX += enemySpeedX;
+      }//if
+      if (myPlayer.playerPosX < enemyPosX) {
+        enemyPosX -= enemySpeedX;
+      }//if
+      if (myPlayer.playerPosY < enemyPosY) {
+        enemyPosY -= enemySpeedY;
+      } //if
+      else {
+        enemyPosY += enemySpeedY;
+      }//else
+    }
+  }//enemyUpdate
+
+  void checkPulse() {//Checks the enemy's collision with the player's bullet
+    for (int i = 0; i > GameObjectRef.gameObject.size(); i++) {
+      GameObject bullet = GameObjectRef.gameObject.get(i);
+      if (bullet instanceof Bullet) {
+        if (rectRect(enemyPosX, enemyPosY, enemyW, enemyH, bullet.bulletPosX, bullet.bulletPosY, bullet.bulletWidth, bullet.bulletHeight)) {
+          enemyHP--;
+          bullet.hp=0;
+          for (int j=0; j<5; j++) {
+            GameObjectRef.gameObject.add(new Particle(bullet.playerPosX, bullet.playerPosY));
           }
         }
       }
-    }//checkPulse.
-  }
+    }
+  }//checkPulse.
 
   class Particle extends GameObject {
     Particle(float incomingX, float incomingY) {
@@ -68,3 +67,4 @@ class Enemies extends GameObject {
       return enemyHP<=0;
     }//boolean Dead
   }//class Particle
+}
