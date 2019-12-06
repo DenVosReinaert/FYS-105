@@ -7,11 +7,8 @@ class Grunt extends Enemies {
     enemyHP=2;
     enemySpeedX=2;
     enemySpeedY=2;
-  }//constructor Grunt
-
-  void setup() {
-    //dit moet in een array, de float "r" moet in draw want die moet veranderen, maar de enemies moeten 1 keer spawnen
-    float r = random(-1, 3);
+    
+        float r = random(-1, 3);
     if (r <= 0) {
       enemyPosX = spawn.spawnerPosX0;
       enemyPosY = spawn.spawnerPosY0;
@@ -25,6 +22,10 @@ class Grunt extends Enemies {
       enemyPosX = spawn.spawnerPosX3;
       enemyPosY = spawn.spawnerPosY3;
     }
+  }//constructor Grunt
+
+  void setup() {
+    //dit moet in een array, de float "r" moet in draw want die moet veranderen, maar de enemies moeten 1 keer spawnen
   }
   void enemyShow() {
     fill(65, 17, 96);

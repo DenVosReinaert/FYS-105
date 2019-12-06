@@ -93,18 +93,19 @@ class GameOver {
     if (key == '\n') {
       // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
       ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-      if (ascore.name != "COCK" && ascore.name != "FUCK"  ) {
-        ascore.saveScore();
-        // Reset everything back to how the game was in the beginning
-        gamemngr.hscoreA = 0;
-        ascore.score = 0;
-        healthbar.levens = 3;
-        gamemngr.dead = false;
-        gamemngr.hscore = true;
-      } else {
-        textSize(20);
-       text("Retry smartass", width/2, height/30); 
-      }
+      ascore.saveScore();
+      frameCount = 0;
+      // Reset everything back to how the game was in the beginning
+      healthbar.levens = 3;
+      gamemngr.hscoreA = 0;
+      l1s = 0;
+      l2s = 0;
+      l3s = 0;
+      l4s = 0;
+      ascore.score = 0;
+      print(healthbar.levens);
+      gamemngr.dead = false;
+      gamemngr.hscore = true;
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {

@@ -67,21 +67,24 @@ class Spawner {
       BruteSpawn();
     } else if (frameCount<18525) {
     }
+    else if (frameCount > 19200 ) {
+     Boss1Spawn(); 
+    }
   }//spawnerUpdate
   void GruntSpawn() {
-    if (frameCount %100==0) {//modulus
+    if (frameCount %150==0) {//modulus
       gamemngr.AI.add(new Grunt());
     }
   }
 
   void SpeedsterSpawn() {
-    if (frameCount %50==0) {//modulus
+    if (frameCount %360==0) {//modulus
       gamemngr.AI.add(new Speedster());
     }
   }
 
   void HeavySpawn() {
-    if (frameCount %30==0) {//modulus
+    if (frameCount %450==0) {//modulus
       gamemngr.AI.add(new Heavy());
     }
   }
