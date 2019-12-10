@@ -8,172 +8,104 @@ class Player extends GameObject {
 
   int currentGun, pistoll, shotgun, machinegun;
 
+  float xPosition, yPosition;
+  float playerSize, speed;
+  float defaultSpeed = 4;
+  float diaSpeed = (defaultSpeed * (sqrt(pow(10, 2) + pow(10, 2)) / 20)); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
+
+  boolean isLeft, isRight, isUp, isDown;
+  boolean shootLeft, shootRight, shootUp, shootDown;
+
+  int bulletCount = 19;
+
+
+  ArrayList  <Bullet> bulletList = new ArrayList<Bullet>();
 
   Player() {
-    playerPosX = width/2;
-    playerPosY = height/2;
 
-    moveVelX = 0;
-    moveVelY = 0;
+    bulletCount = 20;
+    mainChar = loadImage("/data/img/Last_Stand_Character_1_14x20.png");
+    playerSize = 0;
+    speed = defaultSpeed;
+    xPosition = (width/2) - playerSize/2;
+    yPosition = (height/2) - playerSize/2;
 
-    playerWidth = 16;
-    playerHeight = 20;
+    myGun = new Pistol();
 
-    tag = "player";
-
-
-    pistoll = 1;
-    shotgun = 2;
-    machinegun = 3;
     //TO DO: als je 1 indrukt: BasicGun();,
     // als je 2 indrukt: MachineGun();,
     // als je 3 indrukt: Shotgun();.
   }
 
 
-
-
-
   void draw() {
 
-    fill(255, 100, 0);
-    if (lookingLeft) {
-      playerLeft.resize(19, 36);
-      image(playerLeft, playerPosX, playerPosY);
+    move();
+    //bullet.removeBullet();
+    pushStyle();
+    stroke(200, 90, 90);
+    fill(40, 40, 255);
+    mainChar.resize(56, 80);
+    image(mainChar, xPosition, yPosition);
+
+    rect(xPosition, yPosition, playerSize, playerSize);
+    popStyle();
+
+    //cooldown makes sure you can't fire a bullet every frame
+
+    //checks if the button is pressed and the cooldown allows another bullet, then makes a new bullet
+
+    //ANY BULLET HAS BULLETHIT == TRUE THEN REMOVE BULLET
+    if (1>0)
+    {
     }
-    if (lookingRight) {
-      playerRight.resize(19, 36);
-      image(playerRight, playerPosX, playerPosY);
-    }
-    if (lookingUp) {
-      playerBack.resize(19, 36);
-      image(playerBack, playerPosX, playerPosY);
-    }
-    if (lookingDown) {
-      playerFront.resize(19, 36);
-      image(playerFront, playerPosX, playerPosY);
-    }
-    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
+    ////////////
   }
 
+  void move() {
+    //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
+    if (isUp && isLeft || isLeft && isDown || isDown && isRight || isRight && isUp) {
+      speed = diaSpeed;
+    } else {
+      speed = defaultSpeed;
+    }
+    xPosition = constrain(xPosition + speed*(int(isRight) - int(isLeft)), int(0), int(width) - playerSize);
+    yPosition = constrain(yPosition + speed*(int(isDown)  - int(isUp)), int(0), int(height) - playerSize);
+  }
+
+  void act() {
+
     if (onekey) {
-      currentGun = pistoll;
+      myGun = new Pistol();
       onekey = false;
     } else if (twokey) {
-      currentGun = machinegun;
+      myGun = new MachineGun();
       twokey = false;
     } else if (threekey) {
-      currentGun = shotgun;
+      myGun = new Shotgun();
       threekey = false;
     }
 
-    moveVelX = 0;
-    moveVelY = 0;
-    //240
-    if (akey) {
-      if ((playerPosX + moveVelX < playerWidth/2) || (playerPosX + moveVelX < 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + moveVelX < 580 + playerWidth && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
-      {
-        moveVelX = 0;
-      } else
+    if (bengine.lookingUp) {
 
-        moveVelX = -defaultSpeed;
+      myGun.shoot();
+    } else if (bengine.lookingDown) {
+     myGun.shoot(); 
+    } else if (bengine.lookingRight) {
+     myGun.shoot(); 
+    }else if (bengine.lookingLeft) {
+     myGun.shoot(); 
     }
 
-    if (dkey) {
-      if ((playerPosX + moveVelX > width - playerWidth/2) || (playerPosX + playerWidth/2 + moveVelX > width - 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + playerWidth/2 + moveVelX > 700 && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
-      {
-        moveVelX = 0;
-      } else 
-      moveVelX = defaultSpeed;
+    if (rightKey) {
+      myGun.shoot();
+    }
+    if (upKey) {
+      myGun.shoot();
+    }
+    if (downKey) {
+      myGun.shoot();
     }
 
-    if (wkey) {
-      if ((playerPosY + moveVelY < playerHeight/2) || (playerPosY + moveVelY < 280 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + moveVelY < 16 && (playerPosX < 580 || playerPosX > 700))
-      {
-        moveVelY = 0;
-      } else 
-      moveVelY = -defaultSpeed;
-    }
-
-    if (skey) {
-      if ((playerPosY + moveVelY > height - playerHeight/2) || (playerPosY + moveVelY > 440 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + playerHeight + moveVelY > height - 16 && (playerPosX < 580 || playerPosX + playerWidth > 700))
-      {
-        moveVelY = 0;
-      } else 
-      moveVelY = defaultSpeed;
-    }
-
-    //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
-    if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
-      defaultSpeed = diaSpeed;
-    } else defaultSpeed = 5;
-
-    if (spacekey) {
-      if (currentGun == pistoll)
-        pistol.shoot();
-      if (currentGun == machinegun)
-        machineGun.shoot();
-      if (currentGun == shotgun)
-        shotGun.shoot();
-    }
-
-    playerPosX += moveVelX;
-    playerPosY += moveVelY;
-
-    //pistol.recharge();
-    //machineGun.recharge();
-    //shotGun.recharge();
-  }
-
-
-
-
-
-
-  void keyPressed() {
-    if (key == 'a') {
-      akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == 's') {
-      skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
-    }
-    if (key == 'd') {
-      dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
-    }
-    if (key == 'w') {
-      wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == ' ') spacekey = true;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-  }
-
-  void keyReleased() {
-    if (key == 'a') akey = false;
-    if (key == 's') skey = false;
-    if (key == 'd') dkey = false;
-    if (key == 'w') wkey = false;
-    if (key == ' ') spacekey = false;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-  }
-}
+    myGun.recharge();

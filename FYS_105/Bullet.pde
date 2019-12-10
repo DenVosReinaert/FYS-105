@@ -1,29 +1,39 @@
-class Bullet extends GameObject {
+class Bullet {
+  
+  float bulletPosX;
+  float bulletPosY;
+  float bulletWidth;
+  float bulletFill;
+  float bulletXVelocity;
+  float bulletYVelocity;
+  float velocity;
+  float timer;
+  PVector startPos;
+  
+  boolean bulletHit = false;
 
-  Bullet(float incomingDX, float incomingDY) {
-    bulletPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player
-    bulletPosY = myPlayer.playerPosY;  //y position of bullet begins on y position of player
-    moveVelX = incomingDX;    
-    moveVelY= incomingDY;
-
-    //hp = 1;
-    playerWidth = 15;
-    playerHeight = 15;
-
+  Bullet(PVector startPos) {
+    this.startPos = startPos;
+    velocity = 5;
     bulletWidth = 5;
-    bulletHeight = 5;
+    bulletFill = 0;
+    bulletPosX = startPos.x;
+    bulletPosY = startPos.y; 
   }
 
   void draw() {
-
-    bulletPosX += moveVelX;
-    bulletPosY += moveVelY;
-
-    fill(255);
-        rect(bulletPosX, bulletPosY, bulletWidth, bulletHeight);
+    //this is the bullet
+    fill(bulletFill);
+    rect(bulletPosX, bulletPosY, bulletWidth, bulletWidth);
+    bulletPosX += bulletXVelocity;
+    bulletPosY += bulletYVelocity;
+    
+    //ENTER BULLET COLLISION IN STATEMENT BELOW
+    if(1 > 0)
+    {
+      bulletHit = true;
+    }
+    else bulletHit = false;
   }
 
-  boolean hasDied() {
-    return bulletPosY < 0 || bulletPosY > height || bulletPosX < 0 || bulletPosX > width;
-  }
 }

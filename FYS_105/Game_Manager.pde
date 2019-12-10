@@ -50,6 +50,8 @@ class Game_Manager {
         }
         i--;
       }
+      player.move();
+      player.draw();
     }
     if (dead) {
       game = false;

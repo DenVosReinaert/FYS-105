@@ -1,4 +1,5 @@
-class Shotgun extends GameObject {
+class Shotgun extends Gun {
+
 
   Shotgun() {
     threshold = 60;
@@ -6,56 +7,34 @@ class Shotgun extends GameObject {
   }
 
   void shoot() {
-    if (cooldown == threshold && myPlayer.lookingUp) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
-      gameObject.add(new Bullet(-2, -14));
-      gameObject.add(new Bullet(-1, -15));
-      gameObject.add(new Bullet(0, -16));
-      gameObject.add(new Bullet(1, -15));
-      gameObject.add(new Bullet(2, -14));
+    if (cooldown == threshold && upKey) {
+      player.bulletList.add(new Bullet(-4, -14));
+      player.bulletList.add(new Bullet(-2, -15));
+      player.bulletList.add(new Bullet(0, -16));
+      player.bulletList.add(new Bullet(2, -15));
+      player.bulletList.add(new Bullet(4, -14));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
-      gameObject.add(new Bullet(-2, 14));
-      gameObject.add(new Bullet(-1, 15));
-      gameObject.add(new Bullet(0, 16));
-      gameObject.add(new Bullet(1, 15));
-      gameObject.add(new Bullet(2, 14));
+    } else if (cooldown == threshold && downKey) {
+      player.bulletList.add(new Bullet(-4, 14));
+      player.bulletList.add(new Bullet(-2, 15));
+      player.bulletList.add(new Bullet(0, 16));
+      player.bulletList.add(new Bullet(2, 15));
+      player.bulletList.add(new Bullet(4, 14));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
-      gameObject.add(new Bullet(14, -2));
-      gameObject.add(new Bullet(15, -1));
-      gameObject.add(new Bullet(16, 0));
-      gameObject.add(new Bullet(15, 1));
-      gameObject.add(new Bullet(14, 2));
+    } else if (cooldown == threshold && rightKey) {
+      player.bulletList.add(new Bullet(14, -4));
+      player.bulletList.add(new Bullet(15, -2));
+      player.bulletList.add(new Bullet(16, 0));
+      player.bulletList.add(new Bullet(15, 2));
+      player.bulletList.add(new Bullet(14, 4));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
-      gameObject.add(new Bullet(-14, -2));
-      gameObject.add(new Bullet(-15, -1));
-      gameObject.add(new Bullet(-16, 0));
-      gameObject.add(new Bullet(-15, 1));
-      gameObject.add(new Bullet(-14, 2));
+    } else if (cooldown == threshold && leftKey) {
+      player.bulletList.add(new Bullet(-14, -4));
+      player.bulletList.add(new Bullet(-15, -2));
+      player.bulletList.add(new Bullet(-16, 0));
+      player.bulletList.add(new Bullet(-15, 2));
+      player.bulletList.add(new Bullet(-14, 4));
       cooldown = 0;
-    }
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
     }
   }
 }

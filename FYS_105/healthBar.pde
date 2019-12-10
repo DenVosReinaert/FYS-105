@@ -7,10 +7,10 @@ class healthBar {
   int lX2 = 40;
   int lY1 = height/20;
   int lY2 = 10;
-
   aScore ascore;
 
   void spelerhit() { // If called, lives -1
+
     levens--;
   }
 

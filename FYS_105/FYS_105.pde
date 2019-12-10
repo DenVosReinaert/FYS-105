@@ -13,6 +13,7 @@ import ddf.minim.ugens.*;
 final int KEY_LIMIT = 1024;
 boolean[] keysPressed = new boolean[KEY_LIMIT];
 boolean game;
+boolean upKey, leftKey, downKey, rightKey, onekey, twokey, threekey, upkey;
 
 // DIT MOET NOG ERGENS ANDERS :D
 String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
@@ -22,14 +23,17 @@ String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP stand
 String dbName = "zkoeneqt"; // replace with database name
 //
 
-
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
+Player player;
+Gun myGun;
 healthBar healthbar;
 UI UI;
 GameOver gameover;
 aScore ascore;
+Bullet bullet;
+Map map;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
@@ -58,8 +62,6 @@ void setup()
   gameover = new GameOver();
   healthbar = new healthBar();
 
-
-
   lvlMngr.setup();
 }
 
@@ -85,14 +87,14 @@ void keyPressed() {
 
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
-  // thePlayer.setMove(keyCode, true);
   gamemngr.keyPressed();
+
 }
 
 void keyReleased() {
+  //Walking
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
-  // thePlayer.setMove(keyCode, false);
   gamemngr.keyReleased();
 
   background.resize(width, height);
@@ -114,4 +116,14 @@ public float Calculate(String orientation, float size)
   }
 
   return result;
+
+  player.setMove(keyCode, false);
+  //Shooting
+  if (keyCode == LEFT) leftKey = false;
+  if (keyCode == DOWN) downKey = false;
+  if (keyCode == RIGHT) rightKey = false;
+  if (keyCode == UP) upKey = false;
+  if (key == '1') onekey = true;
+  if (key == '2') twokey = true;
+  if (key == '3') threekey = true;
 }

@@ -1,4 +1,4 @@
-class MachineGun extends GameObject {
+class MachineGun extends Gun {
 
   MachineGun() {
     threshold = 8;
@@ -6,24 +6,21 @@ class MachineGun extends GameObject {
   }
 
   void shoot() {
-    if (cooldown == threshold && myPlayer.lookingUp) {
-      gameObject.add(new Bullet(0, -15));
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
-      gameObject.add(new Bullet(0, 15));
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
-      gameObject.add(new Bullet(-15, 0));
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
-      gameObject.add(new Bullet(15, 0));
-    }
-
-    LMG.play();
-    LMG.rewind();
-    cooldown = 0;
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
+    if (cooldown == threshold && upKey) {
+      player.bulletList.add(new Bullet(0, -15));
+      cooldown = 0;
+    } 
+    else if (cooldown == threshold && downKey) {
+      player.bulletList.add(new Bullet(0, 15));
+      cooldown = 0;
+    } 
+    else if (cooldown == threshold && leftKey) {
+      player.bulletList.add(new Bullet(-15, 0));
+      cooldown = 0;
+    } 
+    else if (cooldown == threshold && rightKey) {
+      player.bulletList.add(new Bullet(15, 0));
+      cooldown = 0;
     }
   }
 }

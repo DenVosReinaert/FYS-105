@@ -1,6 +1,7 @@
 class BulletEngine {
   ArrayList<GameObject> engine;
-  boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
+
+  boolean wkey, akey, skey, dkey, onekey, twokey, threekey, upkey;
 
   boolean lookingDown, lookingLeft, lookingRight = false;
   boolean lookingUp = true;
@@ -28,33 +29,40 @@ class BulletEngine {
   void keyPressed() {
     if (key == 'a') {
       akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
     }
     if (key == 's') {
       skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
     }
     if (key == 'd') {
       dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
     }
     if (key == 'w') {
       wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
     }
-    if (key == ' ') spacekey = true;
+    if (keyCode  == UP) {
+     lookingUp = true;
+     lookingDown = false;
+     lookingLeft = false;
+     lookingRight = false;
+    }
+    if (keyCode == DOWN) {
+     lookingDown = true;
+     lookingUp = false;
+     lookingRight = false;
+     lookingLeft = false;
+    }
+    if (keyCode == RIGHT) {
+     lookingRight = true;
+     lookingLeft = false;
+     lookingUp = false;
+     lookingDown = false;
+    }
+    if (keyCode == LEFT) {
+     lookingLeft = true;
+     lookingRight = false;
+     lookingUp = false;
+     lookingDown = false;
+    }
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
@@ -65,9 +73,12 @@ class BulletEngine {
     if (key == 's') skey = false;
     if (key == 'd') dkey = false;
     if (key == 'w') wkey = false;
-    if (key == ' ') spacekey = false;
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
+    if (keyCode == UP) lookingUp = false;
+    if (keyCode == DOWN) lookingDown = false;
+    if (keyCode == LEFT) lookingLeft = false;
+    if (keyCode == RIGHT) lookingRight = false;
   }
 }
