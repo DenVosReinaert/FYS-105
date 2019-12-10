@@ -80,8 +80,18 @@ class Player
       threekey = false;
     }
 
+<<<<<<< Updated upstream
     if (leftKey) {
+=======
+    if (bengine.lookingUp) {
+>>>>>>> Stashed changes
       myGun.shoot();
+    } else if (bengine.lookingDown) {
+     myGun.shoot(); 
+    } else if (bengine.lookingRight) {
+     myGun.shoot(); 
+    }else if (bengine.lookingLeft) {
+     myGun.shoot(); 
     }
 
     if (rightKey) {
