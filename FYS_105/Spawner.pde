@@ -5,6 +5,7 @@ class Spawner {
   float spawnerPosX1, spawnerPosY1; //Right
   float spawnerPosX2, spawnerPosY2; //Up
   float spawnerPosX3, spawnerPosY3; //Down
+
   int timer = 0;
   int wave;
 
@@ -35,27 +36,37 @@ class Spawner {
   }//spawnerShow
 
   void spawnerUpdate() {
+
     if (timer<100) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 1;
     } else if (timer>400 && timer < 2160) {
       GruntSpawn();
-    } else if (timer > 2160 && timer < 3060) {
+      if (gamemngr.AI.size() != 0 && timer > 3060 && timer < 3065) {
+        timer = 3060;
+      }
+    } else if (timer > 2160 && timer < 3060 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 2;
     } else if (timer > 3060 && timer < 4860) {
       GruntSpawn();
       SpeedsterSpawn();
-    } else if (timer > 4860 && timer <5760) {
+      if (gamemngr.AI.size() != 0 && timer > 5760 && timer < 5765) {
+        timer = 5760;
+      }
+    } else if (timer > 4860 && timer <5760 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 3;
     } else if (timer > 5760 && timer < 7560) {
       GruntSpawn();
       HeavySpawn();
-    } else if (timer > 7560 && timer <8460) {
+      if (gamemngr.AI.size() != 0 && timer > 8460 && timer < 8465) {
+        timer = 8460;
+      }
+    } else if (timer > 7560 && timer <8460 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 4;
@@ -63,21 +74,30 @@ class Spawner {
       GruntSpawn();
       SpeedsterSpawn();
       HeavySpawn();
-    } else if (timer > 10260 && timer < 11160) {
+      if (gamemngr.AI.size() != 0 && timer > 11160 && timer < 11165) {
+        timer = 1160;
+      }
+    } else if (timer > 10260 && timer < 11160 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 5;
     } else if (timer > 11160 && timer <12960) {
       SpeedsterSpawn();
       HeavySpawn();
-    } else if (timer > 12960 && timer < 13860) {
+      if (gamemngr.AI.size() != 0 && timer > 13860 && timer < 13865) {
+        timer = 13860;
+      }
+    } else if (timer > 12960 && timer < 13860 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 6;
     } else if (timer > 13860 && timer < 13950) {
       BruteSpawn();
       GruntSpawn();
-    } else if (timer > 13950 && timer < 14025) {
+      if (gamemngr.AI.size() != 0 && timer > 14025 && timer < 14030) {
+        timer = 14025;
+      }
+    } else if (timer > 13950 && timer < 14025 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 7;
@@ -85,20 +105,30 @@ class Spawner {
       HeavySpawn();
       BruteSpawn();
       GruntSpawn();
-    } else if (timer > 15825 && timer < 16725) {
+      if (gamemngr.AI.size() != 0 && timer > 16725 && timer < 16730) {
+        timer = 16725;
+      }
+    } else if (timer > 15825 && timer < 16725 && gamemngr.AI.size() == 0) {
       textSize(80);
       text("WAVE "+wave, width/2-150, height/2);
       wave = 8;
     } else if (timer > 16725 && timer <18525) {
       SpeedsterSpawn();
       BruteSpawn();
-    } else if (timer > 18525 && timer < 19200) {
+      if (gamemngr.AI.size() != 0 && timer > 19200 && timer < 19205) {
+        timer = 19200;
+      }
+    } else if (timer > 18525 && timer < 19200 && gamemngr.AI.size() == 0) {
       textSize(80);
-      text("BOSS WAVE ", width/2-300, height/2);
+      text("BOSS WAVE", width/2-250, height/2);
       wave = 9;
-    } else if (timer > 19200 && timer < 19400 ) {
+    } else if (timer > 19200 && timer < 20100 ) {
       Boss1Spawn();
-    } else if (timer > 19400) {
+      if (gamemngr.AI.size() != 0 && timer > 20090 && timer < 20120) {
+        timer = 20100;
+      }
+    } else if (timer > 20200 && gamemngr.AI.size() == 0) {
+      healthbar.levens = 1;
     }
   }//spawnerUpdate
   void GruntSpawn() {

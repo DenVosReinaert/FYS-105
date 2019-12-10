@@ -9,12 +9,17 @@ Minim minim;
 AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death;
 
 PImage main, pillar, background, scrBgr; //controlImg;
+PImage playerFront, playerBack, playerLeft, playerRight;
 
 
 
 
 void LoadAssets()
 {
+  playerFront = loadImage("/data/sprites/playerFront.png");
+  playerBack = loadImage("/data/sprites/playerBack.png");
+  playerLeft = loadImage("/data/sprites/playerLeft.png");
+  playerRight = loadImage("/data/sprites/playerRight.png");
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");
   main = loadImage("/data/img/LastStand-MainMenu.png");

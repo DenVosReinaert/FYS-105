@@ -48,7 +48,7 @@ class Enemies extends GameObject {
           if (enemyHP == 0) {
            ascore.score += 5; 
           }
-          for (int j=0; j<5; j++) {
+          for (int j=0; j < 20; j++) {
             gamemngr.AI.add(new Particle(enemyPosX, enemyPosY));
           }//for
         }

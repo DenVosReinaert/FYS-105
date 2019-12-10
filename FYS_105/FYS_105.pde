@@ -81,7 +81,7 @@ void draw()
 
 void keyPressed() {
   if (key == 'p') {
-    healthbar.levens = 0;
+   spawn.timer = 18525;
   }
 
   if (keyCode >= KEY_LIMIT) return;

@@ -21,7 +21,23 @@ class Player extends GameObject {
 
   void show() {
     fill(255, 100, 0);
-    rect(playerPosX, playerPosY, playerWidth, playerHeight);
+    if (bengine.lookingLeft) {
+      playerLeft.resize(19, 36);
+      image(playerLeft, playerPosX, playerPosY);
+    }
+    if (bengine.lookingRight) {
+      playerRight.resize(19, 36);
+      image(playerRight, playerPosX, playerPosY);
+    }
+    if (bengine.lookingUp) {
+      playerBack.resize(19, 36);
+      image(playerBack, playerPosX, playerPosY);
+    }
+    if (bengine.lookingDown) {
+      playerFront.resize(19, 36);
+      image(playerFront, playerPosX, playerPosY);
+    }
+    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
   }
 
   void act() {
