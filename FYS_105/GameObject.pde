@@ -37,21 +37,7 @@ public class GameObject {
     drawObjects();
     //println("I have been drawn");
 
-    //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
-      if (myPlayer.playerPosX > enemyPosX) {
-        enemyPosX += enemySpeedX;
-      }//if
-      if (myPlayer.playerPosX < enemyPosX) {
-        enemyPosX -= enemySpeedX;
-      }//if
-      if (myPlayer.playerPosY < enemyPosY) {
-        enemyPosY -= enemySpeedY;
-      } //if
-      else {
-        enemyPosY += enemySpeedY;
-      }//else
-    }
+
   }//enemyUpdate
 
   boolean Dead() {

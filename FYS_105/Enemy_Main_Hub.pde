@@ -7,23 +7,6 @@ class Enemies extends GameObject {
   }//constructor Enemys
 
 
-  void draw() {
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
-      if (myPlayer.playerPosX > enemyPosX) {
-        enemyPosX += enemySpeedX;
-      }//if
-      if (myPlayer.playerPosX < enemyPosX) {
-        enemyPosX -= enemySpeedX;
-      }//if
-      if (myPlayer.playerPosY < enemyPosY) {
-        enemyPosY -= enemySpeedY;
-      } //if
-      else {
-        enemyPosY += enemySpeedY;
-      }//else
-    }
-  }//enemyUpdate
-
   void checkPulse() {//Checks the enemy's collision with the player's bullet
     for (int i = 0; i > GameObjectRef.gameObject.size(); i++) {
       GameObject bullet = GameObjectRef.gameObject.get(i);
@@ -54,14 +37,8 @@ class Enemies extends GameObject {
       fill(219, 8, 8, enemyHP);
       rect(enemyPosX, enemyPosY, enemyW, enemyH);
 
-      enemyPosX=enemyPosX+enemySpeedX;
-      enemyPosY=enemyPosY+enemySpeedY;
-
       enemyHP=enemyHP-2;
     }//enemyShow
-
-    void checkPulse() {
-    }//checkPulse
 
     boolean Dead() {
       return enemyHP<=0;
