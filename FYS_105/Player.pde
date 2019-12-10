@@ -38,18 +38,24 @@ class Player extends GameObject {
   void draw() {
 
     fill(255, 100, 0);
-    rect(playerPosX, playerPosY, playerWidth, playerHeight);
-
-    //int i = gameObject.size() - 1;
-    //while (i >= 0) {
-    //  GameObject thing = gameObject.get(i);
-    //  thing.show();
-    //  thing.act();
-    //  if (thing.hasDied()) {
-    //    this.gameObject.remove(i);
-    //  }
-    //  i--;
-    //}
+    if (lookingLeft) {
+      playerLeft.resize(19, 36);
+      image(playerLeft, playerPosX, playerPosY);
+    }
+    if (lookingRight) {
+      playerRight.resize(19, 36);
+      image(playerRight, playerPosX, playerPosY);
+    }
+    if (lookingUp) {
+      playerBack.resize(19, 36);
+      image(playerBack, playerPosX, playerPosY);
+    }
+    if (lookingDown) {
+      playerFront.resize(19, 36);
+      image(playerFront, playerPosX, playerPosY);
+    }
+    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
+  }
 
     if (onekey) {
       currentGun = pistoll;

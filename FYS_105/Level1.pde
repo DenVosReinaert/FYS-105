@@ -7,13 +7,12 @@ class Level1
 
   void setup()
   {
-  }
 
 
   void draw()
   {
+    
     image(background, 0, 0);
-
     for (int i = 0; i < pillarCount; i++)
     {
       pillars[i] = new Pillar();

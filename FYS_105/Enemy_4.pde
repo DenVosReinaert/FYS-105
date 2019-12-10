@@ -1,15 +1,11 @@
-//Ruben de Jager
-class Heavy extends Enemies {
+class Brute extends Grunt{
 
-  Heavy() {
-    tag = "enemy";
-
-    enemyW=60;
-    enemyH=60;
-    enemyHP=80;
-    enemySpeedX=0.75;
-    enemySpeedY=0.75;
-
+  Brute(){
+    enemyW=30;
+    enemyH=30;
+    enemyHP=4;
+    enemySpeedX=1;
+    enemySpeedY=1;
             float r = random(-1, 3);
     if (r <= 0) {
       enemyPosX = spawn.spawnerPosX0;
@@ -24,17 +20,12 @@ class Heavy extends Enemies {
       enemyPosX = spawn.spawnerPosX3;
       enemyPosY = spawn.spawnerPosY3;
     }
-  }//constructor Heavy
-  
-  
-  void enemyShow() {
-    fill(91, 80, 80);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-  }//enemyShow
 
+  }//constructor Brute
 
-  
-  boolean Dead(){
-    return enemyHP<=0;
-  }//boolean Dead
+  void enemyShow(){
+    fill(9,36,145);
+    rect(enemyPosX,enemyPosY,enemyW,enemyH);
+  }
+
 }

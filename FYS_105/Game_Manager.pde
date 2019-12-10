@@ -44,7 +44,7 @@ class Game_Manager {
         Enemies enm= AI.get(i);
         enm.enemyShow();
         enm.enemyUpdate();
-        //enm.checkPulse();
+        enm.checkPulse();
         if (enm.Dead()) {
           AI.remove(i);
         }

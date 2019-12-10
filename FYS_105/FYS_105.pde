@@ -33,7 +33,7 @@ aScore ascore;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
-//Gun myGun;
+Gun myGun;
 Spawner spawn;
 
 
@@ -78,6 +78,11 @@ void draw()
 
 
 void keyPressed() {
+  // Boss wave
+  if (key == 'p') {
+   spawn.timer = 18525;
+  }
+
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   // thePlayer.setMove(keyCode, true);

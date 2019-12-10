@@ -27,7 +27,24 @@ class GameOver {
   // Array containing all available letters
   char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
-  void setup() {
+  //int bN;
+  //int bList;
+  //String blacklist[] = new String[bList];
+  //String word;
+
+  GameOver() {
+    // Attempt blacklist, not working yet!
+    //if (msql.connect() && bN < 10) { // Als geconnect is met database & Ans kleiner is dan 10
+    //  msql.query( "SELECT * FROM blacklist");
+    //  while ( msql.next() && bN < 10) {
+    //    word = msql.getString("word"); // string name is 'name' uit database
+    //    blacklist = append(blacklist, word); // Voeg name toe aan de array names
+    //    bList++;
+    //    bN++;
+    //  }
+    //} else { 
+    //  println("ERROR: Couldn't fetch blacklist!");
+    //}
   }
 
   void draw() {
@@ -93,13 +110,25 @@ class GameOver {
     if (key == '\n') {
       // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
       ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+      //  for (int i = 0; i < bN; i++) {
+      // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
       ascore.saveScore();
       // Reset everything back to how the game was in the beginning
-      gamemngr.hscoreA = 0;
-      ascore.score = 0;
-      gamemngr.dead = false;
       healthbar.levens = 3;
+      gamemngr.hscoreA = 0;
+      l1s = 0;
+      l2s = 0;
+      l3s = 0;
+      l4s = 0;
+      ascore.score = 0;
+      spawn.timer = 0;
+      // print(healthbar.levens);
+      gamemngr.dead = false;
       gamemngr.hscore = true;
+      //  } else {
+      // text("Try again..", width/2-150, height/8);
+      //  }
+      //}
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {
