@@ -1,4 +1,4 @@
-class Brute extends Grunt{
+class Brute extends Enemies{
 
   Brute(){
     enemyW=30;

@@ -1,4 +1,4 @@
-class Bullet extends GameObject {
+class Bullet extends Enemies {
 
   Bullet(float incomingDX, float incomingDY) {
     bulletPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player

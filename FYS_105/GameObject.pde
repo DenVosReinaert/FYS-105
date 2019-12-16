@@ -9,6 +9,7 @@ public class GameObject {
 
   boolean lookingUp, lookingLeft, lookingRight = false;
   boolean lookingDown = true;
+  boolean shootingUp, shootingDown, shootingLeft, shootingRight;
 
   String tag;
 

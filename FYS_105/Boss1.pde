@@ -1,4 +1,4 @@
-class Boss1 extends Grunt{
+class Boss1 extends GameObject{
 
   Boss1(){
     enemyW=65;
