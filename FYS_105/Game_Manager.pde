@@ -28,6 +28,9 @@ class Game_Manager {
       hscorel.draw();
     }
     if (game) {
+      if (healthbar.levens <= 0) {
+       gamemngr.dead = true; 
+      }
       homeSnd.pause();
 
       lvlMngr.lvlNum = 1;

@@ -121,6 +121,7 @@ class GameOver {
         l2s = 0;
         l3s = 0;
         l4s = 0;
+        spawn.timer = 0;
         ascore.score = 0;
         // print(healthbar.levens);
         gamemngr.dead = false;
