@@ -1,12 +1,10 @@
 class Game_Manager {
   boolean dead;
-  ArrayList<Enemies> AI;
   boolean home;
   boolean hscore;
   int hscoreA;
 
   Game_Manager() {
-    AI= new ArrayList<Enemies>(30);
   }
 
   void draw() {
@@ -27,6 +25,13 @@ class Game_Manager {
       hscoreA = 1;
       hscorel.draw();
     }
+
+
+
+
+
+
+
     if (game) {
       homeSnd.pause();
 
@@ -35,24 +40,42 @@ class Game_Manager {
       ascore.draw();
       healthbar.draw();
 
-      spawn.spawnerShow();
-      spawn.spawnerUpdate();
-
-      int i = AI.size()-1;
-      while (i >= 0) {
-        // print(AI);
-        Enemies enm= AI.get(i);
-        enm.enemyShow();
-        enm.enemyUpdate();
-        enm.checkPulse();
-        if (enm.Dead()) {
-          AI.remove(i);
-        }
-        i--;
-      }
-      player.move();
-      player.draw();
+      spawn.draw();
+      //if (GameObjectRef.gameObject.size() >= 1)
+      //{
+      //  int i = GameObjectRef.gameObject.size()-1;
+      //  while (i >= 0) {
+      //    // print(AI);
+      //    if (GameObjectRef.gameObject.get(i).tag == "enemy")
+      //    {
+      //      GameObjectRef.gameObject.get(i).draw();
+      //    }
+      //    //enm.checkPulse();
+      //    if (GameObjectRef.gameObject.get(i).Dead()) {
+      //      GameObjectRef.gameObject.remove(i);
+      //    }
+      //    i--;
+      //  }
+      //}
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (dead) {
       game = false;
       gameover.draw();

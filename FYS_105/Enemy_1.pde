@@ -7,6 +7,7 @@ class Grunt extends Enemies {
     enemyW=16;
     enemyH=20;
     enemyHP=2;
+
     enemySpeedX=2;
     enemySpeedY=2;
   }//constructor Grunt
@@ -30,9 +31,27 @@ class Grunt extends Enemies {
     }
   }//constructor Grunt
 
-  void enemyShow() {
+
+  void draw() {
+
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
+
+    //ENEMY MOVEMENT
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+      if (myPlayer.playerPosX > enemyPosX) {
+        enemyPosX += enemySpeedX;
+      }//if
+      if (myPlayer.playerPosX < enemyPosX) {
+        enemyPosX -= enemySpeedX;
+      }//if
+      if (myPlayer.playerPosY < enemyPosY) {
+        enemyPosY -= enemySpeedY;
+      } //if
+      else {
+        enemyPosY += enemySpeedY;
+      }//else
+    }
   }//enemyShow
 
   boolean Dead() {

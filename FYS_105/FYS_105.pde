@@ -12,8 +12,8 @@ import ddf.minim.ugens.*;
 //Halleluyah we got GitHub
 final int KEY_LIMIT = 1024;
 boolean[] keysPressed = new boolean[KEY_LIMIT];
-boolean game;
-boolean upKey, leftKey, downKey, rightKey, onekey, twokey, threekey, upkey;
+
+boolean game, works;
 
 // DIT MOET NOG ERGENS ANDERS :D
 String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
@@ -37,9 +37,9 @@ Map map;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
-Gun myGun;
+//Gun myGun;
 Spawner spawn;
-
+GameObject GameObjectRef;
 
 
 void setup()
@@ -61,9 +61,22 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   healthbar = new healthBar();
+  GameObjectRef = new GameObject();
 
   lvlMngr.setup();
 }
+
+
+void Work()
+{
+  if (!works)
+  {
+    works = true;
+  }
+}
+
+
+
 
 
 
@@ -76,6 +89,7 @@ void draw()
 
   if (game)
     myPlayer.draw();
+  GameObjectRef.draw();
 }
 
 
@@ -116,14 +130,4 @@ public float Calculate(String orientation, float size)
   }
 
   return result;
-
-  player.setMove(keyCode, false);
-  //Shooting
-  if (keyCode == LEFT) leftKey = false;
-  if (keyCode == DOWN) downKey = false;
-  if (keyCode == RIGHT) rightKey = false;
-  if (keyCode == UP) upKey = false;
-  if (key == '1') onekey = true;
-  if (key == '2') twokey = true;
-  if (key == '3') threekey = true;
 }

@@ -1,95 +1,48 @@
 //Ruben de Jager
 class Enemies extends GameObject {
 
-  float enemyPosX, enemyPosY, enemyW, enemyH, enemyHP, enemySpeedX, enemySpeedY;
 
   Enemies() {
   }//constructor Enemys
 
 
-  void enemyUpdate() {
-
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
-
-      if (myPlayer.playerPosX > enemyPosX) {
-        enemyPosX += enemySpeedX;
-      }//if
-      if (myPlayer.playerPosX < enemyPosX) {
-        enemyPosX -= enemySpeedX;
-      }//if
-      if (myPlayer.playerPosY < enemyPosY) {
-        enemyPosY -= enemySpeedY;
-      } //if
-      else {
-        enemyPosY += enemySpeedY;
-      }//else
-    }
-  }//enemyUpdate
-
   void checkPulse() {//Checks the enemy's collision with the player's bullet
-    if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
-      healthbar.spelerhit();
-      enemyHP = 0;
-    }
-
-    for (int i = 0; i < bengine.engine.size(); i ++)
-    {
-      if (bengine.engine.get(i).bulletPosX > 0 && bengine.engine.get(i).bulletPosY > 0) {
-
-        if (bengine.engine.get(i).bulletPosX == 0)
-          bengine.engine.get(i).bulletPosX = -10000;
-
-        if (bengine.engine.get(i).bulletPosY == 0)
-          bengine.engine.get(i).bulletPosY = -10000;
-
-        if (dist(enemyPosX, enemyPosY, bengine.engine.get(i).bulletPosX, bengine.engine.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
-          bengine.engine.remove(i);
-          if (enemyHP == 0) {
-            ascore.score += 5;
+    for (int i = 0; i > GameObjectRef.gameObject.size(); i++) {
+      GameObject bullet = GameObjectRef.gameObject.get(i);
+      if (bullet instanceof Bullet) {
+        if (rectRect(enemyPosX, enemyPosY, enemyW, enemyH, bullet.bulletPosX, bullet.bulletPosY, bullet.bulletWidth, bullet.bulletHeight)) {
+          enemyHP--;
+          bullet.hp=0;
+          for (int j=0; j<5; j++) {
+            GameObjectRef.gameObject.add(new Particle(bullet.playerPosX, bullet.playerPosY));
           }
-          for (int j=0; j < 20; j++) {
-            gamemngr.AI.add(new Particle(enemyPosX, enemyPosY));
-          }//for
         }
       }
     }
-  }//checkPulse
+  }//checkPulse.
+  
 
-  boolean Dead() {
-    return false;
-  }//boolean Dead
-}//abstract class Enemys
 
-class Particle extends Enemies {
-  Particle(float incomingX, float incomingY) {
-    enemyPosX=incomingX;
-    enemyPosY=incomingY;
-    enemySpeedX=random(-5, 5);
-    enemySpeedY=random(-5, 5);
+  class Particle extends GameObject {
+    Particle(float incomingX, float incomingY) {
+      enemyPosX=incomingX;
+      enemyPosY=incomingY;
+      enemySpeedX=random(-5, 5);
+      enemySpeedY=random(-5, 5);
+      enemyHP=random(100, 255);
+      enemyW=5;
+      enemyH=5;
+    }//constructor Particle
 
-    enemyHP=random(20, 100);
+    void draw() {
+      fill(219, 8, 8, enemyHP);
+      rect(enemyPosX, enemyPosY, enemyW, enemyH);
 
-    enemyW=5;
-    enemyH=5;
-  }//constructor Particle
+      enemyHP=enemyHP-2;
+    }//enemyShow
 
-  void enemyShow() {
-    fill(219, 8, 8, enemyHP);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-  }//enemyShow
-
-  void enemyUpdate() {
-    enemyPosX=enemyPosX+enemySpeedX;
-    enemyPosY=enemyPosY+enemySpeedY;
-
-    enemyHP=enemyHP-2;
-  }//enemyUpdate
-
-  void checkPulse() {
-  }//checkPulse
-
-  boolean Dead() {
-    return enemyHP<=0;
-  }//boolean Dead
-}//class Particle
+    boolean Dead() {
+      return enemyHP<=0;
+    }//boolean Dead
+  }//class Particle
+}

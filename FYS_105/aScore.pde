@@ -19,7 +19,7 @@ class aScore {
     if (!gamemngr.dead) {
       fill(255);
       textSize(20);
-      text("score: "+score, width/9-20, height/10);
+      text("score: "+score, width/9 - 10, height/10);
     }
   }
 

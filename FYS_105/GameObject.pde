@@ -12,46 +12,55 @@ abstract class GameObject {
 
   String tag;
 
-  float bulletPosX, bulletPosY;
+  float bulletPosX, bulletPosY, bulletWidth, bulletHeight;
   float enemyPosX, enemyPosY, enemyW, enemyH, enemyHP, enemySpeedX, enemySpeedY;
   float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, hp;
   float defaultSpeed = 5;
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
-  GameObject() {
+
+
+
+
+  GameObject() 
+  {
+
+    //for(int i = 0; i < gameObject.size(); i ++)
+    //{
+    //  GameObject gameobject = new GameObject();
+    //}
   }
 
-  void show() {
-  }
 
-  void act() {
-  }
+  void draw()
+  {    
+    drawObjects();
+    //println("I have been drawn");
 
-  boolean hasDied() {
+
+  }//enemyUpdate
+
+  boolean Dead() {
     return false;
   }
 
-  float x, y, dx, dy, w, h, hp;
+  void Add(GameObject object)
+  {
+    GameObjectRef.gameObject.add(object); 
+    println("A new object has been created");
+    println(GameObjectRef.gameObject.size());
+  }
 
-  float enemyPosX, enemyPosY;
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight;
-  float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, playerHP;
-  float defaultSpeed = 5;
-  float diaSpeed = (defaultSpeed * (sqrt(pow(10, 2) + pow(10, 2)) / 20)); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+  void Remove(GameObject object)
+  {
+    GameObjectRef.gameObject.remove(object);
+  }
 
-  
-  GameObject(){
-    
-  }
-  
-  void show() {
-    
-  }
-  
-  void act() {
-    
-  }
-  
-  boolean hasDied() {
-    return false;
+  void drawObjects() {
+    //println(gameObject.size());
+
+    for (GameObject object : GameObjectRef.gameObject) {
+      println("2");
+      object.draw();
+    }
   }
 }
