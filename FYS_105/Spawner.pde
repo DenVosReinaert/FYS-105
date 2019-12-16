@@ -1,5 +1,5 @@
 //Ruben de Jager
-class Spawner extends GameObject{
+class Spawner extends GameObject {
 
   float spawnerPosX0, spawnerPosY0, spawnerW, spawnerH; //Left
   float spawnerPosX1, spawnerPosY1; //Right
@@ -33,9 +33,9 @@ class Spawner extends GameObject{
     rect(spawnerPosX1, spawnerPosY1, spawnerW, spawnerH);//Right
     rect(spawnerPosX2, spawnerPosY2, spawnerW, spawnerH);//Up
     rect(spawnerPosX3, spawnerPosY3, spawnerW, spawnerH);//Down
-    
-    
-        if (frameCount<100) {
+
+
+    if (frameCount<100) {
     } else if (frameCount<400) {
       straightLine1();
     } else if (frameCount<1500) {
@@ -64,4 +64,6 @@ class Spawner extends GameObject{
   void straightLine3() {
     if (frameCount %30==0) {//modulus
       Add(new Heavy());
-}//class Spawner
+    }
+  }
+}

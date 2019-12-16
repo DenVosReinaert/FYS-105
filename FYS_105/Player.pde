@@ -11,12 +11,12 @@ class Player extends GameObject {
 
   Player() {
 
-    bulletCount = 20;
-    mainChar = loadImage("/data/img/Last_Stand_Character_1_14x20.png");
-    playerSize = 0;
-    speed = defaultSpeed;
-    xPosition = (width/2) - playerSize/2;
-    yPosition = (height/2) - playerSize/2;
+
+    
+    playerWidth = 14;
+    playerHeight = 20;
+    playerPosX = (width/2) - playerWidth/2;
+    playerPosY = (height/2) - playerHeight/2;
 
     tag = "player";
 

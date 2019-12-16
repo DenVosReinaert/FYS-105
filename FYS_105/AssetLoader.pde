@@ -29,6 +29,9 @@ void LoadAssets()
   main = loadImage("/data/img/LastStand-MainMenu.png");
   background = loadImage("/Graphics/background.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
+  
+  
+  
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
   LMG = minim.loadFile("/data/sound/LMG.mp3");

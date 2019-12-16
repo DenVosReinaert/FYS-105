@@ -33,7 +33,6 @@ UI UI;
 GameOver gameover;
 aScore ascore;
 Bullet bullet;
-Map map;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
@@ -96,13 +95,12 @@ void draw()
 void keyPressed() {
   // Boss wave
   if (key == 'p') {
-   spawn.timer = 18525;
+    spawn.timer = 18525;
   }
 
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   gamemngr.keyPressed();
-
 }
 
 void keyReleased() {

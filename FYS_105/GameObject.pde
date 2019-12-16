@@ -1,4 +1,4 @@
-abstract class GameObject {
+public class GameObject {
 
 
   ArrayList<GameObject> gameObject = new ArrayList();
