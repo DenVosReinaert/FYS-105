@@ -1,7 +1,7 @@
 class BulletEngine {
   ArrayList<GameObject> engine;
-  boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
-
+  boolean wKey, aKey, sKey, dKey, spacekey, oneKey, twoKey, threeKey;
+  boolean shootingDown, shootingLeft, shootingRight, shootingUp;
   boolean lookingDown, lookingLeft, lookingRight = false;
   boolean lookingUp = true;
 
@@ -27,47 +27,79 @@ class BulletEngine {
 
   void keyPressed() {
     if (key == 'a') {
-      akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
+      aKey = true;
     }
     if (key == 's') {
-      skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
+      sKey = true;
     }
     if (key == 'd') {
-      dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
+      dKey = true;
     }
     if (key == 'w') {
-      wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
+      wKey = true;
     }
     if (key == ' ') spacekey = true;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-  }
+    if (key == '1') oneKey = true;
+    if (key == '2') twoKey = true;
+    if (key == '3') threeKey = true;
 
-  void keyReleased() {
-    if (key == 'a') akey = false;
-    if (key == 's') skey = false;
-    if (key == 'd') dkey = false;
-    if (key == 'w') wkey = false;
-    if (key == ' ') spacekey = false;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
+//for shooting in different directions  
+  if (keyCode == LEFT) {
+    shootingLeft = true;
+    shootingUp = false;
+    shootingRight = false;
+    shootingDown = false;
+  } else if (keyCode == DOWN) {
+    shootingLeft = false;
+    shootingUp = false;
+    shootingRight = false;
+    shootingDown = true;
+  } else if (keyCode == RIGHT) { 
+    shootingLeft = false;
+    shootingUp = false;
+    shootingRight = true;
+    shootingLeft = false;
+  } else if (keyCode == UP) {
+    shootingLeft = false;
+    shootingUp = true;
+    shootingRight = false;
+    shootingDown = false;
   }
+//looking for the sprites
+    if (keyCode == LEFT) {
+    lookingLeft = true;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = false;
+  } else if (keyCode == DOWN) {
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = true;
+  } else if (keyCode == RIGHT) { 
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = true;
+    lookingLeft = false;
+  } else if (keyCode == UP) {
+    lookingLeft = false;
+    lookingUp = true;
+    lookingRight = false;
+    lookingDown = false;
+  }
+}
+void keyReleased() {
+  if (key == 'a') aKey = false;
+  if (key == 's') sKey = false;
+  if (key == 'd') dKey = false;
+  if (key == 'w') wKey = false;
+  if (key == ' ') spacekey = false;
+  if (key == '1') oneKey = true;
+  if (key == '2') twoKey = true;
+  if (key == '3') threeKey = true;
+  if (keyCode == UP) shootingUp = false;
+  if (keyCode == LEFT) shootingLeft = false;
+  if (keyCode == RIGHT) shootingRight = false;
+  if (keyCode == DOWN) shootingDown = false;
+}
 }

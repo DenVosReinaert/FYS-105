@@ -6,22 +6,22 @@ class MachineGun extends Gun {
   }
 
   void shoot() {
-    if (cooldown == threshold && bengine.lookingUp) {
+    if (cooldown == threshold && bengine.shootingUp) {
       bengine.engine.add(new Bullet(0, -15));
       LMG.play();
       LMG.rewind();
       cooldown = 0;
-    } else if (cooldown == threshold && bengine.lookingDown) {
+    } else if (cooldown == threshold && bengine.shootingDown) {
       bengine.engine.add(new Bullet(0, 15));
       LMG.play();
       LMG.rewind();
       cooldown = 0;
-    } else if (cooldown == threshold && bengine.lookingLeft) {
+    } else if (cooldown == threshold && bengine.shootingLeft) {
       bengine.engine.add(new Bullet(-15, 0));
       LMG.play();
       LMG.rewind();
       cooldown = 0;
-    } else if (cooldown == threshold && bengine.lookingRight) {
+    } else if (cooldown == threshold && bengine.shootingRight) {
       bengine.engine.add(new Bullet(15, 0));
       LMG.play();
       LMG.rewind();
