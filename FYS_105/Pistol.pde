@@ -8,26 +8,25 @@ class Pistol extends GameObject {
 
     if (cooldown == threshold && myPlayer.lookingUp) {
       Add(new Bullet(0, -15));
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
+      myPlayer.playerPosY = myPlayer.playerPosY + 5;
+    } else if (cooldown == threshold && bengine.lookingDown) {
       Add(new Bullet(0, 15));
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
+      myPlayer.playerPosY = myPlayer.playerPosY - 5;
+    } else if (cooldown == threshold && bengine.lookingLeft) {
       Add(new Bullet(-15, 0));
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
+      myPlayer.playerPosX = myPlayer.playerPosX + 5;
+    } else if (cooldown == threshold && bengine.lookingRight) {
       Add(new Bullet(15, 0));
+      myPlayer.playerPosX = myPlayer.playerPosX - 5;
       Pistol.play();
 
       Pistol.rewind();
       cooldown = 0;
     }
+
+    Pistol.play();
+    Pistol.rewind();
+    cooldown = 0;
   }
 
   void recharge() {

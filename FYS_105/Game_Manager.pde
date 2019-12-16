@@ -33,6 +33,9 @@ class Game_Manager {
 
 
     if (game) {
+      if (healthbar.levens <= 0) {
+       gamemngr.dead = true; 
+      }
       homeSnd.pause();
 
       lvlMngr.lvlNum = 1;

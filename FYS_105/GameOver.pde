@@ -107,28 +107,30 @@ class GameOver {
   }
 
   void keyPressed() {
-    if (key == '\n') {
-      // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
-      ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-      //  for (int i = 0; i < bN; i++) {
-      // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
-      ascore.saveScore();
-      // Reset everything back to how the game was in the beginning
-      healthbar.levens = 3;
-      gamemngr.hscoreA = 0;
-      l1s = 0;
-      l2s = 0;
-      l3s = 0;
-      l4s = 0;
-      ascore.score = 0;
-      spawn.timer = 0;
-      // print(healthbar.levens);
-      gamemngr.dead = false;
-      gamemngr.hscore = true;
-      //  } else {
-      // text("Try again..", width/2-150, height/8);
-      //  }
-      //}
+    if (gamemngr.dead) {
+      if (key == '\n') {
+        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
+        ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+        //  for (int i = 0; i < bN; i++) {
+        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
+        ascore.saveScore();
+        // Reset everything back to how the game was in the beginning
+        healthbar.levens = 3;
+        gamemngr.hscoreA = 0;
+        l1s = 0;
+        l2s = 0;
+        l3s = 0;
+        l4s = 0;
+        spawn.timer = 0;
+        ascore.score = 0;
+        // print(healthbar.levens);
+        gamemngr.dead = false;
+        gamemngr.hscore = true;
+        //  } else {
+        // text("Try again..", width/2-150, height/8);
+        //  }
+        //}
+      }
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {

@@ -1,22 +1,26 @@
 class MachineGun extends GameObject {
 
-  
+
   MachineGun() {
     threshold = 8;
     cooldown = 0;
-    
   }
 
   void shoot() {
 
-    if (cooldown == threshold && myPlayer.lookingUp) {
+
+    if (cooldown == threshold && myPlayer.shootingUp) {
       Add(new Bullet(0, -15));
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
+      myPlayer.playerPosY = myPlayer.playerPosY + 10;
+    } else if (cooldown == threshold && bengine.shootingDown) {
       Add(new Bullet(0, 15));
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
+      myPlayer.playerPosY = myPlayer.playerPosY - 10;
+    } else if (cooldown == threshold && bengine.shootingLeft) {
       Add(new Bullet(-15, 0));
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
+      myPlayer.playerPosX = myPlayer.playerPosX + 10;
+    } else if (cooldown == threshold && bengine.shootingRight) {
       Add(new Bullet(15, 0));
+      myPlayer.playerPosX = myPlayer.playerPosX - 10;
     }
 
     LMG.play();

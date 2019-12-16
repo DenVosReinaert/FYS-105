@@ -8,51 +8,51 @@ class Shotgun extends GameObject {
 
   void shoot() {
 
-    if (cooldown == threshold && myPlayer.lookingUp) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
+    if (cooldown == threshold && bengine.shootingUp) {
       Add(new Bullet(-2, -14));
       Add(new Bullet(-1, -15));
       Add(new Bullet(0, -16));
       Add(new Bullet(1, -15));
       Add(new Bullet(2, -14));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
+
+      myPlayer.playerPosY = myPlayer.playerPosY + 20;
+    } else if (cooldown == threshold && bengine.shootingDown) {
+
       Add(new Bullet(-2, 14));
       Add(new Bullet(-1, 15));
       Add(new Bullet(0, 16));
       Add(new Bullet(1, 15));
       Add(new Bullet(2, 14));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
+
+      myPlayer.playerPosY = myPlayer.playerPosY - 20;
+    } else if (cooldown == threshold && bengine.shootingRight) {
+
       Add(new Bullet(14, -2));
       Add(new Bullet(15, -1));
       Add(new Bullet(16, 0));
       Add(new Bullet(15, 1));
       Add(new Bullet(14, 2));
       cooldown = 0;
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
-      Shotgun.play();
-      Shotgun.rewind();
-      ShotgunReload.play();
-      ShotgunReload.rewind();
+
+      myPlayer.playerPosX = myPlayer.playerPosX - 20;
+    } else if (cooldown == threshold && bengine.shootingLeft) {
+
       Add(new Bullet(-14, -2));
       Add(new Bullet(-15, -1));
       Add(new Bullet(-16, 0));
       Add(new Bullet(-15, 1));
       Add(new Bullet(-14, 2));
+
+      myPlayer.playerPosX = myPlayer.playerPosX + 20;
+
       cooldown = 0;
     }
+    Shotgun.play();
+    Shotgun.rewind();
+    ShotgunReload.play();
+    ShotgunReload.rewind();
   }
 
   void recharge() {

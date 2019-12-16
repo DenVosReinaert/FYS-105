@@ -12,7 +12,7 @@ class Player extends GameObject {
   Player() {
 
 
-    
+
     playerWidth = 14;
     playerHeight = 20;
     playerPosX = (width/2) - playerWidth/2;
@@ -57,112 +57,146 @@ class Player extends GameObject {
       threekey = false;
     }
 
+
+    if (myPlayer.lookingLeft) {
+      playerLeft.resize(14, 20);
+      image(playerLeft, playerPosX, playerPosY);
+    } else if (myPlayer.lookingRight) {
+      playerRight.resize(14, 20);
+      image(playerRight, playerPosX, playerPosY);
+    } else if (myPlayer.lookingUp) {
+      playerBack.resize(14, 20);
+      image(playerBack, playerPosX, playerPosY);
+    } else if (myPlayer.lookingDown) {
+      playerFront.resize(14, 20);
+      image(playerFront, playerPosX, playerPosY);
+    }
+    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
+
+
     moveVelX = 0;
     moveVelY = 0;
+
+
     //240
-    if (akey) {
-      if ((playerPosX + moveVelX < playerWidth/2) || (playerPosX + moveVelX < 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + moveVelX < 580 + playerWidth && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
-      {
-        moveVelX = 0;
-      } else
 
-        moveVelX = -defaultSpeed;
-    }
-
-    if (dkey) {
-      if ((playerPosX + moveVelX > width - playerWidth/2) || (playerPosX + playerWidth/2 + moveVelX > width - 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + playerWidth/2 + moveVelX > 700 && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
-      {
-        moveVelX = 0;
-      } else 
-      moveVelX = defaultSpeed;
-    }
-
-    if (wkey) {
-      if ((playerPosY + moveVelY < playerHeight/2) || (playerPosY + moveVelY < 280 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + moveVelY < 16 && (playerPosX < 580 || playerPosX > 700))
-      {
-        moveVelY = 0;
-      } else 
-      moveVelY = -defaultSpeed;
-    }
-
-    if (skey) {
-      if ((playerPosY + moveVelY > height - playerHeight/2) || (playerPosY + moveVelY > 440 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + playerHeight + moveVelY > height - 16 && (playerPosX < 580 || playerPosX + playerWidth > 700))
-      {
-        moveVelY = 0;
-      } else 
-      moveVelY = defaultSpeed;
-    }
-
-    //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
     } else defaultSpeed = 5;
 
-    if (spacekey) {
-      if (currentGun == pistoll)
-        pistol.shoot();
-      if (currentGun == machinegun)
-        machineGun.shoot();
-      if (currentGun == shotgun)
-        shotGun.shoot();
+    if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
+      //if (currentGun == pistoll)
+      //  pistol.shoot();
+      //if (currentGun == machinegun)
+      //  machineGun.shoot();
+      //if (currentGun == shotgun)
+      //  shotGun.shoot();
+      currentGun.shoot();
     }
 
     playerPosX += moveVelX;
     playerPosY += moveVelY;
 
-    pistol.recharge();
-    machineGun.recharge();
-    shotGun.recharge();
+    currentGun.recharge();
   }
+}
 
 
 
 
-
-
-  void keyPressed() {
-    if (key == 'a') {
-      akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == 's') {
-      skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
-    }
-    if (key == 'd') {
-      dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
-    }
-    if (key == 'w') {
-      wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == ' ') spacekey = true;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
+void keyPressed() {
+  if (key == 'a') {
+    akey = true;
+    lookingLeft = true;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = false;
   }
-
-  void keyReleased() {
-    if (key == 'a') akey = false;
-    if (key == 's') skey = false;
-    if (key == 'd') dkey = false;
-    if (key == 'w') wkey = false;
-    if (key == ' ') spacekey = false;
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
+  if (key == 's') {
+    skey = true;
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = true;
   }
+  if (key == 'd') {
+    dkey = true;
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = true;
+    lookingDown = false;
+  }
+  if (key == 'w') {
+    wkey = true;
+    lookingLeft = false;
+    lookingUp = true;
+    lookingRight = false;
+    lookingDown = false;
+  }
+  if (key == ' ') spacekey = true;
+  if (key == '1') onekey = true;
+  if (key == '2') twokey = true;
+  if (key == '3') threekey = true;
+
+
+  if (keyCode == LEFT)
+  {
+    shootingLeft = true;
+    shootingRight = false;
+    shootingDown = false;
+    shootingUp = false;
+
+    lookingLeft = true;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = false;
+  }
+  if (keyCode == RIGHT)
+  {
+    shootingLeft = false;
+    shootingRight = true;
+    shootingDown = false;
+    shootingUp = false;
+
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = true;
+    lookingDown = false;
+  }
+  if (keyCode == UP)
+  {
+    shootingLeft = false;
+    shootingRight = false;
+    shootingDown = false;
+    shootingUp = true;
+
+    lookingLeft = false;
+    lookingUp = true;
+    lookingRight = false;
+    lookingDown = false;
+  }
+  if (keyCode == DOWN)
+  {
+    shootingLeft = false;
+    shootingRight = false;
+    shootingDown = true;
+    shootingUp = false;
+
+    lookingLeft = false;
+    lookingUp = false;
+    lookingRight = false;
+    lookingDown = true;
+  }
+}
+
+void keyReleased() {
+  if (key == 'a') akey = false;
+  if (key == 's') skey = false;
+  if (key == 'd') dkey = false;
+  if (key == 'w') wkey = false;
+  if (key == ' ') spacekey = false;
+  if (key == '1') onekey = true;
+  if (key == '2') twokey = true;
+  if (key == '3') threekey = true;
+}
 }
