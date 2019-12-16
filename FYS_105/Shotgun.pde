@@ -16,6 +16,7 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(0, -16));
       bengine.engine.add(new Bullet(1, -15));
       bengine.engine.add(new Bullet(2, -14));
+      myPlayer.playerPosY = myPlayer.playerPosY + 20;
       cooldown = 0;
     } else if (cooldown == threshold && bengine.shootingDown) {
       Shotgun.play();
@@ -27,6 +28,7 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(0, 16));
       bengine.engine.add(new Bullet(1, 15));
       bengine.engine.add(new Bullet(2, 14));
+      myPlayer.playerPosY = myPlayer.playerPosY - 20;
       cooldown = 0;
     } else if (cooldown == threshold && bengine.shootingRight) {
       Shotgun.play();
@@ -38,6 +40,7 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(16, 0));
       bengine.engine.add(new Bullet(15, 1));
       bengine.engine.add(new Bullet(14, 2));
+      myPlayer.playerPosX = myPlayer.playerPosX - 20;
       cooldown = 0;
     } else if (cooldown == threshold && bengine.shootingLeft) {
       Shotgun.play();
@@ -49,6 +52,7 @@ class Shotgun extends Gun {
       bengine.engine.add(new Bullet(-16, 0));
       bengine.engine.add(new Bullet(-15, 1));
       bengine.engine.add(new Bullet(-14, 2));
+      myPlayer.playerPosX = myPlayer.playerPosX + 20;
       cooldown = 0;
     }
   }

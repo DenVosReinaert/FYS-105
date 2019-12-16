@@ -80,7 +80,7 @@ class BulletEngine {
     lookingLeft = false;
     lookingUp = false;
     lookingRight = true;
-    lookingLeft = false;
+    lookingDown = false;
   } else if (keyCode == UP) {
     lookingLeft = false;
     lookingUp = true;
