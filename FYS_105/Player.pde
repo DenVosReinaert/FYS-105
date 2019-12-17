@@ -23,9 +23,8 @@ class Player extends GameObject {
     pistoll = 1;
     shotgun = 2;
     machinegun = 3;
-    //TO DO: als je 1 indrukt: BasicGun();,
-    // als je 2 indrukt: MachineGun();,
-    // als je 3 indrukt: Shotgun();.
+
+    currentGun = pistoll;
   }
 
 
@@ -33,17 +32,6 @@ class Player extends GameObject {
 
     fill(255, 100, 0);
     rect(playerPosX, playerPosY, playerWidth, playerHeight);
-
-    //int i = gameObject.size() - 1;
-    //while (i >= 0) {
-    //  GameObject thing = gameObject.get(i);
-    //  thing.show();
-    //  thing.act();
-    //  if (thing.hasDied()) {
-    //    this.gameObject.remove(i);
-    //  }
-    //  i--;
-    //}
 
     if (onekey) {
       currentGun = pistoll;
@@ -85,15 +73,75 @@ class Player extends GameObject {
 
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)
+      {
         pistol.shoot();
         pistol.recharge();
+      }
       if (currentGun == machinegun)
+      {
         machineGun.shoot();
         machineGun.recharge();
+      }
       if (currentGun == shotgun)
+      {
         shotGun.shoot();
         shotGun.recharge();
+      }
     }
+
+
+    if (playerPosX < 0)
+      playerPosX = 0;
+
+    if (playerPosX + playerWidth > width)
+      playerPosX = width - playerWidth;
+
+    if (playerPosY < 0)
+      playerPosY = 0;
+
+    if (playerPosY + playerHeight > height)
+      playerPosY = height - playerHeight;
+
+
+
+    if (akey)
+    {
+      if (playerPosX + moveVelX < 0)
+      {
+        moveVelX = 0;
+      } else
+        playerPosX -= defaultSpeed;
+    }
+
+    if (dkey)
+    {
+      if (playerPosX + playerWidth > width)
+      {
+        moveVelX = 0;
+      } else
+        playerPosX += defaultSpeed;
+    }
+
+    if (wkey)
+    {
+      if (playerPosY + moveVelY < 0)
+      {
+        moveVelY = 0;
+      } else
+        playerPosY -= defaultSpeed;
+    }
+
+    if (skey)
+    {
+      if (playerPosY + moveVelY > height)
+      {
+        moveVelY = 0;
+      } else
+        playerPosY += defaultSpeed;
+    }
+
+
+
 
     playerPosX += moveVelX;
     playerPosY += moveVelY;
@@ -132,7 +180,6 @@ class Player extends GameObject {
       lookingRight = false;
       lookingDown = false;
     }
-    if (key == ' ') spacekey = true;
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
@@ -193,9 +240,12 @@ class Player extends GameObject {
     if (key == 's') skey = false;
     if (key == 'd') dkey = false;
     if (key == 'w') wkey = false;
-    if (key == ' ') spacekey = false;
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
+    if (keyCode == LEFT) shootingLeft = false;
+    if (keyCode == RIGHT) shootingRight = false;
+    if (keyCode == UP) shootingUp = false;
+    if (keyCode == DOWN) shootingDown = false;
   }
 }

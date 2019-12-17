@@ -4,6 +4,7 @@ class MachineGun extends GameObject {
   MachineGun() {
     threshold = 8;
     cooldown = 0;
+    knockback = 10;
   }
 
   void shoot() {
@@ -11,21 +12,42 @@ class MachineGun extends GameObject {
 
     if (cooldown == threshold && myPlayer.shootingUp) {
       Add(new Bullet(0, -15));
-      myPlayer.playerPosY = myPlayer.playerPosY + 10;
+
+      cooldown = 0;
+
+      myPlayer.playerPosY += knockback;
+
+      LMG.play();
+      LMG.rewind();
     } else if (cooldown == threshold && myPlayer.shootingDown) {
       Add(new Bullet(0, 15));
-      myPlayer.playerPosY = myPlayer.playerPosY - 10;
+
+      cooldown = 0;
+
+
+      myPlayer.playerPosY -= knockback;
+
+      LMG.play();
+      LMG.rewind();
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
       Add(new Bullet(-15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX + 10;
+
+      cooldown = 0;
+
+      myPlayer.playerPosX += knockback;
+
+      LMG.play();
+      LMG.rewind();
     } else if (cooldown == threshold && myPlayer.shootingRight) {
       Add(new Bullet(15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX - 10;
-    }
 
-    LMG.play();
-    LMG.rewind();
-    cooldown = 0;
+      cooldown = 0;
+
+      myPlayer.playerPosX -= knockback;
+
+      LMG.play();
+      LMG.rewind();
+    }
   }
 
   void recharge() {

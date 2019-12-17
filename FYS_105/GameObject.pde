@@ -14,7 +14,7 @@ public class GameObject {
 
   String tag;
 
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight;
+  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
   float enemyPosX, enemyPosY, enemyW, enemyH, enemyHP, enemySpeedX, enemySpeedY;
   float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, hp;
   float defaultSpeed = 5;
