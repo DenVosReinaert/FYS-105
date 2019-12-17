@@ -9,13 +9,13 @@ class Pistol extends GameObject {
     if (cooldown == threshold && myPlayer.lookingUp) {
       Add(new Bullet(0, -15));
       myPlayer.playerPosY = myPlayer.playerPosY + 5;
-    } else if (cooldown == threshold && bengine.lookingDown) {
+    } else if (cooldown == threshold && myPlayer.lookingDown) {
       Add(new Bullet(0, 15));
       myPlayer.playerPosY = myPlayer.playerPosY - 5;
-    } else if (cooldown == threshold && bengine.lookingLeft) {
+    } else if (cooldown == threshold && myPlayer.lookingLeft) {
       Add(new Bullet(-15, 0));
       myPlayer.playerPosX = myPlayer.playerPosX + 5;
-    } else if (cooldown == threshold && bengine.lookingRight) {
+    } else if (cooldown == threshold && myPlayer.lookingRight) {
       Add(new Bullet(15, 0));
       myPlayer.playerPosX = myPlayer.playerPosX - 5;
       Pistol.play();

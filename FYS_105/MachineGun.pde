@@ -12,13 +12,13 @@ class MachineGun extends GameObject {
     if (cooldown == threshold && myPlayer.shootingUp) {
       Add(new Bullet(0, -15));
       myPlayer.playerPosY = myPlayer.playerPosY + 10;
-    } else if (cooldown == threshold && bengine.shootingDown) {
+    } else if (cooldown == threshold && myPlayer.shootingDown) {
       Add(new Bullet(0, 15));
       myPlayer.playerPosY = myPlayer.playerPosY - 10;
-    } else if (cooldown == threshold && bengine.shootingLeft) {
+    } else if (cooldown == threshold && myPlayer.shootingLeft) {
       Add(new Bullet(-15, 0));
       myPlayer.playerPosX = myPlayer.playerPosX + 10;
-    } else if (cooldown == threshold && bengine.shootingRight) {
+    } else if (cooldown == threshold && myPlayer.shootingRight) {
       Add(new Bullet(15, 0));
       myPlayer.playerPosX = myPlayer.playerPosX - 10;
     }

@@ -23,9 +23,25 @@ class Brute extends Enemies{
 
   }//constructor Brute
 
-  void enemyShow(){
+  void draw(){
     fill(9,36,145);
     rect(enemyPosX,enemyPosY,enemyW,enemyH);
+    
+    //ENEMY MOVEMENT
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+      if (myPlayer.playerPosX > enemyPosX) {
+        enemyPosX += enemySpeedX;
+      }//if
+      if (myPlayer.playerPosX < enemyPosX) {
+        enemyPosX -= enemySpeedX;
+      }//if
+      if (myPlayer.playerPosY < enemyPosY) {
+        enemyPosY -= enemySpeedY;
+      } //if
+      else {
+        enemyPosY += enemySpeedY;
+      }//else
+    }
   }
 
 }

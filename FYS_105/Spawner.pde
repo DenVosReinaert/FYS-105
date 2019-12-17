@@ -1,13 +1,20 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
+  Timer timer = new Timer();
+
   float spawnerPosX0, spawnerPosY0, spawnerW, spawnerH; //Left
   float spawnerPosX1, spawnerPosY1; //Right
   float spawnerPosX2, spawnerPosY2; //Up
   float spawnerPosX3, spawnerPosY3; //Down
 
-  int timer = 0;
-  int wave;
+  boolean spawnable = false;
+
+  //int timer = 0;
+  float wave, waveAmount, gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
+  boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
+
+
 
   Spawner() {
     spawnerPosX0=-40 * 2;
@@ -24,7 +31,13 @@ class Spawner extends GameObject {
 
     spawnerW=100;
     spawnerH=100;
+
+    waveAmount = 1;
   }//constructor spawner
+
+
+
+
 
 
   void draw() {
@@ -34,130 +47,123 @@ class Spawner extends GameObject {
     rect(spawnerPosX2, spawnerPosY2, spawnerW, spawnerH);//Up
     rect(spawnerPosX3, spawnerPosY3, spawnerW, spawnerH);//Down
 
-    if (timer<100) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 1;
-    } else if (timer>400 && timer < 2160) {
-      GruntSpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 3060 && timer < 3065) {
-        timer = 3060;
+    //timer<100
+
+
+
+    for (int wave = 0; wave < waveAmount; wave ++)
+    {
+      if (timer.Timerr(5)) {
+        textSize(80);
+        text("WAVE "+wave, width/2-150, height/2);
+
+        if (spawnable)
+        {
+          BruteSpawn();
+          GruntSpawn();
+          HeavySpawn();
+          SpeedsterSpawn();
+
+          if (wave % 5 == 0)
+            Boss1Spawn();
+        }
+
+        spawnable = true;
+
+
+
+        if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
+        {
+          spawnable = false;
+          heavySpawnDone = false;
+          gruntSpawnDone = false;
+          speedsterSpawnDone = false;
+          bruteSpawnDone = false;
+          bossSpawnDone = false;
+
+          waveAmount ++;
+        }
       }
-    } else if (timer > 2160 && timer < 3060 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 2;
-    } else if (timer > 3060 && timer < 4860) {
-      GruntSpawn();
-      SpeedsterSpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 5760 && timer < 5765) {
-        timer = 5760;
-      }
-    } else if (timer > 4860 && timer <5760 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 3;
-    } else if (timer > 5760 && timer < 7560) {
-      GruntSpawn();
-      HeavySpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 8460 && timer < 8465) {
-        timer = 8460;
-      }
-    } else if (timer > 7560 && timer <8460 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 4;
-    } else if (timer > 8460 && timer <10260) {
-      GruntSpawn();
-      SpeedsterSpawn();
-      HeavySpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 11160 && timer < 11165) {
-        timer = 1160;
-      }
-    } else if (timer > 10260 && timer < 11160 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 5;
-    } else if (timer > 11160 && timer <12960) {
-      SpeedsterSpawn();
-      HeavySpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 13860 && timer < 13865) {
-        timer = 13860;
-      }
-    } else if (timer > 12960 && timer < 13860 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 6;
-    } else if (timer > 13860 && timer < 13950) {
-      BruteSpawn();
-      GruntSpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 14025 && timer < 14030) {
-        timer = 14025;
-      }
-    } else if (timer > 13950 && timer < 14025 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 7;
-    } else if (timer > 14025 && timer <15825) {
-      HeavySpawn();
-      BruteSpawn();
-      GruntSpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 16725 && timer < 16730) {
-        timer = 16725;
-      }
-    } else if (timer > 15825 && timer < 16725 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("WAVE "+wave, width/2-150, height/2);
-      wave = 8;
-    } else if (timer > 16725 && timer <18525) {
-      SpeedsterSpawn();
-      BruteSpawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 19200 && timer < 19205) {
-        timer = 19200;
-      }
-    } else if (timer > 18525 && timer < 19200 && GameObjectRef.gameObject.size() == 0) {
-      textSize(80);
-      text("BOSS WAVE", width/2-250, height/2);
-      wave = 9;
-    } else if (timer > 19200 && timer < 20100 ) {
-      Boss1Spawn();
-      if (GameObjectRef.gameObject.size() != 0 && timer > 20090 && timer < 20120) {
-        timer = 20100;
-      }
-    } else if (timer > 20200 && GameObjectRef.gameObject.size() == 0) {
-      healthbar.levens = 0;
     }
   }//spawnerUpdate
 
 
+
   void BruteSpawn() {
-    if (frameCount %150==0) {//modulus
-      Add(new Brute());
+
+
+    bruteCount = random(wave * 2, wave * 5);
+
+    for (int i = 0; i < bruteCount; i ++)
+    {
+      if (timer.Timerr(5))
+        Add(new Brute());
+
+      if (i == bruteCount)
+        bruteSpawnDone = true;
     }
   }//spawnerShow
 
 
+
+
   void GruntSpawn() {
-    if (frameCount %100==0) {//modulus
-      Add(new Grunt());
+    gruntCount = random(wave * 2, wave * 5);
+
+    for (int i = 0; i < gruntCount; i ++)
+    {
+      if (timer.Timerr(2))
+        Add(new Grunt());
+
+      if (i == gruntCount)
+        gruntSpawnDone = true;
     }
   }
+
+
+
 
   void SpeedsterSpawn() {
-    if (frameCount %50==0) {//modulus
-      Add(new Speedster());
+    speedsterCount = random(wave * 2, wave * 5);
+
+    for (int i = 0; i < speedsterCount; i ++)
+    {
+      if (timer.Timerr(1))
+        Add(new Speedster());
+
+      if (i == speedsterCount)
+        speedsterSpawnDone = true;
     }
   }
+
+
+
 
   void HeavySpawn() {
-    if (frameCount %30==0) {//modulus
-      Add(new Heavy());
+    heavyCount = random(wave * 2, wave * 5);
+
+    for (int i = 0; i < heavyCount; i ++)
+    {
+      if (timer.Timerr(7))
+        Add(new Heavy());
+
+      if (i == heavyCount)
+        heavySpawnDone = true;
     }
   }
 
+
+
+
   void Boss1Spawn() {
-    if (frameCount %60==0) {//modulus
+    bossCount = 1;
+
+    for (int i = 0; i < bossCount; i ++)
+    {
       Add(new Boss1());
+
+      if (i == bossCount)
+        bossSpawnDone = true;
     }
   }
 }

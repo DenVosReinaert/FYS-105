@@ -114,6 +114,8 @@ class GameOver {
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         ascore.saveScore();
+        
+        //NEEDS UPDATING
         // Reset everything back to how the game was in the beginning
         healthbar.levens = 3;
         gamemngr.hscoreA = 0;
@@ -121,7 +123,6 @@ class GameOver {
         l2s = 0;
         l3s = 0;
         l4s = 0;
-        spawn.timer = 0;
         ascore.score = 0;
         // print(healthbar.levens);
         gamemngr.dead = false;

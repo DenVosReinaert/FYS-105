@@ -8,7 +8,7 @@ class Shotgun extends GameObject {
 
   void shoot() {
 
-    if (cooldown == threshold && bengine.shootingUp) {
+    if (cooldown == threshold && myPlayer.shootingUp) {
       Add(new Bullet(-2, -14));
       Add(new Bullet(-1, -15));
       Add(new Bullet(0, -16));
@@ -17,7 +17,7 @@ class Shotgun extends GameObject {
       cooldown = 0;
 
       myPlayer.playerPosY = myPlayer.playerPosY + 20;
-    } else if (cooldown == threshold && bengine.shootingDown) {
+    } else if (cooldown == threshold && myPlayer.shootingDown) {
 
       Add(new Bullet(-2, 14));
       Add(new Bullet(-1, 15));
@@ -27,7 +27,7 @@ class Shotgun extends GameObject {
       cooldown = 0;
 
       myPlayer.playerPosY = myPlayer.playerPosY - 20;
-    } else if (cooldown == threshold && bengine.shootingRight) {
+    } else if (cooldown == threshold && myPlayer.shootingRight) {
 
       Add(new Bullet(14, -2));
       Add(new Bullet(15, -1));
@@ -37,7 +37,7 @@ class Shotgun extends GameObject {
       cooldown = 0;
 
       myPlayer.playerPosX = myPlayer.playerPosX - 20;
-    } else if (cooldown == threshold && bengine.shootingLeft) {
+    } else if (cooldown == threshold && myPlayer.shootingLeft) {
 
       Add(new Bullet(-14, -2));
       Add(new Bullet(-15, -1));

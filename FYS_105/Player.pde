@@ -8,7 +8,6 @@ class Player extends GameObject {
   int currentGun, pistoll, shotgun, machinegun;
 
 
-
   Player() {
 
 
@@ -85,118 +84,118 @@ class Player extends GameObject {
     } else defaultSpeed = 5;
 
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
-      //if (currentGun == pistoll)
-      //  pistol.shoot();
-      //if (currentGun == machinegun)
-      //  machineGun.shoot();
-      //if (currentGun == shotgun)
-      //  shotGun.shoot();
-      currentGun.shoot();
+      if (currentGun == pistoll)
+        pistol.shoot();
+        pistol.recharge();
+      if (currentGun == machinegun)
+        machineGun.shoot();
+        machineGun.recharge();
+      if (currentGun == shotgun)
+        shotGun.shoot();
+        shotGun.recharge();
     }
 
     playerPosX += moveVelX;
     playerPosY += moveVelY;
-
-    currentGun.recharge();
   }
-}
 
 
 
 
-void keyPressed() {
-  if (key == 'a') {
-    akey = true;
-    lookingLeft = true;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = false;
+
+  void keyPressed() {
+    if (key == 'a') {
+      akey = true;
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == 's') {
+      skey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+    }
+    if (key == 'd') {
+      dkey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+    }
+    if (key == 'w') {
+      wkey = true;
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == ' ') spacekey = true;
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
+
+
+    if (keyCode == LEFT)
+    {
+      shootingLeft = true;
+      shootingRight = false;
+      shootingDown = false;
+      shootingUp = false;
+
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (keyCode == RIGHT)
+    {
+      shootingLeft = false;
+      shootingRight = true;
+      shootingDown = false;
+      shootingUp = false;
+
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+    }
+    if (keyCode == UP)
+    {
+      shootingLeft = false;
+      shootingRight = false;
+      shootingDown = false;
+      shootingUp = true;
+
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (keyCode == DOWN)
+    {
+      shootingLeft = false;
+      shootingRight = false;
+      shootingDown = true;
+      shootingUp = false;
+
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+    }
   }
-  if (key == 's') {
-    skey = true;
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = true;
-  }
-  if (key == 'd') {
-    dkey = true;
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = true;
-    lookingDown = false;
-  }
-  if (key == 'w') {
-    wkey = true;
-    lookingLeft = false;
-    lookingUp = true;
-    lookingRight = false;
-    lookingDown = false;
-  }
-  if (key == ' ') spacekey = true;
-  if (key == '1') onekey = true;
-  if (key == '2') twokey = true;
-  if (key == '3') threekey = true;
 
-
-  if (keyCode == LEFT)
-  {
-    shootingLeft = true;
-    shootingRight = false;
-    shootingDown = false;
-    shootingUp = false;
-
-    lookingLeft = true;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = false;
+  void keyReleased() {
+    if (key == 'a') akey = false;
+    if (key == 's') skey = false;
+    if (key == 'd') dkey = false;
+    if (key == 'w') wkey = false;
+    if (key == ' ') spacekey = false;
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
   }
-  if (keyCode == RIGHT)
-  {
-    shootingLeft = false;
-    shootingRight = true;
-    shootingDown = false;
-    shootingUp = false;
-
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = true;
-    lookingDown = false;
-  }
-  if (keyCode == UP)
-  {
-    shootingLeft = false;
-    shootingRight = false;
-    shootingDown = false;
-    shootingUp = true;
-
-    lookingLeft = false;
-    lookingUp = true;
-    lookingRight = false;
-    lookingDown = false;
-  }
-  if (keyCode == DOWN)
-  {
-    shootingLeft = false;
-    shootingRight = false;
-    shootingDown = true;
-    shootingUp = false;
-
-    lookingLeft = false;
-    lookingUp = false;
-    lookingRight = false;
-    lookingDown = true;
-  }
-}
-
-void keyReleased() {
-  if (key == 'a') akey = false;
-  if (key == 's') skey = false;
-  if (key == 'd') dkey = false;
-  if (key == 'w') wkey = false;
-  if (key == ' ') spacekey = false;
-  if (key == '1') onekey = true;
-  if (key == '2') twokey = true;
-  if (key == '3') threekey = true;
-}
 }
