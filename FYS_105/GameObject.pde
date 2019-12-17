@@ -1,7 +1,7 @@
 public class GameObject {
 
-  
-  
+
+
   ArrayList<GameObject> gameObject = new ArrayList();
 
   float cooldown, threshold;
@@ -20,12 +20,15 @@ public class GameObject {
   float defaultSpeed = 5;
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
-
+  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 
 
   GameObject() 
   {
-
+    spawnerPos0 = new PVector();
+    spawnerPos1 = new PVector();
+    spawnerPos2 = new PVector();
+    spawnerPos3 = new PVector();
     //for(int i = 0; i < gameObject.size(); i ++)
     //{
     //  GameObject gameobject = new GameObject();
@@ -37,8 +40,6 @@ public class GameObject {
   {    
     drawObjects();
     //println("I have been drawn");
-
-
   }//enemyUpdate
 
   boolean Dead() {
@@ -60,9 +61,8 @@ public class GameObject {
   void drawObjects() {
     //println(gameObject.size());
 
-    for (GameObject object : GameObjectRef.gameObject) {
-      println("2");
-      object.draw();
+    for (int i = 0; i < gameObject.size(); i++) {
+      gameObject.get(i).draw();
     }
   }
 }

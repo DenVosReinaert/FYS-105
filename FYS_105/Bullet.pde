@@ -1,4 +1,4 @@
-class Bullet extends Enemies {
+class Bullet extends GameObject {
 
   Bullet(float incomingDX, float incomingDY) {
     bulletPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player
@@ -8,6 +8,8 @@ class Bullet extends Enemies {
     //hp = 1;
     bulletWidth = 15;
     bulletHeight = 15;
+
+    tag = "bullet";
   }
 
   void draw() {
@@ -17,6 +19,15 @@ class Bullet extends Enemies {
 
     fill(255);
     rect(bulletPosX, bulletPosY, 5, 5);
+
+    //Bullet Removal
+    //    for(int i = 0; i < GameObjectRef.gameObject.size(); i++)
+    //{
+    // if(tag == "bullet" && (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height))
+    // Remove(GameObjectRef.gameObject.get(i));
+    //}
+    if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
+      Remove(this);
   }
 
 

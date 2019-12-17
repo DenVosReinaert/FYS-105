@@ -14,7 +14,7 @@ class Enemies extends GameObject {
           enemyHP--;
           bullet.hp=0;
           for (int j=0; j<5; j++) {
-            GameObjectRef.gameObject.add(new Particle(bullet.playerPosX, bullet.playerPosY));
+            Add(new Particle(bullet.playerPosX, bullet.playerPosY));
           }
         }
       }
