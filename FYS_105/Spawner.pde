@@ -1,7 +1,8 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnTimer = new Timer(5);
+  Timer spawnableTimer = new Timer(5);
+  Timer spawnTimer = new Timer(2);
   Timer waveTextTimer = new Timer(5);
 
   boolean spawnable = false;
@@ -41,20 +42,20 @@ class Spawner extends GameObject {
 
     for (wave = 1; wave <= waveAmount; wave ++)
     {
-      if (!waveTextTimer.TimerDoneWithoutReset()) {
+      if (!waveTextTimer.TimerDone()) {
         textSize(80);
         text("WAVE "+ wave, width/2-150, height/2);
       }
+      waveTextTimer.TimerReset();
     }
     popStyle();
 
-    if (spawnTimer.TimerDone() && spawnable)
+    if (spawnableTimer.TimerDoneWithoutReset() && spawnable)
     {
       HeavySpawn();
       GruntSpawn();
       SpeedsterSpawn();
       BruteSpawn();
-      spawnTimer.TimerReset();
     }
 
     if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
@@ -68,11 +69,8 @@ class Spawner extends GameObject {
 
       waveAmount ++;
     }
-    
+
     spawnable = true;
-
-
-
   }//spawnerUpdate
 
 
