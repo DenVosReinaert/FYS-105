@@ -1,7 +1,8 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer timer = new Timer();
+  Timer spawnTimer = new Timer(5);
+  Timer waveTextTimer = new Timer(5);
 
   boolean spawnable = false;
 
@@ -40,15 +41,21 @@ class Spawner extends GameObject {
 
     for (wave = 1; wave <= waveAmount; wave ++)
     {
-      if (!timer.Timerr(5)) {
+      if (!waveTextTimer.TimerDoneWithoutReset()) {
         textSize(80);
-        text("WAVE "+wave, width/2-150, height/2);
+        text("WAVE "+ wave, width/2-150, height/2);
       }
     }
     popStyle();
-    spawnable = true;
 
-
+    if (spawnTimer.TimerDone() && spawnable)
+    {
+      HeavySpawn();
+      GruntSpawn();
+      SpeedsterSpawn();
+      BruteSpawn();
+      spawnTimer.TimerReset();
+    }
 
     if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
     {
@@ -61,15 +68,11 @@ class Spawner extends GameObject {
 
       waveAmount ++;
     }
+    
+    spawnable = true;
 
 
-    if (spawnable)
-    {
-      HeavySpawn();
-      GruntSpawn();
-      SpeedsterSpawn();
-      BruteSpawn();
-    }
+
   }//spawnerUpdate
 
 
@@ -81,7 +84,7 @@ class Spawner extends GameObject {
 
     for (int i = 0; i < bruteCount; i ++)
     {
-      if (timer.LoopingTimerr(5))
+      if (spawnTimer.TimerDoneWithoutReset())
         Add(new Brute((int) random(-1, 3)));
 
       if (i == bruteCount)
@@ -97,7 +100,7 @@ class Spawner extends GameObject {
 
     for (int i = 0; i < gruntCount; i ++)
     {
-      if (timer.Timerr(2))
+      if (spawnTimer.TimerDoneWithoutReset())
         Add(new Grunt((int) random(-1, 3)));
 
       if (i == gruntCount)
@@ -115,7 +118,7 @@ class Spawner extends GameObject {
 
     for (int i = 0; i < speedsterCount; i ++)
     {
-      if (timer.Timerr(1))
+      if (spawnTimer.TimerDoneWithoutReset())
         Add(new Speedster((int) random(-1, 3)));
 
       if (i == speedsterCount)
@@ -131,7 +134,7 @@ class Spawner extends GameObject {
 
     for (int i = 0; i < heavyCount; i ++)
     {
-      if (timer.Timerr(7))
+      if (spawnTimer.TimerDoneWithoutReset())
         Add(new Heavy((int) random(-1, 3)));
 
       if (i == heavyCount)

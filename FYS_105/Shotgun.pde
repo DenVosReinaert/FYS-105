@@ -11,11 +11,11 @@ class Shotgun extends GameObject {
   void shoot() {
 
     if (cooldown == threshold && myPlayer.shootingUp) {
-      Add(new Bullet(-2, -14));
-      Add(new Bullet(-1, -15));
-      Add(new Bullet(0, -16));
-      Add(new Bullet(1, -15));
-      Add(new Bullet(2, -14));
+
+      for (int i = 0; i < 5; i++)
+      {
+        Add(new Bullet(random(-2, 2), random(-14, -16)));
+      }
 
       cooldown = 0;
 
@@ -27,11 +27,11 @@ class Shotgun extends GameObject {
       ShotgunReload.rewind();
     } else if (cooldown == threshold && myPlayer.shootingDown) {
 
-      Add(new Bullet(-2, 14));
-      Add(new Bullet(-1, 15));
-      Add(new Bullet(0, 16));
-      Add(new Bullet(1, 15));
-      Add(new Bullet(2, 14));
+
+      for (int i = 0; i < 5; i++)
+      {
+        Add(new Bullet(random(-2, 2), random(14, 16)));
+      }
 
       cooldown = 0;
 
@@ -43,11 +43,11 @@ class Shotgun extends GameObject {
       ShotgunReload.rewind();
     } else if (cooldown == threshold && myPlayer.shootingRight) {
 
-      Add(new Bullet(14, -2));
-      Add(new Bullet(15, -1));
-      Add(new Bullet(16, 0));
-      Add(new Bullet(15, 1));
-      Add(new Bullet(14, 2));
+
+      for (int i = 0; i < 5; i++)
+      {
+        Add(new Bullet(random(14, 16), random(-2, 2)));
+      }
 
       cooldown = 0;
 
@@ -59,11 +59,10 @@ class Shotgun extends GameObject {
       ShotgunReload.rewind();
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
 
-      Add(new Bullet(-14, -2));
-      Add(new Bullet(-15, -1));
-      Add(new Bullet(-16, 0));
-      Add(new Bullet(-15, 1));
-      Add(new Bullet(-14, 2));
+      for (int i = 0; i < 5; i++)
+      {
+        Add(new Bullet(random(-14, -16), random(-2, 2)));
+      }
 
       cooldown = 0;
 

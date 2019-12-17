@@ -1,33 +1,39 @@
 class Timer
 {
 
-  int frames, currentCount;
+  int frames, framesInitial;
 
-  boolean Timerr(int seconds)
+  public Timer(int seconds)
   {
-    frames = seconds * 60;
+    framesInitial = seconds * (int) frameRate;
+    
+    frames = framesInitial;
+    
+    frames --;
+  }
 
-    currentCount ++;
 
-    if (currentCount >= frames)
+  boolean TimerDone()
+  {
+    if (frames < 0)
+    {
+      TimerReset();
+      return true;
+    }
+    return false;
+  }
+
+  boolean TimerDoneWithoutReset()
+  {
+    if (frames < 0)
     {
       return true;
     }
     return false;
   }
-  
-  
-  boolean LoopingTimerr(int seconds)
+
+  public void TimerReset()
   {
-   frames = seconds * 60;
-   
-   currentCount ++;
-   
-   if(currentCount >= frames)
-   {
-    currentCount = 0;
-    return true;
-   }
-   return false;
+    frames = framesInitial;
   }
 }
