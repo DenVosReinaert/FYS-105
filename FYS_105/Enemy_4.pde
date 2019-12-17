@@ -1,34 +1,42 @@
-class Brute extends Enemies{
+class Brute extends Enemies {
 
-  Brute(){
+  Brute() {
     enemyW=30;
     enemyH=30;
     enemyHP=4;
     enemySpeedX=1;
     enemySpeedY=1;
-            float r = random(-1, 3);
-    if (r <= 0) {
-      enemyPosX = spawn.spawnerPosX0;
-      enemyPosY = spawn.spawnerPosY0;
-    } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPosX1;
-      enemyPosY = spawn.spawnerPosY1;
-    } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPosX2;
-      enemyPosY = spawn.spawnerPosY2;
-    } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPosX3;
-      enemyPosY = spawn.spawnerPosY3;
-    }
-
   }//constructor Brute
 
-  void draw(){
-    fill(9,36,145);
-    rect(enemyPosX,enemyPosY,enemyW,enemyH);
-    
+
+
+  void setup()
+  {
+    float r = random(0, 3);
+
+    if (r <= 0) {
+      enemyPosX = spawn.spawnerPos0.x;
+      enemyPosY = spawn.spawnerPos0.y;
+    } else if (r > 0 && r <= 1) {
+      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosY = spawn.spawnerPos1.y;
+    } else if (r > 1 && r <= 2) {
+      enemyPosX = spawn.spawnerPos2.x;
+      enemyPosY = spawn.spawnerPos2.y;
+    } else if (r > 2 && r <= 3) {
+      enemyPosX = spawn.spawnerPos3.x;
+      enemyPosY = spawn.spawnerPos3.y;
+    }
+  }
+
+
+
+  void draw() {
+    fill(9, 36, 145);
+    rect(enemyPosX, enemyPosY, enemyW, enemyH);
+
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
         enemyPosX += enemySpeedX;
       }//if
@@ -43,5 +51,4 @@ class Brute extends Enemies{
       }//else
     }
   }
-
 }

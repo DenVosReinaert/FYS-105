@@ -3,10 +3,7 @@ class Spawner extends GameObject {
 
   Timer timer = new Timer();
 
-  float spawnerPosX0, spawnerPosY0, spawnerW, spawnerH; //Left
-  float spawnerPosX1, spawnerPosY1; //Right
-  float spawnerPosX2, spawnerPosY2; //Up
-  float spawnerPosX3, spawnerPosY3; //Down
+  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 
   boolean spawnable = false;
 
@@ -17,22 +14,26 @@ class Spawner extends GameObject {
 
 
   Spawner() {
-    spawnerPosX0=-40 * 2;
-    spawnerPosY0=height/2-spawnerW;
+    
+    spawnerPos0 = new PVector();
+    spawnerPos1 = new PVector();
+    spawnerPos2 = new PVector();
+    spawnerPos3 = new PVector();
+    
+    
+    spawnerPos0.x=width/2;
+    spawnerPos0.y= -10;
 
-    spawnerPosX1=width + 40 * 2;
-    spawnerPosY1=height/2-spawnerW;
+    spawnerPos1.x=width + 10;
+    spawnerPos1.y = height/2;
 
-    spawnerPosX2=width/2-spawnerW;
-    spawnerPosY2=-40 * 2;
+    spawnerPos2.x = width/2;
+    spawnerPos2.y = height + 10;
 
-    spawnerPosX3=width/2-spawnerW;
-    spawnerPosY3=height + 40 * 2;
+    spawnerPos3.x = -10;
+    spawnerPos3.y = height/2;
 
-    spawnerW=100;
-    spawnerH=100;
-
-    waveAmount = 1;
+    waveAmount = 2;
   }//constructor spawner
 
 
@@ -41,48 +42,39 @@ class Spawner extends GameObject {
 
 
   void draw() {
-    fill(255);
-    rect(spawnerPosX0, spawnerPosY0, spawnerW, spawnerH);//Left
-    rect(spawnerPosX1, spawnerPosY1, spawnerW, spawnerH);//Right
-    rect(spawnerPosX2, spawnerPosY2, spawnerW, spawnerH);//Up
-    rect(spawnerPosX3, spawnerPosY3, spawnerW, spawnerH);//Down
 
-    //timer<100
-
-
-
-    for (int wave = 0; wave < waveAmount; wave ++)
+    for (int wave = 1; wave < waveAmount; wave ++)
     {
-      if (timer.Timerr(5)) {
+      if (!timer.Timerr(5)) {
         textSize(80);
         text("WAVE "+wave, width/2-150, height/2);
+      }
 
-        if (spawnable)
-        {
-          BruteSpawn();
-          GruntSpawn();
-          HeavySpawn();
-          SpeedsterSpawn();
+      if (spawnable)
+      {
+        BruteSpawn();
+        GruntSpawn();
+        HeavySpawn();
+        SpeedsterSpawn();
 
-          if (wave % 5 == 0)
-            Boss1Spawn();
-        }
+        if (wave % 5 == 0)
+          Boss1Spawn();
+      }
 
-        spawnable = true;
+      spawnable = true;
 
 
 
-        if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
-        {
-          spawnable = false;
-          heavySpawnDone = false;
-          gruntSpawnDone = false;
-          speedsterSpawnDone = false;
-          bruteSpawnDone = false;
-          bossSpawnDone = false;
+      if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
+      {
+        spawnable = false;
+        heavySpawnDone = false;
+        gruntSpawnDone = false;
+        speedsterSpawnDone = false;
+        bruteSpawnDone = false;
+        bossSpawnDone = false;
 
-          waveAmount ++;
-        }
+        waveAmount ++;
       }
     }
   }//spawnerUpdate
@@ -156,14 +148,7 @@ class Spawner extends GameObject {
 
 
   void Boss1Spawn() {
-    bossCount = 1;
 
-    for (int i = 0; i < bossCount; i ++)
-    {
-      Add(new Boss1());
-
-      if (i == bossCount)
-        bossSpawnDone = true;
-    }
+    Add(new Boss1());
   }
 }

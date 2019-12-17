@@ -12,24 +12,27 @@ class Grunt extends Enemies {
     enemySpeedY=2;
   }//constructor Grunt
 
+
+
   void setup() {
     //dit moet in een array, de float "r" moet in draw want die moet veranderen, maar de enemies moeten 1 keer spawnen
-    float r = random(-1, 3);
+    float r = random(0, 3);
 
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPosX0;
-      enemyPosY = spawn.spawnerPosY0;
+      enemyPosX = spawn.spawnerPos0.x;
+      enemyPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPosX1;
-      enemyPosY = spawn.spawnerPosY1;
+      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPosX2;
-      enemyPosY = spawn.spawnerPosY2;
+      enemyPosX = spawn.spawnerPos2.x;
+      enemyPosY = spawn.spawnerPos2.y;
     } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPosX3;
-      enemyPosY = spawn.spawnerPosY3;
+      enemyPosX = spawn.spawnerPos3.x;
+      enemyPosY = spawn.spawnerPos3.y;
     }
   }//constructor Grunt
+
 
 
   void draw() {
@@ -38,7 +41,7 @@ class Grunt extends Enemies {
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
 
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 1000) { 
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
         enemyPosX += enemySpeedX;
       }//if

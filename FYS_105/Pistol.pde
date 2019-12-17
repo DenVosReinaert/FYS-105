@@ -7,7 +7,7 @@ class Pistol extends GameObject {
   }
   void shoot() {
 
-    if (cooldown == threshold && myPlayer.lookingUp) {
+    if (cooldown == threshold && myPlayer.shootingUp) {
       Add(new Bullet(0, -15));
 
       cooldown = 0;
@@ -16,7 +16,7 @@ class Pistol extends GameObject {
 
       Pistol.play();
       Pistol.rewind();
-    } else if (cooldown == threshold && myPlayer.lookingDown) {
+    } else if (cooldown == threshold && myPlayer.shootingDown) {
       Add(new Bullet(0, 15));
 
       cooldown = 0;
@@ -25,7 +25,7 @@ class Pistol extends GameObject {
 
       Pistol.play();
       Pistol.rewind();
-    } else if (cooldown == threshold && myPlayer.lookingLeft) {
+    } else if (cooldown == threshold && myPlayer.shootingLeft) {
       Add(new Bullet(-15, 0));
 
       cooldown = 0;
@@ -34,7 +34,7 @@ class Pistol extends GameObject {
 
       Pistol.play();
       Pistol.rewind();
-    } else if (cooldown == threshold && myPlayer.lookingRight) {
+    } else if (cooldown == threshold && myPlayer.shootingRight) {
       Add(new Bullet(15, 0));
 
       cooldown = 0;

@@ -9,11 +9,25 @@ class Timer
 
     currentCount ++;
 
-    if (currentCount == frames)
+    if (currentCount >= frames)
     {
-      seconds = 0;
-      currentCount = 1;
       return true;
-    } else return false;
+    }
+    return false;
+  }
+  
+  
+  boolean LoopingTimerr(int seconds)
+  {
+   frames = seconds * 60;
+   
+   currentCount ++;
+   
+   if(currentCount >= frames)
+   {
+    currentCount = 0;
+    return true;
+   }
+   return false;
   }
 }
