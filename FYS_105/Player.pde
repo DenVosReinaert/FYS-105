@@ -24,16 +24,13 @@ class Player extends GameObject {
     if (bengine.lookingLeft) {
       playerLeft.resize(19, 36);
       image(playerLeft, playerPosX, playerPosY);
-    }
-    else if (bengine.lookingRight) {
+    } else if (bengine.lookingRight) {
       playerRight.resize(19, 36);
       image(playerRight, playerPosX, playerPosY);
-    }
-    else if (bengine.lookingUp) {
+    } else if (bengine.lookingUp) {
       playerBack.resize(19, 36);
       image(playerBack, playerPosX, playerPosY);
-    }
-    else if (bengine.lookingDown) {
+    } else if (bengine.lookingDown) {
       playerFront.resize(19, 36);
       image(playerFront, playerPosX, playerPosY);
     }
@@ -44,12 +41,15 @@ class Player extends GameObject {
 
     if (bengine.oneKey) {
       myGun = new Pistol();
+      UI.gun = 1;
       bengine.oneKey = false;
     } else if (bengine.twoKey) {
       myGun = new MachineGun();
+      UI.gun = 2;
       bengine.twoKey = false;
     } else if (bengine.threeKey) {
       myGun = new Shotgun();
+      UI.gun = 3;
       bengine.threeKey = false;
     }
 

@@ -24,7 +24,7 @@ class aScore {
   }
 
   void saveScore() {
-    if (msql.connect() && healthbar.levens == 0) {
+    if (msql.connect() && UI.levens == 0) {
       msql.query ( "SELECT id FROM scores ORDER BY id DESC LIMIT 1" ); // Select highest id from scores table
       while (msql.next() ) { // if ^ queries
         idh = msql.getString("id"); // Attach highest id in scores tabel to string idh(idhighest)
@@ -52,7 +52,7 @@ class aScore {
         println("lowest score: "+lscore); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary score
       }
 
-     // healthbar.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
+     // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     }
   }
 }

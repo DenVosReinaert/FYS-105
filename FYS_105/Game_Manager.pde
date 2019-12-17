@@ -28,8 +28,8 @@ class Game_Manager {
       hscorel.draw();
     }
     if (game) {
-      if (healthbar.levens <= 0) {
-       gamemngr.dead = true; 
+      if (UI.levens <= 0) {
+        gamemngr.dead = true;
       }
       homeSnd.pause();
 
@@ -37,7 +37,6 @@ class Game_Manager {
 
       bengine.draw();
       ascore.draw();
-      healthbar.draw();
 
       spawn.spawnerShow();
       spawn.spawnerUpdate();

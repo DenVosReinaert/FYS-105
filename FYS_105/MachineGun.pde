@@ -7,29 +7,49 @@ class MachineGun extends Gun {
 
   void shoot() {
     if (cooldown == threshold && bengine.shootingUp) {
-      bengine.engine.add(new Bullet(0, -15));
-      myPlayer.playerPosY = myPlayer.playerPosY + 10;
-      LMG.play();
-      LMG.rewind();
-      cooldown = 0;
+      if (UI.ammoM1 > 0 ) {
+        LMG.play();
+        bengine.engine.add(new Bullet(0, -15));
+        UI.ammoM1--;
+        if (myPlayer.playerPosY < height - 10 - myPlayer.playerHeight ) {
+          myPlayer.playerPosY = myPlayer.playerPosY + 10;
+        }
+        LMG.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.shootingDown) {
-      bengine.engine.add(new Bullet(0, 15));
-      myPlayer.playerPosY = myPlayer.playerPosY - 10;
-      LMG.play();
-      LMG.rewind();
-      cooldown = 0;
+      if (UI.ammoM1 > 0 ) {
+        LMG.play();
+        UI.ammoM1--;
+        bengine.engine.add(new Bullet(0, 15));
+        if (myPlayer.playerPosY > 0 + 10) {
+          myPlayer.playerPosY = myPlayer.playerPosY - 10;
+        }
+        LMG.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.shootingLeft) {
-      bengine.engine.add(new Bullet(-15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX + 10;
-      LMG.play();
-      LMG.rewind();
-      cooldown = 0;
+      if (UI.ammoM1 > 0 ) {
+        LMG.play();
+        UI.ammoM1--;
+        bengine.engine.add(new Bullet(-15, 0));
+        if (myPlayer.playerPosX < width - 10 - myPlayer.playerWidth ) {
+          myPlayer.playerPosX = myPlayer.playerPosX + 10;
+        }
+        LMG.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.shootingRight) {
-      bengine.engine.add(new Bullet(15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX - 10;
-      LMG.play();
-      LMG.rewind();
-      cooldown = 0;
+      if (UI.ammoM1 > 0 ) {
+        LMG.play();
+        UI.ammoM1--;
+        bengine.engine.add(new Bullet(15, 0));
+        if (myPlayer.playerPosX > 0 + 10) {
+          myPlayer.playerPosX = myPlayer.playerPosX - 10;
+        }
+        LMG.rewind();
+        cooldown = 0;
+      }
     }
   }
 }

@@ -26,7 +26,6 @@ String dbName = "zkoeneqt"; // replace with database name
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
-healthBar healthbar;
 UI UI;
 GameOver gameover;
 aScore ascore;
@@ -58,8 +57,6 @@ void setup()
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
-  healthbar = new healthBar();
-
 
 
   lvlMngr.setup();
@@ -72,6 +69,7 @@ void draw()
   clear();
   lvlMngr.draw();
   gamemngr.draw();
+  UI.draw();
 
 
   if (game)
@@ -80,9 +78,6 @@ void draw()
 
 
 void keyPressed() {
-  if (key == 'p') {
- healthbar.levens = 0;
-  }
 
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;

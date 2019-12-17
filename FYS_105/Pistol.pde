@@ -8,29 +8,49 @@ class Pistol extends Gun {
 
   void shoot() {
     if (cooldown == threshold && bengine.lookingUp) {
-      bengine.engine.add(new Bullet(0, -15));
-      myPlayer.playerPosY = myPlayer.playerPosY + 5;
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
+      if (UI.ammoP > 0) {
+        Pistol.play();
+        UI.ammoP--;
+        bengine.engine.add(new Bullet(0, -15));
+        if (myPlayer.playerPosY < height - 5 - myPlayer.playerHeight ) {
+          myPlayer.playerPosY = myPlayer.playerPosY + 5;
+        }
+        Pistol.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.lookingDown) {
-      bengine.engine.add(new Bullet(0, 15));
-      myPlayer.playerPosY = myPlayer.playerPosY - 5;
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
+      if (UI.ammoP > 0) {
+        Pistol.play();
+        UI.ammoP--;
+        bengine.engine.add(new Bullet(0, 15));
+        if (myPlayer.playerPosY > 0 + 10) {
+          myPlayer.playerPosY = myPlayer.playerPosY - 5;
+        }
+        Pistol.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.lookingLeft) {
-      bengine.engine.add(new Bullet(-15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX + 5;
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
+      if (UI.ammoP > 0) {
+        Pistol.play();
+        UI.ammoP--;
+        bengine.engine.add(new Bullet(-15, 0));
+        if (myPlayer.playerPosX < width - 5 - myPlayer.playerWidth ) {
+          myPlayer.playerPosX = myPlayer.playerPosX + 5;
+        }
+        Pistol.rewind();
+        cooldown = 0;
+      }
     } else if (cooldown == threshold && bengine.lookingRight) {
-      bengine.engine.add(new Bullet(15, 0));
-      myPlayer.playerPosX = myPlayer.playerPosX - 5;
-      Pistol.play();
-      Pistol.rewind();
-      cooldown = 0;
+      if (UI.ammoP > 0) {
+        Pistol.play();
+        UI.ammoP--;
+        bengine.engine.add(new Bullet(15, 0));
+        if (myPlayer.playerPosX > 0 + 10) {
+          myPlayer.playerPosX = myPlayer.playerPosX - 5;
+        }
+        Pistol.rewind();
+        cooldown = 0;
+      }
     }
   }
 }

@@ -28,7 +28,7 @@ class Enemies extends GameObject {
 
   void checkPulse() {//Checks the enemy's collision with the player's bullet
     if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
-      healthbar.spelerhit();
+      UI.spelerhit();
       enemyHP = 0;
     }
 

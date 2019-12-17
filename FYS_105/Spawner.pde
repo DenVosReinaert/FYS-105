@@ -128,7 +128,7 @@ class Spawner {
         timer = 20100;
       }
     } else if (timer > 20200 && gamemngr.AI.size() == 0) {
-      healthbar.levens = 0;
+      UI.levens = 0;
     }
   }//spawnerUpdate
   void GruntSpawn() {

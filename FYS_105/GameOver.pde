@@ -115,7 +115,7 @@ class GameOver {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         ascore.saveScore();
         // Reset everything back to how the game was in the beginning
-        healthbar.levens = 3;
+        UI.levens = 3;
         gamemngr.hscoreA = 0;
         l1s = 0;
         l2s = 0;
@@ -123,7 +123,7 @@ class GameOver {
         l4s = 0;
         spawn.timer = 0;
         ascore.score = 0;
-        // print(healthbar.levens);
+        // print(UI.levens);
         gamemngr.dead = false;
         gamemngr.hscore = true;
         //  } else {
