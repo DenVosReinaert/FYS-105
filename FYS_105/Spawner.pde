@@ -2,13 +2,11 @@
 class Spawner extends GameObject {
 
   Timer spawnableTimer = new Timer(5);
-  Timer spawnTimer = new Timer(2);
-  Timer waveTextTimer = new Timer(5);
-
-  boolean spawnable = false;
+  Timer spawnTimer = new Timer(5);
+  Timer waveTextTimer = new Timer(10);
 
   //int timer = 0;
-  int wave, waveAmount;
+  int wave;
   float gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
 
@@ -26,8 +24,6 @@ class Spawner extends GameObject {
 
     spawnerPos3.x = -10;
     spawnerPos3.y = height/2;
-
-    waveAmount = 1;
   }//constructor spawner
 
 
@@ -40,37 +36,9 @@ class Spawner extends GameObject {
     pushStyle();
     fill(255);
 
-    for (wave = 1; wave <= waveAmount; wave ++)
-    {
-      if (!waveTextTimer.TimerDone()) {
-        textSize(80);
-        text("WAVE "+ wave, width/2-150, height/2);
-      }
-      waveTextTimer.TimerReset();
-    }
+    NextWave();
+
     popStyle();
-
-    if (spawnableTimer.TimerDoneWithoutReset() && spawnable)
-    {
-      HeavySpawn();
-      GruntSpawn();
-      SpeedsterSpawn();
-      BruteSpawn();
-    }
-
-    if (spawnable && heavySpawnDone && gruntSpawnDone && speedsterSpawnDone && bruteSpawnDone && bossSpawnDone && GameObjectRef.gameObject.size() == 0)
-    {
-      spawnable = false;
-      heavySpawnDone = false;
-      gruntSpawnDone = false;
-      speedsterSpawnDone = false;
-      bruteSpawnDone = false;
-      bossSpawnDone = false;
-
-      waveAmount ++;
-    }
-
-    spawnable = true;
   }//spawnerUpdate
 
 
@@ -89,6 +57,36 @@ class Spawner extends GameObject {
         bruteSpawnDone = true;
     }
   }//spawnerShow
+
+
+
+  void NextWave()
+  {
+    waveTextTimer.Timerr();
+
+    if (!waveTextTimer.TimerDoneWithoutReset()) {
+      textSize(80);
+      text("WAVE "+ wave, width/2-150, height/2);
+    }
+
+    if (waveTextTimer.TimerDoneWithoutReset())
+      for (int i = 0; i < 1; i++)
+      {
+        SpawnWave();
+      }
+  }
+
+  void SpawnWave()
+  {
+    HeavySpawn();
+    GruntSpawn();
+    SpeedsterSpawn();
+    BruteSpawn();
+
+    if (wave % 5 == 0)
+      Boss1Spawn();
+  }
+
 
 
 

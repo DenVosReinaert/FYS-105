@@ -4,7 +4,7 @@ class MachineGun extends GameObject {
   MachineGun() {
     threshold = 8;
     cooldown = 0;
-    knockback = 10;
+    knockback = 15;
   }
 
   void shoot() {

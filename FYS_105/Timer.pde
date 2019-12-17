@@ -1,15 +1,21 @@
 class Timer
 {
 
-  int frames, framesInitial;
-
-  public Timer(int seconds)
+  float frames, framesInitial;
+  
+  Timer(int seconds)
   {
-    framesInitial = seconds * (int) frameRate;
-    
+    framesInitial = seconds * frameRate;
     frames = framesInitial;
-    
+  }
+
+  public float Timerr()
+  {
     frames --;
+    
+    println(frames);
+    
+    return frames;
   }
 
 

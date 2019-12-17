@@ -3,13 +3,13 @@ class Shotgun extends GameObject {
 
 
   Shotgun() {
-    threshold = 60;
+    threshold = 100;
     cooldown = 0;
-    knockback = 20;
+    knockback = 40;
   }
 
   void shoot() {
-
+    
     if (cooldown == threshold && myPlayer.shootingUp) {
 
       for (int i = 0; i < 5; i++)
