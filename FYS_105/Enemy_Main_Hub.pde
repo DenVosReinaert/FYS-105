@@ -45,6 +45,8 @@ class Enemies extends GameObject {
         if (dist(enemyPosX, enemyPosY, bengine.engine.get(i).bulletPosX, bengine.engine.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
           bengine.engine.remove(i);
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
           if (enemyHP == 0) {
            ascore.score += 5; 
           }
