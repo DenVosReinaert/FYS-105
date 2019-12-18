@@ -195,7 +195,7 @@ class GameOver {
 
   void Reset()
   {
-    healthbar.levens = 3;
+    UI.levens = 3;
     gamemngr.hscoreA = 0;
 
     myPlayer.playerPosX = width/2 - myPlayer.playerWidth/2;
@@ -214,7 +214,7 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
-    // print(healthbar.levens);
+    // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
 

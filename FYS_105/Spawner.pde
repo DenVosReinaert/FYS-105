@@ -68,7 +68,7 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    for (int i = 0; i< (int) random(wave * 2, wave * 5); i ++)
+    for (int i = 0; i< (int) random(wave, wave * 3); i ++)
     {
       HeavySpawn();
       GruntSpawn();
