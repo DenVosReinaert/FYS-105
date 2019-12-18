@@ -3,10 +3,8 @@ class Game_Manager {
   ArrayList<Enemies> AI;
   boolean home;
   boolean hscore;
-  boolean shake;
   int hscoreA;
-  int shakeAmount;
-  
+
   Game_Manager() {
     AI= new ArrayList<Enemies>(30);
   }
@@ -82,10 +80,5 @@ class Game_Manager {
     if (game) {
       bengine.keyReleased();
     }
-  }
-  //screenshake
-  void screenShake() {
-   translate(-shakeAmount, shakeAmount); 
-    shake = false;
   }
 }

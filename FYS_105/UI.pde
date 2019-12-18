@@ -39,8 +39,6 @@ class UI {
 
   void spelerhit() { // If called, lives -1
     levens--;
-    gamemngr.shakeAmount = 20;
-    gamemngr.shake = true;
   }
 
   void draw() {
