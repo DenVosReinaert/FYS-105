@@ -59,6 +59,7 @@ class Spawner extends GameObject {
       text("WAVE "+ wave, width/2-150, height/2);
     }
 
+if(waveTextTimer.TimerDoneWithoutReset())
     SpawnWave();
 
     waveInProgress = true;
@@ -68,7 +69,7 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    for (int i = 0; i< (int) random(wave, wave * 3); i ++)
+    for (int i = 0; i< random(wave, wave * 3); i ++)
     {
       HeavySpawn();
       GruntSpawn();

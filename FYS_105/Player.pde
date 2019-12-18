@@ -30,9 +30,6 @@ class Player extends GameObject {
 
   void draw() {
 
-    fill(255, 100, 0);
-    rect(playerPosX, playerPosY, playerWidth, playerHeight);
-
     if (onekey) {
       currentGun = pistoll;
       onekey = false;
