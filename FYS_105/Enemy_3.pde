@@ -1,7 +1,7 @@
 //Ruben de Jager
-class Heavy extends Enemies {
+class Heavy extends GameObject {
 
-  Heavy(float spawnLocation) {
+  Heavy() {
     tag = "enemy";
 
     enemyW=60;
@@ -10,25 +10,27 @@ class Heavy extends Enemies {
     enemySpeedX=0.75;
     enemySpeedY=0.75;
 
+    float spawnLocation = random (-1, 3);
+
     if (spawnLocation == 0)
     {
       enemyPosX = spawn.spawnerPos0.x;
       enemyPosY = spawn.spawnerPos0.y;
     }
 
-    if (spawnLocation == 1)
+    else if (spawnLocation == 1)
     {
       enemyPosX = spawnerPos1.x;
       enemyPosY = spawnerPos1.y;
     }
 
-    if (spawnLocation == 2)
+    else if (spawnLocation == 2)
     {
       enemyPosX = spawnerPos2.x;
       enemyPosY = spawnerPos2.y;
     }
 
-    if (spawnLocation == 3)
+    else if (spawnLocation == 3)
     {
       enemyPosX = spawnerPos3.x;
       enemyPosY = spawnerPos3.y;

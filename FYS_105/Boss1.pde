@@ -1,12 +1,14 @@
 class Boss1 extends GameObject {
 
-  Boss1(float spawnLocation) {
+  Boss1() {
     tag = "enemy";
     enemyW=65;
     enemyH=80;
     enemyHP=20;
-    enemySpeedX=0.03;
-    enemySpeedY=0.03;
+    enemySpeedX=1;
+    enemySpeedY=1;
+
+    float spawnLocation = random (-1, 3);
 
     if (spawnLocation == 0)
     {
@@ -14,19 +16,19 @@ class Boss1 extends GameObject {
       enemyPosY = spawn.spawnerPos0.y;
     }
 
-    if (spawnLocation == 1)
+    else if (spawnLocation == 1)
     {
       enemyPosX = spawnerPos1.x;
       enemyPosY = spawnerPos1.y;
     }
 
-    if (spawnLocation == 2)
+    else if (spawnLocation == 2)
     {
       enemyPosX = spawnerPos2.x;
       enemyPosY = spawnerPos2.y;
     }
 
-    if (spawnLocation == 3)
+    else if (spawnLocation == 3)
     {
       enemyPosX = spawnerPos3.x;
       enemyPosY = spawnerPos3.y;

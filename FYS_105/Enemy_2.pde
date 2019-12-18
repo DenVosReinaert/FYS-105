@@ -1,14 +1,16 @@
 //Ruben de Jager
-class Speedster extends Enemies {
+class Speedster extends GameObject {
 
-  Speedster(float spawnLocation) {
+  Speedster() {
     tag = "enemy";
 
     enemyW=20;
     enemyH=24;
     enemyHP=1;
-    enemySpeedX=4;
-    enemySpeedY=4;
+    enemySpeedX=2;
+    enemySpeedY=2;
+
+    float spawnLocation = random (-1, 3);
 
     if (spawnLocation == 0)
     {
@@ -16,19 +18,19 @@ class Speedster extends Enemies {
       enemyPosY = spawn.spawnerPos0.y;
     }
 
-    if (spawnLocation == 1)
+    else if (spawnLocation == 1)
     {
       enemyPosX = spawnerPos1.x;
       enemyPosY = spawnerPos1.y;
     }
 
-    if (spawnLocation == 2)
+    else if (spawnLocation == 2)
     {
       enemyPosX = spawnerPos2.x;
       enemyPosY = spawnerPos2.y;
     }
 
-    if (spawnLocation == 3)
+    else if (spawnLocation == 3)
     {
       enemyPosX = spawnerPos3.x;
       enemyPosY = spawnerPos3.y;

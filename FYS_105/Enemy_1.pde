@@ -1,35 +1,31 @@
 //Ruben de Jager
-class Grunt extends Enemies {
+class Grunt extends GameObject {
 
-  Grunt(float spawnLocation) {
+  Grunt() {
     tag = "enemy";
 
     enemyW=16;
     enemyH=20;
     enemyHP=2;
 
-    enemySpeedX=2;
-    enemySpeedY=2;
+    enemySpeedX=1;
+    enemySpeedY=1;
+
+    float spawnLocation = random (-1, 3);
 
     if (spawnLocation <= 0)
     {
       enemyPosX = spawn.spawnerPos0.x;
       enemyPosY = spawn.spawnerPos0.y;
-    }
-
-    if (spawnLocation <= 1 && spawnLocation > 0)
+    } else if (spawnLocation <= 1 && spawnLocation > 0)
     {
       enemyPosX = spawnerPos1.x;
       enemyPosY = spawnerPos1.y;
-    }
-
-    if (spawnLocation <= 2  && spawnLocation > 1)
+    } else if (spawnLocation <= 2  && spawnLocation > 1)
     {
       enemyPosX = spawnerPos2.x;
       enemyPosY = spawnerPos2.y;
-    }
-
-    if (spawnLocation <= 3 && spawnLocation > 2)
+    } else if (spawnLocation <= 3 && spawnLocation > 2)
     {
       enemyPosX = spawnerPos3.x;
       enemyPosY = spawnerPos3.y;
