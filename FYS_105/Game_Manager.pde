@@ -33,7 +33,7 @@ class Game_Manager {
 
 
     if (game) {
-      if (healthbar.levens <= 0) {
+      if (UI.levens <= 0) {
        gamemngr.dead = true; 
       }
 
@@ -42,7 +42,6 @@ class Game_Manager {
       lvlMngr.lvlNum = 1;
 
       ascore.draw();
-      healthbar.draw();
 
       spawn.draw();
     }

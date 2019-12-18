@@ -1,37 +1,28 @@
 //Ruben de Jager
-class Speedster extends Enemies {
+class Speedster extends GameObject {
 
-  Speedster(float spawnLocation) {
+  Speedster() {
     tag = "enemy";
 
     enemyW=20;
     enemyH=24;
     enemyHP=1;
-    enemySpeedX=4;
-    enemySpeedY=4;
+    enemySpeedX=2;
+    enemySpeedY=2;
 
-    if (spawnLocation == 0)
-    {
+                float r = random(-1, 3);
+    if (r <= 0) {
       enemyPosX = spawn.spawnerPos0.x;
       enemyPosY = spawn.spawnerPos0.y;
-    }
-
-    if (spawnLocation == 1)
-    {
-      enemyPosX = spawnerPos1.x;
-      enemyPosY = spawnerPos1.y;
-    }
-
-    if (spawnLocation == 2)
-    {
-      enemyPosX = spawnerPos2.x;
-      enemyPosY = spawnerPos2.y;
-    }
-
-    if (spawnLocation == 3)
-    {
-      enemyPosX = spawnerPos3.x;
-      enemyPosY = spawnerPos3.y;
+    } else if (r > 0 && r <= 1) {
+      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosY = spawn.spawnerPos1.y;
+    } else if (r > 1 && r <= 2) {
+      enemyPosX = spawn.spawnerPos2.x;
+      enemyPosY = spawn.spawnerPos2.y;
+    } else if (r > 2 && r <= 3) {
+      enemyPosX = spawn.spawnerPos3.x;
+      enemyPosY = spawn.spawnerPos3.y;
     }
   }//constructor Speedster
 
@@ -72,7 +63,7 @@ class Speedster extends Enemies {
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
-        healthbar.spelerhit();
+        UI.spelerhit();
         enemyHP = 0;
       }
 

@@ -1,12 +1,4 @@
 //Ruben de Jager
-class Enemies extends GameObject {
-
-
-  Enemies() {
-  }//constructor Enemys
-}
-
-
 class Particle extends GameObject {
   float particlePosX, particlePosY, particleSpeedX, particleSpeedY, particleWidth, particleHeight, particleAlpha;
 
@@ -22,7 +14,6 @@ class Particle extends GameObject {
   }//constructor Particle
 
   void draw() {
-    noStroke();
     fill(219, 8, 8, particleAlpha);
     rect(particlePosX, particlePosY, particleWidth, particleHeight);
 
@@ -43,7 +34,7 @@ class Particle extends GameObject {
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
-        healthbar.spelerhit();
+        UI.spelerhit();
         enemyHP = 0;
       }
 
