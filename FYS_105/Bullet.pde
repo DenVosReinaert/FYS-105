@@ -48,8 +48,8 @@ class Bullet extends GameObject {
       break;
     case 5:
       image(buckS, bulletPosX, bulletPosY);
-      bulletWidth = buckS.X;
-      bulletHeight = buckS.Y;
+      bulletWidth = buckS.width;
+      bulletHeight = buckS.height;
       break;
     }
 
