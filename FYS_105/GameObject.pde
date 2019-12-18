@@ -14,6 +14,7 @@ public class GameObject {
 
   String tag;
 
+  float enemyPosX, enemyPosY, enemyH, enemyW, enemySpeedX, enemySpeedY;
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
   float particlePosX, particlePosY, particleWidth, particleHeight, enemyHP, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, hp;
@@ -51,7 +52,6 @@ public class GameObject {
     GameObjectRef.gameObject.add(object); 
     println("A new object has been created");
     println(GameObjectRef.gameObject.size());
-
   }
 
   void Remove(GameObject object)
