@@ -51,7 +51,7 @@ class Spawner extends GameObject {
   void NextWave()
   {
     waveInProgress = false;
-    
+
     waveTextTimer.Timerr();
 
     if (!waveTextTimer.TimerDoneWithoutReset()) {
@@ -59,9 +59,14 @@ class Spawner extends GameObject {
       text("WAVE "+ wave, width/2-150, height/2);
     }
 
-if(waveTextTimer.TimerDoneWithoutReset())
-    SpawnWave();
-
+    if (waveTextTimer.TimerDoneWithoutReset())
+    {
+      SpawnWave();
+      for(int i = 0; i < 1; i++)
+      {
+       wave++; 
+      }
+    }
     waveInProgress = true;
   }
 

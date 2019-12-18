@@ -23,7 +23,8 @@ public class GameObject {
 
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 
-
+  int scoreGain;
+  
   GameObject() 
   {
     spawnerPos0 = new PVector();

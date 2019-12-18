@@ -4,6 +4,8 @@ class Heavy extends GameObject {
   Heavy() {
     tag = "enemy";
 
+    scoreGain = 10;
+
     enemyW=60;
     enemyH=60;
     enemyHP=6;
@@ -76,7 +78,7 @@ class Heavy extends GameObject {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
           if (enemyHP == 0) {
-            ascore.score += 5;
+            ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));

@@ -4,6 +4,8 @@ class Grunt extends GameObject {
   Grunt() {
     tag = "enemy";
 
+    scoreGain = 5;
+  
     enemyW=16;
     enemyH=20;
     enemyHP=2;
@@ -80,7 +82,7 @@ class Grunt extends GameObject {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
           if (enemyHP == 0) {
-            ascore.score += 5;
+            ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));

@@ -2,6 +2,9 @@ class Brute extends GameObject {
 
   Brute() {
     tag = "enemy";
+    
+    scoreGain = 7;
+    
     enemyW=30;
     enemyH=30;
     enemyHP=4;
@@ -73,7 +76,7 @@ class Brute extends GameObject {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
           if (enemyHP == 0) {
-            ascore.score += 5;
+            ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));

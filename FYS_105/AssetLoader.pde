@@ -25,7 +25,7 @@ PImage bloodOrb;
 
 // Maps
 PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
-SpriteSheet gardenPathFlowerPatch;
+SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 PImage purpleStoneTiles;
 
 
@@ -77,7 +77,13 @@ void LoadAssets()
   gardenPathI = loadImage("/Graphics/GardenPath_1i.png");
   gardenPathJ = loadImage("/Graphics/GardenPath_1j.png");
   gardenPathK = loadImage("/Graphics/GardenPath_1k.png");
+  
+  
   gardenPathFlowerPatch = new SpriteSheet("/Graphics/GardenPath_FlowerPatch.png", 5);
+  mrSpooksLeft = new SpriteSheet("/Graphics/MrSpooks_Sheet_Left.png", 5);
+  mrSpooksRight = new SpriteSheet("/Graphics/MrSpooks_Sheet_Right.png", 5);
+  mrSpooksUp = new SpriteSheet("/Graphics/MrSpooks_Sheet_Back.png", 5);
+  mrSpooksDown = new SpriteSheet("/Graphics/MrSpooks_Sheet_Front.png", 5);
 
   purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
 
