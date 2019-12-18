@@ -27,24 +27,7 @@ class GameOver {
   // Array containing all available letters
   char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
-  int bN;
-  int bList;
-  String blacklist[] = new String[bList];
-  String word;
-
   GameOver() {
-    // Attempt blacklist, not working yet!
-    //if (msql.connect() && bN < 10) { // Als geconnect is met database & Ans kleiner is dan 10
-    //  msql.query( "SELECT * FROM blacklist");
-    //  while ( msql.next() && bN < 10) {
-    //    word = msql.getString("word"); // string name is 'name' uit database
-    //    blacklist = append(blacklist, word); // Voeg name toe aan de array names
-    //    bList++;
-    //    bN++;
-    //  }
-    //} else { 
-    //  println("ERROR: Couldn't fetch blacklist!");
-    //}
   }
 
   void draw() {
@@ -111,8 +94,6 @@ class GameOver {
       if (key == '\n') {
         // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-        //  for (int i = 0; i < bN; i++) {
-        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         ascore.saveScore();
         // Reset everything back to how the game was in the beginning
         UI.levens = 3;
@@ -126,10 +107,6 @@ class GameOver {
         // print(UI.levens);
         gamemngr.dead = false;
         gamemngr.hscore = true;
-        //  } else {
-        // text("Try again..", width/2-150, height/8);
-        //  }
-        //}
       }
     }
     // Check what state & depending on state move through the letters upwards 
@@ -159,13 +136,13 @@ class GameOver {
         l4s = 0;
       }
     } 
-    // Check what state & depending on state, lower state
+    // Check what state & depending on state, lower state (move left)
     if (key == 'a') {
       if (state > 1) {
         state--;
       }
     }
-    // Check what state & depending on state, make state higher
+    // Check what state & depending on state, make state higher (move right)
     if (key == 'd') {
       if (state < 4) {
         state++;
