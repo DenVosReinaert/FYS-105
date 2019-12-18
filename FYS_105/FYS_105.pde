@@ -15,11 +15,11 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 boolean game;
 
 // DIT MOET NOG ERGENS ANDERS :D
-String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
-String dbPort = "3306"; // replace with database port, MAMP standard is 8889
-String dbUser = "koeneqt"; // replace with database username, MAMP standard is "root"
-String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP standard is "root"
-String dbName = "zkoeneqt"; // replace with database name
+String dbHost = "oege.ie.hva.nl";
+String dbPort = "3306"; 
+String dbUser = "koeneqt"; 
+String dbPass = "7EwwK5+iBmUXUd"; 
+String dbName = "zkoeneqt"; 
 //
 
 

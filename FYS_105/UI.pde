@@ -13,10 +13,17 @@ class UI {
   int lY1 = height/20;
   int lY2 = 10;
 
-
+  // ammo machinegun
   int ammoM1 = 5;
   int magM1 = 30;
   int maxM1 = 300;
+  int reloadM1 = 240;
+
+  // ammo shotgun
+  int ammoS1 = 5;
+  int maxS1 = 20;
+  int reloadS1 = 240;
+
   // Ammo Pistol
   int ammoP = 5;
   int ax = width/40;
@@ -47,7 +54,7 @@ class UI {
           reloadP = 120;
         }
       }
-      // Pistol ammo
+      // Pistol ammo (draw the five yellow lines left top)
       if (ammoP > 0 && gun == 1) {
         fill(226, 197, 1);
         rect(ax, ay, axs, ays);
@@ -69,7 +76,7 @@ class UI {
         }
       }
 
-      // MachineGun ammo
+      // MachineGun Reload ammo
       if (maxM1 == -30) {
         maxM1 = 0;
       }
@@ -77,16 +84,21 @@ class UI {
         magM1 -= 5;
         ammoM1 = 5;
       }
-      if (magM1 == 0 && maxM1 > 0 && key == 'r') {
-        magM1 = 30;
-        maxM1 -= 30;
+      if (magM1 == 0 && maxM1 > 0) {
+        reloadM1--;
+        if (reloadM1 <= 0) {
+          magM1 = 30;
+          maxM1 -= 30;
+          reloadM1 = 240;
+        }
       }
 
       if (gun == 2) {
         textSize(20);
         text(""+ maxM1, ax, ay+40);
       }
-      if (ammoM1 > 0 && gun == 2) {
+      // MachineGun ammo (draw the five yellow lines left top)
+      if (ammoM1 > 0 && gun == 2) { 
         fill(226, 197, 1);
         rect(ax, ay, axs, ays);
         if (ammoM1 > 1 && gun == 2) {
@@ -101,6 +113,43 @@ class UI {
             rect(ax+18, ay, axs, ays);
           }
           if (ammoM1 > 4 && gun == 2) {
+            fill(226, 197, 1);
+            rect(ax+24, ay, axs, ays);
+          }
+        }
+      }
+
+      // Shotgun ammo cooldown
+      if (ammoS1 == 0 && maxS1 > 0) {
+        reloadS1--;
+        ShotgunReload.play();
+        ShotgunReload.rewind();
+        if (reloadS1 <= 0) {
+          ammoS1 = 5;
+          maxS1 -= 5;
+          reloadS1 = 240;
+        }
+      }
+      if (gun == 3) {
+        textSize(20);
+        text(""+ maxS1, ax, ay+40);
+      }
+      // Shotgun ammo (draw the five yellow lines left top)
+      if (ammoS1 > 0 && gun == 3) {
+        fill(226, 197, 1);
+        rect(ax, ay, axs, ays);
+        if (ammoS1 > 1 && gun == 3) {
+          fill(226, 197, 1);
+          rect(ax+6, ay, axs, ays);
+          if (ammoS1 > 2 && gun == 3) {
+            fill(226, 197, 1);
+            rect(ax+12, ay, axs, ays);
+          }
+          if (ammoS1 > 3 && gun == 3) {
+            fill(226, 197, 1);
+            rect(ax+18, ay, axs, ays);
+          }
+          if (ammoS1 > 4 && gun == 3) {
             fill(226, 197, 1);
             rect(ax+24, ay, axs, ays);
           }
@@ -133,6 +182,7 @@ class UI {
         gamemngr.dead = true; // set player to dead
       }
     }
+    
     // show depending on boolean
     if (gamemngr.home) {
       main.resize(width, height);

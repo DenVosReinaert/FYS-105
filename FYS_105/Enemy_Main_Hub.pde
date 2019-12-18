@@ -3,6 +3,8 @@ class Enemies extends GameObject {
 
   float enemyPosX, enemyPosY, enemyW, enemyH, enemyHP, enemySpeedX, enemySpeedY;
 
+  boolean enemyCooldown;
+
   Enemies() {
   }//constructor Enemys
 
@@ -10,7 +12,8 @@ class Enemies extends GameObject {
   }//enemyShow
 
   void enemyUpdate() {
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
+
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) {
       if (myPlayer.playerPosX > enemyPosX) {
         enemyPosX += enemySpeedX;
       }//if
@@ -48,7 +51,7 @@ class Enemies extends GameObject {
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (enemyHP == 0) {
-           ascore.score += 5; 
+            ascore.score += 5;
           }
           for (int j=0; j < 20; j++) {
             gamemngr.AI.add(new Particle(enemyPosX, enemyPosY));
