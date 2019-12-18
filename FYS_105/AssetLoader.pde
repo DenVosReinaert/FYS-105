@@ -8,10 +8,22 @@ Minim minim;
 
 AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death;
 
+// Main menu
 PImage main, pillar, background, scrBgr; //controlImg;
 
+// UI
+PImage healthbarS, healthbarSb, healthP, bullet, shotgunS;
+
+// Guns 
+PImage buckS, bulletDown, bulletLeft, bulletRight;
+
+// Player
 PImage playerFront, playerBack, playerLeft, playerRight;
 
+// Effects
+PImage bloodOrb;
+
+// Maps
 PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
 SpriteSheet gardenPathFlowerPatch;
 PImage purpleStoneTiles;
@@ -20,14 +32,37 @@ PImage purpleStoneTiles;
 void LoadAssets()
 {
 
+  // UI
+  healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
+  healthbarSb = loadImage("/data/sprites/UI/HealthBarSlots_Backdrop.png");
+  healthP = loadImage("/data/sprites/UI/PieceOfHealth.png");
+  bullet = loadImage("/data/sprites/UI/BulletSprite.png");
+  shotgunS = loadImage("/data/sprites/UI/ShotgunShell.png");
+
+  // Guns
+  buckS = loadImage("/data/sprites/buckshot.png");
+  bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
+  bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
+  bulletRight = loadImage("/data/sprites/BulletSpriteRight.png");
+  // ?
+
+
+  // Player
   playerFront = loadImage("/data/sprites/playerFront.png");
   playerBack = loadImage("/data/sprites/playerBack.png");
   playerLeft = loadImage("/data/sprites/playerLeft.png");
   playerRight = loadImage("/data/sprites/playerRight.png");
 
+
+  // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");
   main = loadImage("/data/img/LastStand-MainMenu.png");
+
+  // Effects
+  bloodOrb = loadImage("/data/sprites/BloodOrb.png");
+
+  // Maps
   background = loadImage("/Graphics/background.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
 

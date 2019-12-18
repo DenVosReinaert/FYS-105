@@ -14,8 +14,11 @@ class Particle extends GameObject {
   }//constructor Particle
 
   void draw() {
-    fill(219, 8, 8, particleAlpha);
-    rect(particlePosX, particlePosY, particleWidth, particleHeight);
+    pushStyle();
+    tint(219, 8, 8, particleAlpha);
+    image(bloodOrb, particlePosX, particlePosY);
+    popStyle();
+    //rect(particlePosX, particlePosY, particleWidth, particleHeight);
 
     particlePosX += particleSpeedX;
     particlePosY += particleSpeedY;

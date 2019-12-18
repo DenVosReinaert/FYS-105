@@ -27,11 +27,9 @@ LevelManager lvlMngr;
 
 hScorelijst hscorel;
 Player player;
-Gun myGun;
 UI UI;
 GameOver gameover;
 aScore ascore;
-Bullet bullet;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
@@ -94,6 +92,10 @@ void draw()
 
 
 void keyPressed() {
+  // To check if you can die..
+  //if (key == 'p') {
+  // UI.spelerhit(); 
+  //}
 
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;

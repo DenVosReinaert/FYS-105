@@ -1,4 +1,5 @@
 class Bullet extends GameObject {
+  int bulletState = 0;
 
   Bullet(float incomingDX, float incomingDY) {
     bulletPosX = myPlayer.playerPosX;  //x position of bullet begins on y position of player
@@ -10,6 +11,20 @@ class Bullet extends GameObject {
     bulletHeight = 15;
 
     tag = "bullet";
+
+    if (myPlayer.currentGun != myPlayer.shotgun) {
+      if  (myPlayer.shootingRight) {
+        bulletState = 1;
+      } else if (myPlayer.shootingLeft) {
+        bulletState = 2;
+      } else if (myPlayer.shootingUp) {
+        bulletState = 3;
+      } else if (myPlayer.shootingDown) {
+        bulletState = 4;
+      }
+    } else {
+      bulletState = 5;
+    }
   }
 
   void draw() {
@@ -17,8 +32,26 @@ class Bullet extends GameObject {
     bulletPosX += moveVelX;
     bulletPosY += moveVelY;
 
-    fill(255);
-    rect(bulletPosX, bulletPosY, 5, 5);
+
+    switch(bulletState) {
+    case 1:
+      image(bulletRight, bulletPosX, bulletPosY);
+      break;
+    case 2:
+      image(bulletLeft, bulletPosX, bulletPosY);
+      break;
+    case 3:
+      image(bullet, bulletPosX, bulletPosY);
+      break;
+    case 4:
+      image(bulletDown, bulletPosX, bulletPosY);
+      break;
+    case 5:
+      image(buckS, bulletPosX, bulletPosY);
+      bulletWidth = buckS.X;
+      bulletHeight = buckS.Y;
+      break;
+    }
 
     //Bullet Removal
     if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
