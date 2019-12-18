@@ -114,19 +114,11 @@ class GameOver {
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         ascore.saveScore();
-        
+
+        Reset();
         //NEEDS UPDATING
         // Reset everything back to how the game was in the beginning
-        healthbar.levens = 3;
-        gamemngr.hscoreA = 0;
-        l1s = 0;
-        l2s = 0;
-        l3s = 0;
-        l4s = 0;
-        ascore.score = 0;
-        // print(healthbar.levens);
-        gamemngr.dead = false;
-        gamemngr.hscore = true;
+
         //  } else {
         // text("Try again..", width/2-150, height/8);
         //  }
@@ -198,6 +190,37 @@ class GameOver {
       if (state == 4 && l4s < 0) {
         l4s = 25;
       }
+    }
+  }
+
+  void Reset()
+  {
+    healthbar.levens = 3;
+    gamemngr.hscoreA = 0;
+
+    myPlayer.playerPosX = width/2 - myPlayer.playerWidth/2;
+    myPlayer.playerPosY = height/2 - myPlayer.playerHeight/2;
+
+    Pistol.pause();
+    Shotgun.pause();
+    LMG.pause();
+
+    Pistol.rewind();
+    Shotgun.rewind();
+    LMG.rewind();
+
+    l1s = 0;
+    l2s = 0;
+    l3s = 0;
+    l4s = 0;
+    ascore.score = 0;
+    // print(healthbar.levens);
+    gamemngr.dead = false;
+    gamemngr.hscore = true;
+
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
+    {
+      GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
     }
   }
 }

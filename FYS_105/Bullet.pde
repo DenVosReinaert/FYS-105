@@ -21,11 +21,6 @@ class Bullet extends GameObject {
     rect(bulletPosX, bulletPosY, 5, 5);
 
     //Bullet Removal
-    //    for(int i = 0; i < GameObjectRef.gameObject.size(); i++)
-    //{
-    // if(tag == "bullet" && (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height))
-    // Remove(GameObjectRef.gameObject.get(i));
-    //}
     if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
       Remove(this);
   }

@@ -15,7 +15,7 @@ public class GameObject {
   String tag;
 
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
-  float enemyPosX, enemyPosY, enemyW, enemyH, enemyHP, enemySpeedX, enemySpeedY;
+  float particlePosX, particlePosY, particleWidth, particleHeight, enemyHP, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, hp;
   float defaultSpeed = 5;
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
@@ -51,6 +51,7 @@ public class GameObject {
     GameObjectRef.gameObject.add(object); 
     println("A new object has been created");
     println(GameObjectRef.gameObject.size());
+
   }
 
   void Remove(GameObject object)
@@ -59,7 +60,7 @@ public class GameObject {
   }
 
   void drawObjects() {
-    //println(gameObject.size());
+    //println(gameObject);
 
     for (int i = 0; i < gameObject.size(); i++) {
       gameObject.get(i).draw();

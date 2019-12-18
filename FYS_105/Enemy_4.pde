@@ -1,6 +1,7 @@
 class Brute extends Enemies {
 
-  Brute(int spawnLocation) {
+  Brute(float spawnLocation) {
+    tag = "enemy";
     enemyW=30;
     enemyH=30;
     enemyHP=4;
@@ -36,6 +37,7 @@ class Brute extends Enemies {
 
 
   void draw() {
+    checkPulse();
     fill(9, 36, 145);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
 
@@ -54,5 +56,43 @@ class Brute extends Enemies {
         enemyPosY += enemySpeedY;
       }//else
     }
+
+    if (Dead())
+    {
+      Remove(this);
+    }
+  }
+
+
+  void checkPulse() {//Checks the enemy's collision with the player's bullet
+    //Quinn versie
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
+    {
+      if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
+        healthbar.spelerhit();
+        enemyHP = 0;
+      }
+
+      if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
+        if (GameObjectRef.gameObject.get(i).bulletPosX == 0)
+          GameObjectRef.gameObject.get(i).bulletPosX = -10000;
+        if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
+          GameObjectRef.gameObject.get(i).bulletPosY = -10000;
+        if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
+          enemyHP=enemyHP-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          if (enemyHP == 0) {
+            ascore.score += 5;
+          }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(enemyPosX, enemyPosY));
+          }//for
+        }
+      }
+    }
+  }
+
+  boolean Dead() {
+    return enemyHP<=0;
   }
 }

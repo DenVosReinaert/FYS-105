@@ -1,12 +1,12 @@
 //Ruben de Jager
 class Heavy extends Enemies {
 
-  Heavy(int spawnLocation) {
+  Heavy(float spawnLocation) {
     tag = "enemy";
 
     enemyW=60;
     enemyH=60;
-    enemyHP=80;
+    enemyHP=10;
     enemySpeedX=0.75;
     enemySpeedY=0.75;
 
@@ -39,6 +39,7 @@ class Heavy extends Enemies {
 
 
   void draw() {
+    checkPulse();
     fill(91, 80, 80);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
 
@@ -57,7 +58,42 @@ class Heavy extends Enemies {
         enemyPosY += enemySpeedY;
       }//else
     }
+    if (Dead())
+    {
+      Remove(this);
+    }
   }//enemyShow
+
+
+
+
+  void checkPulse() {//Checks the enemy's collision with the player's bullet
+    //Quinn versie
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
+    {
+      if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
+        healthbar.spelerhit();
+        enemyHP = 0;
+      }
+
+      if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
+        if (GameObjectRef.gameObject.get(i).bulletPosX == 0)
+          GameObjectRef.gameObject.get(i).bulletPosX = -10000;
+        if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
+          GameObjectRef.gameObject.get(i).bulletPosY = -10000;
+        if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
+          enemyHP=enemyHP-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          if (enemyHP == 0) {
+            ascore.score += 5;
+          }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(enemyPosX, enemyPosY));
+          }//for
+        }
+      }
+    }
+  }
 
   boolean Dead() {
     return enemyHP<=0;

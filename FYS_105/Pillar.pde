@@ -16,6 +16,16 @@ class Pillar
 
   void draw(float pillarPosX, float pillarPosY)
   {
+    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX && myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth)
+    {
+      myPlayer.moveVelX = 0;
+    }
+
+    if (myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarHeight/2 && myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight)
+    {
+      myPlayer.moveVelY = 0;
+    }
+
     image(pillar, pillarPosX, pillarPosY);
     pushStyle();
     fill(0);
@@ -28,24 +38,5 @@ class Pillar
 
 
     //BOUNDARIES
-    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX)
-    {
-      myPlayer.moveVelX = 0;
-    }
-
-    if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth)
-    {
-      myPlayer.moveVelX = 0;
-    }
-
-    if (myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarBoundY)
-    {
-      myPlayer.moveVelY = 0;
-    }
-
-    if (myPlayer.playerPosY + myPlayer.moveVelY < pillarHeight)
-    {
-      myPlayer.moveVelY = 0;
-    }
   }
 }

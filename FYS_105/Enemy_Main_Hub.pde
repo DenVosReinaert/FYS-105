@@ -4,45 +4,69 @@ class Enemies extends GameObject {
 
   Enemies() {
   }//constructor Enemys
+}
+
+
+class Particle extends GameObject {
+  float particlePosX, particlePosY, particleSpeedX, particleSpeedY, particleWidth, particleHeight, particleAlpha;
+
+  Particle(float incomingX, float incomingY) {
+    particlePosX=incomingX;
+    particlePosY=incomingY;
+    particleSpeedX=random(-5, 5);
+    particleSpeedY=random(-5, 5);
+    particleWidth=5;
+    particleHeight=5;
+
+    particleAlpha = 255;
+  }//constructor Particle
+
+  void draw() {
+    noStroke();
+    fill(219, 8, 8, particleAlpha);
+    rect(particlePosX, particlePosY, particleWidth, particleHeight);
+
+    particlePosX += particleSpeedX;
+    particlePosY += particleSpeedY;
+
+    particleAlpha -= 7;
+
+    if (particleAlpha <= 0)
+      Remove(this);
+  }//enemyShow
+
+
 
 
   void checkPulse() {//Checks the enemy's collision with the player's bullet
-    for (int i = 0; i > GameObjectRef.gameObject.size(); i++) {
-      GameObject bullet = GameObjectRef.gameObject.get(i);
-      if (bullet instanceof Bullet) {
-        if (rectRect(enemyPosX, enemyPosY, enemyW, enemyH, bullet.bulletPosX, bullet.bulletPosY, bullet.bulletWidth, bullet.bulletHeight)) {
-          enemyHP--;
-          bullet.hp=0;
-          for (int j=0; j<5; j++) {
-            Add(new Particle(bullet.playerPosX, bullet.playerPosY));
+    //Quinn versie
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
+    {
+      if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
+        healthbar.spelerhit();
+        enemyHP = 0;
+      }
+
+      if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
+        if (GameObjectRef.gameObject.get(i).bulletPosX == 0)
+          GameObjectRef.gameObject.get(i).bulletPosX = -10000;
+        if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
+          GameObjectRef.gameObject.get(i).bulletPosY = -10000;
+        if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
+          enemyHP=enemyHP-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          if (enemyHP == 0) {
+            ascore.score += 5;
           }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(enemyPosX, enemyPosY));
+          }//for
         }
       }
     }
-  }//checkPulse.
-  
+  }
 
-
-  class Particle extends GameObject {
-    Particle(float incomingX, float incomingY) {
-      enemyPosX=incomingX;
-      enemyPosY=incomingY;
-      enemySpeedX=random(-5, 5);
-      enemySpeedY=random(-5, 5);
-      enemyHP=random(100, 255);
-      enemyW=5;
-      enemyH=5;
-    }//constructor Particle
-
-    void draw() {
-      fill(219, 8, 8, enemyHP);
-      rect(enemyPosX, enemyPosY, enemyW, enemyH);
-
-      enemyHP=enemyHP-2;
-    }//enemyShow
-
-    boolean Dead() {
-      return enemyHP<=0;
-    }//boolean Dead
-  }//class Particle
-}
+  boolean Dead() {
+    return enemyHP<=0;
+  }//boolean Dead
+}//class Particle

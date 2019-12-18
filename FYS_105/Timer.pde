@@ -2,7 +2,7 @@ class Timer
 {
 
   float frames, framesInitial;
-  
+
   Timer(int seconds)
   {
     framesInitial = seconds * frameRate;
@@ -12,9 +12,7 @@ class Timer
   public float Timerr()
   {
     frames --;
-    
-    println(frames);
-    
+
     return frames;
   }
 

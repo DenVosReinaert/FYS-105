@@ -43,6 +43,9 @@ GameObject GameObjectRef;
 
 void setup()
 {
+  //For background tiles
+  //X: -10
+  //Y: -90
   size(1280, 720);
   minim = new Minim(this);
 
@@ -87,8 +90,7 @@ void draw()
 
 
   if (game)
-    myPlayer.draw();
-  GameObjectRef.draw();
+    GameObjectRef.draw();
 }
 
 

@@ -12,8 +12,9 @@ PImage main, pillar, background, scrBgr; //controlImg;
 
 PImage playerFront, playerBack, playerLeft, playerRight;
 
-
-
+PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
+SpriteSheet gardenPathFlowerPatch;
+PImage purpleStoneTiles;
 
 
 void LoadAssets()
@@ -29,9 +30,25 @@ void LoadAssets()
   main = loadImage("/data/img/LastStand-MainMenu.png");
   background = loadImage("/Graphics/background.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
-  
-  
-  
+
+  gardenPathA = loadImage("/Graphics/GardenPath_1a.png");
+  gardenPathB = loadImage("/Graphics/GardenPath_1b.png");
+  gardenPathC = loadImage("/Graphics/GardenPath_1c.png");
+  gardenPathD = loadImage("/Graphics/GardenPath_1d.png");
+  gardenPathE = loadImage("/Graphics/GardenPath_1e.png");
+  gardenPathF = loadImage("/Graphics/GardenPath_1f.png");
+  gardenPathG = loadImage("/Graphics/GardenPath_1g.png");
+  gardenPathH = loadImage("/Graphics/GardenPath_1h.png");
+  gardenPathI = loadImage("/Graphics/GardenPath_1i.png");
+  gardenPathJ = loadImage("/Graphics/GardenPath_1j.png");
+  gardenPathK = loadImage("/Graphics/GardenPath_1k.png");
+  gardenPathFlowerPatch = new SpriteSheet("/Graphics/GardenPath_FlowerPatch.png", 5);
+
+  purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
+
+
+
+
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
   LMG = minim.loadFile("/data/sound/LMG.mp3");
