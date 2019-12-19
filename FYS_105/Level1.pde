@@ -69,7 +69,7 @@ class Level1
 
 
   void Layer2()
-  {
+  {  
     for (int i = 0; i < 13; i ++)
     {
       image(gardenPathE, -10 + tileSize * i, -90 + tileSize * 4);
@@ -81,6 +81,7 @@ class Level1
 
 
     gardenPathFlowerPatch.draw(-10 + tileSize * 2, -90 + tileSize * 2);
+    gardenPathFlowerPatch.update();
   }
 
 
