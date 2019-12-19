@@ -4,8 +4,8 @@
 class UI {
   int state = 2;
   //boolean controls;
-  //int timer = 0;
-
+  Timer hitStun = new Timer(0.1);
+  boolean ableToBeHit = true;
   // Healthbar
   int levens = 3; // Standard amount of lives
   int lX1 = width/35;
@@ -38,9 +38,18 @@ class UI {
   }
 
   void spelerhit() { // If called, lives -1
-    levens--;
-    gamemngr.shakeAmount = 15;
-    gamemngr.shake = true;
+    if (ableToBeHit) {
+      levens--;
+      gamemngr.shakeAmount = 15;
+      gamemngr.shake = true;
+    }
+    ableToBeHit = false;
+    hitStun.Timerr();
+
+    if (!ableToBeHit && hitStun.TimerDoneWithoutReset()) {
+      ableToBeHit = true;
+      hitStun.TimerReset();
+    }
   }
 
   void draw() {

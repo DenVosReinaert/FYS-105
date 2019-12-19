@@ -9,7 +9,6 @@ class Spawner extends GameObject {
   int wave = 1;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
-
   boolean waveInProgress = true;
 
   Spawner() {
