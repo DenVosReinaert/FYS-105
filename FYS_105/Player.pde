@@ -1,12 +1,14 @@
 class Player extends GameObject {
 
+  Timer weaponSwapPrevTimer = new Timer(1);
+  Timer weaponSwapNextTimer = new Timer(1);
 
   Pistol pistol = new Pistol();
   Shotgun shotGun = new Shotgun();
   MachineGun machineGun = new MachineGun();
 
   int currentGun, pistoll, shotgun, machinegun;
-  boolean nextGun, prevGun;
+  boolean nextGun, prevGun, swapable;
 
   Player() {
 
@@ -138,25 +140,54 @@ class Player extends GameObject {
     }
 
 
-    if (prevGun)
-    {
-      for (int i = 0; i < 1; i++)
+    if (prevGun) {
+      weaponSwapPrevTimer.Timerr();
+
+      swapable = true;
+
+      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
       {
-        if (currentGun >= 1)
+        for (int i = 0; i < 1; i++)
         {
-          currentGun --;
-        } else if(currentGun < 1) currentGun = 3;
+          if (currentGun >= 1)
+          {
+            currentGun --;
+          } else if (currentGun < 1) currentGun = 3;
+        }
+
+        swapable = false;
+      }
+
+      if (weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        swapable = true;
+        weaponSwapNextTimer.TimerReset();
       }
     }
 
 
     if (nextGun) {
-      for (int j = 0; j < 1; j++)
+      weaponSwapNextTimer.Timerr();
+
+      swapable = true;
+
+      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
       {
-        if (currentGun <= 3)
+        for (int j = 0; j < 1; j++)
         {
-          currentGun ++;
-        } else if(currentGun > 3) currentGun = 1;
+          if (currentGun <= 3)
+          {
+            currentGun ++;
+          } else if (currentGun > 3) currentGun = 1;
+        }
+
+        swapable = false;
+      }
+
+      if (weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        swapable = true;
+        weaponSwapNextTimer.TimerReset();
       }
     }
 

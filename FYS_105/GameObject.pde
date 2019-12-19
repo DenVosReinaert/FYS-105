@@ -41,7 +41,6 @@ public class GameObject {
   void draw()
   {    
     noStroke();
-    drawObjects();
     //println("I have been drawn");
   }//enemyUpdate
 

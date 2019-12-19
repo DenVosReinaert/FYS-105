@@ -21,6 +21,7 @@ class Level1
     }
     Layer1();
     Layer2();
+    GameObjectRef.drawObjects();
     myPlayer.draw();
     Layer3();
   }
@@ -39,19 +40,19 @@ class Level1
     popMatrix();
 
     //Pathing left to right
-    for (int i = 0; i < 13; i++)
+    for (int i = 0; i < 14; i++)
     {
       //Left to Right
-      image(gardenPathC, -10 + tileSize * i, -90 + tileSize * 3);
+      image(gardenPathC, -60 + tileSize * i, -40 + tileSize * 3);
 
-      image(gardenPathD, -10 + tileSize * i, -90 + tileSize * 5);
+      image(gardenPathD, -60 + tileSize * i, -40 + tileSize * 4);
     }
 
     for (int j = 0; j < 8; j ++)
     {
       //Top to Bottom
-      image(gardenPathB, -10 + tileSize * 5, -90 + tileSize * j);
-      image(gardenPathA, -10 + tileSize * 7, -90 + tileSize * j);
+      image(gardenPathB, -60 + tileSize * 6, -40 + tileSize * j);
+      image(gardenPathA, -60 + tileSize * 7, -40 + tileSize * j);
     }
 
 
@@ -59,31 +60,26 @@ class Level1
 
 
     //Corners Bott
-    image(gardenPathI, -10 + tileSize * 5, -90 + tileSize * 5);
-    image(gardenPathJ, -10 + tileSize * 7, -90 + tileSize * 5);
+    image(gardenPathI, -60 + tileSize * 6, -40 + tileSize * 4);
+    image(gardenPathJ, -60 + tileSize * 7, -40 + tileSize * 4);
 
     //Corners Top
-    image(gardenPathH, -10 + tileSize * 5, -90 + tileSize * 3);
-    image(gardenPathG, -10 + tileSize * 7, -90 + tileSize * 3);
+    image(gardenPathH, -60 + tileSize * 6, -40 + tileSize * 3);
+    image(gardenPathG, -60 + tileSize * 7, -40 + tileSize * 3);
   }
 
 
   void Layer2()
   {  
-    for (int i = 0; i < 13; i ++)
-    {
-      image(gardenPathE, -10 + tileSize * i, -90 + tileSize * 4);
-    }
-    for (int j = 0; j < 8; j++)
-    {
-      image(gardenPathE, -10 + tileSize * 6, -90 + tileSize * j);
-    }
+    gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 5);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 11, -40 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 11, -40 + tileSize * 5);
 
-
-    gardenPathFlowerPatch.draw(-10 + tileSize * 2, -90 + tileSize * 2);
-    gardenPathFlowerPatch.draw(-10 + tileSize * 2, -90 + tileSize * 6);
-    gardenPathFlowerPatch.draw(-10 + tileSize * 10, -90 + tileSize * 2);
-    gardenPathFlowerPatch.draw(-10 + tileSize * 10, -90 + tileSize * 6);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 4, -40 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 4, -40 + tileSize * 5);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 9, -40 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-60 + tileSize * 9, -40 + tileSize * 5);
     gardenPathFlowerPatch.update();
   }
 
@@ -98,9 +94,9 @@ class Level1
     {
       pillars[i] = new Pillar();
     }
-    pillars[0].draw(-10 + tileSize * 3, -90 + tileSize * 1);
-    pillars[1].draw(-10 + tileSize * 9, -90 + tileSize * 1);
-    pillars[2].draw(-10 + tileSize * 3, -90 + tileSize * 5);
-    pillars[3].draw(-10 + tileSize * 9, -90 + tileSize * 5);
+    pillars[0].draw(-60 + tileSize * 3, -40 + tileSize * 0);
+    pillars[1].draw(-60 + tileSize * 10, -40 + tileSize * 0);
+    pillars[2].draw(-60 + tileSize * 3, -40 + tileSize * 3);
+    pillars[3].draw(-60 + tileSize * 10, -40 + tileSize * 3);
   }
 }
