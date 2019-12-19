@@ -35,18 +35,28 @@ class Bullet extends GameObject {
 
     switch(bulletState) {
     case 1:
+      bulletWidth = bulletRight.width;
+      bulletHeight = bulletRight.height;
       image(bulletRight, bulletPosX, bulletPosY);
       break;
     case 2:
+      bulletWidth = bulletLeft.width;
+      bulletHeight = bulletLeft.height;
       image(bulletLeft, bulletPosX, bulletPosY);
       break;
     case 3:
+      bulletWidth = bullet.width;
+      bulletHeight = bullet.height;
       image(bullet, bulletPosX, bulletPosY);
       break;
     case 4:
+      bulletWidth = bulletDown.width;
+      bulletHeight = bulletDown.height;
       image(bulletDown, bulletPosX, bulletPosY);
       break;
     case 5:
+      bulletWidth = buckS.width;
+      bulletHeight = buckS.height;
       image(buckS, bulletPosX, bulletPosY);
       bulletWidth = buckS.width;
       bulletHeight = buckS.height;

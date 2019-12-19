@@ -35,7 +35,7 @@ class Brute extends GameObject {
     pushStyle();
     fill(9, 36, 145);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
-popStyle();
+    popStyle();
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
@@ -63,28 +63,27 @@ popStyle();
     //Quinn versie
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
-      if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
+
+      //Collision with Player
+      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
+      {
         UI.spelerhit();
         hp = 0;
       }
 
-      if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
-        if (GameObjectRef.gameObject.get(i).bulletPosX == 0)
-          GameObjectRef.gameObject.get(i).bulletPosX = -10000;
-        if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
-          GameObjectRef.gameObject.get(i).bulletPosY = -10000;
-        if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          hp=hp-1;
-          Remove(GameObjectRef.gameObject.get(i));
-          gamemngr.shakeAmount = 3;
-          gamemngr.shake = true;
-          if (hp == 0) {
-            ascore.score += scoreGain;
-          }
-          for (int j=0; j < 20; j++) {
-            Add(new Particle(enemyPosX, enemyPosY));
-          }//for
+      //Collision with Bullet
+      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
+      {
+        hp=hp-1;
+        Remove(GameObjectRef.gameObject.get(i));
+        gamemngr.shakeAmount = 3;
+        gamemngr.shake = true;
+        if (hp == 0) {
+          ascore.score += scoreGain;
         }
+        for (int j=0; j < 20; j++) {
+          Add(new Particle(enemyPosX, enemyPosY));
+        }//for
       }
     }
   }
