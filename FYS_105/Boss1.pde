@@ -79,7 +79,7 @@ class Boss1 extends GameObject {
           ascore.score += scoreGain;
         }
         for (int j=0; j < 20; j++) {
-          Add(new Particle(enemyPosX, enemyPosY));
+          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
         }//for
       }
     }
