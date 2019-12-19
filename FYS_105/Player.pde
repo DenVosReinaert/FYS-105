@@ -30,9 +30,6 @@ class Player extends GameObject {
 
   void draw() {
 
-    fill(255, 100, 0);
-    rect(playerPosX, playerPosY, playerWidth, playerHeight);
-
     if (onekey) {
       currentGun = pistoll;
       onekey = false;
@@ -46,17 +43,17 @@ class Player extends GameObject {
 
 
     if (myPlayer.lookingLeft) {
-      playerLeft.resize(14, 20);
-      image(playerLeft, playerPosX, playerPosY);
+      mrSpooksLeft.draw(playerPosX, playerPosY);
+      mrSpooksLeft.update();
     } else if (myPlayer.lookingRight) {
-      playerRight.resize(14, 20);
-      image(playerRight, playerPosX, playerPosY);
+      mrSpooksRight.draw(playerPosX, playerPosY);
+      mrSpooksRight.update();
     } else if (myPlayer.lookingUp) {
-      playerBack.resize(14, 20);
-      image(playerBack, playerPosX, playerPosY);
+      mrSpooksUp.draw(playerPosX, playerPosY);
+      mrSpooksUp.update();
     } else if (myPlayer.lookingDown) {
-      playerFront.resize(14, 20);
-      image(playerFront, playerPosX, playerPosY);
+      mrSpooksDown.draw(playerPosX, playerPosY);
+      mrSpooksDown.update();
     }
     // rect(playerPosX, playerPosY, playerWidth, playerHeight);
 

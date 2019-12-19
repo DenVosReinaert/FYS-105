@@ -1,38 +1,32 @@
 //Ruben de Jager
-class Grunt extends Enemies {
+class Grunt extends GameObject {
 
-  Grunt(float spawnLocation) {
+  Grunt() {
     tag = "enemy";
+
+    scoreGain = 5;
 
     enemyW=16;
     enemyH=20;
     enemyHP=2;
 
-    enemySpeedX=2;
-    enemySpeedY=2;
+    enemySpeedX=1;
+    enemySpeedY=1;
 
-    if (spawnLocation <= 0)
-    {
+
+    float r = random(-1, 3);
+    if (r <= 0) {
       enemyPosX = spawn.spawnerPos0.x;
       enemyPosY = spawn.spawnerPos0.y;
-    }
-
-    if (spawnLocation <= 1 && spawnLocation > 0)
-    {
-      enemyPosX = spawnerPos1.x;
-      enemyPosY = spawnerPos1.y;
-    }
-
-    if (spawnLocation <= 2  && spawnLocation > 1)
-    {
-      enemyPosX = spawnerPos2.x;
-      enemyPosY = spawnerPos2.y;
-    }
-
-    if (spawnLocation <= 3 && spawnLocation > 2)
-    {
-      enemyPosX = spawnerPos3.x;
-      enemyPosY = spawnerPos3.y;
+    } else if (r > 0 && r <= 1) {
+      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosY = spawn.spawnerPos1.y;
+    } else if (r > 1 && r <= 2) {
+      enemyPosX = spawn.spawnerPos2.x;
+      enemyPosY = spawn.spawnerPos2.y;
+    } else if (r > 2 && r <= 3) {
+      enemyPosX = spawn.spawnerPos3.x;
+      enemyPosY = spawn.spawnerPos3.y;
     }
   }//constructor Grunt
 
@@ -75,7 +69,7 @@ class Grunt extends Enemies {
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
-        healthbar.spelerhit();
+        UI.spelerhit();
         enemyHP = 0;
       }
 
@@ -87,8 +81,10 @@ class Grunt extends Enemies {
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
           if (enemyHP == 0) {
-            ascore.score += 5;
+            ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));

@@ -11,42 +11,50 @@ class MachineGun extends GameObject {
 
 
     if (cooldown == threshold && myPlayer.shootingUp) {
-      Add(new Bullet(random(-0.5, 0.5), random(-14.5, -15.5)));
+      if (UI.ammoM1 > 0 ) {
+        Add(new Bullet(random(-0.5, 0.5), random(-14.5, -15.5)));
+        UI.ammoM1--;
+        cooldown = 0;
 
-      cooldown = 0;
+        myPlayer.playerPosY += knockback;
 
-      myPlayer.playerPosY += knockback;
-
-      LMG.play();
-      LMG.rewind();
+        LMG.play();
+        LMG.rewind();
+      }
     } else if (cooldown == threshold && myPlayer.shootingDown) {
-      Add(new Bullet(random(-0.5, 0.5), random(14.5, 15.5)));
+      if (UI.ammoM1 > 0 ) {
+        Add(new Bullet(random(-0.5, 0.5), random(14.5, 15.5)));
+        UI.ammoM1--;
+        cooldown = 0;
 
-      cooldown = 0;
 
+        myPlayer.playerPosY -= knockback;
 
-      myPlayer.playerPosY -= knockback;
-
-      LMG.play();
-      LMG.rewind();
+        LMG.play();
+        LMG.rewind();
+      }
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
-      Add(new Bullet(random(-14.5, -15.5), random(-0.5, 0.5)));
+      if (UI.ammoM1 > 0 ) {
+        Add(new Bullet(random(-14.5, -15.5), random(-0.5, 0.5)));
+        UI.ammoM1--;
+        cooldown = 0;
 
-      cooldown = 0;
+        myPlayer.playerPosX += knockback;
 
-      myPlayer.playerPosX += knockback;
-
-      LMG.play();
-      LMG.rewind();
+        LMG.play();
+        LMG.rewind();
+      }
     } else if (cooldown == threshold && myPlayer.shootingRight) {
-      Add(new Bullet(random(14.5, 15.5), random(-0.5, 0.5)));
+      if (UI.ammoM1 > 0 ) {
+        Add(new Bullet(random(14.5, 15.5), random(-0.5, 0.5)));
+        UI.ammoM1--;
+        cooldown = 0;
 
-      cooldown = 0;
+        myPlayer.playerPosX -= knockback;
 
-      myPlayer.playerPosX -= knockback;
-
-      LMG.play();
-      LMG.rewind();
+        LMG.play();
+        LMG.rewind();
+      }
     }
   }
 

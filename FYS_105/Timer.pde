@@ -3,7 +3,7 @@ class Timer
 
   float frames, framesInitial;
 
-  Timer(int seconds)
+  Timer(float seconds)
   {
     framesInitial = seconds * frameRate;
     frames = framesInitial;

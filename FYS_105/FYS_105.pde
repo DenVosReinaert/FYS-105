@@ -16,23 +16,20 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 boolean game, works;
 
 // DIT MOET NOG ERGENS ANDERS :D
-String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
-String dbPort = "3306"; // replace with database port, MAMP standard is 8889
-String dbUser = "koeneqt"; // replace with database username, MAMP standard is "root"
-String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP standard is "root"
-String dbName = "zkoeneqt"; // replace with database name
+String dbHost = "oege.ie.hva.nl"; 
+String dbPort = "3306"; 
+String dbUser = "koeneqt"; 
+String dbPass = "7EwwK5+iBmUXUd"; 
+String dbName = "zkoeneqt";
 //
 
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
 Player player;
-Gun myGun;
-healthBar healthbar;
 UI UI;
 GameOver gameover;
 aScore ascore;
-Bullet bullet;
 Game_Manager gamemngr;
 MySQL msql;
 Player myPlayer;
@@ -62,7 +59,6 @@ void setup()
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
-  healthbar = new healthBar();
   GameObjectRef = new GameObject();
 
   lvlMngr.setup();
@@ -87,6 +83,7 @@ void draw()
   clear();
   lvlMngr.draw();
   gamemngr.draw();
+  UI.draw();
 
 
   if (game)
@@ -95,6 +92,10 @@ void draw()
 
 
 void keyPressed() {
+  // To check if you can die..
+  if (key == 'p') {
+   UI.spelerhit(); 
+  }
 
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;

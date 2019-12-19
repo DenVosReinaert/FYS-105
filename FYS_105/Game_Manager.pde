@@ -2,7 +2,9 @@ class Game_Manager {
   boolean dead;
   boolean home;
   boolean hscore;
+  boolean shake;
   int hscoreA;
+  int shakeAmount;
 
   Game_Manager() {
   }
@@ -33,8 +35,11 @@ class Game_Manager {
 
 
     if (game) {
-      if (healthbar.levens <= 0) {
-       gamemngr.dead = true; 
+      if (myPlayer.currentGun == myPlayer.pistoll) {
+        myPlayer.pistol.holdingGun();
+      }
+      if (UI.levens <= 0) {
+        gamemngr.dead = true;
       }
 
       homeSnd.pause();
@@ -42,23 +47,9 @@ class Game_Manager {
       lvlMngr.lvlNum = 1;
 
       ascore.draw();
-      healthbar.draw();
 
       spawn.draw();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,6 +59,10 @@ class Game_Manager {
       game = false;
       gameover.draw();
     }
+  }
+  void screenShake() {
+    translate(-shakeAmount, shakeAmount);
+    shake = false;
   }
   void keyPressed() {
     if (hscore) {

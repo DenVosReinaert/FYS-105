@@ -3,13 +3,12 @@ class Spawner extends GameObject {
 
   Timer spawnableTimer = new Timer(5);
   Timer spawnTimer = new Timer(2);
-  Timer waveTextTimer = new Timer(10);
+  Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
   int wave = 1;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
-
   boolean waveInProgress = true;
 
   Spawner() {
@@ -50,15 +49,25 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+    waveInProgress = false;
+
     waveTextTimer.Timerr();
 
-    if (!waveTextTimer.TimerDoneWithoutReset()) {
+    if (!waveTextTimer.TimerDoneWithoutReset() && !waveInProgress) {
       textSize(80);
       text("WAVE "+ wave, width/2-150, height/2);
     }
 
-    SpawnWave();
+    if (waveTextTimer.TimerDoneWithoutReset())
+    {
+      SpawnWave();
+      for (int i = 0; i < 1; i++)
+      {
+        wave++;
 
+        waveTextTimer.TimerReset();
+      }
+    }
     waveInProgress = true;
   }
 
@@ -66,13 +75,11 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    for (int i = 0; i< (int) random(wave * 2, wave * 5); i ++)
-    {
-      HeavySpawn();
-      GruntSpawn();
-      SpeedsterSpawn();
-      BruteSpawn();
-    }
+
+    HeavySpawn();
+    GruntSpawn();
+    SpeedsterSpawn();
+    BruteSpawn();
 
     if (wave % 5 == 0)
       Boss1Spawn();
@@ -80,31 +87,34 @@ class Spawner extends GameObject {
 
 
   void BruteSpawn() {
-    Add(new Brute( random(-1, 3)));
+    for (int i = 0; i< random(wave, wave * 2); i ++)
+    {
+      Add(new Brute());
+    }
   }//spawnerShow
 
   void GruntSpawn() {
-    Add(new Grunt( random(-1, 3)));
+    for (int i = 0; i< random(wave, wave * 3); i ++)
+    {
+      Add(new Grunt());
+    }
   }
-
-
-
 
   void SpeedsterSpawn() {
-    Add(new Speedster( random(-1, 3)));
+    for (int i = 0; i< random(wave, wave * 4); i ++)
+    {
+      Add(new Speedster());
+    }
   }
-
-
-
 
   void HeavySpawn() {
-    Add(new Heavy(random(-1, 3)));
+    for (int i = 0; i< random(wave, wave * 2); i ++)
+    {
+      Add(new Heavy());
+    }
   }
 
-
-
-
   void Boss1Spawn() {
-    Add(new Boss1(random(-1, 3)));
+    Add(new Boss1());
   }
 }
