@@ -25,7 +25,7 @@ class GameOver {
 
 
   // Array containing all available letters
-  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ','0','1','2','3','4','5','6','7','8', '9'};
 
   //int bN;
   //int bList;
@@ -127,28 +127,28 @@ class GameOver {
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {
-      if (state == 1 && l1s < 25) {
+      if (state == 1 && l1s < 36) {
         l1s++;
       }
-      if (state == 1 && l1s > 24 ) {
+      if (state == 1 && l1s > 35 ) {
         l1s = 0;
       }
-      if (state == 2 && l2s < 25) {
+      if (state == 2 && l2s < 36) {
         l2s++;
       }
-      if (state == 2 && l2s > 24) {
+      if (state == 2 && l2s > 35) {
         l2s = 0;
       }
-      if (state == 3 && l3s < 25) {
+      if (state == 3 && l3s < 36) {
         l3s++;
       }
-      if (state == 3 && l3s > 24) {
+      if (state == 3 && l3s > 35) {
         l3s = 0;
       }
-      if (state == 4 && l4s < 25) {
+      if (state == 4 && l4s < 36) {
         l4s++;
       }
-      if (state == 4 && l4s > 24) {
+      if (state == 4 && l4s > 35) {
         l4s = 0;
       }
     } 
@@ -170,25 +170,25 @@ class GameOver {
         l1s--;
       }
       if (state == 1 && l1s < 0) {
-        l1s = 25;
+        l1s = 36;
       }
       if (state == 2 && l2s > -1) {
         l2s--;
       }
       if (state == 2 && l2s < 0) {
-        l2s = 25;
+        l2s = 36;
       }
       if (state == 3 && l3s > -1) {
         l3s--;
       }
       if (state == 3 && l3s < 0) {
-        l3s = 25;
+        l3s = 36;
       }
       if (state == 4 && l4s > -1) {
         l4s--;
       }
       if (state == 4 && l4s < 0) {
-        l4s = 25;
+        l4s = 36;
       }
     }
   }

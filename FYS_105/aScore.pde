@@ -24,7 +24,7 @@ class aScore {
   }
 
   void saveScore() {
-    if (msql.connect() && UI.levens == 0) {
+    if (msql.connect() && UI.levens <= 0) {
       msql.query ( "SELECT id FROM scores ORDER BY id DESC LIMIT 1" ); // Select highest id from scores table
       while (msql.next() ) { // if ^ queries
         idh = msql.getString("id"); // Attach highest id in scores tabel to string idh(idhighest)
