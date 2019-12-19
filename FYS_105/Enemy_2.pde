@@ -14,17 +14,17 @@ class Speedster extends GameObject {
 
     float r = random(-1, 3);
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x;
+      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
       enemyPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
       enemyPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
       enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y;
+      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
     } else if (r > 2 && r <= 3) {
       enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y;
+      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
     }
   }//constructor Speedster
 
