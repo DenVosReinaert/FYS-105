@@ -8,7 +8,7 @@ class Heavy extends GameObject {
 
     enemyW=60;
     enemyH=60;
-    enemyHP=6;
+    hp=6;
     enemySpeedX=0.75;
     enemySpeedY=0.75;
 
@@ -33,8 +33,10 @@ class Heavy extends GameObject {
 
   void draw() {
     checkPulse();
+    pushStyle();
     fill(91, 80, 80);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
+    popStyle();
 
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
@@ -66,7 +68,7 @@ class Heavy extends GameObject {
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
       if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
@@ -75,11 +77,11 @@ class Heavy extends GameObject {
         if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
           GameObjectRef.gameObject.get(i).bulletPosY = -10000;
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
-          if (enemyHP == 0) {
+          if (hp == 0) {
             ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
@@ -91,6 +93,6 @@ class Heavy extends GameObject {
   }
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }//boolean Dead
 }

@@ -8,7 +8,7 @@ class Speedster extends GameObject {
 
     enemyW=20;
     enemyH=24;
-    enemyHP=1;
+    hp=1;
     enemySpeedX=2;
     enemySpeedY=2;
 
@@ -33,10 +33,10 @@ class Speedster extends GameObject {
 
   void draw() {
     checkPulse();
-
+    pushStyle();
     fill(229, 143, 23);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
-
+    popStyle();
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
@@ -66,7 +66,7 @@ class Speedster extends GameObject {
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
       if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
@@ -75,11 +75,11 @@ class Speedster extends GameObject {
         if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
           GameObjectRef.gameObject.get(i).bulletPosY = -10000;
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
-          if (enemyHP == 0) {
+          if (hp == 0) {
             ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
@@ -93,6 +93,6 @@ class Speedster extends GameObject {
 
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }//boolean Dead
 }

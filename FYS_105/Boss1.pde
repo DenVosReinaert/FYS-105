@@ -4,10 +4,11 @@ class Boss1 extends GameObject {
     tag = "enemy";
     enemyW=65;
     enemyH=80;
-    enemyHP=20;
+    hp=20;
     enemySpeedX=1;
     enemySpeedY=1;
 
+    scoreGain = 100;
 
     float r = random(-1, 3);
     if (r <= 0) {
@@ -61,7 +62,7 @@ class Boss1 extends GameObject {
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
       if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
@@ -70,12 +71,12 @@ class Boss1 extends GameObject {
         if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
           GameObjectRef.gameObject.get(i).bulletPosY = -10000;
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
-          if (enemyHP == 0) {
-            ascore.score += 5;
+          if (hp == 0) {
+            ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));
@@ -88,6 +89,6 @@ class Boss1 extends GameObject {
 
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }
 }

@@ -38,7 +38,7 @@ class Particle extends GameObject {
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
       if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
@@ -47,9 +47,9 @@ class Particle extends GameObject {
         if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
           GameObjectRef.gameObject.get(i).bulletPosY = -10000;
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
-          if (enemyHP == 0) {
+          if (hp == 0) {
             ascore.score += 5;
           }
           for (int j=0; j < 20; j++) {
@@ -61,6 +61,6 @@ class Particle extends GameObject {
   }
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }//boolean Dead
 }//class Particle

@@ -21,9 +21,8 @@ class Level1
     }
     Layer1();
     Layer2();
-    GameObjectRef.drawObjects();
-    myPlayer.draw();
     Layer3();
+    Layer4();
   }
 
 
@@ -84,8 +83,15 @@ class Level1
   }
 
 
-
   void Layer3()
+  {
+    GameObjectRef.drawObjects();
+    myPlayer.draw();
+  }
+
+
+
+  void Layer4()
   {
     //image(background, 0, 0);
 

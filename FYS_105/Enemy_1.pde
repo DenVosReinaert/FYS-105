@@ -8,7 +8,7 @@ class Grunt extends GameObject {
 
     enemyW=16;
     enemyH=20;
-    enemyHP=2;
+    hp=2;
 
     enemySpeedX=1;
     enemySpeedY=1;
@@ -36,10 +36,10 @@ class Grunt extends GameObject {
 
   void draw() {
     checkPulse();
-
+pushStyle();
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
-
+popStyle();
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
@@ -70,7 +70,7 @@ class Grunt extends GameObject {
     {
       if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
       if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
@@ -79,11 +79,11 @@ class Grunt extends GameObject {
         if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
           GameObjectRef.gameObject.get(i).bulletPosY = -10000;
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
-          if (enemyHP == 0) {
+          if (hp == 0) {
             ascore.score += scoreGain;
           }
           for (int j=0; j < 20; j++) {
@@ -95,6 +95,6 @@ class Grunt extends GameObject {
   }
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }//boolean Dead
 }//class Grunt

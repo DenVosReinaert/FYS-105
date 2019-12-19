@@ -95,6 +95,7 @@ class GameOver {
       }
 
       // Draw all letters on screen
+      pushStyle();
       textSize(80);
       fill(200);
       text(""+letter1, xPos1, height/2 - 20);
@@ -103,6 +104,7 @@ class GameOver {
       text(""+letter4, xPos4, height/2 - 20);
       textSize(15);
       text("Press ENTER to save name!", width/2 - 100, height/2 + 50);
+      popStyle();
     }
   }
 
@@ -220,6 +222,7 @@ class GameOver {
 
     for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
     {
+      GameObjectRef.gameObject.get(i).hp = 0;
       GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
     }
   }
