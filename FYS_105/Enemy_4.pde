@@ -37,7 +37,7 @@ class Brute extends GameObject {
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
 popStyle();
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
+    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
         enemyPosX += enemySpeedX;
       }//if

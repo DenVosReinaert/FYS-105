@@ -14,6 +14,7 @@ public class GameObject {
 
   String tag;
 
+  float tileSize;
   float enemyPosX, enemyPosY, enemyH, enemyW, enemySpeedX, enemySpeedY;
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
@@ -44,6 +45,8 @@ public class GameObject {
   {    
     noStroke();
     //println("I have been drawn");
+
+    tileSize = 100;
   }//enemyUpdate
 
   boolean Dead() {

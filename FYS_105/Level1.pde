@@ -100,9 +100,9 @@ class Level1
     {
       pillars[i] = new Pillar();
     }
-    pillars[0].draw(-60 + tileSize * 3, -40 + tileSize * 0);
-    pillars[1].draw(-60 + tileSize * 10, -40 + tileSize * 0);
-    pillars[2].draw(-60 + tileSize * 3, -40 + tileSize * 3);
-    pillars[3].draw(-60 + tileSize * 10, -40 + tileSize * 3);
+    pillars[0].draw(-60 + tileSize * 3, -40 + tileSize * 1.5);
+    pillars[1].draw(-60 + tileSize * 10, -40 + tileSize * 1.5);
+    pillars[2].draw(-60 + tileSize * 3, -40 + tileSize * 4.5);
+    pillars[3].draw(-60 + tileSize * 10, -40 + tileSize * 4.5);
   }
 }

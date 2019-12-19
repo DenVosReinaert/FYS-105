@@ -36,19 +36,19 @@ class Grunt extends GameObject {
 
   void draw() {
     checkPulse();
-pushStyle();
+    pushStyle();
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
-popStyle();
+    popStyle();
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
-      if (myPlayer.playerPosX > enemyPosX) {
+    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
+      if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
         enemyPosX += enemySpeedX;
       }//if
-      if (myPlayer.playerPosX < enemyPosX) {
+      if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
         enemyPosX -= enemySpeedX;
       }//if
-      if (myPlayer.playerPosY < enemyPosY) {
+      if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
         enemyPosY -= enemySpeedY;
       } //if
       else {

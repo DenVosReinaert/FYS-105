@@ -8,17 +8,27 @@ class Pillar extends GameObject
 
   void draw(float pillarPosX, float pillarPosY)
   {
+    println(pillar.height);
+
     pillarPosX += pillar.width/6;
-    pillarPosY += pillar.height;
 
     image(pillar, pillarPosX, pillarPosY);
 
 
-    if (myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX && myPlayer.playerPosX < pillarPosX + pillar.width) {
-      if (myPlayer.playerPosY< pillarPosY && myPlayer.playerPosY + myPlayer.playerHeight  > pillarPosY - pillar.height/3)
-        println("OVERLAPPING!!!");
-    }
+    rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, 5, 5);
+    rect(pillarPosX, pillarPosY, 5, 5);
+    rect(pillarPosX + pillar.width, pillarPosY + pillar.height, 5, 5);
 
+
+    //Collision statement
+    if (myPlayer.playerPosX < pillarPosX + pillar.width && myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX)
+    {
+      myPlayer.moveVelX = 0;
+    }
+    if (myPlayer.playerPosY < pillarPosY + pillar.height && myPlayer.playerPosY + myPlayer.playerHeight > pillarPosY)
+    {
+      myPlayer.moveVelY = 0;
+    }
     //BOUNDARIES
   }
 }

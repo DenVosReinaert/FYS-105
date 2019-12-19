@@ -14,8 +14,8 @@ class Player extends GameObject {
 
 
 
-    playerWidth = 14;
-    playerHeight = 20;
+    playerWidth = 25;
+    playerHeight = 40;
     playerPosX = (width/2) - playerWidth/2;
     playerPosY = (height/2) - playerHeight/2;
 
