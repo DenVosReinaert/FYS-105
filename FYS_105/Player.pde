@@ -6,7 +6,7 @@ class Player extends GameObject {
   MachineGun machineGun = new MachineGun();
 
   int currentGun, pistoll, shotgun, machinegun;
-
+  boolean nextGun, prevGun;
 
   Player() {
 
@@ -48,10 +48,12 @@ class Player extends GameObject {
     } else if (myPlayer.lookingRight) {
       mrSpooksRight.draw(playerPosX, playerPosY);
       mrSpooksRight.update();
-    } else if (myPlayer.lookingUp) {
-      mrSpooksUp.draw(playerPosX, playerPosY);
-      mrSpooksUp.update();
-    } else if (myPlayer.lookingDown) {
+    } 
+    //else if (myPlayer.lookingUp) {
+    //  mrSpooksUp.draw(playerPosX, playerPosY);
+    //  mrSpooksUp.update();
+    //} 
+    else if (myPlayer.lookingDown) {
       mrSpooksDown.draw(playerPosX, playerPosY);
       mrSpooksDown.update();
     }
@@ -138,6 +140,27 @@ class Player extends GameObject {
     }
 
 
+    if (prevGun)
+    {
+      for (int i = 0; i < 1; i++)
+      {
+        if (currentGun >= 1)
+        {
+          currentGun --;
+        } else if(currentGun < 1) currentGun = 3;
+      }
+    }
+
+
+    if (nextGun) {
+      for (int j = 0; j < 1; j++)
+      {
+        if (currentGun <= 3)
+        {
+          currentGun ++;
+        } else if(currentGun > 3) currentGun = 1;
+      }
+    }
 
 
     playerPosX += moveVelX;
@@ -230,6 +253,16 @@ class Player extends GameObject {
       lookingRight = false;
       lookingDown = true;
     }
+    if (key == 'q')
+    {
+      prevGun = true;
+      nextGun = false;
+    }
+    if (key =='e')
+    {
+      prevGun = false;
+      nextGun = true;
+    }
   }
 
   void keyReleased() {
@@ -244,5 +277,7 @@ class Player extends GameObject {
     if (keyCode == RIGHT) shootingRight = false;
     if (keyCode == UP) shootingUp = false;
     if (keyCode == DOWN) shootingDown = false;
+    if (key == 'q') prevGun = false;
+    if (key == 'e') nextGun = false;
   }
 }

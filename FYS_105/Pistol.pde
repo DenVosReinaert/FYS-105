@@ -6,32 +6,38 @@ class Pistol extends GameObject {
     knockback = 5;
   }
 
-// Show weapon sprite
+  // Show weapon sprite
   void holdingGun() {
     float barrelX, barrelY;
-    if (lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
+    if (myPlayer.lookingUp) {
+      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-        image(handgunUp, barrelX, barrelY);
-    }
-    else if (lookingDown) {
-     barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
-     barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2;
-     image(handgunDown, barrelX, barrelY);
-    }
-    else if (lookingRight) {
-     barrelX = myPlayer.playerPosX + playerWidth;
-     barrelY = myPlayer.playerPosY - playerHeight/2;
-     image(handgunRight, barrelX, barrelY);
-    }
-    else if (lookingLeft) {
-     barrelX = myPlayer.playerPosX - playerWidth;
-     barrelY = myPlayer.playerPosY - playerHeight/2;
-     image(handgunLeft, barrelX, barrelY);
+      image(handgunUp, barrelX, barrelY);
+      handgunUp.resize(8, 35);
+      mrSpooksUp.draw(myPlayer.playerPosX, myPlayer.playerPosY);
+      mrSpooksUp.update();
+      
+    } else if (myPlayer.lookingDown) {
+      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
+      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
+      image(handgunDown, barrelX, barrelY);
+      handgunDown.resize(8, 35);
+      
+    } else if (myPlayer.lookingRight) {
+      barrelX = myPlayer.playerPosX + playerWidth + 20;
+      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(handgunRight, barrelX, barrelY);
+      handgunRight.resize(35, 16);
+      
+    } else if (myPlayer.lookingLeft) {
+      barrelX = myPlayer.playerPosX - playerWidth - 20;
+      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(handgunLeft, barrelX, barrelY);
+      handgunLeft.resize(35, 16);
     }
   }
-  
-  
+
+
   void shoot() {
 
     if (cooldown == threshold && myPlayer.shootingUp) {
