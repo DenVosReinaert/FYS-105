@@ -77,6 +77,8 @@ class Speedster extends GameObject {
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
           if (enemyHP == 0) {
             ascore.score += scoreGain;
           }

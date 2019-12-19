@@ -2,7 +2,9 @@ class Game_Manager {
   boolean dead;
   boolean home;
   boolean hscore;
+  boolean shake;
   int hscoreA;
+  int shakeAmount;
 
   Game_Manager() {
   }
@@ -34,7 +36,7 @@ class Game_Manager {
 
     if (game) {
       if (UI.levens <= 0) {
-       gamemngr.dead = true; 
+        gamemngr.dead = true;
       }
 
       homeSnd.pause();
@@ -50,23 +52,14 @@ class Game_Manager {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (dead) {
       game = false;
       gameover.draw();
     }
+  }
+  void screenShake() {
+    translate(-shakeAmount, shakeAmount);
+    shake = false;
   }
   void keyPressed() {
     if (hscore) {

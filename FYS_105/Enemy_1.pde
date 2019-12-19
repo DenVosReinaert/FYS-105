@@ -5,7 +5,7 @@ class Grunt extends GameObject {
     tag = "enemy";
 
     scoreGain = 5;
-  
+
     enemyW=16;
     enemyH=20;
     enemyHP=2;
@@ -81,6 +81,8 @@ class Grunt extends GameObject {
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
           if (enemyHP == 0) {
             ascore.score += scoreGain;
           }

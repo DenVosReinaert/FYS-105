@@ -2,9 +2,9 @@ class Brute extends GameObject {
 
   Brute() {
     tag = "enemy";
-    
+
     scoreGain = 7;
-    
+
     enemyW=30;
     enemyH=30;
     enemyHP=4;
@@ -75,6 +75,8 @@ class Brute extends GameObject {
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
           enemyHP=enemyHP-1;
           Remove(GameObjectRef.gameObject.get(i));
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
           if (enemyHP == 0) {
             ascore.score += scoreGain;
           }

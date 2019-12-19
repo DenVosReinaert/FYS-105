@@ -16,7 +16,9 @@ class Level1
 
   void draw()
   {
-
+    if (gamemngr.shake) {
+      gamemngr.screenShake();
+    }
     Layer1();
     Layer2();
     myPlayer.draw();
