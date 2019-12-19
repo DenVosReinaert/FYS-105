@@ -16,14 +16,14 @@ PImage healthbarS, healthbarSb, healthP, bullet, shotgunS;
 
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight;
+PImage handgunLeft, handgunRight, handgunUp, handgunDown;
 
 // Player
-PImage playerFront, playerBack, playerLeft, playerRight;
 
 // Effects
 PImage bloodOrb;
 
-// Maps
+// Maps && spritesheets
 PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
 SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 PImage purpleStoneTiles;
@@ -44,14 +44,16 @@ void LoadAssets()
   bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
   bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
   bulletRight = loadImage("/data/sprites/BulletSpriteRight.png");
+  
+  handgunUp = loadImage("/data/sprites/Handgun_Top.png");
+  handgunDown = loadImage("/data/sprites/Handgun_Down.png");
+  handgunLeft = loadImage("/data/sprites/Handgun_Left.png");
+  handgunRight = loadImage("/data/sprites/Handgun_Right.png");
+  
   // ?
 
 
   // Player
-  playerFront = loadImage("/data/sprites/playerFront.png");
-  playerBack = loadImage("/data/sprites/playerBack.png");
-  playerLeft = loadImage("/data/sprites/playerLeft.png");
-  playerRight = loadImage("/data/sprites/playerRight.png");
 
 
   // Main Menu

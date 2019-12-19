@@ -5,6 +5,33 @@ class Pistol extends GameObject {
     cooldown = 0;
     knockback = 5;
   }
+
+// Show weapon sprite
+  void holdingGun() {
+    float barrelX, barrelY;
+    if (lookingUp) {
+      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
+      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+        image(handgunUp, barrelX, barrelY);
+    }
+    else if (lookingDown) {
+     barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
+     barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2;
+     image(handgunDown, barrelX, barrelY);
+    }
+    else if (lookingRight) {
+     barrelX = myPlayer.playerPosX + playerWidth;
+     barrelY = myPlayer.playerPosY - playerHeight/2;
+     image(handgunRight, barrelX, barrelY);
+    }
+    else if (lookingLeft) {
+     barrelX = myPlayer.playerPosX - playerWidth;
+     barrelY = myPlayer.playerPosY - playerHeight/2;
+     image(handgunLeft, barrelX, barrelY);
+    }
+  }
+  
+  
   void shoot() {
 
     if (cooldown == threshold && myPlayer.shootingUp) {

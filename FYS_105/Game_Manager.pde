@@ -35,6 +35,9 @@ class Game_Manager {
 
 
     if (game) {
+      if (myPlayer.currentGun == myPlayer.pistoll) {
+        myPlayer.pistol.holdingGun();
+      }
       if (UI.levens <= 0) {
         gamemngr.dead = true;
       }
