@@ -20,7 +20,11 @@ class Powerups extends GameObject {
 
     ellipse(speedUpX, speedUpY, speedUpDia, speedUpDia);
 
+<<<<<<< Updated upstream
     if (dist(playerPosX, playerPosY, speedUpX, speedUpY) < 20) {
+=======
+    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, speedUpX, speedUpY) < 20) {
+>>>>>>> Stashed changes
       SpeedUp();
     }
   }
@@ -29,10 +33,14 @@ class Powerups extends GameObject {
 
     int speedUpSpeed = 3;
 
+<<<<<<< Updated upstream
     defaultSpeed = defaultSpeed + speedUpSpeed;
 
     //WAIT FOR 10 SECONDS, THEN TURN SPEED BACK TO NORMAL;
 
     defaultSpeed = defaultSpeed - speedUpSpeed;
+=======
+    myPlayer.defaultSpeed += speedUpSpeed;
+>>>>>>> Stashed changes
   }
 }
