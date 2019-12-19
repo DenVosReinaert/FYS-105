@@ -22,7 +22,6 @@ class Player extends GameObject {
 
     pistoll = 1;
     shotgun = 2;
-    machinegun = 3;
 
     currentGun = pistoll;
   }
@@ -30,15 +29,24 @@ class Player extends GameObject {
 
   void draw() {
 
-    if (onekey) {
+    if (onekey && currentGun == machinegun) {
       currentGun = pistoll;
       onekey = false;
-    } else if (twokey) {
+    } else if (onekey && currentGun == shotgun) {
+      currentGun = machinegun;
+      onekey = false;
+    } else if (onekey && currentGun == pistoll) {
+      currentGun = shotgun;
+      onekey = false;
+    } else if (twokey && currentGun == machinegun) {
+      currentGun = shotgun;
+      twokey = false;
+    } else if (twokey && currentGun == shotgun) {
+      currentGun = pistoll;
+      twokey = false;
+    } else if (twokey && currentGun == pistoll) {
       currentGun = machinegun;
       twokey = false;
-    } else if (threekey) {
-      currentGun = shotgun;
-      threekey = false;
     }
 
 
