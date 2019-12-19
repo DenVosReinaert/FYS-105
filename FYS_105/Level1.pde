@@ -81,6 +81,9 @@ class Level1
 
 
     gardenPathFlowerPatch.draw(-10 + tileSize * 2, -90 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-10 + tileSize * 2, -90 + tileSize * 6);
+    gardenPathFlowerPatch.draw(-10 + tileSize * 10, -90 + tileSize * 2);
+    gardenPathFlowerPatch.draw(-10 + tileSize * 10, -90 + tileSize * 6);
     gardenPathFlowerPatch.update();
   }
 
@@ -91,16 +94,13 @@ class Level1
     //image(background, 0, 0);
 
     //Pillars
-    //for (int i = 0; i < pillarCount; i++)
-    //{
-    //  pillars[i] = new Pillar();
-    //  pillars[i].draw(-10 + tileSize * 3 + i * pillarInterval + pillars[i].pillarWidth * i, -90 + tileSize * 2);
-    //}
-
-    //for (int j = 0; j < pillarCount; j++)
-    //{
-    //  pillars[j] = new Pillar();
-    //  pillars[j].draw(-10 + tileSize * 3 + j * pillarInterval + pillars[j].pillarWidth * j, -90 + tileSize * 5);
-    //}
+    for (int i = 0; i < pillarCount; i++)
+    {
+      pillars[i] = new Pillar();
+    }
+    pillars[0].draw(-10 + tileSize * 3, -90 + tileSize * 1);
+    pillars[1].draw(-10 + tileSize * 9, -90 + tileSize * 1);
+    pillars[2].draw(-10 + tileSize * 3, -90 + tileSize * 5);
+    pillars[3].draw(-10 + tileSize * 9, -90 + tileSize * 5);
   }
 }
