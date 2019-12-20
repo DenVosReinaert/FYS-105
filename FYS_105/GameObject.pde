@@ -14,11 +14,13 @@ public class GameObject {
 
   String tag;
 
+  float moveVelX, moveVelY;
+
   float tileSize;
-  float enemyPosX, enemyPosY, enemyH, enemyW, enemySpeedX, enemySpeedY;
+  float enemyPosX, enemyPosY, enemyH, enemyW;
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
-  float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight;
+  float playerPosX, playerPosY, playerWidth, playerHeight;
   float defaultSpeed = 5;
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 

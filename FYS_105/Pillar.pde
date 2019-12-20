@@ -21,16 +21,20 @@ class Pillar extends GameObject
 
 
     //Collision statement
-    if (myPlayer.playerPosX < pillarPosX + pillar.width && myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX)
+    if (myPlayer.playerPosX < pillarPosX + pillar.width && myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX && myPlayer.playerPosY < pillarPosY + pillar.height && myPlayer.playerPosY + myPlayer.playerHeight > pillarPosY)
     {
+      if(myPlayer.playerPosX < pillarPosX + pillar.width && myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX)
+      {
       myPlayer.moveVelX = 0;
       println("Collide X");
-
+      }
+      
       if (myPlayer.playerPosY < pillarPosY + pillar.height && myPlayer.playerPosY + myPlayer.playerHeight > pillarPosY)
       {
         myPlayer.moveVelY = 0;
         println("CollideY");
       }
+      
     }
 
     //BOUNDARIES

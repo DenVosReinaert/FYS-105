@@ -50,7 +50,7 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.playerPosY += knockback;
+        myPlayer.moveVelY += knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -68,7 +68,7 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.playerPosY -= knockback;
+        myPlayer.moveVelY -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -85,7 +85,7 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.playerPosX -= knockback;
+        myPlayer.moveVelX -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -101,7 +101,7 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.playerPosX += knockback;
+        myPlayer.moveVelX += knockback;
 
         Shotgun.play();
         Shotgun.rewind();
