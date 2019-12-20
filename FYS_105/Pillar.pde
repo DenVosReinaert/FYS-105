@@ -1,38 +1,49 @@
-class Pillar extends GameObject
+class Pillar
 {
 
-  Pillar()
+
+  float pillarWidth, pillarHeight, pillarBoundY;
+
+  void setup()
   {
-    tag = "structure";
+    pillarWidth = Calculate("x", 75);
+    pillarHeight = Calculate("y", 150);
+
+    pillarBoundY = Calculate("y", pillarHeight/2);
   }
+
+
 
   void draw(float pillarPosX, float pillarPosY)
   {
-    println(pillar.height);
-
-    pillarPosX += pillar.width/6;
-
     image(pillar, pillarPosX, pillarPosY);
+    pushStyle();
+    fill(0);
+    rect(pillarPosX, pillarBoundY, pillarWidth, pillarHeight);
+    popStyle();
 
 
-    rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, 5, 5);
-    rect(pillarPosX, pillarPosY, 5, 5);
-    rect(pillarPosX + pillar.width, pillarPosY + pillar.height, 5, 5);
 
 
-    //Collision statement
-    if (myPlayer.playerPosX < pillarPosX + pillar.width && myPlayer.playerPosX + myPlayer.playerWidth > pillarPosX)
-    {
-      myPlayer.moveVelX = 0;
-      println("Collide X");
 
-      if (myPlayer.playerPosY < pillarPosY + pillar.height && myPlayer.playerPosY + myPlayer.playerHeight > pillarPosY)
-      {
-        myPlayer.moveVelY = 0;
-        println("CollideY");
-      }
-    }
 
     //BOUNDARIES
+    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX)
+    {
+      myPlayer.moveVelX = 0;
+    } else
+      if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth)
+      {
+        myPlayer.moveVelX = 0;
+      }
+
+    if (myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarBoundY)
+    {
+      myPlayer.moveVelY = 0;
+    } else
+      if (myPlayer.playerPosY + myPlayer.moveVelY < pillarHeight)
+      {
+        myPlayer.moveVelY = 0;
+      }
   }
 }

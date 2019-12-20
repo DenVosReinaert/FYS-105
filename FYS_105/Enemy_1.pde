@@ -1,99 +1,37 @@
 //Ruben de Jager
-class Grunt extends GameObject {
+class Grunt extends Enemies {
 
   Grunt() {
-    tag = "enemy";
-
-    scoreGain = 5;
-
-    enemyW=16;
-    enemyH=20;
-    hp=2;
-
-    enemySpeedX=1;
-    enemySpeedY=1;
-
-
-    float r = random(-1, 3);
-    if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos0.y;
-    } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos1.y;
-    } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
-    } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
-    }
+    enemyW=40;
+    enemyH=40;
+    enemyHP=30;
+    enemySpeedX=2;
+    enemySpeedY=2;
   }//constructor Grunt
 
-
-
-
-
-  void draw() {
-    checkPulse();
-    pushStyle();
-    fill(65, 17, 96);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-    popStyle();
-    //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += enemySpeedX;
-      }//if
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= enemySpeedX;
-      }//if
-      if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= enemySpeedY;
-      } //if
-      else {
-        enemyPosY += enemySpeedY;
-      }//else
-    }
-
-    if (Dead())
-    {
-      Remove(this);
-    }
-  }//enemyShow
-
-
-
-  void checkPulse() {//Checks the enemy's collision with the player's bullet
-    //Quinn versie
-    for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
-    {
-
-      //Collision with Player
-      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
-      {
-        UI.spelerhit();
-        hp = 0;
-      }
-
-      //Collision with Bullet
-      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
-      {
-        hp=hp-1;
-        Remove(GameObjectRef.gameObject.get(i));
-        gamemngr.shakeAmount = 3;
-        gamemngr.shake = true;
-        if (hp == 0) {
-          ascore.score += scoreGain;
-        }
-        for (int j=0; j < 20; j++) {
-          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
-        }//for
-      }
+  void setup() {
+    //dit moet in een array, de float "r" moet in draw want die moet veranderen, maar de enemies moeten 1 keer spawnen
+    float r = random(-1, 3);
+    if (r <= 0) {
+      enemyPosX = spawn.spawnerPosX0;
+      enemyPosY = spawn.spawnerPosY0;
+    } else if (r > 0 && r <= 1) {
+      enemyPosX = spawn.spawnerPosX1;
+      enemyPosY = spawn.spawnerPosY1;
+    } else if (r > 1 && r <= 2) {
+      enemyPosX = spawn.spawnerPosX2;
+      enemyPosY = spawn.spawnerPosY2;
+    } else if (r > 2 && r <= 3) {
+      enemyPosX = spawn.spawnerPosX3;
+      enemyPosY = spawn.spawnerPosY3;
     }
   }
+  void enemyShow() {
+    fill(65, 17, 96);
+    rect(enemyPosX, enemyPosY, enemyW, enemyH);
+  }//enemyShow
 
   boolean Dead() {
-    return hp<=0;
+    return enemyHP<=0;
   }//boolean Dead
 }//class Grunt

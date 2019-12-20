@@ -1,119 +1,39 @@
-class Shotgun extends GameObject {
-
-
+class Shotgun extends Gun {
 
   Shotgun() {
-    threshold = 100;
+    threshold = 60;
     cooldown = 0;
-    knockback = 40;
   }
-  
-    void holdingGun() {
-    float barrelX, barrelY;
-    if (myPlayer.lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-      image(handgunUp, barrelX, barrelY);
-      handgunUp.resize(8, 35);
-      
-    } else if (myPlayer.lookingDown) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(handgunDown, barrelX, barrelY);
-      handgunDown.resize(8, 35);
-      
-    } else if (myPlayer.lookingRight) {
-      barrelX = myPlayer.playerPosX + playerWidth + 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunRight, barrelX, barrelY);
-      handgunRight.resize(35, 16);
-      
-    } else if (myPlayer.lookingLeft) {
-      barrelX = myPlayer.playerPosX - playerWidth - 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunLeft, barrelX, barrelY);
-      handgunLeft.resize(35, 16);
-    }
-  }
-  
-  
 
   void shoot() {
-
-    if (cooldown == threshold && myPlayer.shootingUp) {
-      if ( UI.ammoS1 > 0) {
-
-        for (int i = 0; i < 5; i++)
-        {
-          Add(new Bullet(random(-2, 2), random(-14, -16)));
-        }
-        UI.ammoS1--;
-        cooldown = 0;
-
-        myPlayer.playerPosY += knockback;
-
-        Shotgun.play();
-        Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
-      }
-    } else if (cooldown == threshold && myPlayer.shootingDown) {
-      if ( UI.ammoS1 > 0) {
-
-
-        for (int i = 0; i < 5; i++)
-        {
-          Add(new Bullet(random(-2, 2), random(14, 16)));
-        }
-        UI.ammoS1--;
-        cooldown = 0;
-
-        myPlayer.playerPosY -= knockback;
-
-        Shotgun.play();
-        Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
-      }
-    } else if (cooldown == threshold && myPlayer.shootingRight) {
-      if ( UI.ammoS1 > 0) {
-
-        for (int i = 0; i < 5; i++)
-        {
-          Add(new Bullet(random(14, 16), random(-2, 2)));
-        }
-        UI.ammoS1--;
-        cooldown = 0;
-
-        myPlayer.playerPosX -= knockback;
-
-        Shotgun.play();
-        Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
-      }
-    } else if (cooldown == threshold && myPlayer.shootingLeft) {
-      if ( UI.ammoS1 > 0) {
-        for (int i = 0; i < 5; i++)
-        {
-          Add(new Bullet(random(-14, -16), random(-2, 2)));
-        }
-        UI.ammoS1--;
-        cooldown = 0;
-
-        myPlayer.playerPosX += knockback;
-
-        Shotgun.play();
-        Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
-      }
-    }
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
+    if (cooldown == threshold && bengine.lookingUp) {
+      bengine.engine.add(new Bullet(-2, -14));
+      bengine.engine.add(new Bullet(-1, -15));
+      bengine.engine.add(new Bullet(0, -16));
+      bengine.engine.add(new Bullet(1, -15));
+      bengine.engine.add(new Bullet(2, -14));
+      cooldown = 0;
+    } else if (cooldown == threshold && bengine.lookingDown) {
+      bengine.engine.add(new Bullet(-2, 14));
+      bengine.engine.add(new Bullet(-1, 15));
+      bengine.engine.add(new Bullet(0, 16));
+      bengine.engine.add(new Bullet(1, 15));
+      bengine.engine.add(new Bullet(2, 14));
+      cooldown = 0;
+    } else if (cooldown == threshold && bengine.lookingRight) {
+      bengine.engine.add(new Bullet(14, -2));
+      bengine.engine.add(new Bullet(15, -1));
+      bengine.engine.add(new Bullet(16, 0));
+      bengine.engine.add(new Bullet(15, 1));
+      bengine.engine.add(new Bullet(14, 2));
+      cooldown = 0;
+    } else if (cooldown == threshold && bengine.lookingLeft) {
+      bengine.engine.add(new Bullet(-14, -2));
+      bengine.engine.add(new Bullet(-15, -1));
+      bengine.engine.add(new Bullet(-16, 0));
+      bengine.engine.add(new Bullet(-15, 1));
+      bengine.engine.add(new Bullet(-14, 2));
+      cooldown = 0;
     }
   }
 }

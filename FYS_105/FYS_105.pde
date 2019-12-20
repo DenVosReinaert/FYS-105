@@ -2,54 +2,46 @@
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
-
 //Halleluyah we got GitHub
 final int KEY_LIMIT = 1024;
 boolean[] keysPressed = new boolean[KEY_LIMIT];
-
-boolean game, works;
+boolean game;
 
 // DIT MOET NOG ERGENS ANDERS :D
-String dbHost = "oege.ie.hva.nl"; 
-String dbPort = "3306"; 
-String dbUser = "koeneqt"; 
-String dbPass = "7EwwK5+iBmUXUd"; 
-String dbName = "zkoeneqt";
+String dbHost = "oege.ie.hva.nl"; // if you are using a using a local database, this should be fine
+String dbPort = "3306"; // replace with database port, MAMP standard is 8889
+String dbUser = "koeneqt"; // replace with database username, MAMP standard is "root"
+String dbPass = "7EwwK5+iBmUXUd";  // replace with database password, MAMP standard is "root"
+String dbName = "zkoeneqt"; // replace with database name
 //
+
 
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
-Player player;
+healthBar healthbar;
 UI UI;
 GameOver gameover;
 aScore ascore;
 Game_Manager gamemngr;
 MySQL msql;
+BulletEngine bengine;
 Player myPlayer;
-//Gun myGun;
+Gun myGun;
 Spawner spawn;
-GameObject GameObjectRef;
+
 
 
 void setup()
 {
-  //For background tiles
-  //X: -10
-  //Y: -90
   size(1280, 720);
-  minim = new Minim(this);
 
   LoadAssets();
 
+
   myPlayer = new Player();
   UI = new UI();
+  bengine = new BulletEngine();
   spawn = new Spawner();
   gamemngr = new Game_Manager();
 
@@ -59,22 +51,12 @@ void setup()
   ascore = new aScore();
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
-  GameObjectRef = new GameObject();
+  healthbar = new healthBar();
+
+
 
   lvlMngr.setup();
 }
-
-
-void Work()
-{
-  if (!works)
-  {
-    works = true;
-  }
-}
-
-
-
 
 
 
@@ -83,29 +65,24 @@ void draw()
   clear();
   lvlMngr.draw();
   gamemngr.draw();
-  UI.draw();
 
 
   if (game)
-    GameObjectRef.draw();
+    myPlayer.show();
 }
 
 
 void keyPressed() {
-  // To check if you can die..
-  if (key == 'p') {
-   UI.spelerhit(); 
-  }
-
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
+  // thePlayer.setMove(keyCode, true);
   gamemngr.keyPressed();
 }
 
 void keyReleased() {
-  //Walking
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
+  // thePlayer.setMove(keyCode, false);
   gamemngr.keyReleased();
 
   background.resize(width, height);

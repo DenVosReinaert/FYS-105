@@ -25,33 +25,15 @@ class GameOver {
 
 
   // Array containing all available letters
-  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ','0','1','2','3','4','5','6','7','8', '9'};
+  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
-  //int bN;
-  //int bList;
-  //String blacklist[] = new String[bList];
-  //String word;
+  void setup() {
 
-  GameOver() {
-    // Attempt blacklist, not working yet!
-    //if (msql.connect() && bN < 10) { // Als geconnect is met database & Ans kleiner is dan 10
-    //  msql.query( "SELECT * FROM blacklist");
-    //  while ( msql.next() && bN < 10) {
-    //    word = msql.getString("word"); // string name is 'name' uit database
-    //    blacklist = append(blacklist, word); // Voeg name toe aan de array names
-    //    bList++;
-    //    bN++;
-    //  }
-    //} else { 
-    //  println("ERROR: Couldn't fetch blacklist!");
-    //}
   }
 
   void draw() {
     clear();
     if (gamemngr.dead) {
-      death.play();
-
       // The dot under the letters depending on which state they are
       if (state == 1) {
         circle(width/2-135, height/2 + 20, 10);
@@ -95,7 +77,6 @@ class GameOver {
       }
 
       // Draw all letters on screen
-      pushStyle();
       textSize(80);
       fill(200);
       text(""+letter1, xPos1, height/2 - 20);
@@ -103,54 +84,46 @@ class GameOver {
       text(""+letter3, xPos3, height/2 - 20);
       text(""+letter4, xPos4, height/2 - 20);
       textSize(15);
-      text("Press ENTER to save name!", width/2 - 100, height/2 + 50);
-      popStyle();
+      text("Press '' to save name!", width/2 - 90, height/2 + 50);
     }
   }
 
   void keyPressed() {
-    if (gamemngr.dead) {
-      if (key == '\n') {
-        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
-        ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-        //  for (int i = 0; i < bN; i++) {
-        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
-        ascore.saveScore();
-
-        Reset();
-        //NEEDS UPDATING
-        // Reset everything back to how the game was in the beginning
-
-        //  } else {
-        // text("Try again..", width/2-150, height/8);
-        //  }
-        //}
-      }
+    if (key == '\n') {
+      // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
+      ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+      ascore.saveScore();
+      // Reset everything back to how the game was in the beginning
+      gamemngr.hscoreA = 0;
+      ascore.score = 0;
+      gamemngr.dead = false;
+      healthbar.levens = 3;
+      gamemngr.hscore = true;
     }
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {
-      if (state == 1 && l1s < 36) {
+      if (state == 1 && l1s < 25) {
         l1s++;
       }
-      if (state == 1 && l1s > 35 ) {
+      if (state == 1 && l1s > 24 ) {
         l1s = 0;
       }
-      if (state == 2 && l2s < 36) {
+      if (state == 2 && l2s < 25) {
         l2s++;
       }
-      if (state == 2 && l2s > 35) {
+      if (state == 2 && l2s > 24) {
         l2s = 0;
       }
-      if (state == 3 && l3s < 36) {
+      if (state == 3 && l3s < 25) {
         l3s++;
       }
-      if (state == 3 && l3s > 35) {
+      if (state == 3 && l3s > 24) {
         l3s = 0;
       }
-      if (state == 4 && l4s < 36) {
+      if (state == 4 && l4s < 25) {
         l4s++;
       }
-      if (state == 4 && l4s > 35) {
+      if (state == 4 && l4s > 24) {
         l4s = 0;
       }
     } 
@@ -172,58 +145,26 @@ class GameOver {
         l1s--;
       }
       if (state == 1 && l1s < 0) {
-        l1s = 36;
+        l1s = 25;
       }
       if (state == 2 && l2s > -1) {
         l2s--;
       }
       if (state == 2 && l2s < 0) {
-        l2s = 36;
+        l2s = 25;
       }
       if (state == 3 && l3s > -1) {
         l3s--;
       }
       if (state == 3 && l3s < 0) {
-        l3s = 36;
+        l3s = 25;
       }
       if (state == 4 && l4s > -1) {
         l4s--;
       }
       if (state == 4 && l4s < 0) {
-        l4s = 36;
+        l4s = 25;
       }
-    }
-  }
-
-  void Reset()
-  {
-    UI.levens = 3;
-    gamemngr.hscoreA = 0;
-
-    myPlayer.playerPosX = width/2 - myPlayer.playerWidth/2;
-    myPlayer.playerPosY = height/2 - myPlayer.playerHeight/2;
-
-    Pistol.pause();
-    Shotgun.pause();
-    LMG.pause();
-
-    Pistol.rewind();
-    Shotgun.rewind();
-    LMG.rewind();
-
-    l1s = 0;
-    l2s = 0;
-    l3s = 0;
-    l4s = 0;
-    ascore.score = 0;
-    // print(UI.levens);
-    gamemngr.dead = false;
-    gamemngr.hscore = true;
-
-    for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
-    {
-      GameObjectRef.gameObject.get(i).hp = 0;
-      GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
     }
   }
 }
