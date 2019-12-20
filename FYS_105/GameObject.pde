@@ -16,7 +16,7 @@ public class GameObject {
 
   float tileSize;
   float enemyPosX, enemyPosY, enemyH, enemyW, enemySpeedX, enemySpeedY;
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
+  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight;
   float defaultSpeed = 5;
