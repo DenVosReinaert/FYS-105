@@ -9,8 +9,8 @@ class Heavy extends GameObject {
     enemyW=60;
     enemyH=60;
     hp=6;
-    enemySpeedX=0.75;
-    enemySpeedY=0.75;
+    moveVelX=0.75;
+    moveVelY=0.75;
 
     float r = random(-1, 3);
     if (r <= 0) {
@@ -41,16 +41,16 @@ class Heavy extends GameObject {
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += enemySpeedX;
+        enemyPosX += moveVelX;
       }//if
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= enemySpeedX;
+        enemyPosX -= moveVelX;
       }//if
       if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= enemySpeedY;
+        enemyPosY -= moveVelY;
       } //if
       else {
-        enemyPosY += enemySpeedY;
+        enemyPosY += moveVelY;
       }//else
     }
     if (Dead())

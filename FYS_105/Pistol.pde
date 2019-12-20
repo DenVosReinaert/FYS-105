@@ -44,7 +44,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosY += knockback;
+        myPlayer.moveVelY += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -55,7 +55,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosY -=knockback;
+        myPlayer.moveVelY -=knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -66,7 +66,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosX += knockback;
+        myPlayer.moveVelX += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -77,7 +77,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosX -= knockback;
+        myPlayer.moveVelX -= knockback;
 
         Pistol.play();
         Pistol.rewind();

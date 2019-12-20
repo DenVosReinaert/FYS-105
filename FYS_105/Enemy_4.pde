@@ -8,8 +8,8 @@ class Brute extends GameObject {
     enemyW=30;
     enemyH=30;
     hp=4;
-    enemySpeedX=1;
-    enemySpeedY=1;
+    moveVelX=1;
+    moveVelY=1;
 
     float r = random(-1, 3);
     if (r <= 0) {
@@ -39,16 +39,16 @@ class Brute extends GameObject {
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX > enemyPosX) {
-        enemyPosX += enemySpeedX;
+        enemyPosX += moveVelX;
       }//if
       if (myPlayer.playerPosX < enemyPosX) {
-        enemyPosX -= enemySpeedX;
+        enemyPosX -= moveVelX;
       }//if
       if (myPlayer.playerPosY < enemyPosY) {
-        enemyPosY -= enemySpeedY;
+        enemyPosY -= moveVelY;
       } //if
       else {
-        enemyPosY += enemySpeedY;
+        enemyPosY += moveVelY;
       }//else
     }
 

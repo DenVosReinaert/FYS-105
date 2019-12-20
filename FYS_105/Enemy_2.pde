@@ -9,8 +9,8 @@ class Speedster extends GameObject {
     enemyW=20;
     enemyH=24;
     hp=1;
-    enemySpeedX=2;
-    enemySpeedY=2;
+    moveVelX=2;
+    moveVelY=2;
 
     float r = random(-1, 3);
     if (r <= 0) {
@@ -40,16 +40,16 @@ class Speedster extends GameObject {
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += enemySpeedX;
+        enemyPosX += moveVelX;
       }//if
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= enemySpeedX;
+        enemyPosX -= moveVelX;
       }//if
       if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= enemySpeedY;
+        enemyPosY -= moveVelY;
       } //if
       else {
-        enemyPosY += enemySpeedY;
+        enemyPosY += moveVelY;
       }//else
     }
 

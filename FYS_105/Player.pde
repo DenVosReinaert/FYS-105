@@ -58,7 +58,14 @@ class Player extends GameObject {
     }
     // rect(playerPosX, playerPosY, playerWidth, playerHeight);
 
-    myPlayer.currentGun.holdingGun();
+    if (myPlayer.currentGun == pistoll)
+      pistol.holdingGun();
+
+    if (myPlayer.currentGun == shotgun)
+      shotGun.holdingGun();
+
+    if (myPlayer.currentGun == machinegun)
+      machineGun.holdingGun();
 
     if (myPlayer.lookingUp) {
       mrSpooksUp.draw(playerPosX, playerPosY);

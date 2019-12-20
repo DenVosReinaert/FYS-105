@@ -5,8 +5,8 @@ class Boss1 extends GameObject {
     enemyW=65;
     enemyH=80;
     hp=20;
-    enemySpeedX=1;
-    enemySpeedY=1;
+    moveVelX=1;
+    moveVelY=1;
 
     scoreGain = 100;
 
@@ -36,16 +36,16 @@ class Boss1 extends GameObject {
     //ENEMY MOVEMENT
     if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += enemySpeedX;
+        enemyPosX += moveVelX;
       }//if
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= enemySpeedX;
+        enemyPosX -= moveVelX;
       }//if
       if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= enemySpeedY;
+        enemyPosY -= moveVelY;
       } //if
       else {
-        enemyPosY += enemySpeedY;
+        enemyPosY += moveVelY;
       }//else
     }
 
