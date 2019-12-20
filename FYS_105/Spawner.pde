@@ -2,7 +2,7 @@
 class Spawner extends GameObject {
 
   Timer spawnableTimer = new Timer(5);
-  Timer spawnTimer = new Timer(2);
+  Timer spawnTimer = new Timer(random(1,3));
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
@@ -32,13 +32,15 @@ class Spawner extends GameObject {
 
   void draw() {
 
-    pushStyle();
-    fill(255);
+    if (game) {
+      pushStyle();
+      fill(255);
 
-    if (waveInProgress && GameObjectRef.gameObject.size() == 0)
-      NextWave();
+      if (waveInProgress && GameObjectRef.gameObject.size() == 0)
+        NextWave();
 
-    popStyle();
+      popStyle();
+    }
   }//spawnerUpdate
 
 
@@ -89,6 +91,9 @@ class Spawner extends GameObject {
   void BruteSpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
+      //spawnWaveTimer.Timerrr();
+      
+      //if()
       Add(new Brute());
     }
   }//spawnerShow

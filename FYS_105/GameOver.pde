@@ -25,7 +25,7 @@ class GameOver {
 
 
   // Array containing all available letters
-  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ','0','1','2','3','4','5','6','7','8', '9'};
+  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
   //int bN;
   //int bList;
@@ -216,6 +216,7 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
+    spawn.wave = 1;
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;

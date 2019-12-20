@@ -70,6 +70,16 @@ class Level1
 
   void Layer2()
   {  
+    for (int i = 0; i < 2; i ++)
+    {
+      
+      for (int j = 0; j < 6; j++)
+      {
+        image(gardenPathF, -60 + tileSize * j, i * (-40 + tileSize * 7));
+      }
+    }
+
+
     gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 2);
     gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 5);
     gardenPathFlowerPatch.draw(-60 + tileSize * 11, -40 + tileSize * 2);
