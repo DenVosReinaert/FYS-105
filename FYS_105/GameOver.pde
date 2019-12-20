@@ -216,6 +216,7 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
+    spawn.wave = 0;
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
