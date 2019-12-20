@@ -12,13 +12,13 @@ class LevelManager
 
   void draw()
   {
-    switch(lvlNum){
-      case 1:
-        lvl1.draw();
-        break;
-      case 2:
-        lvl2.draw();
-        break;
+    switch(lvlNum) {
+    case 1:
+      lvl1.draw();
+      break;
+    case 2:
+      lvl2.draw();
+      break;
     }
   }
 }

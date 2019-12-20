@@ -1,90 +1,319 @@
 class Player extends GameObject {
 
-  Gun myGun;
+  Timer weaponSwapPrevTimer = new Timer(1);
+  Timer weaponSwapNextTimer = new Timer(1);
+
+  Pistol pistol = new Pistol();
+  Shotgun shotGun = new Shotgun();
+  MachineGun machineGun = new MachineGun();
+
+  int currentGun, pistoll, shotgun, machinegun;
+
+  boolean nextGun, prevGun, swapable;
+
 
   Player() {
-    playerPosX = width/2;
-    playerPosY = height/2;
 
-    moveVelX = 0;
-    moveVelY = 0;
 
-    playerWidth = 16;
-    playerHeight = 20;
 
-    myGun = new Pistol();
+    playerWidth = 25;
+    playerHeight = 40;
+    playerPosX = (width/2) - playerWidth/2;
+    playerPosY = (height/2) - playerHeight/2;
 
-    //TO DO: als je 1 indrukt: BasicGun();,
-    // als je 2 indrukt: MachineGun();,
-    // als je 3 indrukt: Shotgun();.
+    tag = "player";
+
+
+    pistoll = 1;
+    shotgun = 2;
+    machinegun = 3;
+
+    currentGun = pistoll;
   }
 
-  void show() {
-    fill(255, 100, 0);
-    rect(playerPosX, playerPosY, playerWidth, playerHeight);
-  }
 
-  void act() {
+  void draw() {
 
-    if (bengine.onekey) {
-      myGun = new Pistol();
-      bengine.onekey = false;
-    } else if (bengine.twokey) {
-      myGun = new MachineGun();
-      bengine.twokey = false;
-    } else if (bengine.threekey) {
-      myGun = new Shotgun();
-      bengine.threekey = false;
+    if (onekey) {
+      currentGun = pistoll;
+      onekey = false;
+    } else if (twokey) {
+      currentGun = machinegun;
+      twokey = false;
+    } else if (threekey) {
+      currentGun = shotgun;
+      threekey = false;
     }
 
+
+    if (myPlayer.lookingLeft) {
+      mrSpooksLeft.draw(playerPosX, playerPosY);
+      mrSpooksLeft.update();
+    } else if (myPlayer.lookingRight) {
+      mrSpooksRight.draw(playerPosX, playerPosY);
+      mrSpooksRight.update();
+    } else if (myPlayer.lookingDown) {
+      mrSpooksDown.draw(playerPosX, playerPosY);
+      mrSpooksDown.update();
+    }
+    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
+
+    myPlayer.currentGun.holdingGun();
+
+    if (myPlayer.lookingUp) {
+      mrSpooksUp.draw(playerPosX, playerPosY);
+      mrSpooksUp.update();
+    }
+
+
+
     moveVelX = 0;
     moveVelY = 0;
+
+
     //240
-    if (bengine.akey) {
-      if ((playerPosX + moveVelX < playerWidth/2) || (playerPosX + moveVelX < 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + moveVelX < 580 + playerWidth && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
+
+    if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
+      defaultSpeed = diaSpeed;
+    } else defaultSpeed = 5;
+
+    if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
+      if (currentGun == pistoll)
+      {
+        pistol.shoot();
+        pistol.recharge();
+      }
+      if (currentGun == machinegun)
+      {
+        machineGun.shoot();
+        machineGun.recharge();
+      }
+      if (currentGun == shotgun)
+      {
+        shotGun.shoot();
+        shotGun.recharge();
+      }
+    }
+
+
+    if (playerPosX < 0)
+      playerPosX = 0;
+
+    if (playerPosX + playerWidth > width)
+      playerPosX = width - playerWidth;
+
+    if (playerPosY < 0)
+      playerPosY = 0;
+
+    if (playerPosY + playerHeight > height)
+      playerPosY = height - playerHeight;
+
+
+
+    if (akey)
+    {
+      if (playerPosX + moveVelX < 0)
       {
         moveVelX = 0;
       } else
-
-        moveVelX = -defaultSpeed;
+        playerPosX -= defaultSpeed;
     }
 
-    if (bengine.dkey) {
-      if ((playerPosX + moveVelX > width - playerWidth/2) || (playerPosX + playerWidth/2 + moveVelX > width - 16 && (playerPosY < 280 || playerPosY > 440)) || playerPosX + playerWidth/2 + moveVelX > 700 && (playerPosY < 16 || playerPosY + playerHeight > height - 16))
+    if (dkey)
+    {
+      if (playerPosX + playerWidth > width)
       {
         moveVelX = 0;
-      } else 
-      moveVelX = defaultSpeed;
+      } else
+        playerPosX += defaultSpeed;
     }
 
-    if (bengine.wkey) {
-      if ((playerPosY + moveVelY < playerHeight/2) || (playerPosY + moveVelY < 280 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + moveVelY < 16 && (playerPosX < 580 || playerPosX > 700))
+    if (wkey)
+    {
+      if (playerPosY + moveVelY < 0)
       {
         moveVelY = 0;
-      } else 
-      moveVelY = -defaultSpeed;
+      } else
+        playerPosY -= defaultSpeed;
     }
 
-    if (bengine.skey) {
-      if ((playerPosY + moveVelY > height - playerHeight/2) || (playerPosY + moveVelY > 440 && (playerPosX < 16 || playerPosX > width - 16)) || playerPosY + playerHeight + moveVelY > height - 16 && (playerPosX < 580 || playerPosX + playerWidth > 700))
+    if (skey)
+    {
+      if (playerPosY + moveVelY > height)
       {
         moveVelY = 0;
-      } else 
-      moveVelY = defaultSpeed;
+      } else
+        playerPosY += defaultSpeed;
     }
 
-    //sets the speed of the player to a different speed when moving diagonally so it moves at the same rate as the single axises
-    if (bengine.wkey && bengine.akey || bengine.akey && bengine.skey || bengine.skey && bengine.dkey || bengine.dkey && bengine.wkey) {
-      defaultSpeed = diaSpeed;
+
+    if (prevGun) {
+      weaponSwapPrevTimer.Timerr();
+
+      swapable = true;
+
+      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        for (int i = 0; i < 1; i++)
+        {
+          if (currentGun >= 1)
+          {
+            currentGun --;
+          } else if (currentGun < 1) currentGun = 3;
+        }
+
+        swapable = false;
+      }
+
+      if (weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        swapable = true;
+        weaponSwapNextTimer.TimerReset();
+      }
     }
 
-    if (bengine.spacekey) {
-      myGun.shoot();
+
+    if (nextGun) {
+      weaponSwapNextTimer.Timerr();
+
+      swapable = true;
+
+      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        for (int j = 0; j < 1; j++)
+        {
+          if (currentGun <= 3)
+          {
+            currentGun ++;
+          } else if (currentGun > 3) currentGun = 1;
+        }
+
+        swapable = false;
+      }
+
+      if (weaponSwapNextTimer.TimerDoneWithoutReset())
+      {
+        swapable = true;
+        weaponSwapNextTimer.TimerReset();
+      }
     }
+
 
     playerPosX += moveVelX;
     playerPosY += moveVelY;
+  }
 
-    myGun.recharge();
+
+
+
+
+  void keyPressed() {
+    if (key == 'a') {
+      akey = true;
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == 's') {
+      skey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+    }
+    if (key == 'd') {
+      dkey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+    }
+    if (key == 'w') {
+      wkey = true;
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
+
+
+    if (keyCode == LEFT)
+    {
+      shootingLeft = true;
+      shootingRight = false;
+      shootingDown = false;
+      shootingUp = false;
+
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (keyCode == RIGHT)
+    {
+      shootingLeft = false;
+      shootingRight = true;
+      shootingDown = false;
+      shootingUp = false;
+
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+    }
+    if (keyCode == UP)
+    {
+      shootingLeft = false;
+      shootingRight = false;
+      shootingDown = false;
+      shootingUp = true;
+
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (keyCode == DOWN)
+    {
+      shootingLeft = false;
+      shootingRight = false;
+      shootingDown = true;
+      shootingUp = false;
+
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+    }
+    if (key == 'q')
+    {
+      prevGun = true;
+      nextGun = false;
+    }
+    if (key =='e')
+    {
+      prevGun = false;
+      nextGun = true;
+    }
+  }
+
+  void keyReleased() {
+    if (key == 'a') akey = false;
+    if (key == 's') skey = false;
+    if (key == 'd') dkey = false;
+    if (key == 'w') wkey = false;
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
+    if (keyCode == LEFT) shootingLeft = false;
+    if (keyCode == RIGHT) shootingRight = false;
+    if (keyCode == UP) shootingUp = false;
+    if (keyCode == DOWN) shootingDown = false;
+    if (key == 'q') prevGun = false;
+    if (key == 'e') nextGun = false;
   }
 }
