@@ -8,7 +8,9 @@ class Player extends GameObject {
   MachineGun machineGun = new MachineGun();
 
   int currentGun, pistoll, shotgun, machinegun;
+
   boolean nextGun, prevGun, swapable;
+
 
   Player() {
 
@@ -50,14 +52,20 @@ class Player extends GameObject {
     } else if (myPlayer.lookingRight) {
       mrSpooksRight.draw(playerPosX, playerPosY);
       mrSpooksRight.update();
-    } else if (myPlayer.lookingUp) {
-      mrSpooksUp.draw(playerPosX, playerPosY);
-      mrSpooksUp.update();
-    } else if (myPlayer.lookingDown) {
+    } else if (myPlayer.lookingDown)
+    {
       mrSpooksDown.draw(playerPosX, playerPosY);
       mrSpooksDown.update();
     }
     // rect(playerPosX, playerPosY, playerWidth, playerHeight);
+
+    myPlayer.currentGun.holdingGun();
+
+    if (myPlayer.lookingUp) {
+      mrSpooksUp.draw(playerPosX, playerPosY);
+      mrSpooksUp.update();
+    }
+
 
 
     moveVelX = 0;
