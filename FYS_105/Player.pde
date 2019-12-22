@@ -52,7 +52,8 @@ class Player extends GameObject {
     } else if (myPlayer.lookingRight) {
       mrSpooksRight.draw(playerPosX, playerPosY);
       mrSpooksRight.update();
-    } else if (myPlayer.lookingDown) {
+    } else if (myPlayer.lookingDown)
+    {
       mrSpooksDown.draw(playerPosX, playerPosY);
       mrSpooksDown.update();
     }
