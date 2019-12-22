@@ -6,8 +6,7 @@ class Player extends GameObject {
   MachineGun machineGun = new MachineGun();
 
   int currentGun, pistoll, shotgun, machinegun;
-  boolean hasMachinegun = true;
-  boolean hasShotgun = true;
+
 
   Player() {
 
@@ -33,22 +32,22 @@ class Player extends GameObject {
     if (onekey && currentGun == machinegun) {
       currentGun = pistoll;
       onekey = false;
-    } else if (onekey && currentGun == shotgun && hasMachinegun) {
+    } else if (onekey && currentGun == shotgun) {
       currentGun = machinegun;
       onekey = false;
-    } else if (onekey && currentGun == pistoll && hasShotgun) {
+    } else if (onekey && currentGun == pistoll) {
       currentGun = shotgun;
       onekey = false;
-    } else if (twokey && currentGun == machinegun && hasShotgun) {
+    } else if (twokey && currentGun == machinegun) {
       currentGun = shotgun;
       twokey = false;
     } else if (twokey && currentGun == shotgun) {
       currentGun = pistoll;
       twokey = false;
-    } else if (twokey && currentGun == pistoll && hasMachinegun) {
+    } else if (twokey && currentGun == pistoll) {
       currentGun = machinegun;
       twokey = false;
-    } 
+    }
 
 
     if (myPlayer.lookingLeft) {

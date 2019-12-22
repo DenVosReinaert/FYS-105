@@ -1,5 +1,7 @@
 class Shotgun extends GameObject {
 
+
+
   Shotgun() {
     threshold = 100;
     cooldown = 0;
