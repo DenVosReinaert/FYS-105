@@ -10,7 +10,7 @@ class Player extends GameObject {
   int currentGun, pistoll, shotgun, machinegun;
 
   boolean nextGun, prevGun, swapable;
-
+  boolean pillarColX, pillarColY;
 
   Player() {
 
@@ -120,7 +120,7 @@ class Player extends GameObject {
 
     if (akey)
     {
-      if (playerPosX + moveVelX < 0)
+      if ((playerPosX + moveVelX < 0) || pillarColX)
       {
         moveVelX = 0;
       } else
@@ -129,7 +129,7 @@ class Player extends GameObject {
 
     if (dkey)
     {
-      if (playerPosX + playerWidth > width)
+      if ((playerPosX + playerWidth > width)  || pillarColX)
       {
         moveVelX = 0;
       } else
@@ -138,7 +138,7 @@ class Player extends GameObject {
 
     if (wkey)
     {
-      if (playerPosY + moveVelY < 0)
+      if ((playerPosY + moveVelY < 0) || pillarColY)
       {
         moveVelY = 0;
       } else
@@ -147,7 +147,7 @@ class Player extends GameObject {
 
     if (skey)
     {
-      if (playerPosY + moveVelY > height)
+      if ((playerPosY + moveVelY > height) || pillarColY)
       {
         moveVelY = 0;
       } else
