@@ -6,32 +6,36 @@ class Pistol extends GameObject {
     knockback = 5;
   }
 
-// Show weapon sprite
+  // Show weapon sprite
   void holdingGun() {
-    float barrelX, barrelY;
-    if (lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-        image(handgunUp, barrelX, barrelY);
-    }
-    else if (lookingDown) {
-     barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2;
-     barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2;
-     image(handgunDown, barrelX, barrelY);
-    }
-    else if (lookingRight) {
-     barrelX = myPlayer.playerPosX + playerWidth;
-     barrelY = myPlayer.playerPosY - playerHeight/2;
-     image(handgunRight, barrelX, barrelY);
-    }
-    else if (lookingLeft) {
-     barrelX = myPlayer.playerPosX - playerWidth;
-     barrelY = myPlayer.playerPosY - playerHeight/2;
-     image(handgunLeft, barrelX, barrelY);
+
+    if (myPlayer.lookingUp) {
+      barrelPosX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
+      barrelPosY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+      image(handgunUp, barrelPosX, barrelPosY);
+      handgunUp.resize(8, 35);
+      
+    } else if (myPlayer.lookingDown) {
+      barrelPosX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
+      barrelPosY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
+      image(handgunDown, barrelPosX, barrelPosY);
+      handgunDown.resize(8, 35);
+      
+    } else if (myPlayer.lookingRight) {
+      barrelPosX = myPlayer.playerPosX + playerWidth + 20;
+      barrelPosY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(handgunRight, barrelPosX, barrelPosY);
+      handgunRight.resize(35, 16);
+      
+    } else if (myPlayer.lookingLeft) {
+      barrelPosX = myPlayer.playerPosX - playerWidth - 20;
+      barrelPosY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(handgunLeft, barrelPosX, barrelPosY);
+      handgunLeft.resize(35, 16);
     }
   }
-  
-  
+
+
   void shoot() {
 
     if (cooldown == threshold && myPlayer.shootingUp) {
@@ -40,7 +44,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosY += knockback;
+        myPlayer.moveVelY += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -51,7 +55,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosY -=knockback;
+        myPlayer.moveVelY -=knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -62,7 +66,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosX += knockback;
+        myPlayer.moveVelX += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -73,7 +77,7 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        myPlayer.playerPosX -= knockback;
+        myPlayer.moveVelX -= knockback;
 
         Pistol.play();
         Pistol.rewind();

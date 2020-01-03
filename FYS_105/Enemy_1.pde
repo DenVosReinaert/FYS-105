@@ -8,25 +8,25 @@ class Grunt extends GameObject {
 
     enemyW=16;
     enemyH=20;
-    enemyHP=2;
+    hp=2;
 
-    enemySpeedX=1;
-    enemySpeedY=1;
+    moveVelX=1;
+    moveVelY=1;
 
 
     float r = random(-1, 3);
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x;
+      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
       enemyPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x;
+      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
       enemyPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
       enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y;
+      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
     } else if (r > 2 && r <= 3) {
       enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y;
+      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
     }
   }//constructor Grunt
 
@@ -36,23 +36,23 @@ class Grunt extends GameObject {
 
   void draw() {
     checkPulse();
-
+    pushStyle();
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
-
+    popStyle();
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, enemyPosX, enemyPosY) < 2000) { 
-      if (myPlayer.playerPosX > enemyPosX) {
-        enemyPosX += enemySpeedX;
+    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
+      if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
+        enemyPosX += moveVelX;
       }//if
-      if (myPlayer.playerPosX < enemyPosX) {
-        enemyPosX -= enemySpeedX;
+      if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
+        enemyPosX -= moveVelX;
       }//if
-      if (myPlayer.playerPosY < enemyPosY) {
-        enemyPosY -= enemySpeedY;
+      if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
+        enemyPosY -= moveVelY;
       } //if
       else {
-        enemyPosY += enemySpeedY;
+        enemyPosY += moveVelY;
       }//else
     }
 
@@ -68,33 +68,32 @@ class Grunt extends GameObject {
     //Quinn versie
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
-      if (dist(enemyPosX, enemyPosY, myPlayer.playerPosX, myPlayer.playerPosY) < 10) {
+
+      //Collision with Player
+      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
+      {
         UI.spelerhit();
-        enemyHP = 0;
+        hp = 0;
       }
 
-      if (GameObjectRef.gameObject.get(i).bulletPosX > 0 && GameObjectRef.gameObject.get(i).bulletPosY > 0) {
-        if (GameObjectRef.gameObject.get(i).bulletPosX == 0)
-          GameObjectRef.gameObject.get(i).bulletPosX = -10000;
-        if (GameObjectRef.gameObject.get(i).bulletPosY == 0)
-          GameObjectRef.gameObject.get(i).bulletPosY = -10000;
-        if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
-          enemyHP=enemyHP-1;
-          Remove(GameObjectRef.gameObject.get(i));
-          gamemngr.shakeAmount = 3;
-          gamemngr.shake = true;
-          if (enemyHP == 0) {
-            ascore.score += scoreGain;
-          }
-          for (int j=0; j < 20; j++) {
-            Add(new Particle(enemyPosX, enemyPosY));
-          }//for
+      //Collision with Bullet
+      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
+      {
+        hp=hp-1;
+        Remove(GameObjectRef.gameObject.get(i));
+        gamemngr.shakeAmount = 3;
+        gamemngr.shake = true;
+        if (hp == 0) {
+          ascore.score += scoreGain;
         }
+        for (int j=0; j < 20; j++) {
+          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
+        }//for
       }
     }
   }
 
   boolean Dead() {
-    return enemyHP<=0;
+    return hp<=0;
   }//boolean Dead
 }//class Grunt

@@ -14,17 +14,22 @@ public class GameObject {
 
   String tag;
 
-  float enemyPosX, enemyPosY, enemyH, enemyW, enemySpeedX, enemySpeedY;
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback;
-  float particlePosX, particlePosY, particleWidth, particleHeight, enemyHP, particleSpeedX, particleSpeedY;
-  float playerPosX, playerPosY, moveVelX, moveVelY, playerWidth, playerHeight, hp;
+  float moveVelX, moveVelY;
+
+  float tileSize;
+  float enemyPosX, enemyPosY, enemyH, enemyW;
+  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
+  float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
+  float playerPosX, playerPosY, playerWidth, playerHeight;
   float defaultSpeed = 5;
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+
+  float pillarPosX, pillarPosY, pillarWidth, pillarHeight;
 
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 
   int scoreGain;
-  
+
   GameObject() 
   {
     spawnerPos0 = new PVector();
@@ -41,8 +46,9 @@ public class GameObject {
   void draw()
   {    
     noStroke();
-    drawObjects();
     //println("I have been drawn");
+
+    tileSize = 100;
   }//enemyUpdate
 
   boolean Dead() {
