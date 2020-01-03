@@ -65,7 +65,7 @@ class GameOver {
       myPlayer.lookingRight = false;
       myPlayer.lookingUp = false;
       myPlayer.lookingDown = false;
-      
+
       death.play();
 
       // The dot under the letters depending on which state they are
@@ -244,5 +244,10 @@ class GameOver {
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
+
+    myPlayer.collLeft = false;
+    myPlayer.collRight = false;
+    myPlayer.collTop = false;
+    myPlayer.collBott = false;
   }
 }

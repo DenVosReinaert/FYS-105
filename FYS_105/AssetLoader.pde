@@ -44,12 +44,12 @@ void LoadAssets()
   bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
   bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
   bulletRight = loadImage("/data/sprites/BulletSpriteRight.png");
-  
+
   handgunUp = loadImage("/data/sprites/Handgun_Top.png");
   handgunDown = loadImage("/data/sprites/Handgun_Down.png");
   handgunLeft = loadImage("/data/sprites/Handgun_Left.png");
   handgunRight = loadImage("/data/sprites/Handgun_Right.png");
-  
+
   // ?
 
 
@@ -79,8 +79,8 @@ void LoadAssets()
   gardenPathI = loadImage("/Graphics/GardenPath_1i.png");
   gardenPathJ = loadImage("/Graphics/GardenPath_1j.png");
   gardenPathK = loadImage("/Graphics/GardenPath_1k.png");
-  
-  
+
+
   gardenPathFlowerPatch = new SpriteSheet("/Graphics/GardenPath_FlowerPatch.png", 6);
   mrSpooksLeft = new SpriteSheet("/Graphics/MrSpooks_Sheet_Left.png", 5);
   mrSpooksRight = new SpriteSheet("/Graphics/MrSpooks_Sheet_Right.png", 5);

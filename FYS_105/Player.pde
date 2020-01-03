@@ -11,12 +11,13 @@ class Player extends GameObject {
 
   boolean nextGun, prevGun, swapable;
   boolean pillarColX, pillarColY;
+  boolean movingRight, movingLeft, movingUp, movingDown;
 
   Player() {
 
 
 
-    playerWidth = 25;
+    playerWidth = 28;
     playerHeight = 40;
     playerPosX = (width/2) - playerWidth/2;
     playerPosY = (height/2) - playerHeight/2;
@@ -33,6 +34,30 @@ class Player extends GameObject {
 
 
   void draw() {
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
+
+
+    if (playerPosX + moveVelX < 0)
+      collLeft = true;
+    //else collLeft = false;
+
+    if (playerPosX + playerWidth + moveVelX > width)
+      collRight = true;
+    //else collRight = false;
+
+    if (playerPosY + moveVelY < 0)
+      collTop = true;
+    //else collTop = false;
+
+    if (playerPosY + playerHeight + moveVelY > height)
+      collBott = true;
+    //else collBott = false;
+
+
+
 
     if (onekey) {
       currentGun = pistoll;
@@ -73,13 +98,12 @@ class Player extends GameObject {
       mrSpooksUp.update();
     }
 
-
-
-    moveVelX = 0;
-    moveVelY = 0;
-
-
     //240
+
+    //MOVEMENT
+    moveVelX = defaultSpeed;
+    moveVelY = defaultSpeed;
+
 
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
@@ -104,55 +128,49 @@ class Player extends GameObject {
     }
 
 
-    if (playerPosX < 0)
-      playerPosX = 0;
+    //if (playerPosX < 0)
+    //  playerPosX = 0;
 
-    if (playerPosX + playerWidth > width)
-      playerPosX = width - playerWidth;
+    //if (playerPosX + playerWidth > width)
+    //  playerPosX = width - playerWidth;
 
-    if (playerPosY < 0)
-      playerPosY = 0;
+    //if (playerPosY < 0)
+    //  playerPosY = 0;
 
-    if (playerPosY + playerHeight > height)
-      playerPosY = height - playerHeight;
+    //if (playerPosY + playerHeight > height)
+    //  playerPosY = height - playerHeight;
 
 
 
-    if (akey)
+    if (akey && !collLeft)
     {
-      if ((playerPosX + moveVelX < 0) || pillarColX)
-      {
-        moveVelX = 0;
-      } else
-        playerPosX -= defaultSpeed;
+      playerPosX -= moveVelX;
+
+      movingLeft = true;
     }
 
-    if (dkey)
+    if (dkey && !collRight)
     {
-      if ((playerPosX + playerWidth > width)  || pillarColX)
-      {
-        moveVelX = 0;
-      } else
-        playerPosX += defaultSpeed;
+      playerPosX += moveVelX;
+
+      movingRight = true;
     }
 
-    if (wkey)
+    if (wkey && !collTop)
     {
-      if ((playerPosY + moveVelY < 0) || pillarColY)
-      {
-        moveVelY = 0;
-      } else
-        playerPosY -= defaultSpeed;
+      playerPosY -= moveVelY;
+
+      movingUp = true;
     }
 
-    if (skey)
+    if (skey && !collBott)
     {
-      if ((playerPosY + moveVelY > height) || pillarColY)
-      {
-        moveVelY = 0;
-      } else
-        playerPosY += defaultSpeed;
+      playerPosY += moveVelY;
+
+      movingDown = true;
     }
+
+
 
 
     if (prevGun) {
@@ -205,10 +223,6 @@ class Player extends GameObject {
         weaponSwapNextTimer.TimerReset();
       }
     }
-
-
-    playerPosX += moveVelX;
-    playerPosY += moveVelY;
   }
 
 
@@ -310,10 +324,26 @@ class Player extends GameObject {
   }
 
   void keyReleased() {
-    if (key == 'a') akey = false;
-    if (key == 's') skey = false;
-    if (key == 'd') dkey = false;
-    if (key == 'w') wkey = false;
+    if (key == 'a') 
+    {
+      akey = false;
+      movingLeft = false;
+    }
+    if (key == 's')
+    {
+      skey = false;
+      movingDown = false;
+    }
+    if (key == 'd') 
+    {
+      dkey = false;
+      movingRight = false;
+    }
+    if (key == 'w')
+    {
+      wkey = false;
+      movingUp = false;
+    }
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;

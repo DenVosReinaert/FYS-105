@@ -11,6 +11,7 @@ public class GameObject {
   boolean lookingUp, lookingLeft, lookingRight = false;
   boolean lookingDown = true;
   boolean shootingUp, shootingDown, shootingLeft, shootingRight;
+  boolean collLeft, collRight, collTop, collBott;
 
   String tag;
 
@@ -59,7 +60,6 @@ public class GameObject {
   {
     GameObjectRef.gameObject.add(object); 
     println("A new object has been created");
-    println(GameObjectRef.gameObject.size());
   }
 
   void Remove(GameObject object)
