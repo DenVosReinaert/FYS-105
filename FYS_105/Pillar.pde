@@ -8,7 +8,6 @@ class Pillar extends GameObject
 
   void draw(float pillarPosX, float pillarPosY)
   {
-    println(pillar.height);
 
     pillarPosX += pillar.width/6;
 

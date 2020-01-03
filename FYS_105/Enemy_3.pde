@@ -1,6 +1,10 @@
 //Ruben de Jager
 class Heavy extends GameObject {
 
+  Timer walkT = new Timer(1);
+  float randomSpdX = 0;
+  float randomSpdY = 0;
+
   Heavy() {
     tag = "enemy";
 
@@ -39,7 +43,36 @@ class Heavy extends GameObject {
     popStyle();
 
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
+    // Quinn's versie
+    //Random wandering
+    float distEP = dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2);
+    if (enemyPosX - enemyW/2 < 0 || enemyPosY - enemyH/2 < 0) {
+      enemyPosX += moveVelX;
+    }
+    if (enemyPosX + enemyW/2 > width) {
+      enemyPosX -= moveVelX;
+    }
+    if (enemyPosY + enemyH/2 > height) {
+      enemyPosY -= moveVelY;
+    }
+
+    if (distEP > 450 && enemyPosX > 0 && enemyPosX < width-width/20 && enemyPosY > 0 && enemyPosY < height) {
+      walkT.Timerr();
+      if (walkT.TimerDone()) {
+        randomSpdX = random(-0.75, 0.75);
+        randomSpdY = random(-0.75, 0.75);
+        walkT.TimerReset();
+      }
+      float randomDir = random(0, 100);
+      if (randomDir < 50) {
+        enemyPosX += randomSpdX;
+      } 
+      if (randomDir > 50) {
+        enemyPosY += randomSpdY;
+      }
+    }
+    //Close range
+    if (distEP < 450) { 
       if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
         enemyPosX += moveVelX;
       }//if
