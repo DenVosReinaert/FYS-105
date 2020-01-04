@@ -3,8 +3,10 @@ class Bullet extends GameObject {
 
   Bullet(float incomingDX, float incomingDY) {
 
-    bulletPosX = myPlayer.playerPosX + myPlayer.playerWidth/2;  //x position of bullet begins on y position of player
-    bulletPosY = myPlayer.playerPosY + myPlayer.playerHeight/5;  //y position of bullet begins on y position of player
+
+
+    bulletPosX = myPlayer.muzzlePointX;  //x position of bullet begins on y position of player
+    bulletPosY = myPlayer.muzzlePointY;  //y position of bullet begins on y position of player
 
     moveVelX = incomingDX;    
     moveVelY= incomingDY;

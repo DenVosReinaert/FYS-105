@@ -9,12 +9,13 @@ class Player extends GameObject {
 
   int currentGun, pistoll, shotgun, machinegun;
 
+  float muzzlePointX, muzzlePointY;
+
   boolean nextGun, prevGun, swapable;
   boolean pillarColX, pillarColY;
   boolean movingRight, movingLeft, movingUp, movingDown;
 
   Player() {
-
 
 
     playerWidth = 28;
@@ -230,38 +231,6 @@ class Player extends GameObject {
 
 
   void keyPressed() {
-    if (key == 'a') {
-      akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == 's') {
-      skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
-    }
-    if (key == 'd') {
-      dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
-    }
-    if (key == 'w') {
-      wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-
 
     if (keyCode == LEFT)
     {
@@ -311,6 +280,42 @@ class Player extends GameObject {
       lookingRight = false;
       lookingDown = true;
     }
+
+
+    if (key == 'a') {
+      akey = true;
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == 's') {
+      skey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+    }
+    if (key == 'd') {
+      dkey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+    }
+    if (key == 'w') {
+      wkey = true;
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+    }
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
+
+
+
     if (key == 'q')
     {
       prevGun = true;
