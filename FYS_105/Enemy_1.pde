@@ -41,21 +41,24 @@ class Grunt extends GameObject {
     fill(65, 17, 96);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
     popStyle();
+
+
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += moveVelX;
-      }//if
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= moveVelX;
-      }//if
-      if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= moveVelY;
-      } //if
-      else {
-        enemyPosY += moveVelY;
-      }//else
-    }
+    dx = myPlayer.playerPosX - enemyPosX;
+    dy = myPlayer.playerPosY - enemyPosY;
+
+    dir = sqrt(sq(dx) + sq(dy));
+
+    dx *= (moveVelX / dir);
+    dy *= (moveVelY / dir);
+
+
+    enemyPosX += dx;
+    enemyPosY += dy;
+
+
+
+
 
     if (Dead())
     {

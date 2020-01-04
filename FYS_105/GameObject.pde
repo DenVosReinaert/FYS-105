@@ -18,7 +18,7 @@ public class GameObject {
   float moveVelX, moveVelY;
 
   float tileSize;
-  float enemyPosX, enemyPosY, enemyH, enemyW;
+  float enemyPosX, enemyPosY, enemyH, enemyW, dx, dy, dir;
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, playerWidth, playerHeight;

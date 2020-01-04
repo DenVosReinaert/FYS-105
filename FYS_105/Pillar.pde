@@ -35,11 +35,28 @@ class Pillar extends GameObject
     //    myPlayer.collBott = true;
     //}
 
-    if (pillarPosX < myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX && pillarPosX + pillarWidth > myPlayer.playerPosX + myPlayer.moveVelX && pillarPosY < myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY && pillarPosY + pillarHeight > myPlayer.playerPosY + myPlayer.moveVelY)
-    {
-      myPlayer.defaultSpeed = 0;
-    } else myPlayer.defaultSpeed = 5;
+    //if (pillarPosX < myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX && pillarPosX + pillarWidth > myPlayer.playerPosX + myPlayer.moveVelX && pillarPosY < myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY && pillarPosY + pillarHeight > myPlayer.playerPosY + myPlayer.moveVelY)
+    //{
+    //  myPlayer.defaultSpeed = 0;
+    //} else myPlayer.defaultSpeed = 5;
 
+
+    if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX && myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
+    {
+      if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX)
+      {
+
+        myPlayer.moveVelX = 0;
+        println("Collide X");
+      }
+
+      if (myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
+      {      
+
+        myPlayer.moveVelY = 0;
+        println("CollideY");
+      }
+    }
 
     //BOUNDARIES
   }
