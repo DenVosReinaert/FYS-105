@@ -56,7 +56,7 @@ class Heavy extends GameObject {
       enemyPosY -= moveVelY;
     }
 
-    if (distEP > 450 && enemyPosX > 0 && enemyPosX < width-width/20 && enemyPosY > 0 && enemyPosY < height) {
+    if (distEP > 450 && enemyPosX > 0 && enemyPosX < width && enemyPosY > 0 && enemyPosY < height) {
       walkT.Timerr();
       if (walkT.TimerDone()) {
         randomSpdX = random(-0.75, 0.75);
