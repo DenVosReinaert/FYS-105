@@ -14,6 +14,7 @@ class Grunt extends GameObject {
     moveVelY=1;
 
 
+
     float r = random(-1, 3);
     if (r <= 0) {
       enemyPosX = spawn.spawnerPos0.x - enemyW/2;
