@@ -25,7 +25,7 @@ class GameOver {
 
 
   // Array containing all available letters
-  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+  char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ','0','1','2','3','4','5','6','7','8', '9'};
 
   //int bN;
   //int bList;
@@ -50,22 +50,6 @@ class GameOver {
   void draw() {
     clear();
     if (gamemngr.dead) {
-      // Remove all enemies!
-      for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
-      {
-        GameObjectRef.gameObject.get(i).hp = 0;
-        GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
-      }
-      // Turn off everything!
-      myPlayer.shootingRight = false;
-      myPlayer.shootingLeft = false;
-      myPlayer.shootingUp = false;
-      myPlayer.shootingDown = false;
-      myPlayer.lookingLeft = false;
-      myPlayer.lookingRight = false;
-      myPlayer.lookingUp = false;
-      myPlayer.lookingDown = false;
-      
       death.play();
 
       // The dot under the letters depending on which state they are
@@ -223,14 +207,6 @@ class GameOver {
     Shotgun.pause();
     LMG.pause();
 
-    UI.ammoM1 = 5;
-    UI.magM1 = 30;
-    UI.maxM1 = 300;
-    UI.ammoP = 5;
-    UI.ammoS1 = 5;
-    UI.maxS1 = 20;
-    UI.ammoP = 5;
-
     Pistol.rewind();
     Shotgun.rewind();
     LMG.rewind();
@@ -240,9 +216,15 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
-    spawn.wave = 1;
+    spawn.wave = 0;
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
+
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
+    {
+      GameObjectRef.gameObject.get(i).hp = 0;
+      GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
+    }
   }
 }
