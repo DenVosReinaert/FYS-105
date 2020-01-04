@@ -170,59 +170,66 @@ class Player extends GameObject {
       movingDown = true;
     }
 
+if (currentGun > 3) {
+ currentGun = 1; 
+}
+if (currentGun < 1) {
+ currentGun = 3; 
+}
 
 
 
-    if (prevGun) {
-      weaponSwapPrevTimer.Timerr();
+    // Dylan's versie
+    //if (prevGun) {
+    //  weaponSwapPrevTimer.Timerr();
 
-      swapable = true;
+    //  swapable = true;
 
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int i = 0; i < 1; i++)
-        {
-          if (currentGun >= 1)
-          {
-            currentGun --;
-          } else if (currentGun < 1) currentGun = 3;
-        }
+    //  if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
+    //  {
+    //    for (int i = 0; i < 1; i++)
+    //    {
+    //      if (currentGun >= 1)
+    //      {
+    //        currentGun --;
+    //      } else if (currentGun < 1) currentGun = 3;
+    //    }
 
-        swapable = false;
-      }
+    //    swapable = false;
+    //  }
 
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
-    }
+    //  if (weaponSwapNextTimer.TimerDoneWithoutReset())
+    //  {
+    //    swapable = true;
+    //    weaponSwapNextTimer.TimerReset();
+    //  }
+    //}
 
 
-    if (nextGun) {
-      weaponSwapNextTimer.Timerr();
+    //if (nextGun) {
+    //  weaponSwapNextTimer.Timerr();
 
-      swapable = true;
+    //  swapable = true;
 
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int j = 0; j < 1; j++)
-        {
-          if (currentGun <= 3)
-          {
-            currentGun ++;
-          } else if (currentGun > 3) currentGun = 1;
-        }
+    //  if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
+    //  {
+    //    for (int j = 0; j < 1; j++)
+    //    {
+    //      if (currentGun <= 3)
+    //      {
+    //        currentGun ++;
+    //      } else if (currentGun > 3) currentGun = 1;
+    //    }
 
-        swapable = false;
-      }
+    //    swapable = false;
+    //  }
 
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
-    }
+    //  if (weaponSwapNextTimer.TimerDoneWithoutReset())
+    //  {
+    //    swapable = true;
+    //    weaponSwapNextTimer.TimerReset();
+    //  }
+    //}
   }
 
 
@@ -313,13 +320,15 @@ class Player extends GameObject {
     }
     if (key == 'q')
     {
-      prevGun = true;
-      nextGun = false;
+      currentGun--;
+      //prevGun = true;
+      //nextGun = false;
     }
     if (key =='e')
     {
-      prevGun = false;
-      nextGun = true;
+      currentGun++;
+      //prevGun = false;
+      //nextGun = true;
     }
   }
 

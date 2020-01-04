@@ -26,6 +26,7 @@ public class GameObject {
   float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
   float pillarPosX, pillarPosY, pillarWidth, pillarHeight;
+  float speedUpX, speedUpY, speedUpDia, bonusSpeed;
 
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 

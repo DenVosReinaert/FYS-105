@@ -70,16 +70,16 @@ class GameOver {
 
       // The dot under the letters depending on which state they are
       if (state == 1) {
-        //circle(width/2-135, height/2 + 20, 10);
+        circle(width/2-135, height/2 + 20, 10);
       }
       if (state == 2) {
-        //circle(width/2 - 55, height/2 + 20, 10);
+        circle(width/2 - 55, height/2 + 20, 10);
       }
       if (state == 3) {
-        //circle(width/2 + 25, height/2 + 20, 10);
+        circle(width/2 + 25, height/2 + 20, 10);
       }
       if (state == 4) {
-        //circle(width/2 + 105, height/2 + 20, 10);
+        circle(width/2 + 105, height/2 + 20, 10);
       }
 
       // Make all letters writable (So you can write them with text)
@@ -127,20 +127,20 @@ class GameOver {
   void keyPressed() {
     if (gamemngr.dead) {
       if (key == '\n') {
-        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-        //  for (int i = 0; i < bN; i++) {
-        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
-        ascore.saveScore();
+          // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
+          //  for (int i = 0; i < bN; i++) {
+          // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
+          ascore.saveScore();
 
-        Reset();
-        //NEEDS UPDATING
-        // Reset everything back to how the game was in the beginning
+          Reset();
+          //NEEDS UPDATING
+          // Reset everything back to how the game was in the beginning
 
-        //  } else {
-        // text("Try again..", width/2-150, height/8);
-        //  }
-        //}
+          //  } else {
+          // text("Try again..", width/2-150, height/8);
+          //  }
+          //}
       }
     }
     // Check what state & depending on state move through the letters upwards 
