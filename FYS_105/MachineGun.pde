@@ -68,6 +68,7 @@ class MachineGun extends GameObject {
         UI.ammoM1--;
         cooldown = 0;
 
+
         if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
           myPlayer.playerPosY -= knockback;
 
@@ -82,8 +83,10 @@ class MachineGun extends GameObject {
         UI.ammoM1--;
         cooldown = 0;
 
+
         if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
           myPlayer.playerPosX += knockback;
+
 
         LMG.play();
         LMG.rewind();
@@ -96,8 +99,10 @@ class MachineGun extends GameObject {
         UI.ammoM1--;
         cooldown = 0;
 
+
         if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
           myPlayer.playerPosX -= knockback;
+
 
         LMG.play();
         LMG.rewind();

@@ -26,6 +26,7 @@ String dbName = "zkoeneqt";
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
+Powerups PowerUps;
 Player player;
 UI UI;
 GameOver gameover;
@@ -49,6 +50,7 @@ void setup()
   LoadAssets();
 
   myPlayer = new Player();
+  PowerUps = new Powerups();
   UI = new UI();
   spawn = new Spawner();
   gamemngr = new Game_Manager();
@@ -88,6 +90,7 @@ void draw()
 
   if (game)
     GameObjectRef.draw();
+    PowerUps.draw();
 }
 
 

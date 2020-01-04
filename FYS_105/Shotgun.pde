@@ -13,6 +13,7 @@ class Shotgun extends GameObject {
     if (myPlayer.lookingUp) {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+
       image(handgunUp, barrelX, barrelY);
       handgunUp.resize(8, 35);
     } else if (myPlayer.lookingDown) {
@@ -30,6 +31,24 @@ class Shotgun extends GameObject {
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
       image(handgunLeft, barrelX, barrelY);
       handgunLeft.resize(35, 16);
+
+      image(doubleBu, barrelX, barrelY);
+      doubleBu.resize(8, 35);
+    } else if (myPlayer.lookingDown) {
+      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
+      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
+      image(doubleBd, barrelX, barrelY);
+      doubleBd.resize(8, 35);
+    } else if (myPlayer.lookingRight) {
+      barrelX = myPlayer.playerPosX + playerWidth + 20;
+      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(doubleBr, barrelX, barrelY);
+      doubleBr.resize(35, 16);
+    } else if (myPlayer.lookingLeft) {
+      barrelX = myPlayer.playerPosX - playerWidth - 20;
+      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
+      image(doubleBl, barrelX, barrelY);
+      doubleBl.resize(35, 16);
     }
   }
 
@@ -49,7 +68,7 @@ class Shotgun extends GameObject {
 
         for (int i = 0; i < 5; i++)
         {
-                myPlayer.lookingUp = true;
+          myPlayer.lookingUp = true;
           Add(new Bullet(random(-2, 2), random(-14, -16)));
         }
         UI.ammoS1--;
@@ -71,7 +90,7 @@ class Shotgun extends GameObject {
 
         for (int i = 0; i < 5; i++)
         {
-                myPlayer.lookingDown = true;
+          myPlayer.lookingDown = true;
           Add(new Bullet(random(-2, 2), random(14, 16)));
         }
         UI.ammoS1--;
@@ -86,7 +105,7 @@ class Shotgun extends GameObject {
         ShotgunReload.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingRight) {
-      
+
 
       if ( UI.ammoS1 > 0) {
 
@@ -112,7 +131,7 @@ class Shotgun extends GameObject {
       if ( UI.ammoS1 > 0) {
         for (int i = 0; i < 5; i++)
         {
-                myPlayer.lookingLeft = true;
+          myPlayer.lookingLeft = true;
           Add(new Bullet(random(-14, -16), random(-2, 2)));
         }
         UI.ammoS1--;

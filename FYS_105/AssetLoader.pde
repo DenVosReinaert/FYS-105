@@ -16,17 +16,21 @@ PImage healthbarS, healthbarSb, healthP, bullet, shotgunS;
 
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight;
-PImage handgunLeft, handgunRight, handgunUp, handgunDown;
+PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr;
 
-// Player
 
 // Effects
 PImage bloodOrb;
 
 // Maps && spritesheets
 PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
+
 SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
+
 PImage purpleStoneTiles;
+
+//Enemies
+SpriteSheet GruntL, GruntR, GruntU, GruntD;
 
 
 void LoadAssets()
@@ -40,6 +44,11 @@ void LoadAssets()
   shotgunS = loadImage("/data/sprites/UI/ShotgunShell.png");
 
   // Guns
+  doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
+  doubleBd = loadImage("/data/sprites/DoubleBarrel_Down.png");
+  doubleBl = loadImage("/data/sprites/DoubleBarrel_Left.png");
+  doubleBr = loadImage("/data/sprites/DoubleBarrel_Right.png");
+
   buckS = loadImage("/data/sprites/buckshot.png");
   bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
   bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
@@ -49,11 +58,7 @@ void LoadAssets()
   handgunDown = loadImage("/data/sprites/Handgun_Down.png");
   handgunLeft = loadImage("/data/sprites/Handgun_Left.png");
   handgunRight = loadImage("/data/sprites/Handgun_Right.png");
-
-  // ?
-
-
-  // Player
+  
 
 
   // Main Menu
@@ -89,6 +94,11 @@ void LoadAssets()
 
   purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
 
+  // Enemies
+  GruntU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8);
+  GruntD = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Forward.png", 8);
+  GruntR = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Right.png", 5);
+  GruntL = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Left.png", 5);
 
 
 

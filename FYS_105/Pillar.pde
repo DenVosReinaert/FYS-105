@@ -20,26 +20,6 @@ class Pillar extends GameObject
 
 
     //Collision statement
-    //if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX && myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarWidth && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
-    //{
-    //  if (myPlayer.movingLeft)
-    //    myPlayer.collLeft = true;
-
-    //  if (myPlayer.movingRight)
-    //    myPlayer.collRight = true;
-
-    //  if (myPlayer.movingUp)
-    //    myPlayer.collTop = true;
-
-    //  if (myPlayer.movingDown)
-    //    myPlayer.collBott = true;
-    //}
-
-    //if (pillarPosX < myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX && pillarPosX + pillarWidth > myPlayer.playerPosX + myPlayer.moveVelX && pillarPosY < myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY && pillarPosY + pillarHeight > myPlayer.playerPosY + myPlayer.moveVelY)
-    //{
-    //  myPlayer.defaultSpeed = 0;
-    //} else myPlayer.defaultSpeed = 5;
-
 
     if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX && myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
     {
@@ -57,6 +37,7 @@ class Pillar extends GameObject
         println("CollideY");
       }
     }
+
 
     //BOUNDARIES
   }

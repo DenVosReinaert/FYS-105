@@ -59,7 +59,6 @@ class Grunt extends GameObject {
 
 
 
-
     if (Dead())
     {
       Remove(this);

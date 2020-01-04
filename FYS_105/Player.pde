@@ -171,58 +171,11 @@ class Player extends GameObject {
       movingDown = true;
     }
 
-
-
-
-    if (prevGun) {
-      weaponSwapPrevTimer.Timerr();
-
-      swapable = true;
-
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int i = 0; i < 1; i++)
-        {
-          if (currentGun >= 1)
-          {
-            currentGun --;
-          } else if (currentGun < 1) currentGun = 3;
-        }
-
-        swapable = false;
-      }
-
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
+    if (currentGun > 3) {
+      currentGun = 1;
     }
-
-
-    if (nextGun) {
-      weaponSwapNextTimer.Timerr();
-
-      swapable = true;
-
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int j = 0; j < 1; j++)
-        {
-          if (currentGun <= 3)
-          {
-            currentGun ++;
-          } else if (currentGun > 3) currentGun = 1;
-        }
-
-        swapable = false;
-      }
-
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
+    if (currentGun < 1) {
+      currentGun = 3;
     }
   }
 
@@ -318,13 +271,15 @@ class Player extends GameObject {
 
     if (key == 'q')
     {
-      prevGun = true;
-      nextGun = false;
+      currentGun--;
+      //prevGun = true;
+      //nextGun = false;
     }
     if (key =='e')
     {
-      prevGun = false;
-      nextGun = true;
+      currentGun++;
+      //prevGun = false;
+      //nextGun = true;
     }
   }
 
