@@ -25,10 +25,10 @@ class Powerups extends GameObject {
 
 
   void SpeedUp() {
-    PowerupSpd.Timerr();
+    PowerupSpd.Reset();
     myPlayer.bonusSpeed = 3;
     println("1: "+ myPlayer.defaultSpeed);
-    if (PowerupSpd.TimerDoneWithoutReset()) {
+    if (PowerupSpd.TimerDone()) {
       myPlayer.bonusSpeed = 0;
       println("2: "+ myPlayer.defaultSpeed);
     }

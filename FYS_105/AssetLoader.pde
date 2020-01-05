@@ -31,7 +31,7 @@ PImage purpleStoneTiles;
 
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD;
-
+SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 
 void LoadAssets()
 {
@@ -123,6 +123,11 @@ void LoadAssets()
   heavyD = new SpriteSheet("/data/sprites/Enemies/Heavy_Down.png", 17);
 
 
+  //ArrowPointers
+  arrowPU = new SpriteSheet("/data/sprites/ArrowPointer_Up.png", 6);
+  arrowPD = new SpriteSheet("/data/sprites/ArrowPointer_Down.png", 6);
+  arrowPL = new SpriteSheet("/data/sprites/ArrowPointer_Left.png", 6);
+  arrowPR = new SpriteSheet("/data/sprites/ArrowPointer_Right.png", 6);
 
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");

@@ -44,11 +44,11 @@ class UI {
       gamemngr.shake = true;
     }
     ableToBeHit = false;
-    hitStun.Timerr();
+    hitStun.Reset();
 
-    if (!ableToBeHit && hitStun.TimerDoneWithoutReset()) {
+    if (!ableToBeHit && hitStun.TimerDone()) {
       ableToBeHit = true;
-      hitStun.TimerReset();
+      hitStun.Reset();
     }
   }
 
