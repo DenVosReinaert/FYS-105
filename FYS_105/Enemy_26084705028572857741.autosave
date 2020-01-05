@@ -1,19 +1,16 @@
 //Ruben de Jager
-class Grunt extends GameObject {
+class Speedster extends GameObject {
 
-  Grunt() {
+  Speedster() {
     tag = "enemy";
 
-    scoreGain = 5;
+    scoreGain = 2;
 
-    enemyW=28;
-    enemyH=40;
-    hp=2;
-
-    moveVelX=1;
-    moveVelY=1;
-
-
+    enemyW=20;
+    enemyH=24;
+    hp=1;
+    moveVelX=2;
+    moveVelY=2;
 
     float r = random(-1, 3);
     if (r <= 0) {
@@ -29,44 +26,19 @@ class Grunt extends GameObject {
       enemyPosX = spawn.spawnerPos3.x;
       enemyPosY = spawn.spawnerPos3.y - enemyH/2;
     }
-  }//constructor Grunt
-
+  }//constructor Speedster
 
 
 
 
   void draw() {
     checkPulse();
-
-
-
-    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
-    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
-    dxA = enemyVector.x - playerVector.x;
-    dyA = enemyVector.y - playerVector.y;
-
-
-    angleBetweenVector = atan2(dxA, dyA);
-
-    if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
-      GruntU.draw(enemyPosX, enemyPosY);
-      GruntU.update();
-    }
-    if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
-      GruntL.draw(enemyPosX, enemyPosY);
-      GruntL.update();
-    }
-    if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
-      GruntD.draw(enemyPosX, enemyPosY);
-      GruntD.update();
-    }
-    if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
-      GruntR.draw(enemyPosX, enemyPosY);
-      GruntR.update();
-    }
-
-
-
+    pushStyle();
+    fill(229, 143, 23);
+    rect(enemyPosX, enemyPosY, enemyW, enemyH);
+    popStyle();
+    
+    
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;
     dy = myPlayer.playerPosY - enemyPosY;
@@ -82,13 +54,11 @@ class Grunt extends GameObject {
 
 
 
-
     if (Dead())
     {
       Remove(this);
     }
   }//enemyShow
-
 
 
   void checkPulse() {//Checks the enemy's collision with the player's bullet
@@ -120,7 +90,9 @@ class Grunt extends GameObject {
     }
   }
 
+
+
   boolean Dead() {
     return hp<=0;
   }//boolean Dead
-}//class Grunt
+}

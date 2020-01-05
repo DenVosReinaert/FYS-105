@@ -45,6 +45,8 @@ void setup()
   //X: -10
   //Y: -90
   size(1280, 720);
+
+
   minim = new Minim(this);
 
   LoadAssets();
@@ -90,14 +92,14 @@ void draw()
 
   if (game)
     GameObjectRef.draw();
-    PowerUps.draw();
+  PowerUps.draw();
 }
 
 
 void keyPressed() {
   // To check if you can die..
   if (key == 'p') {
-   UI.spelerhit(); 
+    UI.spelerhit();
   }
 
   if (keyCode >= KEY_LIMIT) return;
