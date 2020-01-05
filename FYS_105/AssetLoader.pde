@@ -30,7 +30,7 @@ SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSp
 PImage purpleStoneTiles;
 
 //Enemies
-SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD;
+SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, boss1U, boss1D;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 
 void LoadAssets()
@@ -121,6 +121,9 @@ void LoadAssets()
 
   heavyU = new SpriteSheet("/data/sprites/Enemies/Heavy_Up.png", 17);
   heavyD = new SpriteSheet("/data/sprites/Enemies/Heavy_Down.png", 17);
+
+  boss1U = new SpriteSheet("/data/sprites/Enemies/Boss1_Back.png", 9);
+  boss1D = new SpriteSheet("/data/sprites/Enemies/Boss1_Front.png", 9);
 
 
   //ArrowPointers

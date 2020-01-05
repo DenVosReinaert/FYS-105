@@ -2,8 +2,8 @@ class Boss1 extends GameObject {
 
   Boss1() {
     tag = "enemy";
-    enemyW=65;
-    enemyH=80;
+    enemyW=100;
+    enemyH=146;
     hp=20;
     moveVelX=1;
     moveVelY=1;
@@ -30,8 +30,29 @@ class Boss1 extends GameObject {
 
   void draw() {
     checkPulse();
-    fill(255, 0, 0);
+    pushStyle();
+    noFill();
+    stroke(255);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
+    popStyle();
+
+    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
+    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    dxA = enemyVector.x - playerVector.x;
+    dyA = enemyVector.y - playerVector.y;
+
+
+    angleBetweenVector = atan2(dxA, dyA);
+
+    if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
+      boss1U.draw(enemyPosX, enemyPosY);
+      boss1U.update();
+    }
+
+    if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
+      boss1D.draw(enemyPosX, enemyPosY);
+      boss1D.update();
+    }
 
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;

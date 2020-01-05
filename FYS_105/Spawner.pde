@@ -6,7 +6,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 1;
+  int wave = 5;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
   boolean waveInProgress = false;
@@ -40,7 +40,7 @@ class Spawner extends GameObject {
       if (!waveTextTimer.TimerDone() && !waveInProgress) {
         textSize(80);
         text("WAVE "+ wave, width/2-150, height/2);
-      } else if (wave == 1)
+      } else if (wave == 5)
         NextWave();
 
       if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
