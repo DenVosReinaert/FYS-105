@@ -9,7 +9,8 @@ class Spawner extends GameObject {
   int wave = 1;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
-  boolean waveInProgress = true;
+  boolean waveInProgress = false;
+  boolean waveFinished = false;
 
   Spawner() {
     spawnerPos0.x=width/2;
@@ -36,8 +37,24 @@ class Spawner extends GameObject {
       pushStyle();
       fill(255);
 
-      if (waveInProgress && GameObjectRef.gameObject.size() == 0)
+      if (!waveTextTimer.TimerDone() && !waveInProgress) {
+        textSize(80);
+        text("WAVE "+ wave, width/2-150, height/2);
+      } else if (wave == 1)
         NextWave();
+
+      if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
+      {
+        waveInProgress = false;
+        waveFinished = true;
+      }
+
+      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
+        lvlMngr.apActive = true;
+
+
+      //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
+      //  NextWave();
 
       popStyle();
     }
@@ -51,32 +68,20 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-    waveInProgress = false;
+    SpawnWave();
 
-    waveTextTimer.Timerr();
-
-    if (!waveTextTimer.TimerDoneWithoutReset() && !waveInProgress) {
-      textSize(80);
-      text("WAVE "+ wave, width/2-150, height/2);
-    }
-
-    if (waveTextTimer.TimerDoneWithoutReset())
+    for (int i = 0; i < 1; i++)
     {
-      SpawnWave();
-      for (int i = 0; i < 1; i++)
-      {
-        wave++;
-
-        waveTextTimer.TimerReset();
-      }
+      wave++;
     }
-    waveInProgress = true;
   }
 
 
 
   void SpawnWave()
   {
+    waveInProgress = true;
+    waveFinished = false;
 
     HeavySpawn();
     GruntSpawn();

@@ -60,11 +60,11 @@ class GameOver {
       myPlayer.shootingRight = false;
       myPlayer.shootingLeft = false;
       myPlayer.shootingUp = false;
-      myPlayer.shootingDown = true;
+      myPlayer.shootingDown = false;
       myPlayer.lookingLeft = false;
       myPlayer.lookingRight = false;
       myPlayer.lookingUp = false;
-      myPlayer.lookingDown = false;
+      myPlayer.lookingDown = true;
 
       death.play();
 

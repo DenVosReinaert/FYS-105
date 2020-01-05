@@ -57,7 +57,7 @@ class Shotgun extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collBott || myPlayer.playerPosY + myPlayer.playerHeight + knockback < height)
-          myPlayer.moveVelY += knockback;
+          myPlayer.playerPosY += knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -79,7 +79,7 @@ class Shotgun extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
-          myPlayer.moveVelY -= knockback;
+          myPlayer.playerPosY -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -100,7 +100,7 @@ class Shotgun extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
-          myPlayer.moveVelX -= knockback;
+          myPlayer.playerPosX -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -120,7 +120,7 @@ class Shotgun extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
-          myPlayer.moveVelX += knockback;
+          myPlayer.playerPosX += knockback;
 
         Shotgun.play();
         Shotgun.rewind();

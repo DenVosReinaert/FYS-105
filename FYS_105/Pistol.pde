@@ -65,7 +65,7 @@ class Pistol extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collBott || myPlayer.playerPosY + myPlayer.playerHeight + knockback < height)
-          myPlayer.moveVelY += knockback;
+          myPlayer.playerPosY += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -80,7 +80,7 @@ class Pistol extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
-          myPlayer.moveVelY -=knockback;
+          myPlayer.playerPosY -=knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -95,7 +95,7 @@ class Pistol extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
-          myPlayer.moveVelX += knockback;
+          myPlayer.playerPosX += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -110,7 +110,7 @@ class Pistol extends GameObject {
         cooldown = 0;
 
         if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
-          myPlayer.moveVelX -= knockback;
+          myPlayer.playerPosX -= knockback;
 
         Pistol.play();
         Pistol.rewind();
