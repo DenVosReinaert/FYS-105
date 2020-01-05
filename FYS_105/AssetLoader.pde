@@ -30,7 +30,7 @@ SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSp
 PImage purpleStoneTiles;
 
 //Enemies
-SpriteSheet GruntL, GruntR, GruntU, GruntD, SpeedsterL, SpeedsterR, SpeedsterU, SpeedsterD;
+SpriteSheet GruntL, GruntR, GruntU, GruntD, SpeedsterL, SpeedsterR, SpeedsterU, SpeedsterD, BruteL, BruteU, BruteR, BruteD;
 
 
 void LoadAssets()
@@ -99,6 +99,11 @@ void LoadAssets()
   GruntD = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Forward.png", 8);
   GruntR = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Right.png", 5);
   GruntL = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Left.png", 5);
+
+  //BruteU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8); WAAR IS DIT NOU ADRIAAN? :P
+  // BruteD = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Forward.png", 8);
+  BruteR = new SpriteSheet("/data/sprites/Enemies/Brute_Right.png", 9);
+  BruteL = new SpriteSheet("/data/sprites/Enemies/Brute_Left.png", 9);
 
   SpeedsterL = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Left.png", 5);
   SpeedsterU = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Back.png", 5);

@@ -3,7 +3,7 @@ class Pistol extends GameObject {
   float barrelX, barrelY;
 
   Pistol() {
-    threshold = 50;
+    threshold = 40;
     cooldown = 0;
     knockback = 5;
   }
