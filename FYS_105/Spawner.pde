@@ -6,7 +6,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 5;
+  int wave = 0;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
   boolean waveInProgress = false;
@@ -39,19 +39,22 @@ class Spawner extends GameObject {
 
       if (!waveTextTimer.TimerDone() && !waveInProgress) {
         textSize(80);
-        text("WAVE "+ wave, width/2-150, height/2);
-      } else if (wave == 5)
+        text("WAVE "+ (wave + 1), width/2-150, height/2);
+      } else if (wave == 0)
         NextWave();
 
       if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
       {
         waveInProgress = false;
         waveFinished = true;
+        shop.cartX = -100;
       }
 
-      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
+      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
         lvlMngr.apActive = true;
-
+        if (wave%2 == 0)
+          shop.draw();
+      }
 
       //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
       //  NextWave();

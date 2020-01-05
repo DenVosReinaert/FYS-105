@@ -15,12 +15,10 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 
 boolean game, works;
 
-// DIT MOET NOG ERGENS ANDERS :D
-
-//
 
 LevelManager lvlMngr;
 
+Shop shop;
 hScorelijst hscorel;
 Powerups PowerUps;
 Player player;
@@ -51,6 +49,7 @@ void setup()
   PowerUps = new Powerups();
   UI = new UI();
   spawn = new Spawner();
+  shop = new Shop();
   gamemngr = new Game_Manager();
 
   gamemngr.home = true;

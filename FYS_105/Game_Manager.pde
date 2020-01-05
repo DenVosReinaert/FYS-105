@@ -14,9 +14,9 @@ class Game_Manager {
       UI.draw();
       game = false;
       dead = false;
-      int time = 0;
-      homeSnd.play();
-      if (time == 31140 ) {
+      homeSnd.setGain(-15);
+      if (!homeSnd.isPlaying() ) {
+        homeSnd.play();
         homeSnd.rewind();
       }
     }
@@ -27,7 +27,6 @@ class Game_Manager {
       hscoreA = 1;
       hscorel.draw();
     }
-
 
     if (game) {
 
