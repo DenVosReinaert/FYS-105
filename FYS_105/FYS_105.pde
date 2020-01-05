@@ -16,11 +16,7 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 boolean game, works;
 
 // DIT MOET NOG ERGENS ANDERS :D
-String dbHost = "oege.ie.hva.nl"; 
-String dbPort = "3306"; 
-String dbUser = "koeneqt"; 
-String dbPass = "7EwwK5+iBmUXUd"; 
-String dbName = "zkoeneqt";
+
 //
 
 LevelManager lvlMngr;
