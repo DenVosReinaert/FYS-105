@@ -6,6 +6,7 @@ class Game_Manager {
   int hscoreA;
   int shakeAmount;
 
+
   Game_Manager() {
   }
 

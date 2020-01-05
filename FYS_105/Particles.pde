@@ -49,9 +49,6 @@ class Particle extends GameObject {
         if (dist(enemyPosX, enemyPosY, GameObjectRef.gameObject.get(i).bulletPosX, GameObjectRef.gameObject.get(i).bulletPosY) < 20) {
           hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
-          if (hp == 0) {
-            ascore.score += 5;
-          }
           for (int j=0; j < 20; j++) {
             Add(new Particle(enemyPosX, enemyPosY));
           }//for

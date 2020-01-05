@@ -3,9 +3,9 @@
 
 class aScore {
   int score; // The current score
+  float combo = 1; // The current combo or score multiplier
   int id; // Current/new id
   String idh; // String containing highest id in scores table
-
   String lscore; // lowest score
   String lid; // lowest id
   // String[] idha = new String[ids];
@@ -16,10 +16,14 @@ class aScore {
   }
 
   void draw() {
+    int tCombo = round(combo); // This is the number visible on the display
     if (!gamemngr.dead) {
+      pushStyle();
       fill(255);
       textSize(20);
       text("score: "+score, width/9 - 10, height/10);
+      text("combo multiplier: " + tCombo, width - width/5, height/10);
+      popStyle();
     }
   }
 
