@@ -44,20 +44,20 @@ class Brute extends GameObject {
     angleBetweenVector = atan2(dxA, dyA);
 
     if (angleBetweenVector > 0 && angleBetweenVector < 1.5) {
-      BruteLU.draw(enemyPosX, enemyPosY); // LEFT UP
-      BruteLU.update();
+      bruteLU.draw(enemyPosX, enemyPosY); // LEFT UP
+      bruteLU.update();
     }
     if (angleBetweenVector > 1.5 && angleBetweenVector < 3.2) {
-      BruteLD.draw(enemyPosX, enemyPosY); // LEFT DOWN
-      BruteLD.update();
+      bruteLD.draw(enemyPosX, enemyPosY); // LEFT DOWN
+      bruteLD.update();
     }
     if ( angleBetweenVector > -3.2 && angleBetweenVector < -1.5 ) {
-      BruteRD.draw(enemyPosX, enemyPosY); //RIGHT DOWN
-      BruteRD.update();
+      bruteRD.draw(enemyPosX, enemyPosY); //RIGHT DOWN
+      bruteRD.update();
     }
     if (angleBetweenVector > -1.5 && angleBetweenVector < 0) {
-      BruteRU.draw(enemyPosX, enemyPosY); //RIGHT UP
-      BruteRU.update();
+      bruteRU.draw(enemyPosX, enemyPosY); //RIGHT UP
+      bruteRU.update();
     }
 
 

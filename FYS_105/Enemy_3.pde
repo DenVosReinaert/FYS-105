@@ -6,8 +6,8 @@ class Heavy extends GameObject {
 
     scoreGain = 10;
 
-    enemyW=60;
-    enemyH=60;
+    enemyW=57;
+    enemyH=36;
     hp=6;
     moveVelX=0.75;
     moveVelY=0.75;
@@ -34,9 +34,28 @@ class Heavy extends GameObject {
   void draw() {
     checkPulse();
     pushStyle();
-    fill(91, 80, 80);
+    noFill();
+    stroke(255);
     rect(enemyPosX, enemyPosY, enemyW, enemyH);
     popStyle();
+
+    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
+    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    dxA = enemyVector.x - playerVector.x;
+    dyA = enemyVector.y - playerVector.y;
+
+
+    angleBetweenVector = atan2(dxA, dyA);
+
+    if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
+      heavyU.draw(enemyPosX, enemyPosY);
+      heavyU.update();
+    }
+
+    if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
+      heavyD.draw(enemyPosX, enemyPosY);
+      heavyD.update();
+    }
 
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;

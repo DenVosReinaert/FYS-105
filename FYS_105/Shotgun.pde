@@ -14,41 +14,29 @@ class Shotgun extends GameObject {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
 
-      image(handgunUp, barrelX, barrelY);
-      handgunUp.resize(8, 35);
-    } else if (myPlayer.lookingDown) {
+      image(pumpU, barrelX, barrelY);
+      //handgunUp.resize(8, 35);
+    } 
+    
+    else if (myPlayer.lookingDown) {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(handgunDown, barrelX, barrelY);
-      handgunDown.resize(8, 35);
-    } else if (myPlayer.lookingRight) {
+      image(pumpD, barrelX, barrelY);
+      //handgunDown.resize(8, 35);
+    }
+    
+    else if (myPlayer.lookingRight) {
       barrelX = myPlayer.playerPosX + playerWidth + 20;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(handgunRight, barrelX, barrelY);
-      handgunRight.resize(35, 16);
-    } else if (myPlayer.lookingLeft) {
+      image(pumpR, barrelX, barrelY);
+      //handgunRight.resize(35, 16);
+    } 
+    
+    else if (myPlayer.lookingLeft) {
       barrelX = myPlayer.playerPosX - playerWidth - 30;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(handgunLeft, barrelX, barrelY);
-      handgunLeft.resize(35, 16);
-
-      image(doubleBu, barrelX, barrelY);
-      doubleBu.resize(8, 35);
-    } else if (myPlayer.lookingDown) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(doubleBd, barrelX, barrelY);
-      doubleBd.resize(8, 35);
-    } else if (myPlayer.lookingRight) {
-      barrelX = myPlayer.playerPosX + playerWidth + 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(doubleBr, barrelX, barrelY);
-      doubleBr.resize(35, 16);
-    } else if (myPlayer.lookingLeft) {
-      barrelX = myPlayer.playerPosX - playerWidth - 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(doubleBl, barrelX, barrelY);
-      doubleBl.resize(35, 16);
+      image(pumpL, barrelX, barrelY);
+      //handgunLeft.resize(35, 16);
     }
   }
 

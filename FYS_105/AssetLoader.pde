@@ -16,7 +16,7 @@ PImage healthbarS, healthbarSb, healthP, bullet, shotgunS;
 
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight;
-PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr;
+PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 
 
 // Effects
@@ -30,7 +30,7 @@ SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSp
 PImage purpleStoneTiles;
 
 //Enemies
-SpriteSheet GruntL, GruntR, GruntU, GruntD, SpeedsterL, SpeedsterR, SpeedsterU, SpeedsterD, BruteLU, BruteLD, BruteRD, BruteRU;
+SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD;
 
 
 void LoadAssets()
@@ -59,6 +59,15 @@ void LoadAssets()
   handgunLeft = loadImage("/data/sprites/Handgun_Left.png");
   handgunRight = loadImage("/data/sprites/Handgun_Right.png");
 
+  arU = loadImage("/data/sprites/AR_Up.png");
+  arD = loadImage("/data/sprites/AR_Down.png");
+  arL = loadImage("/data/sprites/AR_Left.png");
+  arR = loadImage("/data/sprites/AR_Right.png");
+
+  pumpU = loadImage("/data/sprites/Shotgun_Pump_Up.png");
+  pumpD = loadImage("/data/sprites/Shotgun_Pump_Down.png");
+  pumpL = loadImage("/data/sprites/Shotgun_Pump_Left.png");
+  pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
 
 
   // Main Menu
@@ -95,20 +104,23 @@ void LoadAssets()
   purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
 
   // Enemies
-  GruntU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8);
-  GruntD = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Forward.png", 8);
-  GruntR = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Right.png", 5);
-  GruntL = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Left.png", 5);
+  gruntU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8);
+  gruntD = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Forward.png", 8);
+  gruntR = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Right.png", 5);
+  gruntL = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Left.png", 5);
 
-  BruteRU = new SpriteSheet("/data/sprites/Enemies/Brute_Right_Up.png", 9); 
-  BruteRD = new SpriteSheet("/data/sprites/Enemies/Brute_Right_Down.png", 9);
-  BruteLD = new SpriteSheet("/data/sprites/Enemies/Brute_Left_Down.png", 9);
-  BruteLU = new SpriteSheet("/data/sprites/Enemies/Brute_Left_Up.png", 9);
+  bruteRU = new SpriteSheet("/data/sprites/Enemies/Brute_Right_Up.png", 9); 
+  bruteRD = new SpriteSheet("/data/sprites/Enemies/Brute_Right_Down.png", 9);
+  bruteLD = new SpriteSheet("/data/sprites/Enemies/Brute_Left_Down.png", 9);
+  bruteLU = new SpriteSheet("/data/sprites/Enemies/Brute_Left_Up.png", 9);
 
-  SpeedsterL = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Left.png", 5);
-  SpeedsterU = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Back.png", 5);
-  SpeedsterR = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Right.png", 5);
-  SpeedsterD = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Front.png", 5);
+  speedsterL = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Left.png", 5);
+  speedsterU = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Back.png", 5);
+  speedsterR = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Right.png", 5);
+  speedsterD = new SpriteSheet("/data/sprites/Enemies/Speedster_Sheet_Front.png", 5);
+
+  heavyU = new SpriteSheet("/data/sprites/Enemies/Heavy_Up.png", 17);
+  heavyD = new SpriteSheet("/data/sprites/Enemies/Heavy_Down.png", 17);
 
 
 

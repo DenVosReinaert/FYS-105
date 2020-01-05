@@ -49,20 +49,20 @@ class Grunt extends GameObject {
     angleBetweenVector = atan2(dxA, dyA);
 
     if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
-      GruntU.draw(enemyPosX, enemyPosY);
-      GruntU.update();
+      gruntU.draw(enemyPosX, enemyPosY);
+      gruntU.update();
     }
     if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
-      GruntL.draw(enemyPosX, enemyPosY);
-      GruntL.update();
+      gruntL.draw(enemyPosX, enemyPosY);
+      gruntL.update();
     }
     if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
-      GruntD.draw(enemyPosX, enemyPosY);
-      GruntD.update();
+      gruntD.draw(enemyPosX, enemyPosY);
+      gruntD.update();
     }
     if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
-      GruntR.draw(enemyPosX, enemyPosY);
-      GruntR.update();
+      gruntR.draw(enemyPosX, enemyPosY);
+      gruntR.update();
     }
 
 
