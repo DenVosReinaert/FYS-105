@@ -3,7 +3,7 @@
 
 class aScore {
   int score; // The current score
-  float combo = 1; // The current combo or score multiplier
+  float combo; // The current combo or score multiplier
   int id; // Current/new id
   String idh; // String containing highest id in scores table
   String lscore; // lowest score
@@ -13,6 +13,7 @@ class aScore {
   String name; // String containing inserted name from 'GameOver' class
 
   aScore() {
+    combo = 1;
   }
 
   void draw() {
@@ -22,7 +23,7 @@ class aScore {
       fill(255);
       textSize(20);
       text("score: "+score, width/9 - 10, height/10);
-      text("combo multiplier: " + tCombo, width - width/5, height/10);
+      text("combo : " + tCombo, width - width/5, height/10);
       popStyle();
     }
   }
@@ -56,7 +57,7 @@ class aScore {
         println("lowest score: "+lscore); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary score
       }
 
-     // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
+      // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     }
   }
 }

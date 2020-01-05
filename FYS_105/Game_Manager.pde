@@ -5,7 +5,7 @@ class Game_Manager {
   boolean shake;
   int hscoreA;
   int shakeAmount;
-
+  float comboMultiplier = 0.25;
 
   Game_Manager() {
   }
