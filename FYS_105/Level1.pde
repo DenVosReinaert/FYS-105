@@ -34,13 +34,13 @@ class Level1
   {
     //flowerpath on 2,4,8,10 X && 2,6 Y 
     //GardenPath
-    pushMatrix();
+    pushStyle();
 
     gardenPathK.resize(width, height);
     image(gardenPathK, 0, 0);
 
 
-    popMatrix();
+    popStyle();
 
     //Pathing left to right
     for (int i = 0; i < 14; i++)

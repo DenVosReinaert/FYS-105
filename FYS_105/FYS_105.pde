@@ -112,8 +112,9 @@ void keyReleased() {
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
   gamemngr.keyReleased();
-
+  pushStyle();
   background.resize(width, height);
+  popStyle();
 }
 
 

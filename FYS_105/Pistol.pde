@@ -11,30 +11,39 @@ class Pistol extends GameObject {
   // Show weapon sprite
   void holdingGun() {
 
-        if (myPlayer.lookingUp) 
+
+    if (myPlayer.lookingUp) 
     {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+      pushStyle();
       image(handgunUp, barrelX, barrelY);
       handgunUp.resize(8, 35);
+      popStyle();
     } else if (myPlayer.lookingDown) 
     {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(handgunDown, barrelX, barrelY);
-      handgunDown.resize(8, 35);
+      pushStyle();
+      image(handgunUp, barrelX, barrelY);
+      handgunUp.resize(8, 35);
+      popStyle();
     } else if (myPlayer.lookingRight)
     {
       barrelX = myPlayer.playerPosX + playerWidth + 20;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(handgunRight, barrelX, barrelY);
-      handgunRight.resize(35, 16);
+      pushStyle();
+      image(handgunUp, barrelX, barrelY);
+      handgunUp.resize(35, 16);
+      popStyle();
     } else if (myPlayer.lookingLeft) 
     {
       barrelX = myPlayer.playerPosX - playerWidth - 30;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(handgunLeft, barrelX, barrelY);
-      handgunLeft.resize(35, 16);
+      pushStyle();
+      image(handgunUp, barrelX, barrelY);
+      handgunUp.resize(35, 16);
+      popStyle();
     }
   }
 
@@ -50,7 +59,7 @@ class Pistol extends GameObject {
 
 
       if (UI.ammoP > 0) {
-                    myPlayer.lookingUp = true;
+        myPlayer.lookingUp = true;
         Add(new Bullet(random(-0.25, 0.25), random(-14.75, -15.25)));
         UI.ammoP--;
         cooldown = 0;
@@ -65,7 +74,7 @@ class Pistol extends GameObject {
 
 
       if (UI.ammoP > 0) {
-                    myPlayer.lookingDown = true;
+        myPlayer.lookingDown = true;
         Add(new Bullet(random(-0.25, 0.25), random(14.75, 15.25)));
         UI.ammoP--;
         cooldown = 0;
@@ -80,7 +89,7 @@ class Pistol extends GameObject {
 
 
       if (UI.ammoP > 0) {
-                    myPlayer.lookingLeft = true;
+        myPlayer.lookingLeft = true;
         Add(new Bullet(random(-14.75, -15.25), random(-0.25, 0.25)));
         UI.ammoP--;
         cooldown = 0;
@@ -95,7 +104,7 @@ class Pistol extends GameObject {
 
 
       if (UI.ammoP > 0) {
-                    myPlayer.lookingRight = true;
+        myPlayer.lookingRight = true;
         Add(new Bullet(random(14.75, 15.25), random(-0.25, 0.25)));
         UI.ammoP--;
         cooldown = 0;

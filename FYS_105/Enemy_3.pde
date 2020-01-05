@@ -6,8 +6,8 @@ class Heavy extends GameObject {
 
     scoreGain = 10;
 
-    enemyW=57;
-    enemyH=36;
+    enemyW=114;
+    enemyH=72;
     hp=6;
     moveVelX=0.75;
     moveVelY=0.75;

@@ -180,6 +180,7 @@ class UI {
     // Main menu
     // show depending on boolean
     if (gamemngr.home) {
+      pushStyle();
       main.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
@@ -202,6 +203,7 @@ class UI {
         rect(563, 522, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+      popStyle();
     }
     //if (controls) {
     //  controlImg.resize(width, height);

@@ -18,31 +18,25 @@ class MachineGun extends GameObject {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
       image(arU, barrelX, barrelY);
-     // handgunUp.resize(8, 35);
-    } 
-    
-    else if (myPlayer.lookingDown) 
+      // handgunUp.resize(8, 35);
+    } else if (myPlayer.lookingDown) 
     {
       barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
       barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
       image(arD, barrelX, barrelY);
       //handgunDown.resize(8, 35);
-    } 
-    
-    else if (myPlayer.lookingRight)
+    } else if (myPlayer.lookingRight)
     {
       barrelX = myPlayer.playerPosX + playerWidth;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
       image(arR, barrelX, barrelY);
       //handgunRight.resize(35, 16);
-    } 
-    
-    else if (myPlayer.lookingLeft) 
+    } else if (myPlayer.lookingLeft) 
     {
       barrelX = myPlayer.playerPosX - playerWidth - 30;
       barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
       image(arL, barrelX, barrelY);
-      //handgunLeft.resize(35, 16);
+      //handgunLeft.(35, 16);
     }
   }
 

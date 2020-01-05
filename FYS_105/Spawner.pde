@@ -2,7 +2,7 @@
 class Spawner extends GameObject {
 
   Timer spawnableTimer = new Timer(5);
-  Timer spawnTimer = new Timer(random(1,3));
+  Timer spawnTimer = new Timer(random(1, 3));
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
@@ -92,7 +92,7 @@ class Spawner extends GameObject {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
       //spawnWaveTimer.Timerrr();
-      
+
       //if()
       Add(new Brute());
     }

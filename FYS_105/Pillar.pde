@@ -28,15 +28,13 @@ class Pillar extends GameObject
 
         myPlayer.defaultSpeed = 0;
         println("Collide X");
-      }
-      else
-      if (myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
-      {      
+      } else
+        if (myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
+        {      
 
-        myPlayer.defaultSpeed = 0;
-        println("CollideY");
-      }
-      else myPlayer.defaultSpeed = 5;
+          myPlayer.defaultSpeed = 0;
+          println("CollideY");
+        } else myPlayer.defaultSpeed = 5;
     }
 
 
