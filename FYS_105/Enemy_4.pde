@@ -6,8 +6,8 @@ class Brute extends GameObject {
 
     scoreGain = 7;
 
-    enemyW=30;
-    enemyH=30;
+    enemyW=35;
+    enemyH=42;
     hp=4;
     moveVelX=1;
     moveVelY=1;
@@ -33,10 +33,34 @@ class Brute extends GameObject {
 
   void draw() {
     checkPulse();
-    pushStyle();
-    fill(9, 36, 145);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-    popStyle();
+
+
+    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
+    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    dxA = enemyVector.x - playerVector.x;
+    dyA = enemyVector.y - playerVector.y;
+
+
+    angleBetweenVector = atan2(dxA, dyA);
+
+    if (angleBetweenVector > 0 && angleBetweenVector < 1.5) {
+      BruteLU.draw(enemyPosX, enemyPosY); // LEFT UP
+      BruteLU.update();
+    }
+    if (angleBetweenVector > 1.5 && angleBetweenVector < 3.2) {
+      BruteLD.draw(enemyPosX, enemyPosY); // LEFT DOWN
+      BruteLD.update();
+    }
+    if ( angleBetweenVector > -3.2 && angleBetweenVector < -1.5 ) {
+      BruteRD.draw(enemyPosX, enemyPosY); //RIGHT DOWN
+      BruteRD.update();
+    }
+    if (angleBetweenVector > -1.5 && angleBetweenVector < 0) {
+      BruteRU.draw(enemyPosX, enemyPosY); //RIGHT UP
+      BruteRU.update();
+    }
+
+
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;
     dy = myPlayer.playerPosY - enemyPosY;

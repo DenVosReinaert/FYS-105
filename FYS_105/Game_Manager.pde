@@ -30,7 +30,6 @@ class Game_Manager {
 
 
     if (game) {
-      println("time: " + millis()/1000 );
 
       if (UI.levens <= 0) {
         gamemngr.dead = true;

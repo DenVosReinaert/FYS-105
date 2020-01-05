@@ -6,8 +6,8 @@ class Speedster extends GameObject {
 
     scoreGain = 2;
 
-    enemyW=20;
-    enemyH=24;
+    enemyW=28;
+    enemyH=40;
     hp=1;
     moveVelX=2;
     moveVelY=2;
@@ -33,10 +33,32 @@ class Speedster extends GameObject {
 
   void draw() {
     checkPulse();
-    pushStyle();
-    fill(229, 143, 23);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-    popStyle();
+    
+      enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
+    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    dxA = enemyVector.x - playerVector.x;
+    dyA = enemyVector.y - playerVector.y;
+
+
+    angleBetweenVector = atan2(dxA, dyA);
+
+    if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
+      SpeedsterU.draw(enemyPosX, enemyPosY);
+      SpeedsterU.update();
+    }
+    if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
+      SpeedsterL.draw(enemyPosX, enemyPosY);
+      SpeedsterL.update();
+    }
+    if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
+      SpeedsterD.draw(enemyPosX, enemyPosY);
+      SpeedsterD.update();
+    }
+    if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
+      SpeedsterR.draw(enemyPosX, enemyPosY);
+      SpeedsterR.update();
+    }
+    
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;
     dy = myPlayer.playerPosY - enemyPosY;

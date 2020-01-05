@@ -18,7 +18,7 @@ public class GameObject {
   float moveVelX, moveVelY;
 
   float tileSize;
-  float enemyPosX, enemyPosY, enemyH, enemyW, dx, dy, dir;
+  float enemyPosX, enemyPosY, enemyH, enemyW, dx, dy, dir, dxA, dyA;
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, playerWidth, playerHeight;
@@ -29,6 +29,8 @@ public class GameObject {
   float speedUpX, speedUpY, speedUpDia, bonusSpeed;
 
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
+  PVector enemyVector, playerVector;
+  float angleBetweenVector;
 
   int scoreGain;
 

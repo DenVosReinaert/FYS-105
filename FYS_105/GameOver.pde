@@ -70,16 +70,16 @@ class GameOver {
 
       // The dot under the letters depending on which state they are
       if (state == 1) {
-        //circle(width/2-135, height/2 + 20, 10);
+        circle(width/2-135, height/2 + 20, 10);
       }
       if (state == 2) {
-        //circle(width/2 - 55, height/2 + 20, 10);
+        circle(width/2 - 55, height/2 + 20, 10);
       }
       if (state == 3) {
-        //circle(width/2 + 25, height/2 + 20, 10);
+        circle(width/2 + 25, height/2 + 20, 10);
       }
       if (state == 4) {
-        //circle(width/2 + 105, height/2 + 20, 10);
+        circle(width/2 + 105, height/2 + 20, 10);
       }
 
       // Make all letters writable (So you can write them with text)
