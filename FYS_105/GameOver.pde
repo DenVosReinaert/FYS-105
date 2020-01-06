@@ -58,7 +58,7 @@ class GameOver {
         GameObjectRef.gameObject.get(i).hp = 0;
         GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
       }
-      // Turn off everything!
+      // Turn everything off!
       myPlayer.shootingRight = false;
       myPlayer.shootingLeft = false;
       myPlayer.shootingUp = false;
