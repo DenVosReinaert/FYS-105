@@ -22,7 +22,7 @@ class aScore {
       fill(255);
       textSize(20);
       text("Score: "+score, width/9 - 10, height/10); // Total score of the player op to that point at the top left
-      text("X" + tCombo, myPlayer.playerPosX, myPlayer.playerPosY); // Indicator of the score multiplier above the player
+      text("X" + tCombo, myPlayer.objPosX, myPlayer.objPosY); // Indicator of the score multiplier above the player
       popStyle();
     }
   }
