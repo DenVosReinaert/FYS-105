@@ -42,6 +42,8 @@ class UI {
       levens--;
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
+      damage.play();
+      damage.rewind();
     }
     ableToBeHit = false;
     hitStun.Reset();

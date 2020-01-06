@@ -20,6 +20,8 @@ class Shop {
       shopcart.update();
       if (!(cartX > stopP && cartX < stopP + 10)) {
         cartX = cartX + 3;
+        garfield.play();
+        garfield.rewind();
       }
     }
   }

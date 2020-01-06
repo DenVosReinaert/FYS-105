@@ -9,7 +9,6 @@ class aScore {
   String lscore; // lowest score
   String lid; // lowest id
   // String[] idha = new String[ids];
-
   String name; // String containing inserted name from 'GameOver' class
 
   aScore() {
@@ -17,16 +16,18 @@ class aScore {
   }
 
   void draw() {
-    int tCombo = round(combo); // This is the number visible on the display
-    if (!gamemngr.dead) {
+    float tCombo = combo - combo%0.01; // This is the number visible on the display
+    if (!gamemngr.dead) { 
       pushStyle();
       fill(255);
       textSize(20);
-      text("score: "+score, width/9 - 10, height/10);
-      text("combo : " + tCombo, width - width/5, height/10);
+      text("Score: "+score, width/9 - 10, height/10); // Total score of the player op to that point at the top left
+      text("X" + tCombo, myPlayer.playerPosX, myPlayer.playerPosY); // Indicator of the score multiplier above the player
       popStyle();
     }
   }
+
+
 
   void saveScore() {
     if (msql.connect() && UI.levens <= 0) {
@@ -56,7 +57,6 @@ class aScore {
         println("idScores;  "+lid); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary id
         println("lowest score: "+lscore); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary score
       }
-
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     }
   }

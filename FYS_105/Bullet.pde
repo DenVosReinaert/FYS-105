@@ -71,7 +71,9 @@ class Bullet extends GameObject {
     if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
     {
       Remove(this);
-      ascore.combo = 1;
+      bruh.play();
+      bruh.rewind();
+      ascore.combo = 1; //resets the combo back to 1
       println("combo reset!");
     }
   }
