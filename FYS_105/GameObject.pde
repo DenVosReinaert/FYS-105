@@ -31,8 +31,9 @@ public class GameObject {
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
   PVector enemyVector, playerVector;
   float angleBetweenVector;
+  float scoreGain;
+  
 
-  int scoreGain;
 
   GameObject() 
   {

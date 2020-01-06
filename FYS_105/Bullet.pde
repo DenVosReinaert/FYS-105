@@ -69,7 +69,11 @@ class Bullet extends GameObject {
 
     //Bullet Removal
     if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
+    {
       Remove(this);
+      ascore.combo = 1;
+      println("combo reset!");
+    }
   }
 
 

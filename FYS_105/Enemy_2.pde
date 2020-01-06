@@ -98,10 +98,12 @@ class Speedster extends GameObject {
       {
         hp=hp-1;
         Remove(GameObjectRef.gameObject.get(i));
+        ascore.combo += gamemngr.comboMultiplier;
+        println("combo increase!");
         gamemngr.shakeAmount = 3;
         gamemngr.shake = true;
         if (hp == 0) {
-          ascore.score += scoreGain;
+          ascore.score += scoreGain * ascore.combo;
         }
         for (int j=0; j < 20; j++) {
           Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
