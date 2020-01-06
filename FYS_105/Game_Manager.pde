@@ -31,7 +31,7 @@ class Game_Manager {
 
     if (game) {
       
-      gameMusic.setGain(5);
+      gameMusic.setGain(0);
       if(!gameMusic.isPlaying()){
       gameMusic.play();
       gameMusic.rewind();
