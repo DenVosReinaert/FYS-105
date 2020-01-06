@@ -6,7 +6,7 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death;
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic;
 
 // Main menu
 PImage main, pillar, background, scrBgr; //controlImg;
@@ -144,4 +144,5 @@ void LoadAssets()
   Pistol = minim.loadFile("/data/sound/Pistol.mp3");
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
+  gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
 }

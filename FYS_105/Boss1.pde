@@ -80,7 +80,7 @@ class Boss1 extends GameObject {
     if (Dead())
     {
       if (msql.connect())
-        msql.query("UPDATE Achievements SET counter = '%s' WHERE id = '%s'", (chieves.bossCounter + 1), 3);
+        msql.query("UPDATE Achievements SET counterAchievements = '%s' WHERE idAchievements = '%s'", (chieves.bossCounter + 1), 3);
       Remove(this);
     }
   }//enemyShow
