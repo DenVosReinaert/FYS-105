@@ -5,6 +5,7 @@ class Shop {
   float cartX = - 100;
   float cartY = height/2;
   float stopP = width/2 + 150;
+  boolean shopA = false;
 
   Shop() {
   }

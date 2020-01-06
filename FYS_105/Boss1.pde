@@ -87,6 +87,7 @@ class Boss1 extends GameObject {
       if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
       {
         UI.spelerhit();
+        UI.spelerhit();
         hp = 0;
       }
 

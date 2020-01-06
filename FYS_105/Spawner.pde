@@ -54,8 +54,11 @@ class Spawner extends GameObject {
       if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
         lvlMngr.apActive = true;
         if (wave%2 == 0)
-          shop.draw();
+          shop.shopA = true;
       }
+      
+      if(shop.shopA)
+      shop.draw();
 
       //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
       //  NextWave();
@@ -72,6 +75,7 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+    shop.shopA = false;
     SpawnWave();
 
     for (int i = 0; i < 1; i++)

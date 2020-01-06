@@ -14,7 +14,7 @@ class Game_Manager {
       UI.draw();
       game = false;
       dead = false;
-      homeSnd.setGain(-15);
+      homeSnd.setGain(0);
       if (!homeSnd.isPlaying() ) {
         homeSnd.play();
         homeSnd.rewind();
@@ -29,7 +29,6 @@ class Game_Manager {
     }
 
     if (game) {
-
       if (UI.levens <= 0) {
         gamemngr.dead = true;
       }
