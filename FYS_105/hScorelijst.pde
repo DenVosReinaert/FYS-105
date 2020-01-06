@@ -13,7 +13,7 @@ class hScorelijst {
   hScorelijst() {
 
     if (msql.connect() && Ans < 10) { // Als geconnect is met database & Ans kleiner is dan 10
-      msql.query( "SELECT nameScores , valueScores FROM Scores ORDER BY valueScore DESC LIMIT 10");
+      msql.query( "SELECT nameScores , valueScores FROM Scores ORDER BY valueScores DESC LIMIT 10");
       while ( msql.next() && Ans < 10) {
         name = msql.getString("nameScores"); // string name is 'name' uit database
         names = append(names, name); // Voeg name toe aan de array names

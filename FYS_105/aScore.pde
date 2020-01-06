@@ -41,7 +41,7 @@ class aScore {
         id = parseInt(idh) + 1;
       }
       if (idh != null && parseInt(idh) == 20) {
-        msql.query( "SELECT idScores,valueScore FROM Scores ORDER BY valueScores ASC LIMIT 1" ); // Select lowest score & belonging id from scores table
+        msql.query( "SELECT idScores,valueScores FROM Scores ORDER BY valueScores ASC LIMIT 1" ); // Select lowest score & belonging id from scores table
         while ( msql.next() ) {
           lscore = msql.getString("valueScores"); // temporary score (score belonging to the id with lowest score)
           lid = msql.getString("idScores"); // temporary id (id belonging to the lowest score)
