@@ -43,19 +43,15 @@ class Player extends GameObject {
 
     if (playerPosX + moveVelX < 0)
       collLeft = true;
-    //else collLeft = false;
 
     if (playerPosX + playerWidth + moveVelX > width)
       collRight = true;
-    //else collRight = false;
 
     if (playerPosY + moveVelY < 0)
       collTop = true;
-    //else collTop = false;
 
     if (playerPosY + playerHeight + moveVelY > height)
       collBott = true;
-    //else collBott = false;
 
 
 

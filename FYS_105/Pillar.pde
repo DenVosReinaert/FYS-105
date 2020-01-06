@@ -2,8 +2,7 @@ class Pillar extends GameObject
 {
 
   PVector bbL = new PVector(), bbR = new PVector(), bbT = new PVector(), bbB = new PVector();
-  float  bbLH, bbRH, bbTW, bbBW;
-  float bbWS, bbHC;
+  float bbSW, bbSH, bbCW, bbCH;
 
   Pillar()
   {
@@ -12,21 +11,21 @@ class Pillar extends GameObject
 
   void draw(float pillarPosX, float pillarPosY)
   {
-    bbWS = 10;
-    bbHC = bbWS;
+    pillarPosX += pillarWidth/4;
 
-    bbTW = pillarWidth;
-    bbBW = bbTW;
+    bbSW = 10;
+    bbSH = pillarHeight/3;
 
-    bbLH = pillarHeight/3;
-    bbRH = bbLH;
+    bbCW = pillarWidth;
+    bbCH = bbSW;
+
 
     //LEFT
     bbL.x = pillarPosX;
     bbL.y = pillarPosY + (pillarHeight/3 * 2);
 
     //RIGHT
-    bbR.x = pillarPosX + pillarWidth - bbWS;
+    bbR.x = pillarPosX + pillarWidth - bbSW;
     bbR.y = bbL.y;
 
     //TOP
@@ -35,9 +34,12 @@ class Pillar extends GameObject
 
     //BOTTOM
     bbB.x = bbT.x;
-    bbB.y = pillarPosY + pillarHeight - bbHC;
+    bbB.y = pillarPosY + pillarHeight - bbCH;
 
-    pillarPosX += pillarWidth/6;
+
+
+    //
+
 
     image(pillar, pillarPosX, pillarPosY);
 
@@ -49,27 +51,40 @@ class Pillar extends GameObject
 
     //Collision statement
 
-    if (myPlayer.playerPosX + myPlayer.moveVelX < bbL.x + bbWS && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbL.x && myPlayer.playerPosY + myPlayer.moveVelY < bbL.y + bbLH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbL.y)
-    {
-      myPlayer.collRight = true;
-    }
-
-    if (myPlayer.playerPosX + myPlayer.moveVelX < bbR.x + bbWS && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbR.x && myPlayer.playerPosY + myPlayer.moveVelY < bbR.y + bbRH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbR.y)
+    if (myPlayer.playerPosX + myPlayer.moveVelX < bbL.x + bbSW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbL.x && myPlayer.playerPosY + myPlayer.moveVelY < bbL.y + bbSH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbL.y)
     {
       myPlayer.collLeft = true;
+      println("COLLIDING RIGHT");
     }
 
-    if (myPlayer.playerPosX + myPlayer.moveVelX < bbB.x + bbBW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbB.x && myPlayer.playerPosY + myPlayer.moveVelY < bbB.y + bbHC && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbB.y)
+    if (myPlayer.playerPosX + myPlayer.moveVelX < bbR.x + bbSW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbR.x && myPlayer.playerPosY + myPlayer.moveVelY < bbR.y + bbSH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbR.y)
     {
-      myPlayer.collTop = true;
+      myPlayer.collRight = true;
+      println("COLLIDING LEFT");
+    }
+
+    if (myPlayer.playerPosX + myPlayer.moveVelX < bbB.x + bbCW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbB.x && myPlayer.playerPosY + myPlayer.moveVelY < bbB.y + bbCH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbB.y)
+    {
+      myPlayer.collBott = true;
+      println("COLLIDING TOP");
     }
 
     //Alleen deze nog!
-    if (myPlayer.playerPosX + myPlayer.moveVelX < bbT.x + bbTW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbT.x && myPlayer.playerPosY + myPlayer.moveVelY < bbT.y + bbHC && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbT.y)
+    if (myPlayer.playerPosX + myPlayer.moveVelX < bbT.x + bbCW && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbT.x && myPlayer.playerPosY + myPlayer.moveVelY < bbT.y + bbCH && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbT.y)
     {
-      myPlayer.collBott = true;
+      myPlayer.collTop = true;
+      println("COLLIDING BOTT");
     }
 
+
+    pushStyle();
+    noFill();
+    stroke(255);
+    rect(bbT.x, bbT.y, bbCW, bbCH);
+    rect(bbB.x, bbB.y, bbCW, bbCH);
+    rect(bbR.x, bbR.y, bbSW, bbSH);
+    rect(bbL.x, bbL.y, bbSW, bbSH);
+    popStyle();
 
     //BOUNDARIES
   }
