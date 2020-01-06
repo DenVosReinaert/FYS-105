@@ -57,6 +57,7 @@ class LevelManager
 
   void NextLevel()
   {
+
     apActive = false;
 
     myPlayer.playerPosX = width/2 - myPlayer.playerWidth;

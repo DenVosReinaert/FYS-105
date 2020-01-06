@@ -53,6 +53,14 @@ class Boss1 extends GameObject {
       boss1D.draw(enemyPosX, enemyPosY);
       boss1D.update();
     }
+    if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
+      boss1L.draw(enemyPosX, enemyPosY);
+      boss1L.update();
+    }
+    if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
+      boss1R.draw(enemyPosX, enemyPosY);
+      boss1R.update();
+    }
 
     //ENEMY MOVEMENT
     dx = myPlayer.playerPosX - enemyPosX;
@@ -71,8 +79,8 @@ class Boss1 extends GameObject {
 
     if (Dead())
     {
-      if(msql.connect())
-      msql.query("UPDATE Achievements SET counter = '%s' WHERE id = '%s'", (chieves.bossCounter + 1), 3);
+      if (msql.connect())
+        msql.query("UPDATE Achievements SET counter = '%s' WHERE id = '%s'", (chieves.bossCounter + 1), 3);
       Remove(this);
     }
   }//enemyShow
