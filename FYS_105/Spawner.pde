@@ -40,7 +40,6 @@ class Spawner extends GameObject {
       if (!waveTextTimer.TimerDone() && !waveInProgress) {
         textSize(80);
         text("WAVE "+ (wave + 1), width/2-150, height/2);
-
       } else if (wave == 0)
         NextWave();
 
@@ -56,9 +55,9 @@ class Spawner extends GameObject {
         if (wave%2 == 0)
           shop.shopA = true;
       }
-      
-      if(shop.shopA)
-      shop.draw();
+
+      if (shop.shopA)
+        shop.draw();
 
       //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
       //  NextWave();

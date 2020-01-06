@@ -30,6 +30,13 @@ class Game_Manager {
     }
 
     if (game) {
+      
+      gameMusic.setGain(5);
+      if(!gameMusic.isPlaying()){
+      gameMusic.play();
+      gameMusic.rewind();
+      }
+      
       if (UI.levens <= 0) {
         gamemngr.dead = true;
       }

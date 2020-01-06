@@ -9,7 +9,7 @@ class Achievements
   {
     msql.connect();
 
-    msql.query("SELECT counter FROM Achievements WHERE id = '%s'", 3);
+    msql.query("SELECT counterAchievements FROM Achievements WHERE idAchievements = '%s'", 3);
     while (msql.next())
     {
       bossCounter = parseInt(msql.getString("counter"));
@@ -30,9 +30,9 @@ class Achievements
   void ChieveReset()
   {
     if (msql.connect())
-      msql.query("UPDATE Achievements SET collected = '%s' WHERE collected = '1'", chieveFalse);
+      msql.query("UPDATE Achievements SET collectedAchievements = '%s' WHERE collectedAchievements = '1'", chieveFalse);
 
     if (msql.connect())
-      msql.query("UPDATE Achievements SET counter = '%s'", 0);
+      msql.query("UPDATE Achievements SET counterAchievements = '%s'", 0);
   }
 }

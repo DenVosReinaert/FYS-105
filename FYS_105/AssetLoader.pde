@@ -6,7 +6,7 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death;
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic;
 
 // Main menu
 PImage main, pillar, background, scrBgr; //controlImg;
@@ -30,7 +30,7 @@ SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSp
 PImage purpleStoneTiles;
 
 //Enemies
-SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, boss1U, boss1D;
+SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, cartdirt;
 
@@ -125,9 +125,11 @@ void LoadAssets()
 
   boss1U = new SpriteSheet("/data/sprites/Enemies/Boss1_Back.png", 9);
   boss1D = new SpriteSheet("/data/sprites/Enemies/Boss1_Front.png", 9);
-  
+  boss1L = new SpriteSheet("/data/sprites/Enemies/Boss1_SideL.png", 9);
+  boss1R = new SpriteSheet("/data/sprites/Enemies/Boss1_SideR.png", 9);
+
   shopcart = new SpriteSheet("/data/sprites/shopcart.png", 4);
-  cartdirt = new SpriteSheet("/data/sprites/cartdirt.png",4);
+  cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 4);
 
 
   //ArrowPointers
@@ -142,4 +144,5 @@ void LoadAssets()
   Pistol = minim.loadFile("/data/sound/Pistol.mp3");
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
+  gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
 }
