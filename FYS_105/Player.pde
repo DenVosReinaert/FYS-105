@@ -35,10 +35,7 @@ class Player extends GameObject {
 
 
   void draw() {
-    collLeft = false;
-    collRight = false;
-    collTop = false;
-    collBott = false;
+
 
 
     if (playerPosX + moveVelX < 0)
@@ -173,6 +170,14 @@ class Player extends GameObject {
     if (currentGun < 1) {
       currentGun = 3;
     }
+
+
+
+
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
   }
 
 
