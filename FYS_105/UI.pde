@@ -39,6 +39,8 @@ class UI {
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit) {
+      damage.play();
+      damage.rewind();
       levens--;
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;

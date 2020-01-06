@@ -71,6 +71,8 @@ class Bullet extends GameObject {
       Remove(this);
       ascore.combo = 1;
       println("combo reset!");
+      bruh.play();
+      bruh.rewind();
     }
   }
 

@@ -6,7 +6,7 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death;
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, damage, garfield, bruh;
 
 // Main menu
 PImage main, pillar, background, scrBgr; //controlImg;
@@ -91,11 +91,14 @@ void LoadAssets()
 
 
 
-
+  garfield = minim.loadFile("/data/sound/Garfield.mp3");
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
   LMG = minim.loadFile("/data/sound/LMG.mp3");
   Pistol = minim.loadFile("/data/sound/Pistol.mp3");
   homeSnd = minim.loadFile("/data/sound/homeSnd.mp3");
+  damage = minim.loadFile("/data/sound/roblox oof.mp3");
+  bruh = minim.loadFile("/data/sound/bruh.mp3");
   death = minim.loadFile("/data/sound/death.mp3");
+
 }
