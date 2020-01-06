@@ -15,15 +15,14 @@ class Player extends GameObject {
   float muzzlePointX, muzzlePointY;
 
   boolean nextGun, prevGun, swapable;
-  boolean pillarColX, pillarColY;
 
   Player() {
 
 
-    playerWidth = 28;
-    playerHeight = 40;
-    playerPosX = (width/2) - playerWidth/2;
-    playerPosY = (height/2) - playerHeight/2;
+    objWidth = 28;
+    objHeight = 40;
+    objPosX = (width/2) - objWidth/2;
+    objPosY = (height/2) - objHeight/2;
 
     tag = "player";
 
@@ -37,16 +36,20 @@ class Player extends GameObject {
 
 
   void draw() {
-    if (playerPosX + moveVelX < 0)
+    
+
+
+
+    if (objPosX + moveVelX < 0)
       collLeft = true;
 
-    if (playerPosX + playerWidth + moveVelX > width)
+    if (objPosX + objWidth + moveVelX > width)
       collRight = true;
 
-    if (playerPosY + moveVelY < 0)
+    if (objPosY + moveVelY < 0)
       collTop = true;
 
-    if (playerPosY + playerHeight + moveVelY > height)
+    if (objPosY + objHeight + moveVelY > height)
       collBott = true;
 
 
@@ -63,14 +66,14 @@ class Player extends GameObject {
 
 
     if (myPlayer.lookingLeft) {
-      mrSpooksLeft.draw(playerPosX, playerPosY);
+      mrSpooksLeft.draw(objPosX, objPosY);
       mrSpooksLeft.update();
     } else if (myPlayer.lookingRight) {
-      mrSpooksRight.draw(playerPosX, playerPosY);
+      mrSpooksRight.draw(objPosX, objPosY);
       mrSpooksRight.update();
     } else if (myPlayer.lookingDown)
     {
-      mrSpooksDown.draw(playerPosX, playerPosY);
+      mrSpooksDown.draw(objPosX, objPosY);
       mrSpooksDown.update();
     }
 
@@ -84,7 +87,7 @@ class Player extends GameObject {
       machineGun.holdingGun();
 
     if (myPlayer.lookingUp) {
-      mrSpooksUp.draw(playerPosX, playerPosY);
+      mrSpooksUp.draw(objPosX, objPosY);
       mrSpooksUp.update();
     }
 
@@ -119,22 +122,22 @@ class Player extends GameObject {
 
     if (akey && !collLeft)
     {
-      playerPosX -= moveVelX;
+      objPosX -= moveVelX;
     }
 
     if (dkey && !collRight)
     {
-      playerPosX += moveVelX;
+      objPosX += moveVelX;
     }
 
     if (wkey && !collTop)
     {
-      playerPosY -= moveVelY;
+      objPosY -= moveVelY;
     }
 
     if (skey && !collBott)
     {
-      playerPosY += moveVelY;
+      objPosY += moveVelY;
     }
 
     if (currentGun > 3) {
@@ -250,7 +253,7 @@ class Player extends GameObject {
     // Release for the walking directions   
     switch(key) {
     case 'a':
-      akey = false;
+      akey = false;  
       break;
     case 's':
       skey = false;

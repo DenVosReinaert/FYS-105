@@ -8,76 +8,113 @@ class Pillar extends GameObject
   {
     tag = "structure";
 
-    pillarWidth = pillar.width;
-    pillarHeight = pillar.height;
+    objWidth = pillar.width;
+    objHeight = pillar.height;
   }
 
-  void draw(float pillarPosX, float pillarPosY)
+  void draw(float objPosX, float objPosY)
   {
-    pillarPosX += pillarWidth/4;
+    objPosX += objWidth/4;
 
     bbSW = 10;
-    bbSH = pillarHeight/3;
+    bbSH = objHeight/3 - 10;
 
-    bbCW = pillarWidth;
+    bbCW = objWidth - 10;
     bbCH = bbSW;
 
 
     //LEFT
-    bbL.x = pillarPosX;
-    bbL.y = pillarPosY + (pillarHeight/3 * 2);
+    bbL.x = objPosX;
+    bbL.y = objPosY + (objHeight/3 * 2) + 5;
 
     //RIGHT
-    bbR.x = pillarPosX + pillarWidth - bbSW;
+    bbR.x = objPosX + objWidth - bbSW;
     bbR.y = bbL.y;
 
     //TOP
-    bbT.x = pillarPosX;
-    bbT.y = bbL.y;
+    bbT.x = objPosX + 5;
+    bbT.y = bbL.y - 5;
 
     //BOTTOM
     bbB.x = bbT.x;
-    bbB.y = pillarPosY + pillarHeight - bbCH;
+    bbB.y = objPosY + objHeight - bbCH + 5;
 
 
 
     //
 
 
-    image(pillar, pillarPosX, pillarPosY);
+    image(pillar, objPosX, objPosY);
 
     //rect(myPlayer.playerPosX, myPlayer.playerPosY, 5, 5);
     //rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, -5, -5);
 
 
-    //Collision statement
+    //Collision statement Player & Enemy
 
-    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbL.x && myPlayer.playerPosX + myPlayer.moveVelX < bbL.x + bbSW && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbL.y && myPlayer.playerPosY + myPlayer.moveVelY < bbL.y + bbSH)
+    if ((myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX) > bbL.x && myPlayer.objPosX + myPlayer.moveVelX < bbL.x + bbSW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbL.y && myPlayer.objPosY + myPlayer.moveVelY < bbL.y + bbSH)
     {
       myPlayer.collRight = true;
-      println("COLLIDING LEFT");
+
+      //for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
+      //{
+      //  if (GameObjectRef.gameObject.get(i).tag == "enemy")
+      //    GameObjectRef.gameObject.get(i).collRight = true;
+
+      //  if (GameObjectRef.gameObject.get(i).tag == "bullet")
+      //    Remove(GameObjectRef.gameObject.get(i));
+      //}
     }
 
-    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbR.x && myPlayer.playerPosX + myPlayer.moveVelX < bbR.x + bbSW && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbR.y && myPlayer.playerPosY + myPlayer.moveVelY < bbR.y + bbSH)
+
+
+    if (myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > bbR.x && myPlayer.objPosX + myPlayer.moveVelX < bbR.x + bbSW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbR.y && myPlayer.objPosY + myPlayer.moveVelY < bbR.y + bbSH)
     {
       myPlayer.collLeft = true;
-      println("COLLIDING RIGHT");
+
+      //for (int j = 0; j < GameObjectRef.gameObject.size(); j ++)
+      //{
+      //  if (GameObjectRef.gameObject.get(j).tag == "enemy")
+      //    GameObjectRef.gameObject.get(j).collLeft = true;
+
+      //  if (GameObjectRef.gameObject.get(j).tag == "bullet")
+      //    Remove(GameObjectRef.gameObject.get(j));
+      //}
     }
 
-    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbB.x && myPlayer.playerPosX + myPlayer.moveVelX < bbB.x + bbCW && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbB.y && myPlayer.playerPosY + myPlayer.moveVelY < bbB.y + bbCH)
+
+
+    if (myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > bbB.x && myPlayer.objPosX + myPlayer.moveVelX < bbB.x + bbCW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbB.y && myPlayer.objPosY + myPlayer.moveVelY < bbB.y + bbCH)
     {
       myPlayer.collTop = true;
-      println("COLLIDING BOTT");
+
+      //for (int k = 0; k < GameObjectRef.gameObject.size(); k ++)
+      //{
+      //  if (GameObjectRef.gameObject.get(k).tag == "enemy")
+      //    GameObjectRef.gameObject.get(k).collTop = true;
+
+      //  if (GameObjectRef.gameObject.get(k).tag == "bullet")
+      //    Remove(GameObjectRef.gameObject.get(k));
+      //}
     }
 
-    //Alleen deze nog!
-    if (myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > bbT.x && myPlayer.playerPosX + myPlayer.moveVelX < bbT.x + bbCW && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > bbT.y && myPlayer.playerPosY + myPlayer.moveVelY < bbT.y + bbCH)
+
+
+    if (myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > bbT.x && myPlayer.objPosX + myPlayer.moveVelX < bbT.x + bbCW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbT.y && myPlayer.objPosY + myPlayer.moveVelY < bbT.y + bbCH)
     {
       myPlayer.collBott = true;
-      println("COLLIDING TOP");
+
+      //for (int l = 0; l < GameObjectRef.gameObject.size(); l ++)
+      //{
+      //  if (GameObjectRef.gameObject.get(l).tag == "enemy")
+      //    GameObjectRef.gameObject.get(l).collBott = true;
+
+      //  if (GameObjectRef.gameObject.get(l).tag == "bullet")
+      //    Remove(GameObjectRef.gameObject.get(l));
+      //}
     }
 
-//Collision box visualisation
+    //Collision box visualisation
     //pushStyle();
     //noFill();
     //stroke(255);
@@ -86,7 +123,5 @@ class Pillar extends GameObject
     //rect(bbR.x, bbR.y, bbSW, bbSH);
     //rect(bbL.x, bbL.y, bbSW, bbSH);
     //popStyle();
-
-    //BOUNDARIES
   }
 }

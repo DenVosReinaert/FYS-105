@@ -42,13 +42,13 @@ class LevelManager
       arrowPL.update();
       arrowPR.update();
 
-      if ((myPlayer.playerPosX + myPlayer.moveVelX < apU.x + 33 && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > apU.x && myPlayer.playerPosY + myPlayer.moveVelY < apU.y + 49 && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > apU.y)
+      if ((myPlayer.objPosX + myPlayer.moveVelX < apU.x + 33 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apU.x && myPlayer.objPosY + myPlayer.moveVelY < apU.y + 49 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apU.y)
         ||
-        (myPlayer.playerPosX + myPlayer.moveVelX < apD.x + 33 && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > apD.x && myPlayer.playerPosY + myPlayer.moveVelY < apD.y + 49 && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > apD.y)
+        (myPlayer.objPosX + myPlayer.moveVelX < apD.x + 33 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apD.x && myPlayer.objPosY + myPlayer.moveVelY < apD.y + 49 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apD.y)
         ||
-        (myPlayer.playerPosX + myPlayer.moveVelX < apL.x + 49 && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > apL.x && myPlayer.playerPosY + myPlayer.moveVelY < apL.y + 38 && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > apL.y)
+        (myPlayer.objPosX + myPlayer.moveVelX < apL.x + 49 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apL.x && myPlayer.objPosY + myPlayer.moveVelY < apL.y + 38 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apL.y)
         ||
-        (myPlayer.playerPosX + myPlayer.moveVelX < apR.x + 49 && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > apR.x && myPlayer.playerPosY + myPlayer.moveVelY < apR.y + 38 && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > apR.y))
+        (myPlayer.objPosX + myPlayer.moveVelX < apR.x + 49 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apR.x && myPlayer.objPosY + myPlayer.moveVelY < apR.y + 38 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apR.y))
       {
         NextLevel();
       }
@@ -60,8 +60,8 @@ class LevelManager
 
     apActive = false;
 
-    myPlayer.playerPosX = width/2 - myPlayer.playerWidth;
-    myPlayer.playerPosY = height/2 - myPlayer.playerHeight;
+    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
+    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
     for (int i = 0; i < 1; i++)
     {

@@ -1,38 +1,51 @@
 public class GameObject {
 
-
-
   ArrayList<GameObject> gameObject = new ArrayList();
+  String tag;
 
-  float cooldown, threshold;
+
+
+
+
+
+  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
+
 
   boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
-
-  boolean lookingUp, lookingLeft, lookingRight;
+  boolean lookingUp, lookingLeft, lookingRight = false;
   boolean lookingDown = true;
   boolean shootingUp, shootingDown, shootingLeft, shootingRight;
   boolean collLeft, collRight, collTop, collBott;
 
-  String tag;
+
+  float dx, dy, dir, dxA, dyA;
+  float angleBetweenVector;
+  PVector enemyVector, playerVector;
+
+  float objPosX, objPosY, objWidth, objHeight;
 
   float moveVelX, moveVelY;
 
-  float tileSize;
-  float enemyPosX, enemyPosY, enemyH, enemyW, dx, dy, dir, dxA, dyA;
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
-  float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
-  float playerPosX, playerPosY, playerWidth, playerHeight;
   float defaultSpeed = 2.1;
   float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
-  float pillarPosX, pillarPosY, pillarWidth, pillarHeight;
+
+  float knockback;
+  float cooldown, threshold;
+  float hp;
+
+  float scoreGain;
+
+
   float speedUpX, speedUpY, speedUpDia, bonusSpeed;
 
-  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
-  PVector enemyVector, playerVector;
-  float angleBetweenVector;
-  float scoreGain;
-  
+
+  float tileSize;
+
+
+
+
+
 
 
   GameObject() 
