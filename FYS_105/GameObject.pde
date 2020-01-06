@@ -8,7 +8,7 @@ public class GameObject {
 
   boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
 
-  boolean lookingUp, lookingLeft, lookingRight = false;
+  boolean lookingUp, lookingLeft, lookingRight;
   boolean lookingDown = true;
   boolean shootingUp, shootingDown, shootingLeft, shootingRight;
   boolean collLeft, collRight, collTop, collBott;

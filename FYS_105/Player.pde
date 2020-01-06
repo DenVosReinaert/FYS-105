@@ -151,9 +151,9 @@ class Player extends GameObject {
   }
 
   void keyPressed() {
-// Controls for shooting in all directions
-    if (keyCode == LEFT)
-    {
+    // Controls for shooting in all directions and looking in all directions
+    switch(keyCode) {
+    case LEFT:
       shootingLeft = true;
       shootingRight = false;
       shootingDown = false;
@@ -163,9 +163,8 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = false;
       lookingDown = false;
-    }
-    if (keyCode == RIGHT)
-    {
+      break;
+    case RIGHT:
       shootingLeft = false;
       shootingRight = true;
       shootingDown = false;
@@ -175,9 +174,8 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = true;
       lookingDown = false;
-    }
-    if (keyCode == UP)
-    {
+      break;
+    case UP:
       shootingLeft = false;
       shootingRight = false;
       shootingDown = false;
@@ -187,9 +185,8 @@ class Player extends GameObject {
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
-    }
-    if (keyCode == DOWN)
-    {
+      break;
+    case DOWN:
       shootingLeft = false;
       shootingRight = false;
       shootingDown = true;
@@ -199,84 +196,94 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = false;
       lookingDown = true;
+      break;
     }
 
-// Controlls for walking in all directions
-    if (key == 'a') {
+    // Controlls for walking in all directions
+    switch(key) {
+    case 'a':
       akey = true;
       lookingLeft = true;
       lookingUp = false;
       lookingRight = false;
       lookingDown = false;
-    }
-    if (key == 's') {
+      break;
+    case 's':
       skey = true;
       lookingLeft = false;
       lookingUp = false;
       lookingRight = false;
       lookingDown = true;
-    }
-    if (key == 'd') {
+      break;
+    case 'd':
       dkey = true;
       lookingLeft = false;
       lookingUp = false;
       lookingRight = true;
       lookingDown = false;
-    }
-    if (key == 'w') {
+      break;
+    case 'w':
       wkey = true;
       lookingLeft = false;
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
-    }
-    // Controls for switching weapons on desktop
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
 
-    // Controls for switching weapons on a cycle with snes controller
-    if (key == 'q')
-    {
-      currentGun--;
-    }
-    if (key =='e')
-    {
-      currentGun++;
+      // Controls for switching weapons on desktop
+      if (key == '1') onekey = true;
+      if (key == '2') twokey = true;
+      if (key == '3') threekey = true;
+
+      // Controls for switching weapons on a cycle with snes controller
+      if (key == 'q')
+      {
+        currentGun--;
+      }
+      if (key =='e')
+      {
+        currentGun++;
+      }
     }
   }
-
   void keyReleased() {
-    
-    // Release for the walking directions
-    if (key == 'a') 
-    {
+
+    // Release for the walking directions   
+    switch(key) {
+    case 'a':
       akey = false;
-    }
-    if (key == 's')
-    {
+      break;
+    case 's':
       skey = false;
-    }
-    if (key == 'd') 
-    {
+      break;
+    case 'd':
       dkey = false;
-    }
-    if (key == 'w')
-    {
+      break;
+    case 'w':
       wkey = false;
+      break;
     }
-    
+
+    // Release for controlls for whooting in all directions.
+    switch(keyCode) {
+    case LEFT:
+      shootingLeft = false;
+      break;
+    case RIGHT:
+      shootingRight = false;
+      break;
+    case UP:
+      shootingUp = false;
+      break;
+    case DOWN:
+      shootingDown = false;
+      break;
+    }
+
     // Release for controls for switching weapons on desktop
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
-    
-    // Release for controlls for whooting in all directions.
-    if (keyCode == LEFT) shootingLeft = false;
-    if (keyCode == RIGHT) shootingRight = false;
-    if (keyCode == UP) shootingUp = false;
-    if (keyCode == DOWN) shootingDown = false;
-    
+
     // Release for controls for switching weapons on a cycle with snes controller 
     if (key == 'q') prevGun = false;
     if (key == 'e') nextGun = false;
