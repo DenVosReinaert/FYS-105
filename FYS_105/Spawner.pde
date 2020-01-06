@@ -1,8 +1,10 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnableTimer = new Timer(5);
-  Timer spawnTimer = new Timer(random(1, 3));
+  Timer spawnSpdTimer = new Timer(1);
+  Timer spawnGrntTimer = new Timer(2);
+  Timer spawnBrtTimer = new Timer(3);
+  Timer spawnHvyTimer = new Timer(5);
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
@@ -105,10 +107,11 @@ class Spawner extends GameObject {
   void BruteSpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
-      //spawnWaveTimer.Timerrr();
-
-      //if()
-      Add(new Brute());
+      if (spawnBrtTimer.TimerDone())
+      {
+        Add(new Brute());
+        spawnBrtTimer.Reset();
+      }
     }
   }//spawnerShow
 
@@ -118,7 +121,11 @@ class Spawner extends GameObject {
   void GruntSpawn() {
     for (int i = 0; i< random(wave, wave * 3); i ++)
     {
-      Add(new Grunt());
+      if (spawnGrntTimer.TimerDone())
+      {
+        Add(new Grunt());
+        spawnGrntTimer.Reset();
+      }
     }
   }
 
@@ -128,7 +135,11 @@ class Spawner extends GameObject {
   void SpeedsterSpawn() {
     for (int i = 0; i< random(wave, wave * 4); i ++)
     {
-      Add(new Speedster());
+      if (spawnSpdTimer.TimerDone())
+      {
+        Add(new Speedster());
+        spawnSpdTimer.Reset();
+      }
     }
   }
 
@@ -138,7 +149,11 @@ class Spawner extends GameObject {
   void HeavySpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
-      Add(new Heavy());
+      if (spawnHvyTimer.TimerDone())
+      {
+        Add(new Heavy());
+        spawnHvyTimer.Reset();
+      }
     }
   }
 

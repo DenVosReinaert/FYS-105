@@ -10,6 +10,9 @@ class Heavy extends GameObject {
     moveVelX=0.75;
     moveVelY=0.75;
 
+    hitValue = 2;
+
+
     float r = random(-1, 3);
     if (r <= 0) {
       objPosX = spawn.spawnerPos0.x - objWidth/2;
@@ -108,6 +111,7 @@ class Heavy extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
+        UI.levens -= hitValue;
         hp = 0;
       }
 
@@ -116,7 +120,7 @@ class Heavy extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp=hp-2;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");

@@ -12,6 +12,10 @@ class Speedster extends GameObject {
     moveVelX=2;
     moveVelY=2;
 
+    hitValue = 1;
+
+
+
     float r = random(-1, 3);
     if (r <= 0) {
       objPosX = spawn.spawnerPos0.x - objWidth/2;
@@ -99,6 +103,7 @@ class Speedster extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
+        UI.levens -= hitValue;
         hp = 0;
       }
 

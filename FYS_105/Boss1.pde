@@ -8,6 +8,8 @@ class Boss1 extends GameObject {
     moveVelX=1;
     moveVelY=1;
 
+    hitValue = 3;
+
     scoreGain = 100;
 
     float r = random(-1, 3);
@@ -80,7 +82,8 @@ class Boss1 extends GameObject {
 
     if (Dead())
     {
-
+      //if (msql.connect())
+      //  msql.query("UPDATE Achievements SET counterAchievements = '%s' WHERE idAchievements = '%s'", (chieves.bossCounter + 1), 3);
       Remove(this);
     }
 
@@ -100,6 +103,7 @@ class Boss1 extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
+        UI.levens -= hitValue;
         hp = 0;
       }
 
@@ -108,10 +112,7 @@ class Boss1 extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          if (msql.connect())
-            msql.query("UPDATE Achievements SET counterAchievements = '%s' WHERE idAchievements = '%s'", (chieves.bossCounter + 1), 3);
-
-          hp=hp-3;
+          hp=hp-1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");
