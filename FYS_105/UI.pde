@@ -44,19 +44,32 @@ class UI {
       gamemngr.shake = true;
       damage.play();
       damage.rewind();
-    }
-    ableToBeHit = false;
-    hitStun.Reset();
 
-    if (!ableToBeHit && hitStun.TimerDone()) {
-      ableToBeHit = true;
-      hitStun.Reset();
+      ableToBeHit = false;
     }
+
+    //if (!ableToBeHit && hitStun.TimerDone()) {
+    //  ableToBeHit = true;
+    //  println("TIMER IS DONE AND BEING RESET!");
+    //  hitStun.Reset();
+    //}
   }
 
   void draw() {
 
     if (game) {
+
+      if (!ableToBeHit && hitStun.TimerDone())
+      {
+        ableToBeHit = true;
+        hitStun.Reset();
+      }
+
+
+
+
+
+
       // Pistol ammo cooldown
       if (myPlayer.currentGun == myPlayer.pistoll) {
         if (ammoP == 0) {

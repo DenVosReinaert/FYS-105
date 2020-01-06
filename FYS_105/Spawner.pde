@@ -100,6 +100,8 @@ class Spawner extends GameObject {
   }
 
 
+
+
   void BruteSpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
@@ -110,12 +112,18 @@ class Spawner extends GameObject {
     }
   }//spawnerShow
 
+
+
+
   void GruntSpawn() {
     for (int i = 0; i< random(wave, wave * 3); i ++)
     {
       Add(new Grunt());
     }
   }
+
+
+
 
   void SpeedsterSpawn() {
     for (int i = 0; i< random(wave, wave * 4); i ++)
@@ -124,12 +132,18 @@ class Spawner extends GameObject {
     }
   }
 
+
+
+
   void HeavySpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
       Add(new Heavy());
     }
   }
+
+
+
 
   void Boss1Spawn() {
     Add(new Boss1());

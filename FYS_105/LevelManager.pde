@@ -1,5 +1,7 @@
 class LevelManager
 {
+  Timer testTimer = new Timer(2);
+
   int lvlNum = 0;
   Level1 lvl1 = new Level1();
   Level2 lvl2 = new Level2();
@@ -21,6 +23,12 @@ class LevelManager
 
   void draw()
   {
+    if (testTimer.TimerDone())
+    {
+      println("IM DONE");
+      testTimer.Reset();
+    }
+
     switch(lvlNum) {
     case 1:
       lvl1.draw();
@@ -57,7 +65,7 @@ class LevelManager
 
   void NextLevel()
   {
-
+    spawn.waveTextTimer.Reset();
     apActive = false;
 
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;

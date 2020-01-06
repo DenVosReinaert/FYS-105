@@ -1,34 +1,31 @@
 class Timer
 {
 
-  float startMillis, secondsInit;
-  
+  float startMillis, milliSeconds;
 
 
 
-Timer(float seconds)
-{
-  secondsInit = seconds;
- startMillis = millis() * secondsInit; 
-}
+
+  Timer(float secondsInint)
+  {
+    milliSeconds = secondsInint * 1000;
+    startMillis = millis();
+  }
 
 
-  
+
   boolean TimerDone()
   {
-   if(millis() > startMillis)
-   {
-   return true;  
-   }
-   else return false;
+    if (millis() - milliSeconds > startMillis)
+    {
+      return true;
+    } else return false;
   }
 
-  
-  
+
+
   void Reset()
   {
-   startMillis = millis() * secondsInit; 
-    
+    startMillis = millis();
   }
-  
 }
