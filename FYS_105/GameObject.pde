@@ -11,8 +11,7 @@ public class GameObject {
 
 
   boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
-  boolean lookingUp, lookingLeft, lookingRight = false;
-  boolean lookingDown = true;
+  boolean lookingUp, lookingLeft, lookingRight, lookingDown = true;
   boolean shootingUp, shootingDown, shootingLeft, shootingRight;
   boolean collLeft, collRight, collTop, collBott;
 
@@ -26,7 +25,7 @@ public class GameObject {
   float moveVelX, moveVelY;
 
   float defaultSpeed = 2.1;
-  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //Normalizes the defaultSpeed
 
 
   float knockback;
