@@ -30,11 +30,7 @@ class Boss1 extends GameObject {
 
   void draw() {
     checkPulse();
-    pushStyle();
-    noFill();
-    stroke(255);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-    popStyle();
+
 
     enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
     playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);

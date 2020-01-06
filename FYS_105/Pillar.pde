@@ -1,9 +1,19 @@
 class Pillar extends GameObject
 {
+  
+  PVector bbL, bbR, bbT, bbB;
+  float bbW, bbLH, bbRH, bbTH, bbBH;
 
   Pillar()
   {
     tag = "structure";
+    
+    bbW = 10;
+    
+    bbL.x = 0;
+    bbL.y = pillarPosY + (pillarHeight/3 * 2);
+    bbLH = pillarHeight/3;
+    
   }
 
   void draw(float pillarPosX, float pillarPosY)
@@ -23,18 +33,7 @@ class Pillar extends GameObject
 
     if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX && myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
     {
-      if (myPlayer.playerPosX + myPlayer.moveVelX < pillarPosX + pillarWidth && myPlayer.playerPosX + myPlayer.playerWidth + myPlayer.moveVelX > pillarPosX)
-      {
 
-        myPlayer.defaultSpeed = 0;
-        println("Collide X");
-      } else
-        if (myPlayer.playerPosY + myPlayer.moveVelY < pillarPosY + pillarHeight && myPlayer.playerPosY + myPlayer.playerHeight + myPlayer.moveVelY > pillarPosY)
-        {      
-
-          myPlayer.defaultSpeed = 0;
-          println("CollideY");
-        } else myPlayer.defaultSpeed = 5;
     }
 
 
