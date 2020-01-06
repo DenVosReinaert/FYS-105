@@ -108,7 +108,7 @@ class Player extends GameObject {
 
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else defaultSpeed = 5;
+    } else defaultSpeed = 2.1;
 
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)

@@ -15,10 +15,6 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 
 boolean game, works;
 
-// DIT MOET NOG ERGENS ANDERS :D
-
-//
-
 LevelManager lvlMngr;
 
 hScorelijst hscorel;
@@ -33,6 +29,7 @@ Player myPlayer;
 //Gun myGun;
 Spawner spawn;
 GameObject GameObjectRef;
+Achievements chieves;
 
 
 void setup()
@@ -60,7 +57,7 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   GameObjectRef = new GameObject();
-
+  chieves = new Achievements();
   lvlMngr.setup();
 }
 

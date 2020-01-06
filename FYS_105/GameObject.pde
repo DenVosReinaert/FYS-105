@@ -22,8 +22,8 @@ public class GameObject {
   float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
   float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
   float playerPosX, playerPosY, playerWidth, playerHeight;
-  float defaultSpeed = 5;
-  float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+  float defaultSpeed = 2.1;
+  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
 
   float pillarPosX, pillarPosY, pillarWidth, pillarHeight;
   float speedUpX, speedUpY, speedUpDia, bonusSpeed;
