@@ -1,7 +1,7 @@
 class Pillar extends GameObject
 {
 
-  PVector bbL, bbR, bbT, bbB;
+  PVector bbL = new PVector(), bbR = new PVector(), bbT = new PVector(), bbB = new PVector();
   float  bbLH, bbRH, bbTW, bbBW;
   float bbWS, bbHC;
 
