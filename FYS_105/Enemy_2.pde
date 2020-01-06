@@ -70,7 +70,9 @@ class Speedster extends GameObject {
 
 
     enemyPosX += dx;
+
     enemyPosY += dy;
+
 
 
 

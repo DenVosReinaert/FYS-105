@@ -76,10 +76,9 @@ class Grunt extends GameObject {
     dx *= (moveVelX / dir);
     dy *= (moveVelY / dir);
 
-
     enemyPosX += dx;
+    
     enemyPosY += dy;
-
 
 
 
@@ -87,6 +86,7 @@ class Grunt extends GameObject {
     {
       Remove(this);
     }
+   
   }//enemyShow
 
 

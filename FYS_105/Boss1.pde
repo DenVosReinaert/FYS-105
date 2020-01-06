@@ -68,8 +68,11 @@ class Boss1 extends GameObject {
     dy *= (moveVelY / dir);
 
 
-    enemyPosX += dx;
-    enemyPosY += dy;
+
+      enemyPosX += dx;
+
+      enemyPosY += dy;
+
 
 
 

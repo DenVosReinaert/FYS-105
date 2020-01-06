@@ -78,7 +78,9 @@ class Heavy extends GameObject {
 
 
     enemyPosX += dx;
+
     enemyPosY += dy;
+
 
 
     if (Dead())
