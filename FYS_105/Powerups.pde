@@ -16,7 +16,7 @@ class Powerups extends GameObject {
       ellipse(speedUpX, speedUpY, speedUpDia, speedUpDia);
       popStyle();
 
-      if (dist(myPlayer.playerPosX, myPlayer.playerPosY, speedUpX, speedUpY) < 20) {
+      if (dist(myPlayer.objPosX, myPlayer.objPosY, speedUpX, speedUpY) < 20) {
         SpeedUp();
       }
     }

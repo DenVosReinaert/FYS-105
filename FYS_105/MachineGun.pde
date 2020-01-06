@@ -1,7 +1,5 @@
 class MachineGun extends GameObject {
 
-  float barrelX, barrelY;
-
   MachineGun() 
   {
     threshold = 8;
@@ -15,27 +13,27 @@ class MachineGun extends GameObject {
 
     if (myPlayer.lookingUp) 
     {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-      image(arU, barrelX, barrelY);
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+      image(arU, objPosX, objPosY);
       // handgunUp.resize(8, 35);
     } else if (myPlayer.lookingDown) 
     {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(arD, barrelX, barrelY);
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+      image(arD, objPosX, objPosY);
       //handgunDown.resize(8, 35);
     } else if (myPlayer.lookingRight)
     {
-      barrelX = myPlayer.playerPosX + playerWidth;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(arR, barrelX, barrelY);
+      objPosX = myPlayer.objPosX;
+      objPosY = myPlayer.objPosY + 10;
+      image(arR, objPosX, objPosY);
       //handgunRight.resize(35, 16);
     } else if (myPlayer.lookingLeft) 
     {
-      barrelX = myPlayer.playerPosX - playerWidth - 30;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(arL, barrelX, barrelY);
+      objPosX = myPlayer.objPosX - 30;
+      objPosY = myPlayer.objPosY + 10;
+      image(arL, objPosX, objPosY);
       //handgunLeft.(35, 16);
     }
   }
@@ -43,8 +41,8 @@ class MachineGun extends GameObject {
 
   void shoot() {
 
-    myPlayer.muzzlePointX = barrelX;
-    myPlayer.muzzlePointY = barrelY + 8;
+    myPlayer.muzzlePointX = objPosX;
+    myPlayer.muzzlePointY = objPosY + 8;
 
     if (cooldown == threshold && myPlayer.shootingUp) {
       if (UI.ammoM1 > 0 ) {
@@ -54,8 +52,8 @@ class MachineGun extends GameObject {
         UI.ammoM1--;
         cooldown = 0;
 
-        if (!myPlayer.collBott || myPlayer.playerPosY + myPlayer.playerHeight + knockback < height)
-          myPlayer.playerPosY += knockback;
+        if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
+          myPlayer.objPosY += knockback;
 
         LMG.play();
         LMG.rewind();
@@ -69,8 +67,8 @@ class MachineGun extends GameObject {
         cooldown = 0;
 
 
-        if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
-          myPlayer.playerPosY -= knockback;
+        if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
+          myPlayer.objPosY -= knockback;
 
         LMG.play();
         LMG.rewind();
@@ -84,8 +82,8 @@ class MachineGun extends GameObject {
         cooldown = 0;
 
 
-        if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
-          myPlayer.playerPosX += knockback;
+        if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
+          myPlayer.objPosX += knockback;
 
 
         LMG.play();
@@ -100,8 +98,8 @@ class MachineGun extends GameObject {
         cooldown = 0;
 
 
-        if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
-          myPlayer.playerPosX -= knockback;
+        if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
+          myPlayer.objPosX -= knockback;
 
 
         LMG.play();

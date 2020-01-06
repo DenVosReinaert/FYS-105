@@ -50,6 +50,8 @@ class GameOver {
   void draw() {
     clear();
     if (gamemngr.dead) {
+      gameMusic.pause();
+      gameMusic.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
@@ -216,8 +218,8 @@ class GameOver {
     UI.levens = 3;
     gamemngr.hscoreA = 0;
 
-    myPlayer.playerPosX = width/2 - myPlayer.playerWidth/2;
-    myPlayer.playerPosY = height/2 - myPlayer.playerHeight/2;
+    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
+    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
     Pistol.pause();
     Shotgun.pause();

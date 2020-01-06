@@ -2,8 +2,8 @@ class Boss1 extends GameObject {
 
   Boss1() {
     tag = "enemy";
-    enemyW=100;
-    enemyH=146;
+    objWidth=100;
+    objHeight=146;
     hp=20;
     moveVelX=1;
     moveVelY=1;
@@ -12,17 +12,17 @@ class Boss1 extends GameObject {
 
     float r = random(-1, 3);
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos0.y;
+      objPosX = spawn.spawnerPos0.x - objWidth/2;
+      objPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos1.y;
+      objPosX = spawn.spawnerPos1.x - objWidth/2;
+      objPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
+      objPosX = spawn.spawnerPos2.x;
+      objPosY = spawn.spawnerPos2.y - objHeight/2;
     } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
+      objPosX = spawn.spawnerPos3.x;
+      objPosY = spawn.spawnerPos3.y - objHeight/2;
     }
   }
 
@@ -32,8 +32,8 @@ class Boss1 extends GameObject {
     checkPulse();
 
 
-    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
-    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
+    playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
     dxA = enemyVector.x - playerVector.x;
     dyA = enemyVector.y - playerVector.y;
 
@@ -41,26 +41,26 @@ class Boss1 extends GameObject {
     angleBetweenVector = atan2(dxA, dyA);
 
     if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
-      boss1U.draw(enemyPosX, enemyPosY);
+      boss1U.draw(objPosX, objPosY);
       boss1U.update();
     }
 
     if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
-      boss1D.draw(enemyPosX, enemyPosY);
+      boss1D.draw(objPosX, objPosY);
       boss1D.update();
     }
     if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
-      boss1L.draw(enemyPosX, enemyPosY);
+      boss1L.draw(objPosX, objPosY);
       boss1L.update();
     }
     if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
-      boss1R.draw(enemyPosX, enemyPosY);
+      boss1R.draw(objPosX, objPosY);
       boss1R.update();
     }
 
     //ENEMY MOVEMENT
-    dx = myPlayer.playerPosX - enemyPosX;
-    dy = myPlayer.playerPosY - enemyPosY;
+    dx = myPlayer.objPosX - objPosX;
+    dy = myPlayer.objPosY - objPosY;
 
     dir = sqrt(sq(dx) + sq(dy));
 
@@ -69,9 +69,11 @@ class Boss1 extends GameObject {
 
 
 
-      enemyPosX += dx;
+    if (!collLeft && !collRight)
+      objPosX += dx;
 
-      enemyPosY += dy;
+    if (!collTop && !collBott)
+      objPosY += dy;
 
 
 
@@ -82,6 +84,11 @@ class Boss1 extends GameObject {
         msql.query("UPDATE Achievements SET counterAchievements = '%s' WHERE idAchievements = '%s'", (chieves.bossCounter + 1), 3);
       Remove(this);
     }
+
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
   }//enemyShow
 
 
@@ -91,7 +98,7 @@ class Boss1 extends GameObject {
     {
 
       //Collision with Player
-      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
+      if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
         UI.spelerhit();
@@ -99,20 +106,23 @@ class Boss1 extends GameObject {
       }
 
       //Collision with Bullet
-      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
+      if (GameObjectRef.gameObject.get(i).tag == "bullet")
       {
-        hp=hp-1;
-        Remove(GameObjectRef.gameObject.get(i));
-        ascore.combo += gamemngr.comboMultiplier;
-        println("combo increase!");
-        gamemngr.shakeAmount = 3;
-        gamemngr.shake = true;
-        if (hp == 0) {
-          ascore.score += scoreGain * ascore.combo;
+        if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
+        {
+          hp=hp-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          ascore.combo += gamemngr.comboMultiplier;
+          println("combo increase!");
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
+          if (hp == 0) {
+            ascore.score += scoreGain * ascore.combo;
+          }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+          }//for
         }
-        for (int j=0; j < 20; j++) {
-          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
-        }//for
       }
     }
   }

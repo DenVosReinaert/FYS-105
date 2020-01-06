@@ -1,6 +1,5 @@
 class Pistol extends GameObject {
 
-  float barrelX, barrelY;
 
   Pistol() {
     threshold = 40;
@@ -14,34 +13,34 @@ class Pistol extends GameObject {
 
     if (myPlayer.lookingUp) 
     {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
       pushStyle();
-      image(handgunUp, barrelX, barrelY);
+      image(handgunUp, objPosX, objPosY);
       handgunUp.resize(8, 35);
       popStyle();
     } else if (myPlayer.lookingDown) 
     {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
       pushStyle();
-      image(handgunUp, barrelX, barrelY);
+      image(handgunUp, objPosX, objPosY);
       handgunUp.resize(8, 35);
       popStyle();
     } else if (myPlayer.lookingRight)
     {
-      barrelX = myPlayer.playerPosX + playerWidth + 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
+      objPosX = myPlayer.objPosX + objWidth + 20;
+      objPosY = myPlayer.objPosY - objHeight/2 + 10;
       pushStyle();
-      image(handgunUp, barrelX, barrelY);
+      image(handgunUp, objPosX, objPosY);
       handgunUp.resize(35, 16);
       popStyle();
     } else if (myPlayer.lookingLeft) 
     {
-      barrelX = myPlayer.playerPosX - playerWidth - 30;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
+      objPosX = myPlayer.objPosX - objWidth - 30;
+      objPosY = myPlayer.objPosY - objHeight/2 + 10;
       pushStyle();
-      image(handgunUp, barrelX, barrelY);
+      image(handgunUp, objPosX, objPosY);
       handgunUp.resize(35, 16);
       popStyle();
     }
@@ -50,8 +49,8 @@ class Pistol extends GameObject {
 
   void shoot() {
 
-    myPlayer.muzzlePointX = barrelX;
-    myPlayer.muzzlePointY = barrelY;
+    myPlayer.muzzlePointX = objPosX;
+    myPlayer.muzzlePointY = objPosY;
 
 
 
@@ -64,8 +63,8 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        if (!myPlayer.collBott || myPlayer.playerPosY + myPlayer.playerHeight + knockback < height)
-          myPlayer.playerPosY += knockback;
+        if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
+          myPlayer.objPosY += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -79,8 +78,8 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
-          myPlayer.playerPosY -=knockback;
+        if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
+          myPlayer.objPosY -=knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -94,8 +93,8 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
-          myPlayer.playerPosX += knockback;
+        if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
+          myPlayer.objPosX += knockback;
 
         Pistol.play();
         Pistol.rewind();
@@ -109,8 +108,8 @@ class Pistol extends GameObject {
         UI.ammoP--;
         cooldown = 0;
 
-        if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
-          myPlayer.playerPosX -= knockback;
+        if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
+          myPlayer.objPosX -= knockback;
 
         Pistol.play();
         Pistol.rewind();

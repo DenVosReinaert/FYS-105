@@ -1,6 +1,5 @@
 class Shotgun extends GameObject {
 
-  float barrelX, barrelY;
 
   Shotgun() {
     threshold = 100;
@@ -11,25 +10,25 @@ class Shotgun extends GameObject {
   void holdingGun() {
 
     if (myPlayer.lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
 
-      image(pumpU, barrelX, barrelY);
+      image(pumpU, objPosX, objPosY);
       //handgunUp.resize(8, 35);
     } else if (myPlayer.lookingDown) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(pumpD, barrelX, barrelY);
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+      image(pumpD, objPosX, objPosY);
       //handgunDown.resize(8, 35);
     } else if (myPlayer.lookingRight) {
-      barrelX = myPlayer.playerPosX + playerWidth;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(pumpR, barrelX, barrelY);
+      objPosX = myPlayer.objPosX;
+      objPosY = myPlayer.objPosY + 10;
+      image(pumpR, objPosX, objPosY);
       //handgunRight.resize(35, 16);
     } else if (myPlayer.lookingLeft) {
-      barrelX = myPlayer.playerPosX - playerWidth - 30;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 10;
-      image(pumpL, barrelX, barrelY);
+      objPosX = myPlayer.objPosX - 30;
+      objPosY = myPlayer.objPosY + 10;
+      image(pumpL, objPosX, objPosY);
       //handgunLeft.resize(35, 16);
     }
   }
@@ -39,8 +38,8 @@ class Shotgun extends GameObject {
   void shoot() {
 
 
-    myPlayer.muzzlePointX = barrelX;
-    myPlayer.muzzlePointY = barrelY;
+    myPlayer.muzzlePointX = objPosX;
+    myPlayer.muzzlePointY = objPosY;
 
 
     if (cooldown == threshold && myPlayer.shootingUp) {
@@ -56,8 +55,8 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        if (!myPlayer.collBott || myPlayer.playerPosY + myPlayer.playerHeight + knockback < height)
-          myPlayer.playerPosY += knockback;
+        if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
+          myPlayer.objPosY += knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -78,8 +77,8 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        if (!myPlayer.collTop || myPlayer.playerPosY - knockback > 0)
-          myPlayer.playerPosY -= knockback;
+        if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
+          myPlayer.objPosY -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -99,8 +98,8 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        if (!myPlayer.collLeft || myPlayer.playerPosX - knockback > 0)
-          myPlayer.playerPosX -= knockback;
+        if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
+          myPlayer.objPosX -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -119,8 +118,8 @@ class Shotgun extends GameObject {
         UI.ammoS1--;
         cooldown = 0;
 
-        if (!myPlayer.collRight || myPlayer.playerPosX + myPlayer.playerWidth + knockback < width)
-          myPlayer.playerPosX += knockback;
+        if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
+          myPlayer.objPosX += knockback;
 
         Shotgun.play();
         Shotgun.rewind();

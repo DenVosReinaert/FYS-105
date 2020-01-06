@@ -6,8 +6,8 @@ class Grunt extends GameObject {
 
     scoreGain = 5;
 
-    enemyW=28;
-    enemyH=40;
+    objWidth=28;
+    objHeight=40;
     hp=2;
 
     moveVelX=1;
@@ -17,17 +17,17 @@ class Grunt extends GameObject {
 
     float r = random(-1, 3);
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos0.y;
+      objPosX = spawn.spawnerPos0.x - objWidth/2;
+      objPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos1.y;
+      objPosX = spawn.spawnerPos1.x - objWidth/2;
+      objPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
+      objPosX = spawn.spawnerPos2.x;
+      objPosY = spawn.spawnerPos2.y - objHeight/2;
     } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
+      objPosX = spawn.spawnerPos3.x;
+      objPosY = spawn.spawnerPos3.y - objHeight/2;
     }
   }//constructor Grunt
 
@@ -40,8 +40,8 @@ class Grunt extends GameObject {
 
 
 
-    enemyVector = new PVector(enemyPosX+enemyW/2, enemyPosY+enemyH/2);
-    playerVector = new PVector(myPlayer.playerPosX+myPlayer.playerWidth/2, myPlayer.playerPosY+myPlayer.playerHeight/2);
+    enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
+    playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
     dxA = enemyVector.x - playerVector.x;
     dyA = enemyVector.y - playerVector.y;
 
@@ -49,36 +49,41 @@ class Grunt extends GameObject {
     angleBetweenVector = atan2(dxA, dyA);
 
     if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
-      gruntU.draw(enemyPosX, enemyPosY);
+      gruntU.draw(objPosX, objPosY);
       gruntU.update();
     }
     if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
-      gruntL.draw(enemyPosX, enemyPosY);
+      gruntL.draw(objPosX, objPosY);
       gruntL.update();
     }
     if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
-      gruntD.draw(enemyPosX, enemyPosY);
+      gruntD.draw(objPosX, objPosY);
       gruntD.update();
     }
     if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
-      gruntR.draw(enemyPosX, enemyPosY);
+      gruntR.draw(objPosX, objPosY);
       gruntR.update();
     }
 
 
 
     //ENEMY MOVEMENT
-    dx = myPlayer.playerPosX - enemyPosX;
-    dy = myPlayer.playerPosY - enemyPosY;
+    dx = myPlayer.objPosX - objPosX;
+    dy = myPlayer.objPosY - objPosY;
 
     dir = sqrt(sq(dx) + sq(dy));
 
     dx *= (moveVelX / dir);
     dy *= (moveVelY / dir);
 
-    enemyPosX += dx;
-    
-    enemyPosY += dy;
+
+
+    if (!collLeft && !collRight)
+      objPosX += dx;
+
+    if (!collTop && !collBott)
+      objPosY += dy;
+
 
 
 
@@ -86,7 +91,11 @@ class Grunt extends GameObject {
     {
       Remove(this);
     }
-   
+
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
   }//enemyShow
 
 
@@ -97,27 +106,30 @@ class Grunt extends GameObject {
     {
 
       //Collision with Player
-      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
+      if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
         hp = 0;
       }
 
       //Collision with Bullet
-      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
+      if (GameObjectRef.gameObject.get(i).tag == "bullet")
       {
-        hp=hp-1;
-        Remove(GameObjectRef.gameObject.get(i));
-        ascore.combo += gamemngr.comboMultiplier;
-        println("combo increase!");
-        gamemngr.shakeAmount = 3;
-        gamemngr.shake = true;
-        if (hp == 0) {
-          ascore.score += scoreGain * ascore.combo;
+        if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
+        {
+          hp=hp-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          ascore.combo += gamemngr.comboMultiplier;
+          println("combo increase!");
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
+          if (hp == 0) {
+            ascore.score += scoreGain * ascore.combo;
+          }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+          }//for
         }
-        for (int j=0; j < 20; j++) {
-          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
-        }//for
       }
     }
   }
