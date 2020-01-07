@@ -90,16 +90,6 @@ class Pillar extends GameObject
 
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
-      //Pillar Collision v Bullet
-      if (GameObjectRef.gameObject.get(i).tag == "bullet")
-      {
-        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).moveVelX > bbL.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).moveVelX < bbR.x + bbSW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).moveVelY > bbT.y && GameObjectRef.gameObject.get(i).objPosY + myPlayer.moveVelY < bbB.y + bbCH)
-        {
-          Remove(GameObjectRef.gameObject.get(i));
-          ascore.ComboReset();
-        }
-      }
-      
       //Pillar Collision v Enemy
       if (GameObjectRef.gameObject.get(i).tag == "enemy")
       {
@@ -127,6 +117,17 @@ class Pillar extends GameObject
         if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).dx > bbT.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).dx < bbT.x + bbCW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).dy > bbT.y && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).dy < bbT.y + bbCH)
         {
           GameObjectRef.gameObject.get(i).collBott = true;
+        }
+      }
+
+
+      //Pillar Collision v Bullet
+      if (GameObjectRef.gameObject.get(i).tag == "bullet")
+      {
+        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).moveVelX > bbL.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).moveVelX < bbR.x + bbSW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).moveVelY > bbT.y && GameObjectRef.gameObject.get(i).objPosY + myPlayer.moveVelY < bbB.y + bbCH)
+        {
+          Remove(GameObjectRef.gameObject.get(i));
+          ascore.ComboReset();
         }
       }
     }
