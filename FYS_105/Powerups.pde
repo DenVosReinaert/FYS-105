@@ -1,6 +1,6 @@
 class Powerups extends GameObject {
 
-  Timer PowerupSpd = new Timer(4);
+  Timer powerUpSpd = new Timer(4);
 
   //initializing the coordinates of the powerup 'SpeedUp'.
   Powerups() {
@@ -13,10 +13,10 @@ class Powerups extends GameObject {
     if (game) {
       pushStyle();
       fill(200, 0, 0);
-      ellipse(speedUpX, speedUpY, speedUpDia, speedUpDia);
+      ellipse(speedUpX, speedUpY, speedUpDia/2, speedUpDia/2);
       popStyle();
 
-      if (dist(myPlayer.objPosX, myPlayer.objPosY, speedUpX, speedUpY) < 20) {
+      if (dist(myPlayer.objPosX, myPlayer.objPosY, speedUpX, speedUpY) < speedUpDia/2) {
         SpeedUp();
       }
     }
@@ -25,12 +25,10 @@ class Powerups extends GameObject {
 
 
   void SpeedUp() {
-    PowerupSpd.Reset();
-    myPlayer.bonusSpeed = 3;
-    println("1: "+ myPlayer.defaultSpeed);
-    if (PowerupSpd.TimerDone()) {
+    powerUpSpd.Reset();
+    if (!powerUpSpd.TimerDone())
+      myPlayer.bonusSpeed = 3;
+    else
       myPlayer.bonusSpeed = 0;
-      println("2: "+ myPlayer.defaultSpeed);
-    }
   }
 }

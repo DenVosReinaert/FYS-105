@@ -60,4 +60,13 @@ class aScore {
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     }
   }
+
+
+  void ComboReset()
+  {
+    combo = 1;
+    bruh.setGain(10);
+    bruh.play();
+    bruh.rewind();
+  }
 }

@@ -1,5 +1,5 @@
 class Bullet extends GameObject {
-  
+
   int bulletState = 0;
 
   Bullet(float incomingDX, float incomingDY) {
@@ -72,9 +72,7 @@ class Bullet extends GameObject {
     if (objPosX + objWidth > width || objPosX < 0 || objPosY < 0 || objPosY + objHeight > height || collLeft || collRight || collTop || collBott)
     {
       Remove(this);
-      bruh.play();
-      bruh.rewind();
-      ascore.combo = 1; //resets the combo back to 1
+      ascore.ComboReset();
       println("combo reset!");
     }
   }

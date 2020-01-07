@@ -20,6 +20,7 @@ class Shop {
       shopcart.update();
       if (!(cartX > stopP && cartX < stopP + 10)) {
         cartX = cartX + 3;
+        garfield.setGain(10);
         garfield.play();
         garfield.rewind();
       }
