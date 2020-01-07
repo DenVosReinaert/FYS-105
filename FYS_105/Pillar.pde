@@ -79,14 +79,14 @@ class Pillar extends GameObject
     }
 
     //Collision box visualisation
-    pushStyle();
-    noFill();
-    stroke(255);
-    rect(bbT.x, bbT.y, bbCW, bbCH);
-    rect(bbB.x, bbB.y, bbCW, bbCH);
-    rect(bbR.x, bbR.y, bbSW, bbSH);
-    rect(bbL.x, bbL.y, bbSW, bbSH);
-    popStyle();
+    //pushStyle();
+    //noFill();
+    //stroke(255);
+    //rect(bbT.x, bbT.y, bbCW, bbCH);
+    //rect(bbB.x, bbB.y, bbCW, bbCH);
+    //rect(bbR.x, bbR.y, bbSW, bbSH);
+    //rect(bbL.x, bbL.y, bbSW, bbSH);
+    //popStyle();
 
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {

@@ -5,13 +5,19 @@ class Spawner extends GameObject {
   Timer spawnGrntTimer = new Timer(2);
   Timer spawnBrtTimer = new Timer(3);
   Timer spawnHvyTimer = new Timer(5);
+  Timer spawnBssTimer = new Timer(10);
+
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 0;
-  int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
-  boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
+  int wave = 1;
+
+  int countBrt, countSpd, countGrnt, countHvy, countBss;
+
+
   boolean waveInProgress = false;
+
+  boolean spawnBrtFinished, spawnGrntFinished, spawnSpdFinished, spawnHvyFinished, spawnBssFinished;
   boolean waveFinished = false;
 
   Spawner() {
@@ -26,6 +32,12 @@ class Spawner extends GameObject {
 
     spawnerPos3.x = -10;
     spawnerPos3.y = height/2;
+
+    countBrt = round(random(wave, wave * 2));
+    countSpd = round(random(wave, wave * 4));
+    countGrnt = round(random(wave, wave * 3));
+    countHvy = round(random(wave, wave * 2));
+    countBss = round(wave / 5);
   }//constructor spawner
 
 
@@ -39,31 +51,36 @@ class Spawner extends GameObject {
       pushStyle();
       fill(255);
 
-      if (!waveTextTimer.TimerDone() && !waveInProgress) {
-        textSize(80);
-        text("WAVE "+ (wave + 1), width/2-150, height/2);
-      } else if (wave == 0)
-        NextWave();
-
-      if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
+      if (!waveTextTimer.TimerDone())
       {
-        waveInProgress = false;
-        waveFinished = true;
-        shop.cartX = -100;
+        textSize(80);
+        text("WAVE "+ (wave), width/2-150, height/2);
+      } else if (!waveInProgress && waveTextTimer.TimerDone())
+      {
+        waveInProgress = true;
       }
 
-      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
+      if (waveInProgress)
+        SpawnWave();
+
+
+      if (waveInProgress && waveTextTimer.TimerDone() && GameObjectRef.gameObject.size() == 0)
+      {
+        waveFinished = true;
+      }
+
+
+
+      if (waveFinished)
+      {
         lvlMngr.apActive = true;
-        if (wave%2 == 0)
+
+        if (wave % 2 == 0)
           shop.shopA = true;
       }
 
       if (shop.shopA)
         shop.draw();
-
-      //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
-      //  NextWave();
-
       popStyle();
     }
   }//spawnerUpdate
@@ -76,91 +93,104 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+
+    waveInProgress = false;
+    waveFinished = false;
+
+    spawn.wave ++;
+
+    waveTextTimer.Reset();
     shop.shopA = false;
-    SpawnWave();
+    lvlMngr.apActive = false;
+
+
+    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
+    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
     for (int i = 0; i < 1; i++)
     {
-      wave++;
+      lvlMngr.lvlNum = round(random(0, 3));
     }
+
+
+
+    countBrt = round(random(wave, wave * 2));
+    countSpd = round(random(wave, wave * 4));
+    countGrnt = round(random(wave, wave * 3));
+    countHvy = round(random(wave, wave * 2));
+    countBss = round(wave / 5);
   }
+
+
 
 
 
   void SpawnWave()
   {
-    waveInProgress = true;
-    waveFinished = false;
-
-    HeavySpawn();
-    GruntSpawn();
-    SpeedsterSpawn();
-    BruteSpawn();
-
-    if (wave % 5 == 0)
-      Boss1Spawn();
-  }
-
-
-
-
-  void BruteSpawn() {
-    for (int i = 0; i< random(wave, wave * 2); i ++)
+    for (int i = 0; i < countBrt; i ++)
     {
+      if (i >= countBrt)
+        spawnBrtFinished = true;
+
       if (spawnBrtTimer.TimerDone())
       {
         Add(new Brute());
         spawnBrtTimer.Reset();
       }
     }
-  }//spawnerShow
 
 
-
-
-  void GruntSpawn() {
-    for (int i = 0; i< random(wave, wave * 3); i ++)
+    for (int j = 0; j < countGrnt; j ++)
     {
+      if (j >= countGrnt)
+        spawnGrntFinished = true;
+
       if (spawnGrntTimer.TimerDone())
       {
         Add(new Grunt());
         spawnGrntTimer.Reset();
       }
     }
-  }
 
 
-
-
-  void SpeedsterSpawn() {
-    for (int i = 0; i< random(wave, wave * 4); i ++)
+    for (int k = 0; k < countSpd; k ++)
     {
-      if (spawnSpdTimer.TimerDone())
+      if (k >= countSpd)
+        spawnSpdFinished = true;
+
+      if (spawnSpdTimer.TimerDone() && !spawnSpdFinished)
       {
         Add(new Speedster());
         spawnSpdTimer.Reset();
       }
     }
-  }
 
 
-
-
-  void HeavySpawn() {
-    for (int i = 0; i< random(wave, wave * 2); i ++)
+    for (int l = 0; l < countHvy; l ++)
     {
+      if (l >= countHvy)
+        spawnHvyFinished = true;
+
       if (spawnHvyTimer.TimerDone())
       {
         Add(new Heavy());
         spawnHvyTimer.Reset();
       }
     }
-  }
 
 
+    if (wave % 5 == 0) {
+      for (int m = 0; m < countBss; m ++)
+      {
+        if (m >= countBss)
+          spawnBssFinished = true;
 
-
-  void Boss1Spawn() {
-    Add(new Boss1());
+        if (spawnBssTimer.TimerDone())
+        {
+          Add(new Boss1());
+          spawnBssTimer.Reset();
+        }
+      }
+    }
   }
 }

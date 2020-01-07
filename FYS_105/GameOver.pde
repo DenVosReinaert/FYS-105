@@ -243,7 +243,7 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
-    spawn.wave = 0;
+    spawn.wave = 1;
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
@@ -252,5 +252,10 @@ class GameOver {
     myPlayer.collRight = false;
     myPlayer.collTop = false;
     myPlayer.collBott = false;
+
+    myPlayer.akey = false;
+    myPlayer.dkey = false;
+    myPlayer.wkey = false;
+    myPlayer.skey = false;
   }
 }

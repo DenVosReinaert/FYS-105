@@ -6,9 +6,9 @@ class Timer
 
 
 
-  Timer(float secondsInint)
+  Timer(float secondsInit)
   {
-    milliSeconds = secondsInint * 1000;
+    milliSeconds = secondsInit * 1000;
     startMillis = millis();
   }
 
