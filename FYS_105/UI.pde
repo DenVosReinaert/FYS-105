@@ -41,6 +41,7 @@ class UI {
     if (ableToBeHit) {
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
+      damage.setGain(10);
       damage.play();
       damage.rewind();
 

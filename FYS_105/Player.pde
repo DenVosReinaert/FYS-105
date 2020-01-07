@@ -18,11 +18,11 @@ class Player extends GameObject {
 
   Player() {
 
-
     objWidth = 28;
     objHeight = 40;
     objPosX = (width/2) - objWidth/2;
     objPosY = (height/2) - objHeight/2;
+
 
     tag = "player";
 
@@ -31,14 +31,12 @@ class Player extends GameObject {
     shotgun = 2;
     machinegun = 3;
 
+    // Default gun is pistol
     currentGun = pistoll;
   }
 
 
   void draw() {
-    
-
-
 
     if (objPosX + moveVelX < 0)
       collLeft = true;
@@ -64,19 +62,22 @@ class Player extends GameObject {
       threekey = false;
     }
 
-
+    // Draws player sprite depending on the direction they look
     if (myPlayer.lookingLeft) {
       mrSpooksLeft.draw(objPosX, objPosY);
       mrSpooksLeft.update();
     } else if (myPlayer.lookingRight) {
       mrSpooksRight.draw(objPosX, objPosY);
       mrSpooksRight.update();
-    } else if (myPlayer.lookingDown)
-    {
+    } else if (myPlayer.lookingUp) {
+      mrSpooksUp.draw(objPosX, objPosY);
+      mrSpooksUp.update();
+    } else if (myPlayer.lookingDown) {
       mrSpooksDown.draw(objPosX, objPosY);
       mrSpooksDown.update();
     }
 
+    // 
     if (myPlayer.currentGun == pistoll)
       pistol.holdingGun();
 
@@ -86,18 +87,13 @@ class Player extends GameObject {
     if (myPlayer.currentGun == machinegun)
       machineGun.holdingGun();
 
-    if (myPlayer.lookingUp) {
-      mrSpooksUp.draw(objPosX, objPosY);
-      mrSpooksUp.update();
-    }
-
     //240
 
-    //MOVEMENT
+    // Assigns value to movementspeed
     moveVelX = defaultSpeed;
     moveVelY = defaultSpeed;
 
-
+    // 
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
     } else defaultSpeed = 2.1;
@@ -120,6 +116,7 @@ class Player extends GameObject {
       }
     }
 
+    // Check collision with the pillars and stops you from moving over it
     if (akey && !collLeft)
     {
       objPosX -= moveVelX;
@@ -140,6 +137,7 @@ class Player extends GameObject {
       objPosY += moveVelY;
     }
 
+    // Makes sure the cycle keeps cycleing between 1 and 3
     if (currentGun > 3) {
       currentGun = 1;
     }
@@ -147,12 +145,14 @@ class Player extends GameObject {
       currentGun = 3;
     }
 
+    // Prevents collision catch
     collLeft = false;
     collRight = false;
     collTop = false;
     collBott = false;
   }
 
+  // The defining controlls section \/\/\/\/
   void keyPressed() {
     // Controls for shooting in all directions and looking in all directions
     switch(keyCode) {

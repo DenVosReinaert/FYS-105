@@ -1,3 +1,5 @@
+// TE4M
+// Dylan Vermeulen
 class Bullet extends GameObject {
 
   int bulletState = 0;
@@ -11,7 +13,6 @@ class Bullet extends GameObject {
 
     moveVelX = incomingDX;    
     moveVelY= incomingDY;
-    //hp = 1;
     objWidth = bullet.width;
     objHeight = bullet.height;
 
@@ -74,6 +75,7 @@ class Bullet extends GameObject {
       Remove(this);
       ascore.ComboReset();
       println("combo reset!");
+      bruh.setGain(10);
       bruh.play();
       bruh.rewind();
     }

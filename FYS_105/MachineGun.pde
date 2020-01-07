@@ -1,3 +1,5 @@
+// TE4M
+// Dylan Vermeulen
 class MachineGun extends GameObject {
 
   MachineGun() 
@@ -7,7 +9,6 @@ class MachineGun extends GameObject {
     knockback = 15;
   }
 
-
   void holdingGun() {
 
 
@@ -16,25 +17,21 @@ class MachineGun extends GameObject {
       objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
       objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
       image(arU, objPosX, objPosY);
-      // handgunUp.resize(8, 35);
     } else if (myPlayer.lookingDown) 
     {
       objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
       objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
       image(arD, objPosX, objPosY);
-      //handgunDown.resize(8, 35);
     } else if (myPlayer.lookingRight)
     {
       objPosX = myPlayer.objPosX;
       objPosY = myPlayer.objPosY + 10;
       image(arR, objPosX, objPosY);
-      //handgunRight.resize(35, 16);
     } else if (myPlayer.lookingLeft) 
     {
       objPosX = myPlayer.objPosX - 30;
       objPosY = myPlayer.objPosY + 10;
       image(arL, objPosX, objPosY);
-      //handgunLeft.(35, 16);
     }
   }
 

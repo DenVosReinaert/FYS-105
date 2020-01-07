@@ -24,6 +24,8 @@ class Shop {
         garfield.play();
         garfield.rewind();
       }
+      if (cartX > 0) {
+      }
     }
   }
 }
