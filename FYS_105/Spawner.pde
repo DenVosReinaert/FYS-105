@@ -12,7 +12,8 @@ class Spawner extends GameObject {
   //int timer = 0;
   int wave = 1;
 
-  boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
+  int countBrt, countSpd, countGrnt, countHvy, countBss;
+
 
   boolean waveInProgress = false;
 
@@ -31,6 +32,12 @@ class Spawner extends GameObject {
 
     spawnerPos3.x = -10;
     spawnerPos3.y = height/2;
+
+    countBrt = round(random(wave, wave * 2));
+    countSpd = round(random(wave, wave * 4));
+    countGrnt = round(random(wave, wave * 3));
+    countHvy = round(random(wave, wave * 2));
+    countBss = round(wave / 5);
   }//constructor spawner
 
 
@@ -53,13 +60,15 @@ class Spawner extends GameObject {
         waveInProgress = true;
       }
 
-      if (waveInProgress && waveTextTimer.TimerDone() && !waveFinished)
+      if (waveInProgress)
         SpawnWave();
+
 
       if (waveInProgress && waveTextTimer.TimerDone() && GameObjectRef.gameObject.size() == 0)
       {
         waveFinished = true;
       }
+
 
 
       if (waveFinished)
@@ -84,6 +93,7 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+
     waveInProgress = false;
     waveFinished = false;
 
@@ -101,59 +111,85 @@ class Spawner extends GameObject {
     {
       lvlMngr.lvlNum = round(random(0, 3));
     }
+
+
+
+    countBrt = round(random(wave, wave * 2));
+    countSpd = round(random(wave, wave * 4));
+    countGrnt = round(random(wave, wave * 3));
+    countHvy = round(random(wave, wave * 2));
+    countBss = round(wave / 5);
   }
+
+
 
 
 
   void SpawnWave()
   {
-    for (int i = 0; i < random(wave, wave * 2); i ++)
+    for (int i = 0; i < countBrt; i ++)
     {
+      if (i >= countBrt)
+        spawnBrtFinished = true;
+
       if (spawnBrtTimer.TimerDone())
       {
         Add(new Brute());
+        spawnBrtTimer.Reset();
       }
-      spawnBrtTimer.Reset();
     }
 
 
-    for (int j = 0; j< random(wave, wave * 3); j ++)
+    for (int j = 0; j < countGrnt; j ++)
     {
+      if (j >= countGrnt)
+        spawnGrntFinished = true;
+
       if (spawnGrntTimer.TimerDone())
       {
         Add(new Grunt());
+        spawnGrntTimer.Reset();
       }
-      spawnGrntTimer.Reset();
     }
 
 
-    for (int k = 0; k< random(wave, wave * 4); k ++)
+    for (int k = 0; k < countSpd; k ++)
     {
-      if (spawnSpdTimer.TimerDone())
+      if (k >= countSpd)
+        spawnSpdFinished = true;
+
+      if (spawnSpdTimer.TimerDone() && !spawnSpdFinished)
       {
         Add(new Speedster());
+        spawnSpdTimer.Reset();
       }
-      spawnSpdTimer.Reset();
     }
 
 
-    for (int l = 0; l< random(wave, wave * 2); l ++)
+    for (int l = 0; l < countHvy; l ++)
     {
+      if (l >= countHvy)
+        spawnHvyFinished = true;
+
       if (spawnHvyTimer.TimerDone())
       {
         Add(new Heavy());
+        spawnHvyTimer.Reset();
       }
-      spawnHvyTimer.Reset();
     }
 
+
     if (wave % 5 == 0) {
-      for (int m = 0; m < round(wave / 5); m ++)
+      for (int m = 0; m < countBss; m ++)
       {
+        if (m >= countBss)
+          spawnBssFinished = true;
+
         if (spawnBssTimer.TimerDone())
         {
           Add(new Boss1());
+          spawnBssTimer.Reset();
         }
-        spawnBssTimer.Reset();
       }
     }
   }
