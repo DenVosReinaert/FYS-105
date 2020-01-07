@@ -3,8 +3,8 @@
 
 class Player extends GameObject {
 
-  Timer weaponSwapPrevTimer = new Timer(1);
-  Timer weaponSwapNextTimer = new Timer(1);
+  Timer weaponSwapPrevTimer = new Timer(0.125);
+  Timer weaponSwapNextTimer = new Timer(0.125);
 
   Pistol pistol = new Pistol();
   Shotgun shotGun = new Shotgun();
@@ -38,6 +38,8 @@ class Player extends GameObject {
 
   void draw() {
 
+    println("current gun: " + currentGun);
+
     if (objPosX + moveVelX < 0)
       collLeft = true;
 
@@ -62,7 +64,24 @@ class Player extends GameObject {
       threekey = false;
     }
 
-    // Draws player sprite depending on the direction they look
+    if (prevGun && weaponSwapPrevTimer.TimerDone()) {
+      weaponSwapPrevTimer.Reset();
+      currentGun--;
+    }
+    if (nextGun && weaponSwapNextTimer.TimerDone()) {
+      weaponSwapNextTimer.Reset();
+      currentGun++;
+    }
+
+    // Makes sure the cycle keeps cycleing between 1 and 3
+    if (currentGun > 3) {
+      currentGun = 1;
+    }
+    if (currentGun < 1) {
+      currentGun = 3;
+    }
+
+    // Draws where the player sprite is facing depending on the direction they look
     if (myPlayer.lookingLeft) {
       mrSpooksLeft.draw(objPosX, objPosY);
       mrSpooksLeft.update();
@@ -137,13 +156,6 @@ class Player extends GameObject {
       objPosY += moveVelY;
     }
 
-    // Makes sure the cycle keeps cycleing between 1 and 3
-    if (currentGun > 3) {
-      currentGun = 1;
-    }
-    if (currentGun < 1) {
-      currentGun = 3;
-    }
 
     // Prevents collision catch
     collLeft = false;
@@ -231,7 +243,7 @@ class Player extends GameObject {
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
-
+    }
       // Controls for switching weapons on desktop
       if (key == '1') onekey = true;
       if (key == '2') twokey = true;
@@ -240,13 +252,13 @@ class Player extends GameObject {
       // Controls for switching weapons on a cycle with snes controller
       if (key == 'q')
       {
-        currentGun--;
+        prevGun = true;
       }
       if (key =='e')
       {
-        currentGun++;
+        nextGun = true;
       }
-    }
+    
   }
   void keyReleased() {
 

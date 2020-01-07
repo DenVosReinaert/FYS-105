@@ -65,7 +65,7 @@ class Game_Manager {
   }
   void keyPressed() {
     if (hscore) {
-      if (key == 'r') {
+      if (keyCode == DOWN) {
         hscore = false;
         home = true;
       }
