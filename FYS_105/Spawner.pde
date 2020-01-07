@@ -8,7 +8,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 0;
+  int wave = 1;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
   boolean waveInProgress = false;
@@ -39,24 +39,54 @@ class Spawner extends GameObject {
       pushStyle();
       fill(255);
 
-      if (!waveTextTimer.TimerDone() && !waveInProgress) {
-        textSize(80);
-        text("WAVE "+ (wave + 1), width/2-150, height/2);
-      } else if (wave == 0)
-        NextWave();
-
-      if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
+      if (!waveTextTimer.TimerDone())
       {
-        waveInProgress = false;
-        waveFinished = true;
-        shop.cartX = -100;
+        textSize(80);
+        text("WAVE "+ (wave), width/2-150, height/2);
+      } else
+      {
+        waveInProgress = true;
       }
 
-      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
+
+
+      if (waveInProgress && waveTextTimer.TimerDone())
+      {
+        SpawnWave();
+      }
+
+
+      if (waveInProgress && waveTextTimer.TimerDone() && GameObjectRef.gameObject.size() == 0)
+      {
+        waveFinished = true;
+      }
+
+
+      if (waveFinished)
+      {
         lvlMngr.apActive = true;
-        if (wave%2 == 0)
+
+        if (wave % 2 == 0)
           shop.shopA = true;
       }
+      //if (!waveTextTimer.TimerDone() && !waveInProgress) {
+      //  textSize(80);
+      //  text("WAVE "+ (wave + 1), width/2-150, height/2);
+      //} else if (wave == 0)
+      //  NextWave();
+
+      //if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
+      //{
+      //  waveInProgress = false;
+      //  waveFinished = true;
+      //  shop.cartX = -100;
+      //}
+
+      //if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
+      //  lvlMngr.apActive = true;
+      //  if (wave%2 == 0)
+      //    shop.shopA = true;
+      //}
 
       if (shop.shopA)
         shop.draw();
@@ -77,20 +107,22 @@ class Spawner extends GameObject {
   void NextWave()
   {
     shop.shopA = false;
-    SpawnWave();
 
-    for (int i = 0; i < 1; i++)
-    {
-      wave++;
-    }
+
+    //SpawnWave();
+
+    //for (int i = 0; i < 1; i++)
+    //{
+    //  wave++;
+    //}
   }
 
 
 
   void SpawnWave()
   {
-    waveInProgress = true;
-    waveFinished = false;
+    //waveInProgress = true;
+    //waveFinished = false;
 
     HeavySpawn();
     GruntSpawn();
@@ -105,7 +137,7 @@ class Spawner extends GameObject {
 
 
   void BruteSpawn() {
-    for (int i = 0; i< random(wave, wave * 2); i ++)
+    for (int i = 0; i< round(random(wave, wave * 2)); i ++)
     {
       if (spawnBrtTimer.TimerDone())
       {
@@ -119,7 +151,7 @@ class Spawner extends GameObject {
 
 
   void GruntSpawn() {
-    for (int i = 0; i< random(wave, wave * 3); i ++)
+    for (int i = 0; i< round(random(wave, wave * 3)); i ++)
     {
       if (spawnGrntTimer.TimerDone())
       {
@@ -133,7 +165,7 @@ class Spawner extends GameObject {
 
 
   void SpeedsterSpawn() {
-    for (int i = 0; i< random(wave, wave * 4); i ++)
+    for (int i = 0; i< round(random(wave, wave * 4)); i ++)
     {
       if (spawnSpdTimer.TimerDone())
       {
@@ -147,7 +179,7 @@ class Spawner extends GameObject {
 
 
   void HeavySpawn() {
-    for (int i = 0; i< random(wave, wave * 2); i ++)
+    for (int i = 0; i< round(random(wave, wave * 2)); i ++)
     {
       if (spawnHvyTimer.TimerDone())
       {
@@ -161,6 +193,9 @@ class Spawner extends GameObject {
 
 
   void Boss1Spawn() {
-    Add(new Boss1());
+    for (int i = 0; i < round(wave / 5); i ++)
+    {
+      Add(new Boss1());
+    }
   }
 }
