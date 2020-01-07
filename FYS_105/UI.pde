@@ -39,24 +39,36 @@ class UI {
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit) {
-      damage.play();
-      damage.rewind();
-      levens--;
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
-    }
-    ableToBeHit = false;
-    hitStun.Timerr();
+      damage.play();
+      damage.rewind();
 
-    if (!ableToBeHit && hitStun.TimerDoneWithoutReset()) {
-      ableToBeHit = true;
-      hitStun.TimerReset();
+      ableToBeHit = false;
     }
+
+    //if (!ableToBeHit && hitStun.TimerDone()) {
+    //  ableToBeHit = true;
+    //  println("TIMER IS DONE AND BEING RESET!");
+    //  hitStun.Reset();
+    //}
   }
 
   void draw() {
 
     if (game) {
+
+      if (!ableToBeHit && hitStun.TimerDone())
+      {
+        ableToBeHit = true;
+        hitStun.Reset();
+      }
+
+
+
+
+
+
       // Pistol ammo cooldown
       if (myPlayer.currentGun == myPlayer.pistoll) {
         if (ammoP == 0) {
@@ -182,6 +194,7 @@ class UI {
     // Main menu
     // show depending on boolean
     if (gamemngr.home) {
+      pushStyle();
       main.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
@@ -204,6 +217,7 @@ class UI {
         rect(563, 522, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+      popStyle();
     }
     //if (controls) {
     //  controlImg.resize(width, height);

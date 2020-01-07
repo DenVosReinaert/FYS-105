@@ -1,36 +1,34 @@
-//Reno Bisschop
-
 class Powerups extends GameObject {
 
-  int speedUpX;
-  int speedUpY;
-  int speedUpDia;
+  Timer powerUpSpd = new Timer(4);
 
   //initializing the coordinates of the powerup 'SpeedUp'.
   Powerups() {
-    speedUpX = 640;
-    speedUpY = 360;
+    speedUpX = random(0, width);
+    speedUpY = random(0, height);
     speedUpDia = 20;
   }
 
   void draw() {
+    if (game) {
+      pushStyle();
+      fill(200, 0, 0);
+      ellipse(speedUpX, speedUpY, speedUpDia/2, speedUpDia/2);
+      popStyle();
 
-    speedUpX = width/2;
-    speedUpY = height/2;
-
-    ellipse(speedUpX, speedUpY, speedUpDia, speedUpDia);
-
-
-    if (dist(myPlayer.playerPosX, myPlayer.playerPosY, speedUpX, speedUpY) < 20) {
-      SpeedUp();
+      if (dist(myPlayer.objPosX, myPlayer.objPosY, speedUpX, speedUpY) < speedUpDia/2) {
+        SpeedUp();
+      }
     }
   }
 
+
+
   void SpeedUp() {
-
-    int speedUpSpeed = 3;
-
-    //WAIT FOR 10 SECONDS, THEN TURN SPEED BACK TO NORMAL;
-    myPlayer.defaultSpeed += speedUpSpeed;
+    powerUpSpd.Reset();
+    if (!powerUpSpd.TimerDone())
+      myPlayer.bonusSpeed = 3;
+    else
+      myPlayer.bonusSpeed = 0;
   }
 }

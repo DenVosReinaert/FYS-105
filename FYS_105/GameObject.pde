@@ -1,34 +1,51 @@
 public class GameObject {
 
-
-
   ArrayList<GameObject> gameObject = new ArrayList();
+  String tag;
 
-  float cooldown, threshold;
+
+
+
+
+
+  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
+
 
   boolean wkey, akey, skey, dkey, spacekey, onekey, twokey, threekey, upkey;
-
-  boolean lookingUp, lookingLeft, lookingRight = false;
-  boolean lookingDown = true;
+  boolean lookingUp, lookingLeft, lookingRight, lookingDown = true;
   boolean shootingUp, shootingDown, shootingLeft, shootingRight;
+  boolean collLeft, collRight, collTop, collBott;
 
-  String tag;
+
+  float dx, dy, dir, dxA, dyA;
+  float angleBetweenVector;
+  PVector enemyVector, playerVector;
+
+  float objPosX, objPosY, objWidth, objHeight;
 
   float moveVelX, moveVelY;
 
-  float tileSize;
-  float enemyPosX, enemyPosY, enemyH, enemyW;
-  float bulletPosX, bulletPosY, bulletWidth, bulletHeight, knockback, barrelPosX, barrelPosY;
-  float particlePosX, particlePosY, particleWidth, particleHeight, hp, particleSpeedX, particleSpeedY;
-  float playerPosX, playerPosY, playerWidth, playerHeight;
-  float defaultSpeed = 5;
-  float diaSpeed = (sqrt(pow(defaultSpeed, 2) + pow(defaultSpeed, 2)) / 2); //hij kiest twee punten op het veld om de diagonale snelheid te berekenen.
+  float defaultSpeed = 2.1;
+  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //Normalizes the defaultSpeed
 
-  float pillarPosX, pillarPosY, pillarWidth, pillarHeight;
 
-  PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
+  float knockback;
+  float cooldown, threshold;
+  float hp, hitValue;
+
   float scoreGain;
-  
+
+
+  float speedUpX, speedUpY, speedUpDia, bonusSpeed;
+
+
+  float tileSize;
+
+
+
+
+
+
 
   GameObject() 
   {
@@ -59,7 +76,6 @@ public class GameObject {
   {
     GameObjectRef.gameObject.add(object); 
     println("A new object has been created");
-    println(GameObjectRef.gameObject.size());
   }
 
   void Remove(GameObject object)

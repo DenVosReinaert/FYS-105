@@ -1,15 +1,18 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnableTimer = new Timer(5);
-  Timer spawnTimer = new Timer(2);
+  Timer spawnSpdTimer = new Timer(1);
+  Timer spawnGrntTimer = new Timer(2);
+  Timer spawnBrtTimer = new Timer(3);
+  Timer spawnHvyTimer = new Timer(5);
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 1;
+  int wave = 0;
   int gruntCount, bruteCount, heavyCount, speedsterCount, bossCount;
   boolean gruntSpawnDone, bruteSpawnDone, speedsterSpawnDone, heavySpawnDone, bossSpawnDone;
-  boolean waveInProgress = true;
+  boolean waveInProgress = false;
+  boolean waveFinished = false;
 
   Spawner() {
     spawnerPos0.x=width/2;
@@ -32,13 +35,37 @@ class Spawner extends GameObject {
 
   void draw() {
 
-    pushStyle();
-    fill(255);
+    if (game) {
+      pushStyle();
+      fill(255);
 
-    if (waveInProgress && GameObjectRef.gameObject.size() == 0)
-      NextWave();
+      if (!waveTextTimer.TimerDone() && !waveInProgress) {
+        textSize(80);
+        text("WAVE "+ (wave + 1), width/2-150, height/2);
+      } else if (wave == 0)
+        NextWave();
 
-    popStyle();
+      if (GameObjectRef.gameObject.size() == 0 && waveInProgress && !waveFinished)
+      {
+        waveInProgress = false;
+        waveFinished = true;
+        shop.cartX = -100;
+      }
+
+      if (!waveInProgress && waveFinished && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone()) {
+        lvlMngr.apActive = true;
+        if (wave%2 == 0)
+          shop.shopA = true;
+      }
+
+      if (shop.shopA)
+        shop.draw();
+
+      //if (!waveInProgress && GameObjectRef.gameObject.size() == 0 && waveTextTimer.TimerDone())
+      //  NextWave();
+
+      popStyle();
+    }
   }//spawnerUpdate
 
 
@@ -49,32 +76,21 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-    waveInProgress = false;
+    shop.shopA = false;
+    SpawnWave();
 
-    waveTextTimer.Timerr();
-
-    if (!waveTextTimer.TimerDoneWithoutReset() && !waveInProgress) {
-      textSize(80);
-      text("WAVE "+ wave, width/2-150, height/2);
-    }
-
-    if (waveTextTimer.TimerDoneWithoutReset())
+    for (int i = 0; i < 1; i++)
     {
-      SpawnWave();
-      for (int i = 0; i < 1; i++)
-      {
-        wave++;
-
-        waveTextTimer.TimerReset();
-      }
+      wave++;
     }
-    waveInProgress = true;
   }
 
 
 
   void SpawnWave()
   {
+    waveInProgress = true;
+    waveFinished = false;
 
     HeavySpawn();
     GruntSpawn();
@@ -86,33 +102,63 @@ class Spawner extends GameObject {
   }
 
 
+
+
   void BruteSpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
-      Add(new Brute());
+      if (spawnBrtTimer.TimerDone())
+      {
+        Add(new Brute());
+        spawnBrtTimer.Reset();
+      }
     }
   }//spawnerShow
+
+
+
 
   void GruntSpawn() {
     for (int i = 0; i< random(wave, wave * 3); i ++)
     {
-      Add(new Grunt());
+      if (spawnGrntTimer.TimerDone())
+      {
+        Add(new Grunt());
+        spawnGrntTimer.Reset();
+      }
     }
   }
+
+
+
 
   void SpeedsterSpawn() {
     for (int i = 0; i< random(wave, wave * 4); i ++)
     {
-      Add(new Speedster());
+      if (spawnSpdTimer.TimerDone())
+      {
+        Add(new Speedster());
+        spawnSpdTimer.Reset();
+      }
     }
   }
+
+
+
 
   void HeavySpawn() {
     for (int i = 0; i< random(wave, wave * 2); i ++)
     {
-      Add(new Heavy());
+      if (spawnHvyTimer.TimerDone())
+      {
+        Add(new Heavy());
+        spawnHvyTimer.Reset();
+      }
     }
   }
+
+
+
 
   void Boss1Spawn() {
     Add(new Boss1());

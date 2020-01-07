@@ -1,7 +1,7 @@
 class MachineGun extends GameObject {
 
-
-  MachineGun() {
+  MachineGun() 
+  {
     threshold = 8;
     cooldown = 0;
     knockback = 15;
@@ -9,75 +9,98 @@ class MachineGun extends GameObject {
 
 
   void holdingGun() {
-    float barrelX, barrelY;
-    if (myPlayer.lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-      image(handgunUp, barrelX, barrelY);
-      handgunUp.resize(8, 35);
-    } else if (myPlayer.lookingDown) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(handgunDown, barrelX, barrelY);
-      handgunDown.resize(8, 35);
-    } else if (myPlayer.lookingRight) {
-      barrelX = myPlayer.playerPosX + playerWidth + 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunRight, barrelX, barrelY);
-      handgunRight.resize(35, 16);
-    } else if (myPlayer.lookingLeft) {
-      barrelX = myPlayer.playerPosX - playerWidth - 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunLeft, barrelX, barrelY);
-      handgunLeft.resize(35, 16);
+
+
+    if (myPlayer.lookingUp) 
+    {
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+      image(arU, objPosX, objPosY);
+      // handgunUp.resize(8, 35);
+    } else if (myPlayer.lookingDown) 
+    {
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+      image(arD, objPosX, objPosY);
+      //handgunDown.resize(8, 35);
+    } else if (myPlayer.lookingRight)
+    {
+      objPosX = myPlayer.objPosX;
+      objPosY = myPlayer.objPosY + 10;
+      image(arR, objPosX, objPosY);
+      //handgunRight.resize(35, 16);
+    } else if (myPlayer.lookingLeft) 
+    {
+      objPosX = myPlayer.objPosX - 30;
+      objPosY = myPlayer.objPosY + 10;
+      image(arL, objPosX, objPosY);
+      //handgunLeft.(35, 16);
     }
   }
 
 
   void shoot() {
 
+    myPlayer.muzzlePointX = objPosX;
+    myPlayer.muzzlePointY = objPosY + 8;
 
     if (cooldown == threshold && myPlayer.shootingUp) {
       if (UI.ammoM1 > 0 ) {
+        myPlayer.lookingUp = true;
+
         Add(new Bullet(random(-0.5, 0.5), random(-14.5, -15.5)));
         UI.ammoM1--;
         cooldown = 0;
 
-        myPlayer.moveVelY += knockback;
+        if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
+          myPlayer.objPosY += knockback;
 
         LMG.play();
         LMG.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingDown) {
+
       if (UI.ammoM1 > 0 ) {
+        myPlayer.lookingDown = true;
         Add(new Bullet(random(-0.5, 0.5), random(14.5, 15.5)));
         UI.ammoM1--;
         cooldown = 0;
 
 
-        myPlayer.moveVelY -= knockback;
+        if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
+          myPlayer.objPosY -= knockback;
 
         LMG.play();
         LMG.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
       if (UI.ammoM1 > 0 ) {
+        myPlayer.lookingLeft = true;
+
         Add(new Bullet(random(-14.5, -15.5), random(-0.5, 0.5)));
         UI.ammoM1--;
         cooldown = 0;
 
-        myPlayer.moveVelX += knockback;
+
+        if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
+          myPlayer.objPosX += knockback;
+
 
         LMG.play();
         LMG.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingRight) {
+
       if (UI.ammoM1 > 0 ) {
+        myPlayer.lookingRight = true;
         Add(new Bullet(random(14.5, 15.5), random(-0.5, 0.5)));
         UI.ammoM1--;
         cooldown = 0;
 
-        myPlayer.moveVelX -= knockback;
+
+        if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
+          myPlayer.objPosX -= knockback;
+
 
         LMG.play();
         LMG.rewind();

@@ -1,16 +1,19 @@
 class Bullet extends GameObject {
+
   int bulletState = 0;
 
   Bullet(float incomingDX, float incomingDY) {
 
-    bulletPosX = myPlayer.playerPosX + myPlayer.playerWidth/2;  //x position of bullet begins on y position of player
-    bulletPosY = myPlayer.playerPosY + myPlayer.playerHeight/5;  //y position of bullet begins on y position of player
+
+
+    objPosX = myPlayer.muzzlePointX;  //x position of bullet begins on y position of player
+    objPosY = myPlayer.muzzlePointY;  //y position of bullet begins on y position of player
 
     moveVelX = incomingDX;    
     moveVelY= incomingDY;
     //hp = 1;
-    bulletWidth = 15;
-    bulletHeight = 15;
+    objWidth = bullet.width;
+    objHeight = bullet.height;
 
     tag = "bullet";
 
@@ -31,45 +34,45 @@ class Bullet extends GameObject {
 
   void draw() {
 
-    bulletPosX += moveVelX;
-    bulletPosY += moveVelY;
+    objPosX += moveVelX;
+    objPosY += moveVelY;
 
 
     switch(bulletState) {
     case 1:
-      bulletWidth = bulletRight.width;
-      bulletHeight = bulletRight.height;
-      image(bulletRight, bulletPosX, bulletPosY);
+      objWidth = bulletRight.width;
+      objHeight = bulletRight.height;
+      image(bulletRight, objPosX, objPosY);
       break;
     case 2:
-      bulletWidth = bulletLeft.width;
-      bulletHeight = bulletLeft.height;
-      image(bulletLeft, bulletPosX, bulletPosY);
+      objWidth = bulletLeft.width;
+      objHeight = bulletLeft.height;
+      image(bulletLeft, objPosX, objPosY);
       break;
     case 3:
-      bulletWidth = bullet.width;
-      bulletHeight = bullet.height;
-      image(bullet, bulletPosX, bulletPosY);
+      objWidth = bullet.width;
+      objHeight = bullet.height;
+      image(bullet, objPosX, objPosY);
       break;
     case 4:
-      bulletWidth = bulletDown.width;
-      bulletHeight = bulletDown.height;
-      image(bulletDown, bulletPosX, bulletPosY);
+      objWidth = bulletDown.width;
+      objHeight = bulletDown.height;
+      image(bulletDown, objPosX, objPosY);
       break;
     case 5:
-      bulletWidth = buckS.width;
-      bulletHeight = buckS.height;
-      image(buckS, bulletPosX, bulletPosY);
-      bulletWidth = buckS.width;
-      bulletHeight = buckS.height;
+      objWidth = buckS.width;
+      objHeight = buckS.height;
+      image(buckS, objPosX, objPosY);
+      objWidth = buckS.width;
+      objHeight = buckS.height;
       break;
     }
 
     //Bullet Removal
-    if (bulletPosX + bulletWidth > width || bulletPosX < 0 || bulletPosY < 0 || bulletPosY + bulletHeight > height)
+    if (objPosX + objWidth > width || objPosX < 0 || objPosY < 0 || objPosY + objHeight > height || collLeft || collRight || collTop || collBott)
     {
       Remove(this);
-      ascore.combo = 1;
+      ascore.ComboReset();
       println("combo reset!");
       bruh.play();
       bruh.rewind();
@@ -78,6 +81,6 @@ class Bullet extends GameObject {
 
 
   boolean hasDied() {
-    return bulletPosY < 0 || bulletPosY > height || bulletPosX < 0 || bulletPosX > width;
+    return objPosY < 0 || objPosY > height || objPosX < 0 || objPosX > width;
   }
 }

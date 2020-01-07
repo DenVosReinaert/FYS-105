@@ -6,25 +6,26 @@ class Heavy extends GameObject {
 
     scoreGain = 10;
 
-    enemyW=60;
-    enemyH=60;
     hp=6;
     moveVelX=0.75;
     moveVelY=0.75;
 
+    hitValue = 2;
+
+
     float r = random(-1, 3);
     if (r <= 0) {
-      enemyPosX = spawn.spawnerPos0.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos0.y;
+      objPosX = spawn.spawnerPos0.x - objWidth/2;
+      objPosY = spawn.spawnerPos0.y;
     } else if (r > 0 && r <= 1) {
-      enemyPosX = spawn.spawnerPos1.x - enemyW/2;
-      enemyPosY = spawn.spawnerPos1.y;
+      objPosX = spawn.spawnerPos1.x - objWidth/2;
+      objPosY = spawn.spawnerPos1.y;
     } else if (r > 1 && r <= 2) {
-      enemyPosX = spawn.spawnerPos2.x;
-      enemyPosY = spawn.spawnerPos2.y - enemyH/2;
+      objPosX = spawn.spawnerPos2.x;
+      objPosY = spawn.spawnerPos2.y - objHeight/2;
     } else if (r > 2 && r <= 3) {
-      enemyPosX = spawn.spawnerPos3.x;
-      enemyPosY = spawn.spawnerPos3.y - enemyH/2;
+      objPosX = spawn.spawnerPos3.x;
+      objPosY = spawn.spawnerPos3.y - objHeight/2;
     }
   }//constructor Heavy
 
@@ -32,31 +33,70 @@ class Heavy extends GameObject {
 
 
   void draw() {
+    objWidth=114;
+    objHeight=72;
+
     checkPulse();
-    pushStyle();
-    fill(91, 80, 80);
-    rect(enemyPosX, enemyPosY, enemyW, enemyH);
-    popStyle();
+
+    enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
+    playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
+    dxA = enemyVector.x - playerVector.x;
+    dyA = enemyVector.y - playerVector.y;
+
+
+    angleBetweenVector = atan2(dxA, dyA);
+
+    if (angleBetweenVector > -0.75 && angleBetweenVector < 0.75) {
+      heavyU.draw(objPosX, objPosY);
+      heavyU.update();
+    }
+
+    if ( (angleBetweenVector > 2.25 && angleBetweenVector < 3.2) || (angleBetweenVector < -2.25 && angleBetweenVector > -3.2) ) {
+      heavyD.draw(objPosX, objPosY);
+      heavyD.update();
+    }
+
+    if (angleBetweenVector > 0.75 && angleBetweenVector < 2.25) {
+      objWidth = 90;
+      objHeight = 70;
+      heavyL.draw(objPosX, objPosY);
+      heavyL.update();
+    }
+
+    if (angleBetweenVector > -2.25 && angleBetweenVector < -0.75) {
+      objWidth = 90;
+      objHeight = 70;
+      heavyR.draw(objPosX, objPosY);
+      heavyR.update();
+    }
 
     //ENEMY MOVEMENT
-    if (dist(myPlayer.playerPosX + myPlayer.playerWidth/2, myPlayer.playerPosY + myPlayer.playerHeight/2, enemyPosX + enemyW/2, enemyPosY + enemyH/2) < 2000) { 
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 > enemyPosX + enemyW/2) {
-        enemyPosX += moveVelX;
-      }//if
-      if (myPlayer.playerPosX + myPlayer.playerWidth/2 < enemyPosX + enemyW/2) {
-        enemyPosX -= moveVelX;
-      }//if
-      if (myPlayer.playerPosY + myPlayer.playerHeight/2  < enemyPosY+ enemyH/2) {
-        enemyPosY -= moveVelY;
-      } //if
-      else {
-        enemyPosY += moveVelY;
-      }//else
-    }
+    dx = myPlayer.objPosX - objPosX;
+    dy = myPlayer.objPosY - objPosY;
+
+    dir = sqrt(sq(dx) + sq(dy));
+
+    dx *= (moveVelX / dir);
+    dy *= (moveVelY / dir);
+
+
+    if (!collLeft && !collRight)
+      objPosX += dx;
+
+    if (!collTop && !collBott)
+      objPosY += dy;
+
+
+
     if (Dead())
     {
       Remove(this);
     }
+
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
   }//enemyShow
 
 
@@ -68,27 +108,31 @@ class Heavy extends GameObject {
     {
 
       //Collision with Player
-      if (enemyPosX < myPlayer.playerPosX + myPlayer.playerWidth && enemyPosX + enemyW > myPlayer.playerPosX && enemyPosY < myPlayer.playerPosY + myPlayer.playerHeight && enemyPosY + enemyH > myPlayer.playerPosY)
+      if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
+        UI.levens -= hitValue;
         hp = 0;
       }
 
       //Collision with Bullet
-      if (enemyPosX < GameObjectRef.gameObject.get(i).bulletPosX + GameObjectRef.gameObject.get(i).bulletWidth && enemyPosX + enemyW > GameObjectRef.gameObject.get(i).bulletPosX && enemyPosY < GameObjectRef.gameObject.get(i).bulletPosY + GameObjectRef.gameObject.get(i).bulletHeight && enemyPosY + enemyH > GameObjectRef.gameObject.get(i).bulletPosY)
+      if (GameObjectRef.gameObject.get(i).tag == "bullet")
       {
-        hp=hp-1;
-        Remove(GameObjectRef.gameObject.get(i));
-        ascore.combo += gamemngr.comboMultiplier;
-        println("combo increase!");
-        gamemngr.shakeAmount = 3;
-        gamemngr.shake = true;
-        if (hp == 0) {
-          ascore.score += scoreGain * ascore.combo;
+        if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
+        {
+          hp=hp-1;
+          Remove(GameObjectRef.gameObject.get(i));
+          ascore.combo += gamemngr.comboMultiplier;
+          println("combo increase!");
+          gamemngr.shakeAmount = 3;
+          gamemngr.shake = true;
+          if (hp == 0) {
+            ascore.score += scoreGain * ascore.combo;
+          }
+          for (int j=0; j < 20; j++) {
+            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+          }//for
         }
-        for (int j=0; j < 20; j++) {
-          Add(new Particle(enemyPosX + enemyW/2, enemyPosY + enemyH/2));
-        }//for
       }
     }
   }

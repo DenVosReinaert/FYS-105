@@ -10,7 +10,11 @@ class Level1
   int xLoc, yLoc;
 
   void setup()
-  {
+  {    
+    for (int i = 0; i < pillarCount; i++)
+    {
+      pillars[i] = new Pillar();
+    }
   }
 
 
@@ -30,13 +34,13 @@ class Level1
   {
     //flowerpath on 2,4,8,10 X && 2,6 Y 
     //GardenPath
-    pushMatrix();
+    pushStyle();
 
     gardenPathK.resize(width, height);
     image(gardenPathK, 0, 0);
 
 
-    popMatrix();
+    popStyle();
 
     //Pathing left to right
     for (int i = 0; i < 14; i++)
@@ -70,6 +74,16 @@ class Level1
 
   void Layer2()
   {  
+    for (int i = 0; i < 2; i ++)
+    {
+
+      for (int j = 0; j < 6; j++)
+      {
+        image(gardenPathF, -60 + tileSize * j, i * (-40 + tileSize * 7));
+      }
+    }
+
+
     gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 2);
     gardenPathFlowerPatch.draw(-60 + tileSize * 2, -40 + tileSize * 5);
     gardenPathFlowerPatch.draw(-60 + tileSize * 11, -40 + tileSize * 2);
@@ -96,10 +110,7 @@ class Level1
     //image(background, 0, 0);
 
     //Pillars
-    for (int i = 0; i < pillarCount; i++)
-    {
-      pillars[i] = new Pillar();
-    }
+
     pillars[0].draw(-60 + tileSize * 3, -40 + tileSize * 1.5);
     pillars[1].draw(-60 + tileSize * 10, -40 + tileSize * 1.5);
     pillars[2].draw(-60 + tileSize * 3, -40 + tileSize * 4.5);

@@ -1,43 +1,31 @@
 class Timer
 {
 
-  float frames, framesInitial;
+  float startMillis, milliSeconds;
 
-  Timer(float seconds)
+
+
+
+  Timer(float secondsInint)
   {
-    framesInitial = seconds * frameRate;
-    frames = framesInitial;
+    milliSeconds = secondsInint * 1000;
+    startMillis = millis();
   }
 
-  public float Timerr()
-  {
-    frames --;
-
-    return frames;
-  }
 
 
   boolean TimerDone()
   {
-    if (frames < 0)
-    {
-      TimerReset();
-      return true;
-    }
-    return false;
-  }
-
-  boolean TimerDoneWithoutReset()
-  {
-    if (frames < 0)
+    if (millis() - milliSeconds > startMillis)
     {
       return true;
-    }
-    return false;
+    } else return false;
   }
 
-  public void TimerReset()
+
+
+  void Reset()
   {
-    frames = framesInitial;
+    startMillis = millis();
   }
 }

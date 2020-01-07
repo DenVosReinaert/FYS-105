@@ -14,7 +14,7 @@ class UltimateMachineGun extends GameObject {
       cooldown = 0;
 
       //the knockback is down.
-      myPlayer.playerPosY += knockback;
+      myPlayer.objPosY += knockback;
 
       //if you are shooting down, the bullets will go down.
     } else if (cooldown == threshold && myPlayer.shootingDown) {
@@ -23,7 +23,7 @@ class UltimateMachineGun extends GameObject {
       cooldown = 0;
 
       //the knockback is up.
-      myPlayer.playerPosY -= knockback;
+      myPlayer.objPosY -= knockback;
 
       //if you are shooting to the right, the bullets will go right.
     } else if (cooldown == threshold && myPlayer.shootingRight) {
@@ -32,7 +32,7 @@ class UltimateMachineGun extends GameObject {
       cooldown = 0;
 
       //the knockback is to the left.
-      myPlayer.playerPosX -= knockback;
+      myPlayer.objPosX -= knockback;
 
       //if you are shooting to the let, the bullets will go left.
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
@@ -41,7 +41,7 @@ class UltimateMachineGun extends GameObject {
       cooldown = 0;
 
       //the knockback is to the right.
-      myPlayer.playerPosX += knockback;
+      myPlayer.objPosX += knockback;
     }
   }
 

@@ -1,3 +1,6 @@
+// TE4M
+// Dylan Vermeulen
+
 class Player extends GameObject {
 
   Timer weaponSwapPrevTimer = new Timer(1);
@@ -9,17 +12,17 @@ class Player extends GameObject {
 
   int currentGun, pistoll, shotgun, machinegun;
 
-  boolean nextGun, prevGun, swapable;
+  float muzzlePointX, muzzlePointY;
 
+  boolean nextGun, prevGun, swapable;
 
   Player() {
 
 
-
-    playerWidth = 25;
-    playerHeight = 40;
-    playerPosX = (width/2) - playerWidth/2;
-    playerPosY = (height/2) - playerHeight/2;
+    objWidth = 28;
+    objHeight = 40;
+    objPosX = (width/2) - objWidth/2;
+    objPosY = (height/2) - objHeight/2;
 
     tag = "player";
 
@@ -33,6 +36,22 @@ class Player extends GameObject {
 
 
   void draw() {
+    
+
+
+
+    if (objPosX + moveVelX < 0)
+      collLeft = true;
+
+    if (objPosX + objWidth + moveVelX > width)
+      collRight = true;
+
+    if (objPosY + moveVelY < 0)
+      collTop = true;
+
+    if (objPosY + objHeight + moveVelY > height)
+      collBott = true;
+
 
     if (onekey) {
       currentGun = pistoll;
@@ -47,17 +66,16 @@ class Player extends GameObject {
 
 
     if (myPlayer.lookingLeft) {
-      mrSpooksLeft.draw(playerPosX, playerPosY);
+      mrSpooksLeft.draw(objPosX, objPosY);
       mrSpooksLeft.update();
     } else if (myPlayer.lookingRight) {
-      mrSpooksRight.draw(playerPosX, playerPosY);
+      mrSpooksRight.draw(objPosX, objPosY);
       mrSpooksRight.update();
     } else if (myPlayer.lookingDown)
     {
-      mrSpooksDown.draw(playerPosX, playerPosY);
+      mrSpooksDown.draw(objPosX, objPosY);
       mrSpooksDown.update();
     }
-    // rect(playerPosX, playerPosY, playerWidth, playerHeight);
 
     if (myPlayer.currentGun == pistoll)
       pistol.holdingGun();
@@ -69,21 +87,20 @@ class Player extends GameObject {
       machineGun.holdingGun();
 
     if (myPlayer.lookingUp) {
-      mrSpooksUp.draw(playerPosX, playerPosY);
+      mrSpooksUp.draw(objPosX, objPosY);
       mrSpooksUp.update();
     }
 
-
-
-    moveVelX = 0;
-    moveVelY = 0;
-
-
     //240
+
+    //MOVEMENT
+    moveVelX = defaultSpeed;
+    moveVelY = defaultSpeed;
+
 
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else defaultSpeed = 5;
+    } else defaultSpeed = 2.1;
 
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)
@@ -103,154 +120,43 @@ class Player extends GameObject {
       }
     }
 
-
-    if (playerPosX < 0)
-      playerPosX = 0;
-
-    if (playerPosX + playerWidth > width)
-      playerPosX = width - playerWidth;
-
-    if (playerPosY < 0)
-      playerPosY = 0;
-
-    if (playerPosY + playerHeight > height)
-      playerPosY = height - playerHeight;
-
-
-
-    if (akey)
+    if (akey && !collLeft)
     {
-      if (playerPosX + moveVelX < 0)
-      {
-        moveVelX = 0;
-      } else
-        playerPosX -= defaultSpeed;
+      objPosX -= moveVelX;
     }
 
-    if (dkey)
+    if (dkey && !collRight)
     {
-      if (playerPosX + playerWidth > width)
-      {
-        moveVelX = 0;
-      } else
-        playerPosX += defaultSpeed;
+      objPosX += moveVelX;
     }
 
-    if (wkey)
+    if (wkey && !collTop)
     {
-      if (playerPosY + moveVelY < 0)
-      {
-        moveVelY = 0;
-      } else
-        playerPosY -= defaultSpeed;
+      objPosY -= moveVelY;
     }
 
-    if (skey)
+    if (skey && !collBott)
     {
-      if (playerPosY + moveVelY > height)
-      {
-        moveVelY = 0;
-      } else
-        playerPosY += defaultSpeed;
+      objPosY += moveVelY;
     }
 
-
-    if (prevGun) {
-      weaponSwapPrevTimer.Timerr();
-
-      swapable = true;
-
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int i = 0; i < 1; i++)
-        {
-          if (currentGun >= 1)
-          {
-            currentGun --;
-          } else if (currentGun < 1) currentGun = 3;
-        }
-
-        swapable = false;
-      }
-
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
+    if (currentGun > 3) {
+      currentGun = 1;
+    }
+    if (currentGun < 1) {
+      currentGun = 3;
     }
 
-
-    if (nextGun) {
-      weaponSwapNextTimer.Timerr();
-
-      swapable = true;
-
-      if (swapable && !weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        for (int j = 0; j < 1; j++)
-        {
-          if (currentGun <= 3)
-          {
-            currentGun ++;
-          } else if (currentGun > 3) currentGun = 1;
-        }
-
-        swapable = false;
-      }
-
-      if (weaponSwapNextTimer.TimerDoneWithoutReset())
-      {
-        swapable = true;
-        weaponSwapNextTimer.TimerReset();
-      }
-    }
-
-
-    playerPosX += moveVelX;
-    playerPosY += moveVelY;
+    collLeft = false;
+    collRight = false;
+    collTop = false;
+    collBott = false;
   }
 
-
-
-
-
   void keyPressed() {
-    if (key == 'a') {
-      akey = true;
-      lookingLeft = true;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == 's') {
-      skey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = false;
-      lookingDown = true;
-    }
-    if (key == 'd') {
-      dkey = true;
-      lookingLeft = false;
-      lookingUp = false;
-      lookingRight = true;
-      lookingDown = false;
-    }
-    if (key == 'w') {
-      wkey = true;
-      lookingLeft = false;
-      lookingUp = true;
-      lookingRight = false;
-      lookingDown = false;
-    }
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-
-
-    if (keyCode == LEFT)
-    {
+    // Controls for shooting in all directions and looking in all directions
+    switch(keyCode) {
+    case LEFT:
       shootingLeft = true;
       shootingRight = false;
       shootingDown = false;
@@ -260,9 +166,8 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = false;
       lookingDown = false;
-    }
-    if (keyCode == RIGHT)
-    {
+      break;
+    case RIGHT:
       shootingLeft = false;
       shootingRight = true;
       shootingDown = false;
@@ -272,9 +177,8 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = true;
       lookingDown = false;
-    }
-    if (keyCode == UP)
-    {
+      break;
+    case UP:
       shootingLeft = false;
       shootingRight = false;
       shootingDown = false;
@@ -284,9 +188,8 @@ class Player extends GameObject {
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
-    }
-    if (keyCode == DOWN)
-    {
+      break;
+    case DOWN:
       shootingLeft = false;
       shootingRight = false;
       shootingDown = true;
@@ -296,31 +199,95 @@ class Player extends GameObject {
       lookingUp = false;
       lookingRight = false;
       lookingDown = true;
+      break;
     }
-    if (key == 'q')
-    {
-      prevGun = true;
-      nextGun = false;
-    }
-    if (key =='e')
-    {
-      prevGun = false;
-      nextGun = true;
+
+    // Controlls for walking in all directions
+    switch(key) {
+    case 'a':
+      akey = true;
+      lookingLeft = true;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = false;
+      break;
+    case 's':
+      skey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = false;
+      lookingDown = true;
+      break;
+    case 'd':
+      dkey = true;
+      lookingLeft = false;
+      lookingUp = false;
+      lookingRight = true;
+      lookingDown = false;
+      break;
+    case 'w':
+      wkey = true;
+      lookingLeft = false;
+      lookingUp = true;
+      lookingRight = false;
+      lookingDown = false;
+
+      // Controls for switching weapons on desktop
+      if (key == '1') onekey = true;
+      if (key == '2') twokey = true;
+      if (key == '3') threekey = true;
+
+      // Controls for switching weapons on a cycle with snes controller
+      if (key == 'q')
+      {
+        currentGun--;
+      }
+      if (key =='e')
+      {
+        currentGun++;
+      }
     }
   }
-
   void keyReleased() {
-    if (key == 'a') akey = false;
-    if (key == 's') skey = false;
-    if (key == 'd') dkey = false;
-    if (key == 'w') wkey = false;
+
+    // Release for the walking directions   
+    switch(key) {
+    case 'a':
+      akey = false;  
+      break;
+    case 's':
+      skey = false;
+      break;
+    case 'd':
+      dkey = false;
+      break;
+    case 'w':
+      wkey = false;
+      break;
+    }
+
+    // Release for controlls for whooting in all directions.
+    switch(keyCode) {
+    case LEFT:
+      shootingLeft = false;
+      break;
+    case RIGHT:
+      shootingRight = false;
+      break;
+    case UP:
+      shootingUp = false;
+      break;
+    case DOWN:
+      shootingDown = false;
+      break;
+    }
+
+    // Release for controls for switching weapons on desktop
     if (key == '1') onekey = true;
     if (key == '2') twokey = true;
     if (key == '3') threekey = true;
-    if (keyCode == LEFT) shootingLeft = false;
-    if (keyCode == RIGHT) shootingRight = false;
-    if (keyCode == UP) shootingUp = false;
-    if (keyCode == DOWN) shootingDown = false;
+
+    // Release for controls for switching weapons on a cycle with snes controller 
     if (key == 'q') prevGun = false;
     if (key == 'e') nextGun = false;
   }

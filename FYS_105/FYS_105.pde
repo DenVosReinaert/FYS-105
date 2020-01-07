@@ -15,17 +15,12 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 
 boolean game, works;
 
-// DIT MOET NOG ERGENS ANDERS :D
-String dbHost = "oege.ie.hva.nl"; 
-String dbPort = "3306"; 
-String dbUser = "koeneqt"; 
-String dbPass = "7EwwK5+iBmUXUd"; 
-String dbName = "zkoeneqt";
-//
 
 LevelManager lvlMngr;
 
+Shop shop;
 hScorelijst hscorel;
+Powerups PowerUps;
 Player player;
 UI UI;
 GameOver gameover;
@@ -36,6 +31,7 @@ Player myPlayer;
 //Gun myGun;
 Spawner spawn;
 GameObject GameObjectRef;
+Achievements chieves;
 
 
 void setup()
@@ -44,13 +40,17 @@ void setup()
   //X: -10
   //Y: -90
   size(1280, 720);
+
+
   minim = new Minim(this);
 
   LoadAssets();
 
   myPlayer = new Player();
+  PowerUps = new Powerups();
   UI = new UI();
   spawn = new Spawner();
+  shop = new Shop();
   gamemngr = new Game_Manager();
 
   gamemngr.home = true;
@@ -60,7 +60,7 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   GameObjectRef = new GameObject();
-
+  chieves = new Achievements();
   lvlMngr.setup();
 }
 
@@ -88,13 +88,14 @@ void draw()
 
   if (game)
     GameObjectRef.draw();
+  PowerUps.draw();
 }
 
 
 void keyPressed() {
   // To check if you can die..
   if (key == 'p') {
-   UI.spelerhit(); 
+    UI.spelerhit();
   }
 
   if (keyCode >= KEY_LIMIT) return;
@@ -107,8 +108,9 @@ void keyReleased() {
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = false;
   gamemngr.keyReleased();
-
+  pushStyle();
   background.resize(width, height);
+  popStyle();
 }
 
 

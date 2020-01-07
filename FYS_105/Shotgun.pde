@@ -1,56 +1,62 @@
 class Shotgun extends GameObject {
 
 
-
   Shotgun() {
     threshold = 100;
     cooldown = 0;
     knockback = 40;
   }
-  
-    void holdingGun() {
-    float barrelX, barrelY;
+
+  void holdingGun() {
+
     if (myPlayer.lookingUp) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY - myPlayer.playerHeight/2;
-      image(handgunUp, barrelX, barrelY);
-      handgunUp.resize(8, 35);
-      
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+
+      image(pumpU, objPosX, objPosY);
+      //handgunUp.resize(8, 35);
     } else if (myPlayer.lookingDown) {
-      barrelX = myPlayer.playerPosX + myPlayer.playerWidth/2+4;
-      barrelY = myPlayer.playerPosY + myPlayer.playerHeight/2+10;
-      image(handgunDown, barrelX, barrelY);
-      handgunDown.resize(8, 35);
-      
+      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+      image(pumpD, objPosX, objPosY);
+      //handgunDown.resize(8, 35);
     } else if (myPlayer.lookingRight) {
-      barrelX = myPlayer.playerPosX + playerWidth + 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunRight, barrelX, barrelY);
-      handgunRight.resize(35, 16);
-      
+      objPosX = myPlayer.objPosX;
+      objPosY = myPlayer.objPosY + 10;
+      image(pumpR, objPosX, objPosY);
+      //handgunRight.resize(35, 16);
     } else if (myPlayer.lookingLeft) {
-      barrelX = myPlayer.playerPosX - playerWidth - 20;
-      barrelY = myPlayer.playerPosY - playerHeight/2 + 2;
-      image(handgunLeft, barrelX, barrelY);
-      handgunLeft.resize(35, 16);
+      objPosX = myPlayer.objPosX - 30;
+      objPosY = myPlayer.objPosY + 10;
+      image(pumpL, objPosX, objPosY);
+      //handgunLeft.resize(35, 16);
     }
   }
-  
-  
+
+
 
   void shoot() {
 
+
+    myPlayer.muzzlePointX = objPosX;
+    myPlayer.muzzlePointY = objPosY;
+
+
     if (cooldown == threshold && myPlayer.shootingUp) {
+
+
       if ( UI.ammoS1 > 0) {
 
         for (int i = 0; i < 5; i++)
         {
+          myPlayer.lookingUp = true;
           Add(new Bullet(random(-2, 2), random(-14, -16)));
         }
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.moveVelY += knockback;
+        if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
+          myPlayer.objPosY += knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -58,17 +64,21 @@ class Shotgun extends GameObject {
         ShotgunReload.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingDown) {
+
+
       if ( UI.ammoS1 > 0) {
 
 
         for (int i = 0; i < 5; i++)
         {
+          myPlayer.lookingDown = true;
           Add(new Bullet(random(-2, 2), random(14, 16)));
         }
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.moveVelY -= knockback;
+        if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
+          myPlayer.objPosY -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -76,16 +86,20 @@ class Shotgun extends GameObject {
         ShotgunReload.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingRight) {
+
+
       if ( UI.ammoS1 > 0) {
 
         for (int i = 0; i < 5; i++)
         {
+          myPlayer.lookingRight = true;
           Add(new Bullet(random(14, 16), random(-2, 2)));
         }
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.moveVelX -= knockback;
+        if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
+          myPlayer.objPosX -= knockback;
 
         Shotgun.play();
         Shotgun.rewind();
@@ -93,15 +107,19 @@ class Shotgun extends GameObject {
         ShotgunReload.rewind();
       }
     } else if (cooldown == threshold && myPlayer.shootingLeft) {
+
+
       if ( UI.ammoS1 > 0) {
         for (int i = 0; i < 5; i++)
         {
+          myPlayer.lookingLeft = true;
           Add(new Bullet(random(-14, -16), random(-2, 2)));
         }
         UI.ammoS1--;
         cooldown = 0;
 
-        myPlayer.moveVelX += knockback;
+        if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
+          myPlayer.objPosX += knockback;
 
         Shotgun.play();
         Shotgun.rewind();

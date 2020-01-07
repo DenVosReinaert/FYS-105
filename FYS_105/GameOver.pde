@@ -50,13 +50,15 @@ class GameOver {
   void draw() {
     clear();
     if (gamemngr.dead) {
+      gameMusic.pause();
+      gameMusic.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
         GameObjectRef.gameObject.get(i).hp = 0;
         GameObjectRef.Remove(GameObjectRef.gameObject.get(i));
       }
-      // Turn off everything!
+      // Turn everything off!
       myPlayer.shootingRight = false;
       myPlayer.shootingLeft = false;
       myPlayer.shootingUp = false;
@@ -64,8 +66,8 @@ class GameOver {
       myPlayer.lookingLeft = false;
       myPlayer.lookingRight = false;
       myPlayer.lookingUp = false;
-      myPlayer.lookingDown = false;
-      
+      myPlayer.lookingDown = true;
+
       death.play();
 
       // The dot under the letters depending on which state they are
@@ -127,8 +129,8 @@ class GameOver {
   void keyPressed() {
     if (gamemngr.dead) {
       if (key == '\n') {
-        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         ascore.saveScore();
@@ -213,11 +215,12 @@ class GameOver {
 
   void Reset()
   {
+    ascore.combo = 1;
     UI.levens = 3;
     gamemngr.hscoreA = 0;
 
-    myPlayer.playerPosX = width/2 - myPlayer.playerWidth/2;
-    myPlayer.playerPosY = height/2 - myPlayer.playerHeight/2;
+    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
+    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
     Pistol.pause();
     Shotgun.pause();
@@ -240,9 +243,14 @@ class GameOver {
     l3s = 0;
     l4s = 0;
     ascore.score = 0;
-    spawn.wave = 1;
+    spawn.wave = 0;
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
+
+    myPlayer.collLeft = false;
+    myPlayer.collRight = false;
+    myPlayer.collTop = false;
+    myPlayer.collBott = false;
   }
 }
