@@ -58,22 +58,10 @@ class LevelManager
         ||
         (myPlayer.objPosX + myPlayer.moveVelX < apR.x + 49 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apR.x && myPlayer.objPosY + myPlayer.moveVelY < apR.y + 38 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apR.y))
       {
-        NextWave();
+        spawn.NextWave();
       }
     }
   }
 
-  void NextWave()
-  {
-    spawn.waveTextTimer.Reset();
-    apActive = false;
 
-    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
-    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
-
-    for (int i = 0; i < 1; i++)
-    {
-      lvlNum = round(random(0, 3));
-    }
-  }
 }

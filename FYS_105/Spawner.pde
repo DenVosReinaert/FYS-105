@@ -43,15 +43,9 @@ class Spawner extends GameObject {
       {
         textSize(80);
         text("WAVE "+ (wave), width/2-150, height/2);
-      } else
+      } else if (!waveInProgress && waveTextTimer.TimerDone())
       {
         waveInProgress = true;
-      }
-
-
-
-      if (waveInProgress && waveTextTimer.TimerDone())
-      {
         SpawnWave();
       }
 
@@ -106,15 +100,23 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+    waveInProgress = false;
+    waveFinished = false;
+
+    spawn.wave ++;
+
+    waveTextTimer.Reset();
     shop.shopA = false;
+    lvlMngr.apActive = false;
 
 
-    //SpawnWave();
+    myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
+    myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
-    //for (int i = 0; i < 1; i++)
-    //{
-    //  wave++;
-    //}
+    for (int i = 0; i < 1; i++)
+    {
+      lvlMngr.lvlNum = round(random(0, 3));
+    }
   }
 
 

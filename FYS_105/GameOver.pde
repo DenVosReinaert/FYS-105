@@ -252,5 +252,10 @@ class GameOver {
     myPlayer.collRight = false;
     myPlayer.collTop = false;
     myPlayer.collBott = false;
+
+    myPlayer.akey = false;
+    myPlayer.dkey = false;
+    myPlayer.wkey = false;
+    myPlayer.skey = false;
   }
 }
