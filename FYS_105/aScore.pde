@@ -4,12 +4,8 @@
 class aScore {
   int score; // The current score
   float combo; // The current combo or score multiplier
-  int id; // Current/new id
-  String idh; // String containing highest id in scores table
-  String lscore; // lowest score
-  String lid; // lowest id
-  // String[] idha = new String[ids];
-  String name; // String containing inserted name from 'GameOver' class
+  String oScore; // "Old Score" score already in scorelist belonging to player
+  String name; // String containing inserted name from 'Login' class
 
   aScore() {
     combo = 1;
@@ -31,33 +27,20 @@ class aScore {
 
   void saveScore() {
     if (msql.connect() && UI.levens <= 0) {
-      msql.query ( "SELECT idScores FROM Scores ORDER BY idScores DESC LIMIT 1" ); // Select highest id from scores table
-      while (msql.next() ) { // if ^ queries
-        idh = msql.getString("idScores"); // Attach highest id in scores tabel to string idh(idhighest)
+      msql.query( "SELECT idScores, valueScores FROM Scores WHERE idScores = '%s'", User.currentUser ); // Grab the score from the player
+      while ( msql.next() ) {
+        oScore = msql.getString("valueScores"); // temporary score (score belonging to player)
       }
-      if (idh == null) {
-        id = 1;
+      if (oScore == null && User.currentUser != 0) { // if score doesn't exist make one
+        msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", User.currentUser, ascore.name, score );
       }
-      if (idh != null) {
-        id = parseInt(idh) + 1;
-      }
-      if (idh != null && parseInt(idh) == 20) {
-        msql.query( "SELECT idScores,valueScores FROM Scores ORDER BY valueScores ASC LIMIT 1" ); // Select lowest score & belonging id from scores table
-        while ( msql.next() ) {
-          lscore = msql.getString("valueScores"); // temporary score (score belonging to the id with lowest score)
-          lid = msql.getString("idScores"); // temporary id (id belonging to the lowest score)
-        }
-      }
-      if (idh != null && lscore != null && score > parseInt(lscore) && parseInt(idh) == 20) { // If score is bigger than the lowest score and idh is 20 then
-        msql.query( "UPDATE Scores SET nameScores = '%s', valueScores = '%s' WHERE idScores = '%s'", name, score, lid ); // Update lowest id with new score & name
-      } 
-      if (idh != null && parseInt(idh) < 20 || id == 1) { // if idh is lower than 19 then
-        msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", id, name, score ); // Insert new id, name and score into the scores table
-      } else {
-        println("idScores;  "+lid); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary id
-        println("lowest score: "+lscore); // if none of these are valid ^ ((list is full(20 max) and score is below the lowest score) print temporary score
+      if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
+        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s'", score, User.currentUser ); // Update score
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
+    } else {
+      println("Old Score: " + oScore);
+      println("New Score: " + score);
     }
   }
 

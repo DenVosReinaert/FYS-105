@@ -18,6 +18,8 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+User User;
+Login Login;
 Shop shop;
 hScorelijst hscorel;
 Powerups PowerUps;
@@ -46,6 +48,8 @@ void setup()
 
   LoadAssets();
 
+  User = new User();
+  Login = new Login();
   myPlayer = new Player();
   PowerUps = new Powerups();
   UI = new UI();
@@ -53,7 +57,7 @@ void setup()
   shop = new Shop();
   gamemngr = new Game_Manager();
 
-  gamemngr.home = true;
+  gamemngr.login = true;
 
   lvlMngr = new LevelManager();
   ascore = new aScore();
@@ -94,7 +98,8 @@ void draw()
 
 void keyPressed() {
   // To check if you can die..
-  if (key == 'p') {
+  if (key == 'p') 
+  {
     UI.spelerhit();
   }
 
@@ -112,7 +117,6 @@ void keyReleased() {
   background.resize(width, height);
   popStyle();
 }
-
 
 
 public float Calculate(String orientation, float size)

@@ -1,4 +1,5 @@
 class Game_Manager {
+  boolean login;
   boolean dead;
   boolean home;
   boolean hscore;
@@ -11,6 +12,10 @@ class Game_Manager {
   }
 
   void draw() {
+    if (login) {
+      game = false;
+      Login.draw();
+    }
     if (home) {
       UI.draw();
       game = false;
@@ -69,6 +74,9 @@ class Game_Manager {
         hscore = false;
         home = true;
       }
+    }
+    if (login) {
+     Login.keyPressed(); 
     }
     if (dead) {
       gameover.keyPressed();
