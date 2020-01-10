@@ -1,6 +1,8 @@
 class Shotgun extends GameObject {
 
 
+  Timer cooldownTimer = new Timer(2);
+
   Shotgun() {
     threshold = 100;
     cooldown = 0;
@@ -42,7 +44,7 @@ class Shotgun extends GameObject {
     myPlayer.muzzlePointY = objPosY;
 
 
-    if (cooldown == threshold && myPlayer.shootingUp) {
+    if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -63,7 +65,7 @@ class Shotgun extends GameObject {
         ShotgunReload.play();
         ShotgunReload.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingDown) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -85,7 +87,7 @@ class Shotgun extends GameObject {
         ShotgunReload.play();
         ShotgunReload.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingRight) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -106,7 +108,7 @@ class Shotgun extends GameObject {
         ShotgunReload.play();
         ShotgunReload.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingLeft) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -127,11 +129,7 @@ class Shotgun extends GameObject {
         ShotgunReload.rewind();
       }
     }
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
-    }
+    if (cooldownTimer.TimerDone())
+      cooldownTimer.Reset();
   }
 }

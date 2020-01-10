@@ -45,8 +45,6 @@ public class GameObject {
 
 
 
-
-
   GameObject() 
   {
     spawnerPos0 = new PVector();
