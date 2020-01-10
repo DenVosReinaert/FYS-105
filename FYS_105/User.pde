@@ -3,9 +3,8 @@ class User {
   String idUser;
   String TID;
   int newID;
-  
-  void setup(){ 
-    
+
+  void setup() {
   }
 
   void idCheck() {
@@ -16,12 +15,12 @@ class User {
     if (idUser == null) {
       msql.query( "SELECT idUser FROM User ORDER BY idUser DESC LIMIT 1" ); // select highest ID
       while (msql.next() ) {
-       TID = msql.getString("idUser"); // Set temporary ID
-       newID = parseInt(TID) + 1; // Make new ID
+        TID = msql.getString("idUser"); // Set temporary ID
+        newID = parseInt(TID) + 1; // Make new ID
       }
       if (newID == 0) {
-       newID = 1;
-       currentUser = 1;
+        newID = 1;
+        currentUser = 1;
       }
       msql.query( "INSERT INTO User (idUser, nameUser) VALUES ('%s','%s')", newID, ascore.name ); // Insert new ID for user
     }

@@ -82,8 +82,8 @@ class Boss1 extends GameObject {
 
     if (Dead())
     {
-      //if (msql.connect())
-      //  msql.query("UPDATE Achievements SET counterAchievements = '%s' WHERE idAchievements = '%s'", (chieves.bossCounter + 1), 3);
+      if (msql.connect())
+        msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', idUser = '%s'", (chieves.bossCounter + 1), 3, user.currentUser);
       Remove(this);
     }
 
