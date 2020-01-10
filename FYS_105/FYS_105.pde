@@ -34,6 +34,7 @@ Spawner spawn;
 GameObject GameObjectRef;
 Achievements chieves;
 User User;
+Powerups powerUps;
 
 
 void setup()
@@ -51,7 +52,6 @@ void setup()
   User = new User();
   Login = new Login();
   myPlayer = new Player();
-  PowerUps = new Powerups();
   UI = new UI();
   spawn = new Spawner();
   shop = new Shop();
@@ -92,7 +92,6 @@ void draw()
 
   if (game)
     GameObjectRef.draw();
-  PowerUps.draw();
 }
 
 

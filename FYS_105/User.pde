@@ -19,8 +19,8 @@ class User {
         newID = parseInt(TID) + 1; // Make new ID
       }
       if (newID == 0) { // If VERY first user, make it start at 1
-       newID = 1;
-       currentUser = 1;
+        newID = 1;
+        currentUser = 1;
       }
       if (currentUser == 0) { // If Account created, currentID is newID
         currentUser = newID;

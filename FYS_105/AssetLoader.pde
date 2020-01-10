@@ -52,7 +52,7 @@ void LoadAssets()
   healthP = loadImage("/data/sprites/UI/PieceOfHealth.png");
   bullet = loadImage("/data/sprites/UI/BulletSprite.png");
   shotgunS = loadImage("/data/sprites/UI/ShotgunShell.png");
-  
+
   shieldbarS = loadImage("/data/sprites/UI/ShieldBarSlots.png");
   shieldbarSb = loadImage("/data/sprites/UI/ShieldBarSlots_Backdrop.png");
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
@@ -144,7 +144,7 @@ void LoadAssets()
   boss1R = new SpriteSheet("/data/sprites/Enemies/Boss1_SideR.png", 9);
 
   shopcart = new SpriteSheet("/data/sprites/shopcart.png", 6);
-  stationaryShopcart = new SpriteSheet("/data/sprites/Stationary_Shopcart.png",8);
+  stationaryShopcart = new SpriteSheet("/data/sprites/Stationary_Shopcart.png", 8);
   cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
 
   //ArrowPointers

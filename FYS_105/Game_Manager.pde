@@ -35,13 +35,13 @@ class Game_Manager {
     }
 
     if (game) {
-      
+
       gameMusic.setGain(0);
-      if(!gameMusic.isPlaying()){
-      gameMusic.play();
-      gameMusic.rewind();
+      if (!gameMusic.isPlaying()) {
+        gameMusic.play();
+        gameMusic.rewind();
       }
-      
+
       if (UI.levens <= 0) {
         gamemngr.dead = true;
       }
@@ -76,7 +76,7 @@ class Game_Manager {
       }
     }
     if (login) {
-     Login.keyPressed(); 
+      Login.keyPressed();
     }
     if (dead) {
       gameover.keyPressed();

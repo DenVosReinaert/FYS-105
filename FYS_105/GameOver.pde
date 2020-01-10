@@ -79,7 +79,7 @@ class GameOver {
     ascore.score = 0;
     spawn.wave = 1;
     spawn.waveTextTimer.Reset();
-    
+
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
