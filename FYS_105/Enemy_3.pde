@@ -7,6 +7,8 @@ class Heavy extends GameObject {
     scoreGain = 10;
 
     hp=6;
+    hpBarTotalInit = 50;
+    hpBarTotal = hpBarTotalInit;
     moveVelX=0.75;
     moveVelY=0.75;
 
@@ -36,6 +38,7 @@ class Heavy extends GameObject {
     objHeight=72;
 
     checkPulse();
+    EnemyHealthBar();
 
     enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
     playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
@@ -125,7 +128,9 @@ class Heavy extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp-=1;
+          hpBarTotal -= hpBarTotal/hp;
+          hp--;
+
           //powerUpChance = random(0, 100);
           //if (powerUpChance >= 75)
           //  Add(new Powerups(objPosX, objPosY));
@@ -143,6 +148,19 @@ class Heavy extends GameObject {
         }
       }
     }
+  }
+
+  void EnemyHealthBar()
+  {
+    pushStyle();
+    fill(255, 0, 0);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotalInit, 10);
+    popStyle();
+
+    pushStyle();
+    fill(0, 200, 100);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotal, 10);
+    popStyle();
   }
 
   boolean Dead() {

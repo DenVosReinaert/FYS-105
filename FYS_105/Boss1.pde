@@ -6,6 +6,8 @@ class Boss1 extends GameObject {
     objWidth=100;
     objHeight=146;
     hp=20;
+    hpBarTotalInit = 100;
+    hpBarTotal = hpBarTotalInit;
     moveVelX=1;
     moveVelY=1;
 
@@ -31,7 +33,7 @@ class Boss1 extends GameObject {
 
   void draw() {
     checkPulse();
-
+    EnemyHealthBar();
 
     enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
     playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
@@ -114,7 +116,9 @@ class Boss1 extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp-=1;
+          hpBarTotal -= hpBarTotal/hp;
+          hp--;
+
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");
@@ -124,13 +128,9 @@ class Boss1 extends GameObject {
 
             if (msql.connect())
             {
-              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
+              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s' AND User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
 
-              msql.query("SELECT collectedAchievements FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", idAchievement[1], User.currentUser);
-              if (parseInt(msql.getString("collectedAchievements")) >= 1)
-              {
-                msql.query("UPDATE Achievements SET collectedAchievements = '%s' FROM User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", 1, idAchievement[1], User.currentUser);
-              }
+              chieves.UnlockAchievement(3);
             }
 
             ascore.score += scoreGain * ascore.combo;
@@ -143,7 +143,18 @@ class Boss1 extends GameObject {
     }
   }
 
+  void EnemyHealthBar()
+  {
+    pushStyle();
+    fill(255, 0, 0);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotalInit, 10);
+    popStyle();
 
+    pushStyle();
+    fill(0, 200, 100);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotal, 10);
+    popStyle();
+  }
 
   boolean Dead() {
     return hp<=0;
