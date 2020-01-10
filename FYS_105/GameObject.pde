@@ -4,10 +4,6 @@ public class GameObject {
   String tag;
 
 
-
-
-
-
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
 
 
@@ -28,20 +24,22 @@ public class GameObject {
   float defaultSpeed = 2.1;
   float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //Normalizes the defaultSpeed
 
-
   float knockback;
   float cooldown, threshold;
   float hp, hitValue;
 
   float scoreGain;
 
-
-  float speedUpX, speedUpY, speedUpDia, bonusSpeed;
-
+  float speedUpX, speedUpY, speedUpDia;
+  float healthUpX, healthUpY, healthUpDia;
+  float shieldX, shieldY, shieldDia, shieldOnPlayerDia;
+  float normalSpeed, bonusSpeed;
 
   float tileSize;
 
+
   int idAchievement;
+
 
 
 
