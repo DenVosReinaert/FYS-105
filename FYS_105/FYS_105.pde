@@ -32,6 +32,7 @@ Player myPlayer;
 Spawner spawn;
 GameObject GameObjectRef;
 Achievements chieves;
+User  user;
 
 
 void setup()
