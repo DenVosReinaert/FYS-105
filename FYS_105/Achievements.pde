@@ -4,7 +4,7 @@ class Achievements
   int collected; //Current 
   int bossCounter;
 
-
+  int totalAchievements;
 
 
   Achievements()
@@ -20,10 +20,16 @@ class Achievements
 
   void draw()
   {
-    msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements WHERE idAchievements = '%s', idUser = '%s'", 3, user.currentUser);
+    msql.query("SELECT SUM(idAchievements) FROM Achievements");
     while (msql.next())
     {
-      bossCounter = parseInt(msql.getString("counter"));
+      msql.query( "INSERT INTO User_has_Acievements (User_idUser, Achievements_idAchievements) VALUES ('%s','%s')", User.currentUser, totalAchievements);
+    }
+
+    msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", 3, user.currentUser);
+    while (msql.next())
+    {
+      bossCounter = parseInt(msql.getString("counterAchievements"));
     }
   }
 
@@ -35,9 +41,9 @@ class Achievements
   void ChieveReset()
   {
     if (msql.connect())
-      msql.query("UPDATE Achievements  SET collectedAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE collectedAchievements = '1', idUser = '%s'", chieveFalse, user.currentUser);
+      msql.query("UPDATE Achievements  SET collectedAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE collectedAchievements = '1', Use_idUser = '%s'", chieveFalse, user.currentUser);
 
     if (msql.connect())
-      msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE idUser = '%s'", 0, user.currentUser);
+      msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE User_idUser = '%s'", 0, user.currentUser);
   }
 }

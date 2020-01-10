@@ -104,7 +104,7 @@ class Speedster extends GameObject {
       {
         UI.spelerhit();
         UI.levens -= hitValue;
-        hp = 0;
+        Remove(this);
       }
 
       //Collision with Bullet

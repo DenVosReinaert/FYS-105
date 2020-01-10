@@ -1,10 +1,10 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(1);
-  Timer spawnGrntTimer = new Timer(2);
-  Timer spawnBrtTimer = new Timer(3);
-  Timer spawnHvyTimer = new Timer(5);
+  Timer spawnSpdTimer = new Timer(3);
+  Timer spawnGrntTimer = new Timer(4);
+  Timer spawnBrtTimer = new Timer(5);
+  Timer spawnHvyTimer = new Timer(7);
   Timer spawnBssTimer = new Timer(10);
 
   Timer waveTextTimer = new Timer(6);
@@ -33,10 +33,10 @@ class Spawner extends GameObject {
     spawnerPos3.x = -10;
     spawnerPos3.y = height/2;
 
-    countBrt = round(random(wave, wave * 2));
-    countSpd = round(random(wave, wave * 4));
-    countGrnt = round(random(wave, wave * 3));
-    countHvy = round(random(wave, wave * 2));
+    countBrt = round(random(wave, wave + 1));
+    countSpd = round(random(wave, wave + 3));
+    countGrnt = round(random(wave, wave + 2));
+    countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
   }//constructor spawner
 
@@ -81,31 +81,6 @@ class Spawner extends GameObject {
       {
         SpawnWave();
       }
-
-      //if (!waveTextTimer.TimerDone())
-      //{
-      //  textSize(80);
-      //  text("WAVE "+ (wave), width/2-150, height/2);
-      //} else if (!waveInProgress && waveTextTimer.TimerDone())
-      //{
-      //  waveInProgress = true;
-      //}
-
-
-      //if (waveInProgress && waveTextTimer.TimerDone() && GameObjectRef.gameObject.size() == 0)
-      //{
-      //}
-
-      //if (waveFinished)
-      //{
-      //  lvlMngr.apActive = true;
-
-      //  if (wave % 2 == 0)
-      //    shop.shopA = true;
-      //}
-
-
-      //popStyle();
     }
   }//spawnerUpdate
 
@@ -127,11 +102,13 @@ class Spawner extends GameObject {
 
     spawn.wave ++;      //Set current wave number to the next
 
-    countBrt = round(random(wave, wave * 2));    //Adjust enemy count to the new wave number
-    countSpd = round(random(wave, wave * 3));
-    countGrnt = round(random(wave, wave * 3));
-    countHvy = round(random(wave, wave * 2));
+    countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
+    countSpd = round(random(wave, wave + 3));
+    countGrnt = round(random(wave, wave + 2));
+    countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
+
+    spawnBssTimer.Reset();
 
 
     spawnBrtFinished = false;

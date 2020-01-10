@@ -35,6 +35,14 @@ SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, 
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, stationaryShopcart, cartdirt;
 
+
+
+void movieEvent(Movie vid) {
+  vid.read();
+}
+
+
+
 void LoadAssets()
 {
 

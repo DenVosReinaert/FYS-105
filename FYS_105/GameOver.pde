@@ -78,6 +78,8 @@ class GameOver {
 
     ascore.score = 0;
     spawn.wave = 1;
+    spawn.waveTextTimer.Reset();
+    
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;
@@ -91,5 +93,17 @@ class GameOver {
     myPlayer.dkey = false;
     myPlayer.wkey = false;
     myPlayer.skey = false;
+
+    spawn.spawnBrtFinished = false;
+    spawn.spawnSpdFinished = false;
+    spawn.spawnGrntFinished = false;
+    spawn.spawnHvyFinished = false;
+    spawn.spawnBssFinished = false;
+
+    spawn.countBrt = round(random(spawn.wave, spawn.wave + 1));    //Adjust enemy count to the new wave number
+    spawn.countSpd = round(random(spawn.wave, spawn.wave + 3));
+    spawn.countGrnt = round(random(spawn.wave, spawn.wave + 2));
+    spawn.countHvy = round(random(spawn.wave, spawn.wave + 1));
+    spawn.countBss = round(spawn.wave / 5);
   }
 }
