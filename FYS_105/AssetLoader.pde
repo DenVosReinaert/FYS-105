@@ -10,7 +10,7 @@ AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, dama
 
 
 // Main menu
-PImage main, pillar, background, scrBgr; //controlImg;
+PImage main, pillar, background, scrBgr, codeInputBox; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -56,6 +56,8 @@ void LoadAssets()
   shieldbarS = loadImage("/data/sprites/UI/ShieldBarSlots.png");
   shieldbarSb = loadImage("/data/sprites/UI/ShieldBarSlots_Backdrop.png");
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
+  
+  codeInputBox = loadImage("/data/sprites/CodeInputBox");
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");

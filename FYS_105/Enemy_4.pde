@@ -14,7 +14,6 @@ class Brute extends GameObject {
     moveVelX=1;
     moveVelY=1;
 
-    hitValue = 2;
 
 
     float r = random(-1, 3);
