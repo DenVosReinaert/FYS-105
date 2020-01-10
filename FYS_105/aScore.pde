@@ -39,7 +39,7 @@ class aScore {
         println("INSERT!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
       }
       if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
-        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s'", score, User.currentUser ); // Update score
+        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s' AND nameScores = '%s'", score, User.currentUser, ascore.name ); // Update score
         println("UPDATE!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
