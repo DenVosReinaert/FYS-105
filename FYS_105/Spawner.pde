@@ -239,6 +239,7 @@ class Spawner extends GameObject {
           Add(new Boss1());
           spawnBssTimer.Reset();
           countBss--;
+          ohhimark.play();
         }
       }
     }

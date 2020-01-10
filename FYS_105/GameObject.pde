@@ -26,7 +26,7 @@ public class GameObject {
 
   float knockback;
   float cooldown, threshold;
-  float hp, hitValue;
+  float hp;
 
   float scoreGain;
 
@@ -38,8 +38,6 @@ public class GameObject {
 
   float tileSize;
 
-
-
   int[] idAchievement = new int[5];
 
 
@@ -48,6 +46,7 @@ public class GameObject {
 
   GameObject() 
   {
+    
     spawnerPos0 = new PVector();
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();
