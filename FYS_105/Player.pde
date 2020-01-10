@@ -1,11 +1,12 @@
 // TE4M
 // Dylan Vermeulen
-
 class Player extends GameObject {
 
+  // Short timer for the gun cycle
   Timer weaponSwapPrevTimer = new Timer(0.125);
   Timer weaponSwapNextTimer = new Timer(0.125);
 
+  // Creates new objects from the gun's classes for the player to use
   Pistol pistol = new Pistol();
   Shotgun shotGun = new Shotgun();
   MachineGun machineGun = new MachineGun();
@@ -23,10 +24,11 @@ class Player extends GameObject {
     objPosX = (width/2) - objWidth/2;
     objPosY = (height/2) - objHeight/2;
 
-
+    // Tags the player so it can distinguish between the player and other objects
     tag = "player";
 
 
+    // Assigns 1, 2 or 3 to gun variables to distinguish in coding
     pistoll = 1;
     shotgun = 2;
     machinegun = 3;
@@ -38,8 +40,7 @@ class Player extends GameObject {
 
   void draw() {
 
-    println("current gun: " + currentGun);
-
+    // Detects collision with pillars
     if (objPosX + moveVelX < 0)
       collLeft = true;
 
@@ -52,7 +53,7 @@ class Player extends GameObject {
     if (objPosY + objHeight + moveVelY > height)
       collBott = true;
 
-
+    // Switches to specified gun if you press 1, 2 or 3 on desktop
     if (onekey) {
       currentGun = pistoll;
       onekey = false;
@@ -64,6 +65,7 @@ class Player extends GameObject {
       threekey = false;
     }
 
+    // Cycle between the guns with a short cooldown
     if (prevGun && weaponSwapPrevTimer.TimerDone()) {
       weaponSwapPrevTimer.Reset();
       currentGun--;
@@ -96,7 +98,7 @@ class Player extends GameObject {
       mrSpooksDown.update();
     }
 
-    // 
+    // Switches functionality of gun depending on which one the player is holding
     if (myPlayer.currentGun == pistoll)
       pistol.holdingGun();
 
@@ -106,17 +108,16 @@ class Player extends GameObject {
     if (myPlayer.currentGun == machinegun)
       machineGun.holdingGun();
 
-    //240
-
     // Assigns value to movementspeed
     moveVelX = defaultSpeed;
     moveVelY = defaultSpeed;
 
-    // 
+    // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
     } else defaultSpeed = 2.1;
 
+    // Shoots gun when pressing any of the directional buttons
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)
       {
@@ -135,7 +136,7 @@ class Player extends GameObject {
       }
     }
 
-    // Check collision with the pillars and stops you from moving over it
+    // Check if the player is colliding with the pillars and stops them from moving through it
     if (akey && !collLeft)
     {
       objPosX -= moveVelX;
@@ -244,21 +245,20 @@ class Player extends GameObject {
       lookingRight = false;
       lookingDown = false;
     }
-      // Controls for switching weapons on desktop
-      if (key == '1') onekey = true;
-      if (key == '2') twokey = true;
-      if (key == '3') threekey = true;
+    // Controls for switching weapons on desktop
+    if (key == '1') onekey = true;
+    if (key == '2') twokey = true;
+    if (key == '3') threekey = true;
 
-      // Controls for switching weapons on a cycle with snes controller
-      if (key == 'q')
-      {
-        prevGun = true;
-      }
-      if (key =='e')
-      {
-        nextGun = true;
-      }
-    
+    // Controls for switching weapons on a cycle with snes controller
+    if (key == 'q')
+    {
+      prevGun = true;
+    }
+    if (key =='e')
+    {
+      nextGun = true;
+    }
   }
   void keyReleased() {
 

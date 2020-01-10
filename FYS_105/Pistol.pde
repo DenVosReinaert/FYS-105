@@ -7,10 +7,10 @@ class Pistol extends GameObject {
     knockback = 5;
   }
 
-  // Show weapon sprite
+
   void holdingGun() {
 
-
+    // Show weapon sprite based on which way the player is facing
     if (myPlayer.lookingUp) 
     {
       objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
