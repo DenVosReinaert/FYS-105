@@ -23,11 +23,11 @@ class LevelManager
 
   void draw()
   {
-    if (testTimer.TimerDone())
-    {
-      println("IM DONE");
-      testTimer.Reset();
-    }
+      if (testTimer.TimerDone())
+      {
+        println("IM DONE");
+        testTimer.Reset();
+      }
 
     switch(lvlNum) {
     case 1:
