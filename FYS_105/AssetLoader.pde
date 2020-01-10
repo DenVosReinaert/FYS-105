@@ -8,6 +8,7 @@ Minim minim;
 
 AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield;
 
+
 // Main menu
 PImage main, pillar, background, scrBgr; //controlImg;
 
@@ -32,7 +33,7 @@ PImage purpleStoneTiles;
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
-SpriteSheet shopcart, cartdirt;
+SpriteSheet shopcart, stationaryShopcart, cartdirt;
 
 void LoadAssets()
 {
@@ -130,9 +131,9 @@ void LoadAssets()
   boss1L = new SpriteSheet("/data/sprites/Enemies/Boss1_SideL.png", 9);
   boss1R = new SpriteSheet("/data/sprites/Enemies/Boss1_SideR.png", 9);
 
-  shopcart = new SpriteSheet("/data/sprites/shopcart.png", 4);
-  cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 4);
-
+  shopcart = new SpriteSheet("/data/sprites/shopcart.png", 6);
+  stationaryShopcart = new SpriteSheet("/data/sprites/Stationary_Shopcart.png",8);
+  cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
 
   //ArrowPointers
   arrowPU = new SpriteSheet("/data/sprites/ArrowPointer_Up.png", 6);

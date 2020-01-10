@@ -41,6 +41,7 @@ class UI {
     if (ableToBeHit) {
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
+      damage.setGain(10);
       damage.play();
       damage.rewind();
 
@@ -254,7 +255,7 @@ class UI {
       if (state == 4 && key == 'w') {
         state = 2;
       }
-      if (key == '\n') {
+      if (keyCode == RIGHT) {
         if (state == 1) {
         }
         if (state == 4) {
