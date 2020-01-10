@@ -39,7 +39,7 @@ class UI {
   }
 
   void spelerhit() { // If called, lives -1
-    if (ableToBeHit) {
+    if (ableToBeHit && hitStun.TimerDone()) {
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
       damage.setGain(10);
@@ -47,6 +47,9 @@ class UI {
       damage.rewind();
 
       ableToBeHit = false;
+      hitStun.Reset();
+
+      println("FUCK YOU!");
     }
 
     //if (!ableToBeHit && hitStun.TimerDone()) {
@@ -63,7 +66,6 @@ class UI {
       if (!ableToBeHit && hitStun.TimerDone())
       {
         ableToBeHit = true;
-        hitStun.Reset();
       }
 
 

@@ -10,7 +10,7 @@ class Heavy extends GameObject {
     moveVelX=0.75;
     moveVelY=0.75;
 
-    hitValue = 2;
+    this.hitValue = 2;
 
 
     float r = random(-1, 3);
@@ -125,7 +125,7 @@ class Heavy extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp=hp-1;
+          hp-=1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");

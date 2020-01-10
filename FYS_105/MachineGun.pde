@@ -2,6 +2,11 @@
 // Dylan Vermeulen
 class MachineGun extends GameObject {
 
+
+
+  Timer cooldownTimer = new Timer(0.2);
+
+
   MachineGun() 
   {
     threshold = 8;
@@ -41,7 +46,7 @@ class MachineGun extends GameObject {
     myPlayer.muzzlePointX = objPosX;
     myPlayer.muzzlePointY = objPosY + 8;
 
-    if (cooldown == threshold && myPlayer.shootingUp) {
+    if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
       if (UI.ammoM1 > 0 ) {
         myPlayer.lookingUp = true;
 
@@ -55,7 +60,7 @@ class MachineGun extends GameObject {
         LMG.play();
         LMG.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingDown) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
       if (UI.ammoM1 > 0 ) {
         myPlayer.lookingDown = true;
@@ -70,7 +75,7 @@ class MachineGun extends GameObject {
         LMG.play();
         LMG.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingLeft) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
       if (UI.ammoM1 > 0 ) {
         myPlayer.lookingLeft = true;
 
@@ -86,7 +91,7 @@ class MachineGun extends GameObject {
         LMG.play();
         LMG.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingRight) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
       if (UI.ammoM1 > 0 ) {
         myPlayer.lookingRight = true;
@@ -103,11 +108,7 @@ class MachineGun extends GameObject {
         LMG.rewind();
       }
     }
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
-    }
+    if (cooldownTimer.TimerDone())
+      cooldownTimer.Reset();
   }
 }

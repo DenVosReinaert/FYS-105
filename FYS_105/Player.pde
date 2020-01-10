@@ -122,17 +122,14 @@ class Player extends GameObject {
       if (currentGun == pistoll)
       {
         pistol.shoot();
-        pistol.recharge();
       }
       if (currentGun == machinegun)
       {
         machineGun.shoot();
-        machineGun.recharge();
       }
       if (currentGun == shotgun)
       {
         shotGun.shoot();
-        shotGun.recharge();
       }
     }
 

@@ -12,7 +12,7 @@ class Speedster extends GameObject {
     moveVelX=2;
     moveVelY=2;
 
-    hitValue = 1;
+    this.hitValue = 1;
 
 
 
@@ -100,7 +100,6 @@ class Speedster extends GameObject {
       //Collision with Player
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-        UI.spelerhit();
         if (UI.levens >0 && UI.shield <= 0) {
           UI.levens-= hitValue;
           hp = 0;
@@ -115,7 +114,7 @@ class Speedster extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp=hp-1;
+          hp-=1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");

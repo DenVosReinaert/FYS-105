@@ -1,5 +1,6 @@
 class Pistol extends GameObject {
 
+  Timer cooldownTimer = new Timer(1);
 
   Pistol() {
     threshold = 40;
@@ -54,7 +55,7 @@ class Pistol extends GameObject {
 
 
 
-    if (cooldown == threshold && myPlayer.shootingUp) {
+    if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
 
 
       if (UI.ammoP > 0) {
@@ -69,7 +70,7 @@ class Pistol extends GameObject {
         Pistol.play();
         Pistol.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingDown) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
 
       if (UI.ammoP > 0) {
@@ -84,7 +85,7 @@ class Pistol extends GameObject {
         Pistol.play();
         Pistol.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingLeft) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
 
       if (UI.ammoP > 0) {
@@ -99,7 +100,7 @@ class Pistol extends GameObject {
         Pistol.play();
         Pistol.rewind();
       }
-    } else if (cooldown == threshold && myPlayer.shootingRight) {
+    } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
 
       if (UI.ammoP > 0) {
@@ -115,11 +116,7 @@ class Pistol extends GameObject {
         Pistol.rewind();
       }
     }
-  }
-
-  void recharge() {
-    if (cooldown < threshold) {
-      cooldown ++;
-    }
+    if (cooldownTimer.TimerDone())
+      cooldownTimer.Reset();
   }
 }
