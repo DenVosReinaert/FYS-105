@@ -13,6 +13,7 @@ class UI {
   int lX2 = lX1 + 6;
   int lY1 = height/35;
   int lY2 = lY1 + 10;
+  int hitValue;
 
   // ammo machinegun
   int ammoM1 = 5;
@@ -40,6 +41,7 @@ class UI {
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit && hitStun.TimerDone()) {
+      levens -= hitValue;
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
       damage.setGain(10);

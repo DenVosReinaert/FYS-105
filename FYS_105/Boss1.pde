@@ -9,8 +9,6 @@ class Boss1 extends GameObject {
     moveVelX=1;
     moveVelY=1;
 
-    hitValue = 3;
-
     scoreGain = 100;
 
     float r = random(-1, 3);
@@ -101,12 +99,13 @@ class Boss1 extends GameObject {
       //Collision with Player
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-        UI.spelerhit();
         if (UI.levens >0 && UI.shield <= 0) {
-          UI.levens-= hitValue;
+          UI.hitValue = 3;
+          //UI.levens-= hitValue;
           hp = 0;
+          UI.spelerhit();
         } else if (UI.shield > 0) {
-          UI.shield-= hitValue;
+          UI.shield -= 2;
         }
       }
 

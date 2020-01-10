@@ -10,7 +10,6 @@ class Heavy extends GameObject {
     moveVelX=0.75;
     moveVelY=0.75;
 
-    hitValue = 2;
 
 
     float r = random(-1, 3);
@@ -110,13 +109,14 @@ class Heavy extends GameObject {
       //Collision with Player
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-        UI.spelerhit();
         if (UI.levens >0 && UI.shield <= 0) {
-          UI.levens-= hitValue;
+          UI.hitValue = 2;
+          // UI.levens-= hitValue;
           hp = 0;
         } 
+        UI.spelerhit();
         if (UI.shield > 0) {
-          UI.shield-= hitValue;
+          UI.shield -= 2;
         }
       }
 
