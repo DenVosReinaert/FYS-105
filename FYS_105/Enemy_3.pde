@@ -10,7 +10,7 @@ class Heavy extends GameObject {
     moveVelX=0.75;
     moveVelY=0.75;
 
-    this.hitValue = 2;
+    hitValue = 2;
 
 
     float r = random(-1, 3);

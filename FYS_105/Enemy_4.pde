@@ -12,7 +12,7 @@ class Brute extends GameObject {
     moveVelX=1;
     moveVelY=1;
 
-    this.hitValue = 2;
+    hitValue = 2;
 
 
     float r = random(-1, 3);

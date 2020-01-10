@@ -12,7 +12,7 @@ class Speedster extends GameObject {
     moveVelX=2;
     moveVelY=2;
 
-    this.hitValue = 1;
+    hitValue = 1;
 
 
 
