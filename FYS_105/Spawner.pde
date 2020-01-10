@@ -65,6 +65,7 @@ class Spawner extends GameObject {
 
       if (waveFinished)     //When the wave is finished and there are no gameObjects on the screen, show the arrows, and if the round number is even show the shop
       {
+        println("The Wave is Finished!");
         lvlMngr.apActive = true;
 
         if (wave % 2 == 0)
@@ -93,7 +94,6 @@ class Spawner extends GameObject {
 
       //if (waveInProgress && waveTextTimer.TimerDone() && GameObjectRef.gameObject.size() == 0)
       //{
-      //  waveFinished = true;
       //}
 
       //if (waveFinished)
@@ -117,6 +117,9 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
+
+
+
     garfield.pause();      //Reset shop sound
     garfield.rewind();
     waveInProgress = false;      //Reset wave progress
@@ -125,10 +128,18 @@ class Spawner extends GameObject {
     spawn.wave ++;      //Set current wave number to the next
 
     countBrt = round(random(wave, wave * 2));    //Adjust enemy count to the new wave number
-    countSpd = round(random(wave, wave * 4));
+    countSpd = round(random(wave, wave * 3));
     countGrnt = round(random(wave, wave * 3));
     countHvy = round(random(wave, wave * 2));
     countBss = round(wave / 5);
+
+
+    spawnBrtFinished = false;
+    spawnSpdFinished = false;
+    spawnGrntFinished = false;
+    spawnHvyFinished = false;
+    spawnBssFinished = false;
+
 
     shop.shopA = false;          //Make sure the shop is turned off and the arrows are turned off
     lvlMngr.apActive = false;
@@ -147,31 +158,44 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    if (waveInProgress && !waveFinished && spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && GameObjectRef.gameObject.size() == 0)
+    if (countBrt == 0)          //If the enemy spawn count has reached 0, stop spawning this enemy
+      spawnBrtFinished = true;
+
+    if (countGrnt == 0)
+      spawnGrntFinished = true;
+
+    if (countSpd == 0)
+      spawnSpdFinished = true;
+
+    if (countHvy == 0)
+      spawnHvyFinished = true;
+
+    if (countBss == 0)
+      spawnBssFinished = true;
+
+
+    SpawnSpeedster();          //Spawn all the enemies for this round
+    SpawnGrunt();
+    SpawnBrute();
+    SpawnHeavy();
+    SpawnBoss();
+
+
+    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && GameObjectRef.gameObject.size() == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
     {
-      waveInProgress = false;
       waveFinished = true;
+      waveInProgress = false;
     }
+  }
 
+
+
+
+
+  void SpawnGrunt()
+  {
     if (!waveFinished && waveInProgress)
     {
-      if (countBrt == 0)
-        spawnBrtFinished = true;
-
-      if (spawnBrtTimer.TimerDone()&& waveInProgress && !spawnBrtFinished)
-      {
-        Add(new Brute());
-        spawnBrtTimer.Reset();
-        countBrt--;
-      }
-    }
-
-
-    if (!waveFinished && waveInProgress)
-    {
-      if (countGrnt == 0)
-        spawnGrntFinished = true;
-
       if (spawnGrntTimer.TimerDone() && !spawnGrntFinished)
       {
         Add(new Grunt());
@@ -179,12 +203,29 @@ class Spawner extends GameObject {
         countGrnt--;
       }
     }
+  }
 
+
+
+  void SpawnBrute()
+  {
     if (!waveFinished && waveInProgress)
     {
-      if (countSpd == 0)
-        spawnSpdFinished = true;
+      if (spawnBrtTimer.TimerDone()&& waveInProgress && !spawnBrtFinished)
+      {
+        Add(new Brute());
+        spawnBrtTimer.Reset();
+        countBrt--;
+      }
+    }
+  }
 
+
+
+  void SpawnSpeedster()
+  {
+    if (!waveFinished && waveInProgress)
+    {
       if (spawnSpdTimer.TimerDone() && !spawnSpdFinished)
       {
         Add(new Speedster());
@@ -192,12 +233,14 @@ class Spawner extends GameObject {
         countSpd--;
       }
     }
+  }
 
+
+
+  void SpawnHeavy()
+  {
     if (!waveFinished  && waveInProgress)
     {
-      if (countHvy == 0)
-        spawnHvyFinished = true;
-
       if (spawnHvyTimer.TimerDone() && !spawnHvyFinished)
       {
         Add(new Heavy());
@@ -205,14 +248,15 @@ class Spawner extends GameObject {
         countHvy--;
       }
     }
+  }
 
+
+
+  void SpawnBoss()
+  {
     if (!waveFinished && waveInProgress)
     {
       if (wave % 5 == 0) {
-
-        if (countBss == 0)
-          spawnBssFinished = true;
-
         if (spawnBssTimer.TimerDone() && !spawnBssFinished)
         {
           Add(new Boss1());
