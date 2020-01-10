@@ -111,7 +111,7 @@ class Heavy extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
-        if (UI.levens >0 && UI.shield == 0) {
+        if (UI.levens >0 && UI.shield <= 0) {
           UI.levens-= hitValue;
           hp = 0;
         } 

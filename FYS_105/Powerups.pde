@@ -23,13 +23,15 @@ class Powerups extends GameObject {
       DropSpeedUp();
       DropHealthUp();
       DropShield();
+      println(UI.levens + " = levens");
+      println(UI.shield + " = shield");
     }
   }
 
   //Drops the Speed powerup
   void DropSpeedUp() {
     pushStyle();
-    fill(200, 0, 0);
+    fill(0, 200, 0);
     ellipse(speedUpX, speedUpY, speedUpDia, speedUpDia);
     popStyle();
 
@@ -62,7 +64,7 @@ class Powerups extends GameObject {
   //Drops the speed power-up
   void DropHealthUp() {
     pushStyle();
-    fill(0, 0, 200);
+    fill(200, 0, 0);
     ellipse(healthUpX, healthUpY, healthUpDia, healthUpDia);
     popStyle();
 
@@ -73,16 +75,28 @@ class Powerups extends GameObject {
 
   //How the Health power-up works
   void HealthUp() {
-    if (UI.levens < 4) {
+    if (UI.levens < 2) {
       UI.levens ++;
-      println(UI.levens);
+    }     
+    else if (UI.levens < 3) {
+      UI.levens ++;
+    }    
+    else if (UI.levens < 4) {
+      UI.levens ++;
+    }    
+    else if (UI.levens < 5) {
+      UI.levens ++;
     }
+    
+    healthUpX = -100;
+    healthUpY = -100;
+    
   }
 
   //Drops the Shield power-up
   void DropShield() {
     pushStyle();
-    fill(0, 200, 0);
+    fill(0, 200, 200);
     ellipse(shieldX, shieldY, shieldDia, shieldDia);
     popStyle();
 
@@ -94,9 +108,11 @@ class Powerups extends GameObject {
   //How the shield power-up works
   void Shield() {
     //Shield in working
-    ellipse(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2, shieldOnPlayerDia, shieldOnPlayerDia);
-    for(int i = 0; i <10; i++){
+    for (int i = 0; i <10; i++) {
       UI.shield ++;
+      if (UI.shield > 2) {
+        UI.shield = 2;
+      }
     }
   }
 }
