@@ -2,14 +2,14 @@ class Boss1 extends GameObject {
 
   Boss1() {
     tag = "enemy";
-    idAchievement = 3;
+    idAchievement[1] = 3;
     objWidth=100;
     objHeight=146;
     hp=20;
     moveVelX=1;
     moveVelY=1;
 
-    hitValue = 3;
+    this.hitValue = 3;
 
     scoreGain = 100;
 
@@ -102,8 +102,8 @@ class Boss1 extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
-        UI.levens -= hitValue;
-        Remove(this);
+        UI.levens -= this.hitValue;
+        hp = 0;
       }
 
       //Collision with Bullet
@@ -111,7 +111,7 @@ class Boss1 extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp=hp-1;
+          hp-=1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");
@@ -121,12 +121,12 @@ class Boss1 extends GameObject {
 
             if (msql.connect())
             {
-              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement, user.currentUser);
+              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], user.currentUser);
 
-              msql.query("SELECT collectedAchievements FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", idAchievement, User.currentUser);
+              msql.query("SELECT collectedAchievements FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", idAchievement[1], user.currentUser);
               if (parseInt(msql.getString("collectedAchievements")) >= 1)
               {
-
+                msql.query("UPDATE Achievements SET collectedAchievements = '%s' FROM User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", 1, idAchievement[1], user.currentUser);
               }
             }
 

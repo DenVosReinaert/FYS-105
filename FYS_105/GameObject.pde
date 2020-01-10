@@ -41,7 +41,7 @@ public class GameObject {
 
   float tileSize;
 
-  int idAchievement;
+  int[] idAchievement = new int[5];
 
 
 

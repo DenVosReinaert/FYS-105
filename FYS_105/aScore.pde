@@ -27,15 +27,15 @@ class aScore {
 
   void saveScore() {
     if (msql.connect() && UI.levens <= 0) {
-      msql.query( "SELECT idScores, valueScores FROM Scores WHERE idScores = '%s'", User.currentUser ); // Grab the score from the player
+      msql.query( "SELECT idScores, valueScores FROM Scores WHERE idScores = '%s'", user.currentUser ); // Grab the score from the player
       while ( msql.next() ) {
         oScore = msql.getString("valueScores"); // temporary score (score belonging to player)
       }
-      if (oScore == null && User.currentUser != 0) { // if score doesn't exist make one
-        msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", User.currentUser, ascore.name, score );
+      if (oScore == null && user.currentUser != 0) { // if score doesn't exist make one
+        msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", user.currentUser, ascore.name, score );
       }
       if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
-        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s'", score, User.currentUser ); // Update score
+        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s'", score, user.currentUser ); // Update score
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     } else {

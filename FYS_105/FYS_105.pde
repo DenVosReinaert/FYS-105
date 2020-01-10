@@ -18,7 +18,6 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
-User User;
 Login Login;
 Shop shop;
 hScorelijst hscorel;
@@ -34,7 +33,7 @@ Player myPlayer;
 Spawner spawn;
 GameObject GameObjectRef;
 Achievements chieves;
-User  user;
+User user;
 
 
 void setup()
@@ -49,7 +48,7 @@ void setup()
 
   LoadAssets();
 
-  User = new User();
+  user = new User();
   Login = new Login();
   myPlayer = new Player();
   PowerUps = new Powerups();

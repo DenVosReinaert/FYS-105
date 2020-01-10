@@ -13,7 +13,7 @@ class Grunt extends GameObject {
     moveVelX=1;
     moveVelY=1;
     
-    hitValue = 1;
+    this.hitValue = 1;
 
 
 
@@ -111,8 +111,8 @@ class Grunt extends GameObject {
       if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         UI.spelerhit();
-        UI.levens -= hitValue;
-        Remove(this);
+        UI.levens -= this.hitValue;
+        hp = 0;
       }
 
       //Collision with Bullet
@@ -120,7 +120,7 @@ class Grunt extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp=hp-1;
+          hp-=1;
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");
