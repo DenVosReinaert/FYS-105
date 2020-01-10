@@ -125,12 +125,12 @@ class Boss1 extends GameObject {
 
             if (msql.connect())
             {
-              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], user.currentUser);
+              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
 
-              msql.query("SELECT collectedAchievements FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", idAchievement[1], user.currentUser);
+              msql.query("SELECT collectedAchievements FROM Achievements INNERJOIN User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", idAchievement[1], User.currentUser);
               if (parseInt(msql.getString("collectedAchievements")) >= 1)
               {
-                msql.query("UPDATE Achievements SET collectedAchievements = '%s' FROM User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", 1, idAchievement[1], user.currentUser);
+                msql.query("UPDATE Achievements SET collectedAchievements = '%s' FROM User_has_Achievements WHERE idAchievements = '%s', User_idUser = '%s'", 1, idAchievement[1], User.currentUser);
               }
             }
 

@@ -114,91 +114,91 @@ class Login {
     popStyle();
   }
 
-void keyPressed() {
-  if (gamemngr.login) {
-    if (key == '\n') {
-      ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-      user.idCheck();
-      // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
-      //  for (int i = 0; i < bN; i++) {
-      // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
-      gamemngr.login = false;     
-      gamemngr.home = true;
+  void keyPressed() {
+    if (gamemngr.login) {
+      if (key == '\n') {
+        ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+        User.idCheck();
+        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
+        //  for (int i = 0; i < bN; i++) {
+        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
+        gamemngr.login = false;     
+        gamemngr.home = true;
 
-      //NEEDS UPDATING
-      // Reset everything back to how the game was in the beginning
+        //NEEDS UPDATING
+        // Reset everything back to how the game was in the beginning
 
-      //  } else {
-      // text("Try again..", width/2-150, height/8);
-      //  }
-      //}
+        //  } else {
+        // text("Try again..", width/2-150, height/8);
+        //  }
+        //}
+      }
+    }
+    // Check what state & depending on state move through the letters upwards 
+    if (key == 'w') {
+      if (state == 1 && l1s < 36) {
+        l1s++;
+      }
+      if (state == 1 && l1s > 35 ) {
+        l1s = 0;
+      }
+      if (state == 2 && l2s < 36) {
+        l2s++;
+      }
+      if (state == 2 && l2s > 35) {
+        l2s = 0;
+      }
+      if (state == 3 && l3s < 36) {
+        l3s++;
+      }
+      if (state == 3 && l3s > 35) {
+        l3s = 0;
+      }
+      if (state == 4 && l4s < 36) {
+        l4s++;
+      }
+      if (state == 4 && l4s > 35) {
+        l4s = 0;
+      }
+    } 
+    // Check what state & depending on state, lower state
+    if (key == 'a') {
+      if (state > 1) {
+        state--;
+      }
+    }
+    // Check what state & depending on state, make state higher
+    if (key == 'd') {
+      if (state < 4) {
+        state++;
+      }
+    }
+    // Check what state & depending on state move through the letters downwards 
+    if (key == 's') {
+      if (state == 1 && l1s > -1) {
+        l1s--;
+      }
+      if (state == 1 && l1s < 0) {
+        l1s = 36;
+      }
+      if (state == 2 && l2s > -1) {
+        l2s--;
+      }
+      if (state == 2 && l2s < 0) {
+        l2s = 36;
+      }
+      if (state == 3 && l3s > -1) {
+        l3s--;
+      }
+      if (state == 3 && l3s < 0) {
+        l3s = 36;
+      }
+      if (state == 4 && l4s > -1) {
+        l4s--;
+      }
+      if (state == 4 && l4s < 0) {
+        l4s = 36;
+      }
     }
   }
-  // Check what state & depending on state move through the letters upwards 
-  if (key == 'w') {
-    if (state == 1 && l1s < 36) {
-      l1s++;
-    }
-    if (state == 1 && l1s > 35 ) {
-      l1s = 0;
-    }
-    if (state == 2 && l2s < 36) {
-      l2s++;
-    }
-    if (state == 2 && l2s > 35) {
-      l2s = 0;
-    }
-    if (state == 3 && l3s < 36) {
-      l3s++;
-    }
-    if (state == 3 && l3s > 35) {
-      l3s = 0;
-    }
-    if (state == 4 && l4s < 36) {
-      l4s++;
-    }
-    if (state == 4 && l4s > 35) {
-      l4s = 0;
-    }
-  } 
-  // Check what state & depending on state, lower state
-  if (key == 'a') {
-    if (state > 1) {
-      state--;
-    }
-  }
-  // Check what state & depending on state, make state higher
-  if (key == 'd') {
-    if (state < 4) {
-      state++;
-    }
-  }
-  // Check what state & depending on state move through the letters downwards 
-  if (key == 's') {
-    if (state == 1 && l1s > -1) {
-      l1s--;
-    }
-    if (state == 1 && l1s < 0) {
-      l1s = 36;
-    }
-    if (state == 2 && l2s > -1) {
-      l2s--;
-    }
-    if (state == 2 && l2s < 0) {
-      l2s = 36;
-    }
-    if (state == 3 && l3s > -1) {
-      l3s--;
-    }
-    if (state == 3 && l3s < 0) {
-      l3s = 36;
-    }
-    if (state == 4 && l4s > -1) {
-      l4s--;
-    }
-    if (state == 4 && l4s < 0) {
-      l4s = 36;
-    }
-  }
-}
 }

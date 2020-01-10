@@ -33,7 +33,7 @@ Player myPlayer;
 Spawner spawn;
 GameObject GameObjectRef;
 Achievements chieves;
-User user;
+User User;
 
 
 void setup()
@@ -48,7 +48,7 @@ void setup()
 
   LoadAssets();
 
-  user = new User();
+  User = new User();
   Login = new Login();
   myPlayer = new Player();
   PowerUps = new Powerups();
