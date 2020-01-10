@@ -54,7 +54,7 @@ class Achievements
 
   void AddChieveToTable(int achievementNumber)
   {
-    msql.query("SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND idAchievements = '%s'", User.currentUser, achievementNumber);
+    msql.query("SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber);
     while (msql.next())
     {
       tempId = msql.getString("idAchievement");

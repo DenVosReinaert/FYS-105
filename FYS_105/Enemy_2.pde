@@ -9,6 +9,8 @@ class Speedster extends GameObject {
     objWidth=28;
     objHeight=40;
     hp=1;
+    hpBarTotalInit = 50;
+    hpBarTotal = hpBarTotalInit;
     moveVelX=2;
     moveVelY=2;
 
@@ -34,6 +36,7 @@ class Speedster extends GameObject {
 
   void draw() {
     checkPulse();
+    EnemyHealthBar();
 
     enemyVector = new PVector(objPosX+objWidth/2, objPosY+objHeight/2);
     playerVector = new PVector(myPlayer.objPosX+myPlayer.objWidth/2, myPlayer.objPosY+myPlayer.objHeight/2);
@@ -115,7 +118,9 @@ class Speedster extends GameObject {
       {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
-          hp-=1;
+          hpBarTotal -= hpBarTotal/hp;
+          hp--;
+
           //powerUpChance = random(0, 100);
           //if (powerUpChance >= 75)
           //  Add(new Powerups(objPosX, objPosY));
@@ -135,7 +140,18 @@ class Speedster extends GameObject {
     }
   }
 
+  void EnemyHealthBar()
+  {
+    pushStyle();
+    fill(255, 0, 0);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotalInit, 10);
+    popStyle();
 
+    pushStyle();
+    fill(0, 200, 100);
+    rect(objPosX - objWidth, objPosY - 5, hpBarTotal, 10);
+    popStyle();
+  }
 
   boolean Dead() {
     return hp<=0;
