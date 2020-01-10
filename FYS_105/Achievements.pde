@@ -29,7 +29,7 @@ class Achievements
 
     //}
 
-    msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", idAchievement, User.currentUser);
+    msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", idAchievement, User.currentUser);
     while (msql.next())
     {
       bossCounter = parseInt(msql.getString("counterAchievements"));
@@ -68,10 +68,12 @@ class Achievements
 
   void UnlockAchievement(int achievementNumber)
   {
-    msql.query("SELECT collectedAchievements FROM Achievements INNER JOIN User_has_Achievements WHERE idAchievements = '%s' AND User_idUser = '%s' AND collectedAchievements = '0'", achievementNumber, User.currentUser);
+    msql.query("SELECT collectedAchievements FROM Achievements INNER JOIN User_has_Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievements WHERE idAchievements = '%s' AND User_idUser = '%s' AND collectedAchievements = '0'", achievementNumber, User.currentUser);
     while (msql.next())
     {
       msql.query("UPDATE Achievements SET collectedAchievements = '1' FROM User_has_Achievements WHERE User_idUser = '%s'", User.currentUser);
     }
+
+    println("YOU UNLOCKED ACHIEVEMENT:" + achievementNumber);
   }
 }
