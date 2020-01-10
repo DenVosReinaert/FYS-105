@@ -56,8 +56,8 @@ void LoadAssets()
   shieldbarS = loadImage("/data/sprites/UI/ShieldBarSlots.png");
   shieldbarSb = loadImage("/data/sprites/UI/ShieldBarSlots_Backdrop.png");
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
-  
-  codeInputBox = loadImage("/data/sprites/CodeInputBox");
+
+  codeInputBox = loadImage("/data/sprites/CodeInputBox.png");
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");

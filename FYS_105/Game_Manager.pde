@@ -6,6 +6,7 @@ class Game_Manager {
   boolean shake;
 
   boolean codeInput;
+  boolean inputBlocked;
   int codeLength;
   int hscoreA;
   int shakeAmount;
@@ -16,6 +17,7 @@ class Game_Manager {
 
   Game_Manager() 
   {
+    inputBlocked = false;
     codeInput = false;  
     codeLength = 10;
   }
@@ -102,7 +104,7 @@ class Game_Manager {
     if (game) {
       myPlayer.keyPressed();
     }
-    if (home && !codeInput) {
+    if (home && !inputBlocked) {
       UI.keyPressed();
     }
 
@@ -110,6 +112,7 @@ class Game_Manager {
     {
       if (key == 'r')
       {
+        inputBlocked = false;
         codeInput = false;
         clear();
       }
@@ -126,6 +129,7 @@ class Game_Manager {
     if (!codeInput)
       if (key == 'r')
       {
+        inputBlocked = true;
         codeInput = true;
       }
   }
