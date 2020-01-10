@@ -12,7 +12,7 @@ class Grunt extends GameObject {
 
     moveVelX=1;
     moveVelY=1;
-    
+
     hitValue = 1;
 
 
@@ -113,6 +113,17 @@ class Grunt extends GameObject {
         UI.spelerhit();
         UI.levens -= hitValue;
         hp = 0;
+      }      
+      if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
+      {
+        UI.spelerhit();
+        if (UI.levens >0 && UI.shield == 0) {
+          UI.levens-= hitValue;
+          hp = 0;
+        } 
+        if (UI.shield > 0) {
+          UI.shield-= hitValue;
+        }
       }
 
       //Collision with Bullet
@@ -136,7 +147,6 @@ class Grunt extends GameObject {
       }
     }
   }
-
   boolean Dead() {
     return hp<=0;
   }//boolean Dead

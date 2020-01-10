@@ -25,7 +25,6 @@ class LevelManager
   {
     if (testTimer.TimerDone())
     {
-      println("IM DONE");
       testTimer.Reset();
     }
 

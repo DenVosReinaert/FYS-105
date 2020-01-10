@@ -8,6 +8,7 @@ class UI {
   boolean ableToBeHit = true;
   // Healthbar
   int levens = 3; // Standard amount of lives
+  int shield = 0;
   int lX1 = width/35;
   int lX2 = lX1 + 6;
   int lY1 = height/35;
@@ -170,6 +171,7 @@ class UI {
 
       // Health
       image(healthbarSb, lX1, lY1);
+      image(shieldbarSb, lX1+ (57 * 5), lY1);
       if (levens > 0) {
         image(healthP, lX2, lY2);
         if (levens > 1) {
@@ -183,11 +185,18 @@ class UI {
           if (levens > 4) {
             image(healthP, lX2 + (57 * 4), lY2);
           }
+          if (shield > 0) {
+            image(shieldP, lX2 + (57 * 5), lY2);
+          }
+          if (shield > 1) {
+            image(shieldP, lX2 + (57 * 6), lY2);
+          }
         }
       }
       image(healthbarS, lX1, lY1);
+      image(shieldbarS, lX1 + (57 * 5), lY1);
 
-      if (levens == 0) { // if lives == 0
+      if (shield == 0 && levens == 0) { // if lives == 0 && shield == 0
         gamemngr.dead = true; // set player to dead
       }
     }
