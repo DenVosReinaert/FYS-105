@@ -34,8 +34,8 @@ class Spawner extends GameObject {
     spawnerPos3.y = height/2;
 
     countBrt = round(random(wave, wave + 1));
-    countSpd = round(random(wave, wave + 3));
-    countGrnt = round(random(wave, wave + 2));
+    countSpd = round(random(wave, wave + 1));
+    countGrnt = round(random(wave, wave + 1));
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
   }//constructor spawner
