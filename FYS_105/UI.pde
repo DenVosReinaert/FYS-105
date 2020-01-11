@@ -74,11 +74,18 @@ class UI {
 
     if (game) {
 
+      // the shield won't get above 2
       if (UI.shield >= 2) {
         UI.shield = 2;
-
+        
+        // the shield won't get below 0
         if (UI.shield <= 0) {
           UI.shield = 0;
+        }
+
+        // the 'levens' won't get above 5
+        if (UI.levens >= 5) {
+          UI.levens = 5;
         }
       }
 
@@ -283,7 +290,7 @@ class UI {
       }
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
-        gamemngr.statspage = true;
+          gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
           // credits = true;
