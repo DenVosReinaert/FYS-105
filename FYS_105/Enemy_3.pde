@@ -141,8 +141,8 @@ class Heavy extends GameObject {
           gamemngr.shake = true;
           if (hp == 0) {
 
-            if (powerUpChance <= 25)
-              Add(new Powerups(objPosX, objPosY));
+            if (powerUpChance <= 10)
+              Add(new Powerups(objPosX + objWidth/2, objPosY + objHeight/2));
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
