@@ -90,7 +90,6 @@ class Login {
     // Draw all letters on screen
     pushStyle();
     textSize(80);
-    textMode(CENTER);
     textAlign(CENTER);
     fill(200);
     text(""+letter1, xPos1, height/2 - 20);

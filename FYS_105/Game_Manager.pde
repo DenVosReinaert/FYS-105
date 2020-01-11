@@ -95,7 +95,7 @@ class Game_Manager {
         }
         break;
       case 4:
-        megalovania.setGain(30);
+        megalovania.setGain(0);
         if (!megalovania.isPlaying())
         {
           megalovania.play();
