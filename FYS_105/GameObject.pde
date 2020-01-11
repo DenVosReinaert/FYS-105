@@ -19,6 +19,7 @@ public class GameObject {
 
   float objPosX, objPosY, objWidth, objHeight;
   float tempObjPosX, tempObjPosY;
+  float scorePopUp, scorePopUpAlpha;
 
   float moveVelX, moveVelY;
 

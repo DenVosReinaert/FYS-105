@@ -16,15 +16,7 @@ class Achievements
 
   void draw()
   {
-
-    msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", idAchievement, User.currentUser);
-    while (msql.next())
-    {
-      bossCounter = parseInt(msql.getString("counterAchievements"));
-    }
   }
-
-
 
 
 
@@ -42,6 +34,8 @@ class Achievements
       if (achieved != 1) 
       {
         msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement) VALUES ('%s','%s','%s')", User.currentUser, achievementNumber, 1);
+        achievement.play();
+        achievement.rewind();
       }
     }
   }

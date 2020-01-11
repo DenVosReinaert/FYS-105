@@ -143,7 +143,12 @@ class Grunt extends GameObject {
 
             if (powerUpChance <= 10)
               Add(new Powerups(objPosX + objWidth/2, objPosY + objHeight/2));
+
+            //scorePopUp = scoreGain * ascore.combo;
             ascore.score += scoreGain * ascore.combo;
+
+            //pushStyle();
+            //popStyle();
           }
           for (int j=0; j < 20; j++) {
             Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
