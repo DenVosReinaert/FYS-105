@@ -10,6 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
   String code = "";
@@ -42,20 +43,6 @@ class Game_Manager {
       if (!homeSnd.isPlaying() ) {
         homeSnd.play();
         homeSnd.rewind();
-      }
-
-
-      //KONAMI CODE
-      //WWSSADAD(DownArrow)(RightArrow)(Enter)
-      if (inputtingCode && inputBlockedUI)
-      {
-        image(codeInputBox, width/2 - codeInputBox.width/2, height/2 - codeInputBox.height/2);
-
-        pushStyle();
-        fill(255);
-        textSize(80);
-        text("Press START to confirm", width/2, height/2 - 200);
-        popStyle();
       }
     }
     if (hscore) {
@@ -90,6 +77,14 @@ class Game_Manager {
         {
           guilesTheme.play();
           guilesTheme.rewind();
+        }
+        break;
+      case 4:
+        megalovania.setGain(30);
+        if (!megalovania.isPlaying())
+        {
+          megalovania.play();
+          megalovania.rewind();
         }
         break;
       }
@@ -222,6 +217,14 @@ class Game_Manager {
               trackNumber = 1;
             else trackNumber = 3;
           }
+
+          if (code.equals(codeUndertale))
+          {
+            println("You're gonna have a bad time");
+            if (trackNumber == 4)
+              trackNumber = 1;
+            else trackNumber = 4;
+          }
           code = code.substring(0, code.length()-code.length());
         }
         break;
@@ -244,6 +247,14 @@ class Game_Manager {
             if (trackNumber == 3)
               trackNumber = 1;
             else trackNumber = 3;
+          }
+
+          if (code.equals(codeUndertale))
+          {
+            println("You're gonna have a bad time");
+            if (trackNumber == 4)
+              trackNumber = 1;
+            else trackNumber = 4;
           }
           code = code.substring(0, code.length()-code.length());
         }
