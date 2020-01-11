@@ -15,11 +15,11 @@ class Shop  {
     item2Pos=new PVector();
     item3Pos=new PVector();
     item1Pos.x=width/2-100;
-    item1Pos.y=height/2-50;
+    item1Pos.y=height/2-150;
     item2Pos.x=width/2;
-    item2Pos.y=height/2-50;
+    item2Pos.y=height/2-150;
     item3Pos.x=width/2+100;
-    item3Pos.y=height/2-50;
+    item3Pos.y=height/2-150;
   }
 
   void draw() {
