@@ -64,7 +64,7 @@ class GameOver {
 
     Pistol.pause();
     Shotgun.pause();
-    LMG.pause();
+    AR1.pause();
 
     UI.ammoM1 = 5;
     UI.magM1 = 30;
@@ -76,7 +76,7 @@ class GameOver {
 
     Pistol.rewind();
     Shotgun.rewind();
-    LMG.rewind();
+    AR1.rewind();
 
     ascore.score = 0;
     spawn.wave = 1;
