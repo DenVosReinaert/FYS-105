@@ -18,6 +18,7 @@ public class GameObject {
   PVector enemyVector, playerVector;
 
   float objPosX, objPosY, objWidth, objHeight;
+  float tempObjPosX, tempObjPosY;
 
   float moveVelX, moveVelY;
 

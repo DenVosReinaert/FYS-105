@@ -47,7 +47,7 @@ class Spawner extends GameObject {
 
   void draw() {
 
-    println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
+    //println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
 
 
     if (game) {

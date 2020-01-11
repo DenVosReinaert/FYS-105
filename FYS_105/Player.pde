@@ -40,6 +40,8 @@ class Player extends GameObject {
 
   void draw() {
 
+    println(GameObjectRef.gameObject.size());
+
     // Detects collision with pillars
     if (objPosX + moveVelX < 0)
       collLeft = true;

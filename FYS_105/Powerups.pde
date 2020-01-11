@@ -1,22 +1,34 @@
 class Powerups extends GameObject {
 
-  Timer powerUpLifeTimer = new Timer(4);
+  Timer powerUpLifeTimer = new Timer(10);
   Timer powerUpEffectTimer = new Timer(3);
+
   int randomPowerUp;
+  int powerUpChance = 75;
   int totalPowerUps = 3;
+
+  float tempObjPosX, tempObjPosY;
 
   boolean speedUpCollected;
 
   //initiales the width and height of the powerups.
-  Powerups(float objPosX, float objPosY) {
-    randomPowerUp = round(random(0, totalPowerUps));
-
+  Powerups() {
 
     objWidth = 20;
     objHeight = 20;
 
     speedUpCollected = false;
+  }
 
+
+
+
+  void RandomPowerUp()
+  {
+    for (int i = 0; i < 1; i++)
+    {
+      randomPowerUp = round(random(0, totalPowerUps));
+    }
 
     switch(randomPowerUp) {
     case 1:
@@ -30,105 +42,21 @@ class Powerups extends GameObject {
       break;
     }
   }
-
-  void draw()
-  {
-    if (speedUpCollected && !powerUpEffectTimer.TimerDone())
-      myPlayer.defaultSpeed += 3;
-  }
-}
-
-
-
-class ShieldUp extends Powerups
-{
-
-
-
-  ShieldUp(float objPosX, float objPosY)
-  {
-    super(objPosX, objPosY);
-    pushStyle();
-    fill(0, 0, 200);
-    ellipse(objPosX, objPosY, objWidth, objHeight);
-    popStyle();
-
-    powerUpLifeTimer.Reset();
-  }
-
-  void draw()
-  {
-    if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
-    {
-      UI.shield ++;
-      Remove(this);
-    }
-
-    if (powerUpLifeTimer.TimerDone())
-      Remove(this);
-  }
 }
 
 
 
 
-class HealthUp extends Powerups
-{
-
-  HealthUp(float objPosX, float objPosY)
-  {
-    super(objPosX, objPosY);
-    pushStyle();
-    fill(0, 200, 0);
-    ellipse(objPosX, objPosY, objWidth, objHeight);
-    popStyle();
-
-    powerUpLifeTimer.Reset();
-  }
-
-  void draw()
-  {
-    if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
-    {
-      UI.levens ++;
-      Remove(this);
-    }
-
-    if (powerUpLifeTimer.TimerDone())
-      Remove(this);
-  }
-}
 
 
 
 
-class SpeedUp extends Powerups
-{
 
-  SpeedUp(float objPosX, float objPosY)
-  {
-    super(objPosX, objPosY);
-    pushStyle();
-    fill(200, 0, 0);
-    ellipse(objPosX, objPosY, objWidth, objHeight);
-    popStyle();
 
-    powerUpLifeTimer.Reset();
-  }
 
-  void draw()
-  {
-    if (objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
-    {
-      powerUps.speedUpCollected = true;
-      powerUps.powerUpEffectTimer.Reset();
-      Remove(this);
-    }
 
-    if (powerUpLifeTimer.TimerDone())
-      Remove(this);
-  }
-}
+
+
 
 
 

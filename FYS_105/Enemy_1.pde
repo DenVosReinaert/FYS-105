@@ -131,15 +131,17 @@ class Grunt extends GameObject {
           hpBarTotal -= hpBarTotal/hp;
           hp--;
 
-          //powerUpChance = random(0, 100);
-          //if (powerUpChance <= 75)
-          //  Add(new Powerups(objPosX, objPosY));
+
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
           println("combo increase!");
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {
+
+            powerUpChance = random(0, 100);
+            if (powerUpChance <= powerUps.powerUpChance)
+              powerUps.RandomPowerUp();
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {

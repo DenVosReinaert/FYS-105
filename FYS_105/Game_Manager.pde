@@ -19,7 +19,7 @@ class Game_Manager {
 
   Game_Manager() 
   {
-    trackNumber = 2;
+    trackNumber = 1;
 
     inputBlocked = false;
     codeInput = false;  
