@@ -22,6 +22,8 @@ class GameOver {
       popStyle();
       gameMusic.pause();
       gameMusic.rewind();
+      megalovania.pause();
+      megalovania.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
