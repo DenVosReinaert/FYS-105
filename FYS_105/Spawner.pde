@@ -10,7 +10,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 1;
+  int wave = 4;
 
   int countBrt, countSpd, countGrnt, countHvy, countBss;
 
@@ -92,13 +92,11 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-
-
-
     garfield.pause();      //Reset shop sound
     garfield.rewind();
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
+
 
     spawn.wave ++;      //Set current wave number to the next
 
@@ -108,7 +106,6 @@ class Spawner extends GameObject {
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
 
-    spawnBssTimer.Reset();
 
 
     spawnBrtFinished = false;
@@ -118,10 +115,12 @@ class Spawner extends GameObject {
     spawnBssFinished = false;
 
 
+
     shop.shopA = false;          //Make sure the shop is turned off and the arrows are turned off
     lvlMngr.apActive = false;
 
     waveTextTimer.Reset();      //Reset the timer for the text "wave n"
+    spawnBssTimer.Reset();
 
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;      //Set the player position to the middle of the screen
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
@@ -135,6 +134,12 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
+    println(spawnBrtFinished);
+    println(spawnGrntFinished);
+    println(spawnSpdFinished);
+    println(spawnHvyFinished);
+    println(spawnBssFinished);
+
     if (countBrt == 0)          //If the enemy spawn count has reached 0, stop spawning this enemy
       spawnBrtFinished = true;
 
@@ -240,7 +245,7 @@ class Spawner extends GameObject {
           spawnBssTimer.Reset();
           countBss--;
         }
-      }
+      } else spawnBssFinished = true;
     }
   }
 }

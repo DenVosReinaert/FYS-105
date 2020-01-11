@@ -7,8 +7,13 @@ class Game_Manager {
 
   int trackNumber;
 
-  boolean codeInput;
-  boolean inputBlocked;
+  boolean inputBlockedUI;
+  boolean inputtingCode;
+  boolean correctCode;
+  boolean selectKey;
+
+  String code = "";
+
   int codeLength;
   int hscoreA;
   int shakeAmount;
@@ -21,8 +26,6 @@ class Game_Manager {
   {
     trackNumber = 1;
 
-    inputBlocked = false;
-    codeInput = false;  
     codeLength = 10;
   }
 
@@ -41,11 +44,21 @@ class Game_Manager {
         homeSnd.rewind();
       }
 
+      if (keyPressed && key == 'r')
+      {
+        inputtingCode = true;
+        inputBlockedUI = true;
 
+        if (inputtingCode && inputBlockedUI)
+        {
+          inputtingCode = false;
+          inputBlockedUI = false;
+        }
+      }
 
       //KONAMI CODE
       //WWSSADAD(DownArrow)(RightArrow)(Enter)
-      if (codeInput)
+      if (inputtingCode)
       {
         image(codeInputBox, width/2 - codeInputBox.width/2, height/2 - codeInputBox.height/2);
       }
@@ -122,7 +135,9 @@ class Game_Manager {
     if (game) {
       myPlayer.keyPressed();
     }
-    if (home && !inputBlocked) {
+    if (home && !inputBlockedUI) {
+      if (key == 'r')
+        selectKey = true;
       UI.keyPressed();
     }
 
@@ -152,6 +167,10 @@ class Game_Manager {
     //  }
   }
   void keyReleased() {
+    if (home)
+      if (key == 'r')
+        selectKey = false;
+
     if (game) {
       myPlayer.keyReleased();
     }
