@@ -49,6 +49,8 @@ class Login {
 
   void draw() {
     clear();
+    login.resize(width, height);
+    image(login, 0, 0);
     // Turn everything off!
     myPlayer.shootingRight = false;
     myPlayer.shootingLeft = false;
@@ -109,8 +111,6 @@ class Login {
     text(""+letter2, xPos2, height/2 - 20);
     text(""+letter3, xPos3, height/2 - 20);
     text(""+letter4, xPos4, height/2 - 20);
-    textSize(15);
-    text("PRESS START TO LOG IN", width/2 - 120, height/2 + 50);
     popStyle();
   }
 
