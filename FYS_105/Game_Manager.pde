@@ -203,7 +203,7 @@ class Game_Manager {
       case LEFT:
         if (inputtingCode && inputBlockedUI)
         {
-          key = 'j';
+          key = 'h';
           code += key;
         }
         break;
