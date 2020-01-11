@@ -20,18 +20,25 @@ class Game_Manager {
   int shakeAmount;
   float comboMultiplier = 0.25;
 
+  float  badgePosX, badgePosY;
+
   Timer secretCodeTimer = new Timer(2);
 
 
   Game_Manager() 
   {
     trackNumber = 1;
-
     konamiCodeLength = 10;
+
+    badgePosX = width/2 + 375;
+    badgePosY = height/5 + 30;
   }
 
   void draw() {
     if (login) {
+
+
+
       game = false;
       Login.draw();
       loginMusic.setGain(0);
@@ -40,6 +47,7 @@ class Game_Manager {
         loginMusic.play();
         loginMusic.rewind();
       }
+      image(pokemonMDB, badgePosX, badgePosY);
     }
     if (home) {
       UI.draw();

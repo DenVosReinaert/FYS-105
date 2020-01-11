@@ -9,12 +9,12 @@ Minim minim;
 
 
 AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme, garfieldSans;
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme, garfieldSans;
 
 
 
 // Main menu
-PImage main, login, pillar, background, scrBgr, codeInputBox; //controlImg;
+PImage main, login, pillar, background, scrBgr, pokemonMDB; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -62,7 +62,7 @@ void LoadAssets()
   shieldbarSb = loadImage("/data/sprites/UI/ShieldBarSlots_Backdrop.png");
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
 
-  codeInputBox = loadImage("/data/sprites/CodeInputBox.png");
+  pokemonMDB = loadImage("/data/sprites/PMDB.png");
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
