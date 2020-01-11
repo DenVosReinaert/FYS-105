@@ -10,6 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeKonami = "wwssadadkl";
   String code = "";
 
   int konamiCodeLength;
@@ -24,7 +25,7 @@ class Game_Manager {
   {
     trackNumber = 1;
 
-    konamiCodeLength = 9;
+    konamiCodeLength = 10;
   }
 
   void draw() {
@@ -45,8 +46,10 @@ class Game_Manager {
 
       //KONAMI CODE
       //WWSSADAD(DownArrow)(RightArrow)(Enter)
-      if (inputtingCode && inputBlockedUI && code.length() == konamiCodeLength)
+      if (inputtingCode && inputBlockedUI)
       {
+        image(codeInputBox, width/2 - codeInputBox.width/2, height/2 - codeInputBox.height/2);
+
         pushStyle();
         fill(255);
         textSize(80);
@@ -73,11 +76,11 @@ class Game_Manager {
         }
         break;
       case 2:
-        megalovania.setGain(0);
-        if (!megalovania.isPlaying())
+        contraJungleTheme.setGain(100);
+        if (!contraJungleTheme.isPlaying())
         {
-          megalovania.play();
-          megalovania.rewind();
+          contraJungleTheme.play();
+          contraJungleTheme.rewind();
         }
         break;
       }
@@ -192,25 +195,28 @@ class Game_Manager {
         break;
 
       case RETURN:
-        if (code.equals("wwssadadkl") && inputtingCode)
+        if (code.equals(codeKonami) && inputtingCode)
         {
-          code = code.substring(0, code.length()-code.length());
-          if (trackNumber == 1)
-            trackNumber = 2;
-          else if (trackNumber == 2)
+          print("!KONAMI CODE HAS BEEN ENTERED!");
+          if (trackNumber == 2)
             trackNumber = 1;
-        } else
-        {
+          else
+            trackNumber = 2;
+
           code = code.substring(0, code.length()-code.length());
         }
         break;
 
       case ENTER:
-        code = code.substring(0, code.length()-code.length());
-        if (inputtingCode)
+        if (code.equals(codeKonami) && inputtingCode)
         {
+          print("!KONAMI CODE HAS BEEN ENTERED!");
+          if (trackNumber == 2)
+            trackNumber = 1;
+          else
+            trackNumber = 2;
+
           code = code.substring(0, code.length()-code.length());
-          trackNumber = 2;
         }
         break;
       }

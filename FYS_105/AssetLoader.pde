@@ -7,7 +7,7 @@ Movie video;
 Minim minim;
 
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, contraJungleTheme, 
   buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh;
 
 
@@ -172,6 +172,7 @@ void LoadAssets()
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
   megalovania = minim.loadFile("/data/sound/Megalovania.wav");
+  contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
 
   damage = minim.loadFile("/data/sound/voicelines/oof.mp3");
   bruh = minim.loadFile("/data/sound/voicelines/bruh.mp3");
