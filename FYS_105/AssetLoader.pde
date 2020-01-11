@@ -190,7 +190,7 @@ void LoadAssets()
   missing2 = minim.loadFile("/data/sound/voicelines/missing2.mp3");
   ohhimark = minim.loadFile("/data/sound/voicelines/ohhimark.mp3");
   uhoh = minim.loadFile("/data/sound/voicelines/uhoh.mp3");
-  shieldup = minim.loadFile("/data/sounds/voicelines/shieldup.mp3");
-  ultimatemachinegun = minim.loadFile("/data/sounds/voicelines/ultimatemachinegun.mp3");
-  speedup = minim.loadFile("/data/sounds/voicelines/speedup.mp3");
+  shieldup = minim.loadFile("/data/sound/voicelines/shieldup.mp3");
+  ultimatemachinegun = minim.loadFile("/data/sound/voicelines/ultimatemachinegun.mp3");
+  speedup = minim.loadFile("/data/sound/voicelines/speedup.mp3");
 }
