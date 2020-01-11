@@ -282,9 +282,10 @@ class UI {
         state = 2;
       }
       if (keyCode == RIGHT) {
-        if (state == 1) {
+        if (state == 1) { // Stats button
+        gamemngr.statspage = true;
         }
-        if (state == 4) {
+        if (state == 4) { // Credits button
           // credits = true;
         }
         // if state == 2 (Play button) then start game

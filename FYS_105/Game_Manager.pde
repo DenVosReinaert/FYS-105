@@ -1,6 +1,7 @@
 class Game_Manager {
   boolean login;
   boolean dead;
+  boolean statspage;
   boolean home;
   boolean hscore;
   boolean shake;
@@ -36,9 +37,13 @@ class Game_Manager {
   }
 
   void draw() {
+    
+    if (statspage) {
+      home = false;
+     stats.draw(); 
+    }
+    
     if (login) {
-
-
 
       game = false;
       Login.draw();
@@ -51,6 +56,7 @@ class Game_Manager {
       image(pokemonMDB, badgePosX, badgePosY);
     }
     if (home) {
+      //println("CURRENT USER ID " + User.currentUser);
       UI.draw();
       loginMusic.pause();
       death.rewind();
@@ -152,6 +158,9 @@ class Game_Manager {
     }
     if (login) {
       Login.keyPressed();
+    }
+    if (statspage) {
+     stats.keyPressed(); 
     }
     if (dead) {
       gameover.keyPressed();

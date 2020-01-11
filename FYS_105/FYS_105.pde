@@ -17,6 +17,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+stats stats;
 Login Login;
 Shop shop;
 hScorelijst hscorel;
@@ -47,7 +48,7 @@ void setup()
   minim = new Minim(this);
 
   LoadAssets();
-
+  stats = new stats();
   User = new User();
   Login = new Login();
   myPlayer = new Player();
