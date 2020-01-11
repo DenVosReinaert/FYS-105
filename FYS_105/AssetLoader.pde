@@ -14,7 +14,7 @@ AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR
 
 
 // Main menu
-PImage main, login, pillar, background, scrBgr, pokemonMDB; //controlImg;
+PImage main, login, pillar, background, scrBgr, pokemonMDB, statsBg; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -97,6 +97,8 @@ void LoadAssets()
   main = loadImage("/data/img/LastStand-MainMenu.png");
   // Login
   login = loadImage("/data/img/LastStand-Login.png");
+  // stats
+  statsBg = loadImage("/data/img/LastStand_Stats.png");
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
