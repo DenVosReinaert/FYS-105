@@ -110,9 +110,6 @@ class Login {
         gamemngr.login = false;     
         gamemngr.home = true;
 
-        //NEEDS UPDATING
-        // Reset everything back to how the game was in the beginning
-
         //  } else {
         // text("Try again..", width/2-150, height/8);
         //  }
