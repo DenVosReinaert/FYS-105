@@ -34,9 +34,16 @@ class Game_Manager {
     if (login) {
       game = false;
       Login.draw();
+      loginMusic.setGain(0);
+      if (!loginMusic.isPlaying()) 
+      {
+        loginMusic.play();
+        loginMusic.rewind();
+      }
     }
     if (home) {
       UI.draw();
+      loginMusic.pause();
       game = false;
       dead = false;
       homeSnd.setGain(0);
