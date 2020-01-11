@@ -13,15 +13,33 @@ class Shop {
   void draw() {
     if (game) {
       if (cartX > stopP && cartX < stopP + 10) {
+        if (gamemngr.trackNumber !=4)
+        {
           stationaryShopcart.update();
           stationaryShopcart.draw(cartX-cartW, cartY-cartH);
+        } else
+        {
+          shopcartSansGarfieldStationary.update();
+          shopcartSansGarfieldStationary.draw(cartX - cartW, cartY - cartH);
+        }
       }
       if (!(cartX > stopP && cartX < stopP + 10)) {
+        if (gamemngr.trackNumber !=4)
+        {
           shopcart.draw(cartX-cartW, cartY-cartH);
           shopcart.update();
           cartX = cartX + 3;
           cartdirt.draw(cartX-cartW, cartY-cartH);
-        cartdirt.update();
+          cartdirt.update();
+        } else
+        {
+          shopcartSansGarfield.draw(cartX - cartW, cartY - cartH);
+          shopcartSansGarfield.update();
+          cartX = cartX + 3;
+          cartdirt.draw(cartX-cartW, cartY-cartH);
+          cartdirt.update();
+        }
+
         garfield.setGain(10);
         garfield.play();
         garfield.rewind();

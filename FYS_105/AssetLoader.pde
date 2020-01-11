@@ -37,7 +37,7 @@ PImage purpleStoneTiles;
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
-SpriteSheet shopcart, stationaryShopcart, cartdirt;
+SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
 SpriteSheet shieldUp, healthUp, speedUp;
 
 
@@ -154,6 +154,9 @@ void LoadAssets()
 
   shopcart = new SpriteSheet("/data/sprites/shopcart.png", 6);
   stationaryShopcart = new SpriteSheet("/data/sprites/Stationary_Shopcart.png", 8);
+  shopcartSansGarfield = new SpriteSheet("/data/sprites/Shopcart_Sans.png", 6);
+  shopcartSansGarfieldStationary = new SpriteSheet("/data/sprites/Shopcart_Sans_NM.png", 6);
+
   cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
 
   //ArrowPointers

@@ -22,13 +22,6 @@ class Achievements
 
   void draw()
   {
-    //msql.query("SELECT SUM(idAchievements) FROM Achievements");
-    //while (msql.next())
-    //{
-    //  totalAchievements = parseInt(msql.getString("SUM(idAchievements)"));
-
-    //}
-
     msql.query("SELECT counterAchievements FROM Achievements INNER JOIN User_has_Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievements WHERE Achievements_idAchievements = '%s', User_idUser = '%s'", idAchievement, User.currentUser);
     while (msql.next())
     {
