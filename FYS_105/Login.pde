@@ -82,35 +82,23 @@ class Login {
     letter4 = letters[l4s];
 
     // Aline the letters I & J in the middle
-    if (letter1 == 'I' || letter1  == 'J') {
-      xPos1 = width/2-145;
-    } else {
-      xPos1 = width/2-160;
-    }
-    if (letter2 == 'I' || letter2 == 'J') {
-      xPos2 = width/2 - 65;
-    } else {
-      xPos2 = width/2 - 80;
-    }
-    if (letter3 == 'I' || letter3 == 'J') {
-      xPos3 = width/2 + 15;
-    } else {
-      xPos3 = width/2;
-    }
-    if (letter4 == 'I' || letter4 == 'J') {
-      xPos4 = width/2 + 95;
-    } else {
-      xPos4 = width/2 + 80;
-    }
+    xPos1 = width/2-120;
+    xPos2 = width/2 - 40;
+    xPos3 = width/2 + 40;
+    xPos4 = width/2 + 120;
 
     // Draw all letters on screen
     pushStyle();
     textSize(80);
+    textMode(CENTER);
+    textAlign(CENTER);
     fill(200);
     text(""+letter1, xPos1, height/2 - 20);
     text(""+letter2, xPos2, height/2 - 20);
     text(""+letter3, xPos3, height/2 - 20);
     text(""+letter4, xPos4, height/2 - 20);
+    textSize(15);
+    text("PRESS START TO LOG IN", width/2, height/2 + 50);
     popStyle();
   }
 

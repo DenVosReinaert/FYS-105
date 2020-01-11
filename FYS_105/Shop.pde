@@ -31,6 +31,10 @@ class Shop {
           cartX = cartX + 3;
           cartdirt.draw(cartX-cartW, cartY-cartH);
           cartdirt.update();
+
+          garfield.setGain(10);
+          garfield.play();
+          garfield.rewind();
         } else
         {
           shopcartSansGarfield.draw(cartX - cartW, cartY - cartH);
@@ -38,11 +42,11 @@ class Shop {
           cartX = cartX + 3;
           cartdirt.draw(cartX-cartW, cartY-cartH);
           cartdirt.update();
-        }
 
-        garfield.setGain(10);
-        garfield.play();
-        garfield.rewind();
+          garfieldSans.setGain(50);
+          garfieldSans.play();
+          garfieldSans.rewind();
+        }
       }
     }
   }

@@ -9,7 +9,7 @@ Minim minim;
 
 
 AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme;
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme, garfieldSans;
 
 
 
@@ -210,4 +210,5 @@ void LoadAssets()
   shieldup = minim.loadFile("/data/sound/voicelines/shieldup.mp3");
   ultimatemachinegun = minim.loadFile("/data/sound/voicelines/ultimatemachinegun.mp3");
   speedup = minim.loadFile("/data/sound/voicelines/speedup.mp3");
+  garfieldSans = minim.loadFile("/data/sound/voicelines/sans.mp3");
 }
