@@ -198,7 +198,10 @@ class Game_Manager {
         if (code.equals("wwssadadkl") && inputtingCode)
         {
           code = code.substring(0, code.length()-code.length());
-          trackNumber = 2;
+          if (trackNumber == 1)
+            trackNumber = 2;
+          else if (trackNumber == 2)
+            trackNumber = 1;
         } else
         {
           code = code.substring(0, code.length()-code.length());
@@ -246,7 +249,7 @@ class Game_Manager {
         break;
       }
     }
-    
+
     if (game) {
       myPlayer.keyReleased();
     }
