@@ -10,10 +10,6 @@ class Achievements
   Achievements()
   {
     msql.connect();
-    //AddChieveToTable(3);
-    UnlockAchievement(3);
-
-    //println(bossCounter);
   }
 
 
@@ -32,32 +28,6 @@ class Achievements
 
 
 
-
-  //void ChieveReset()
-  //{
-  //  if (msql.connect())
-  //    msql.query("UPDATE Achievements  SET collectedAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE collectedAchievements = '1', User_idUser = '%s'", chieveFalse, User.currentUser);
-
-  //  if (msql.connect())
-  //    msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM Achievements INNER JOIN User_has_Achievements WHERE User_idUser = '%s'", 0, User.currentUser);
-  //}
-
-
-
-  //void AddChieveToTable(int achievementNumber)
-  //{
-  //  msql.query("SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber);
-  //  while (msql.next())
-  //  {
-  //    tempId = msql.getString("idAchievement");
-  //    if (tempId == null)
-  //    {
-  //      msql.query("INSERT INTO User_has_Acievements (User_idUser, Achievements_idAchievements) VALUES ('%s','%s')", User.currentUser, idAchievement);
-  //    }
-  //  }
-  //}
-
-
   void UnlockAchievement(int achievementNumber)
   {
     println(User.currentUser);
@@ -71,13 +41,8 @@ class Achievements
       }
       if (achieved != 1) 
       {
-        //println( User.currentUser + " heeft achievement" + achievementNumber + " behaald!");
         msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement) VALUES ('%s','%s','%s')", User.currentUser, achievementNumber, 1);
-        //dbAchieved.clear();
-        //GetAchieved();
       }
     }
   }
 }
-
-//"SELECT a.collectedAchievements, u.User_idUser FROM Achievements a INNER JOIN User_has_Achievements u ON a.idAchievements = u.Achievements_idAchievements WHERE a.collectedAchievements = '0' AND a.idAchievement = '%s' AND u.User_idUser = '%s'", achievementNumber, User.currentUser

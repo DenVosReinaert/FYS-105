@@ -1,7 +1,6 @@
 class Game_Manager {
   boolean login;
   boolean dead;
-  boolean statspage;
   boolean home;
   boolean hscore;
   boolean shake;
@@ -11,6 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeDMC = "aaaaaddddd";
   String codeDoom = "ssssss";
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
@@ -37,13 +37,9 @@ class Game_Manager {
   }
 
   void draw() {
-
-    if (statspage) {
-      home = false;
-      stats.draw();
-    }
-
     if (login) {
+
+
 
       game = false;
       Login.draw();
@@ -158,9 +154,6 @@ class Game_Manager {
     }
     if (login) {
       Login.keyPressed();
-    }
-    if (statspage) {
-      stats.keyPressed();
     }
     if (dead) {
       gameover.keyPressed();
@@ -279,8 +272,6 @@ class Game_Manager {
           code = code.substring(0, code.length()-code.length());
         }
         break;
-
-
 
       case ENTER:
         if (inputtingCode)
