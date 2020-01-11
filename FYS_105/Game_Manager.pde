@@ -132,7 +132,6 @@ class Game_Manager {
       switch(key)        //KEY
       {
       case 'r':
-        selectKey = true;
         println("PRESSED SELECT");
         break;
 
