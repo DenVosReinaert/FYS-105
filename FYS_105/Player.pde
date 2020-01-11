@@ -247,21 +247,37 @@ class Player extends GameObject {
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
-    }
-    // Controls for switching weapons on desktop
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
-
-    // Controls for switching weapons on a cycle with snes controller
-    if (key == 'q')
-    {
+      break;
+    case '1':
+      onekey = true;
+      break;
+    case '2':
+      twokey = true;
+      break;
+    case '3':
+      threekey = true;
+      break;
+    case 'q':
       prevGun = true;
-    }
-    if (key =='e')
-    {
+      break;
+    case 'e':
       nextGun = true;
+      break;
     }
+    //// Controls for switching weapons on desktop
+    //if (key == '1') onekey = true;
+    //if (key == '2') twokey = true;
+    //if (key == '3') threekey = true;
+
+    //// Controls for switching weapons on a cycle with snes controller
+    //if (key == 'q')
+    //{
+    //  prevGun = true;
+    //}
+    //if (key =='e')
+    //{
+    //  nextGun = true;
+    //}
   }
   void keyReleased() {
 
@@ -278,6 +294,21 @@ class Player extends GameObject {
       break;
     case 'w':
       wkey = false;
+      break;
+    case 'q':
+      prevGun = false;
+      break;
+    case 'e':
+      nextGun = false;
+      break;
+    case '1':
+      onekey = true;
+      break;
+    case'2':
+      twokey = true;
+      break;
+    case '3':
+      threekey = true;
       break;
     }
 
@@ -297,13 +328,13 @@ class Player extends GameObject {
       break;
     }
 
-    // Release for controls for switching weapons on desktop
-    if (key == '1') onekey = true;
-    if (key == '2') twokey = true;
-    if (key == '3') threekey = true;
+    //// Release for controls for switching weapons on desktop
+    //if (key == '1') onekey = true;
+    //if (key == '2') twokey = true;
+    //if (key == '3') threekey = true;
 
-    // Release for controls for switching weapons on a cycle with snes controller 
-    if (key == 'q') prevGun = false;
-    if (key == 'e') nextGun = false;
+    //// Release for controls for switching weapons on a cycle with snes controller 
+    //if (key == 'q') prevGun = false;
+    //if (key == 'e') nextGun = false;
   }
 }

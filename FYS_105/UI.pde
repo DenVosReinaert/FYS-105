@@ -4,7 +4,7 @@
 class UI {
   int state = 2;
   //boolean controls;
-  Timer hitStun = new Timer(0.1);
+  Timer hitStun = new Timer(1);
   boolean ableToBeHit = true;
   // Healthbar
   int levens = 3; // Standard amount of lives
@@ -32,7 +32,7 @@ class UI {
   int ammoY = height/12;
   int ammoXs = 6;
   int ammoYs = 15;
-  int reloadP = 120;
+  int reloadP = 60;
 
   int gun = 1;
 
@@ -80,6 +80,8 @@ class UI {
         if (ammoP == 0) {
           reloadP--;
           if (reloadP <= 0) {
+            pistolR.play();
+            pistolR.rewind();
             ammoP = 5;
             reloadP = 120;
           }
@@ -114,8 +116,10 @@ class UI {
         if (magM1 == 0 && maxM1 > 0) {
           reloadM1--;
           if (reloadM1 <= 0) {
+            AR1Reload.play();
             magM1 = 30;
             maxM1 -= 30;
+            AR1Reload.rewind();
             reloadM1 = 240;
           }
         }
@@ -146,6 +150,8 @@ class UI {
       if (myPlayer.currentGun == myPlayer.shotgun) {
         if (ammoS1 == 0 && maxS1 > 0) {
           reloadS1--;
+          ShotgunReload.play();
+          ShotgunReload.rewind();
           if (reloadS1 <= 0) {
             ammoS1 = 5;
             maxS1 -= 5;

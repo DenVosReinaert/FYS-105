@@ -6,7 +6,11 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield, megalovania;
+
+
+AudioPlayer Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme;
+
 
 
 // Main menu
@@ -163,14 +167,40 @@ void LoadAssets()
   healthUp = new SpriteSheet("/data/sprites/LS_HLTH.png", 10);
 
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
-  ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
-  LMG = minim.loadFile("/data/sound/LMG.mp3");
+  ShotgunReload = minim.loadFile("/data/sound/Guns/pump_shotgun_reload.mp3");
+  pump_shotg_empty = minim.loadFile("/data/sound/Guns/pump_shotgun_empty.mp3");
+  pump_shotg = minim.loadFile("/data/sound/Guns/pump_shotgun.mp3");
+  AR1 = minim.loadFile("/data/sound/Guns/ar_shot.mp3");
+  AR1Reload = minim.loadFile("/data/sound/Guns/ar_reload.mp3");
+  AR1Empty = minim.loadFile("/data/sound/Guns/ar_empty.mp3");
   Pistol = minim.loadFile("/data/sound/Pistol.mp3");
+  pistolR = minim.loadFile("/data/sound/Guns/handgun_reload.mp3");
+  pistolEmpty = minim.loadFile("/data/sound/Guns/handgun_empty.mp3");
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
-  damage = minim.loadFile("/data/sound/oof.mp3");
-  bruh = minim.loadFile("/data/sound/bruh.mp3");
-  garfield = minim.loadFile("/data/sound/garfield.mp3");
   megalovania = minim.loadFile("/data/sound/Megalovania.wav");
+  contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
+  guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
+
+  damage = minim.loadFile("/data/sound/voicelines/oof.mp3");
+  bruh = minim.loadFile("/data/sound/voicelines/bruh.mp3");
+  garfield = minim.loadFile("/data/sound/voicelines/garfield.mp3");
+  achievement = minim.loadFile("/data/sound/voicelines/achievement.mp3");
+  buying1 = minim.loadFile("/data/sound/voicelines/buying1.mp3");
+  buying2 = minim.loadFile("/data/sound/voicelines/buying2.mp3");
+  buying3 = minim.loadFile("/data/sound/voicelines/buying3.mp3");
+  buying4 = minim.loadFile("/data/sound/voicelines/buying4.mp3");
+  buying5 = minim.loadFile("/data/sound/voicelines/buying5.mp3");
+  buying6 = minim.loadFile("/data/sound/voicelines/buying6.mp3");
+  buying7 = minim.loadFile("/data/sound/voicelines/buying7.mp3");
+  cantbuy1 = minim.loadFile("/data/sound/voicelines/cantbuy1.mp3");
+  cantbuy2 = minim.loadFile("/data/sound/voicelines/cantbuy2.mp3");
+  missing1 = minim.loadFile("/data/sound/voicelines/missing1.mp3");
+  missing2 = minim.loadFile("/data/sound/voicelines/missing2.mp3");
+  ohhimark = minim.loadFile("/data/sound/voicelines/ohhimark.mp3");
+  uhoh = minim.loadFile("/data/sound/voicelines/uhoh.mp3");
+  shieldup = minim.loadFile("/data/sound/voicelines/shieldup.mp3");
+  ultimatemachinegun = minim.loadFile("/data/sound/voicelines/ultimatemachinegun.mp3");
+  speedup = minim.loadFile("/data/sound/voicelines/speedup.mp3");
 }

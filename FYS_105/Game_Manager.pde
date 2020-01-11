@@ -9,12 +9,13 @@ class Game_Manager {
 
   boolean inputBlockedUI;
   boolean inputtingCode;
-  boolean correctCode;
-  boolean selectKey;
 
+  String codeUndertale = "sswd";
+  String codeStreetFighter = "ssddl";
+  String codeKonami = "wwssadadkl";
   String code = "";
 
-  int codeLength;
+  int konamiCodeLength;
   int hscoreA;
   int shakeAmount;
   float comboMultiplier = 0.25;
@@ -26,7 +27,7 @@ class Game_Manager {
   {
     trackNumber = 1;
 
-    codeLength = 10;
+    konamiCodeLength = 10;
   }
 
   void draw() {
@@ -42,25 +43,6 @@ class Game_Manager {
       if (!homeSnd.isPlaying() ) {
         homeSnd.play();
         homeSnd.rewind();
-      }
-
-      if (keyPressed && key == 'r')
-      {
-        inputtingCode = true;
-        inputBlockedUI = true;
-
-        if (inputtingCode && inputBlockedUI)
-        {
-          inputtingCode = false;
-          inputBlockedUI = false;
-        }
-      }
-
-      //KONAMI CODE
-      //WWSSADAD(DownArrow)(RightArrow)(Enter)
-      if (inputtingCode)
-      {
-        image(codeInputBox, width/2 - codeInputBox.width/2, height/2 - codeInputBox.height/2);
       }
     }
     if (hscore) {
@@ -82,7 +64,23 @@ class Game_Manager {
         }
         break;
       case 2:
-        megalovania.setGain(0);
+        contraJungleTheme.setGain(100);
+        if (!contraJungleTheme.isPlaying())
+        {
+          contraJungleTheme.play();
+          contraJungleTheme.rewind();
+        }
+        break;
+      case 3:
+        guilesTheme.setGain(100);
+        if (!guilesTheme.isPlaying())
+        {
+          guilesTheme.play();
+          guilesTheme.rewind();
+        }
+        break;
+      case 4:
+        megalovania.setGain(30);
         if (!megalovania.isPlaying())
         {
           megalovania.play();
@@ -135,41 +133,165 @@ class Game_Manager {
     if (game) {
       myPlayer.keyPressed();
     }
-    if (home && !inputBlockedUI) {
-      if (key == 'r')
-        selectKey = true;
-      UI.keyPressed();
+    if (home) {
+
+
+      switch(key)        //KEY
+      {
+      case 'r':
+        println("PRESSED SELECT");
+        break;
+
+      case 'w':
+        if (inputtingCode)
+          code += key;
+        break;
+
+      case 's':
+        if (inputtingCode)
+          code += key;
+        break;
+
+      case 'a':
+        if (inputtingCode)
+          code += key;
+        break;
+
+      case 'd':
+        if (inputtingCode)
+          code += key;
+        break;
+      }
+
+
+      switch(keyCode)    //KEYCODE
+      {
+      case UP:
+        if (inputtingCode && inputBlockedUI)
+        {
+          key = 'j';
+          code += key;
+        }
+        break;
+
+      case LEFT:
+        if (inputtingCode && inputBlockedUI)
+        {
+          key = 'j';
+          code += key;
+        }
+        break;
+
+      case DOWN:
+        if (inputtingCode && inputBlockedUI)
+        {
+          key = 'k';
+          code += key;
+        }
+        break;
+
+      case RIGHT:
+        if (inputtingCode && inputBlockedUI)
+        {
+          key = 'l';
+          code += key;
+        }
+        break;
+
+      case RETURN:
+        if (inputtingCode)
+        {
+          if (code.equals(codeKonami))
+          {
+            print("!KONAMI CODE HAS BEEN ENTERED!");
+            if (trackNumber == 2)
+              trackNumber = 1;
+            else
+              trackNumber = 2;
+          }
+
+          if (code.equals(codeStreetFighter))
+          {
+            println("HADOUKEN!");
+            if (trackNumber == 3)
+              trackNumber = 1;
+            else trackNumber = 3;
+          }
+
+          if (code.equals(codeUndertale))
+          {
+            println("You're gonna have a bad time");
+            if (trackNumber == 4)
+              trackNumber = 1;
+            else trackNumber = 4;
+          }
+          code = code.substring(0, code.length()-code.length());
+        }
+        break;
+
+      case ENTER:
+        if (inputtingCode)
+        {
+          if (code.equals(codeKonami))
+          {
+            print("!KONAMI CODE HAS BEEN ENTERED!");
+            if (trackNumber == 2)
+              trackNumber = 1;
+            else
+              trackNumber = 2;
+          }
+
+          if (code.equals(codeStreetFighter))
+          {
+            println("HADOUKEN!");
+            if (trackNumber == 3)
+              trackNumber = 1;
+            else trackNumber = 3;
+          }
+
+          if (code.equals(codeUndertale))
+          {
+            println("You're gonna have a bad time");
+            if (trackNumber == 4)
+              trackNumber = 1;
+            else trackNumber = 4;
+          }
+          code = code.substring(0, code.length()-code.length());
+        }
+        break;
+      }
+
+
+      if (!inputtingCode && !inputBlockedUI)
+        UI.keyPressed();
     }
-
-    //if (codeInput)
-    //{
-    //  if (key == 'r')
-    //  {
-    //    inputBlocked = false;
-    //    codeInput = false;
-    //    clear();
-    //  }
-
-    //  if (key == 'w' || key == 's' || key == 'a' || key == 'd' || key == UP || key == DOWN || key == LEFT || key == RIGHT)
-    //  {
-    //    //PLACE A BIG ASTERISK IN TEXT BOX
-    //    pushStyle();
-    //    textSize(80);
-    //    text("*", 10, 10);
-    //    popStyle();
-    //  }
-    //}
-    //if (!codeInput)
-    //  if (key == 'r')
-    //  {
-    //    inputBlocked = true;
-    //    codeInput = true;
-    //  }
   }
+
+
   void keyReleased() {
+    println(code);
     if (home)
-      if (key == 'r')
-        selectKey = false;
+    {
+      if (code.length() > konamiCodeLength - 1)
+        code = code.substring(0, code.length() - (code.length() - konamiCodeLength));
+
+      switch(key)
+      {
+      case 'r':      
+        code = code.substring(0, code.length()-code.length());
+        if (inputtingCode && inputBlockedUI)
+        {
+          inputtingCode = false;
+          inputBlockedUI = false;
+        } else
+          if (!inputtingCode && !inputBlockedUI)
+          {
+            inputtingCode = true;
+            inputBlockedUI = true;
+          }
+        break;
+      }
+    }
 
     if (game) {
       myPlayer.keyReleased();

@@ -10,7 +10,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 4;
+  int wave = 1;
 
   int countBrt, countSpd, countGrnt, countHvy, countBss;
 
@@ -244,6 +244,8 @@ class Spawner extends GameObject {
           Add(new Boss1());
           spawnBssTimer.Reset();
           countBss--;
+          ohhimark.setGain(60);
+          ohhimark.play();
         }
       } else spawnBssFinished = true;
     }

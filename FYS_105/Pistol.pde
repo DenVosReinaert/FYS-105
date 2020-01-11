@@ -23,24 +23,24 @@ class Pistol extends GameObject {
       objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
       objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
       pushStyle();
-      image(handgunUp, objPosX, objPosY);
-      handgunUp.resize(8, 35);
+      image(handgunDown, objPosX, objPosY);
+      handgunDown.resize(8, 35);
       popStyle();
     } else if (myPlayer.lookingRight)
     {
       objPosX = myPlayer.objPosX + objWidth + 20;
       objPosY = myPlayer.objPosY - objHeight/2 + 10;
       pushStyle();
-      image(handgunUp, objPosX, objPosY);
-      handgunUp.resize(35, 16);
+      image(handgunRight, objPosX, objPosY);
+      handgunRight.resize(35, 15);
       popStyle();
     } else if (myPlayer.lookingLeft) 
     {
       objPosX = myPlayer.objPosX - objWidth - 30;
       objPosY = myPlayer.objPosY - objHeight/2 + 10;
       pushStyle();
-      image(handgunUp, objPosX, objPosY);
-      handgunUp.resize(35, 16);
+      image(handgunLeft, objPosX, objPosY);
+      handgunLeft.resize(35, 15);
       popStyle();
     }
   }
@@ -66,6 +66,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
@@ -80,6 +83,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
@@ -94,6 +100,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
@@ -108,6 +117,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     }
     if (cooldownTimer.TimerDone())

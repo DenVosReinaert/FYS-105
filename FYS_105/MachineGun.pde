@@ -54,8 +54,11 @@ class MachineGun extends GameObject {
         if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
           myPlayer.objPosY += knockback;
 
-        LMG.play();
-        LMG.rewind();
+        AR1.play();
+        AR1.rewind();
+      } else {
+        AR1Empty.play();
+        AR1Empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
@@ -68,8 +71,11 @@ class MachineGun extends GameObject {
         if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
           myPlayer.objPosY -= knockback;
 
-        LMG.play();
-        LMG.rewind();
+        AR1.play();
+        AR1.rewind();
+      } else {
+        AR1Empty.play();
+        AR1Empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
       if (UI.ammoM1 > 0 ) {
@@ -83,8 +89,11 @@ class MachineGun extends GameObject {
           myPlayer.objPosX += knockback;
 
 
-        LMG.play();
-        LMG.rewind();
+        AR1.play();
+        AR1.rewind();
+      } else {
+        AR1Empty.play();
+        AR1Empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
@@ -98,8 +107,11 @@ class MachineGun extends GameObject {
           myPlayer.objPosX -= knockback;
 
 
-        LMG.play();
-        LMG.rewind();
+        AR1.play();
+        AR1.rewind();
+      } else {
+        AR1Empty.play();
+        AR1Empty.rewind();
       }
     }
     if (cooldownTimer.TimerDone())

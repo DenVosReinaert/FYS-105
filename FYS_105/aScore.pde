@@ -2,6 +2,8 @@
 // Quinn Koene
 
 class aScore {
+  int randomSoundTrack; //choosing a random sound to play with switch statement
+  int totalSoundTracks; //number of sounds you want to use for the random
   int score; // The current score
   float combo; // The current combo or score multiplier
   String oScore; // "Old Score" score already in scorelist belonging to player
@@ -9,6 +11,7 @@ class aScore {
 
   aScore() {
     combo = 1;
+    totalSoundTracks = 2;
   }
 
   void draw() {
@@ -18,7 +21,7 @@ class aScore {
       fill(255);
       textSize(20);
       text("Score: "+score, width/9 - 10, height/10); // Total score of the player op to that point at the top left
-      text("x" + tCombo, myPlayer.objPosX, myPlayer.objPosY); // Indicator of the score multiplier above the player
+      text("x" + tCombo, myPlayer.objPosX - myPlayer.objWidth/2 + 5, myPlayer.objPosY); // Indicator of the score multiplier above the player
       popStyle();
     }
   }
@@ -52,9 +55,32 @@ class aScore {
 
   void ComboReset()
   {
+    randomSoundTrack = round(random(0, totalSoundTracks)); // picks 0, 1 or 2
+
+    //takes the random pick and plays the corresponding sound
+    switch(randomSoundTrack) {
+    case 0:
+      bruh.setGain(20);
+      bruh.play();
+      bruh.rewind();
+      missing1.pause();
+      missing2.pause();
+      break;
+    case 1:
+      missing1.setGain(40);
+      missing1.play();
+      missing1.rewind();
+      missing2.pause();
+      bruh.pause();
+      break;
+    case 2:
+      missing2.setGain(40);
+      missing2.play();
+      missing2.rewind();
+      missing1.pause();
+      bruh.pause();
+      break;
+    }
     combo = 1;
-    bruh.setGain(10);
-    bruh.play();
-    bruh.rewind();
   }
 }
