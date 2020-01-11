@@ -46,6 +46,9 @@ class Powerups extends GameObject {
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         UI.shield ++;
+        shieldup.setGain(30);
+        shieldup.play();
+        shieldup.rewind();
         Remove(this);
       }
       break;
@@ -60,6 +63,9 @@ class Powerups extends GameObject {
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         UI.levens ++;
+        uhoh.setGain(30);
+        uhoh.play();
+        uhoh.rewind();
         Remove(this);
       }
       break;
@@ -74,6 +80,9 @@ class Powerups extends GameObject {
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         //powerUps.speedUpCollected = true;
+        speedup.setGain(30);
+        speedup.play();
+        speedup.rewind();
         Remove(this);
       }
       break;

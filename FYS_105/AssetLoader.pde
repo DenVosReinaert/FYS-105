@@ -8,7 +8,7 @@ Minim minim;
 
 
 AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh;
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun;
 
 
 // Main menu
@@ -190,4 +190,7 @@ void LoadAssets()
   missing2 = minim.loadFile("/data/sound/voicelines/missing2.mp3");
   ohhimark = minim.loadFile("/data/sound/voicelines/ohhimark.mp3");
   uhoh = minim.loadFile("/data/sound/voicelines/uhoh.mp3");
+  shieldup = minim.loadFile("/data/sounds/voicelines/shieldup.mp3");
+  ultimatemachinegun = minim.loadFile("/data/sounds/voicelines/ultimatemachinegun.mp3");
+  speedup = minim.loadFile("/data/sounds/voicelines/speedup.mp3");
 }
