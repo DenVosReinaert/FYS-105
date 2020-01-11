@@ -229,61 +229,6 @@ class Game_Manager {
       if (code.length() > codeLength - 1)
         code = code.substring(0, code.length() - (code.length() - codeLength));
 
-      //switch(keyCode)    //KEYCODE
-      //{
-      //case UP:
-      //  if (inputtingCode && inputBlockedUI)
-      //  {
-      //    key = 'j';
-      //    code += key;
-      //  }
-      //  break;
-
-      //case LEFT:
-      //  if (inputtingCode && inputBlockedUI)
-      //  {
-      //    key = 'j';
-      //    code += key;
-      //  }
-      //  break;
-
-      //case DOWN:
-      //  if (inputtingCode && inputBlockedUI)
-      //  {
-      //    key = 'k';
-      //    code += key;
-      //  }
-      //  break;
-
-      //case RIGHT:
-      //  if (inputtingCode && inputBlockedUI)
-      //  {
-      //    key = 'l';
-      //    code += key;
-      //  }
-      //  break;
-
-      //case RETURN:
-      //  if (code.equals("wwssadadkl") && inputtingCode)
-      //  {
-      //    code = code.substring(0, code.length()-code.length());
-      //    trackNumber = 2;
-      //  } else
-      //  {
-      //    code = code.substring(0, code.length()-code.length());
-      //  }
-      //  break;
-
-      //case ENTER:
-      //  code = code.substring(0, code.length()-code.length());
-      //  if (inputtingCode)
-      //  {
-      //    code = code.substring(0, code.length()-code.length());
-      //    trackNumber = 2;
-      //  }
-      //  break;
-      //}
-
       switch(key)
       {
       case 'r':      
@@ -299,28 +244,9 @@ class Game_Manager {
             inputBlockedUI = true;
           }
         break;
-
-        //case 'w':
-        //  if (inputtingCode)
-        //    code += key;
-        //  break;
-
-        //case 's':
-        //  if (inputtingCode)
-        //    code += key;
-        //  break;
-
-        //case 'a':
-        //  if (inputtingCode)
-        //    code += key;
-        //  break;
-
-        //case 'd':
-        //  if (inputtingCode)
-        //    code += key;
-        //  break;
       }
     }
+    
     if (game) {
       myPlayer.keyReleased();
     }

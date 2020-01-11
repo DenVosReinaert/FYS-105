@@ -247,6 +247,7 @@ class Player extends GameObject {
       lookingUp = true;
       lookingRight = false;
       lookingDown = false;
+      break;
     case '1':
       onekey = true;
       break;
