@@ -6,7 +6,7 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield;
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield, megalovania;
 
 
 // Main menu
@@ -165,4 +165,5 @@ void LoadAssets()
   damage = minim.loadFile("/data/sound/oof.mp3");
   bruh = minim.loadFile("/data/sound/bruh.mp3");
   garfield = minim.loadFile("/data/sound/garfield.mp3");
+  megalovania = minim.loadFile("/data/sound/Megalovania.wav");
 }

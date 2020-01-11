@@ -5,6 +5,8 @@ class Game_Manager {
   boolean hscore;
   boolean shake;
 
+  int trackNumber;
+
   boolean codeInput;
   boolean inputBlocked;
   int codeLength;
@@ -17,6 +19,8 @@ class Game_Manager {
 
   Game_Manager() 
   {
+    trackNumber = 2;
+
     inputBlocked = false;
     codeInput = false;  
     codeLength = 10;
@@ -56,10 +60,22 @@ class Game_Manager {
 
     if (game) {
 
-      gameMusic.setGain(0);
-      if (!gameMusic.isPlaying()) {
-        gameMusic.play();
-        gameMusic.rewind();
+      switch(trackNumber) {
+      case 1:
+        gameMusic.setGain(0);
+        if (!gameMusic.isPlaying()) {
+          gameMusic.play();
+          gameMusic.rewind();
+        }
+        break;
+      case 2:
+        megalovania.setGain(0);
+        if (!megalovania.isPlaying())
+        {
+          megalovania.play();
+          megalovania.rewind();
+        }
+        break;
       }
 
       if (UI.levens <= 0) {
@@ -84,10 +100,12 @@ class Game_Manager {
       gameover.draw();
     }
   }
+
   void screenShake() {
     translate(-shakeAmount, shakeAmount);
     shake = false;
   }
+
   void keyPressed() {
     if (hscore) {
       if (keyCode == DOWN) {
@@ -108,30 +126,30 @@ class Game_Manager {
       UI.keyPressed();
     }
 
-    if (codeInput)
-    {
-      if (key == 'r')
-      {
-        inputBlocked = false;
-        codeInput = false;
-        clear();
-      }
+    //if (codeInput)
+    //{
+    //  if (key == 'r')
+    //  {
+    //    inputBlocked = false;
+    //    codeInput = false;
+    //    clear();
+    //  }
 
-      if (key == 'w' || key == 's' || key == 'a' || key == 'd' || key == UP || key == DOWN || key == LEFT || key == RIGHT)
-      {
-        //PLACE A BIG ASTERISK IN TEXT BOX
-        pushStyle();
-        textSize(80);
-        text("*", 10, 10);
-        popStyle();
-      }
-    }
-    if (!codeInput)
-      if (key == 'r')
-      {
-        inputBlocked = true;
-        codeInput = true;
-      }
+    //  if (key == 'w' || key == 's' || key == 'a' || key == 'd' || key == UP || key == DOWN || key == LEFT || key == RIGHT)
+    //  {
+    //    //PLACE A BIG ASTERISK IN TEXT BOX
+    //    pushStyle();
+    //    textSize(80);
+    //    text("*", 10, 10);
+    //    popStyle();
+    //  }
+    //}
+    //if (!codeInput)
+    //  if (key == 'r')
+    //  {
+    //    inputBlocked = true;
+    //    codeInput = true;
+    //  }
   }
   void keyReleased() {
     if (game) {
