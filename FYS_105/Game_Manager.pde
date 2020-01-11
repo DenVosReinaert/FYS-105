@@ -10,6 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String  codeDoom = "ssssss";
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
@@ -100,6 +101,14 @@ class Game_Manager {
         {
           megalovania.play();
           megalovania.rewind();
+        }
+        break;
+      case 5:
+        e1m1.setGain(0);
+        if (!e1m1.isPlaying())
+        {
+          e1m1.play();
+          e1m1.rewind();
         }
         break;
       }
@@ -218,6 +227,8 @@ class Game_Manager {
         {
           if (code.equals(codeKonami))
           {
+            chieves.UnlockAchievement(3);
+
             print("!KONAMI CODE HAS BEEN ENTERED!");
             if (trackNumber == 2)
               trackNumber = 1;
@@ -227,6 +238,8 @@ class Game_Manager {
 
           if (code.equals(codeStreetFighter))
           {
+            chieves.UnlockAchievement(4);
+
             println("HADOUKEN!");
             if (trackNumber == 3)
               trackNumber = 1;
@@ -235,10 +248,22 @@ class Game_Manager {
 
           if (code.equals(codeUndertale))
           {
+            chieves.UnlockAchievement(5);
+
             println("You're gonna have a bad time");
             if (trackNumber == 4)
               trackNumber = 1;
             else trackNumber = 4;
+          }
+
+          if (code.equals(codeDoom))
+          {
+            chieves.UnlockAchievement(6);
+
+            println("At Doom's Gate");
+            if (trackNumber == 5)
+              trackNumber = 1;
+            else trackNumber = 5;
           }
           code = code.substring(0, code.length()-code.length());
         }
@@ -249,6 +274,8 @@ class Game_Manager {
         {
           if (code.equals(codeKonami))
           {
+            chieves.UnlockAchievement(3);
+
             print("!KONAMI CODE HAS BEEN ENTERED!");
             if (trackNumber == 2)
               trackNumber = 1;
@@ -258,6 +285,8 @@ class Game_Manager {
 
           if (code.equals(codeStreetFighter))
           {
+            chieves.UnlockAchievement(4);
+
             println("HADOUKEN!");
             if (trackNumber == 3)
               trackNumber = 1;
@@ -266,10 +295,22 @@ class Game_Manager {
 
           if (code.equals(codeUndertale))
           {
+            chieves.UnlockAchievement(5);
+
             println("You're gonna have a bad time");
             if (trackNumber == 4)
               trackNumber = 1;
             else trackNumber = 4;
+          }
+
+          if (code.equals(codeDoom))
+          {
+            chieves.UnlockAchievement(6);
+
+            println("At Doom's Gate");
+            if (trackNumber == 5)
+              trackNumber = 1;
+            else trackNumber = 5;
           }
           code = code.substring(0, code.length()-code.length());
         }

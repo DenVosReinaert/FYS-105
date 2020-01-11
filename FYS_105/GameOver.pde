@@ -28,6 +28,8 @@ class GameOver {
       guilesTheme.rewind();
       megalovania.pause();
       megalovania.rewind();
+      e1m1.pause();
+      e1m1.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
