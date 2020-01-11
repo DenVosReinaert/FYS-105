@@ -16,6 +16,9 @@ class Game_Manager {
   String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
   String code = "";
+  String codeDMC = "aaaaaddddd";
+  String codeFireEmblem = "wswsad";
+  String codeXenoblade = "sdwas";
 
   int konamiCodeLength;
   int hscoreA;
@@ -37,12 +40,12 @@ class Game_Manager {
   }
 
   void draw() {
-    
+
     if (statspage) {
       home = false;
-     stats.draw(); 
+      stats.draw();
     }
-    
+
     if (login) {
 
       game = false;
@@ -118,6 +121,24 @@ class Game_Manager {
           e1m1.rewind();
         }
         break;
+      case 6:
+        devilMayCry.setGain(0);
+        if (!devilMayCry.isPlaying()) {
+          devilMayCry.play();
+          devilMayCry.rewind();
+        }
+      case 7:
+        fireEmblem.setGain(0);
+        if (!fireEmblem.isPlaying()) {
+          fireEmblem.play();
+          fireEmblem.rewind();
+        }
+      case 8:
+        xenoblade.setGain(0);
+        if (!xenoblade.isPlaying()) {
+          xenoblade.play();
+          xenoblade.rewind();
+        }
       }
 
       if (UI.levens <= 0) {
@@ -159,7 +180,7 @@ class Game_Manager {
       Login.keyPressed();
     }
     if (statspage) {
-     stats.keyPressed(); 
+      stats.keyPressed();
     }
     if (dead) {
       gameover.keyPressed();
@@ -275,6 +296,28 @@ class Game_Manager {
               trackNumber = 1;
             else trackNumber = 5;
           }
+          if (code.equals(codeDMC))
+          {
+            println("You can cry if you want, it doesn't make you a crybaby. Does make you a little bitch though.");
+            if (trackNumber == 6)
+              trackNumber = 1;
+            else trackNumber = 6;
+          }
+          if (code.equals(codeFireEmblem))
+          {
+            println("kill EVERY LAST ONE OF THEM");
+            if (trackNumber == 7)
+              trackNumber = 1;
+            else trackNumber = 7;
+          }
+          if (code.equals(codeXenoblade))
+          {
+            println("You've caught Territorial Rotbart's attention!");
+            if (trackNumber == 7)
+              trackNumber = 1;
+            else trackNumber = 7;
+          }
+
           code = code.substring(0, code.length()-code.length());
         }
         break;
@@ -321,6 +364,27 @@ class Game_Manager {
             if (trackNumber == 5)
               trackNumber = 1;
             else trackNumber = 5;
+          }
+          if (code.equals(codeDMC))
+          {
+            println("You can cry if you want, it doesn't make you a crybaby. Does make you a little bitch though.");
+            if (trackNumber == 6)
+              trackNumber = 1;
+            else trackNumber = 6;
+          }
+          if (code.equals(codeFireEmblem))
+          {
+            println("kill EVERY LAST ONE OF THEM");
+            if (trackNumber == 7)
+              trackNumber = 1;
+            else trackNumber = 7;
+          }
+          if (code.equals(codeXenoblade))
+          {
+            println("You've caught Territorial Rotbart's attention!");
+            if (trackNumber == 8)
+              trackNumber = 1;
+            else trackNumber = 8;
           }
           code = code.substring(0, code.length()-code.length());
         }

@@ -7,9 +7,11 @@ Movie video;
 Minim minim;
 
 
-
-AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, e1m1, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme, garfieldSans;
+// soundeffects
+AudioPlayer Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, damage, bruh, garfield, achievement, e1m1, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, garfieldSans;
+// music
+AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, devilMayCry, fireEmblem, xenoblade;
 
 
 
@@ -192,6 +194,9 @@ void LoadAssets()
   guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
   loginMusic = minim.loadFile("/data/sound/login.mp3");
   e1m1 = minim.loadFile("/data/sound/AtDoomsGate.wav");
+  devilMayCry = minim.loadFile("/data/sound/DevilTrigger.mp3");
+  fireEmblem = minim.loadFile("/data/sound/GodShatteringStar.mp3");
+  xenoblade = minim.loadFile("/data/sound/YouWillKnowOurNames.mp3");
 
 
 
