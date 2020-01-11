@@ -4,8 +4,6 @@ class Shotgun extends GameObject {
   Timer cooldownTimer = new Timer(2);
 
   Shotgun() {
-    threshold = 100;
-    cooldown = 0;
     knockback = 40;
   }
 
@@ -55,7 +53,6 @@ class Shotgun extends GameObject {
           Add(new Bullet(random(-2, 2), random(-14, -16)));
         }
         UI.ammoS1--;
-        cooldown = 0;
 
         if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
           myPlayer.objPosY += knockback;
@@ -77,7 +74,6 @@ class Shotgun extends GameObject {
           Add(new Bullet(random(-2, 2), random(14, 16)));
         }
         UI.ammoS1--;
-        cooldown = 0;
 
         if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
           myPlayer.objPosY -= knockback;
@@ -98,7 +94,6 @@ class Shotgun extends GameObject {
           Add(new Bullet(random(14, 16), random(-2, 2)));
         }
         UI.ammoS1--;
-        cooldown = 0;
 
         if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
           myPlayer.objPosX -= knockback;
@@ -118,7 +113,6 @@ class Shotgun extends GameObject {
           Add(new Bullet(random(-14, -16), random(-2, 2)));
         }
         UI.ammoS1--;
-        cooldown = 0;
 
         if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
           myPlayer.objPosX += knockback;

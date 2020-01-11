@@ -9,8 +9,6 @@ class MachineGun extends GameObject {
 
   MachineGun() 
   {
-    threshold = 8;
-    cooldown = 0;
     knockback = 15;
   }
 
@@ -52,7 +50,6 @@ class MachineGun extends GameObject {
 
         Add(new Bullet(random(-0.5, 0.5), random(-14.5, -15.5)));
         UI.ammoM1--;
-        cooldown = 0;
 
         if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
           myPlayer.objPosY += knockback;
@@ -66,7 +63,6 @@ class MachineGun extends GameObject {
         myPlayer.lookingDown = true;
         Add(new Bullet(random(-0.5, 0.5), random(14.5, 15.5)));
         UI.ammoM1--;
-        cooldown = 0;
 
 
         if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
@@ -81,7 +77,6 @@ class MachineGun extends GameObject {
 
         Add(new Bullet(random(-14.5, -15.5), random(-0.5, 0.5)));
         UI.ammoM1--;
-        cooldown = 0;
 
 
         if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
@@ -97,7 +92,6 @@ class MachineGun extends GameObject {
         myPlayer.lookingRight = true;
         Add(new Bullet(random(14.5, 15.5), random(-0.5, 0.5)));
         UI.ammoM1--;
-        cooldown = 0;
 
 
         if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)

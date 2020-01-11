@@ -22,11 +22,9 @@ public class GameObject {
 
   float moveVelX, moveVelY;
 
-  float defaultSpeed = 2.1;
-  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //Normalizes the defaultSpeed
+  float defaultSpeed, defaultSpeedInit, diaSpeed;
 
   float knockback;
-  float cooldown, threshold;
   float hp, hpBarTotal, hpBarTotalInit;
 
   float scoreGain;

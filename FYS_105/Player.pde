@@ -35,6 +35,10 @@ class Player extends GameObject {
 
     // Default gun is pistol
     currentGun = pistoll;
+
+    defaultSpeedInit = 2.1;
+    defaultSpeed = defaultSpeedInit;
+    diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
   }
 
 
@@ -117,7 +121,7 @@ class Player extends GameObject {
     // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else defaultSpeed = 2.1;
+    } else defaultSpeed = defaultSpeedInit;
 
     // Shoots gun when pressing any of the directional buttons
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {

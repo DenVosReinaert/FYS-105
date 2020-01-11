@@ -40,10 +40,8 @@ class Powerups extends GameObject {
     switch(randomPowerUp) {
     case 1:
       //SHIELDS
-      pushStyle();
-      fill(0, 0, 200);
-      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
-      popStyle();
+      shieldUp.draw(tempObjPosX, tempObjPosY);
+      shieldUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
@@ -56,10 +54,8 @@ class Powerups extends GameObject {
 
     case 2:
       //HEALTH
-      pushStyle();
-      fill(0, 200, 0);
-      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
-      popStyle();
+      healthUp.draw(tempObjPosX, tempObjPosY);
+      healthUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
@@ -72,10 +68,8 @@ class Powerups extends GameObject {
 
     case 3:
       //SPEEDUP
-      pushStyle();
-      fill(200, 0, 0);
-      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
-      popStyle();
+      speedUp.draw(tempObjPosX, tempObjPosY);
+      speedUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {

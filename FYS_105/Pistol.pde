@@ -3,8 +3,6 @@ class Pistol extends GameObject {
   Timer cooldownTimer = new Timer(1);
 
   Pistol() {
-    threshold = 40;
-    cooldown = 0;
     knockback = 5;
   }
 
@@ -62,7 +60,6 @@ class Pistol extends GameObject {
         myPlayer.lookingUp = true;
         Add(new Bullet(random(-0.25, 0.25), random(-14.75, -15.25)));
         UI.ammoP--;
-        cooldown = 0;
 
         if (!myPlayer.collBott || myPlayer.objPosY + myPlayer.objHeight + knockback < height)
           myPlayer.objPosY += knockback;
@@ -77,7 +74,6 @@ class Pistol extends GameObject {
         myPlayer.lookingDown = true;
         Add(new Bullet(random(-0.25, 0.25), random(14.75, 15.25)));
         UI.ammoP--;
-        cooldown = 0;
 
         if (!myPlayer.collTop || myPlayer.objPosY - knockback > 0)
           myPlayer.objPosY -=knockback;
@@ -92,7 +88,6 @@ class Pistol extends GameObject {
         myPlayer.lookingLeft = true;
         Add(new Bullet(random(-14.75, -15.25), random(-0.25, 0.25)));
         UI.ammoP--;
-        cooldown = 0;
 
         if (!myPlayer.collRight || myPlayer.objPosX + myPlayer.objWidth + knockback < width)
           myPlayer.objPosX += knockback;
@@ -107,7 +102,6 @@ class Pistol extends GameObject {
         myPlayer.lookingRight = true;
         Add(new Bullet(random(14.75, 15.25), random(-0.25, 0.25)));
         UI.ammoP--;
-        cooldown = 0;
 
         if (!myPlayer.collLeft || myPlayer.objPosX - knockback > 0)
           myPlayer.objPosX -= knockback;

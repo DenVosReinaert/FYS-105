@@ -156,6 +156,12 @@ void LoadAssets()
   arrowPL = new SpriteSheet("/data/sprites/ArrowPointer_Left.png", 6);
   arrowPR = new SpriteSheet("/data/sprites/ArrowPointer_Right.png", 6);
 
+
+  //PowerUps
+  shieldUp = new SpriteSheet("/data/sprites/LS_SHLD.png", 10);
+  speedUp = new SpriteSheet("/data/sprites/LS_SPD.png", 20);
+  healthUp = new SpriteSheet("/data/sprites/LS_HLTH.png", 10);
+
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
   LMG = minim.loadFile("/data/sound/LMG.mp3");
