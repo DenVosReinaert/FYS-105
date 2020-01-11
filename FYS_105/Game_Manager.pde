@@ -10,6 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
   String code = "";
 
@@ -81,6 +82,14 @@ class Game_Manager {
         {
           contraJungleTheme.play();
           contraJungleTheme.rewind();
+        }
+        break;
+      case 3:
+        guilesTheme.setGain(100);
+        if (!guilesTheme.isPlaying())
+        {
+          guilesTheme.play();
+          guilesTheme.rewind();
         }
         break;
       }
@@ -195,27 +204,47 @@ class Game_Manager {
         break;
 
       case RETURN:
-        if (code.equals(codeKonami) && inputtingCode)
+        if (inputtingCode)
         {
-          print("!KONAMI CODE HAS BEEN ENTERED!");
-          if (trackNumber == 2)
-            trackNumber = 1;
-          else
-            trackNumber = 2;
+          if (code.equals(codeKonami))
+          {
+            print("!KONAMI CODE HAS BEEN ENTERED!");
+            if (trackNumber == 2)
+              trackNumber = 1;
+            else
+              trackNumber = 2;
+          }
 
+          if (code.equals(codeStreetFighter))
+          {
+            println("HADOUKEN!");
+            if (trackNumber == 3)
+              trackNumber = 1;
+            else trackNumber = 3;
+          }
           code = code.substring(0, code.length()-code.length());
         }
         break;
 
       case ENTER:
-        if (code.equals(codeKonami) && inputtingCode)
+        if (inputtingCode)
         {
-          print("!KONAMI CODE HAS BEEN ENTERED!");
-          if (trackNumber == 2)
-            trackNumber = 1;
-          else
-            trackNumber = 2;
+          if (code.equals(codeKonami))
+          {
+            print("!KONAMI CODE HAS BEEN ENTERED!");
+            if (trackNumber == 2)
+              trackNumber = 1;
+            else
+              trackNumber = 2;
+          }
 
+          if (code.equals(codeStreetFighter))
+          {
+            println("HADOUKEN!");
+            if (trackNumber == 3)
+              trackNumber = 1;
+            else trackNumber = 3;
+          }
           code = code.substring(0, code.length()-code.length());
         }
         break;

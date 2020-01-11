@@ -9,7 +9,7 @@ Minim minim;
 
 
 AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme;
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme;
 
 
 
@@ -175,6 +175,7 @@ void LoadAssets()
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
   megalovania = minim.loadFile("/data/sound/Megalovania.wav");
   contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
+  guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
 
   damage = minim.loadFile("/data/sound/voicelines/oof.mp3");
   bruh = minim.loadFile("/data/sound/voicelines/bruh.mp3");

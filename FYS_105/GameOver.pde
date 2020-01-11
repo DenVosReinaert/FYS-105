@@ -24,6 +24,8 @@ class GameOver {
       gameMusic.rewind();
       contraJungleTheme.pause();
       contraJungleTheme.rewind();
+      guilesTheme.pause();
+      guilesTheme.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
