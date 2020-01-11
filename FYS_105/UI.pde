@@ -4,7 +4,7 @@
 class UI {
   int state = 2;
   //boolean controls;
-  Timer hitStun = new Timer(0.1);
+  Timer hitStun = new Timer(1);
   boolean ableToBeHit = true;
   // Healthbar
   int levens = 3; // Standard amount of lives
