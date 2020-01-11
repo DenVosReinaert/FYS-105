@@ -131,12 +131,12 @@ class Boss1 extends GameObject {
           gamemngr.shake = true;
           if (hp == 0) {
 
-            if (msql.connect())
-            {
-              msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements INNER JOIN Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievement WHERE Achievements_idAchievements = '%s' AND User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
+            //if (msql.connect())
+            //{
+            //  msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements INNER JOIN Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievement WHERE Achievements_idAchievements = '%s' AND User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
 
-              chieves.UnlockAchievement(3);
-            }
+            //  chieves.UnlockAchievement(3);
+            //}
 
             ascore.score += scoreGain * ascore.combo;
           }

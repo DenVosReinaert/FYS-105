@@ -8,7 +8,7 @@ Minim minim;
 
 
 
-AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
+AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, e1m1, 
   buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme, garfieldSans;
 
 
@@ -166,6 +166,7 @@ void LoadAssets()
   arrowPR = new SpriteSheet("/data/sprites/ArrowPointer_Right.png", 6);
 
 
+
   //PowerUps
   shieldUp = new SpriteSheet("/data/sprites/LS_SHLD.png", 10);
   speedUp = new SpriteSheet("/data/sprites/LS_SPD.png", 20);
@@ -189,6 +190,8 @@ void LoadAssets()
   contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
   guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
   loginMusic = minim.loadFile("/data/sound/login.mp3");
+  e1m1 = minim.loadFile("/data/sound/AtDoomsGate.wav");
+
 
 
   damage = minim.loadFile("/data/sound/voicelines/oof.mp3");

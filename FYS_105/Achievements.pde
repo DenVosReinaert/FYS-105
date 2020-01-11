@@ -4,19 +4,18 @@ class Achievements
   int collected; //Current 
   int bossCounter;
 
-  int idAchievement;
+  int idAchievement, achieved;
   String tempId;
 
   Achievements()
   {
     msql.connect();
 
-    AddChieveToTable(3);
+    //AddChieveToTable(3);
     UnlockAchievement(3);
 
-    println(bossCounter);
+    //println(bossCounter);
   }
-
 
 
 
@@ -45,28 +44,52 @@ class Achievements
 
 
 
-  void AddChieveToTable(int achievementNumber)
-  {
-    msql.query("SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber);
-    while (msql.next())
-    {
-      tempId = msql.getString("idAchievement");
-      if (tempId == null)
-      {
-        msql.query("INSERT INTO User_has_Acievements (User_idUser, Achievements_idAchievements) VALUES ('%s','%s')", User.currentUser, idAchievement);
-      }
-    }
-  }
+  //void AddChieveToTable(int achievementNumber)
+  //{
+  //  msql.query("SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber);
+  //  while (msql.next())
+  //  {
+  //    tempId = msql.getString("idAchievement");
+  //    if (tempId == null)
+  //    {
+  //      msql.query("INSERT INTO User_has_Acievements (User_idUser, Achievements_idAchievements) VALUES ('%s','%s')", User.currentUser, idAchievement);
+  //    }
+  //  }
+  //}
 
 
   void UnlockAchievement(int achievementNumber)
   {
-    msql.query("SELECT collectedAchievements FROM Achievements INNER JOIN User_has_Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievements WHERE idAchievements = '%s' AND User_idUser = '%s' AND collectedAchievements = '0'", achievementNumber, User.currentUser);
-    while (msql.next())
-    {
-      msql.query("UPDATE Achievements SET collectedAchievements = '1' FROM User_has_Achievements WHERE User_idUser = '%s'", User.currentUser);
-    }
+    //if (msql.connect())
+    //{
+    //  msql.query("SELECT a.collectedAchievements, u.User_idUser FROM Achievements a INNER JOIN User_has_Achievements u ON u.User_idUser = '%s' AND a.idAchievements = u.Achievements_idAchievements WHERE a.collectedAchievements = '0' AND a.idAchievements = '%s'", User.currentUser, achievementNumber);
+    //  while (msql.next())
+    //  {
+    //    msql.query("UPDATE Achievements SET a.collectedAchievements = '1' FROM Achievements a INNER JOIN User_has_Achievements u ON u.User_idUser = '%s'", User.currentUser);
+    //    println("YOU UNLOCKED ACHIEVEMENT:" + achievementNumber);
+    //  }
+    //}
 
-    println("YOU UNLOCKED ACHIEVEMENT:" + achievementNumber);
+
+    if (msql.connect())
+    {
+      if (msql.connect()) 
+      {
+        msql.query( "SELECT collectedAchievements FROM User_has_Achievements WHERE Use_idUser = '%s' AND idAchievements = '%s'", User.currentUser, achievementNumber );
+        while (msql.next() ) 
+        {
+          achieved = parseInt(msql.getString("collectedAchievements"));
+        }
+        if (achieved != 1) 
+        {
+          //println( User.currentUser + " heeft achievement" + achievementNumber + " behaald!");
+          msql.query("INSERT INTO User_has_Achievement (User_idUser, Achievement_idAchievements, collectedAchievements) VALUES ('%s','%s','%s')", User.currentUser, achievementNumber, achieved);
+          //dbAchieved.clear();
+          //GetAchieved();
+        }
+      }
+    }
   }
 }
+
+//"SELECT a.collectedAchievements, u.User_idUser FROM Achievements a INNER JOIN User_has_Achievements u ON a.idAchievements = u.Achievements_idAchievements WHERE a.collectedAchievements = '0' AND a.idAchievement = '%s' AND u.User_idUser = '%s'", achievementNumber, User.currentUser
