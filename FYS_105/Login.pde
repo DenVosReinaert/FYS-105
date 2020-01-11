@@ -49,6 +49,8 @@ class Login {
 
   void draw() {
     clear();
+    login.resize(width, height);
+    image(login, 0, 0);
     // Turn everything off!
     myPlayer.shootingRight = false;
     myPlayer.shootingLeft = false;
@@ -78,6 +80,7 @@ class Login {
     letter2 = letters[l2s];
     letter3 = letters[l3s];
     letter4 = letters[l4s];
+
 
     // Aline the letters in the middle
 

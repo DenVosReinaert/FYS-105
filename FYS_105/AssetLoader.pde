@@ -8,13 +8,13 @@ Minim minim;
 
 
 
-AudioPlayer Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme;
+AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme, garfieldSans;
 
 
 
 // Main menu
-PImage main, pillar, background, scrBgr, codeInputBox; //controlImg;
+PImage main, login, pillar, background, scrBgr, pokemonMDB; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -37,7 +37,7 @@ PImage purpleStoneTiles;
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
-SpriteSheet shopcart, stationaryShopcart, cartdirt;
+SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
 SpriteSheet shieldUp, healthUp, speedUp;
 
 
@@ -62,7 +62,7 @@ void LoadAssets()
   shieldbarSb = loadImage("/data/sprites/UI/ShieldBarSlots_Backdrop.png");
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
 
-  codeInputBox = loadImage("/data/sprites/CodeInputBox.png");
+  pokemonMDB = loadImage("/data/sprites/PMDB.png");
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
@@ -95,6 +95,8 @@ void LoadAssets()
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");
   main = loadImage("/data/img/LastStand-MainMenu.png");
+  // Login
+  login = loadImage("/data/img/LastStand-Login.png");
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
@@ -152,6 +154,9 @@ void LoadAssets()
 
   shopcart = new SpriteSheet("/data/sprites/shopcart.png", 6);
   stationaryShopcart = new SpriteSheet("/data/sprites/Stationary_Shopcart.png", 8);
+  shopcartSansGarfield = new SpriteSheet("/data/sprites/Shopcart_Sans.png", 6);
+  shopcartSansGarfieldStationary = new SpriteSheet("/data/sprites/Shopcart_Sans_NM.png", 6);
+
   cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
 
   //ArrowPointers
@@ -182,6 +187,8 @@ void LoadAssets()
   megalovania = minim.loadFile("/data/sound/Megalovania.wav");
   contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
   guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
+  loginMusic = minim.loadFile("/data/sound/login.mp3");
+
 
   damage = minim.loadFile("/data/sound/voicelines/oof.mp3");
   bruh = minim.loadFile("/data/sound/voicelines/bruh.mp3");
@@ -203,4 +210,5 @@ void LoadAssets()
   shieldup = minim.loadFile("/data/sound/voicelines/shieldup.mp3");
   ultimatemachinegun = minim.loadFile("/data/sound/voicelines/ultimatemachinegun.mp3");
   speedup = minim.loadFile("/data/sound/voicelines/speedup.mp3");
+  garfieldSans = minim.loadFile("/data/sound/voicelines/sans.mp3");
 }

@@ -10,9 +10,6 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
-  String codeUndertale = "sswd";
-  String codeStreetFighter = "ssddl";
-  String codeKonami = "wwssadadkl";
   String code = "";
 
   int konamiCodeLength;
@@ -20,34 +17,26 @@ class Game_Manager {
   int shakeAmount;
   float comboMultiplier = 0.25;
 
-  float  badgePosX, badgePosY;
-
   Timer secretCodeTimer = new Timer(2);
 
 
   Game_Manager() 
   {
     trackNumber = 1;
-    konamiCodeLength = 10;
 
-    badgePosX = width/2 + 375;
-    badgePosY = height/5 + 30;
+    konamiCodeLength = 9;
   }
 
   void draw() {
     if (login) {
-
-
-
       game = false;
       Login.draw();
-      loginMusic.setGain(0);
+      loginMusic.setGain(10);
       if (!loginMusic.isPlaying()) 
       {
         loginMusic.play();
         loginMusic.rewind();
       }
-      image(pokemonMDB, badgePosX, badgePosY);
     }
     if (home) {
       UI.draw();
@@ -58,6 +47,18 @@ class Game_Manager {
       if (!homeSnd.isPlaying() ) {
         homeSnd.play();
         homeSnd.rewind();
+      }
+
+
+      //KONAMI CODE
+      //WWSSADAD(DownArrow)(RightArrow)(Enter)
+      if (inputtingCode && inputBlockedUI && code.length() == konamiCodeLength)
+      {
+        pushStyle();
+        fill(255);
+        textSize(80);
+        text("Press START to confirm", width/2, height/2 - 200);
+        popStyle();
       }
     }
     if (hscore) {
@@ -79,23 +80,7 @@ class Game_Manager {
         }
         break;
       case 2:
-        contraJungleTheme.setGain(100);
-        if (!contraJungleTheme.isPlaying())
-        {
-          contraJungleTheme.play();
-          contraJungleTheme.rewind();
-        }
-        break;
-      case 3:
-        guilesTheme.setGain(100);
-        if (!guilesTheme.isPlaying())
-        {
-          guilesTheme.play();
-          guilesTheme.rewind();
-        }
-        break;
-      case 4:
-        megalovania.setGain(30);
+        megalovania.setGain(0);
         if (!megalovania.isPlaying())
         {
           megalovania.play();
@@ -214,64 +199,25 @@ class Game_Manager {
         break;
 
       case RETURN:
-        if (inputtingCode)
+        if (code.equals("wwssadadkl") && inputtingCode)
         {
-          if (code.equals(codeKonami))
-          {
-            print("!KONAMI CODE HAS BEEN ENTERED!");
-            if (trackNumber == 2)
-              trackNumber = 1;
-            else
-              trackNumber = 2;
-          }
-
-          if (code.equals(codeStreetFighter))
-          {
-            println("HADOUKEN!");
-            if (trackNumber == 3)
-              trackNumber = 1;
-            else trackNumber = 3;
-          }
-
-          if (code.equals(codeUndertale))
-          {
-            println("You're gonna have a bad time");
-            if (trackNumber == 4)
-              trackNumber = 1;
-            else trackNumber = 4;
-          }
+          code = code.substring(0, code.length()-code.length());
+          if (trackNumber == 1)
+            trackNumber = 2;
+          else if (trackNumber == 2)
+            trackNumber = 1;
+        } else
+        {
           code = code.substring(0, code.length()-code.length());
         }
         break;
 
       case ENTER:
+        code = code.substring(0, code.length()-code.length());
         if (inputtingCode)
         {
-          if (code.equals(codeKonami))
-          {
-            print("!KONAMI CODE HAS BEEN ENTERED!");
-            if (trackNumber == 2)
-              trackNumber = 1;
-            else
-              trackNumber = 2;
-          }
-
-          if (code.equals(codeStreetFighter))
-          {
-            println("HADOUKEN!");
-            if (trackNumber == 3)
-              trackNumber = 1;
-            else trackNumber = 3;
-          }
-
-          if (code.equals(codeUndertale))
-          {
-            println("You're gonna have a bad time");
-            if (trackNumber == 4)
-              trackNumber = 1;
-            else trackNumber = 4;
-          }
           code = code.substring(0, code.length()-code.length());
+          trackNumber = 2;
         }
         break;
       }
