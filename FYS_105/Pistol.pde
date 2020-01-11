@@ -66,6 +66,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
@@ -80,6 +83,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
@@ -94,6 +100,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
@@ -108,6 +117,9 @@ class Pistol extends GameObject {
 
         Pistol.play();
         Pistol.rewind();
+      } else {
+        pistolEmpty.play();
+        pistolEmpty.rewind();
       }
     }
     if (cooldownTimer.TimerDone())

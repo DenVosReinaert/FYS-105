@@ -8,8 +8,8 @@ Minim minim;
 
 
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme;
+AudioPlayer Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme,guilesTheme;
 
 
 
@@ -167,9 +167,15 @@ void LoadAssets()
   healthUp = new SpriteSheet("/data/sprites/LS_HLTH.png", 10);
 
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
-  ShotgunReload = minim.loadFile("/data/sound/ShotgunReload.mp3");
-  LMG = minim.loadFile("/data/sound/LMG.mp3");
+  ShotgunReload = minim.loadFile("/data/sound/Guns/pump_shotgun_reload.mp3");
+  pump_shotg_empty = minim.loadFile("/data/sound/Guns/pump_shotgun_empty.mp3");
+  pump_shotg = minim.loadFile("/data/sound/Guns/pump_shotgun.mp3");
+  AR1 = minim.loadFile("/data/sound/Guns/ar_shot.mp3");
+  AR1Reload = minim.loadFile("/data/sound/Guns/ar_reload.mp3");
+  AR1Empty = minim.loadFile("/data/sound/Guns/ar_empty.mp3");
   Pistol = minim.loadFile("/data/sound/Pistol.mp3");
+  pistolR = minim.loadFile("/data/sound/Guns/handgun_reload.mp3");
+  pistolEmpty = minim.loadFile("/data/sound/Guns/handgun_empty.mp3");
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");

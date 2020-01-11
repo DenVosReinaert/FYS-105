@@ -59,8 +59,12 @@ class Shotgun extends GameObject {
 
         Shotgun.play();
         Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
+        pump_shotg.setGain(-5);
+        pump_shotg.play();
+        pump_shotg.rewind();
+      } else {
+        pump_shotg_empty.play();
+        pump_shotg_empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
@@ -80,8 +84,12 @@ class Shotgun extends GameObject {
 
         Shotgun.play();
         Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
+        pump_shotg.setGain(-5);
+        pump_shotg.play();
+        pump_shotg.rewind();
+      } else {
+        pump_shotg_empty.play();
+        pump_shotg_empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
@@ -100,8 +108,12 @@ class Shotgun extends GameObject {
 
         Shotgun.play();
         Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
+        pump_shotg.setGain(-5);
+        pump_shotg.play();
+        pump_shotg.rewind();
+      } else {
+        pump_shotg_empty.play();
+        pump_shotg_empty.rewind();
       }
     } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
@@ -119,8 +131,12 @@ class Shotgun extends GameObject {
 
         Shotgun.play();
         Shotgun.rewind();
-        ShotgunReload.play();
-        ShotgunReload.rewind();
+        pump_shotg.setGain(-5);
+        pump_shotg.play();
+        pump_shotg.rewind();
+      } else {
+        pump_shotg_empty.play();
+        pump_shotg_empty.rewind();
       }
     }
     if (cooldownTimer.TimerDone())
