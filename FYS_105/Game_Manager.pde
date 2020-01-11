@@ -9,12 +9,10 @@ class Game_Manager {
 
   boolean inputBlockedUI;
   boolean inputtingCode;
-  boolean correctCode;
-  boolean selectKey;
 
   String code = "";
 
-  int codeLength;
+  int konamiCodeLength;
   int hscoreA;
   int shakeAmount;
   float comboMultiplier = 0.25;
@@ -26,7 +24,7 @@ class Game_Manager {
   {
     trackNumber = 1;
 
-    codeLength = 9;
+    konamiCodeLength = 9;
   }
 
   void draw() {
@@ -47,7 +45,7 @@ class Game_Manager {
 
       //KONAMI CODE
       //WWSSADAD(DownArrow)(RightArrow)(Enter)
-      if (inputtingCode && inputBlockedUI && code.length() == codeLength)
+      if (inputtingCode && inputBlockedUI && code.length() == konamiCodeLength)
       {
         pushStyle();
         fill(255);
@@ -229,8 +227,8 @@ class Game_Manager {
     println(code);
     if (home)
     {
-      if (code.length() > codeLength - 1)
-        code = code.substring(0, code.length() - (code.length() - codeLength));
+      if (code.length() > konamiCodeLength - 1)
+        code = code.substring(0, code.length() - (code.length() - konamiCodeLength));
 
       switch(key)
       {
