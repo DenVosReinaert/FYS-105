@@ -4,7 +4,7 @@ class Powerups extends GameObject {
   Timer powerUpEffectTimer = new Timer(3);
 
   int randomPowerUp;
-  int totalPowerUps = 3;
+  int totalPowerUps = 4;
 
   float tempObjPosX, tempObjPosY;
 
@@ -34,14 +34,17 @@ class Powerups extends GameObject {
   void draw()
   {
 
-    if (powerUpLifeTimer.TimerDone())
+    if (powerUpLifeTimer.TimerDone()) {
       Remove(this);
+    }
 
     switch(randomPowerUp) {
     case 1:
       //SHIELDS
       shieldUp.draw(tempObjPosX, tempObjPosY);
       shieldUp.update();
+
+
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
@@ -86,60 +89,20 @@ class Powerups extends GameObject {
         Remove(this);
       }
       break;
+
+    case 4:
+      //MULTIPLIER
+      multiplierUp.draw(tempObjPosX, tempObjPosY);
+      multiplierUp.update();
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        ascore.combo *= 2;
+        Remove(this);
+      }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Drops the Speed powerup
