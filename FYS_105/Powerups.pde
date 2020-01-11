@@ -12,33 +12,80 @@ class Powerups extends GameObject {
   boolean speedUpCollected;
 
   //initiales the width and height of the powerups.
-  Powerups() {
+  Powerups(float objPosX, float objPosY) {
+
+    tempObjPosX = objPosX;
+    tempObjPosY = objPosY;
 
     objWidth = 20;
     objHeight = 20;
 
+    randomPowerUp = round(random(0, totalPowerUps));
+
     speedUpCollected = false;
+
+    powerUpLifeTimer.Reset();
   }
 
 
 
 
-  void RandomPowerUp()
+  void draw()
   {
-    for (int i = 0; i < 1; i++)
-    {
-      randomPowerUp = round(random(0, totalPowerUps));
-    }
-
     switch(randomPowerUp) {
     case 1:
-      Add(new ShieldUp(objPosX, objPosY));
+      //SHIELDS
+      pushStyle();
+      fill(0, 0, 200);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        UI.shield ++;
+        Remove(this);
+      }
+
+      if (powerUpLifeTimer.TimerDone())
+        Remove(this);
       break;
+
+
+
     case 2:
-      Add(new SpeedUp(objPosX, objPosY));
+      //HEALTH
+      pushStyle();
+      fill(0, 200, 0);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        UI.levens ++;
+        Remove(this);
+      }
+
+      if (powerUpLifeTimer.TimerDone())
+        Remove(this);
       break;
+
+
+
     case 3:
-      Add(new HealthUp(objPosX, objPosY));
+      //SPEEDUP
+      pushStyle();
+      fill(200, 0, 0);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        //powerUps.speedUpCollected = true;
+        Remove(this);
+      }
+
+      if (powerUpLifeTimer.TimerDone())
+        Remove(this);
       break;
     }
   }

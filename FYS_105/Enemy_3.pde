@@ -140,8 +140,8 @@ class Heavy extends GameObject {
           if (hp == 0) {
 
             powerUpChance = random(0, 100);
-            if (powerUpChance <= powerUps.powerUpChance)
-              powerUps.RandomPowerUp();
+            if (powerUpChance <= 75)
+              Add(new Powerups(objPosX, objPosY));
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
