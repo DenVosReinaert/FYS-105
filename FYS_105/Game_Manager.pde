@@ -10,7 +10,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
-  String  codeDoom = "ssssss";
+  String codeDoom = "ssssss";
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
