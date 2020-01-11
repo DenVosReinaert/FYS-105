@@ -26,7 +26,6 @@ public class GameObject {
 
   float knockback;
   float hp, hpBarTotal, hpBarTotalInit;
-  float cooldown, threshold;
 
 
   float scoreGain;
