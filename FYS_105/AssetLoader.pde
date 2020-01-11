@@ -6,7 +6,9 @@ import processing.video.*;
 Movie video;
 Minim minim;
 
-AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield, megalovania;
+
+AudioPlayer Shotgun, ShotgunReload, LMG, Pistol, homeSnd, death, gameMusic, damage, bruh, garfield, achievement, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh;
 
 
 // Main menu
@@ -169,8 +171,23 @@ void LoadAssets()
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
-  damage = minim.loadFile("/data/sound/oof.mp3");
-  bruh = minim.loadFile("/data/sound/bruh.mp3");
-  garfield = minim.loadFile("/data/sound/garfield.mp3");
   megalovania = minim.loadFile("/data/sound/Megalovania.wav");
+  
+  damage = minim.loadFile("/data/sound/voicelines/oof.mp3");
+  bruh = minim.loadFile("/data/sound/voicelines/bruh.mp3");
+  garfield = minim.loadFile("/data/sound/voicelines/garfield.mp3");
+  achievement = minim.loadFile("/data/sound/voicelines/achievement.mp3");
+  buying1 = minim.loadFile("/data/sound/voicelines/buying1.mp3");
+  buying2 = minim.loadFile("/data/sound/voicelines/buying2.mp3");
+  buying3 = minim.loadFile("/data/sound/voicelines/buying3.mp3");
+  buying4 = minim.loadFile("/data/sound/voicelines/buying4.mp3");
+  buying5 = minim.loadFile("/data/sound/voicelines/buying5.mp3");
+  buying6 = minim.loadFile("/data/sound/voicelines/buying6.mp3");
+  buying7 = minim.loadFile("/data/sound/voicelines/buying7.mp3");
+  cantbuy1 = minim.loadFile("/data/sound/voicelines/cantbuy1.mp3");
+  cantbuy2 = minim.loadFile("/data/sound/voicelines/cantbuy2.mp3");
+  missing1 = minim.loadFile("/data/sound/voicelines/missing1.mp3");
+  missing2 = minim.loadFile("/data/sound/voicelines/missing2.mp3");
+  ohhimark = minim.loadFile("/data/sound/voicelines/ohhimark.mp3");
+  uhoh = minim.loadFile("/data/sound/voicelines/uhoh.mp3");
 }

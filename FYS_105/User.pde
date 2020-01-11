@@ -29,7 +29,6 @@ class User {
     }
     if (idUser != null) { // If there is a user with the same name, currentUser is ID belonging to name
       currentUser = parseInt(idUser);
-      println("idUser: " + idUser);
     }
   }
 }

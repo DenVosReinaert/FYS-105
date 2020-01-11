@@ -244,6 +244,8 @@ class Spawner extends GameObject {
           Add(new Boss1());
           spawnBssTimer.Reset();
           countBss--;
+          ohhimark.setGain(60);
+          ohhimark.play();
         }
       } else spawnBssFinished = true;
     }
