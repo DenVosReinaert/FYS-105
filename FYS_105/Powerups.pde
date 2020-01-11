@@ -4,7 +4,6 @@ class Powerups extends GameObject {
   Timer powerUpEffectTimer = new Timer(3);
 
   int randomPowerUp;
-  int powerUpChance = 75;
   int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
@@ -13,6 +12,8 @@ class Powerups extends GameObject {
 
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
+
+    powerUpChance = 0.1;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
@@ -32,6 +33,10 @@ class Powerups extends GameObject {
 
   void draw()
   {
+
+    if (powerUpLifeTimer.TimerDone())
+      Remove(this);
+
     switch(randomPowerUp) {
     case 1:
       //SHIELDS
@@ -45,9 +50,6 @@ class Powerups extends GameObject {
         UI.shield ++;
         Remove(this);
       }
-
-      if (powerUpLifeTimer.TimerDone())
-        Remove(this);
       break;
 
 
@@ -64,9 +66,6 @@ class Powerups extends GameObject {
         UI.levens ++;
         Remove(this);
       }
-
-      if (powerUpLifeTimer.TimerDone())
-        Remove(this);
       break;
 
 
@@ -83,9 +82,6 @@ class Powerups extends GameObject {
         //powerUps.speedUpCollected = true;
         Remove(this);
       }
-
-      if (powerUpLifeTimer.TimerDone())
-        Remove(this);
       break;
     }
   }

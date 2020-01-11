@@ -62,8 +62,8 @@ class Boss1 extends GameObject {
     }
 
     //ENEMY MOVEMENT
-    dx = myPlayer.objPosX - objPosX;
-    dy = myPlayer.objPosY - objPosY;
+    dx = (myPlayer.objPosX + myPlayer.objWidth/2) - (objPosX + objWidth/2);
+    dy = (myPlayer.objPosY + myPlayer.objHeight/2) - (objPosY + objHeight/2);
 
     dir = sqrt(sq(dx) + sq(dy));
 
@@ -147,12 +147,12 @@ class Boss1 extends GameObject {
   {
     pushStyle();
     fill(255, 0, 0);
-    rect(objPosX - objWidth, objPosY - 5, hpBarTotalInit, 10);
+    rect((objPosX+objWidth/2) - hpBarTotalInit/2, objPosY - 5, hpBarTotalInit, 10);
     popStyle();
 
     pushStyle();
     fill(0, 200, 100);
-    rect(objPosX - objWidth, objPosY - 5, hpBarTotal, 10);
+    rect((objPosX+objWidth/2) - hpBarTotalInit/2, objPosY - 5, hpBarTotal, 10);
     popStyle();
   }
 
