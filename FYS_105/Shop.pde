@@ -17,7 +17,7 @@ class Shop {
         {
           stationaryShopcart.update();
           stationaryShopcart.draw(cartX-cartW, cartY-cartH);
-        } else
+        } else if (gamemngr.trackNumber == 4)
         {
           shopcartSansGarfieldStationary.update();
           shopcartSansGarfieldStationary.draw(cartX - cartW, cartY - cartH);
@@ -35,7 +35,7 @@ class Shop {
           garfield.setGain(10);
           garfield.play();
           garfield.rewind();
-        } else
+        } else if (gamemngr.trackNumber == 4)
         {
           shopcartSansGarfield.draw(cartX - cartW, cartY - cartH);
           shopcartSansGarfield.update();
