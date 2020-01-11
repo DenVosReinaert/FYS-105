@@ -44,8 +44,6 @@ class Powerups extends GameObject {
       shieldUp.draw(tempObjPosX, tempObjPosY);
       shieldUp.update();
 
-
-
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         UI.shield ++;
@@ -55,8 +53,6 @@ class Powerups extends GameObject {
         Remove(this);
       }
       break;
-
-
 
     case 2:
       //HEALTH
@@ -72,8 +68,6 @@ class Powerups extends GameObject {
         Remove(this);
       }
       break;
-
-
 
     case 3:
       //SPEEDUP

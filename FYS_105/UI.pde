@@ -7,8 +7,8 @@ class UI {
   Timer hitStun = new Timer(0.1);
   boolean ableToBeHit = true;
   // Healthbar
-  int levens = 3; // Standard amount of lives
-  int shield = 2;
+  int levens; // Amount of lives
+  int shield; // amount of shield
   int lX1 = width/35;
   int lX2 = lX1 + 6;
   int lY1 = height/35;
@@ -38,6 +38,10 @@ class UI {
   int gun = 1;
 
   UI() {
+    shield = 0;
+    levens = 3;
+    hitValueShield = 0;
+    hitValue = 0;
   }
 
   void spelerhit() { // If called, lives -1
@@ -70,8 +74,12 @@ class UI {
 
     if (game) {
 
-      if (UI.shield > 2) {
+      if (UI.shield >= 2) {
         UI.shield = 2;
+
+        if (UI.shield <= 0) {
+          UI.shield = 0;
+        }
       }
 
       if (!ableToBeHit && hitStun.TimerDone())

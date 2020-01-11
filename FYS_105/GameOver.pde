@@ -62,6 +62,7 @@ class GameOver {
   void Reset()
   {
     ascore.combo = 1;
+    UI.shield = 0;
     UI.levens = 3;
     gamemngr.hscoreA = 0;
 
