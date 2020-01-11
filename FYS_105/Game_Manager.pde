@@ -15,10 +15,10 @@ class Game_Manager {
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
   String codeKonami = "wwssadadkl";
-  String code = "";
   String codeDMC = "aaaaaddddd";
   String codeFireEmblem = "wswsad";
   String codeXenoblade = "sdwas";
+  String code = "";
 
   int konamiCodeLength;
   int hscoreA;
@@ -128,18 +128,21 @@ class Game_Manager {
           devilMayCry.play();
           devilMayCry.rewind();
         }
+        break;
       case 7:
         fireEmblem.setGain(0);
         if (!fireEmblem.isPlaying()) {
           fireEmblem.play();
           fireEmblem.rewind();
         }
+        break;
       case 8:
         xenoblade.setGain(0);
         if (!xenoblade.isPlaying()) {
           xenoblade.play();
           xenoblade.rewind();
         }
+        break;
       }
 
       if (UI.levens <= 0) {
