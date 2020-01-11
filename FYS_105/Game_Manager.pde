@@ -53,6 +53,8 @@ class Game_Manager {
     if (home) {
       UI.draw();
       loginMusic.pause();
+      death.rewind();
+      death.pause();
       game = false;
       dead = false;
       homeSnd.setGain(0);
