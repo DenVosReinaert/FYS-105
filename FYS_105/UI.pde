@@ -4,7 +4,64 @@
 class UI {
   int state = 2;
   //boolean controls;
+<<<<<<< Updated upstream
   //int timer = 0;
+=======
+  Timer hitStun = new Timer(1);
+  boolean ableToBeHit = true;
+  // Healthbar
+  int levens = 3; // Standard amount of lives
+  int shield = 0;
+  int lX1 = width/35;
+  int lX2 = lX1 + 6;
+  int lY1 = height/35;
+  int lY2 = lY1 + 10;
+  int hitValue;
+
+  // ammo machinegun
+  int ammoM1 = 5;
+  int magM1 = 30;
+  int maxM1 = 300;
+  int reloadM1 = 240;
+  
+  // ammo LMG
+  int ammoLM1=5;
+  int magLM1=100;
+  int maxLM1=600;
+  int reloadLM=400;
+  
+  // ammo Minigun
+  int ammoMN1=10;
+  int magLMN=250;
+  int maxLMN=1500;
+  int reloadMN=650;
+
+  // ammo shotgun
+  int ammoS1 = 5;
+  int maxS1 = 20;
+  int reloadS1 = 240;
+  
+  // ammo DubbleBarrelShotgun
+  int ammoDBS = 1;
+  int maxDBS = 40;
+  int reloadDBS = 120;
+  
+  // ammo DubbleBarrelShotgun
+  int ammoAS = 6;
+  int magAS= 32;
+  int maxAS = 192;
+  int reloadAS = 345;
+
+  // Ammo Pistol
+  int ammoP = 5;
+  int ammoX = width/30;
+  int ammoY = height/12;
+  int ammoXs = 6;
+  int ammoYs = 15;
+  int reloadP = 60;
+
+  int gun = 1;
+>>>>>>> Stashed changes
 
   UI() {
   }
