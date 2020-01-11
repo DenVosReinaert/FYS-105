@@ -10,7 +10,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 1;
+  int wave = 5;
 
   int countBrt, countSpd, countGrnt, countHvy, countBss;
 

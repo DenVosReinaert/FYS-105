@@ -314,9 +314,9 @@ class Game_Manager {
           if (code.equals(codeXenoblade))
           {
             println("You've caught Territorial Rotbart's attention!");
-            if (trackNumber == 7)
+            if (trackNumber == 8)
               trackNumber = 1;
-            else trackNumber = 7;
+            else trackNumber = 8;
           }
 
           code = code.substring(0, code.length()-code.length());
