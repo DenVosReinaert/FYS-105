@@ -22,7 +22,7 @@ PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg; //contro
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
 // Guns 
-PImage buckS, bulletDown, bulletLeft, bulletRight;
+PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 
 
@@ -73,6 +73,7 @@ void LoadAssets()
   bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
   bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
   bulletRight = loadImage("/data/sprites/BulletSpriteRight.png");
+  bulletTurret = loadImage("/data/sprites/turretBullet.png");
 
   handgunUp = loadImage("/data/sprites/Handgun_Top.png");
   handgunDown = loadImage("/data/sprites/Handgun_Down.png");

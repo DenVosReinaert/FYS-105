@@ -106,9 +106,9 @@ class Speedster extends GameObject {
       {
         if (UI.levens >0 && UI.shield <= 0) {
           UI.hitValue = 1;
-          // UI.levens-= hitValue;
+          //  UI.levens-= hitValue;
           hp = 0;
-        } 
+        }
         UI.spelerhit();
         if (UI.shield > 0) {
           UI.shield -= 1;
