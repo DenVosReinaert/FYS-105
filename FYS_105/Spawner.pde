@@ -38,6 +38,8 @@ class Spawner extends GameObject {
     countGrnt = round(random(wave, wave + 1));
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
+
+    totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
   }//constructor spawner
 
 
@@ -48,9 +50,8 @@ class Spawner extends GameObject {
   void draw() {
 
     //println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
-
-
     if (game) {
+
       pushStyle();
       fill(255);
 
@@ -106,6 +107,7 @@ class Spawner extends GameObject {
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
 
+    totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
 
 
     spawnBrtFinished = false;
@@ -158,7 +160,7 @@ class Spawner extends GameObject {
     SpawnBoss();
 
 
-    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && GameObjectRef.gameObject.size() == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
+    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
     {
       waveFinished = true;
       waveInProgress = false;
