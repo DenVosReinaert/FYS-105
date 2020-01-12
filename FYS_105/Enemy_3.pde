@@ -137,7 +137,6 @@ class Heavy extends GameObject {
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
-          println("combo increase!");
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {

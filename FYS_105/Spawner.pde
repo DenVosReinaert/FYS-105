@@ -70,7 +70,6 @@ class Spawner extends GameObject {
 
       if (waveFinished)     //When the wave is finished and there are no gameObjects on the screen, show the arrows, and if the round number is even show the shop
       {
-        println("The Wave is Finished!");
         lvlMngr.apActive = true;
 
         if (wave % 2 == 0)

@@ -1,7 +1,6 @@
-class Achievements
+class AchievementManager
 {
 
-  Timer[] achievementRetractTimer;
 
   //int chieveFalse = 0;
 
@@ -13,14 +12,16 @@ class Achievements
   float[] currentPosX = new float[totalAchievements];
   float[] currentPosY = new float[totalAchievements];
 
-  boolean[] achievementAnim = new boolean[totalAchievements];
+  int[] oldschoolTimer = new int[totalAchievements];
+
+  //boolean[] achievementAnim = new boolean[totalAchievements];
+
+
+  ArrayList<AchievementAnimator> achievementAnim = new ArrayList<AchievementAnimator>();
 
 
 
-
-
-
-  Achievements()
+  AchievementManager()
   {
     totalAchievements = 6;
 
@@ -34,29 +35,15 @@ class Achievements
 
   void draw()
   {
-    for (int i = 0; i < achievementAnim.length; i++)
+    for (int i = 0; i < achievementAnim.size(); i++)
     {
-      achievementRetractTimer[i] = new Timer(10);
-      
-      if (achievementAnim[i])
-      {
-        currentPosX[i] = startPosX;
-        currentPosY[i] = startPosY;
-
-        image(chieveHighscore, startPosX, startPosY);
-
-        if (currentPosX[i] > endPosX)
-        {
-          currentPosX[i]--;
-        }
-      }
+      achievementAnim.get(i).draw();
     }
 
-
     startPosX = width;
-    startPosY = height - chieveKonami.height - (chieveKonami.height * achievementAnimsActive);
+    startPosY = height - chievePlate[1].height - (chievePlate[1].height * achievementAnimsActive);
 
-    endPosX = width - chieveKonami.width;
+    endPosX = width - chievePlate[1].width;
     endPosY = startPosY;
   }
 
@@ -64,7 +51,6 @@ class Achievements
 
   void UnlockAchievement(int achievementNumber)
   {
-    println(User.currentUser);
 
     if (msql.connect()) 
     {
@@ -80,8 +66,7 @@ class Achievements
         achievement.rewind();
       }
     }
-    
-    achievementRetractTimer[achievementNumber].Reset();
-    achievementAnimsActive++;
+
+    achievementAnim.add(new AchievementAnimator(achievementNumber));
   }
 }

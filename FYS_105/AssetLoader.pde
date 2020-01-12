@@ -22,7 +22,7 @@ PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsB
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
 //Achievements
-PImage chieveKonami, chieveSans, chieveDoom, chieveGarfield, chieveHighscore, chieveHadouken;
+PImage[] chievePlate = new PImage[6];
 
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
@@ -70,12 +70,11 @@ void LoadAssets()
   pokemonMDB = loadImage("/data/sprites/PMDB.png");
 
   //Achievements
-  chieveKonami = loadImage("/data/sprites/AchievementKonami.png");
-  chieveDoom = loadImage("/data/sprites/AchievementDOOM.png");
-  chieveGarfield = loadImage("/data/sprites/AchievementGarfield.png");
-  chieveHighscore = loadImage("/data/sprites/AchievementHighscore.png");
-  chieveSans = loadImage("/data/sprites/AchievementSans.png");
-  chieveHadouken = loadImage("/data/sprites/AchievementHadouken.png");
+  for (int i = 1; i < chievePlate.length; i++)
+  {
+    chievePlate[i] = loadImage("/data/sprites/Achievement" + i + ".png");
+  }
+
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");

@@ -52,7 +52,6 @@ class Shop {
       if (endPosX - cartPosX>=0) 
       {
 
-        println(dist(cartPosX, cartPosY, endPosX, endPosY));
         cartPosX+=3;
         if (gamemngr.trackNumber == 4) 
         {

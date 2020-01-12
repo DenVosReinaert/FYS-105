@@ -75,7 +75,7 @@ public class GameObject {
   void Add(GameObject object)
   {
     GameObjectRef.gameObject.add(object); 
-    println("A new object has been created");
+    //println("A new object has been created");
   }
 
   void Remove(GameObject object)

@@ -12,6 +12,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeRESET = "oooooooooo";
   String codeDoom = "ssssss";
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
@@ -38,7 +39,6 @@ class Game_Manager {
 
     badgePosX = width/2 + 375;
     badgePosY = height/5 + 30;
-
   }
 
   void draw() {
@@ -218,6 +218,11 @@ class Game_Manager {
         if (inputtingCode)
           code += key;
         break;
+
+      case 'o':
+        if (inputtingCode)
+          code +=key;
+        break;
       }
 
 
@@ -258,6 +263,15 @@ class Game_Manager {
       case RETURN:
         if (inputtingCode)
         {
+          if (code.equals(codeRESET))
+          {
+            //RESET Achievements
+            if (msql.connect())
+            {
+              msql.query("DELETE FROM User_has_Achievements");
+            }
+          }
+
           if (code.equals(codeKonami))
           {
             chieves.UnlockAchievement(3);
@@ -329,6 +343,15 @@ class Game_Manager {
       case ENTER:
         if (inputtingCode)
         {
+          if (code.equals(codeRESET))
+          {
+            //RESET Achievements
+            if (msql.connect())
+            {
+              msql.query("DELETE FROM User_has_Achievements");
+            }
+          }
+
           if (code.equals(codeKonami))
           {
             chieves.UnlockAchievement(3);
@@ -409,7 +432,7 @@ class Game_Manager {
         home = true;
       }
     }
-    println(code);
+
     if (home)
     {
       if (code.length() > konamiCodeLength - 1)
