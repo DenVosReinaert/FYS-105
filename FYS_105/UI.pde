@@ -201,7 +201,7 @@ class UI {
         image(healthP, lX2, lY2);
         image(shieldP, lX2 + (57 * 5), lY2);
       }  
-      if (levens == 1 && shield == 2) {
+      if (levens == 1 && shield >= 2) {
         image(healthP, lX2, lY2);
         image(shieldP, lX2 + (57 * 5), lY2);
         image(shieldP, lX2 + (57 * 6), lY2);
@@ -215,7 +215,7 @@ class UI {
         image(healthP, lX2 + 57, lY2);
         image(shieldP, lX2 + (57 * 5), lY2);
       }
-      if (levens == 2 && shield == 2) {
+      if (levens == 2 && shield >= 2) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(shieldP, lX2 + (57 * 5), lY2);
@@ -232,7 +232,7 @@ class UI {
         image(healthP, lX2 + (57*2), lY2);
         image(shieldP, lX2 + (57 * 5), lY2);
       }
-      if (levens == 3 && shield == 2) {
+      if (levens == 3 && shield >= 2) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);        
@@ -250,8 +250,9 @@ class UI {
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);
         image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
       }
-      if (levens == 4 && shield == 2) {
+      if (levens == 4 && shield >= 2) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);
@@ -259,14 +260,14 @@ class UI {
         image(shieldP, lX2 + (57 * 5), lY2);
         image(shieldP, lX2 + (57 * 6), lY2);
       }  
-      if (levens == 5 && shield == 0) {
+      if (levens >= 5 && shield == 0) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);
         image(healthP, lX2 + (57*3), lY2);
         image(healthP, lX2 + (57*4), lY2);
       }
-      if (levens == 5 && shield == 1) {
+      if (levens >= 5 && shield == 1) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);
@@ -274,7 +275,7 @@ class UI {
         image(healthP, lX2 + (57*4), lY2);        
         image(shieldP, lX2 + (57 * 5), lY2);
       }
-      if (levens == 5 && shield == 2) {
+      if (levens >= 5 && shield >= 2) {
         image(healthP, lX2, lY2);
         image(healthP, lX2 + 57, lY2);
         image(healthP, lX2 + (57*2), lY2);

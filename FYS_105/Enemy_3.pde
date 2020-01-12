@@ -114,14 +114,18 @@ class Heavy extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
+        //shield will go down with 2 if you have 2 shield
         if (UI.shield >= 2) {
           UI.hitValueShield = 2;
-        } 
+        }
+        //shield will go down with 1 if you have 1 shield AND
+        //levens will go down with 1
         else if (UI.shield == 1) {
           UI.hitValueShield = 1;
           UI.hitValue = 1;
         } 
-        else if (UI.levens >= 1 && UI.shield <= 0) {
+        //levens will go down with 2 because you have no shield
+        else if (UI.levens > 0 && UI.shield <= 0) {
           UI.hitValue = 2;
         }
         hp = 0;
