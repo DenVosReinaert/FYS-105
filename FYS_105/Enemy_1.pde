@@ -6,7 +6,7 @@ class Grunt extends GameObject {
 
     scoreGain = 5;
 
-    powerUpChance = random(0, 100);
+    powerUpChance = 2;
 
     objWidth=28;
     objHeight=40;
@@ -114,7 +114,7 @@ class Grunt extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
         {
-          if (UI.shield > 0) {
+          if (UI.shield >= 1) {
           UI.hitValueShield = 1;
         }
         if (UI.levens > 0 && UI.shield < 1) {

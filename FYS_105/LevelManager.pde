@@ -27,7 +27,7 @@ class LevelManager
     if (lvlNum < 1)
       lvlNum = 1;
 
-    println(lvlNum);
+    //println(lvlNum);
 
     if (testTimer.TimerDone())
     {

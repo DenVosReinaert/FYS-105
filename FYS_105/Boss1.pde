@@ -100,16 +100,14 @@ class Boss1 extends GameObject {
 
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
-       {
-        if (UI.shield > 1) {
+      {
+        if (UI.shield >= 2) {
           UI.hitValueShield = 2;
           UI.hitValue = 1;
-        } 
-        else if (UI.shield > 0) {
+        } else if (UI.shield == 1) {
           UI.hitValueShield = 1;
           UI.hitValue = 2;
-        } 
-        else if (UI.levens > 0 && UI.shield < 1) {
+        } else if (UI.levens >= 1 && UI.shield >=0) {
           UI.hitValue = 3;
         }
         hp = 0;
