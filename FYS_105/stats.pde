@@ -2,14 +2,25 @@ class stats {
   int textX = 155;
   int totalFriends;
   int totalPlayers;
-  String[] players;
-  String[] friends;
+  int aPlayers;
+  int aFriends;
+  String selected;
+  String[] players = new String[aPlayers];
+  String[] friends = new String[aFriends];
+  int cursorPosY = 1;
+  int cursorPosY2 = 0;
 
   void setup() {
   }
 
   void draw() { 
     if (gamemngr.statspage) {
+      if (cursorPosY < 1) {
+        cursorPosY = 1;
+      }
+      if (cursorPosY2 < 1) {
+        cursorPosY2 = 1;
+      }
       pushStyle();
       statsBg.resize(width, height);
       image(statsBg, 0, 0);
@@ -25,17 +36,33 @@ class stats {
       if (totalFriends <= 0) {
         textSize(20);
         text("NO FRIENDS FOUND", 810, 215);
-      } 
-      //else {
-      //  for (int i = 0; i < totalFriends; i++) {
-      //    textSize(20);
-      //    text("" + friends[i], 810, 30 + (totalFriends));
-      //  }
-      //}
-      //for (int i = 0; i < totalPlayers; i++) {
-      //  textSize(20);
-      //  text("" + players[i], 810, (232 + (totalFriends * 30)) + (30 * i));
-      //}
+      } else {
+        for (int i = 0; i < totalFriends; i++) {
+          textSize(20);
+          text("" + friends[i], 900, 220 + (totalFriends * 20 * i/2) );
+          pushStyle();
+          if (cursorPosY2 < totalPlayers) {
+            if (cursorPosY == i) {
+              fill(100, 0, 0);
+            }
+          }
+          text("REMOVE", 810, 220 + (totalFriends * 20 * i/2) );
+          popStyle();
+        }
+      }
+      for (int i = 0; i < totalPlayers; i++) {
+        textSize(20);
+        text("" + players[i], 900, (260 + (totalFriends * 30)) + (30 * i));
+        pushStyle();
+        if (cursorPosY > totalFriends) {
+          if (cursorPosY2 == i) {
+            fill(0, 200, 0);
+            selected = players[i];
+          }
+        }
+        text("ADD", 820, (260 + (totalFriends * 30)) + (30 * i) );
+        popStyle();
+      }
     }
   }
   void keyPressed() {
@@ -43,6 +70,29 @@ class stats {
       if (keyCode == DOWN) {
         gamemngr.statspage = false;
         gamemngr.home = true;
+      }
+      if (keyCode == RIGHT) {
+        selected = Friends.pName;
+        Friends.getID();
+        print(Friends.pID);
+        print(Friends.pName);
+        Friends.addFriend();
+      }
+      if (key == 'w') {
+        if (cursorPosY2 < totalPlayers) {
+          cursorPosY--;
+        }
+        if (cursorPosY > totalFriends) {
+          cursorPosY2--;
+        }
+      }
+      if (key == 's') {
+        if (cursorPosY2 < totalPlayers) {
+          cursorPosY++;
+        }
+        if (cursorPosY > totalFriends) {
+          cursorPosY2++;
+        }
       }
     }
   }

@@ -18,6 +18,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+friends Friends;
 stats stats;
 Login Login;
 Shop shop;
@@ -50,6 +51,7 @@ void setup()
 
   LoadAssets();
   stats = new stats();
+  Friends = new friends();
   User = new User();
   Login = new Login();
   myPlayer = new Player();
