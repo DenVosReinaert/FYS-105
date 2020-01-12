@@ -112,7 +112,7 @@ class Speedster extends GameObject {
         }
         UI.spelerhit();
         if (UI.shield > 0) {
-          UI.shield -= 1;
+          UI.shield -= UI.hitValue;
         }
       }
 

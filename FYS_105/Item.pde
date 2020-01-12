@@ -39,6 +39,9 @@ class Item extends GameObject {
 
   void draw()
   {
+    if(spawn.wave % 2 != 0)
+    Remove(this);
+    
     switch(shopItemNumber) {
     case 1:
       //HEALTH

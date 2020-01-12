@@ -108,7 +108,7 @@ class Boss1 extends GameObject {
           hp = 0;
           UI.spelerhit();
         } else if (UI.shield > 0) {
-          UI.shield -= 2;
+          UI.shield -= UI.hitValue;
         }
       }
 

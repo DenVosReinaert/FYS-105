@@ -3,30 +3,61 @@ class Achievements
 
   Timer[] achievementRetractTimer;
 
-  int[] achievementsActive;
+  //int chieveFalse = 0;
 
-  int chieveFalse = 0;
-  int collected; //Current 
-  int bossCounter;
-
-  int idAchievement, achieved;
+  int achieved, achievementAnimsActive, totalAchievements;
   String tempId;
+
+  float startPosX, startPosY, endPosX, endPosY;
+
+  float[] currentPosX = new float[totalAchievements];
+  float[] currentPosY = new float[totalAchievements];
+
+  boolean[] achievementAnim = new boolean[totalAchievements];
+
+
+
 
 
 
   Achievements()
   {
+    totalAchievements = 6;
+
     msql.connect();
+    achievementAnimsActive = 0;
   }
+
+
 
 
 
   void draw()
   {
-    for (int i = 0; i < achievementRetractTimer.length; i++)
+    for (int i = 0; i < achievementAnim.length; i++)
     {
       achievementRetractTimer[i] = new Timer(10);
+      
+      if (achievementAnim[i])
+      {
+        currentPosX[i] = startPosX;
+        currentPosY[i] = startPosY;
+
+        image(chieveHighscore, startPosX, startPosY);
+
+        if (currentPosX[i] > endPosX)
+        {
+          currentPosX[i]--;
+        }
+      }
     }
+
+
+    startPosX = width;
+    startPosY = height - chieveKonami.height - (chieveKonami.height * achievementAnimsActive);
+
+    endPosX = width - chieveKonami.width;
+    endPosY = startPosY;
   }
 
 
@@ -49,7 +80,8 @@ class Achievements
         achievement.rewind();
       }
     }
-
-
+    
+    achievementRetractTimer[achievementNumber].Reset();
+    achievementAnimsActive++;
   }
 }
