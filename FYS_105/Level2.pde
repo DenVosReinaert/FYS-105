@@ -20,7 +20,7 @@ class Level2
 
   void Layer1()
   {
-    image(background, 0, 0);
+    image(levelTemplate, 0, 0);
   }
 
   void Layer2()
@@ -35,5 +35,6 @@ class Level2
 
   void Layer4()
   {
+    
   }
 }
