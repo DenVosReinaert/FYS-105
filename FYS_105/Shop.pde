@@ -58,6 +58,8 @@ class Shop {
           shopcartSansGarfield.draw(cartPosX - cartW, cartPosY - cartH);
           shopcartSansGarfield.update();
 
+
+
           garfieldSans.setGain(50);
           garfieldSans.play();
           garfieldSans.rewind();
@@ -77,6 +79,9 @@ class Shop {
         if (gamemngr.trackNumber == 4) {
           shopcartSansGarfieldStationary.update();
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
+
+          if (!shopItemsHaveSpawned)
+            SpawnItems();
         } else
         {
 
