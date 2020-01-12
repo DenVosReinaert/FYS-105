@@ -93,7 +93,7 @@ class Spawner extends GameObject {
   void NextWave()
   {
     shop.Reset();
-    
+
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
@@ -134,11 +134,6 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    println(spawnBrtFinished);
-    println(spawnGrntFinished);
-    println(spawnSpdFinished);
-    println(spawnHvyFinished);
-    println(spawnBssFinished);
 
     if (countBrt == 0)          //If the enemy spawn count has reached 0, stop spawning this enemy
       spawnBrtFinished = true;

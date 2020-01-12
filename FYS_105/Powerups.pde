@@ -1,14 +1,11 @@
 class Powerups extends GameObject {
 
   Timer powerUpLifeTimer = new Timer(10);
-  Timer powerUpEffectTimer = new Timer(3);
 
   int randomPowerUp;
   int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
-
-  boolean speedUpCollected;
 
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
@@ -22,8 +19,6 @@ class Powerups extends GameObject {
     objHeight = 20;
 
     randomPowerUp = round(random(0, totalPowerUps));
-
-    speedUpCollected = false;
 
     powerUpLifeTimer.Reset();
   }
@@ -80,6 +75,8 @@ class Powerups extends GameObject {
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         //powerUps.speedUpCollected = true;
+        myPlayer.speedUpCollected = true;
+        myPlayer.speedUpTimer.Reset();
         speedup.setGain(30);
         speedup.play();
         speedup.rewind();

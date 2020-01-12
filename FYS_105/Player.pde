@@ -6,6 +6,8 @@ class Player extends GameObject {
   Timer weaponSwapPrevTimer = new Timer(0.125);
   Timer weaponSwapNextTimer = new Timer(0.125);
 
+  Timer speedUpTimer = new Timer(4);
+
   // Creates new objects from the gun's classes for the player to use
   Pistol pistol = new Pistol();
   Shotgun shotGun = new Shotgun();
@@ -16,8 +18,10 @@ class Player extends GameObject {
   float muzzlePointX, muzzlePointY;
 
   boolean nextGun, prevGun, swapable;
+  boolean speedUpCollected;
 
   Player() {
+    speedUpCollected = false;
 
     objWidth = 28;
     objHeight = 40;
@@ -38,13 +42,22 @@ class Player extends GameObject {
 
     defaultSpeedInit = 2.1;
     defaultSpeed = defaultSpeedInit;
-    diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
   }
 
 
   void draw() {
 
-    println(GameObjectRef.gameObject.size());
+    if (!speedUpCollected)
+      defaultSpeed = 2.1;
+    else 
+    if (speedUpCollected && !speedUpTimer.TimerDone())
+    {
+      defaultSpeed = defaultSpeedInit * 2;
+    }
+
+    if (speedUpCollected && speedUpTimer.TimerDone())
+      speedUpCollected = false;
+
 
     // Detects collision with pillars
     if (objPosX + moveVelX < 0)
@@ -114,15 +127,23 @@ class Player extends GameObject {
     if (myPlayer.currentGun == machinegun)
       machineGun.holdingGun();
 
+
+
     // Assigns value to movementspeed
+    diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
+    println(defaultSpeed);
+
+
     moveVelX = defaultSpeed;
     moveVelY = defaultSpeed;
 
     // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else defaultSpeed = defaultSpeedInit;
-
+    } else if (speedUpCollected && !speedUpTimer.TimerDone())
+    {
+      defaultSpeed = defaultSpeedInit;
+    }
     // Shoots gun when pressing any of the directional buttons
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)
