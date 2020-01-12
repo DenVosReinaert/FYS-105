@@ -17,6 +17,8 @@ public class GameObject {
   float angleBetweenVector;
   PVector enemyVector, playerVector;
 
+  int totalEnemyCount;
+
   float objPosX, objPosY, objWidth, objHeight;
   float tempObjPosX, tempObjPosY;
   float scorePopUp, scorePopUpAlpha;

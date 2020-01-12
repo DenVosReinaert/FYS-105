@@ -86,6 +86,7 @@ class Speedster extends GameObject {
 
     if (Dead())
     {
+      spawn.totalEnemyCount--;
       Remove(this);
     }
 

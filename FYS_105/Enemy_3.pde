@@ -94,6 +94,7 @@ class Heavy extends GameObject {
 
     if (Dead())
     {
+      spawn.totalEnemyCount--;
       Remove(this);
     }
 

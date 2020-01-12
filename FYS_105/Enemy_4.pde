@@ -87,6 +87,7 @@ class Brute extends GameObject {
 
     if (Dead())
     {
+      spawn.totalEnemyCount--;
       Remove(this);
     }
 
@@ -102,7 +103,7 @@ class Brute extends GameObject {
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
 
-      //Collision with Player
+      //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
         if (UI.shield >= 2) {
