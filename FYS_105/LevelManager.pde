@@ -4,12 +4,20 @@ class LevelManager
 
   int lvlNum = 1;
   int lvlCount = 2;
+  int tileSize = 100;
   Level1 lvl1 = new Level1();
   Level2 lvl2 = new Level2();
 
   boolean apActive = false;
 
   PVector apU, apD, apL, apR;
+
+
+  int turretCount = 2;
+  Turret[] turrets = new Turret[turretCount];
+
+  int pillarCount = 4;
+  Pillar[] pillars = new Pillar[pillarCount];
 
   void setup()
   {
@@ -20,6 +28,16 @@ class LevelManager
     apD = new PVector(width/2 - 33/2, height - 49);
     apL = new PVector(0, height/2 - 38/2);
     apR = new PVector(width - 49, height/2 - 38/2);
+
+    for (int i = 0; i < pillarCount; i++)
+    {
+      pillars[i] = new Pillar();
+    }
+
+    for (int i = 0; i < turretCount; i++)
+    {
+      turrets[i] = new Turret();
+    }
   }
 
   void draw()
