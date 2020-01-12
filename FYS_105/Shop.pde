@@ -1,5 +1,6 @@
 class Shop {
 
+
   float cartW = 300;
   float cartH = 200;
 
@@ -16,7 +17,13 @@ class Shop {
   PVector item2Pos;
   PVector item3Pos;
 
+  int itemPriceCurrent, itemPriceBase;
+  int totalShopItems;
+
   boolean shopA = false;
+  boolean shopItemsHaveSpawned = false;
+
+
 
   Shop() 
   {
@@ -25,11 +32,11 @@ class Shop {
     item3Pos=new PVector();
 
     item1Pos.x=width/2-100;
-    item1Pos.y=height/2-150;
+    item1Pos.y=height/2+50;
     item2Pos.x=width/2;
-    item2Pos.y=height/2-150;
+    item2Pos.y=height/2+50;
     item3Pos.x=width/2+100;
-    item3Pos.y=height/2-150;
+    item3Pos.y=height/2+50;
 
     cartPosX=beginPosX;
     cartPosY=beginPosY;
@@ -44,6 +51,7 @@ class Shop {
     {
       if (endPosX - cartPosX>=0) 
       {
+
         println(dist(cartPosX, cartPosY, endPosX, endPosY));
         cartPosX+=3;
         if (gamemngr.trackNumber == 4) 
@@ -55,7 +63,7 @@ class Shop {
           garfieldSans.play();
           garfieldSans.rewind();
         } else 
-        {
+        {     
           shopcart.draw(cartPosX-cartW, cartPosY-cartH);
           shopcart.update();
 
@@ -72,12 +80,18 @@ class Shop {
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
         } else
         {
+
+
           stationaryShopcart.update();
           stationaryShopcart.draw(cartPosX-cartW, cartPosY-cartH);
+
+          if (!shopItemsHaveSpawned)
+            SpawnItems();
         }
       }
     }
   }
+
 
   void Reset()
   {
@@ -86,5 +100,17 @@ class Shop {
     garfield.rewind();
     garfieldSans.pause();
     garfieldSans.rewind();
+
+    shopItemsHaveSpawned = false;
+  }
+
+
+
+  void SpawnItems() {
+
+    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 2 ))));
+    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 2))));
+    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(0, 2))));
+    shopItemsHaveSpawned = true;
   }
 }

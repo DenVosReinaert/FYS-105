@@ -10,7 +10,7 @@ class Powerups extends GameObject {
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
 
-    powerUpChance = 0.1;
+    powerUpChance = 2;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;

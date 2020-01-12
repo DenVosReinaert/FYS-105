@@ -20,6 +20,7 @@ class UI {
   int ammoM1 = 5;
   int magM1 = 30;
   int maxM1 = 300;
+  int clipM1 = 6;
   int reloadM1 = 240;
 
   // ammo shotgun
@@ -125,6 +126,7 @@ class UI {
       if (ammoM1 <= 0 && magM1 > 0) {
         magM1 -= 5;
         ammoM1 = 5;
+        clipM1--;
       }
       if (myPlayer.currentGun == myPlayer.machinegun) {
         if (magM1 == 0 && maxM1 > 0) {
@@ -132,6 +134,8 @@ class UI {
           if (reloadM1 <= 0) {
             magM1 = 30;
             maxM1 -= 30;
+            clipM1 = 6;
+            AR1Reload.rewind();
             reloadM1 = 240;
           }
         }
@@ -139,9 +143,29 @@ class UI {
 
       if (myPlayer.currentGun == myPlayer.machinegun) {
         textSize(20);
-        text(""+ maxM1, ammoX, ammoY+40);
+        text(""+ maxM1, ammoX, ammoY *2.2);
       }
-      // MachineGun ammo (draw the five yellow lines left top)
+      // MachineGun ammo (draw the six yellow lines left top)
+      if (clipM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
+        image(bullet, ammoX, ammoY + (ammoY /2));
+        if (clipM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {
+          image(bullet, ammoX + ammoXs, ammoY + (ammoY /2));
+          if (clipM1 > 2 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 2), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 3 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 3), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 4 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 4), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 5 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 5), ammoY + (ammoY /2));
+          }
+        }
+      }
+
+      // MachineGun ammo (draw the five yellow lines under the other ones)
       if (ammoM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
         image(bullet, ammoX, ammoY);
         if (ammoM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {

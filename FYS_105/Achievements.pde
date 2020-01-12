@@ -1,11 +1,18 @@
 class Achievements
 {
+
+  Timer[] achievementRetractTimer;
+
+  int[] achievementsActive;
+
   int chieveFalse = 0;
   int collected; //Current 
   int bossCounter;
 
   int idAchievement, achieved;
   String tempId;
+
+
 
   Achievements()
   {
@@ -16,6 +23,10 @@ class Achievements
 
   void draw()
   {
+    for (int i = 0; i < achievementRetractTimer.length; i++)
+    {
+      achievementRetractTimer[i] = new Timer(10);
+    }
   }
 
 
@@ -33,10 +44,12 @@ class Achievements
       }
       if (achieved != 1) 
       {
-        msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement) VALUES ('%s','%s','%s')", User.currentUser, achievementNumber, 1);
+        msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement, progressionAchievement) VALUES ('%s','%s','%s','%s')", User.currentUser, achievementNumber, 1, 0);
         achievement.play();
         achievement.rewind();
       }
     }
+
+
   }
 }

@@ -188,7 +188,7 @@ void LoadAssets()
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
-  megalovania = minim.loadFile("/data/sound/Megalovania.wav");
+  megalovania = minim.loadFile("/data/sound/Megalovania.mp3");
   contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
   guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
   loginMusic = minim.loadFile("/data/sound/login.mp3");

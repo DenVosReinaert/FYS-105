@@ -21,6 +21,7 @@ class Spawner extends GameObject {
   boolean waveFinished = false;
 
   Spawner() {
+
     spawnerPos0.x=width/2;
     spawnerPos0.y= -10;
 
@@ -48,6 +49,9 @@ class Spawner extends GameObject {
 
 
   void draw() {
+
+    if (totalEnemyCount < 0)
+      totalEnemyCount = 0;
 
     //println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
     if (game) {
@@ -98,6 +102,8 @@ class Spawner extends GameObject {
   {
     shop.Reset();
 
+
+
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
@@ -130,7 +136,7 @@ class Spawner extends GameObject {
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;      //Set the player position to the middle of the screen
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
-    lvlMngr.lvlNum = round(random(0, lvlMngr.lvlCount));
+    lvlMngr.lvlNum = round(random(0, 9));
   }
 
 
@@ -163,7 +169,7 @@ class Spawner extends GameObject {
     SpawnBoss();
 
 
-    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
+    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount <= 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
     {
       waveFinished = true;
       waveInProgress = false;
