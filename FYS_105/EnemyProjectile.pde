@@ -35,6 +35,9 @@ class EnemyProjectile extends GameObject
 
   void draw()
   {
+    if (spawn.waveFinished)
+      Remove(this);
+
     pushStyle();
     image(bulletTurret, objPosX, objPosY);
     popStyle();

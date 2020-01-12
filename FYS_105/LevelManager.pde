@@ -2,18 +2,21 @@ class LevelManager
 {
   Timer testTimer = new Timer(2);
 
-  int lvlNum = 1;
-  int lvlCount = 2;
+  int lvlNum = 3;
+  int lvlCount = 5;
   int tileSize = 100;
   Level1 lvl1 = new Level1();
   Level2 lvl2 = new Level2();
+  Level3 lvl3 = new Level3();
+  Level4 lvl4 = new Level4();
+  Level5 lvl5 = new Level5();
 
   boolean apActive = false;
 
   PVector apU, apD, apL, apR;
 
 
-  int turretCount = 2;
+  int turretCount = 4;
   Turret[] turrets = new Turret[turretCount];
 
   int pillarCount = 4;
@@ -23,6 +26,9 @@ class LevelManager
   {
     lvl1.setup();
     lvl2.setup();
+    lvl3.setup();
+    lvl4.setup();
+    lvl5.setup();
 
     apU = new PVector(width/2 - 33/2, 0);
     apD = new PVector(width/2 - 33/2, height - 49);
@@ -42,6 +48,8 @@ class LevelManager
 
   void draw()
   {
+    println(spawn.totalEnemyCount);
+
     if (lvlNum < 1)
       lvlNum = 1;
 
@@ -58,6 +66,15 @@ class LevelManager
       break;
     case 2:
       lvl2.draw();
+      break;
+    case 3:
+      lvl3.draw();
+      break;
+    case 4:
+      lvl4.draw();
+      break;
+    case 5:
+      lvl5.draw();
       break;
     }
 
@@ -86,3 +103,14 @@ class LevelManager
     }
   }
 }
+
+
+//lvlMngr.turrets[0].draw(-60 + lvlMngr.tileSize * 2, -40 + lvlMngr.tileSize);
+//lvlMngr.turrets[1].draw(-60 + lvlMngr.tileSize * 9, -40 + lvlMngr.tileSize);
+//lvlMngr.turrets[2].draw(-60 + lvlMngr.tileSize * 2, -40 + lvlMngr.tileSize * 4);
+//lvlMngr.turrets[3].draw(-60 + lvlMngr.tileSize * 9, -40 + lvlMngr.tileSize * 4);
+
+//lvlMngr.pillars[0].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 1.5);
+//lvlMngr.pillars[1].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 1.5);
+//lvlMngr.pillars[2].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 4.5 - 16);
+//lvlMngr.pillars[3].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 4.5 - 16);
