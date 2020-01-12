@@ -1,15 +1,18 @@
 class LevelManager
 {
-  Timer testTimer = new Timer(2);
-
-  int lvlNum = 3;
-  int lvlCount = 5;
+  int lvlNum = 5;
+  int lvlCount = 9;
   int tileSize = 100;
+
   Level1 lvl1 = new Level1();
   Level2 lvl2 = new Level2();
   Level3 lvl3 = new Level3();
   Level4 lvl4 = new Level4();
   Level5 lvl5 = new Level5();
+  Level6 lvl6 = new Level6();
+  Level7 lvl7 = new Level7();
+  Level8 lvl8 = new Level8();
+  Level9 lvl9 = new Level9();
 
   boolean apActive = false;
 
@@ -29,6 +32,10 @@ class LevelManager
     lvl3.setup();
     lvl4.setup();
     lvl5.setup();
+    lvl6.setup();
+    lvl7.setup();
+    lvl8.setup();
+    lvl9.setup();
 
     apU = new PVector(width/2 - 33/2, 0);
     apD = new PVector(width/2 - 33/2, height - 49);
@@ -55,11 +62,6 @@ class LevelManager
 
     println(lvlNum);
 
-    if (testTimer.TimerDone())
-    {
-      testTimer.Reset();
-    }
-
     switch(lvlNum) {
     case 1:
       lvl1.draw();
@@ -74,6 +76,18 @@ class LevelManager
       lvl4.draw();
       break;
     case 5:
+      lvl5.draw();
+      break;
+    case 6:
+      lvl5.draw();
+      break;
+    case 7:
+      lvl5.draw();
+      break;
+    case 8:
+      lvl5.draw();
+      break;
+    case 9:
       lvl5.draw();
       break;
     }
