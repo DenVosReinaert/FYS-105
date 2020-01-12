@@ -47,9 +47,7 @@ class Item extends GameObject {
         if (ascore.score >= itemPrice)
         {
           UI.levens ++;
-          uhoh.setGain(30);
-          uhoh.play();
-          uhoh.rewind();
+          
 
           if (voicelineTimer.TimerDone())
           {
