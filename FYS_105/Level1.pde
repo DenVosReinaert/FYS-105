@@ -7,7 +7,6 @@ class Level1
   int pillarInterval = tileSize * 2;
   Pillar[] pillars = new Pillar[pillarCount];
 
-  int xLoc, yLoc;
 
   void setup()
   {    

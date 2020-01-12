@@ -151,8 +151,6 @@ class Game_Manager {
 
       homeSnd.pause();
 
-      lvlMngr.lvlNum = 1;
-
       ascore.draw();
 
       spawn.draw();

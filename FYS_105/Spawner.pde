@@ -125,7 +125,7 @@ class Spawner extends GameObject {
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;      //Set the player position to the middle of the screen
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
-    lvlMngr.lvlNum = round(random(0, 3));
+    lvlMngr.lvlNum = round(random(0, lvlMngr.lvlCount));
   }
 
 
