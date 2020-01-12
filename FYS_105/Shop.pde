@@ -25,11 +25,11 @@ class Shop {
     item3Pos=new PVector();
 
     item1Pos.x=width/2-100;
-    item1Pos.y=height/2-150;
+    item1Pos.y=height/2+50;
     item2Pos.x=width/2;
-    item2Pos.y=height/2-150;
+    item2Pos.y=height/2+50;
     item3Pos.x=width/2+100;
-    item3Pos.y=height/2-150;
+    item3Pos.y=height/2+50;
 
     cartPosX=beginPosX;
     cartPosY=beginPosY;
@@ -54,6 +54,9 @@ class Shop {
         {
           shopcart.draw(cartPosX-cartW, cartPosY-cartH);
           shopcart.update();
+          shop.SpawnItem1();
+          shop.SpawnItem2();
+          shop.SpawnItem3();
         }
         cartdirt.draw(cartPosX-cartW, cartPosY-cartH);
         cartdirt.update();
@@ -85,4 +88,18 @@ class Shop {
     garfieldSans.pause();
     garfieldSans.rewind();
   }
+
+
+void SpawnItem1(){
+  GameObjectRef.Add(new Powerups(item1Pos.x,item1Pos.y));
+  if(Powerups==1){
+    
+  }
+}
+void SpawnItem2(){
+  GameObjectRef.Add(new Powerups(item2Pos.x,item2Pos.y));
+}
+void SpawnItem3(){
+  GameObjectRef.Add(new Powerups(item3Pos.x,item3Pos.y));
+}
 }

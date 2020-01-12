@@ -28,7 +28,9 @@ class Powerups extends GameObject {
     powerUpLifeTimer.Reset();
   }
 
-
+   Powerups(){
+     tag == "powerup";
+   }
 
 
   void draw()
