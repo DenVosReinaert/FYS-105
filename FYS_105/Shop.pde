@@ -52,7 +52,6 @@ class Shop {
       if (endPosX - cartPosX>=0) 
       {
 
-        println(dist(cartPosX, cartPosY, endPosX, endPosY));
         cartPosX+=3;
         if (gamemngr.trackNumber == 4) 
         {
@@ -112,62 +111,5 @@ class Shop {
     GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 2))));
     GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(0, 2))));
     shopItemsHaveSpawned = true;
-  }
-
-
-  void ResetPrices()
-  {
-    if (msql.connect())
-    {
-      msql.query("SELECT COUNT(DISTINCT idItem) FROM Items");
-
-      while (msql.next())
-      {
-        totalShopItems = parseInt(msql.getString("COUNT(DISTINCT idItem)"));
-      }
-
-      for (int i = 0; i < totalShopItems; i++)
-      {
-        msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", i);
-        while (msql.next())
-        {
-          itemPriceBase = parseInt(msql.getString("priceItemBase"));
-
-
-
-          //THIS QUERY DOESNT WORK BECAUSE IT NEEDS TO !!!NOT!!! BE ITEMPRICE
-          //msql.query( "SELECT u.itemBought FROM User_has_Items u WHERE User_idUser = '%s' AND Items_idItem = '%s'", User.currentUser, itemPriceCurrent );
-        }
-        //UPDATE CURRENT ITEM PRICE TO MATCH WAVE NUMBER
-        msql.query("UPDATE Items SET priceItemCurrent = '%s' WHERE idItem = '%s'", itemPriceBase, i);
-      }
-    }
-  }
-
-
-
-
-  void UpdatePrices()
-  {
-    if (msql.connect())
-    {
-      msql.query("SELECT COUNT(DISTINCT idItem) FROM Items");
-
-      while (msql.next())
-      {
-        totalShopItems = parseInt(msql.getString("COUNT(DISTINCT idItem)"));
-      }
-
-      for (int i = 0; i < totalShopItems; i++)
-      {
-        msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", i);
-        while (msql.next())
-        {
-          itemPriceCurrent = parseInt(msql.getString("priceItemBase")) * spawn.wave;
-        }
-        //UPDATE CURRENT ITEM PRICE TO MATCH WAVE NUMBER
-        msql.query("UPDATE Items SET priceItemCurrent = '%s' WHERE idItem = '%s'", itemPriceCurrent, i);
-      }
-    }
   }
 }

@@ -108,7 +108,7 @@ class Boss1 extends GameObject {
           hp = 0;
           UI.spelerhit();
         } else if (UI.shield > 0) {
-          UI.shield -= 2;
+          UI.shield -= UI.hitValue;
         }
       }
 
@@ -122,7 +122,6 @@ class Boss1 extends GameObject {
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
-          println("combo increase!");
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {

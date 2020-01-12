@@ -142,7 +142,6 @@ class Player extends GameObject {
 
     // Assigns value to movementspeed
 
-    println(defaultSpeed);
 
 
 

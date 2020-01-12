@@ -94,8 +94,6 @@ class GameOver {
     spawn.wave = 1;
     spawn.waveTextTimer.Reset();
 
-    shop.ResetPrices();
-
     // print(UI.levens);
     gamemngr.dead = false;
     gamemngr.hscore = true;

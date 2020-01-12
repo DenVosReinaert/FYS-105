@@ -34,7 +34,7 @@ Player myPlayer;
 //Gun myGun;
 Spawner spawn;
 GameObject GameObjectRef;
-Achievements chieves;
+AchievementManager chieves;
 User User;
 Powerups powerUps;
 
@@ -69,7 +69,7 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   GameObjectRef = new GameObject();
-  chieves = new Achievements();
+  chieves = new AchievementManager();
   lvlMngr.setup();
 }
 

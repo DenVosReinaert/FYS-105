@@ -21,6 +21,9 @@ PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsB
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
+//Achievements
+PImage[] chievePlate = new PImage[6];
+
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
@@ -60,6 +63,13 @@ void LoadAssets()
   shieldP = loadImage("/data/sprites/UI/PieceOfShield.png");
 
   pokemonMDB = loadImage("/data/sprites/PMDB.png");
+
+  //Achievements
+  for (int i = 1; i < chievePlate.length; i++)
+  {
+    chievePlate[i] = loadImage("/data/sprites/Achievement" + i + ".png");
+  }
+
 
   // Guns
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");

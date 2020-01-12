@@ -52,7 +52,6 @@ class UI {
       ableToBeHit = false;
       hitStun.Reset();
 
-      println("FUCK YOU!");
     }
 
     //if (!ableToBeHit && hitStun.TimerDone()) {

@@ -1,6 +1,6 @@
 class Item extends GameObject {
 
-  Timer voicelineTimer = new Timer(1);
+  Timer voicelineTimer = new Timer(0.5);
 
   int randomPowerUp;
   int totalPowerUps = 3;
@@ -16,15 +16,22 @@ class Item extends GameObject {
 
     shopItemNumber = shopItemNumberInput;
 
+    if (shopItemNumber < 1)
+      shopItemNumber = 1;
+
+    if (shopItemNumber > 2)
+      shopItemNumber = 2;
+
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
 
+    //
     if (msql.connect())
     {
-      msql.query("SELECT priceItemCurrent FROM Items WHERE idItem = '%s'", shopItemNumber);
+      msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", shopItemNumber);
       while (msql.next())
       {
-        itemPrice = parseInt(msql.getString("priceItemCurrent"));
+        itemPrice = parseInt(msql.getString("priceItemBase")) * spawn.wave;
       }
     }
   }
@@ -32,6 +39,9 @@ class Item extends GameObject {
 
   void draw()
   {
+    if (spawn.wave % 2 != 0)
+      Remove(this);
+
     switch(shopItemNumber) {
     case 1:
       //HEALTH
@@ -168,7 +178,7 @@ class Item extends GameObject {
 
     pushStyle();
     fill(255);
-    text(itemPrice, tempObjPosX + objWidth/2, tempObjPosY + objHeight * 2);
+    text(itemPrice, tempObjPosX, tempObjPosY + objHeight * 2);
     popStyle();
   }
 }
