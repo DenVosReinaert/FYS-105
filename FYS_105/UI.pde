@@ -236,10 +236,13 @@ class UI {
     // Main menu
     // show depending on boolean
     if (gamemngr.home) {
+      //tutorial();
       pushStyle();
       main.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
+      textSize(31);
+      text("TUTORIAL", 563, 150);
       if (state == 1) {
         fill(200);
         rect(134, 477, 285, 5);
@@ -259,9 +262,29 @@ class UI {
         rect(563, 522, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+      if (state == 5) {
+        fill(200);
+        rect(563, 150, 153, 5);
+        // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
+      }
       popStyle();
     }
   }
+
+  //void tutorial() {
+  //  if (gamemngr.tutorialVideo) {
+  //    println("frame rate: " + tutorial.frameRate);
+  //    tutorial.frameRate(1);
+  //    homeSnd.pause();
+  //    tutorial.play();
+  //    if (keyCode == ENTER) {
+  //      gamemngr.tutorialVideo = false;
+  //      tutorial.stop();
+  //      homeSnd.play();
+  //    }
+  //  }
+  //}
+
   void keyPressed() {
     if (gamemngr.home) {
       if (keyCode == DOWN)
@@ -285,11 +308,21 @@ class UI {
       if (key == 'a' && state > 1) {
         state--;
       }
-      if (key == 's') {
+      if (key == 's' && state <= 3) {
         state = 4;
       }
-      if (state == 4 && key == 'w') {
+      if (key == 'w' && state == 4) {
         state = 2;
+      }
+      //stat 5 for tutorial
+      if (key == 'w' && state <= 3) {
+        state = 5;
+      }
+      if (key == 's' && state == 5) {
+        state = 2;
+      }
+      if (key == 'w' && state == 4) {
+       state = 2; 
       }
 
       if (keyCode == RIGHT) {
@@ -309,6 +342,10 @@ class UI {
           gamemngr.home = false;
           gamemngr.hscore = true;
         }
+        // Tutorial button
+        //if (state == 5) { 
+        //  gamemngr.tutorialVideo = true;
+        //}
       }
     }
   }

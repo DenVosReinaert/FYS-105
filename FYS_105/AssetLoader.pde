@@ -3,7 +3,7 @@ import processing.video.*;
 
 
 
-Movie video;
+Movie tutorial;
 Minim minim;
 
 
@@ -50,11 +50,6 @@ SpriteSheet flowerPatch, turret;
 SpriteSheet garfieldS;
 // Garfield Sans version
 SpriteSheet garfieldSansS;
-
-void movieEvent(Movie vid) {
-  vid.read();
-}
-
 
 
 void LoadAssets()
@@ -143,9 +138,7 @@ void LoadAssets()
   pumpD = loadImage("/data/sprites/Shotgun_Pump_Down.png");
   pumpL = loadImage("/data/sprites/Shotgun_Pump_Left.png");
   pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
-
-
-
+  
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");

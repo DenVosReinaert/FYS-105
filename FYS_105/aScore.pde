@@ -63,21 +63,21 @@ class aScore {
     //takes the random pick and plays the corresponding sound
     switch(randomSoundTrack) {
     case 0:
-      bruh.setGain(20);
+      bruh.setGain(30);
       bruh.play();
       bruh.rewind();
       missing1.pause();
       missing2.pause();
       break;
     case 1:
-      missing1.setGain(40);
+      missing1.setGain(60);
       missing1.play();
       missing1.rewind();
       missing2.pause();
       bruh.pause();
       break;
     case 2:
-      missing2.setGain(40);
+      missing2.setGain(60);
       missing2.play();
       missing2.rewind();
       missing1.pause();

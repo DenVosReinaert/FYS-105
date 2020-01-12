@@ -3,6 +3,7 @@ class Game_Manager {
   boolean dead;
   boolean statspage;
   boolean creditspage;
+  boolean tutorialVideo;
   boolean home;
   boolean hscore;
   boolean shake;
@@ -92,14 +93,14 @@ class Game_Manager {
 
       switch(trackNumber) {
       case 1:
-        gameMusic.setGain(0);
+        gameMusic.setGain(-10);
         if (!gameMusic.isPlaying()) {
           gameMusic.play();
           gameMusic.rewind();
         }
         break;
       case 2:
-        contraJungleTheme.setGain(100);
+        contraJungleTheme.setGain(0);
         if (!contraJungleTheme.isPlaying())
         {
           contraJungleTheme.play();
@@ -107,7 +108,7 @@ class Game_Manager {
         }
         break;
       case 3:
-        guilesTheme.setGain(100);
+        guilesTheme.setGain(0);
         if (!guilesTheme.isPlaying())
         {
           guilesTheme.play();
