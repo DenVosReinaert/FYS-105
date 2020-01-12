@@ -27,10 +27,10 @@ class Item extends GameObject {
 
     if (msql.connect())
     {
-      msql.query("SELECT priceItemCurrent FROM Items WHERE idItem = '%s'", shopItemNumber);
+      msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", shopItemNumber);
       while (msql.next())
       {
-        itemPrice = parseInt(msql.getString("priceItemCurrent"));
+        itemPrice = parseInt(msql.getString("priceItemCurrent")) * spawn.wave;
       }
     }
   }
@@ -53,9 +53,9 @@ class Item extends GameObject {
         if (ascore.score >= itemPrice)
         {
           UI.levens ++;
-          uhoh.setGain(30);
-          uhoh.play();
-          uhoh.rewind();
+          //uhoh.setGain(30);
+          //uhoh.play();
+          //uhoh.rewind();
 
           if (voicelineTimer.TimerDone())
           {
@@ -76,7 +76,41 @@ class Item extends GameObject {
 
 
     case 2:
-      //SPEEDUP
+      // Ammo MG 1 load
+      image(arLoad, tempObjPosX, tempObjPosY);
+      //speedUp.draw(tempObjPosX, tempObjPosY);
+      //speedUp.update();
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+          UI.maxM1 += 30;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 3:
+      //Ammo MG 2 load
       speedUp.draw(tempObjPosX, tempObjPosY);
       speedUp.update();
 
@@ -88,12 +122,7 @@ class Item extends GameObject {
       {
         if (ascore.score >= itemPrice)
         {
-          //powerUps.speedUpCollected = true;
-          myPlayer.speedUpCollected = true;
-          myPlayer.speedUpTimer.Reset();
-          speedup.setGain(30);
-          speedup.play();
-          speedup.rewind();
+          UI.maxM1 += 60;
 
           if (voicelineTimer.TimerDone())
           {

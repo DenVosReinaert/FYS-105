@@ -25,6 +25,9 @@ PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 
+// Shop
+PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
+
 
 // Effects
 PImage bloodOrb;
@@ -52,6 +55,14 @@ void movieEvent(Movie vid) {
 
 void LoadAssets()
 {
+  
+  // Shop
+  arLoad = loadImage("/data/sprites/Shop/ShopMGLoad1.png");
+  arLoad2 = loadImage("/data/sprites/Shop/ShopMGLoad2.png");
+  arFullLoad = loadImage("/data/sprites/Shop/ShopMGFullLoad.png");
+  shotg_load = loadImage("/data/sprites/Shop/ShotgunShellLoad1.png");
+  shotg_load2 = loadImage("/data/sprites/Shop/ShotgunShellLoad2.png");
+  shotg_fullLoad = loadImage("/data/sprites/Shop/ShotgunShellFullLoad.png");
 
   // UI
   healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
