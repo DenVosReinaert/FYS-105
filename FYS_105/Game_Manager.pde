@@ -67,8 +67,8 @@ class Game_Manager {
       image(pokemonMDB, badgePosX, badgePosY);
     }
     if (home) {
-      //println("CURRENT USER ID " + User.currentUser);
       UI.draw();
+      loginMusic.rewind();
       loginMusic.pause();
       death.rewind();
       death.pause();
@@ -180,6 +180,18 @@ class Game_Manager {
   }
 
   void keyPressed() {
+
+    // Stats for devs (Show us information)
+    if (key == 'p') 
+    {
+      println("ID: " + User.currentUser);
+      println("Player: " + ascore.name);
+      println("Levens: " + UI.levens + " Shield: " + UI.shield);
+      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss);
+      println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
+    }
+
+
 
     if (login) {
       Login.keyPressed();

@@ -18,6 +18,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+friends Friends;
 Credits credits;
 stats stats;
 Login Login;
@@ -51,6 +52,7 @@ void setup()
 
   LoadAssets();
   stats = new stats();
+  Friends = new friends();
   User = new User();
   Login = new Login();
   myPlayer = new Player();
@@ -99,12 +101,6 @@ void draw()
 
 
 void keyPressed() {
-  // To check if you can die..
-  if (key == 'p') 
-  {
-    UI.spelerhit();
-  }
-
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   gamemngr.keyPressed();

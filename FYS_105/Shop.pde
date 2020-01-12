@@ -107,9 +107,9 @@ class Shop {
 
   void SpawnItems() {
 
-    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 2 ))));
-    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 2))));
-    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(0, 2))));
+    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 7))));
+    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 7))));
+    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(8, 13))));
     shopItemsHaveSpawned = true;
   }
 }
