@@ -16,7 +16,7 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 
 
 // Main menu
-PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg; //controlImg;
+PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -40,7 +40,10 @@ SpriteSheet multiplierUp;
 SpriteSheet shieldUp, healthUp, speedUp;
 SpriteSheet flowerPatch, turret;
 
-
+// Garfield
+SpriteSheet garfieldS;
+// Garfield Sans version
+SpriteSheet garfieldSansS;
 
 void movieEvent(Movie vid) {
   vid.read();
@@ -92,6 +95,7 @@ void LoadAssets()
   pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
 
 
+
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");
@@ -100,6 +104,8 @@ void LoadAssets()
   login = loadImage("/data/img/LastStand-Login.png");
   // stats
   statsBg = loadImage("/data/img/LastStand_Stats.png");
+  // credits
+  creditsBG = loadImage("/data/img/LastStand-Credits.png");
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
@@ -149,6 +155,11 @@ void LoadAssets()
   shopcartSansGarfieldStationary = new SpriteSheet("/data/sprites/Shopcart_Sans_NM.png", 6);
 
   cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
+  // Garfield
+  garfieldS = new SpriteSheet("/data/sprites/garfieldShopKeep.png", 6);
+  // Garfield Sans version
+  garfieldSansS = new SpriteSheet("/data/sprites/SansField.png", 6);
+
 
   //ArrowPointers
   arrowPU = new SpriteSheet("/data/sprites/ArrowPointer_Up.png", 6);

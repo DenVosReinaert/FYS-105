@@ -2,6 +2,7 @@ class Game_Manager {
   boolean login;
   boolean dead;
   boolean statspage;
+  boolean creditspage;
   boolean home;
   boolean hscore;
   boolean shake;
@@ -45,6 +46,11 @@ class Game_Manager {
       home = false;
       stats.draw();
       stats.keyReleased();
+    }
+    if (creditspage) {
+      home = false;
+      credits.draw();
+      credits.keyReleased();
     }
 
     if (login) {

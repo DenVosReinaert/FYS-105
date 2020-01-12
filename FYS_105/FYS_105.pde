@@ -17,6 +17,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+Credits credits;
 stats stats;
 Login Login;
 Shop shop;
@@ -56,6 +57,7 @@ void setup()
   spawn = new Spawner();
   shop = new Shop();
   gamemngr = new Game_Manager();
+  credits = new Credits();
 
   gamemngr.login = true;
 

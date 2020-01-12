@@ -320,26 +320,6 @@ class UI {
       }
       popStyle();
     }
-    //if (controls) {
-    //  controlImg.resize(width, height);
-    //  image(controlImg, 0, 0);
-    //  print(timer);
-    //  timer++;
-    //  if (timer > 10 ) {
-    //    circle(1162, 698, 3);
-    //  }
-    //  if (timer > 20) {
-    //    circle(1166, 698, 3);
-    //  }
-    //  if (timer > 30) {
-    //    circle(1170, 698, 3);
-    //  }
-    //  if (timer > 40) {
-    //    game = true;
-    //    controls = false;
-    //    timer = 0;
-    //  }
-    //}
   }
   void keyPressed() {
     if (gamemngr.home) {
@@ -376,7 +356,7 @@ class UI {
           gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
-          // credits = true;
+          gamemngr.creditspage = true;
         }
         // if state == 2 (Play button) then start game
         if (state == 2) {
