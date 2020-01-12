@@ -16,7 +16,7 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 
 
 // Main menu
-PImage main, login, pillar, background, scrBgr, pokemonMDB, statsBg; //controlImg;
+PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
@@ -32,7 +32,7 @@ PImage bloodOrb;
 // Maps && spritesheets
 PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
 
-SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
+SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 
 PImage purpleStoneTiles;
 
@@ -41,6 +41,7 @@ SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, 
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
 SpriteSheet shieldUp, healthUp, speedUp;
+SpriteSheet flowerPatch;
 
 
 
@@ -106,23 +107,10 @@ void LoadAssets()
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
 
   // Maps
-  background = loadImage("/Graphics/background.png");
+  levelTemplate = loadImage("/data/sprites/LevelTemplate.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
 
-  gardenPathA = loadImage("/Graphics/GardenPath_1a.png");
-  gardenPathB = loadImage("/Graphics/GardenPath_1b.png");
-  gardenPathC = loadImage("/Graphics/GardenPath_1c.png");
-  gardenPathD = loadImage("/Graphics/GardenPath_1d.png");
-  gardenPathE = loadImage("/Graphics/GardenPath_1e.png");
-  gardenPathF = loadImage("/Graphics/GardenPath_1f.png");
-  gardenPathG = loadImage("/Graphics/GardenPath_1g.png");
-  gardenPathH = loadImage("/Graphics/GardenPath_1h.png");
-  gardenPathI = loadImage("/Graphics/GardenPath_1i.png");
-  gardenPathJ = loadImage("/Graphics/GardenPath_1j.png");
-  gardenPathK = loadImage("/Graphics/GardenPath_1k.png");
-
-
-  gardenPathFlowerPatch = new SpriteSheet("/Graphics/GardenPath_FlowerPatch.png", 6);
+  flowerPatch = new SpriteSheet("/data/sprites/FlowerPatch.png", 6);
   mrSpooksLeft = new SpriteSheet("/Graphics/MrSpooks_Sheet_Left.png", 5);
   mrSpooksRight = new SpriteSheet("/Graphics/MrSpooks_Sheet_Right.png", 5);
   mrSpooksUp = new SpriteSheet("/Graphics/MrSpooks_Sheet_Back.png", 5);

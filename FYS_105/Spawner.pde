@@ -1,11 +1,11 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(3);
-  Timer spawnGrntTimer = new Timer(4);
-  Timer spawnBrtTimer = new Timer(5);
-  Timer spawnHvyTimer = new Timer(7);
-  Timer spawnBssTimer = new Timer(10);
+  Timer spawnSpdTimer = new Timer(6);
+  Timer spawnGrntTimer = new Timer(8);
+  Timer spawnBrtTimer = new Timer(10);
+  Timer spawnHvyTimer = new Timer(14);
+  Timer spawnBssTimer = new Timer(20);
 
   Timer waveTextTimer = new Timer(6);
 
@@ -92,8 +92,8 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-    garfield.pause();      //Reset shop sound
-    garfield.rewind();
+    shop.Reset();
+
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
@@ -125,7 +125,7 @@ class Spawner extends GameObject {
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;      //Set the player position to the middle of the screen
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
-    lvlMngr.lvlNum = round(random(0, 3));
+    lvlMngr.lvlNum = round(random(0, lvlMngr.lvlCount));
   }
 
 
@@ -134,11 +134,6 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    println(spawnBrtFinished);
-    println(spawnGrntFinished);
-    println(spawnSpdFinished);
-    println(spawnHvyFinished);
-    println(spawnBssFinished);
 
     if (countBrt == 0)          //If the enemy spawn count has reached 0, stop spawning this enemy
       spawnBrtFinished = true;

@@ -2,7 +2,8 @@ class LevelManager
 {
   Timer testTimer = new Timer(2);
 
-  int lvlNum = 0;
+  int lvlNum = 1;
+  int lvlCount = 2;
   Level1 lvl1 = new Level1();
   Level2 lvl2 = new Level2();
 
@@ -23,6 +24,11 @@ class LevelManager
 
   void draw()
   {
+    if (lvlNum < 1)
+      lvlNum = 1;
+
+    println(lvlNum);
+
     if (testTimer.TimerDone())
     {
       testTimer.Reset();
