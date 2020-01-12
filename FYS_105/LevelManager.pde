@@ -24,6 +24,11 @@ class LevelManager
 
   void draw()
   {
+    if (lvlNum < 1)
+      lvlNum = 1;
+
+    println(lvlNum);
+
     if (testTimer.TimerDone())
     {
       testTimer.Reset();

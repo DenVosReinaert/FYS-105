@@ -1,11 +1,11 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(3);
-  Timer spawnGrntTimer = new Timer(4);
-  Timer spawnBrtTimer = new Timer(5);
-  Timer spawnHvyTimer = new Timer(7);
-  Timer spawnBssTimer = new Timer(10);
+  Timer spawnSpdTimer = new Timer(6);
+  Timer spawnGrntTimer = new Timer(8);
+  Timer spawnBrtTimer = new Timer(10);
+  Timer spawnHvyTimer = new Timer(14);
+  Timer spawnBssTimer = new Timer(20);
 
   Timer waveTextTimer = new Timer(6);
 

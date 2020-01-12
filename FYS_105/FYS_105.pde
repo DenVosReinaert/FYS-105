@@ -114,7 +114,7 @@ void keyReleased() {
   keysPressed[keyCode] = false;
   gamemngr.keyReleased();
   pushStyle();
-  background.resize(width, height);
+  levelTemplate.resize(width, height);
   popStyle();
 }
 
