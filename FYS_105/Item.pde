@@ -16,6 +16,12 @@ class Item extends GameObject {
 
     shopItemNumber = shopItemNumberInput;
 
+    if (shopItemNumber < 1)
+      shopItemNumber = 1;
+
+    if (shopItemNumber > 2)
+      shopItemNumber = 2;
+
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
 
