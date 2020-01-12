@@ -160,7 +160,7 @@ class Spawner extends GameObject {
     SpawnBoss();
 
 
-    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
+    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount <= 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
     {
       waveFinished = true;
       waveInProgress = false;
