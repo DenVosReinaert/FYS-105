@@ -26,16 +26,6 @@ class stats {
         textSize(20);
         text("NO FRIENDS FOUND", 810, 215);
       } 
-      //else {
-      //  for (int i = 0; i < totalFriends; i++) {
-      //    textSize(20);
-      //    text("" + friends[i], 810, 30 + (totalFriends));
-      //  }
-      //}
-      //for (int i = 0; i < totalPlayers; i++) {
-      //  textSize(20);
-      //  text("" + players[i], 810, (232 + (totalFriends * 30)) + (30 * i));
-      //}
     }
   }
   void keyReleased() {
