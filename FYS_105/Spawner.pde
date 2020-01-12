@@ -106,7 +106,6 @@ class Spawner extends GameObject {
 
 
     spawn.wave ++;      //Set current wave number to the next
-    shop.UpdatePrices();
 
     countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
     countSpd = round(random(wave, wave + 3));
