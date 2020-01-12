@@ -112,9 +112,10 @@ class Brute extends GameObject {
           UI.hitValue = 1;
         } else if (UI.levens > 0 && UI.shield <= 0) {
           UI.hitValue = 2;
+
+          hp = 0;
+          UI.spelerhit();
         }
-        hp = 0;
-        UI.spelerhit();
       }
 
       //Collision with Bullet

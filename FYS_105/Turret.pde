@@ -4,13 +4,20 @@ class Turret extends GameObject
   PVector bbL = new PVector(), bbR = new PVector(), bbT = new PVector(), bbB = new PVector();
   float bbSW, bbSH, bbCW, bbCH;
 
+  String turretType;
 
-  Turret ()
+  Timer fireTimer = new Timer(10);
+
+  Turret (String type)
   {
     tag = "structure";
 
+    turretType = type;
+
     objWidth = 87;
     objHeight = 154;
+
+    fireTimer.Reset();
   }
 
 
@@ -21,7 +28,31 @@ class Turret extends GameObject
 
   void draw(float objPosX, float objPosY)
   {
+
+
     objPosX += objWidth + 13;
+
+    if (turretType == "regular")
+    {
+
+
+      turret.draw(objPosX, objPosY);
+      turret.update();
+
+      if (spawn.waveInProgress && fireTimer.TimerDone())
+      {
+        Add( new EnemyProjectile(objPosX+ objWidth/2, objPosY + objHeight/2, "static"));
+        fireTimer.Reset();
+      }
+    } else
+      if (turretType == "homing")
+      {
+        if (spawn.waveInProgress && fireTimer.TimerDone())
+        {
+          Add(new EnemyProjectile(objPosX+ objWidth/2, objPosY + objHeight/2, "homing"));
+          fireTimer.Reset();
+        }
+      }
 
     bbSW = 10;
     bbSH = objHeight/3 - 10;
@@ -58,8 +89,6 @@ class Turret extends GameObject
     //rect(bbB.x, bbB.y, bbCW, bbCH);
     //popStyle();
 
-    turret.draw(objPosX, objPosY);
-    turret.update();
 
 
     //Collision statement Player & Enemy

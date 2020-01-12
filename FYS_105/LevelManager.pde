@@ -36,7 +36,7 @@ class LevelManager
 
     for (int i = 0; i < turretCount; i++)
     {
-      turrets[i] = new Turret();
+      turrets[i] = new Turret("regular");
     }
   }
 

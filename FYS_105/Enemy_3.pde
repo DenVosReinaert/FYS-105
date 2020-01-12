@@ -126,11 +126,13 @@ class Heavy extends GameObject {
         } 
         //levens will go down with 2 because you have no shield
         else if (UI.levens > 0 && UI.shield <= 0) {
-          UI.hitValue = 2;
+        UI.hitValue = 2;
         }
         hp = 0;
         UI.spelerhit();
       }
+      
+      
       //Collision with Bullet
       if (GameObjectRef.gameObject.get(i).tag == "bullet")
       {

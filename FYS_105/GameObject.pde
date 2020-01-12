@@ -47,7 +47,7 @@ public class GameObject {
 
   GameObject() 
   {
-    
+
     spawnerPos0 = new PVector();
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();

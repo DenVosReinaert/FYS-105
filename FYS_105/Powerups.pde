@@ -25,6 +25,7 @@ class Powerups extends GameObject {
 
   void draw()
   {
+
     if (powerUpLifeTimer.TimerDone()) {
       Remove(this);
     }
@@ -37,12 +38,16 @@ class Powerups extends GameObject {
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
+
         //powerUps.speedUpCollected = true;
         myPlayer.speedUpCollected = true;
         myPlayer.speedUpTimer.Reset();
         speedup.setGain(30);
         speedup.play();
         speedup.rewind();
+        shieldup.setGain(30);
+        shieldup.play();
+        shieldup.rewind();
         Remove(this);
       }
       break;
@@ -68,7 +73,7 @@ class Powerups extends GameObject {
       shieldUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
-      {
+      {    
         UI.shield ++;
         shieldup.setGain(30);
         shieldup.play();

@@ -44,6 +44,7 @@ class Game_Manager {
     if (statspage) {
       home = false;
       stats.draw();
+      stats.keyReleased();
     }
 
     if (login) {
@@ -172,17 +173,9 @@ class Game_Manager {
   }
 
   void keyPressed() {
-    if (hscore) {
-      if (keyCode == DOWN) {
-        hscore = false;
-        home = true;
-      }
-    }
+
     if (login) {
       Login.keyPressed();
-    }
-    if (statspage) {
-      stats.keyPressed();
     }
     if (dead) {
       gameover.keyPressed();
@@ -403,6 +396,12 @@ class Game_Manager {
 
 
   void keyReleased() {
+    if (hscore) {
+      if (keyCode == DOWN) {
+        hscore = false;
+        home = true;
+      }
+    }
     println(code);
     if (home)
     {

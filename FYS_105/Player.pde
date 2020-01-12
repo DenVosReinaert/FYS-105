@@ -56,7 +56,8 @@ class Player extends GameObject {
     {
       defaultSpeed = defaultSpeedInit;
       diaSpeed = diaSpeedInit;
-    } else 
+    }
+
     if (speedUpCollected && !speedUpTimer.TimerDone())
     {
       defaultSpeed = defaultSpeedInit * 2;
