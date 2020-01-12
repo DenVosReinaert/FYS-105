@@ -6,7 +6,7 @@ class Speedster extends GameObject {
 
     scoreGain = 2;
 
-    powerUpChance = 2;
+    powerUpChance = random(0, 100);
 
     objWidth=28;
     objHeight=40;

@@ -6,7 +6,7 @@ class Heavy extends GameObject {
 
     scoreGain = 10;
 
-    powerUpChance = 2;
+    powerUpChance = random(0, 100);
 
     hp=6;
     hpBarTotalInit = 50;

@@ -6,7 +6,7 @@ class Grunt extends GameObject {
 
     scoreGain = 5;
 
-    powerUpChance = 2;
+    powerUpChance = random(0, 100);
 
     objWidth=28;
     objHeight=40;
