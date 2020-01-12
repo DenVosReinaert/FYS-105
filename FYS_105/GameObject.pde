@@ -17,13 +17,15 @@ public class GameObject {
   float angleBetweenVector;
   PVector enemyVector, playerVector;
 
+  int totalEnemyCount;
+
   float objPosX, objPosY, objWidth, objHeight;
   float tempObjPosX, tempObjPosY;
   float scorePopUp, scorePopUpAlpha;
 
   float moveVelX, moveVelY;
 
-  float defaultSpeed, defaultSpeedInit, diaSpeed;
+  float defaultSpeed, defaultSpeedInit, diaSpeed, diaSpeedInit;
 
   float knockback;
   float hp, hpBarTotal, hpBarTotalInit;
@@ -48,7 +50,7 @@ public class GameObject {
 
   GameObject() 
   {
-    
+
     spawnerPos0 = new PVector();
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();

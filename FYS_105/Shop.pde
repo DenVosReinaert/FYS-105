@@ -50,13 +50,23 @@ class Shop {
         {
           shopcartSansGarfield.draw(cartPosX - cartW, cartPosY - cartH);
           shopcartSansGarfield.update();
+
+          garfieldSans.setGain(50);
+          garfieldSans.play();
+          garfieldSans.rewind();
         } else 
         {
           shopcart.draw(cartPosX-cartW, cartPosY-cartH);
           shopcart.update();
-          shop.SpawnItem1();
-          shop.SpawnItem2();
-          shop.SpawnItem3();
+
+          SpawnItem1();
+          SpawnItem2();
+          SpawnItem3();
+
+
+          garfield.setGain(50);
+          garfield.play();
+          garfield.rewind();
         }
         cartdirt.draw(cartPosX-cartW, cartPosY-cartH);
         cartdirt.update();
@@ -65,16 +75,10 @@ class Shop {
         if (gamemngr.trackNumber == 4) {
           shopcartSansGarfieldStationary.update();
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
-          garfieldSans.setGain(50);
-          garfieldSans.play();
-          garfieldSans.rewind();
         } else
         {
           stationaryShopcart.update();
           stationaryShopcart.draw(cartPosX-cartW, cartPosY-cartH);
-          garfield.setGain(50);
-          garfield.play();
-          garfield.rewind();
         }
       }
     }
@@ -90,16 +94,17 @@ class Shop {
   }
 
 
-void SpawnItem1(){
-  GameObjectRef.Add(new Powerups(item1Pos.x,item1Pos.y));
-  if(Powerups==1){
-    
+  void SpawnItem1() {
+    GameObjectRef.Add(new Powerups(item1Pos.x, item1Pos.y));
+    //if (Powerups==1) {
+    //}
   }
-}
-void SpawnItem2(){
-  GameObjectRef.Add(new Powerups(item2Pos.x,item2Pos.y));
-}
-void SpawnItem3(){
-  GameObjectRef.Add(new Powerups(item3Pos.x,item3Pos.y));
-}
+
+  void SpawnItem2() {
+    GameObjectRef.Add(new Powerups(item2Pos.x, item2Pos.y));
+  }
+
+  void SpawnItem3() {
+    GameObjectRef.Add(new Powerups(item3Pos.x, item3Pos.y));
+  }
 }
