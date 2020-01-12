@@ -9,6 +9,7 @@ class User {
 
   void idCheck() {
     msql.query ( "SELECT idUser FROM User WHERE nameUser = '%s'", ascore.name); // Select ID for user
+    println("NAAME: " +ascore.name);
     while (msql.next() ) { // if ^ queries
       idUser = msql.getString("idUser"); // Attach idUser to string
     }
@@ -29,6 +30,7 @@ class User {
     }
     if (idUser != null) { // If there is a user with the same name, currentUser is ID belonging to name
       currentUser = parseInt(idUser);
+      print("Already exists!" + currentUser);
     }
   }
 }

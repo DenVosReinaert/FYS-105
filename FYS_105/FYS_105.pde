@@ -101,12 +101,6 @@ void draw()
 
 
 void keyPressed() {
-  // To check if you can die..
-  if (key == 'p') 
-  {
-    UI.spelerhit();
-  }
-
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   gamemngr.keyPressed();

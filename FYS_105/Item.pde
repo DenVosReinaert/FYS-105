@@ -39,6 +39,8 @@ class Item extends GameObject {
 
   void draw()
   {
+    if (spawn.wave % 2 != 0)
+      Remove(this);
     switch(shopItemNumber) {
     case 1:
       //HEALTH
@@ -79,8 +81,6 @@ class Item extends GameObject {
     case 2:
       // Ammo MG 1 load
       image(arLoad, tempObjPosX, tempObjPosY);
-      //speedUp.draw(tempObjPosX, tempObjPosY);
-      //speedUp.update();
 
       objWidth = 20;
       objHeight = 20;
@@ -112,8 +112,8 @@ class Item extends GameObject {
 
     case 3:
       //Ammo MG 2 load
-      speedUp.draw(tempObjPosX, tempObjPosY);
-      speedUp.update();
+
+      image(arLoad2, tempObjPosX, tempObjPosY);
 
       objWidth = 20;
       objHeight = 20;
@@ -124,6 +124,342 @@ class Item extends GameObject {
         if (ascore.score >= itemPrice)
         {
           UI.maxM1 += 60;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 4:
+      //Ammo MG 2 load
+
+      image(arFullLoad, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+          UI.maxM1 += 300;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 5:
+      //Shotgun 1 load
+
+      image(shotg_load, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+          UI.maxS1 += 5;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 6:
+      //Shotgun 2 load
+
+      image(shotg_load2, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+          UI.maxS1 += 10;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 7:
+      //Shotgun full load
+
+      image(shotg_load2, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+          UI.maxS1 += 20;
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 8:
+      // MachineGun Upgrade 2
+
+      image(LMG1_right, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 9:
+      // MachineGun Final Upgrade
+
+      image(LMG2_right, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 10:
+      // Shotgun Upgrade 2
+
+      image(doubleBr, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 11:
+      // Shotgun Final Upgrade
+
+      //image(doubleBr, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 12:
+      // Pistol second Upgrade
+
+      image(rayGunP_right, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
+      }
+      break;
+
+    case 13:
+      // Pistol final Upgrade
+
+      image(treeGun_right, tempObjPosX, tempObjPosY);
+
+      objWidth = 20;
+      objHeight = 20;
+
+
+      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
+      {
+        if (ascore.score >= itemPrice)
+        {
+
+          // Doe iets
 
           if (voicelineTimer.TimerDone())
           {
