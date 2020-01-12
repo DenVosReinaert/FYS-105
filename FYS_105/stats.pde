@@ -7,20 +7,14 @@ class stats {
   String selected;
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
-  int cursorPosY = 1;
-  int cursorPosY2 = 0;
+  int cursorPosY = 0;
+  int cursorPosY2 = -1;
 
   void setup() {
   }
 
   void draw() { 
     if (gamemngr.statspage) {
-      if (cursorPosY < 1) {
-        cursorPosY = 1;
-      }
-      if (cursorPosY2 < 1) {
-        cursorPosY2 = 1;
-      }
       pushStyle();
       statsBg.resize(width, height);
       image(statsBg, 0, 0);
@@ -41,10 +35,8 @@ class stats {
           textSize(20);
           text("" + friends[i], 900, 220 + (totalFriends * 20 * i/2) );
           pushStyle();
-          if (cursorPosY2 < totalPlayers) {
-            if (cursorPosY == i) {
-              fill(100, 0, 0);
-            }
+          if (cursorPosY == i) {
+            fill(100, 0, 0);
           }
           text("REMOVE", 810, 220 + (totalFriends * 20 * i/2) );
           popStyle();
@@ -54,11 +46,9 @@ class stats {
         textSize(20);
         text("" + players[i], 900, (260 + (totalFriends * 30)) + (30 * i));
         pushStyle();
-        if (cursorPosY > totalFriends) {
-          if (cursorPosY2 == i) {
-            fill(0, 200, 0);
-            selected = players[i];
-          }
+        if (cursorPosY2 == i) {
+          fill(0, 200, 0);
+          selected = players[i];
         }
         text("ADD", 820, (260 + (totalFriends * 30)) + (30 * i) );
         popStyle();
@@ -72,26 +62,32 @@ class stats {
         gamemngr.home = true;
       }
       if (keyCode == RIGHT) {
-        selected = Friends.pName;
-        Friends.getID();
-        print(Friends.pID);
-        print(Friends.pName);
-        Friends.addFriend();
+        //if () {
+        //  selected = Friends.pName;
+        //  Friends.getID();
+        //  Friends.removeFriend();
+        //}
+        //if () {
+        //  selected = Friends.pName;
+        //  Friends.getID();
+        //  Friends.addFriend();
+        //}
       }
       if (key == 'w') {
-        if (cursorPosY2 < totalPlayers) {
-          cursorPosY--;
+        if (cursorPosY > 0 && cursorPosY < totalFriends-1) {
+         cursorPosY--; 
         }
-        if (cursorPosY > totalFriends) {
-          cursorPosY2--;
-        }
+        
       }
       if (key == 's') {
-        if (cursorPosY2 < totalPlayers) {
-          cursorPosY++;
+        if (cursorPosY < totalFriends-1) { // if cursorPosY is tinier than totalFriends-1 (stops cursorPosY from moving beyond totalFriends)
+          cursorPosY++; // add numbers to cursorPosY
+        } else {
+          cursorPosY = totalFriends; // Keeps cursorPosY at totalFriends
+          cursorPosY2++; // CursorPosY2 goes down towards totalPlayers-1
         }
-        if (cursorPosY > totalFriends) {
-          cursorPosY2++;
+        if (cursorPosY2 > totalPlayers-1 ) { // if cursorPosY2 is tinier than totalPlayers-1 (stops cursorPosY from moving beyond totalFriends)
+          cursorPosY2 = totalPlayers-1; // add number to cursorPosY2
         }
       }
     }
