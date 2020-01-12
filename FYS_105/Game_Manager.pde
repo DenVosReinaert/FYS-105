@@ -43,6 +43,8 @@ class Game_Manager {
 
   void draw() {
 
+
+
     if (statspage) {
       home = false;
       stats.draw();
@@ -172,6 +174,8 @@ class Game_Manager {
       game = false;
       gameover.draw();
     }
+
+    chieves.draw();
   }
 
   void screenShake() {
