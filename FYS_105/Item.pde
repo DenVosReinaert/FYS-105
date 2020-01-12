@@ -542,6 +542,7 @@ class Item extends GameObject {
 
     pushStyle();
     fill(255);
+    textSize(20);
     text(itemPrice, tempObjPosX, tempObjPosY + objHeight * 2);
     popStyle();
   }

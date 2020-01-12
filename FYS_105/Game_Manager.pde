@@ -66,8 +66,8 @@ class Game_Manager {
       image(pokemonMDB, badgePosX, badgePosY);
     }
     if (home) {
-      //println("CURRENT USER ID " + User.currentUser);
       UI.draw();
+      loginMusic.rewind();
       loginMusic.pause();
       death.rewind();
       death.pause();
