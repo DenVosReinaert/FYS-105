@@ -1,19 +1,13 @@
 class Level1
 {
 
-  int tileSize = 100;
 
-  int pillarCount = 4;
-  int pillarInterval = tileSize * 2;
-  Pillar[] pillars = new Pillar[pillarCount];
+
+
 
 
   void setup()
-  {    
-    for (int i = 0; i < pillarCount; i++)
-    {
-      pillars[i] = new Pillar();
-    }
+  {
   }
 
 
@@ -38,10 +32,10 @@ class Level1
 
   void Layer2()
   {  
-    flowerPatch.draw(-60 + tileSize * 1.5, -40 + tileSize * 2 + 8);
-    flowerPatch.draw(-60 + tileSize * 1.5, -40 + tileSize * 5 - 8);
-    flowerPatch.draw(-60 + tileSize * 8.5, -40 + tileSize * 2 + 8);
-    flowerPatch.draw(-60 + tileSize * 8.5, -40 + tileSize * 5 - 8);
+    flowerPatch.draw(-60 + lvlMngr.tileSize * 1.5, -40 + lvlMngr.tileSize * 2 + 8);
+    flowerPatch.draw(-60 + lvlMngr.tileSize * 1.5, -40 + lvlMngr.tileSize * 5 - 8);
+    flowerPatch.draw(-60 + lvlMngr.tileSize * 8.5, -40 + lvlMngr.tileSize * 2 + 8);
+    flowerPatch.draw(-60 + lvlMngr.tileSize * 8.5, -40 + lvlMngr.tileSize * 5 - 8);
     flowerPatch.update();
   }
 
@@ -60,9 +54,9 @@ class Level1
 
     //Pillars
 
-    pillars[0].draw(-60 + tileSize * 3, -40 + tileSize * 1.5);
-    pillars[1].draw(-60 + tileSize * 10, -40 + tileSize * 1.5);
-    pillars[2].draw(-60 + tileSize * 3, -40 + tileSize * 4.5 - 16);
-    pillars[3].draw(-60 + tileSize * 10, -40 + tileSize * 4.5);
+    lvlMngr.pillars[0].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 1.5);
+    lvlMngr.pillars[1].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 1.5);
+    lvlMngr.pillars[2].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 4.5 - 16);
+    lvlMngr.pillars[3].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 4.5 - 16);
   }
 }
