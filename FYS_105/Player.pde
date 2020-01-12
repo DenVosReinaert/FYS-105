@@ -40,19 +40,29 @@ class Player extends GameObject {
     // Default gun is pistol
     currentGun = pistoll;
 
+
+
     defaultSpeedInit = 2.1;
     defaultSpeed = defaultSpeedInit;
+
+    diaSpeedInit = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
   }
 
 
   void draw() {
 
+
+
+
     if (!speedUpCollected)
-      defaultSpeed = 2.1;
-    else 
+    {
+      defaultSpeed = defaultSpeedInit;
+      diaSpeed = diaSpeedInit;
+    } else 
     if (speedUpCollected && !speedUpTimer.TimerDone())
     {
       defaultSpeed = defaultSpeedInit * 2;
+      diaSpeed = diaSpeedInit * 2;
     }
 
     if (speedUpCollected && speedUpTimer.TimerDone())
@@ -130,12 +140,11 @@ class Player extends GameObject {
 
 
     // Assigns value to movementspeed
-    diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
+
     println(defaultSpeed);
 
 
-    moveVelX = defaultSpeed;
-    moveVelY = defaultSpeed;
+
 
     // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
@@ -159,6 +168,9 @@ class Player extends GameObject {
         shotGun.shoot();
       }
     }
+
+    moveVelX = defaultSpeed;
+    moveVelY = defaultSpeed;
 
     // Check if the player is colliding with the pillars and stops them from moving through it
     if (akey && !collLeft)

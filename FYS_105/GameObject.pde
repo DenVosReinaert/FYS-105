@@ -23,7 +23,7 @@ public class GameObject {
 
   float moveVelX, moveVelY;
 
-  float defaultSpeed, defaultSpeedInit, diaSpeed;
+  float defaultSpeed, defaultSpeedInit, diaSpeed, diaSpeedInit;
 
   float knockback;
   float hp, hpBarTotal, hpBarTotalInit;
