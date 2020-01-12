@@ -1,6 +1,6 @@
 class AchievementAnimator extends GameObject
 {
-  Timer achievementRetractTimer = new Timer(20);
+  Timer achievementRetractTimer = new Timer(10);
 
   int achievementNumber;
 
@@ -22,22 +22,20 @@ class AchievementAnimator extends GameObject
 
   void draw()
   {
-    println(objPosX, objPosY);
-
     switch(achievementNumber)
     {
     case 1:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())
@@ -48,17 +46,17 @@ class AchievementAnimator extends GameObject
       }
       break;
     case 2:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())
@@ -69,17 +67,17 @@ class AchievementAnimator extends GameObject
       }
       break;
     case 3:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())
@@ -90,17 +88,17 @@ class AchievementAnimator extends GameObject
       }
       break;
     case 4:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())
@@ -111,17 +109,17 @@ class AchievementAnimator extends GameObject
       }
       break;
     case 5:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())
@@ -132,17 +130,17 @@ class AchievementAnimator extends GameObject
       }
       break;
     case 6:
-      image(chievePlate[achievementNumber-1], objPosX, objPosY);
+      image(chievePlate[achievementNumber], objPosX, objPosY);
 
       if (chieves.endPosX <= objPosX && !achievementRetractTimer.TimerDone()) 
       {
-        objPosX --;
+        objPosX -= 5;
         achievementRetractTimer.Reset();
       } else 
       {
         if (achievementRetractTimer.TimerDone())
         {
-          objPosX ++;
+          objPosX += 5;
         }
 
         if (objPosX > width && achievementRetractTimer.TimerDone())

@@ -51,7 +51,6 @@ class UI {
 
       ableToBeHit = false;
       hitStun.Reset();
-
     }
 
     //if (!ableToBeHit && hitStun.TimerDone()) {
@@ -269,6 +268,8 @@ class UI {
       }
       popStyle();
     }
+
+    chieves.draw();
   }
 
   //void tutorial() {
@@ -322,7 +323,7 @@ class UI {
         state = 2;
       }
       if (key == 'w' && state == 4) {
-       state = 2; 
+        state = 2;
       }
 
       if (keyCode == RIGHT) {

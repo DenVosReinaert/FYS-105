@@ -50,11 +50,13 @@ class Game_Manager {
       home = false;
       stats.draw();
       stats.keyReleased();
+      chieves.draw();
     }
     if (creditspage) {
       home = false;
       credits.draw();
       credits.keyReleased();
+      chieves.draw();
     }
 
     if (login) {
@@ -68,8 +70,10 @@ class Game_Manager {
         loginMusic.rewind();
       }
       image(pokemonMDB, badgePosX, badgePosY);
+      chieves.draw();
     }
     if (home) {
+
       UI.draw();
       loginMusic.rewind();
       loginMusic.pause();
@@ -82,6 +86,8 @@ class Game_Manager {
         homeSnd.play();
         homeSnd.rewind();
       }
+
+      chieves.draw();
     }
     if (hscore) {
       if (hscoreA == 0) {

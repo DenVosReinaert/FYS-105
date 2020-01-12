@@ -22,7 +22,7 @@ PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsB
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
 //Achievements
-PImage[] chievePlate = new PImage[6];
+PImage[] chievePlate = new PImage[7];
 
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
@@ -138,7 +138,7 @@ void LoadAssets()
   pumpD = loadImage("/data/sprites/Shotgun_Pump_Down.png");
   pumpL = loadImage("/data/sprites/Shotgun_Pump_Left.png");
   pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
-  
+
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");

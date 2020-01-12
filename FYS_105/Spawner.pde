@@ -10,7 +10,7 @@ class Spawner extends GameObject {
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 1;
+  int wave = 4;
 
   int countBrt, countSpd, countGrnt, countHvy, countBss;
 
@@ -110,7 +110,10 @@ class Spawner extends GameObject {
     countSpd = round(random(wave, wave + 3));
     countGrnt = round(random(wave, wave + 2));
     countHvy = round(random(wave, wave + 1));
-    countBss = round(wave / 5);
+    if (wave %5 == 0)
+    {
+      countBss = round(wave / 5);
+    } else spawnBssFinished = true;
 
     totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
 
