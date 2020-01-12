@@ -63,6 +63,7 @@ class Game_Manager {
 
       game = false;
       Login.draw();
+      spawn.wave = 1;
       loginMusic.setGain(0);
       if (!loginMusic.isPlaying()) 
       {
