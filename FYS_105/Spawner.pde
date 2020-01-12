@@ -1,11 +1,11 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(3);
-  Timer spawnGrntTimer = new Timer(4);
-  Timer spawnBrtTimer = new Timer(5);
-  Timer spawnHvyTimer = new Timer(7);
-  Timer spawnBssTimer = new Timer(10);
+  Timer spawnSpdTimer = new Timer(6);
+  Timer spawnGrntTimer = new Timer(8);
+  Timer spawnBrtTimer = new Timer(10);
+  Timer spawnHvyTimer = new Timer(14);
+  Timer spawnBssTimer = new Timer(20);
 
   Timer waveTextTimer = new Timer(6);
 
@@ -21,6 +21,7 @@ class Spawner extends GameObject {
   boolean waveFinished = false;
 
   Spawner() {
+
     spawnerPos0.x=width/2;
     spawnerPos0.y= -10;
 
@@ -38,6 +39,8 @@ class Spawner extends GameObject {
     countGrnt = round(random(wave, wave + 1));
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
+
+    totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
   }//constructor spawner
 
 
@@ -47,10 +50,12 @@ class Spawner extends GameObject {
 
   void draw() {
 
+    if (totalEnemyCount < 0)
+      totalEnemyCount = 0;
+
     //println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
-
-
     if (game) {
+
       pushStyle();
       fill(255);
 
@@ -92,13 +97,16 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-    garfield.pause();      //Reset shop sound
-    garfield.rewind();
+    shop.Reset();
+
+
+
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
 
     spawn.wave ++;      //Set current wave number to the next
+    shop.UpdatePrices();
 
     countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
     countSpd = round(random(wave, wave + 3));
@@ -106,6 +114,7 @@ class Spawner extends GameObject {
     countHvy = round(random(wave, wave + 1));
     countBss = round(wave / 5);
 
+    totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
 
 
     spawnBrtFinished = false;
@@ -125,7 +134,7 @@ class Spawner extends GameObject {
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;      //Set the player position to the middle of the screen
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
-    lvlMngr.lvlNum = round(random(0, 3));
+    lvlMngr.lvlNum = round(random(0, 9));
   }
 
 
@@ -134,11 +143,6 @@ class Spawner extends GameObject {
 
   void SpawnWave()
   {
-    println(spawnBrtFinished);
-    println(spawnGrntFinished);
-    println(spawnSpdFinished);
-    println(spawnHvyFinished);
-    println(spawnBssFinished);
 
     if (countBrt == 0)          //If the enemy spawn count has reached 0, stop spawning this enemy
       spawnBrtFinished = true;
@@ -163,7 +167,7 @@ class Spawner extends GameObject {
     SpawnBoss();
 
 
-    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && GameObjectRef.gameObject.size() == 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
+    if (spawnBrtFinished && spawnGrntFinished && spawnSpdFinished && spawnHvyFinished && spawnBssFinished && totalEnemyCount <= 0)      //If all the enemies are done spawning and there's nothing left on screen, end the wave
     {
       waveFinished = true;
       waveInProgress = false;

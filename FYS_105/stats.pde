@@ -55,7 +55,7 @@ class stats {
       }
     }
   }
-  void keyPressed() {
+  void keyReleased() {
     if (gamemngr.statspage) {
       if (keyCode == DOWN) {
         gamemngr.statspage = false;

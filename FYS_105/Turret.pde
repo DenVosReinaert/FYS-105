@@ -4,13 +4,20 @@ class Turret extends GameObject
   PVector bbL = new PVector(), bbR = new PVector(), bbT = new PVector(), bbB = new PVector();
   float bbSW, bbSH, bbCW, bbCH;
 
+  String turretType;
 
-  Turret ()
+  Timer fireTimer = new Timer(10);
+
+  Turret (String type)
   {
     tag = "structure";
 
-    objWidth = pillar.width;
-    objHeight = pillar.height;
+    turretType = type;
+
+    objWidth = 87;
+    objHeight = 154;
+
+    fireTimer.Reset();
   }
 
 
@@ -21,7 +28,31 @@ class Turret extends GameObject
 
   void draw(float objPosX, float objPosY)
   {
-    objPosX += objWidth/4;
+
+
+    objPosX += objWidth + 13;
+
+    if (turretType == "regular")
+    {
+
+
+      turret.draw(objPosX, objPosY);
+      turret.update();
+
+      if (spawn.waveInProgress && fireTimer.TimerDone())
+      {
+        Add( new EnemyProjectile(objPosX+ objWidth/2, objPosY + objHeight/2, "static"));
+        fireTimer.Reset();
+      }
+    } else
+      if (turretType == "homing")
+      {
+        if (spawn.waveInProgress && fireTimer.TimerDone())
+        {
+          Add(new EnemyProjectile(objPosX+ objWidth/2, objPosY + objHeight/2, "homing"));
+          fireTimer.Reset();
+        }
+      }
 
     bbSW = 10;
     bbSH = objHeight/3 - 10;
@@ -29,7 +60,7 @@ class Turret extends GameObject
     bbCW = objWidth - 10;
     bbCH = bbSW;
 
-
+    //Collision Box Initialization
     //LEFT
     bbL.x = objPosX;
     bbL.y = objPosY + (objHeight/3 * 2) + 5;
@@ -48,13 +79,16 @@ class Turret extends GameObject
 
 
 
-    //
+    //Collison Box Wireframes for checks
+    //pushStyle();
+    //noFill();
+    //stroke(255);
+    //rect(bbL.x, bbL.y, bbSW, bbSH);
+    //rect(bbR.x, bbR.y, bbSW, bbSH);
+    //rect(bbT.x, bbT.y, bbCW, bbCH);
+    //rect(bbB.x, bbB.y, bbCW, bbCH);
+    //popStyle();
 
-
-    image(pillar, objPosX, objPosY);
-
-    //rect(myPlayer.playerPosX, myPlayer.playerPosY, 5, 5);
-    //rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, -5, -5);
 
 
     //Collision statement Player & Enemy
@@ -120,15 +154,49 @@ class Turret extends GameObject
       //    Remove(GameObjectRef.gameObject.get(l));
       //}
     }
+    
+    for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
+    {
+      //Pillar Collision v Enemy
+      if (GameObjectRef.gameObject.get(i).tag == "enemy")
+      {
+        if ((GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).dx) > bbL.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).dx < bbL.x + bbSW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).dy > bbL.y && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).dy < bbL.y + bbSH)
+        {
+          GameObjectRef.gameObject.get(i).collRight = true;
+        }
 
-    //Collision box visualisation
-    //pushStyle();
-    //noFill();
-    //stroke(255);
-    //rect(bbT.x, bbT.y, bbCW, bbCH);
-    //rect(bbB.x, bbB.y, bbCW, bbCH);
-    //rect(bbR.x, bbR.y, bbSW, bbSH);
-    //rect(bbL.x, bbL.y, bbSW, bbSH);
-    //popStyle();
+
+
+        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).dx > bbR.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).dx < bbR.x + bbSW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).dy > bbR.y && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).dy < bbR.y + bbSH)
+        {
+          GameObjectRef.gameObject.get(i).collLeft = true;
+        }
+
+
+
+        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).dx > bbB.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).dx < bbB.x + bbCW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).dy > bbB.y && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).dy < bbB.y + bbCH)
+        {
+          GameObjectRef.gameObject.get(i).collTop = true;
+        }
+
+
+
+        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).dx > bbT.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).dx < bbT.x + bbCW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).dy > bbT.y && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).dy < bbT.y + bbCH)
+        {
+          GameObjectRef.gameObject.get(i).collBott = true;
+        }
+      }
+
+
+      //Pillar Collision v Bullet
+      if (GameObjectRef.gameObject.get(i).tag == "bullet")
+      {
+        if (GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth + GameObjectRef.gameObject.get(i).moveVelX > bbL.x && GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).moveVelX < bbR.x + bbSW && GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight + GameObjectRef.gameObject.get(i).moveVelY > bbT.y && GameObjectRef.gameObject.get(i).objPosY + myPlayer.moveVelY < bbB.y + bbCH)
+        {
+          Remove(GameObjectRef.gameObject.get(i));
+          ascore.ComboReset();
+        }
+      }
+    }
   }
 }

@@ -30,6 +30,12 @@ class GameOver {
       megalovania.rewind();
       e1m1.pause();
       e1m1.rewind();
+      devilMayCry.pause();
+      devilMayCry.rewind();
+      fireEmblem.pause();
+      fireEmblem.rewind();
+      xenoblade.pause();
+      xenoblade.rewind();
       // Remove all enemies!
       for (int i = 0; i < GameObjectRef.gameObject.size(); i++)
       {
@@ -87,6 +93,8 @@ class GameOver {
     ascore.score = 0;
     spawn.wave = 1;
     spawn.waveTextTimer.Reset();
+
+    shop.ResetPrices();
 
     // print(UI.levens);
     gamemngr.dead = false;

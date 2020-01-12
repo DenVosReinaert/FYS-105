@@ -7,40 +7,42 @@ Movie video;
 Minim minim;
 
 
-
-AudioPlayer loginMusic, Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, gameMusic, megalovania, damage, bruh, garfield, achievement, e1m1, 
-  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, contraJungleTheme, guilesTheme, garfieldSans;
+// soundeffects
+AudioPlayer Shotgun, ShotgunReload, pump_shotg, pump_shotg_empty, AR1, AR1Reload, AR1Empty, Pistol, pistolR, pistolEmpty, homeSnd, death, damage, bruh, garfield, achievement, e1m1, 
+  buying1, buying2, buying3, buying4, buying5, buying6, buying7, cantbuy1, cantbuy2, missing1, missing2, ohhimark, uhoh, shieldup, speedup, ultimatemachinegun, garfieldSans;
+// music
+AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, devilMayCry, fireEmblem, xenoblade;
 
 
 
 // Main menu
-PImage main, login, pillar, background, scrBgr, pokemonMDB, statsBg; //controlImg;
+PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
 // Guns 
-PImage buckS, bulletDown, bulletLeft, bulletRight;
+PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 
 
 // Effects
 PImage bloodOrb;
 
-// Maps && spritesheets
-PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
+SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 
-SpriteSheet gardenPathFlowerPatch, mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
-
-PImage purpleStoneTiles;
 
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
 SpriteSheet shieldUp, healthUp, speedUp;
+SpriteSheet flowerPatch, turret;
 
-
+// Garfield
+SpriteSheet garfieldS;
+// Garfield Sans version
+SpriteSheet garfieldSansS;
 
 void movieEvent(Movie vid) {
   vid.read();
@@ -74,6 +76,7 @@ void LoadAssets()
   bulletDown = loadImage("/data/sprites/BulletSpriteDown.png");
   bulletLeft = loadImage("/data/sprites/BulletSpriteLeft.png");
   bulletRight = loadImage("/data/sprites/BulletSpriteRight.png");
+  bulletTurret = loadImage("/data/sprites/turretBullet.png");
 
   handgunUp = loadImage("/data/sprites/Handgun_Top.png");
   handgunDown = loadImage("/data/sprites/Handgun_Down.png");
@@ -91,6 +94,7 @@ void LoadAssets()
   pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
 
 
+
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
   //  controlImg = loadImage("/data/img/controls.png");
@@ -99,34 +103,24 @@ void LoadAssets()
   login = loadImage("/data/img/LastStand-Login.png");
   // stats
   statsBg = loadImage("/data/img/LastStand_Stats.png");
+  // credits
+  creditsBG = loadImage("/data/img/LastStand-Credits.png");
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
 
   // Maps
-  background = loadImage("/Graphics/background.png");
+  levelTemplate = loadImage("/data/sprites/LevelTemplate.png");
   pillar = loadImage("/Graphics/pillarSprite.png");
 
-  gardenPathA = loadImage("/Graphics/GardenPath_1a.png");
-  gardenPathB = loadImage("/Graphics/GardenPath_1b.png");
-  gardenPathC = loadImage("/Graphics/GardenPath_1c.png");
-  gardenPathD = loadImage("/Graphics/GardenPath_1d.png");
-  gardenPathE = loadImage("/Graphics/GardenPath_1e.png");
-  gardenPathF = loadImage("/Graphics/GardenPath_1f.png");
-  gardenPathG = loadImage("/Graphics/GardenPath_1g.png");
-  gardenPathH = loadImage("/Graphics/GardenPath_1h.png");
-  gardenPathI = loadImage("/Graphics/GardenPath_1i.png");
-  gardenPathJ = loadImage("/Graphics/GardenPath_1j.png");
-  gardenPathK = loadImage("/Graphics/GardenPath_1k.png");
+  flowerPatch = new SpriteSheet("/data/sprites/FlowerPatch.png", 6);
+  turret = new SpriteSheet("/data/sprites/Turret.png", 36);
 
-
-  gardenPathFlowerPatch = new SpriteSheet("/Graphics/GardenPath_FlowerPatch.png", 6);
   mrSpooksLeft = new SpriteSheet("/Graphics/MrSpooks_Sheet_Left.png", 5);
   mrSpooksRight = new SpriteSheet("/Graphics/MrSpooks_Sheet_Right.png", 5);
   mrSpooksUp = new SpriteSheet("/Graphics/MrSpooks_Sheet_Back.png", 5);
   mrSpooksDown = new SpriteSheet("/Graphics/MrSpooks_Sheet_Front.png", 5);
 
-  purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
 
   // Enemies
   gruntU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8);
@@ -160,6 +154,11 @@ void LoadAssets()
   shopcartSansGarfieldStationary = new SpriteSheet("/data/sprites/Shopcart_Sans_NM.png", 6);
 
   cartdirt = new SpriteSheet("/data/sprites/cartdirt.png", 6);
+  // Garfield
+  garfieldS = new SpriteSheet("/data/sprites/garfieldShopKeep.png", 6);
+  // Garfield Sans version
+  garfieldSansS = new SpriteSheet("/data/sprites/SansField.png", 6);
+
 
   //ArrowPointers
   arrowPU = new SpriteSheet("/data/sprites/ArrowPointer_Up.png", 6);
@@ -187,11 +186,14 @@ void LoadAssets()
   homeSnd = minim.loadFile("/data/sound/Last_Stand_MainMS.wav");
   death = minim.loadFile("/data/sound/death.mp3");
   gameMusic = minim.loadFile("/data/sound/looping_strings.wav");
-  megalovania = minim.loadFile("/data/sound/Megalovania.wav");
+  megalovania = minim.loadFile("/data/sound/Megalovania.mp3");
   contraJungleTheme = minim.loadFile("/data/sound/ContraJungleTheme.wav");
   guilesTheme = minim.loadFile("/data/sound/GuilesTheme.wav");
   loginMusic = minim.loadFile("/data/sound/login.mp3");
   e1m1 = minim.loadFile("/data/sound/AtDoomsGate.wav");
+  devilMayCry = minim.loadFile("/data/sound/DevilTrigger.mp3");
+  fireEmblem = minim.loadFile("/data/sound/GodShatteringStar.mp3");
+  xenoblade = minim.loadFile("/data/sound/YouWillKnowOurNames.mp3");
 
 
 

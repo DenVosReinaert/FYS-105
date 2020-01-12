@@ -6,6 +6,8 @@ class Player extends GameObject {
   Timer weaponSwapPrevTimer = new Timer(0.125);
   Timer weaponSwapNextTimer = new Timer(0.125);
 
+  Timer speedUpTimer = new Timer(8);
+
   // Creates new objects from the gun's classes for the player to use
   Pistol pistol = new Pistol();
   Shotgun shotGun = new Shotgun();
@@ -16,8 +18,10 @@ class Player extends GameObject {
   float muzzlePointX, muzzlePointY;
 
   boolean nextGun, prevGun, swapable;
+  boolean speedUpCollected;
 
   Player() {
+    speedUpCollected = false;
 
     objWidth = 28;
     objHeight = 40;
@@ -36,15 +40,35 @@ class Player extends GameObject {
     // Default gun is pistol
     currentGun = pistoll;
 
+
+
     defaultSpeedInit = 2.1;
     defaultSpeed = defaultSpeedInit;
-    diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
+
+    diaSpeedInit = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
   }
 
 
   void draw() {
 
-    println(GameObjectRef.gameObject.size());
+
+
+
+    if (!speedUpCollected)
+    {
+      defaultSpeed = defaultSpeedInit;
+      diaSpeed = diaSpeedInit;
+    }
+
+    if (speedUpCollected && !speedUpTimer.TimerDone())
+    {
+      defaultSpeed = defaultSpeedInit * 2;
+      diaSpeed = diaSpeedInit * 2;
+    }
+
+    if (speedUpCollected && speedUpTimer.TimerDone())
+      speedUpCollected = false;
+
 
     // Detects collision with pillars
     if (objPosX + moveVelX < 0)
@@ -114,15 +138,22 @@ class Player extends GameObject {
     if (myPlayer.currentGun == machinegun)
       machineGun.holdingGun();
 
+
+
     // Assigns value to movementspeed
-    moveVelX = defaultSpeed;
-    moveVelY = defaultSpeed;
+
+    println(defaultSpeed);
+
+
+
 
     // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else defaultSpeed = defaultSpeedInit;
-
+    } else if (!speedUpCollected && !speedUpTimer.TimerDone())
+    {
+      defaultSpeed = defaultSpeedInit;
+    }
     // Shoots gun when pressing any of the directional buttons
     if (myPlayer.shootingUp || myPlayer.shootingDown || myPlayer.shootingRight || myPlayer.shootingLeft) {
       if (currentGun == pistoll)
@@ -138,6 +169,9 @@ class Player extends GameObject {
         shotGun.shoot();
       }
     }
+
+    moveVelX = defaultSpeed;
+    moveVelY = defaultSpeed;
 
     // Check if the player is colliding with the pillars and stops them from moving through it
     if (akey && !collLeft)
