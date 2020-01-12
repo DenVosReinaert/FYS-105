@@ -10,7 +10,7 @@ class Powerups extends GameObject {
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
 
-    powerUpChance = 50;
+    powerUpChance = 2;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
@@ -35,16 +35,18 @@ class Powerups extends GameObject {
 
     switch(randomPowerUp) {
     case 1:
-      //SHIELDS
-      shieldUp.draw(tempObjPosX, tempObjPosY);
-      shieldUp.update();
+      //SPEEDUP
+      speedUp.draw(tempObjPosX, tempObjPosY);
+      speedUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        UI.shield ++;
-        shieldup.setGain(30);
-        shieldup.play();
-        shieldup.rewind();
+        //powerUps.speedUpCollected = true;
+        myPlayer.speedUpCollected = true;
+        myPlayer.speedUpTimer.Reset();
+        speedup.setGain(30);
+        speedup.play();
+        speedup.rewind();
         Remove(this);
       }
       break;
@@ -65,18 +67,16 @@ class Powerups extends GameObject {
       break;
 
     case 3:
-      //SPEEDUP
-      speedUp.draw(tempObjPosX, tempObjPosY);
-      speedUp.update();
+      //SHIELDS
+      shieldUp.draw(tempObjPosX, tempObjPosY);
+      shieldUp.update();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        //powerUps.speedUpCollected = true;
-        myPlayer.speedUpCollected = true;
-        myPlayer.speedUpTimer.Reset();
-        speedup.setGain(30);
-        speedup.play();
-        speedup.rewind();
+        UI.shield = 2;
+        shieldup.setGain(30);
+        shieldup.play();
+        shieldup.rewind();
         Remove(this);
       }
       break;

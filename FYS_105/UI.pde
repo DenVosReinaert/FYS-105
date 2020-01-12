@@ -7,8 +7,8 @@ class UI {
   Timer hitStun = new Timer(0.1);
   boolean ableToBeHit = true;
   // Healthbar
-  int levens; // Amount of lives
-  int shield; // amount of shield
+  int levens = 3; // Amount of lives
+  int shield = 0; // amount of shield
   int lX1 = width/35;
   int lX2 = lX1 + 6;
   int lY1 = height/35;
@@ -38,19 +38,17 @@ class UI {
   int gun = 1;
 
   UI() {
-    shield = 0;
-    levens = 3;
     hitValueShield = 0;
     hitValue = 0;
   }
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit && hitStun.TimerDone()) {
-      levens -= hitValue;
       shield -= hitValueShield;
+      levens -= hitValue;
 
-      hitValue = 0;
       hitValueShield = 0;
+      hitValue = 0;
 
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
@@ -59,8 +57,6 @@ class UI {
       damage.rewind();
       ableToBeHit = false;
       hitStun.Reset();
-
-      println("FUCK YOU!");
     }
 
     //if (!ableToBeHit && hitStun.TimerDone()) {
@@ -77,7 +73,7 @@ class UI {
       // the shield won't get above 2
       if (UI.shield >= 2) {
         UI.shield = 2;
-        
+
         // the shield won't get below 0
         if (UI.shield <= 0) {
           UI.shield = 0;
@@ -197,31 +193,101 @@ class UI {
       // Health
       image(healthbarSb, lX1, lY1);
       image(shieldbarSb, lX1+ (57 * 5), lY1);
-      if (levens > 0) {
+
+      if (levens == 1 && shield == 0) {
         image(healthP, lX2, lY2);
-        if (levens > 1) {
-          image(healthP, lX2 + 57, lY2);
-          if (levens > 2) {
-            image(healthP, lX2 + (57 * 2), lY2);
-          }
-          if (levens > 3) {
-            image(healthP, lX2 + (57 * 3), lY2);
-          }
-          if (levens > 4) {
-            image(healthP, lX2 + (57 * 4), lY2);
-          }
-          if (shield > 0) {
-            image(shieldP, lX2 + (57 * 5), lY2);
-          }
-          if (shield > 1) {
-            image(shieldP, lX2 + (57 * 6), lY2);
-          }
-        }
       }
+      if (levens == 1 && shield == 1 ) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }  
+      if (levens == 1 && shield == 2) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+      if (levens == 2 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+      }
+      if (levens == 2 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 2 && shield == 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 3 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+      }
+      if (levens == 3 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 3 && shield == 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 4 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+      }
+      if (levens == 4 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+      }
+      if (levens == 4 && shield == 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }  
+      if (levens == 5 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);
+      }
+      if (levens == 5 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 5 && shield == 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+
       image(healthbarS, lX1, lY1);
       image(shieldbarS, lX1 + (57 * 5), lY1);
 
-      if (shield == 0 && levens == 0) { // if lives == 0 && shield == 0
+      if (levens == 0) { // if lives == 0
         gamemngr.dead = true; // set player to dead
       }
     }

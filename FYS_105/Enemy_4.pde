@@ -6,7 +6,7 @@ class Brute extends GameObject {
 
     scoreGain = 7;
 
-    powerUpChance = random(0, 100);
+    powerUpChance = 2;
 
     objWidth=35;
     objHeight=42;
