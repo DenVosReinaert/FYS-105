@@ -154,6 +154,7 @@ class Turret extends GameObject
       //    Remove(GameObjectRef.gameObject.get(l));
       //}
     }
+    
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
       //Pillar Collision v Enemy

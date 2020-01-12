@@ -1,6 +1,6 @@
 class LevelManager
 {
-  int lvlNum = 5;
+  int lvlNum = 1;
   int lvlCount = 9;
   int tileSize = 100;
 
