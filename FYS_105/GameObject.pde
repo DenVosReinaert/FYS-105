@@ -19,10 +19,11 @@ public class GameObject {
 
   float objPosX, objPosY, objWidth, objHeight;
   float tempObjPosX, tempObjPosY;
+  float scorePopUp, scorePopUpAlpha;
 
   float moveVelX, moveVelY;
 
-  float defaultSpeed, defaultSpeedInit, diaSpeed;
+  float defaultSpeed, defaultSpeedInit, diaSpeed, diaSpeedInit;
 
   float knockback;
   float hp, hpBarTotal, hpBarTotalInit;

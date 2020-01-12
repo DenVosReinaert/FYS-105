@@ -276,6 +276,21 @@ class UI {
   }
   void keyPressed() {
     if (gamemngr.home) {
+      if (keyCode == DOWN)
+      {
+        homeSnd.pause();
+        homeSnd.rewind();
+
+        if (!loginMusic.isPlaying())
+        {
+          loginMusic.play();
+          loginMusic.rewind();
+        }
+
+        gamemngr.home = false;
+        gamemngr.hscore = false;
+        gamemngr.login = true;
+      }
       if (key == 'd' && state < 3) {
         state++;
       }
@@ -288,6 +303,7 @@ class UI {
       if (state == 4 && key == 'w') {
         state = 2;
       }
+
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
           gamemngr.statspage = true;
