@@ -64,9 +64,9 @@ class AchievementManager
         msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement, progressionAchievement) VALUES ('%s','%s','%s','%s')", User.currentUser, achievementNumber, 1, 0);
         achievement.play();
         achievement.rewind();
+
+        achievementAnim.add(new AchievementAnimator(achievementNumber, startPosX, startPosY));
       }
     }
-
-    achievementAnim.add(new AchievementAnimator(achievementNumber));
   }
 }
