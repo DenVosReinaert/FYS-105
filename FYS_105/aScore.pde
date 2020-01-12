@@ -15,6 +15,9 @@ class aScore {
   }
 
   void draw() {
+    if (score >= 100000)
+      chieves.UnlockAchievement(1);
+
     float tCombo = combo - combo%0.01; // This is the number visible on the display
     if (!gamemngr.dead) { 
       pushStyle();

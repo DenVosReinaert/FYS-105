@@ -1,11 +1,18 @@
 class Achievements
 {
+
+  Timer[] achievementRetractTimer;
+
+  int[] achievementsActive;
+
   int chieveFalse = 0;
   int collected; //Current 
   int bossCounter;
 
   int idAchievement, achieved;
   String tempId;
+
+
 
   Achievements()
   {
@@ -16,6 +23,10 @@ class Achievements
 
   void draw()
   {
+    for (int i = 0; i < achievementRetractTimer.length; i++)
+    {
+      achievementRetractTimer[i] = new Timer(10);
+    }
   }
 
 
@@ -38,5 +49,7 @@ class Achievements
         achievement.rewind();
       }
     }
+
+    //achievementRetractTimer.length++;
   }
 }
