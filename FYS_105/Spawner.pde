@@ -92,8 +92,8 @@ class Spawner extends GameObject {
 
   void NextWave()
   {
-    shop.Reset();
-    
+    garfield.pause();      //Reset shop sound
+    garfield.rewind();
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
