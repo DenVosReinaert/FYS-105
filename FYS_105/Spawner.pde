@@ -1,11 +1,11 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(6);
-  Timer spawnGrntTimer = new Timer(8);
-  Timer spawnBrtTimer = new Timer(10);
-  Timer spawnHvyTimer = new Timer(14);
-  Timer spawnBssTimer = new Timer(20);
+  Timer spawnSpdTimer = new Timer(3);
+  Timer spawnGrntTimer = new Timer(4);
+  Timer spawnBrtTimer = new Timer(5);
+  Timer spawnHvyTimer = new Timer(7);
+  Timer spawnBssTimer = new Timer(10);
 
   Timer waveTextTimer = new Timer(6);
 
@@ -56,8 +56,11 @@ class Spawner extends GameObject {
 
       if (!waveTextTimer.TimerDone())     //Show the text that tells you what wave you're on for as long as the waveTextTimer is not done
       { 
+        pushStyle();
         textSize(80);
-        text("WAVE "+ (wave), width/2-150, height/2);
+        textAlign(CENTER);
+        text("WAVE "+ (wave), width/2, height/2);
+        popStyle();
       }
 
       if (waveTextTimer.TimerDone() && !waveFinished && !waveInProgress)
