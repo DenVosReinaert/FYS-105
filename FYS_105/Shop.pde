@@ -50,10 +50,18 @@ class Shop {
         {
           shopcartSansGarfield.draw(cartPosX - cartW, cartPosY - cartH);
           shopcartSansGarfield.update();
+
+          garfieldSans.setGain(50);
+          garfieldSans.play();
+          garfieldSans.rewind();
         } else 
         {
           shopcart.draw(cartPosX-cartW, cartPosY-cartH);
           shopcart.update();
+
+          garfield.setGain(50);
+          garfield.play();
+          garfield.rewind();
         }
         cartdirt.draw(cartPosX-cartW, cartPosY-cartH);
         cartdirt.update();
@@ -62,16 +70,10 @@ class Shop {
         if (gamemngr.trackNumber == 4) {
           shopcartSansGarfieldStationary.update();
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
-          garfieldSans.setGain(50);
-          garfieldSans.play();
-          garfieldSans.rewind();
         } else
         {
           stationaryShopcart.update();
           stationaryShopcart.draw(cartPosX-cartW, cartPosY-cartH);
-          garfield.setGain(50);
-          garfield.play();
-          garfield.rewind();
         }
       }
     }
