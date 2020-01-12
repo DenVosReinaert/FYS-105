@@ -1,102 +1,177 @@
 class Item extends GameObject {
 
-  Timer powerUpLifeTimer = new Timer(20);
+  Timer voicelineTimer = new Timer(1);
 
   int randomPowerUp;
   int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
+  int vlCantBuy, vlCanBuy;
 
-  //Change these
-  float temp2ObjPosX, temp2ObjPosY;
 
   //initiales the width and height of the powerups.
-  Item(float objPosX, float objPosY) {
+  Item(float objPosX, float objPosY, int shopItemNumberInput)
+  {
+    tag = "item";
 
-    powerUpChance = 0.1;
+    shopItemNumber = shopItemNumberInput;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
 
-    objWidth = 20;
-    objHeight = 20;
-
-    randomPowerUp = round(random(0, totalPowerUps));
-
-    powerUpLifeTimer.Reset();
-  }
-
-  Item() {
-    tag = "powerup";
+    if (msql.connect())
+    {
+      msql.query("SELECT priceItemCurrent FROM Items WHERE idItem = '%s'", shopItemNumber);
+      while (msql.next())
+      {
+        itemPrice = parseInt(msql.getString("priceItemCurrent"));
+      }
+    }
   }
 
 
   void draw()
   {
-
-    if (powerUpLifeTimer.TimerDone())
-      Remove(this);
-
-    switch(randomPowerUp) {
+    switch(shopItemNumber) {
     case 1:
-      //SHIELDS
-      shieldUp.draw(tempObjPosX, tempObjPosY);
-      shieldUp.update();
+      //HEALTH
+      healthUp.draw(tempObjPosX, tempObjPosY);
+      healthUp.update();
+
+      objWidth = 20;
+      objHeight = 20;
+
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        if (UI.shield < 2 || UI.shield >= 0)
-          UI.shield ++;
+        if (ascore.score >= itemPrice)
+        {
+          UI.levens ++;
+          uhoh.setGain(30);
+          uhoh.play();
+          uhoh.rewind();
 
-        if (UI.shield < 0)
-          UI.shield = 0;
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+          }
 
-        if (UI.shield > 2)
-          UI.shield = 2;
+          ascore.score -= itemPrice;
 
-        shieldup.setGain(30);
-        shieldup.play();
-        shieldup.rewind();
-        Remove(this);
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+          }
       }
       break;
 
 
 
     case 2:
-      //HEALTH
-      healthUp.draw(tempObjPosX, tempObjPosY);
-      healthUp.update();
-
-      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
-      {
-        UI.levens ++;
-        uhoh.setGain(30);
-        uhoh.play();
-        uhoh.rewind();
-        Remove(this);
-      }
-      break;
-
-
-
-    case 3:
       //SPEEDUP
       speedUp.draw(tempObjPosX, tempObjPosY);
       speedUp.update();
 
+      objWidth = 20;
+      objHeight = 20;
+
+
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        //powerUps.speedUpCollected = true;
-        myPlayer.speedUpCollected = true;
-        myPlayer.speedUpTimer.Reset();
-        speedup.setGain(30);
-        speedup.play();
-        speedup.rewind();
-        Remove(this);
+        if (ascore.score >= itemPrice)
+        {
+          //powerUps.speedUpCollected = true;
+          myPlayer.speedUpCollected = true;
+          myPlayer.speedUpTimer.Reset();
+          speedup.setGain(30);
+          speedup.play();
+          speedup.rewind();
+
+          if (voicelineTimer.TimerDone())
+          {
+            vlCanBuy = round(random(0, 7));
+            voicelineTimer.Reset();
+          }
+
+          ascore.score -= itemPrice;
+
+          Remove(this);
+        } else
+          if (voicelineTimer.TimerDone())
+          {
+            vlCantBuy = round(random(0, 2));
+            voicelineTimer.Reset();
+          }
       }
       break;
     }
+
+
+    switch(vlCanBuy)
+    {
+    case 1:
+      buying1.setGain(100);
+      buying1.play();
+      buying1.rewind();
+      break;
+    case 2:
+      buying2.setGain(100);
+      buying2.play();
+      buying2.rewind();
+      break;
+    case 3:
+      buying3.setGain(100);
+      buying3.play();
+      buying3.rewind();
+      break;
+    case 4:
+      buying4.setGain(100);
+      buying4.play();
+      buying4.rewind();
+      break;
+    case 5:
+      buying5.setGain(100);
+      buying5.play();
+      buying5.rewind();
+      break;
+    case 6:
+      buying6.setGain(100);
+      buying6.play();
+      buying6.rewind();
+      break;
+    case 7:
+      buying7.setGain(100);
+      buying7.play();
+      buying7.rewind();
+      break;
+    }
+
+    switch(vlCantBuy)
+    {
+    case 1:
+      cantbuy1.setGain(100);
+      if (!cantbuy2.isPlaying())
+      {
+        cantbuy1.play();
+        cantbuy1.rewind();
+      }
+      break;
+    case 2:
+      cantbuy2.setGain(100);
+      if (!cantbuy1.isPlaying())
+      {
+        cantbuy2.play();
+        cantbuy2.rewind();
+      }
+      break;
+    }
+
+    pushStyle();
+    fill(255);
+    text(itemPrice, tempObjPosX + objWidth/2, tempObjPosY + objHeight * 2);
+    popStyle();
   }
 }
 

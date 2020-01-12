@@ -6,14 +6,13 @@ class Powerups extends GameObject {
   int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
-  
-  //Change these
-  float temp2ObjPosX, temp2ObjPosY;
 
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
 
     powerUpChance = 0.1;
+
+    tag = "powerups";
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
@@ -24,10 +23,6 @@ class Powerups extends GameObject {
     randomPowerUp = round(random(0, totalPowerUps));
 
     powerUpLifeTimer.Reset();
-  }
-
-  Powerups() {
-    tag = "powerup";
   }
 
 

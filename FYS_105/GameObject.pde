@@ -35,10 +35,8 @@ public class GameObject {
   float scoreGain;
 
   float powerUpChance;
-  //float speedUpX, speedUpY, speedUpDia;
-  //float healthUpX, healthUpY, healthUpDia;
-  //float shieldX, shieldY, shieldDia, shieldOnPlayerDia;
-  //float normalSpeed, bonusSpeed;
+
+  int shopItemNumber, itemPrice;
 
   float tileSize;
 

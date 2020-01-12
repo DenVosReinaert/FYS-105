@@ -24,6 +24,7 @@ class Shop {
   boolean shopItemsHaveSpawned = false;
 
 
+
   Shop() 
   {
     item1Pos=new PVector();
@@ -107,9 +108,9 @@ class Shop {
 
   void SpawnItems() {
 
-    GameObjectRef.Add(new Powerups(item1Pos.x, item1Pos.y));
-    GameObjectRef.Add(new Powerups(item2Pos.x, item2Pos.y));
-    GameObjectRef.Add(new Powerups(item3Pos.x, item3Pos.y));
+    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 2 ))));
+    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 2))));
+    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(0, 2))));
     shopItemsHaveSpawned = true;
   }
 
