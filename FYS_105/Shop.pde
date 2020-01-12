@@ -1,5 +1,6 @@
 class Shop {
 
+
   float cartW = 300;
   float cartH = 200;
 
@@ -16,7 +17,12 @@ class Shop {
   PVector item2Pos;
   PVector item3Pos;
 
+  int itemPriceCurrent, itemPriceBase;
+  int totalShopItems;
+
   boolean shopA = false;
+  boolean shopItemsHaveSpawned = false;
+
 
   Shop() 
   {
@@ -44,6 +50,7 @@ class Shop {
     {
       if (endPosX - cartPosX>=0) 
       {
+
         println(dist(cartPosX, cartPosY, endPosX, endPosY));
         cartPosX+=3;
         if (gamemngr.trackNumber == 4) 
@@ -55,14 +62,9 @@ class Shop {
           garfieldSans.play();
           garfieldSans.rewind();
         } else 
-        {
+        {     
           shopcart.draw(cartPosX-cartW, cartPosY-cartH);
           shopcart.update();
-
-          SpawnItem1();
-          SpawnItem2();
-          SpawnItem3();
-
 
           garfield.setGain(50);
           garfield.play();
@@ -77,12 +79,18 @@ class Shop {
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
         } else
         {
+
+
           stationaryShopcart.update();
           stationaryShopcart.draw(cartPosX-cartW, cartPosY-cartH);
+
+          if (!shopItemsHaveSpawned)
+            SpawnItems();
         }
       }
     }
   }
+
 
   void Reset()
   {
@@ -91,20 +99,74 @@ class Shop {
     garfield.rewind();
     garfieldSans.pause();
     garfieldSans.rewind();
+
+    shopItemsHaveSpawned = false;
   }
 
 
-  void SpawnItem1() {
+
+  void SpawnItems() {
+
     GameObjectRef.Add(new Powerups(item1Pos.x, item1Pos.y));
-    //if (Powerups==1) {
-    //}
-  }
-
-  void SpawnItem2() {
     GameObjectRef.Add(new Powerups(item2Pos.x, item2Pos.y));
+    GameObjectRef.Add(new Powerups(item3Pos.x, item3Pos.y));
+    shopItemsHaveSpawned = true;
   }
 
-  void SpawnItem3() {
-    GameObjectRef.Add(new Powerups(item3Pos.x, item3Pos.y));
+
+  void ResetPrices()
+  {
+    if (msql.connect())
+    {
+      msql.query("SELECT COUNT(DISTINCT idItem) FROM Items");
+
+      while (msql.next())
+      {
+        totalShopItems = parseInt(msql.getString("COUNT(DISTINCT idItem)"));
+      }
+
+      for (int i = 0; i < totalShopItems; i++)
+      {
+        msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", i);
+        while (msql.next())
+        {
+          itemPriceBase = parseInt(msql.getString("priceItemBase"));
+
+
+
+          //THIS QUERY DOESNT WORK BECAUSE IT NEEDS TO !!!NOT!!! BE ITEMPRICE
+          //msql.query( "SELECT u.itemBought FROM User_has_Items u WHERE User_idUser = '%s' AND Items_idItem = '%s'", User.currentUser, itemPriceCurrent );
+        }
+        //UPDATE CURRENT ITEM PRICE TO MATCH WAVE NUMBER
+        msql.query("UPDATE Items SET priceItemCurrent = '%s' WHERE idItem = '%s'", itemPriceBase, i);
+      }
+    }
+  }
+
+
+
+
+  void UpdatePrices()
+  {
+    if (msql.connect())
+    {
+      msql.query("SELECT COUNT(DISTINCT idItem) FROM Items");
+
+      while (msql.next())
+      {
+        totalShopItems = parseInt(msql.getString("COUNT(DISTINCT idItem)"));
+      }
+
+      for (int i = 0; i < totalShopItems; i++)
+      {
+        msql.query("SELECT priceItemBase FROM Items WHERE idItem = '%s'", i);
+        while (msql.next())
+        {
+          itemPriceCurrent = parseInt(msql.getString("priceItemBase")) * spawn.wave;
+        }
+        //UPDATE CURRENT ITEM PRICE TO MATCH WAVE NUMBER
+        msql.query("UPDATE Items SET priceItemCurrent = '%s' WHERE idItem = '%s'", itemPriceCurrent, i);
+      }
+    }
   }
 }

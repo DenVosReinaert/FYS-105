@@ -1,4 +1,4 @@
-class Powerups extends GameObject {
+class Item extends GameObject {
 
   Timer powerUpLifeTimer = new Timer(20);
 
@@ -6,12 +6,12 @@ class Powerups extends GameObject {
   int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
-  
+
   //Change these
   float temp2ObjPosX, temp2ObjPosY;
 
   //initiales the width and height of the powerups.
-  Powerups(float objPosX, float objPosY) {
+  Item(float objPosX, float objPosY) {
 
     powerUpChance = 0.1;
 
@@ -26,7 +26,7 @@ class Powerups extends GameObject {
     powerUpLifeTimer.Reset();
   }
 
-  Powerups() {
+  Item() {
     tag = "powerup";
   }
 

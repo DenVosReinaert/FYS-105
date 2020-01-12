@@ -38,6 +38,7 @@ class Game_Manager {
 
     badgePosX = width/2 + 375;
     badgePosY = height/5 + 30;
+
   }
 
   void draw() {

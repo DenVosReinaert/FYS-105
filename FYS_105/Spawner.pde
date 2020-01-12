@@ -21,6 +21,7 @@ class Spawner extends GameObject {
   boolean waveFinished = false;
 
   Spawner() {
+
     spawnerPos0.x=width/2;
     spawnerPos0.y= -10;
 
@@ -48,6 +49,9 @@ class Spawner extends GameObject {
 
 
   void draw() {
+
+    if (totalEnemyCount < 0)
+      totalEnemyCount = 0;
 
     //println("Brute: " + countBrt + ", " +"Grunt: " + countGrnt + ", " +"Speed: " + countSpd + ", " +"Heavy: " + countHvy);
     if (game) {
@@ -95,11 +99,14 @@ class Spawner extends GameObject {
   {
     shop.Reset();
 
+
+
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
 
 
     spawn.wave ++;      //Set current wave number to the next
+    shop.UpdatePrices();
 
     countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
     countSpd = round(random(wave, wave + 3));
