@@ -29,19 +29,15 @@ PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, do
 // Effects
 PImage bloodOrb;
 
-// Maps && spritesheets
-PImage gardenPathA, gardenPathB, gardenPathC, gardenPathD, gardenPathE, gardenPathF, gardenPathG, gardenPathH, gardenPathI, gardenPathJ, gardenPathK;
-
 SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 
-PImage purpleStoneTiles;
 
 //Enemies
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
 SpriteSheet shieldUp, healthUp, speedUp;
-SpriteSheet flowerPatch;
+SpriteSheet flowerPatch, turret;
 
 
 
@@ -111,12 +107,13 @@ void LoadAssets()
   pillar = loadImage("/Graphics/pillarSprite.png");
 
   flowerPatch = new SpriteSheet("/data/sprites/FlowerPatch.png", 6);
+  turret = new SpriteSheet("/data/sprites/Turret.png", 36);
+
   mrSpooksLeft = new SpriteSheet("/Graphics/MrSpooks_Sheet_Left.png", 5);
   mrSpooksRight = new SpriteSheet("/Graphics/MrSpooks_Sheet_Right.png", 5);
   mrSpooksUp = new SpriteSheet("/Graphics/MrSpooks_Sheet_Back.png", 5);
   mrSpooksDown = new SpriteSheet("/Graphics/MrSpooks_Sheet_Front.png", 5);
 
-  purpleStoneTiles = loadImage("/Graphics/PurpleStoneTiles.png");
 
   // Enemies
   gruntU = new SpriteSheet("/data/sprites/Enemies/Grunt-Running-Away.png", 8);

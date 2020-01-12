@@ -6,7 +6,7 @@ class Player extends GameObject {
   Timer weaponSwapPrevTimer = new Timer(0.125);
   Timer weaponSwapNextTimer = new Timer(0.125);
 
-  Timer speedUpTimer = new Timer(4);
+  Timer speedUpTimer = new Timer(8);
 
   // Creates new objects from the gun's classes for the player to use
   Pistol pistol = new Pistol();

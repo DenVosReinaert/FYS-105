@@ -1,6 +1,5 @@
 class Level2
 {
-
   void setup()
   {
   }
@@ -35,6 +34,7 @@ class Level2
 
   void Layer4()
   {
-    
+    lvlMngr.turrets[0].draw(-60 + lvlMngr.tileSize * 1, -40 + lvlMngr.tileSize);
+    lvlMngr.turrets[1].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize);
   }
 }

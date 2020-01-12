@@ -9,8 +9,8 @@ class Turret extends GameObject
   {
     tag = "structure";
 
-    objWidth = pillar.width;
-    objHeight = pillar.height;
+    objWidth = 87;
+    objHeight = 154;
   }
 
 
@@ -21,7 +21,7 @@ class Turret extends GameObject
 
   void draw(float objPosX, float objPosY)
   {
-    objPosX += objWidth/4;
+    objPosX += objWidth + 13;
 
     bbSW = 10;
     bbSH = objHeight/3 - 10;
@@ -29,7 +29,7 @@ class Turret extends GameObject
     bbCW = objWidth - 10;
     bbCH = bbSW;
 
-
+    //Collision Box Initialization
     //LEFT
     bbL.x = objPosX;
     bbL.y = objPosY + (objHeight/3 * 2) + 5;
@@ -48,13 +48,18 @@ class Turret extends GameObject
 
 
 
-    //
+    //Collison Box Wireframes for checks
+    //pushStyle();
+    //noFill();
+    //stroke(255);
+    //rect(bbL.x, bbL.y, bbSW, bbSH);
+    //rect(bbR.x, bbR.y, bbSW, bbSH);
+    //rect(bbT.x, bbT.y, bbCW, bbCH);
+    //rect(bbB.x, bbB.y, bbCW, bbCH);
+    //popStyle();
 
-
-    image(pillar, objPosX, objPosY);
-
-    //rect(myPlayer.playerPosX, myPlayer.playerPosY, 5, 5);
-    //rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, -5, -5);
+    turret.draw(objPosX, objPosY);
+    turret.update();
 
 
     //Collision statement Player & Enemy
@@ -120,15 +125,5 @@ class Turret extends GameObject
       //    Remove(GameObjectRef.gameObject.get(l));
       //}
     }
-
-    //Collision box visualisation
-    //pushStyle();
-    //noFill();
-    //stroke(255);
-    //rect(bbT.x, bbT.y, bbCW, bbCH);
-    //rect(bbB.x, bbB.y, bbCW, bbCH);
-    //rect(bbR.x, bbR.y, bbSW, bbSH);
-    //rect(bbL.x, bbL.y, bbSW, bbSH);
-    //popStyle();
   }
 }
