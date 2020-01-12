@@ -23,12 +23,8 @@ class Powerups extends GameObject {
     powerUpLifeTimer.Reset();
   }
 
-
-
-
   void draw()
   {
-
     if (powerUpLifeTimer.TimerDone()) {
       Remove(this);
     }
@@ -73,7 +69,7 @@ class Powerups extends GameObject {
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        UI.shield = 2;
+        UI.shield ++;
         shieldup.setGain(30);
         shieldup.play();
         shieldup.rewind();

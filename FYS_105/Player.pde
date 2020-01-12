@@ -146,7 +146,7 @@ class Player extends GameObject {
     // Normalises the speed when moving diagonally
     if ((wkey && akey) || (akey && skey) || (skey && dkey) || (dkey && wkey)) {
       defaultSpeed = diaSpeed;
-    } else if (speedUpCollected && !speedUpTimer.TimerDone())
+    } else if (!speedUpCollected && !speedUpTimer.TimerDone())
     {
       defaultSpeed = defaultSpeedInit;
     }
