@@ -1,7 +1,7 @@
 class Shotgun extends GameObject {
 
 
-  Timer cooldownTimer = new Timer(2);
+  Timer cooldownTimer = new Timer(1.5);
 
   Shotgun() {
     knockback = 40;
