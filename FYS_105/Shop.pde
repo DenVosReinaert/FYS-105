@@ -91,8 +91,18 @@ class Shop {
 
 
 void SpawnItem1(){
-  GameObjectRef.Add(new Powerups(item1Pos.x,item1Pos.y));
-  if(Powerups==1){
+ int powerupCount;
+
+if(powerupCount < 1)
+{
+for(int i = 0; i < GameObjectRef.gameObject.size(); i++)
+{
+if(GameObjectRef.gameObject.get(i).tag == "powerup")
+{
+powerupCount ++;
+}
+}
+}
     
   }
 }
