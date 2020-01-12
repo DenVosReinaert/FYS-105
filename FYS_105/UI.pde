@@ -295,7 +295,7 @@ class UI {
           gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
-          // credits = true;
+          gamemngr.creditspage = true;
         }
         // if state == 2 (Play button) then start game
         if (state == 2) {

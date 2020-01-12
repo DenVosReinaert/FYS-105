@@ -18,6 +18,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+Credits credits;
 stats stats;
 Login Login;
 Shop shop;
