@@ -106,7 +106,7 @@ class Spawner extends GameObject {
     waveInProgress = false;      //Reset wave progress
     waveFinished = false;
     spawn.wave ++;      //Set current wave number to the next
-
+    totalEnemyCount = 0;
     countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
     countSpd = round(random(wave, wave + 3));
     countGrnt = round(random(wave, wave + 2));
