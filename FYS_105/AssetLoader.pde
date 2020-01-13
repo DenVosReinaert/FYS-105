@@ -3,7 +3,6 @@ import processing.video.*;
 
 
 
-Movie tutorial;
 Minim minim;
 
 
@@ -16,7 +15,7 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 
 
 // Main menu
-PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG; //controlImg;
+PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG, controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb, arrow, seasonpass;
@@ -165,7 +164,7 @@ void LoadAssets()
 
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
-  //  controlImg = loadImage("/data/img/controls.png");
+  controlImg = loadImage("/data/img/controls.png");
   main = loadImage("/data/img/LastStand-MainMenu.png");
   // Login
   login = loadImage("/data/img/LastStand-Login.png");

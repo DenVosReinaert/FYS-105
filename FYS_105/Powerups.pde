@@ -45,9 +45,6 @@ class Powerups extends GameObject {
         speedup.setGain(30);
         speedup.play();
         speedup.rewind();
-        shieldup.setGain(30);
-        shieldup.play();
-        shieldup.rewind();
         Remove(this);
       }
       break;

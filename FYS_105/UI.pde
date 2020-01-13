@@ -82,6 +82,8 @@ class UI {
 
   void draw() {
 
+
+
     if (game) {
 
       // the shield won't get above 2
@@ -370,14 +372,14 @@ class UI {
     // Main menu
     // show depending on boolean
     if (gamemngr.home) {
-      //tutorial();
+      tutorial();
       pushStyle();
       main.resize(width, height);
       seasonpass.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
       textSize(31);
-      text("TUTORIAL", 563, 150);
+      text("CONTROLS", 563, 150);
       if (state == 1) {
         fill(200);
         rect(134, 477, 285, 5);
@@ -408,21 +410,24 @@ class UI {
 
 
     chieves.draw();
+    if (gamemngr.controls) {
+      controlImg.resize(width, height);
+      image(controlImg, 0, 0);
+
+      if (keyCode == DOWN) {
+        gamemngr.controls = false;
+        gamemngr.home = true;
+      }
+    }
   }
 
-  //void tutorial() {
-  //  if (gamemngr.tutorialVideo) {
-  //    println("frame rate: " + tutorial.frameRate);
-  //    tutorial.frameRate(1);
-  //    homeSnd.pause();
-  //    tutorial.play();
-  //    if (keyCode == ENTER) {
-  //      gamemngr.tutorialVideo = false;
-  //      tutorial.stop();
-  //      homeSnd.play();
-  //    }
-  //  }
-  //}
+  void tutorial() {
+    if (gamemngr.controls) {
+      if (keyCode == ENTER) {
+        gamemngr.controls = false;
+      }
+    }
+  }
 
   void keyPressed() {
     if (gamemngr.home) {
@@ -484,9 +489,10 @@ class UI {
           gamemngr.hscore = true;
         }
         // Tutorial button
-        //if (state == 5) { 
-        //  gamemngr.tutorialVideo = true;
-        //}
+        if (state == 5) { 
+          gamemngr.controls = true;
+          gamemngr.home = false;
+        }
       }
     }
   }
