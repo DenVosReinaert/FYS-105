@@ -117,17 +117,47 @@ class UI {
       }
       // Pistol ammo (draw the five yellow lines left top)
       if (ammoP > 0 && myPlayer.currentGun == myPlayer.pistoll) {
-        image(bullet, ammoX, ammoY);
+        if ( myPlayer.pistol.upgradeLevel == 2) {
+          image(rayGunP_B_up, ammoX, ammoY);
+        } else if ( myPlayer.pistol.upgradeLevel == 3) {
+          image(peanut, ammoX, ammoY);
+        } else {
+          image(bullet, ammoX, ammoY);
+        }
         if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
-          image(bullet, ammoX + ammoXs, ammoY);
+          if ( myPlayer.pistol.upgradeLevel == 2) {
+            image(rayGunP_B_up, ammoX, ammoY);
+          } else if ( myPlayer.pistol.upgradeLevel == 3) {
+            image(peanut, ammoX, ammoY);
+          } else {
+            image(bullet, ammoX + ammoXs, ammoY);
+          }
           if (ammoP > 2 && myPlayer.currentGun == myPlayer.pistoll) {
-            image(bullet, ammoX + (ammoXs * 2), ammoY);
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 2), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 2), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 2), ammoY);
+            }
           }
           if (ammoP > 3 && myPlayer.currentGun == myPlayer.pistoll) {
-            image(bullet, ammoX + (ammoXs * 3), ammoY);
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 3), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 3), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 3), ammoY);
+            }
           }
           if (ammoP > 4 && myPlayer.currentGun == myPlayer.pistoll) {
-            image(bullet, ammoX + (ammoXs * 4), ammoY);
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 4), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 4), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 4), ammoY);
+            }
           }
         }
       }

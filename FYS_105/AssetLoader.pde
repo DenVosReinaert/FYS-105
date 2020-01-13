@@ -28,7 +28,7 @@ PImage[] chievePlate = new PImage[7];
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 PImage LMG1_down, LMG1_up, LMG1_left, LMG1_right, LMG2_down, LMG2_up, LMG2_right, LMG2_left, rayGun_up, rayGun_down, rayGun_left, rayGun_right, rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right; 
-PImage treeGun_up, treeGun_down, treeGun_left, treeGun_right, shotg_up, shotg_right, shotg_left, shotg_down, rayGunP_B_up, rayGunP_B_left, rayGunP_B_right, rayGunP_B_down; 
+PImage peanut, treeGun_up, treeGun_down, treeGun_left, treeGun_right, shotg_up, shotg_right, shotg_left, shotg_down, rayGunP_B_up, rayGunP_B_left, rayGunP_B_right, rayGunP_B_down; 
 
 // Shop
 PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
@@ -40,7 +40,7 @@ PImage bossBlood;
 PImage gruntBlood;
 PImage heavyBlood;
 
-SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
+SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown, peanutS;
 
 
 //Enemies
@@ -121,19 +121,21 @@ void LoadAssets()
   rayGunP_down = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Bottom.png");
   rayGunP_left = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Left.png");
   rayGunP_right = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Right.png");
+
   // Pink gun ammo cases
-  
   rayGunP_B_up = loadImage("/data/sprites/UI/Raygun_Shell.png");
   rayGunP_B_down = loadImage("/data/sprites/Raygun_ShellD.png");
   rayGunP_B_left = loadImage("/data/sprites/Raygun_ShellL.png");
   rayGunP_B_right = loadImage("/data/sprites/Raygun_ShellR.png");
-  
-  
+
+
   // Final pistol upgrade!
   treeGun_up = loadImage("/data/sprites/Guns/Handgun_Tree_Top.png");
   treeGun_down = loadImage("/data/sprites/Guns/Handgun_Tree_Down.png");
   treeGun_left = loadImage("/data/sprites/Guns/Handgun_Tree_Left.png");
   treeGun_right = loadImage("/data/sprites/Guns/Handgun_Tree_Right.png");
+  peanutS = new SpriteSheet("/data/sprites/Bullets/PindaShell-sheet.png", 8);
+  peanut = loadImage("/data/sprites/Bullets/PindaShell.png");
 
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
   doubleBd = loadImage("/data/sprites/DoubleBarrel_Down.png");

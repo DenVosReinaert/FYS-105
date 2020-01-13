@@ -196,6 +196,8 @@ class Game_Manager {
     // Stats for devs (Show us information)
     if (key == 'p') 
     {
+      ascore.score = 10000;
+      spawn.wave = 2;
       println("PlayerName: " + ascore.name + " ID: " + User.currentUser);
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
       println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + " Total Enemy Count: " + spawn.totalEnemyCount);
