@@ -301,8 +301,8 @@ class Item extends GameObject {
     case 8:
       // MachineGun Upgrade 2
       pushStyle();
-      image(LMG1_right, tempObjPosX, tempObjPosY);
       LMG1_right.resize(70, 16);
+      image(LMG1_right, objPosX, objPosY);
       popStyle();
 
       objWidth = 20;
@@ -411,7 +411,10 @@ class Item extends GameObject {
     case 11:
       // Shotgun Final Upgrade
 
-      image(shotg_right, tempObjPosX, tempObjPosY);
+      pushStyle();
+      shotg_right.resize(50, 45);
+      image(shotg_right, objPosX, objPosY);
+      popStyle();
 
       objWidth = 20;
       objHeight = 20;
@@ -458,7 +461,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
-          //myPlayer.pistol.upgradeLevel = 2;
+          myPlayer.pistol.upgradeLevel = 2;
 
           if (voicelineTimer.TimerDone())
           {
@@ -493,7 +496,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
-          //myPlayer.pistol.upgradeLevel = 3;
+          myPlayer.pistol.upgradeLevel = 3;
 
           if (voicelineTimer.TimerDone())
           {
