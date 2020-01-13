@@ -41,11 +41,6 @@ Powerups powerUps;
 
 void setup()
 {
-  // tutorial video
-  //tutorial = new Movie(this, "tutorial.mov");
-  //For background tiles
-  //X: -10
-  //Y: -90
   size(1280, 720);
 
 

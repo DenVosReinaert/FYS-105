@@ -3,7 +3,7 @@ class Game_Manager {
   boolean dead;
   boolean statspage;
   boolean creditspage;
-  boolean tutorialVideo;
+  boolean controls;
   boolean home;
   boolean hscore;
   boolean shake;
