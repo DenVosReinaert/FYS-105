@@ -21,6 +21,8 @@ class GameOver {
       textSize(15);
       text("PRESS A TO CONTNUE", width/2, height/2 + 50);
       popStyle();
+      spawn.wave = 1;
+      myPlayer.currentGun = 1;
       gameMusic.pause();
       gameMusic.rewind();
       contraJungleTheme.pause();
