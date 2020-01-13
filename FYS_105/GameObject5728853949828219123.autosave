@@ -17,27 +17,30 @@ public class GameObject {
   float angleBetweenVector;
   PVector enemyVector, playerVector;
 
-  int totalEnemyCount;
-
   float objPosX, objPosY, objWidth, objHeight;
   float tempObjPosX, tempObjPosY;
-  float scorePopUp, scorePopUpAlpha;
 
   float moveVelX, moveVelY;
 
-  float defaultSpeed, defaultSpeedInit, diaSpeed, diaSpeedInit;
+  float defaultSpeed = 2.1;
+  float diaSpeed = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2); //Normalizes the defaultSpeed
 
   float knockback;
+  float cooldown, threshold;
   float hp, hpBarTotal, hpBarTotalInit;
-
 
   float scoreGain;
 
   float powerUpChance;
 
-  int shopItemNumber, itemPrice;
+  //float speedUpX, speedUpY, speedUpDia;
+  //float healthUpX, healthUpY, healthUpDia;
+  //float shieldX, shieldY, shieldDia, shieldOnPlayerDia;
+  //float normalSpeed, bonusSpeed;
 
   float tileSize;
+
+
 
   int[] idAchievement = new int[5];
 
@@ -47,7 +50,6 @@ public class GameObject {
 
   GameObject() 
   {
-
     spawnerPos0 = new PVector();
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();
@@ -74,7 +76,7 @@ public class GameObject {
   void Add(GameObject object)
   {
     GameObjectRef.gameObject.add(object); 
-    //println("A new object has been created");
+    println("A new object has been created");
   }
 
   void Remove(GameObject object)

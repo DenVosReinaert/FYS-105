@@ -64,8 +64,11 @@ class Spawner extends GameObject {
 
       if (!waveTextTimer.TimerDone())     //Show the text that tells you what wave you're on for as long as the waveTextTimer is not done
       { 
+        pushStyle();
         textSize(80);
-        text("WAVE "+ (wave), width/2-150, height/2);
+        textAlign(CENTER);
+        text("WAVE "+ (wave), width/2, height/2);
+        popStyle();
       }
 
       if (waveTextTimer.TimerDone() && !waveFinished && !waveInProgress)
