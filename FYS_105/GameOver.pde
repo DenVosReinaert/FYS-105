@@ -121,5 +121,27 @@ class GameOver {
     spawn.countGrnt = round(random(spawn.wave, spawn.wave + 2));
     spawn.countHvy = round(random(spawn.wave, spawn.wave + 1));
     spawn.countBss = round(spawn.wave / 5);
+
+    damage.pause();
+    bruh.pause();
+    garfield.pause();
+    achievement.pause();
+    buying1.pause();
+    buying2.pause();
+    buying3.pause();
+    buying4.pause();
+    buying5.pause();
+    buying6.pause();
+    buying7.pause();
+    cantbuy1.pause();
+    cantbuy2.pause();
+    missing1.pause();
+    missing2.pause();
+    ohhimark.pause();
+    uhoh.pause();
+    shieldup.pause();
+    ultimatemachinegun.pause();
+    speedup.pause();
+    garfieldSans.pause();
   }
 }
