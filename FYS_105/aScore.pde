@@ -8,6 +8,7 @@ class aScore {
   float combo; // The current combo or score multiplier
   String oScore; // "Old Score" score already in scorelist belonging to player
   String name; // String containing inserted name from 'Login' class
+  boolean chieveUnlocked;
 
   aScore() {
     combo = 1;
@@ -15,8 +16,12 @@ class aScore {
   }
 
   void draw() {
-    if (score >= 100000)
+
+    if (score >= 100000 && !chieveUnlocked)
+    {
       chieves.UnlockAchievement(1);
+      chieveUnlocked = true;
+    } 
 
     float tCombo = combo - combo%0.01; // This is the number visible on the display
     if (!gamemngr.dead) { 
