@@ -300,8 +300,10 @@ class Item extends GameObject {
 
     case 8:
       // MachineGun Upgrade 2
-
+      pushStyle();
       image(LMG1_right, tempObjPosX, tempObjPosY);
+      LMG1_right.resize(70, 16);
+      popStyle();
 
       objWidth = 20;
       objHeight = 20;
@@ -336,7 +338,10 @@ class Item extends GameObject {
     case 9:
       // MachineGun Final Upgrade
 
+      pushStyle();
       image(LMG2_right, tempObjPosX, tempObjPosY);
+      LMG1_right.resize(70, 16);
+      popStyle();
 
       objWidth = 20;
       objHeight = 20;

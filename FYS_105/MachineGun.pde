@@ -10,7 +10,7 @@ class MachineGun extends GameObject {
   MachineGun() 
   {
     knockback = 15;
-    upgradeLevel = 2;
+    upgradeLevel = 3;
   }
 
   void holdingGun() {
@@ -77,22 +77,34 @@ class MachineGun extends GameObject {
       {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
         objPosY = myPlayer.objPosY - myPlayer.objHeight/2 - 10;
+        pushStyle();
         image(LMG2_up, objPosX, objPosY);
+        LMG2_up.resize(16, 70);
+        popStyle();
       } else if (myPlayer.lookingDown) 
       {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2-10;
+        pushStyle();
         image(LMG2_down, objPosX, objPosY);
+        LMG2_down.resize(16, 70);
+        popStyle();
       } else if (myPlayer.lookingRight)
       {
         objPosX = myPlayer.objPosX;
-        objPosY = myPlayer.objPosY + 10;
+        objPosY = myPlayer.objPosY + 15;
+        pushStyle();
         image(LMG2_right, objPosX, objPosY);
+        LMG2_right.resize(70, 16);
+        popStyle();
       } else if (myPlayer.lookingLeft) 
       {
-        objPosX = myPlayer.objPosX - 30;
-        objPosY = myPlayer.objPosY + 10;
+        objPosX = myPlayer.objPosX - 42;
+        objPosY = myPlayer.objPosY + 15;
+        pushStyle();
         image(LMG2_left, objPosX, objPosY);
+        LMG2_left.resize(70, 16);
+        popStyle();
       }
       break;
     }

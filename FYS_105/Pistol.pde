@@ -7,7 +7,6 @@ class Pistol extends GameObject {
     upgradeLevel = 1;
   }
 
-  //rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right
 
   void holdingGun() {
 
@@ -86,6 +85,40 @@ class Pistol extends GameObject {
       }
       break;
     case 3:
+      // Show weapon sprite based on which way the player is facing
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        pushStyle();
+        image(treeGun_up, objPosX, objPosY);
+        treeGun_up.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        pushStyle();
+        image(treeGun_down, objPosX, objPosY);
+        treeGun_down.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX + objWidth + 20;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(treeGun_right, objPosX, objPosY);
+        treeGun_right.resize(35, 15);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - objWidth - 27;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(treeGun_left, objPosX, objPosY);
+        treeGun_left.resize(35, 15);
+        popStyle();
+      }
       break;
     }
   }
