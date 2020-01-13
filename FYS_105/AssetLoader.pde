@@ -27,7 +27,8 @@ PImage[] chievePlate = new PImage[7];
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
-PImage LMG1_down, LMG1_up, LMG1_left, LMG1_right, LMG2_down, LMG2_up, LMG2_right, LMG2_left, rayGun_up, rayGun_down, rayGun_left, rayGun_right, rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right, treeGun_up, treeGun_down, treeGun_left, treeGun_right; 
+PImage LMG1_down, LMG1_up, LMG1_left, LMG1_right, LMG2_down, LMG2_up, LMG2_right, LMG2_left, rayGun_up, rayGun_down, rayGun_left, rayGun_right, rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right; 
+PImage treeGun_up, treeGun_down, treeGun_left, treeGun_right, shotg_up, shotg_right, shotg_left, shotg_down; 
 
 // Shop
 PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
@@ -84,6 +85,12 @@ void LoadAssets()
 
 
   // Guns
+  
+  // Shotgun final upgrade!
+  shotg_up = loadImage("/data/sprites/Guns/Shotgun_Automatic_Top.png");
+  shotg_down = loadImage("/data/sprites/Guns/Shotgun_Automatic_Bottom.png");
+  shotg_right = loadImage("/data/sprites/Guns/Shotgun_Automatic_Right.png");
+  shotg_left = loadImage("/data/sprites/Guns/Shotgun_Automatic_Left.png");
 
   // LMG first Upgrade!
   LMG1_up = loadImage("/data/sprites/Guns/LMG1_up.png");
