@@ -105,14 +105,7 @@ class Speedster extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-        //shield will go down with 1 if you have shield
-        if (UI.shield >= 1) {
-          UI.hitValueShield = 1;
-        } 
-        //levens will go down with 1
-        else if (UI.levens > 0 && UI.shield <= 0) {
-          UI.hitValue = 1;
-        }
+        UI.hitValue = 1;
         hp = 0;
         UI.spelerhit();
       }

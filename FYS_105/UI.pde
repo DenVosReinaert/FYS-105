@@ -14,7 +14,7 @@ class UI {
   int lY1 = height/35;
   int lY2 = lY1 + 10;
   int hitValue;
-  int hitValueShield;
+  int hitValueLeftOvers;
 
   // ammo machinegun
   int ammoM1 = 5;
@@ -39,16 +39,28 @@ class UI {
   int gun = 1;
 
   UI() {
-    hitValueShield = 0;
     hitValue = 0;
   }
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit && hitStun.TimerDone()) {
-      shield -= hitValueShield;
-      levens -= hitValue;
 
-      hitValueShield = 0;
+      if (shield == 0)
+      {
+        levens -= hitValue;
+      } else
+        if (shield > 0)
+        {
+          if (hitValue - shield > 0)
+          {
+            hitValueLeftOvers = hitValue - shield;
+            shield -= hitValue;
+            levens -= hitValueLeftOvers;
+          }
+          else
+          shield -= hitValue;
+        }
+
       hitValue = 0;
 
       gamemngr.shakeAmount = 15;
