@@ -109,9 +109,7 @@ class Login {
     if (gamemngr.login) {
       if (key == '\n') {
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-        println("name: " + ascore.name);
         User.idCheck();
-        println("ID: " + User.currentUser);
         //Friends.totalFriends();
         //Friends.totalPlayers();
         // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
