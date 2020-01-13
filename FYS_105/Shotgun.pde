@@ -84,7 +84,6 @@ class Shotgun extends GameObject {
         pushStyle();
         image(shotg_right, objPosX, objPosY);
         shotg_right.resize(50, 45);
-
         popStyle();
         //handgunRight.resize(35, 16);
       } else if (myPlayer.lookingLeft) {
