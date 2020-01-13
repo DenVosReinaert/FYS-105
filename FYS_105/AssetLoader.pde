@@ -86,7 +86,7 @@ void LoadAssets()
 
 
   // Guns
-  
+
   // Shotgun final upgrade!
   shotg_up = loadImage("/data/sprites/Guns/Shotgun_Automatic_Top.png");
   shotg_down = loadImage("/data/sprites/Guns/Shotgun_Automatic_Bottom.png");
