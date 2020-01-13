@@ -92,7 +92,6 @@ class Shotgun extends GameObject {
         pushStyle();
         shotg_up.resize(25, 60);
         image(shotg_up, objPosX, objPosY);
-
         popStyle();
         //handgunUp.resize(8, 35);
 
@@ -116,7 +115,6 @@ class Shotgun extends GameObject {
         pushStyle();
         shotg_right.resize(50, 45);
         image(shotg_right, objPosX, objPosY);
-
         popStyle();
         //handgunRight.resize(35, 16);
 
