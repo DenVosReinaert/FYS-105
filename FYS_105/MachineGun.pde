@@ -55,14 +55,14 @@ class MachineGun extends GameObject {
       myPlayer.muzzlePointX = objPosX;
       myPlayer.muzzlePointY = objPosY + 8;
 
-      UI.maxM1 = 300;
-      
+      UI.capacityM1 = 300;
+
       break;
     case 2:
-      UI.maxM1 = 600;
+      UI.capacityM1 = 600;
       break;
     case 3:
-      UI.maxM1 = 900;
+      UI.capacityM1 = 900;
       break;
     }
     if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
