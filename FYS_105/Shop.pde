@@ -52,12 +52,13 @@ class Shop {
       if (endPosX - cartPosX>=0) 
       {
 
-        println(dist(cartPosX, cartPosY, endPosX, endPosY));
         cartPosX+=3;
         if (gamemngr.trackNumber == 4) 
         {
           shopcartSansGarfield.draw(cartPosX - cartW, cartPosY - cartH);
           shopcartSansGarfield.update();
+
+
 
           garfieldSans.setGain(50);
           garfieldSans.play();
@@ -78,6 +79,9 @@ class Shop {
         if (gamemngr.trackNumber == 4) {
           shopcartSansGarfieldStationary.update();
           shopcartSansGarfieldStationary.draw(cartPosX - cartW, cartPosY - cartH);
+
+          if (!shopItemsHaveSpawned)
+            SpawnItems();
         } else
         {
 
@@ -108,9 +112,9 @@ class Shop {
 
   void SpawnItems() {
 
-    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 2 ))));
-    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 2))));
-    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(0, 2))));
+    GameObjectRef.Add(new Item(item1Pos.x, item1Pos.y, round(random(0, 7))));
+    GameObjectRef.Add(new Item(item2Pos.x, item2Pos.y, round(random(0, 7))));
+    GameObjectRef.Add(new Item(item3Pos.x, item3Pos.y, round(random(8, 13))));
     shopItemsHaveSpawned = true;
   }
 }

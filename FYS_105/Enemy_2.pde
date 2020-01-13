@@ -108,7 +108,7 @@ class Speedster extends GameObject {
         //shield will go down with 1 if you have shield
         if (UI.shield >= 1) {
           UI.hitValueShield = 1;
-        }          
+        } 
         //levens will go down with 1
         else if (UI.levens > 0 && UI.shield <= 0) {
           UI.hitValue = 1;
@@ -128,7 +128,6 @@ class Speedster extends GameObject {
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
-          println("combo increase!");
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {

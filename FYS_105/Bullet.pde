@@ -74,7 +74,6 @@ class Bullet extends GameObject {
     {
       Remove(this);
       ascore.ComboReset();
-      println("combo reset!");
     }
   }
 

@@ -3,7 +3,7 @@ import processing.video.*;
 
 
 
-Movie video;
+Movie tutorial;
 Minim minim;
 
 
@@ -21,9 +21,16 @@ PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsB
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
 
+//Achievements
+PImage[] chievePlate = new PImage[7];
+
 // Guns 
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
+PImage LMG1_down, LMG1_up, LMG1_left, LMG1_right, LMG2_down, LMG2_up, LMG2_right, LMG2_left, rayGun_up, rayGun_down, rayGun_left, rayGun_right, rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right, treeGun_up, treeGun_down, treeGun_left, treeGun_right; 
+
+// Shop
+PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
 
 
 // Effects
@@ -45,14 +52,17 @@ SpriteSheet garfieldS;
 // Garfield Sans version
 SpriteSheet garfieldSansS;
 
-void movieEvent(Movie vid) {
-  vid.read();
-}
-
-
 
 void LoadAssets()
 {
+
+  // Shop
+  arLoad = loadImage("/data/sprites/Shop/ShopMGLoad1.png");
+  arLoad2 = loadImage("/data/sprites/Shop/ShopMGLoad2.png");
+  arFullLoad = loadImage("/data/sprites/Shop/ShopMGFullLoad.png");
+  shotg_load = loadImage("/data/sprites/Shop/ShotgunShellLoad1.png");
+  shotg_load2 = loadImage("/data/sprites/Shop/ShotgunShellLoad2.png");
+  shotg_fullLoad = loadImage("/data/sprites/Shop/ShotgunShellFullLoad.png");
 
   // UI
   healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
@@ -67,7 +77,43 @@ void LoadAssets()
 
   pokemonMDB = loadImage("/data/sprites/PMDB.png");
 
+  //Achievements
+  for (int i = 1; i < chievePlate.length; i++)
+  {
+    chievePlate[i] = loadImage("/data/sprites/Achievement" + i + ".png");
+  }
+
+
   // Guns
+
+  // LMG first Upgrade!
+  LMG1_up = loadImage("/data/sprites/Guns/LMG1_up.png");
+  LMG1_down = loadImage("/data/sprites/Guns/LMG1_down.png");
+  LMG1_left = loadImage("/data/sprites/Guns/LMG1_left.png");
+  LMG1_right = loadImage("/data/sprites/Guns/LMG1_right.png");
+
+  // LMG second Upgrade!
+  LMG2_up = loadImage("/data/sprites/Guns/LMG2_up.png");
+  LMG2_down = loadImage("/data/sprites/Guns/LMG2_down.png");
+  LMG2_left = loadImage("/data/sprites/Guns/LMG2_left.png");
+  LMG2_right = loadImage("/data/sprites/Guns/LMG2_right.png");
+
+  // Pistol second upgrade!
+  rayGun_up = loadImage("/data/sprites/Guns/Handgun_Raygun_Top.png");
+  rayGun_down = loadImage("/data/sprites/Guns/Handgun_Raygun_Bottom.png");
+  rayGun_left = loadImage("/data/sprites/Guns/Handgun_Raygun_Left.png");
+  rayGun_right = loadImage("/data/sprites/Guns/Handgun_Raygun_Right.png");
+  // Pink version of second pistol upgrade!
+  rayGunP_up = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Top.png");
+  rayGunP_down = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Bottom.png");
+  rayGunP_left = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Left.png");
+  rayGunP_right = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Right.png");
+  // Final pistol upgrade!
+  treeGun_up = loadImage("/data/sprites/Guns/Handgun_Tree_Top.png");
+  treeGun_down = loadImage("/data/sprites/Guns/Handgun_Tree_Down.png");
+  treeGun_left = loadImage("/data/sprites/Guns/Handgun_Tree_Left.png");
+  treeGun_right = loadImage("/data/sprites/Guns/Handgun_Tree_Right.png");
+
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
   doubleBd = loadImage("/data/sprites/DoubleBarrel_Down.png");
   doubleBl = loadImage("/data/sprites/DoubleBarrel_Left.png");
@@ -93,8 +139,6 @@ void LoadAssets()
   pumpD = loadImage("/data/sprites/Shotgun_Pump_Down.png");
   pumpL = loadImage("/data/sprites/Shotgun_Pump_Left.png");
   pumpR = loadImage("/data/sprites/Shotgun_Pump_Right.png");
-
-
 
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");

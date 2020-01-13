@@ -3,6 +3,7 @@ class Game_Manager {
   boolean dead;
   boolean statspage;
   boolean creditspage;
+  boolean tutorialVideo;
   boolean home;
   boolean hscore;
   boolean shake;
@@ -12,6 +13,7 @@ class Game_Manager {
   boolean inputBlockedUI;
   boolean inputtingCode;
 
+  String codeRESET = "oooooooooo";
   String codeDoom = "ssssss";
   String codeUndertale = "sswd";
   String codeStreetFighter = "ssddl";
@@ -38,26 +40,30 @@ class Game_Manager {
 
     badgePosX = width/2 + 375;
     badgePosY = height/5 + 30;
-
   }
 
   void draw() {
+
+
 
     if (statspage) {
       home = false;
       stats.draw();
       stats.keyReleased();
+      chieves.draw();
     }
     if (creditspage) {
       home = false;
       credits.draw();
       credits.keyReleased();
+      chieves.draw();
     }
 
     if (login) {
 
       game = false;
       Login.draw();
+      spawn.wave = 1;
       loginMusic.setGain(0);
       if (!loginMusic.isPlaying()) 
       {
@@ -65,10 +71,12 @@ class Game_Manager {
         loginMusic.rewind();
       }
       image(pokemonMDB, badgePosX, badgePosY);
+      chieves.draw();
     }
     if (home) {
-      //println("CURRENT USER ID " + User.currentUser);
+
       UI.draw();
+      loginMusic.rewind();
       loginMusic.pause();
       death.rewind();
       death.pause();
@@ -79,6 +87,8 @@ class Game_Manager {
         homeSnd.play();
         homeSnd.rewind();
       }
+
+      chieves.draw();
     }
     if (hscore) {
       if (hscoreA == 0) {
@@ -92,14 +102,14 @@ class Game_Manager {
 
       switch(trackNumber) {
       case 1:
-        gameMusic.setGain(0);
+        gameMusic.setGain(-10);
         if (!gameMusic.isPlaying()) {
           gameMusic.play();
           gameMusic.rewind();
         }
         break;
       case 2:
-        contraJungleTheme.setGain(100);
+        contraJungleTheme.setGain(0);
         if (!contraJungleTheme.isPlaying())
         {
           contraJungleTheme.play();
@@ -107,7 +117,7 @@ class Game_Manager {
         }
         break;
       case 3:
-        guilesTheme.setGain(100);
+        guilesTheme.setGain(0);
         if (!guilesTheme.isPlaying())
         {
           guilesTheme.play();
@@ -172,6 +182,8 @@ class Game_Manager {
       game = false;
       gameover.draw();
     }
+
+    chieves.draw();
   }
 
   void screenShake() {
@@ -180,6 +192,18 @@ class Game_Manager {
   }
 
   void keyPressed() {
+
+    // Stats for devs (Show us information)
+    if (key == 'p') 
+    {
+      println("ID: " + User.currentUser);
+      println("Player: " + ascore.name);
+      println("Levens: " + UI.levens + " Shield: " + UI.shield);
+      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + "Total Enemy Count: " + spawn.totalEnemyCount);
+      println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
+    }
+
+
 
     if (login) {
       Login.keyPressed();
@@ -217,6 +241,11 @@ class Game_Manager {
       case 'd':
         if (inputtingCode)
           code += key;
+        break;
+
+      case 'o':
+        if (inputtingCode)
+          code +=key;
         break;
       }
 
@@ -258,6 +287,15 @@ class Game_Manager {
       case RETURN:
         if (inputtingCode)
         {
+          if (code.equals(codeRESET))
+          {
+            //RESET Achievements
+            if (msql.connect())
+            {
+              msql.query("DELETE FROM User_has_Achievements");
+            }
+          }
+
           if (code.equals(codeKonami))
           {
             chieves.UnlockAchievement(3);
@@ -329,6 +367,15 @@ class Game_Manager {
       case ENTER:
         if (inputtingCode)
         {
+          if (code.equals(codeRESET))
+          {
+            //RESET Achievements
+            if (msql.connect())
+            {
+              msql.query("DELETE FROM User_has_Achievements");
+            }
+          }
+
           if (code.equals(codeKonami))
           {
             chieves.UnlockAchievement(3);
@@ -409,7 +456,7 @@ class Game_Manager {
         home = true;
       }
     }
-    println(code);
+
     if (home)
     {
       if (code.length() > konamiCodeLength - 1)

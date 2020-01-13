@@ -17,6 +17,7 @@ boolean game, works;
 
 LevelManager lvlMngr;
 
+friends Friends;
 Credits credits;
 stats stats;
 Login Login;
@@ -33,13 +34,15 @@ Player myPlayer;
 //Gun myGun;
 Spawner spawn;
 GameObject GameObjectRef;
-Achievements chieves;
+AchievementManager chieves;
 User User;
 Powerups powerUps;
 
 
 void setup()
 {
+  // tutorial video
+  //tutorial = new Movie(this, "tutorial.mov");
   //For background tiles
   //X: -10
   //Y: -90
@@ -50,6 +53,7 @@ void setup()
 
   LoadAssets();
   stats = new stats();
+  Friends = new friends();
   User = new User();
   Login = new Login();
   myPlayer = new Player();
@@ -66,7 +70,7 @@ void setup()
   msql = new MySQL( this, dbHost + ":" + dbPort, dbName, dbUser, dbPass );
   gameover = new GameOver();
   GameObjectRef = new GameObject();
-  chieves = new Achievements();
+  chieves = new AchievementManager();
   lvlMngr.setup();
 }
 
@@ -98,12 +102,6 @@ void draw()
 
 
 void keyPressed() {
-  // To check if you can die..
-  if (key == 'p') 
-  {
-    UI.spelerhit();
-  }
-
   if (keyCode >= KEY_LIMIT) return;
   keysPressed[keyCode] = true;
   gamemngr.keyPressed();

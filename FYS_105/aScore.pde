@@ -32,26 +32,26 @@ class aScore {
 
 
   void saveScore() {
-    println("Levens" + UI.levens);
+    //println("Levens" + UI.levens);
     if (msql.connect() && UI.levens <= 0) {
       msql.query( "SELECT idScores, valueScores FROM Scores WHERE idScores = '%s' AND nameScores = '%s'", User.currentUser, ascore.name ); // Grab the score from the player
       while ( msql.next() ) {
         oScore = msql.getString("valueScores"); // temporary score (score belonging to player)
-        println("Select Score: " + oScore);
+        //println("Select Score: " + oScore);
       }
-      println("ID: " + User.currentUser);
+      //println("ID: " + User.currentUser);
       if (oScore == null && User.currentUser != 0) { // if score doesn't exist make one
         msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", User.currentUser, ascore.name, score );
-        println("INSERT!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
+        //println("INSERT!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
       }
       if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
         msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s' AND nameScores = '%s'", score, User.currentUser, ascore.name ); // Update score
-        println("UPDATE!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
+        //println("UPDATE!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     } else {
-      println("Old Score: " + oScore);
-      println("New Score: " + score);
+      //println("Old Score: " + oScore);
+      //println("New Score: " + score);
     }
   }
 
@@ -63,21 +63,21 @@ class aScore {
     //takes the random pick and plays the corresponding sound
     switch(randomSoundTrack) {
     case 0:
-      bruh.setGain(20);
+      bruh.setGain(30);
       bruh.play();
       bruh.rewind();
       missing1.pause();
       missing2.pause();
       break;
     case 1:
-      missing1.setGain(40);
+      missing1.setGain(60);
       missing1.play();
       missing1.rewind();
       missing2.pause();
       bruh.pause();
       break;
     case 2:
-      missing2.setGain(40);
+      missing2.setGain(60);
       missing2.play();
       missing2.rewind();
       missing1.pause();

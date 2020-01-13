@@ -60,9 +60,6 @@ class Powerups extends GameObject {
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
         UI.levens ++;
-        uhoh.setGain(30);
-        uhoh.play();
-        uhoh.rewind();
         Remove(this);
       }
       break;

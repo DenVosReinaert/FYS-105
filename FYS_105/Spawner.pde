@@ -1,11 +1,11 @@
 //Ruben de Jager
 class Spawner extends GameObject {
 
-  Timer spawnSpdTimer = new Timer(3);
-  Timer spawnGrntTimer = new Timer(4);
-  Timer spawnBrtTimer = new Timer(5);
-  Timer spawnHvyTimer = new Timer(7);
-  Timer spawnBssTimer = new Timer(10);
+  Timer spawnSpdTimer = new Timer(6);
+  Timer spawnGrntTimer = new Timer(7);
+  Timer spawnBrtTimer = new Timer(8);
+  Timer spawnHvyTimer = new Timer(10);
+  Timer spawnBssTimer = new Timer(20);
 
   Timer waveTextTimer = new Timer(6);
 
@@ -50,6 +50,9 @@ class Spawner extends GameObject {
 
   void draw() {
 
+    //println(spawnSpdFinished, spawnGrntFinished, spawnBrtFinished, spawnHvyFinished, spawnBssFinished);
+    //println(waveFinished);
+
     if (totalEnemyCount < 0)
       totalEnemyCount = 0;
 
@@ -73,7 +76,6 @@ class Spawner extends GameObject {
 
       if (waveFinished)     //When the wave is finished and there are no gameObjects on the screen, show the arrows, and if the round number is even show the shop
       {
-        println("The Wave is Finished!");
         lvlMngr.apActive = true;
 
         if (wave % 2 == 0)
@@ -114,7 +116,10 @@ class Spawner extends GameObject {
     countSpd = round(random(wave, wave + 3));
     countGrnt = round(random(wave, wave + 2));
     countHvy = round(random(wave, wave + 1));
-    countBss = round(wave / 5);
+    if (wave %5 == 0)
+    {
+      countBss = round(wave / 5);
+    } else spawnBssFinished = true;
 
     totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
 

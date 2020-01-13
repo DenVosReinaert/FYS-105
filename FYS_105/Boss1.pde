@@ -83,7 +83,7 @@ class Boss1 extends GameObject {
 
     if (Dead())
     {
-      //spawn.currentEnemyCount--;
+      spawn.totalEnemyCount--;
       Remove(this);
     }
 
@@ -117,6 +117,7 @@ class Boss1 extends GameObject {
         //levens will go down with 3 because you have no shield
         else if (UI.levens > 0 && UI.shield <=0) {
           UI.hitValue = 3;
+
         }
         hp = 0;
         UI.spelerhit();
@@ -132,7 +133,6 @@ class Boss1 extends GameObject {
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
-          println("combo increase!");
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {

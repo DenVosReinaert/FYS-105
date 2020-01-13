@@ -55,12 +55,10 @@ class LevelManager
 
   void draw()
   {
-    println(spawn.totalEnemyCount);
 
     if (lvlNum < 1)
       lvlNum = 1;
 
-    //println(lvlNum);
 
     switch(lvlNum) {
     case 1:
