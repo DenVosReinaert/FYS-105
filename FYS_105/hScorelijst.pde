@@ -32,6 +32,8 @@ class hScorelijst {
 
   void draw() {
     if (gamemngr.hscore) {
+      death.pause();
+      death.rewind();
       scrBgr.resize(width, height);
       image(scrBgr, 0, 0);
       pushStyle();
