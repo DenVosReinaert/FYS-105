@@ -486,39 +486,53 @@ class Item extends GameObject {
     switch(vlCanBuy)
     {
     case 1:
-      buying1.setGain(100);
-      buying1.play();
-      buying1.rewind();
+      if (!buying2.isPlaying() || !buying3.isPlaying() || !buying4.isPlaying() || !buying5.isPlaying() || !buying6.isPlaying() || !buying7.isPlaying() ) {
+        buying1.setGain(100);
+        buying1.play();
+        buying1.rewind();
+      }
       break;
     case 2:
-      buying2.setGain(100);
-      buying2.play();
-      buying2.rewind();
+      if (!buying1.isPlaying() || !buying3.isPlaying() || !buying4.isPlaying() || !buying5.isPlaying() || !buying6.isPlaying() || !buying7.isPlaying() ) {
+        buying2.setGain(100);
+        buying2.play();
+        buying2.rewind();
+      }
       break;
     case 3:
-      buying3.setGain(100);
-      buying3.play();
-      buying3.rewind();
+      if (!buying2.isPlaying() || !buying1.isPlaying() || !buying4.isPlaying() || !buying5.isPlaying() || !buying6.isPlaying() || !buying7.isPlaying() ) {
+        buying3.setGain(100);
+        buying3.play();
+        buying3.rewind();
+      }
       break;
     case 4:
-      buying4.setGain(100);
-      buying4.play();
-      buying4.rewind();
+      if (!buying2.isPlaying() || !buying3.isPlaying() || !buying1.isPlaying() || !buying5.isPlaying() || !buying6.isPlaying() || !buying7.isPlaying() ) {
+        buying4.setGain(100);
+        buying4.play();
+        buying4.rewind();
+      }
       break;
     case 5:
-      buying5.setGain(100);
-      buying5.play();
-      buying5.rewind();
+      if (!buying2.isPlaying() || !buying3.isPlaying() || !buying4.isPlaying() || !buying1.isPlaying() || !buying6.isPlaying() || !buying7.isPlaying() ) {
+        buying5.setGain(100);
+        buying5.play();
+        buying5.rewind();
+      }
       break;
     case 6:
-      buying6.setGain(100);
-      buying6.play();
-      buying6.rewind();
+      if (!buying2.isPlaying() || !buying3.isPlaying() || !buying4.isPlaying() || !buying5.isPlaying() || !buying1.isPlaying() || !buying7.isPlaying() ) {
+        buying6.setGain(100);
+        buying6.play();
+        buying6.rewind();
+      }
       break;
     case 7:
-      buying7.setGain(100);
-      buying7.play();
-      buying7.rewind();
+      if (!buying2.isPlaying() || !buying3.isPlaying() || !buying4.isPlaying() || !buying5.isPlaying() || !buying6.isPlaying() || !buying1.isPlaying() ) {
+        buying7.setGain(100);
+        buying7.play();
+        buying7.rewind();
+      }
       break;
     }
 
