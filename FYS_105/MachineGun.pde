@@ -10,7 +10,7 @@ class MachineGun extends GameObject {
   MachineGun() 
   {
     knockback = 15;
-    upgradeLevel = 1;
+    upgradeLevel = 2;
   }
 
   void holdingGun() {
@@ -40,8 +40,60 @@ class MachineGun extends GameObject {
       }
       break;
     case 2:
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        image(LMG1_up, objPosX, objPosY);
+        LMG1_up.resize(16, 70);
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2;
+        pushStyle();
+        image(LMG1_down, objPosX, objPosY);
+        LMG1_down.resize(16, 70);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX;
+        objPosY = myPlayer.objPosY + 20;
+        pushStyle();
+        image(LMG1_right, objPosX, objPosY);
+        LMG1_right.resize(70, 16);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - 40;
+        objPosY = myPlayer.objPosY + 20;
+        pushStyle();
+        image(LMG1_left, objPosX, objPosY);
+        LMG1_left.resize(70, 16);
+        popStyle();
+      }
       break;
     case 3:
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2 - 10;
+        image(LMG2_up, objPosX, objPosY);
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        image(LMG2_down, objPosX, objPosY);
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX;
+        objPosY = myPlayer.objPosY + 10;
+        image(LMG2_right, objPosX, objPosY);
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - 30;
+        objPosY = myPlayer.objPosY + 10;
+        image(LMG2_left, objPosX, objPosY);
+      }
       break;
     }
   }
