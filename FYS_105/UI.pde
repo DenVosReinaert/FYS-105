@@ -17,16 +17,16 @@ class UI {
   int hitValueLeftOvers;
 
   // ammo machinegun
-  int ammoM1; // Original 5
-  int magM1; // Original 30
-  int maxM1; // Original 300
+  int ammoM1 = 5; // Original 5
+  int magM1 = 30; // Original 30
+  int maxM1 = 300; // Original 300
   int capacityM1; //Max capacity
-  int clipM1; // Original 6
+  int clipM1 = 6; // Original 6
   int reloadM1 = 240;
 
   // ammo shotgun
-  int ammoS1; // Origineel 5
-  int maxS1; // Origineel 20
+  int ammoS1 = 5; // Origineel 5
+  int maxS1 = 20; // Origineel 20
   int capacityS1; //Max capacity
   int reloadS1 = 240;
 
