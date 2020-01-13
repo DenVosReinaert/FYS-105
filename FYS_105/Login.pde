@@ -110,8 +110,8 @@ class Login {
         println("name: " + ascore.name);
         User.idCheck();
         println("ID: " + User.currentUser);
-        Friends.totalFriends();
-        Friends.totalPlayers();
+        //Friends.totalFriends();
+        //Friends.totalPlayers();
         // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
