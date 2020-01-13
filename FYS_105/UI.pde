@@ -17,15 +17,15 @@ class UI {
   int hitValueLeftOvers;
 
   // ammo machinegun
-  int ammoM1 = 5;
-  int magM1 = 30;
-  int maxM1 = 300;
-  int clipM1 = 6;
+  int ammoM1; // Original 5
+  int magM1; // Original 30
+  int maxM1; // Original 300
+  int clipM1; // Original 6
   int reloadM1 = 240;
 
   // ammo shotgun
-  int ammoS1 = 5;
-  int maxS1 = 20;
+  int ammoS1; // Origineel 5
+  int maxS1; // Origineel 20
   int reloadS1 = 240;
 
   // Ammo Pistol
@@ -97,237 +97,239 @@ class UI {
       if (UI.levens >= 5) {
         UI.levens = 5;
       }
-    }
-
-    if (!ableToBeHit && hitStun.TimerDone())
-    {
-      ableToBeHit = true;
-    }
 
 
-    // Pistol ammo cooldown
-    if (myPlayer.currentGun == myPlayer.pistoll) {
-      if (ammoP == 0) {
-        reloadP--;
-        if (reloadP <= 0) {
-          ammoP = 5;
-          reloadP = 120;
+      if (!ableToBeHit && hitStun.TimerDone())
+      {
+        ableToBeHit = true;
+      }
+
+
+      // Pistol ammo cooldown
+      if (myPlayer.currentGun == myPlayer.pistoll) {
+        if (ammoP == 0) {
+          reloadP--;
+          if (reloadP <= 0) {
+            ammoP = 5;
+            reloadP = 120;
+          }
         }
       }
-    }
-    // Pistol ammo (draw the five yellow lines left top)
-    if (ammoP > 0 && myPlayer.currentGun == myPlayer.pistoll) {
-      image(bullet, ammoX, ammoY);
-      if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
-        image(bullet, ammoX + ammoXs, ammoY);
-        if (ammoP > 2 && myPlayer.currentGun == myPlayer.pistoll) {
-          image(bullet, ammoX + (ammoXs * 2), ammoY);
+      // Pistol ammo (draw the five yellow lines left top)
+      if (ammoP > 0 && myPlayer.currentGun == myPlayer.pistoll) {
+        image(bullet, ammoX, ammoY);
+        if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
+          image(bullet, ammoX + ammoXs, ammoY);
+          if (ammoP > 2 && myPlayer.currentGun == myPlayer.pistoll) {
+            image(bullet, ammoX + (ammoXs * 2), ammoY);
+          }
+          if (ammoP > 3 && myPlayer.currentGun == myPlayer.pistoll) {
+            image(bullet, ammoX + (ammoXs * 3), ammoY);
+          }
+          if (ammoP > 4 && myPlayer.currentGun == myPlayer.pistoll) {
+            image(bullet, ammoX + (ammoXs * 4), ammoY);
+          }
         }
-        if (ammoP > 3 && myPlayer.currentGun == myPlayer.pistoll) {
-          image(bullet, ammoX + (ammoXs * 3), ammoY);
+      }
+
+      // MachineGun Reload ammo
+      if (maxM1 == -30) {
+        maxM1 = 0;
+      }
+      if (ammoM1 <= 0 && magM1 > 0) {
+        magM1 -= 5;
+        ammoM1 = 5;
+        clipM1--;
+      }
+      if (myPlayer.currentGun == myPlayer.machinegun) {
+        if (magM1 == 0 && maxM1 > 0) {
+          reloadM1--;
+          if (reloadM1 <= 0) {
+            magM1 = 30;
+            maxM1 -= 30;
+            clipM1 = 6;
+            AR1Reload.rewind();
+            reloadM1 = 240;
+          }
         }
-        if (ammoP > 4 && myPlayer.currentGun == myPlayer.pistoll) {
-          image(bullet, ammoX + (ammoXs * 4), ammoY);
+      }
+
+      if (myPlayer.currentGun == myPlayer.machinegun) {
+        textSize(20);
+        text(""+ maxM1, ammoX, ammoY *2.2);
+      }
+      // MachineGun ammo (draw the six yellow lines left top)
+      if (clipM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
+        image(bullet, ammoX, ammoY + (ammoY /2));
+        if (clipM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {
+          image(bullet, ammoX + ammoXs, ammoY + (ammoY /2));
+          if (clipM1 > 2 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 2), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 3 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 3), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 4 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 4), ammoY + (ammoY /2));
+          }
+          if (clipM1 > 5 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 5), ammoY + (ammoY /2));
+          }
         }
+      }
+
+      // MachineGun ammo (draw the five yellow lines under the other ones)
+      if (ammoM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
+        image(bullet, ammoX, ammoY);
+        if (ammoM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {
+          image(bullet, ammoX + ammoXs, ammoY);
+          if (ammoM1 > 2 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 2), ammoY);
+          }
+          if (ammoM1 > 3 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 3), ammoY);
+          }
+          if (ammoM1 > 4 && myPlayer.currentGun == myPlayer.machinegun) {
+            image(bullet, ammoX + (ammoXs * 4), ammoY);
+          }
+        }
+      }
+
+      // Shotgun ammo cooldown
+      if (myPlayer.currentGun == myPlayer.shotgun) {
+        if (ammoS1 == 0 && maxS1 > 0) {
+          reloadS1--;
+          if (reloadS1 <= 0) {
+            ammoS1 = 5;
+            maxS1 -= 5;
+            reloadS1 = 240;
+          }
+        }
+      }
+      if (myPlayer.currentGun == myPlayer.shotgun) {
+        textSize(20);
+        text(""+ maxS1, ammoX, ammoY+40);
+      }
+      // Shotgun ammo (draw the five yellow lines left top)
+      if (ammoS1 > 0 && myPlayer.currentGun == myPlayer.shotgun) {
+        image(shotgunS, ammoX, ammoY);
+        if (ammoS1 > 1 && myPlayer.currentGun == myPlayer.shotgun) {
+          image(shotgunS, ammoX + ammoXs, ammoY);
+          if (ammoS1 > 2 && myPlayer.currentGun == myPlayer.shotgun) {
+            image(shotgunS, ammoX + (ammoXs * 2), ammoY);
+          }
+          if (ammoS1 > 3 && myPlayer.currentGun == myPlayer.shotgun) {
+            image(shotgunS, ammoX + (ammoXs * 3), ammoY);
+          }
+          if (ammoS1 > 4 && myPlayer.currentGun == myPlayer.shotgun) {
+            image(shotgunS, ammoX + (ammoXs * 4), ammoY);
+          }
+        }
+      }
+
+      // Health
+      image(healthbarSb, lX1, lY1);
+      image(shieldbarSb, lX1+ (57 * 5), lY1);
+
+      if (levens == 1 && shield == 0) {
+        image(healthP, lX2, lY2);
+      }
+      if (levens == 1 && shield == 1 ) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }  
+      if (levens == 1 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+      if (levens == 2 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+      }
+      if (levens == 2 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 2 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 3 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+      }
+      if (levens == 3 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 3 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 4 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+      }
+      if (levens == 4 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 4 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }  
+      if (levens >= 5 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);
+      }
+      if (levens >= 5 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens >= 5 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+
+      image(healthbarS, lX1, lY1);
+      image(shieldbarS, lX1 + (57 * 5), lY1);
+
+      if (levens == 0) { // if lives == 0
+        gamemngr.dead = true; // set player to dead
       }
     }
 
-    // MachineGun Reload ammo
-    if (maxM1 == -30) {
-      maxM1 = 0;
-    }
-    if (ammoM1 <= 0 && magM1 > 0) {
-      magM1 -= 5;
-      ammoM1 = 5;
-      clipM1--;
-    }
-    if (myPlayer.currentGun == myPlayer.machinegun) {
-      if (magM1 == 0 && maxM1 > 0) {
-        reloadM1--;
-        if (reloadM1 <= 0) {
-          magM1 = 30;
-          maxM1 -= 30;
-          clipM1 = 6;
-          AR1Reload.rewind();
-          reloadM1 = 240;
-        }
-      }
-    }
-
-    if (myPlayer.currentGun == myPlayer.machinegun) {
-      textSize(20);
-      text(""+ maxM1, ammoX, ammoY *2.2);
-    }
-    // MachineGun ammo (draw the six yellow lines left top)
-    if (clipM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
-      image(bullet, ammoX, ammoY + (ammoY /2));
-      if (clipM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {
-        image(bullet, ammoX + ammoXs, ammoY + (ammoY /2));
-        if (clipM1 > 2 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 2), ammoY + (ammoY /2));
-        }
-        if (clipM1 > 3 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 3), ammoY + (ammoY /2));
-        }
-        if (clipM1 > 4 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 4), ammoY + (ammoY /2));
-        }
-        if (clipM1 > 5 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 5), ammoY + (ammoY /2));
-        }
-      }
-    }
-
-    // MachineGun ammo (draw the five yellow lines under the other ones)
-    if (ammoM1 > 0 && myPlayer.currentGun == myPlayer.machinegun) { 
-      image(bullet, ammoX, ammoY);
-      if (ammoM1 > 1 && myPlayer.currentGun == myPlayer.machinegun) {
-        image(bullet, ammoX + ammoXs, ammoY);
-        if (ammoM1 > 2 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 2), ammoY);
-        }
-        if (ammoM1 > 3 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 3), ammoY);
-        }
-        if (ammoM1 > 4 && myPlayer.currentGun == myPlayer.machinegun) {
-          image(bullet, ammoX + (ammoXs * 4), ammoY);
-        }
-      }
-    }
-
-    // Shotgun ammo cooldown
-    if (myPlayer.currentGun == myPlayer.shotgun) {
-      if (ammoS1 == 0 && maxS1 > 0) {
-        reloadS1--;
-        if (reloadS1 <= 0) {
-          ammoS1 = 5;
-          maxS1 -= 5;
-          reloadS1 = 240;
-        }
-      }
-    }
-    if (myPlayer.currentGun == myPlayer.shotgun) {
-      textSize(20);
-      text(""+ maxS1, ammoX, ammoY+40);
-    }
-    // Shotgun ammo (draw the five yellow lines left top)
-    if (ammoS1 > 0 && myPlayer.currentGun == myPlayer.shotgun) {
-      image(shotgunS, ammoX, ammoY);
-      if (ammoS1 > 1 && myPlayer.currentGun == myPlayer.shotgun) {
-        image(shotgunS, ammoX + ammoXs, ammoY);
-        if (ammoS1 > 2 && myPlayer.currentGun == myPlayer.shotgun) {
-          image(shotgunS, ammoX + (ammoXs * 2), ammoY);
-        }
-        if (ammoS1 > 3 && myPlayer.currentGun == myPlayer.shotgun) {
-          image(shotgunS, ammoX + (ammoXs * 3), ammoY);
-        }
-        if (ammoS1 > 4 && myPlayer.currentGun == myPlayer.shotgun) {
-          image(shotgunS, ammoX + (ammoXs * 4), ammoY);
-        }
-      }
-    }
-
-    // Health
-    image(healthbarSb, lX1, lY1);
-    image(shieldbarSb, lX1+ (57 * 5), lY1);
-
-    if (levens == 1 && shield == 0) {
-      image(healthP, lX2, lY2);
-    }
-    if (levens == 1 && shield == 1 ) {
-      image(healthP, lX2, lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-    }  
-    if (levens == 1 && shield >= 2) {
-      image(healthP, lX2, lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-      image(shieldP, lX2 + (57 * 6), lY2);
-    }
-    if (levens == 2 && shield == 0) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-    }
-    if (levens == 2 && shield == 1) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-    }
-    if (levens == 2 && shield >= 2) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-      image(shieldP, lX2 + (57 * 6), lY2);
-    }   
-    if (levens == 3 && shield == 0) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-    }
-    if (levens == 3 && shield == 1) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-    }
-    if (levens == 3 && shield >= 2) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);        
-      image(shieldP, lX2 + (57 * 5), lY2);
-      image(shieldP, lX2 + (57 * 6), lY2);
-    }   
-    if (levens == 4 && shield == 0) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-    }
-    if (levens == 4 && shield == 1) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-    }
-    if (levens == 4 && shield >= 2) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-      image(shieldP, lX2 + (57 * 5), lY2);
-      image(shieldP, lX2 + (57 * 6), lY2);
-    }  
-    if (levens >= 5 && shield == 0) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-      image(healthP, lX2 + (57*4), lY2);
-    }
-    if (levens >= 5 && shield == 1) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-      image(healthP, lX2 + (57*4), lY2);        
-      image(shieldP, lX2 + (57 * 5), lY2);
-    }
-    if (levens >= 5 && shield >= 2) {
-      image(healthP, lX2, lY2);
-      image(healthP, lX2 + 57, lY2);
-      image(healthP, lX2 + (57*2), lY2);
-      image(healthP, lX2 + (57*3), lY2);
-      image(healthP, lX2 + (57*4), lY2);        
-      image(shieldP, lX2 + (57 * 5), lY2);
-      image(shieldP, lX2 + (57 * 6), lY2);
-    }
-
-    image(healthbarS, lX1, lY1);
-    image(shieldbarS, lX1 + (57 * 5), lY1);
-
-    if (levens == 0) { // if lives == 0
-      gamemngr.dead = true; // set player to dead
-    }
 
     // Main menu
     // show depending on boolean
@@ -335,6 +337,7 @@ class UI {
       tutorial();
       pushStyle();
       main.resize(width, height);
+      seasonpass.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
       textSize(31);
@@ -363,8 +366,10 @@ class UI {
         rect(563, 150, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+      image(seasonpass, 0, 0);
       popStyle();
     }
+
 
     chieves.draw();
     if (gamemngr.controls) {
@@ -428,7 +433,9 @@ class UI {
 
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
-          gamemngr.statspage = true;
+          gamemngr.shake = true;
+          gamemngr.shakeAmount = 4;
+          //gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
           gamemngr.creditspage = true;

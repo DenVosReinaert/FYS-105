@@ -113,7 +113,7 @@ class Boss1 extends GameObject {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
           hpBarTotal -= hpBarTotal/hp;
-          hp--;
+          hp --;
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
@@ -131,7 +131,7 @@ class Boss1 extends GameObject {
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
-            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+            Add(new ParticleBoss(objPosX + objWidth/2, objPosY + objHeight/2));
           }//for
         }
       }

@@ -35,7 +35,7 @@ public class GameObject {
 
   float powerUpChance;
 
-  int shopItemNumber, itemPrice;
+  int shopItemNumber, itemPrice, upgradeLevel;
 
   float tileSize;
 

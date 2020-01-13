@@ -18,7 +18,7 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG, controlImg;
 
 // UI
-PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
+PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb, arrow, seasonpass;
 
 //Achievements
 PImage[] chievePlate = new PImage[7];
@@ -35,6 +35,9 @@ PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
 
 // Effects
 PImage bloodOrb;
+PImage bossBlood;
+PImage gruntBlood;
+PImage heavyBlood;
 
 SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 
@@ -65,6 +68,9 @@ void LoadAssets()
   shotg_fullLoad = loadImage("/data/sprites/Shop/ShotgunShellFullLoad.png");
 
   // UI
+
+  seasonpass = loadImage("/data/img/LastStand-SEASONPASS.png");
+  arrow = loadImage("/data/sprites/UI/Arrow.png");
   healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
   healthbarSb = loadImage("/data/sprites/UI/HealthBarSlots_Backdrop.png");
   healthP = loadImage("/data/sprites/UI/PieceOfHealth.png");
@@ -159,6 +165,9 @@ void LoadAssets()
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
+  bossBlood=loadImage("data/sprites/Boss blood sprite.png");
+  gruntBlood=loadImage("data/sprites/Grunt blood sprite.png");
+  heavyBlood=loadImage("data/sprites/Heavy blood sprite.png");
 
   // Maps
   levelTemplate = loadImage("/data/sprites/LevelTemplate.png");

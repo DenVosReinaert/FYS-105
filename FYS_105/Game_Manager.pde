@@ -47,10 +47,10 @@ class Game_Manager {
 
 
     if (statspage) {
-      home = false;
-      stats.draw();
-      stats.keyReleased();
-      chieves.draw();
+      //home = false;
+      //stats.draw();
+      //stats.keyReleased();
+      //chieves.draw();
     }
     if (creditspage) {
       home = false;
@@ -196,10 +196,9 @@ class Game_Manager {
     // Stats for devs (Show us information)
     if (key == 'p') 
     {
-      println("ID: " + User.currentUser);
-      println("Player: " + ascore.name);
+      println("PlayerName: " + ascore.name + " ID: " + User.currentUser);
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
-      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + "Total Enemy Count: " + spawn.totalEnemyCount);
+      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + " Total Enemy Count: " + spawn.totalEnemyCount);
       println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
     }
 
