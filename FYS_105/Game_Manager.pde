@@ -196,11 +196,12 @@ class Game_Manager {
     // Stats for devs (Show us information)
     if (key == 'p') 
     {
-      myPlayer.pistol.upgradeLevel = 3;
+      println("-------------------------------DEBUG-------------------------------");
       println("PlayerName: " + ascore.name + " ID: " + User.currentUser);
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
       println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + " Total Enemy Count: " + spawn.totalEnemyCount);
       println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
+      println("Shop: " + shop.shopA);
     }
 
 
