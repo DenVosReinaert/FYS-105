@@ -145,7 +145,7 @@ class Grunt extends GameObject {
             //popStyle();
           }
           for (int j=0; j < 20; j++) {
-            Add(new ParticleGrunt(objPosX + objWidth/2, objPosY + objHeight/2));
+            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
           }//for
         }
       }

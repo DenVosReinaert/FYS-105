@@ -36,9 +36,6 @@ PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
 
 // Effects
 PImage bloodOrb;
-PImage bossBlood;
-PImage gruntBlood;
-PImage heavyBlood;
 
 SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 
@@ -163,9 +160,6 @@ void LoadAssets()
 
   // Effects
   bloodOrb = loadImage("/data/sprites/BloodOrb.png");
-  bossBlood=loadImage("/data/sprites/Boss blood sprite.png");
-  gruntBlood=loadImage("/data/sprites/Grunt blood sprite.png");
-  heavyBlood=loadImage("/data/sprites/Heavy blood sprite.png");
 
   // Maps
   levelTemplate = loadImage("/data/sprites/LevelTemplate.png");

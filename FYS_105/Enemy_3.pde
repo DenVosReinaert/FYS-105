@@ -141,7 +141,7 @@ class Heavy extends GameObject {
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
-            Add(new ParticleHeavy(objPosX + objWidth/2, objPosY + objHeight/2));
+            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
           }//for
         }
       }
