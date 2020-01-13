@@ -17,15 +17,15 @@ class UI {
   int hitValueLeftOvers;
 
   // ammo machinegun
-  int ammoM1 = 5;
-  int magM1 = 30;
-  int maxM1 = 300;
-  int clipM1 = 6;
+  int ammoM1; // Original 5
+  int magM1; // Original 30
+  int maxM1; // Original 300
+  int clipM1; // Original 6
   int reloadM1 = 240;
 
   // ammo shotgun
-  int ammoS1 = 5;
-  int maxS1 = 20;
+  int ammoS1; // Origineel 5
+  int maxS1; // Origineel 20
   int reloadS1 = 240;
 
   // Ammo Pistol
@@ -333,6 +333,7 @@ class UI {
       //tutorial();
       pushStyle();
       main.resize(width, height);
+      seasonpass.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
       textSize(31);
@@ -361,6 +362,7 @@ class UI {
         rect(563, 150, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+      image(seasonpass, 0, 0);
       popStyle();
     }
 
@@ -423,7 +425,9 @@ class UI {
 
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
-          gamemngr.statspage = true;
+          gamemngr.shake = true;
+          gamemngr.shakeAmount = 4;
+          //gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
           gamemngr.creditspage = true;
