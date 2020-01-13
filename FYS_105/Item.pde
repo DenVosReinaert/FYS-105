@@ -458,7 +458,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
-          //myPlayer.pistol.upgradeLevel = 2;
+          myPlayer.pistol.upgradeLevel = 2;
 
           if (voicelineTimer.TimerDone())
           {
@@ -493,7 +493,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
-          //myPlayer.pistol.upgradeLevel = 3;
+          myPlayer.pistol.upgradeLevel = 3;
 
           if (voicelineTimer.TimerDone())
           {
