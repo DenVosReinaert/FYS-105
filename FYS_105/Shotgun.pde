@@ -18,6 +18,41 @@ class Shotgun extends GameObject {
       if (myPlayer.lookingUp) {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
         objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        image(doubleBu, objPosX, objPosY);
+        //handgunUp.resize(8, 35);
+
+        myPlayer.muzzlePointX = objPosX;
+        myPlayer.muzzlePointY = objPosY;
+      } else if (myPlayer.lookingDown) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+6;
+        image(doubleBd, objPosX, objPosY);
+        //handgunDown.resize(8, 35);
+
+        myPlayer.muzzlePointX = objPosX;
+        myPlayer.muzzlePointY = objPosY;
+      } else if (myPlayer.lookingRight) {
+        objPosX = myPlayer.objPosX - 7;
+        objPosY = myPlayer.objPosY + 15;
+        image(doubleBr, objPosX, objPosY);
+        //handgunRight.resize(35, 16);
+
+        myPlayer.muzzlePointX = objPosX;
+        myPlayer.muzzlePointY = objPosY;
+      } else if (myPlayer.lookingLeft) {
+        objPosX = myPlayer.objPosX - 30;
+        objPosY = myPlayer.objPosY + 15;
+        image(doubleBl, objPosX, objPosY);
+        //handgunLeft.resize(35, 16);
+
+        myPlayer.muzzlePointX = objPosX;
+        myPlayer.muzzlePointY = objPosY;
+      }
+      break;
+    case 2:
+      if (myPlayer.lookingUp) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
 
         image(pumpU, objPosX, objPosY);
         //handgunUp.resize(8, 35);
@@ -50,41 +85,7 @@ class Shotgun extends GameObject {
         myPlayer.muzzlePointY = objPosY;
       }
       break;
-    case 2:
-      if (myPlayer.lookingUp) {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
-        image(doubleBu, objPosX, objPosY);
-        //handgunUp.resize(8, 35);
 
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY;
-      } else if (myPlayer.lookingDown) {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+6;
-        image(doubleBd, objPosX, objPosY);
-        //handgunDown.resize(8, 35);
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY;
-      } else if (myPlayer.lookingRight) {
-        objPosX = myPlayer.objPosX - 7;
-        objPosY = myPlayer.objPosY + 15;
-        image(doubleBr, objPosX, objPosY);
-        //handgunRight.resize(35, 16);
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY;
-      } else if (myPlayer.lookingLeft) {
-        objPosX = myPlayer.objPosX - 30;
-        objPosY = myPlayer.objPosY + 15;
-        image(doubleBl, objPosX, objPosY);
-        //handgunLeft.resize(35, 16);
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY;
-      }
-      break;
     case 3:
       if (myPlayer.lookingUp) {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2-4;
