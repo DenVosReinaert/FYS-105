@@ -4,7 +4,7 @@ class Pistol extends GameObject {
 
   Pistol() {
     knockback = 5;
-    upgradeLevel = 2;
+    upgradeLevel = 1;
   }
 
   //rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right
