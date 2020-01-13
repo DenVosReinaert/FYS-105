@@ -83,7 +83,7 @@ class Boss1 extends GameObject {
 
     if (Dead())
     {
-      //spawn.currentEnemyCount--;
+      spawn.totalEnemyCount--;
       Remove(this);
     }
 

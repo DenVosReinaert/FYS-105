@@ -105,7 +105,6 @@ class Login {
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
         println("name: " + ascore.name);
         User.idCheck();
-        spawn.wave = 1;
         println("ID: " + User.currentUser);
         Friends.totalFriends();
         Friends.totalPlayers();

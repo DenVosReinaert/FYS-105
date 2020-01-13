@@ -63,6 +63,7 @@ class Game_Manager {
 
       game = false;
       Login.draw();
+      spawn.wave = 1;
       loginMusic.setGain(0);
       if (!loginMusic.isPlaying()) 
       {
@@ -198,7 +199,7 @@ class Game_Manager {
       println("ID: " + User.currentUser);
       println("Player: " + ascore.name);
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
-      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss);
+      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + "Total Enemy Count: " + spawn.totalEnemyCount);
       println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
     }
 

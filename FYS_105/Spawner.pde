@@ -2,15 +2,15 @@
 class Spawner extends GameObject {
 
   Timer spawnSpdTimer = new Timer(6);
-  Timer spawnGrntTimer = new Timer(8);
-  Timer spawnBrtTimer = new Timer(10);
-  Timer spawnHvyTimer = new Timer(14);
+  Timer spawnGrntTimer = new Timer(7);
+  Timer spawnBrtTimer = new Timer(8);
+  Timer spawnHvyTimer = new Timer(10);
   Timer spawnBssTimer = new Timer(20);
 
   Timer waveTextTimer = new Timer(6);
 
   //int timer = 0;
-  int wave = 4;
+  int wave = 1;
 
   int countBrt, countSpd, countGrnt, countHvy, countBss;
 
@@ -49,6 +49,9 @@ class Spawner extends GameObject {
 
 
   void draw() {
+
+    //println(spawnSpdFinished, spawnGrntFinished, spawnBrtFinished, spawnHvyFinished, spawnBssFinished);
+    //println(waveFinished);
 
     if (totalEnemyCount < 0)
       totalEnemyCount = 0;
