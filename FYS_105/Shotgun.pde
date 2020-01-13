@@ -5,8 +5,10 @@ class Shotgun extends GameObject {
 
   Shotgun() {
     knockback = 40;
-    upgradeLevel = 1;
+    upgradeLevel = 3;
   }
+
+  //shotg_up, shotg_right, shotg_left, shotg_down; 
 
   void holdingGun() {
 
@@ -37,8 +39,61 @@ class Shotgun extends GameObject {
       }
       break;
     case 2:
+      if (myPlayer.lookingUp) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        image(doubleBu, objPosX, objPosY);
+        //handgunUp.resize(8, 35);
+      } else if (myPlayer.lookingDown) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+6;
+        image(doubleBd, objPosX, objPosY);
+        //handgunDown.resize(8, 35);
+      } else if (myPlayer.lookingRight) {
+        objPosX = myPlayer.objPosX - 7;
+        objPosY = myPlayer.objPosY + 15;
+        image(doubleBr, objPosX, objPosY);
+        //handgunRight.resize(35, 16);
+      } else if (myPlayer.lookingLeft) {
+        objPosX = myPlayer.objPosX - 30;
+        objPosY = myPlayer.objPosY + 15;
+        image(doubleBl, objPosX, objPosY);
+        //handgunLeft.resize(35, 16);
+      }
       break;
     case 3:
+      if (myPlayer.lookingUp) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2-4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        pushStyle();
+        image(shotg_up, objPosX, objPosY);
+        shotg_up.resize(25, 60);
+        popStyle();
+        //handgunUp.resize(8, 35);
+      } else if (myPlayer.lookingDown) {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2-4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2;
+        pushStyle();
+        image(shotg_down, objPosX, objPosY);
+        shotg_down.resize(25, 60);
+        popStyle();
+        //handgunDown.resize(8, 35);
+      } else if (myPlayer.lookingRight) {
+        objPosX = myPlayer.objPosX + 7;
+        objPosY = myPlayer.objPosY;
+        pushStyle();
+        image(shotg_right, objPosX, objPosY);
+        shotg_right.resize(50, 45);
+        popStyle();
+        //handgunRight.resize(35, 16);
+      } else if (myPlayer.lookingLeft) {
+        objPosX = myPlayer.objPosX - 30;
+        objPosY = myPlayer.objPosY;
+        pushStyle();
+        image(shotg_left, objPosX, objPosY);
+        shotg_left.resize(50, 45);
+        popStyle();
+      }
       break;
     }
   }
