@@ -94,8 +94,9 @@ class GameOver {
 
     ascore.score = 0;
     spawn.wave = 1;
-    spawn.totalEnemyCount = 0;
     spawn.waveTextTimer.Reset();
+
+    lvlMngr.apActive = false;
 
     myPlayer.pistol.upgradeLevel = 1;
     myPlayer.machineGun.upgradeLevel = 1;
