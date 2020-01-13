@@ -3,7 +3,7 @@ class Item extends GameObject {
   Timer voicelineTimer = new Timer(0.5);
 
   int randomPowerUp;
-  int totalPowerUps = 3;
+  int totalItems = 13;
 
   float tempObjPosX, tempObjPosY;
   int vlCantBuy, vlCanBuy;
@@ -19,8 +19,8 @@ class Item extends GameObject {
     if (shopItemNumber < 1)
       shopItemNumber = 1;
 
-    if (shopItemNumber > 2)
-      shopItemNumber = 2;
+    if (shopItemNumber > totalItems)
+      shopItemNumber = totalItems;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
@@ -292,6 +292,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          myPlayer.machineGun.upgradeLevel = 2;
 
           if (voicelineTimer.TimerDone())
           {
@@ -326,6 +327,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          myPlayer.machineGun.upgradeLevel = 3;
 
           if (voicelineTimer.TimerDone())
           {
@@ -360,6 +362,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          myPlayer.shotGun.upgradeLevel = 2;
 
           if (voicelineTimer.TimerDone())
           {
@@ -394,6 +397,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          myPlayer.shotGun.upgradeLevel = 3;
 
           if (voicelineTimer.TimerDone())
           {
@@ -428,6 +432,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          //myPlayer.pistol.upgradeLevel = 2;
 
           if (voicelineTimer.TimerDone())
           {
@@ -462,6 +467,7 @@ class Item extends GameObject {
         {
 
           // Doe iets
+          //myPlayer.pistol.upgradeLevel = 3;
 
           if (voicelineTimer.TimerDone())
           {
