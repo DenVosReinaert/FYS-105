@@ -113,7 +113,7 @@ class Item extends GameObject {
       {
         if (ascore.score >= itemPrice)
         {
-          UI.maxM1 += 30;
+          UI.maxM1 += 60;
 
           if (voicelineTimer.TimerDone())
           {
@@ -146,7 +146,7 @@ class Item extends GameObject {
       {
         if (ascore.score >= itemPrice)
         {
-          UI.maxM1 += 60;
+          UI.maxM1 += 120;
 
           if (voicelineTimer.TimerDone())
           {
@@ -212,7 +212,7 @@ class Item extends GameObject {
       {
         if (ascore.score >= itemPrice)
         {
-          UI.maxS1 += 5;
+          UI.maxS1 += 10;
 
           if (voicelineTimer.TimerDone())
           {
@@ -245,7 +245,7 @@ class Item extends GameObject {
       {
         if (ascore.score >= itemPrice)
         {
-          UI.maxS1 += 10;
+          UI.maxS1 += 15;
 
           if (voicelineTimer.TimerDone())
           {
