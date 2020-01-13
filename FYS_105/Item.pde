@@ -382,7 +382,7 @@ class Item extends GameObject {
     case 11:
       // Shotgun Final Upgrade
 
-      //image(doubleBr, tempObjPosX, tempObjPosY);
+      image(shotg_right, tempObjPosX, tempObjPosY);
 
       objWidth = 20;
       objHeight = 20;
