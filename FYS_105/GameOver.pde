@@ -78,13 +78,8 @@ class GameOver {
     Shotgun.pause();
     AR1.pause();
 
-    UI.ammoM1 = 5;
-    UI.magM1 = 30;
-    UI.maxM1 = 300;
     UI.ammoP = 5;
-    UI.ammoS1 = 5;
-    UI.maxS1 = 20;
-    UI.ammoP = 5;
+
 
     Pistol.rewind();
     Shotgun.rewind();

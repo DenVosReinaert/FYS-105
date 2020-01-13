@@ -16,15 +16,15 @@ class UI {
   int hitValue;
 
   // ammo machinegun
-  int ammoM1 = 5;
-  int magM1 = 30;
-  int maxM1 = 300;
-  int clipM1 = 6;
+  int ammoM1; // Original 5
+  int magM1; // Original 30
+  int maxM1; // Original 300
+  int clipM1; // Original 6
   int reloadM1 = 240;
 
   // ammo shotgun
-  int ammoS1 = 5;
-  int maxS1 = 20;
+  int ammoS1; // Origineel 5
+  int maxS1; // Origineel 20
   int reloadS1 = 240;
 
   // Ammo Pistol
