@@ -23,6 +23,7 @@ class GameOver {
       popStyle();
       spawn.wave = 1;
       myPlayer.currentGun = 1;
+
       gameMusic.pause();
       gameMusic.rewind();
       contraJungleTheme.pause();
@@ -91,7 +92,12 @@ class GameOver {
 
     ascore.score = 0;
     spawn.wave = 1;
+    spawn.totalEnemyCount = 0;
     spawn.waveTextTimer.Reset();
+
+    myPlayer.pistol.upgradeLevel = 1;
+    myPlayer.machineGun.upgradeLevel = 1;
+    myPlayer.shotGun.upgradeLevel = 1;
 
     // print(UI.levens);
     gamemngr.dead = false;
