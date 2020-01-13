@@ -126,9 +126,9 @@ class UI {
         }
         if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
           if ( myPlayer.pistol.upgradeLevel == 2) {
-            image(rayGunP_B_up, ammoX, ammoY);
+            image(rayGunP_B_up, ammoX + ammoXs, ammoY);
           } else if ( myPlayer.pistol.upgradeLevel == 3) {
-            image(peanut, ammoX, ammoY);
+            image(peanut, ammoX + ammoXs, ammoY);
           } else {
             image(bullet, ammoX + ammoXs, ammoY);
           }
