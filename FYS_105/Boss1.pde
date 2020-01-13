@@ -131,7 +131,7 @@ class Boss1 extends GameObject {
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
-            Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+            Add(new ParticleBoss(objPosX + objWidth/2, objPosY + objHeight/2));
           }//for
         }
       }
