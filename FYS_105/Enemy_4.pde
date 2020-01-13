@@ -105,14 +105,8 @@ class Brute extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-        if (UI.shield >= 2) {
-          UI.hitValueShield = 2;
-        } else if (UI.shield == 1) {
-          UI.hitValueShield = 1;
-          UI.hitValue = 1;
-        } else if (UI.levens > 0 && UI.shield <= 0) {
-          UI.hitValue = 2;
-        }
+
+        UI.hitValue = 2;
         hp = 0;
         UI.spelerhit();
       }
