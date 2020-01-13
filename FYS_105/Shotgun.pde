@@ -53,13 +53,13 @@ class Shotgun extends GameObject {
       myPlayer.muzzlePointX = objPosX;
       myPlayer.muzzlePointY = objPosY;
 
-      UI.maxS1 = 20;
+      UI.capacityS1 = 20;
       break;
     case 2:
-      UI.maxS1 = 40;
+      UI.capacityS1 = 40;
       break;
     case 3:
-      UI.maxS1 = 60;
+      UI.capacityS1 = 60;
       break;
     }
 
