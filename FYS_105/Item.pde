@@ -302,7 +302,7 @@ class Item extends GameObject {
       // MachineGun Upgrade 2
       pushStyle();
       LMG1_right.resize(70, 16);
-      image(LMG1_right, objPosX, objPosY);
+      image(LMG1_right, tempObjPosX, tempObjPosY);
       popStyle();
 
       objWidth = 20;
@@ -413,7 +413,7 @@ class Item extends GameObject {
 
       pushStyle();
       shotg_right.resize(50, 45);
-      image(shotg_right, objPosX, objPosY);
+      image(shotg_right, tempObjPosX, tempObjPosY);
       popStyle();
 
       objWidth = 20;
