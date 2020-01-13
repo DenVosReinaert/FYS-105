@@ -4,44 +4,122 @@ class Pistol extends GameObject {
 
   Pistol() {
     knockback = 5;
+    upgradeLevel = 1;
   }
 
 
   void holdingGun() {
 
-    // Show weapon sprite based on which way the player is facing
-    if (myPlayer.lookingUp) 
+    switch(upgradeLevel)
     {
-      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-      objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
-      pushStyle();
-      image(handgunUp, objPosX, objPosY);
-      handgunUp.resize(8, 35);
-      popStyle();
-    } else if (myPlayer.lookingDown) 
-    {
-      objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-      objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
-      pushStyle();
-      image(handgunDown, objPosX, objPosY);
-      handgunDown.resize(8, 35);
-      popStyle();
-    } else if (myPlayer.lookingRight)
-    {
-      objPosX = myPlayer.objPosX + objWidth + 20;
-      objPosY = myPlayer.objPosY - objHeight/2 + 10;
-      pushStyle();
-      image(handgunRight, objPosX, objPosY);
-      handgunRight.resize(35, 15);
-      popStyle();
-    } else if (myPlayer.lookingLeft) 
-    {
-      objPosX = myPlayer.objPosX - objWidth - 30;
-      objPosY = myPlayer.objPosY - objHeight/2 + 10;
-      pushStyle();
-      image(handgunLeft, objPosX, objPosY);
-      handgunLeft.resize(35, 15);
-      popStyle();
+    case 1:
+      // Show weapon sprite based on which way the player is facing
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        pushStyle();
+        image(handgunUp, objPosX, objPosY);
+        handgunUp.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        pushStyle();
+        image(handgunDown, objPosX, objPosY);
+        handgunDown.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX + objWidth + 20;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(handgunRight, objPosX, objPosY);
+        handgunRight.resize(35, 15);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - objWidth - 30;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(handgunLeft, objPosX, objPosY);
+        handgunLeft.resize(35, 15);
+        popStyle();
+      }
+      break;
+    case 2:
+      // Show weapon sprite based on which way the player is facing
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        pushStyle();
+        image(rayGunP_up, objPosX, objPosY);
+        rayGunP_up.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        pushStyle();
+        image(rayGunP_down, objPosX, objPosY);
+        rayGunP_down.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX + objWidth + 20;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(rayGunP_right, objPosX, objPosY);
+        rayGunP_right.resize(35, 15);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - objWidth - 27;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(rayGunP_left, objPosX, objPosY);
+        rayGunP_left.resize(35, 15);
+        popStyle();
+      }
+      break;
+    case 3:
+      // Show weapon sprite based on which way the player is facing
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        pushStyle();
+        image(treeGun_up, objPosX, objPosY);
+        treeGun_up.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
+        pushStyle();
+        image(treeGun_down, objPosX, objPosY);
+        treeGun_down.resize(8, 35);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX + objWidth + 20;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(treeGun_right, objPosX, objPosY);
+        treeGun_right.resize(35, 15);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - objWidth - 27;
+        objPosY = myPlayer.objPosY - objHeight/2 + 10;
+        pushStyle();
+        image(treeGun_left, objPosX, objPosY);
+        treeGun_left.resize(35, 15);
+        popStyle();
+      }
+      break;
     }
   }
 

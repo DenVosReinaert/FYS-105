@@ -16,6 +16,27 @@ class Item extends GameObject {
 
     shopItemNumber = shopItemNumberInput;
 
+
+    //Cant buy machine gun upgrades if you already have them / are missing the previous
+    if (shopItemNumber == 8 && (myPlayer.machineGun.upgradeLevel == 2 || myPlayer.machineGun.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+    if (shopItemNumber == 9 && (myPlayer.machineGun.upgradeLevel == 1 || myPlayer.machineGun.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+
+    //Cant buy shotgun upgrades if you already have them / are missing the previous
+    if (shopItemNumber == 10 && (myPlayer.shotGun.upgradeLevel == 1 || myPlayer.shotGun.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+    if (shopItemNumber == 11 && (myPlayer.shotGun.upgradeLevel == 1 || myPlayer.shotGun.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+
+    //Cant buy pistol upgrades if you already have them / are missing the previous
+    if (shopItemNumber == 12 && (myPlayer.pistol.upgradeLevel == 1 || myPlayer.pistol.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+    if (shopItemNumber == 13 && (myPlayer.pistol.upgradeLevel == 1 || myPlayer.pistol.upgradeLevel == 3))
+      shopItemNumber = round(random(0, totalItems));
+
+
+
     if (shopItemNumber < 1)
       shopItemNumber = 1;
 
@@ -279,8 +300,10 @@ class Item extends GameObject {
 
     case 8:
       // MachineGun Upgrade 2
-
+      pushStyle();
       image(LMG1_right, tempObjPosX, tempObjPosY);
+      LMG1_right.resize(70, 16);
+      popStyle();
 
       objWidth = 20;
       objHeight = 20;
@@ -315,7 +338,10 @@ class Item extends GameObject {
     case 9:
       // MachineGun Final Upgrade
 
+      pushStyle();
       image(LMG2_right, tempObjPosX, tempObjPosY);
+      LMG1_right.resize(70, 16);
+      popStyle();
 
       objWidth = 20;
       objHeight = 20;

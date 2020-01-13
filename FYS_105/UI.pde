@@ -20,12 +20,14 @@ class UI {
   int ammoM1; // Original 5
   int magM1; // Original 30
   int maxM1; // Original 300
+  int capacityM1; //Max capacity
   int clipM1; // Original 6
   int reloadM1 = 240;
 
   // ammo shotgun
   int ammoS1; // Origineel 5
   int maxS1; // Origineel 20
+  int capacityS1; //Max capacity
   int reloadS1 = 240;
 
   // Ammo Pistol
@@ -141,6 +143,12 @@ class UI {
         ammoM1 = 5;
         clipM1--;
       }
+
+      if (maxM1 >= capacityM1)
+        maxM1 = capacityM1;
+      if (maxS1 >= capacityS1)
+        maxS1 = capacityS1;
+
       if (myPlayer.currentGun == myPlayer.machinegun) {
         if (magM1 == 0 && maxM1 > 0) {
           reloadM1--;

@@ -111,6 +111,19 @@ class Player extends GameObject {
       currentGun = 3;
     }
 
+
+
+    // Switches functionality of gun depending on which one the player is holding
+    if (myPlayer.currentGun == pistoll)
+      pistol.holdingGun();
+
+    if (myPlayer.currentGun == shotgun)
+      shotGun.holdingGun();
+
+    if (myPlayer.currentGun == machinegun)
+      machineGun.holdingGun();
+
+
     // Draws where the player sprite is facing depending on the direction they look
     if (myPlayer.lookingLeft) {
       mrSpooksLeft.draw(objPosX, objPosY);
@@ -126,15 +139,6 @@ class Player extends GameObject {
       mrSpooksDown.update();
     }
 
-    // Switches functionality of gun depending on which one the player is holding
-    if (myPlayer.currentGun == pistoll)
-      pistol.holdingGun();
-
-    if (myPlayer.currentGun == shotgun)
-      shotGun.holdingGun();
-
-    if (myPlayer.currentGun == machinegun)
-      machineGun.holdingGun();
 
 
 

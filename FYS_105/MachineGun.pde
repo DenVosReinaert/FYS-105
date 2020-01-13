@@ -10,7 +10,7 @@ class MachineGun extends GameObject {
   MachineGun() 
   {
     knockback = 15;
-    upgradeLevel = 1;
+    upgradeLevel = 3;
   }
 
   void holdingGun() {
@@ -40,8 +40,72 @@ class MachineGun extends GameObject {
       }
       break;
     case 2:
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
+        image(LMG1_up, objPosX, objPosY);
+        LMG1_up.resize(16, 70);
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2;
+        pushStyle();
+        image(LMG1_down, objPosX, objPosY);
+        LMG1_down.resize(16, 70);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX;
+        objPosY = myPlayer.objPosY + 20;
+        pushStyle();
+        image(LMG1_right, objPosX, objPosY);
+        LMG1_right.resize(70, 16);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - 40;
+        objPosY = myPlayer.objPosY + 20;
+        pushStyle();
+        image(LMG1_left, objPosX, objPosY);
+        LMG1_left.resize(70, 16);
+        popStyle();
+      }
       break;
     case 3:
+      if (myPlayer.lookingUp) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY - myPlayer.objHeight/2 - 10;
+        pushStyle();
+        image(LMG2_up, objPosX, objPosY);
+        LMG2_up.resize(16, 70);
+        popStyle();
+      } else if (myPlayer.lookingDown) 
+      {
+        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
+        objPosY = myPlayer.objPosY + myPlayer.objHeight/2-10;
+        pushStyle();
+        image(LMG2_down, objPosX, objPosY);
+        LMG2_down.resize(16, 70);
+        popStyle();
+      } else if (myPlayer.lookingRight)
+      {
+        objPosX = myPlayer.objPosX;
+        objPosY = myPlayer.objPosY + 15;
+        pushStyle();
+        image(LMG2_right, objPosX, objPosY);
+        LMG2_right.resize(70, 16);
+        popStyle();
+      } else if (myPlayer.lookingLeft) 
+      {
+        objPosX = myPlayer.objPosX - 42;
+        objPosY = myPlayer.objPosY + 15;
+        pushStyle();
+        image(LMG2_left, objPosX, objPosY);
+        LMG2_left.resize(70, 16);
+        popStyle();
+      }
       break;
     }
   }
@@ -55,14 +119,14 @@ class MachineGun extends GameObject {
       myPlayer.muzzlePointX = objPosX;
       myPlayer.muzzlePointY = objPosY + 8;
 
-      UI.maxM1 = 300;
-      
+      UI.capacityM1 = 300;
+
       break;
     case 2:
-      UI.maxM1 = 600;
+      UI.capacityM1 = 600;
       break;
     case 3:
-      UI.maxM1 = 900;
+      UI.capacityM1 = 900;
       break;
     }
     if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
