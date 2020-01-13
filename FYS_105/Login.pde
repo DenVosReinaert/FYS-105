@@ -81,9 +81,7 @@ class Login {
     letter3 = letters[l3s];
     letter4 = letters[l4s];
 
-
-    // Aline the letters in the middle
-
+    // Aline the letters I & J in the middle
     xPos1 = width/2-120;
     xPos2 = width/2 - 40;
     xPos3 = width/2 + 40;
@@ -98,8 +96,6 @@ class Login {
     text(""+letter2, xPos2, height/2 - 20);
     text(""+letter3, xPos3, height/2 - 20);
     text(""+letter4, xPos4, height/2 - 20);
-    textSize(15);
-    text("PRESS START TO LOG IN", width/2, height/2 + 50);
     popStyle();
   }
 

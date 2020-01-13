@@ -15,11 +15,10 @@ class GameOver {
       popStyle();
       pushStyle();
       fill(255);
-      textAlign(CENTER);
       textSize(80);
-      text("YOU DIED", width/2, height/2 - 10);
+      text("YOU DIED", width/2- 160, height/2 - 10);
       textSize(15);
-      text("PRESS A TO CONTNUE", width/2, height/2 + 50);
+      text("PRESS A TO CONTNUE", width/2 - 170, height/2 + 50);
       popStyle();
       gameMusic.pause();
       gameMusic.rewind();
@@ -69,7 +68,6 @@ class GameOver {
   void Reset()
   {
     ascore.combo = 1;
-    UI.shield = 0;
     UI.levens = 3;
     gamemngr.hscoreA = 0;
 

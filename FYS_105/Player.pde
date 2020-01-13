@@ -51,7 +51,9 @@ class Player extends GameObject {
 
   void draw() {
 
-    // powerup SpeedUp
+
+
+
     if (!speedUpCollected)
     {
       defaultSpeed = defaultSpeedInit;
@@ -139,6 +141,7 @@ class Player extends GameObject {
 
 
     // Assigns value to movementspeed
+
 
 
 
