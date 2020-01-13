@@ -115,7 +115,7 @@ class Heavy extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-                UI.hitValue = 3;
+        UI.hitValue = 2;
         hp = 0;
         UI.spelerhit();
       }
