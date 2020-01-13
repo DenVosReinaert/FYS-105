@@ -72,18 +72,6 @@ class GameOver {
     UI.shield = 0;
     UI.levens = 3;
     gamemngr.hscoreA = 0;
-    spawn.totalEnemyCount = 0;
-
-
-    UI.maxM1 = 30;
-    UI.maxS1 = 5;
-
-    myPlayer.machineGun.upgradeLevel = 1;
-    myPlayer.shotGun.upgradeLevel = 1;
-    myPlayer.pistol.upgradeLevel = 1;
-
-    lvlMngr.apActive = false;
-
 
     myPlayer.objPosX = width/2 - myPlayer.objWidth/2;
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
@@ -93,7 +81,6 @@ class GameOver {
     AR1.pause();
 
     UI.ammoP = 5;
-
 
 
     Pistol.rewind();
