@@ -77,16 +77,16 @@ class LevelManager
       lvl5.draw();
       break;
     case 6:
-      lvl5.draw();
+      lvl6.draw();
       break;
     case 7:
-      lvl5.draw();
+      lvl7.draw();
       break;
     case 8:
-      lvl5.draw();
+      lvl8.draw();
       break;
     case 9:
-      lvl5.draw();
+      lvl9.draw();
       break;
     }
 

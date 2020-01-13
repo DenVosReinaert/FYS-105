@@ -15,10 +15,11 @@ class GameOver {
       popStyle();
       pushStyle();
       fill(255);
+      textAlign(CENTER);
       textSize(80);
-      text("YOU DIED", width/2- 160, height/2 - 10);
+      text("YOU DIED", width/2, height/2 - 10);
       textSize(15);
-      text("PRESS A TO CONTNUE", width/2 - 170, height/2 + 50);
+      text("PRESS A TO CONTNUE", width/2, height/2 + 50);
       popStyle();
       gameMusic.pause();
       gameMusic.rewind();
@@ -68,6 +69,7 @@ class GameOver {
   void Reset()
   {
     ascore.combo = 1;
+    UI.shield = 0;
     UI.levens = 3;
     gamemngr.hscoreA = 0;
 
@@ -114,5 +116,27 @@ class GameOver {
     spawn.countGrnt = round(random(spawn.wave, spawn.wave + 2));
     spawn.countHvy = round(random(spawn.wave, spawn.wave + 1));
     spawn.countBss = round(spawn.wave / 5);
+
+    damage.pause();
+    bruh.pause();
+    garfield.pause();
+    achievement.pause();
+    buying1.pause();
+    buying2.pause();
+    buying3.pause();
+    buying4.pause();
+    buying5.pause();
+    buying6.pause();
+    buying7.pause();
+    cantbuy1.pause();
+    cantbuy2.pause();
+    missing1.pause();
+    missing2.pause();
+    ohhimark.pause();
+    uhoh.pause();
+    shieldup.pause();
+    ultimatemachinegun.pause();
+    speedup.pause();
+    garfieldSans.pause();
   }
 }

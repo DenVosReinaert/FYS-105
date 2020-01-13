@@ -115,16 +115,9 @@ class Grunt extends GameObject {
       //Collision with Player if they are able to be hit
       if (UI.ableToBeHit && objPosX < myPlayer.objPosX + myPlayer.objWidth && objPosX + objWidth > myPlayer.objPosX && objPosY < myPlayer.objPosY + myPlayer.objHeight && objPosY + objHeight > myPlayer.objPosY)
       {
-
-        if (UI.levens > 0 && UI.shield <= 0) {
-          UI.hitValue = 1;
-          //  UI.levens-= hitValue;
-          hp = 0;
-        }
+        UI.hitValue = 1;
+        hp = 0;
         UI.spelerhit();
-        if (UI.shield > 0) {
-          UI.shield -= UI.hitValue;
-        }
       }
 
       //Collision with Bullet

@@ -44,6 +44,7 @@ SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
 SpriteSheet gruntL, gruntR, gruntU, gruntD, speedsterL, speedsterR, speedsterU, speedsterD, bruteLU, bruteLD, bruteRD, bruteRU, heavyU, heavyD, heavyL, heavyR, boss1U, boss1D, boss1L, boss1R;
 SpriteSheet arrowPL, arrowPU, arrowPR, arrowPD;
 SpriteSheet shopcart, stationaryShopcart, cartdirt, shopcartSansGarfield, shopcartSansGarfieldStationary;
+SpriteSheet multiplierUp;
 SpriteSheet shieldUp, healthUp, speedUp;
 SpriteSheet flowerPatch, turret;
 
@@ -226,6 +227,7 @@ void LoadAssets()
   shieldUp = new SpriteSheet("/data/sprites/LS_SHLD.png", 10);
   speedUp = new SpriteSheet("/data/sprites/LS_SPD.png", 20);
   healthUp = new SpriteSheet("/data/sprites/LS_HLTH.png", 10);
+  multiplierUp = new SpriteSheet("/data/sprites/Multiplier.png", 10);
 
   Shotgun = minim.loadFile("/data/sound/Shotgun.mp3");
   ShotgunReload = minim.loadFile("/data/sound/Guns/pump_shotgun_reload.mp3");

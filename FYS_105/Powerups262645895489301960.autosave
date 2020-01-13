@@ -1,16 +1,19 @@
 class Powerups extends GameObject {
 
   Timer powerUpLifeTimer = new Timer(10);
+  Timer powerUpEffectTimer = new Timer(3);
 
   int randomPowerUp;
-  int totalPowerUps = 4;
+  int totalPowerUps = 3;
 
   float tempObjPosX, tempObjPosY;
+
+  boolean speedUpCollected;
 
   //initiales the width and height of the powerups.
   Powerups(float objPosX, float objPosY) {
 
-    powerUpChance = 2;
+    powerUpChance = 0.1;
 
     tempObjPosX = objPosX;
     tempObjPosY = objPosY;
@@ -20,42 +23,43 @@ class Powerups extends GameObject {
 
     randomPowerUp = round(random(0, totalPowerUps));
 
+    speedUpCollected = false;
+
     powerUpLifeTimer.Reset();
   }
+
+
+
 
   void draw()
   {
 
-    if (powerUpLifeTimer.TimerDone()) {
+    if (powerUpLifeTimer.TimerDone())
       Remove(this);
-    }
 
     switch(randomPowerUp) {
     case 1:
-      //SPEEDUP
-      speedUp.draw(tempObjPosX, tempObjPosY);
-      speedUp.update();
+      //SHIELDS
+      pushStyle();
+      fill(0, 0, 200);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-
-        //powerUps.speedUpCollected = true;
-        myPlayer.speedUpCollected = true;
-        myPlayer.speedUpTimer.Reset();
-        speedup.setGain(30);
-        speedup.play();
-        speedup.rewind();
-        shieldup.setGain(30);
-        shieldup.play();
-        shieldup.rewind();
+        UI.shield ++;
         Remove(this);
       }
       break;
 
+
+
     case 2:
       //HEALTH
-      healthUp.draw(tempObjPosX, tempObjPosY);
-      healthUp.update();
+      pushStyle();
+      fill(0, 200, 0);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
@@ -64,34 +68,26 @@ class Powerups extends GameObject {
       }
       break;
 
+
+
     case 3:
-      //SHIELDS
-      shieldUp.draw(tempObjPosX, tempObjPosY);
-      shieldUp.update();
-
-      if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
-      {    
-        UI.shield ++;
-        shieldup.setGain(30);
-        shieldup.play();
-        shieldup.rewind();
-        Remove(this);
-      }
-      break;
-
-    case 4:
-      //MULTIPLIER
-      multiplierUp.draw(tempObjPosX, tempObjPosY);
-      multiplierUp.update();
+      //SPEEDUP
+      pushStyle();
+      fill(200, 0, 0);
+      ellipse(tempObjPosX, tempObjPosY, objWidth, objHeight);
+      popStyle();
 
       if (tempObjPosX < myPlayer.objPosX + myPlayer.objWidth && tempObjPosX + objWidth > myPlayer.objPosX && tempObjPosY < myPlayer.objPosY + myPlayer.objHeight && tempObjPosY + objHeight > myPlayer.objPosY)
       {
-        ascore.combo *= 2;
+        //powerUps.speedUpCollected = true;
         Remove(this);
       }
+      break;
     }
   }
 }
+
+
 
 
 //Drops the Speed powerup

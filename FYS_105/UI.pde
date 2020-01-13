@@ -4,16 +4,17 @@
 class UI {
   int state = 2;
   //boolean controls;
-  Timer hitStun = new Timer(1);
+  Timer hitStun = new Timer(0.1);
   boolean ableToBeHit = true;
   // Healthbar
-  int levens = 3; // Standard amount of lives
-  int shield = 0;
+  int levens = 3; // Amount of lives
+  int shield = 0; // amount of shield
   int lX1 = width/35;
   int lX2 = lX1 + 6;
   int lY1 = height/35;
   int lY2 = lY1 + 10;
   int hitValue;
+  int hitValueLeftOvers;
 
   // ammo machinegun
   int ammoM1; // Original 5
@@ -33,22 +34,40 @@ class UI {
   int ammoY = height/12;
   int ammoXs = 6;
   int ammoYs = 15;
-  int reloadP = 60;
+  int reloadP = 120;
 
   int gun = 1;
 
   UI() {
+    hitValue = 0;
   }
 
   void spelerhit() { // If called, lives -1
     if (ableToBeHit && hitStun.TimerDone()) {
-      levens -= hitValue;
+
+      if (shield == 0)
+      {
+        levens -= hitValue;
+      } else
+        if (shield > 0)
+        {
+          if (hitValue - shield > 0)
+          {
+            hitValueLeftOvers = hitValue - shield;
+            shield -= hitValue;
+            levens -= hitValueLeftOvers;
+          }
+          else
+          shield -= hitValue;
+        }
+
+      hitValue = 0;
+
       gamemngr.shakeAmount = 15;
       gamemngr.shake = true;
       damage.setGain(10);
       damage.play();
       damage.rewind();
-
       ableToBeHit = false;
       hitStun.Reset();
     }
@@ -64,14 +83,25 @@ class UI {
 
     if (game) {
 
+      // the shield won't get above 2
+      if (UI.shield >= 2) {
+        UI.shield = 2;
+
+        // the shield won't get below 0
+        if (UI.shield <= 0) {
+          UI.shield = 0;
+        }
+
+        // the 'levens' won't get above 5
+        if (UI.levens >= 5) {
+          UI.levens = 5;
+        }
+      }
+
       if (!ableToBeHit && hitStun.TimerDone())
       {
         ableToBeHit = true;
       }
-
-
-
-
 
 
       // Pistol ammo cooldown
@@ -79,8 +109,6 @@ class UI {
         if (ammoP == 0) {
           reloadP--;
           if (reloadP <= 0) {
-            pistolR.play();
-            pistolR.rewind();
             ammoP = 5;
             reloadP = 120;
           }
@@ -116,7 +144,6 @@ class UI {
         if (magM1 == 0 && maxM1 > 0) {
           reloadM1--;
           if (reloadM1 <= 0) {
-            AR1Reload.play();
             magM1 = 30;
             maxM1 -= 30;
             clipM1 = 6;
@@ -171,8 +198,6 @@ class UI {
       if (myPlayer.currentGun == myPlayer.shotgun) {
         if (ammoS1 == 0 && maxS1 > 0) {
           reloadS1--;
-          ShotgunReload.play();
-          ShotgunReload.rewind();
           if (reloadS1 <= 0) {
             ammoS1 = 5;
             maxS1 -= 5;
@@ -204,31 +229,102 @@ class UI {
       // Health
       image(healthbarSb, lX1, lY1);
       image(shieldbarSb, lX1+ (57 * 5), lY1);
-      if (levens > 0) {
+
+      if (levens == 1 && shield == 0) {
         image(healthP, lX2, lY2);
-        if (levens > 1) {
-          image(healthP, lX2 + 57, lY2);
-          if (levens > 2) {
-            image(healthP, lX2 + (57 * 2), lY2);
-          }
-          if (levens > 3) {
-            image(healthP, lX2 + (57 * 3), lY2);
-          }
-          if (levens > 4) {
-            image(healthP, lX2 + (57 * 4), lY2);
-          }
-          if (shield > 0) {
-            image(shieldP, lX2 + (57 * 5), lY2);
-          }
-          if (shield > 1) {
-            image(shieldP, lX2 + (57 * 6), lY2);
-          }
-        }
       }
+      if (levens == 1 && shield == 1 ) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }  
+      if (levens == 1 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+      if (levens == 2 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+      }
+      if (levens == 2 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 2 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 3 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+      }
+      if (levens == 3 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 3 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }   
+      if (levens == 4 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+      }
+      if (levens == 4 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens == 4 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }  
+      if (levens >= 5 && shield == 0) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);
+      }
+      if (levens >= 5 && shield == 1) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+      }
+      if (levens >= 5 && shield >= 2) {
+        image(healthP, lX2, lY2);
+        image(healthP, lX2 + 57, lY2);
+        image(healthP, lX2 + (57*2), lY2);
+        image(healthP, lX2 + (57*3), lY2);
+        image(healthP, lX2 + (57*4), lY2);        
+        image(shieldP, lX2 + (57 * 5), lY2);
+        image(shieldP, lX2 + (57 * 6), lY2);
+      }
+
       image(healthbarS, lX1, lY1);
       image(shieldbarS, lX1 + (57 * 5), lY1);
 
-      if (shield == 0 && levens == 0) { // if lives == 0 && shield == 0
+      if (levens == 0) { // if lives == 0
         gamemngr.dead = true; // set player to dead
       }
     }
