@@ -1,3 +1,4 @@
+// Reno Bisschop
 class Shotgun extends GameObject {
 
 

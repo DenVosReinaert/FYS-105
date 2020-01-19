@@ -1,3 +1,4 @@
+// Reno Bisschop
 class Pistol extends GameObject {
 
   Timer cooldownTimer = new Timer(1);

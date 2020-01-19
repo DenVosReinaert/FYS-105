@@ -1,5 +1,5 @@
 // TE4M
-// Dylan Vermeulen
+// Reno Bisschop
 class MachineGun extends GameObject {
 
 

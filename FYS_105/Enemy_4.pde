@@ -1,3 +1,4 @@
+//Ruben de Jager
 class Brute extends GameObject {
 
   Brute() {

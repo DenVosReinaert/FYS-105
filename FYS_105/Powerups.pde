@@ -1,3 +1,4 @@
+// Reno Bisschop
 class Powerups extends GameObject {
 
   Timer powerUpLifeTimer = new Timer(10);

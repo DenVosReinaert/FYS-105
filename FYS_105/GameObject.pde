@@ -1,3 +1,4 @@
+//Adriaan Pronk
 public class GameObject {
 
   ArrayList<GameObject> gameObject = new ArrayList();
