@@ -1,3 +1,4 @@
+//Ruben de Jager
 class Boss1 extends GameObject {
 
   Boss1() {

@@ -1,3 +1,4 @@
+// Reno Bisschop
 class UltimateMachineGun extends GameObject {
 
   Timer cooldownTimer = new Timer(0.05);

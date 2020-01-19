@@ -1,3 +1,4 @@
+//Dylan Vermeulen
 class Credits {
   void draw() {
     float garfieldX = 0, garfieldY = height - garfieldS.frameHeight;
