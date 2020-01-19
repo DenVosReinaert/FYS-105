@@ -23,7 +23,7 @@ class aScore {
       chieveUnlocked = true;
     } 
 
-    float tCombo = combo - combo%0.01; // This is the number visible on the display
+    float tCombo = combo - combo%0.01; // This is the number visible on the display in with decimals
     if (!gamemngr.dead) { 
       pushStyle();
       fill(255);

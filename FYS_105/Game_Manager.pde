@@ -92,7 +92,7 @@ class Game_Manager {
       chieves.draw();
     }
     if (hscore) {
-      if (hscoreA == 0) {
+      if (hscoreA == 0) { // if hscoreA is 0 create a new hscorel (updates the scorelist)
         hscorel = new hScorelijst();
       }
       hscoreA = 1;
