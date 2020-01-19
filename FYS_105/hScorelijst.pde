@@ -32,29 +32,16 @@ class hScorelijst {
 
   void draw() {
     if (gamemngr.hscore) {
-<<<<<<< HEAD
-=======
-      death.pause();
-      death.rewind();
->>>>>>> parent of 6a5fb24... zucht
       scrBgr.resize(width, height);
       image(scrBgr, 0, 0);
       pushStyle();
       textAlign(CENTER);
       textSize(40);
-<<<<<<< HEAD
-=======
-      text("Press 'B' to go back", 630, 680);
->>>>>>> parent of 6a5fb24... zucht
       if (scores.length == 0) {
         text("Huh? It's empty!", width/2, hScoreH+100); 
         text("Play now and be the first!", width/4 + 80, hScoreH+160);
       }
       popStyle();
-<<<<<<< HEAD
-=======
-      textSize(40);
->>>>>>> parent of 6a5fb24... zucht
       for (int i = 0; i < Asc; i++) {
         if (names.length > 0 && scores.length > 0) {
           text(""+scores[i], width/3, hScoreH + 40*i);

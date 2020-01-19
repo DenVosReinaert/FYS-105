@@ -1,9 +1,5 @@
 // TE4M
-<<<<<<< HEAD
 // Dylan Vermeulen
-=======
-// Reno Bisschop
->>>>>>> parent of 6a5fb24... zucht
 class MachineGun extends GameObject {
 
 
@@ -14,15 +10,10 @@ class MachineGun extends GameObject {
   MachineGun() 
   {
     knockback = 15;
-<<<<<<< HEAD
-=======
-    upgradeLevel = 1;
->>>>>>> parent of 6a5fb24... zucht
   }
 
   void holdingGun() {
 
-<<<<<<< HEAD
 
     if (myPlayer.lookingUp) 
     {
@@ -44,161 +35,15 @@ class MachineGun extends GameObject {
       objPosX = myPlayer.objPosX - 30;
       objPosY = myPlayer.objPosY + 10;
       image(arL, objPosX, objPosY);
-=======
-    switch(upgradeLevel) {
-    case 1:
-      if (myPlayer.lookingUp) 
-      {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
-        image(arU, objPosX, objPosY);
-
-        myPlayer.muzzlePointX = objPosX + arU.width/2 - 2;
-        myPlayer.muzzlePointY = objPosY + arU.height;
-      } else if (myPlayer.lookingDown) 
-      {
-
-
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
-        image(arD, objPosX, objPosY);
-
-        myPlayer.muzzlePointX = objPosX + arU.width/2;
-        myPlayer.muzzlePointY = objPosY + arU.height/2 - 20;
-      } else if (myPlayer.lookingRight)
-      {
-        objPosX = myPlayer.objPosX;
-        objPosY = myPlayer.objPosY + 10;
-        image(arR, objPosX, objPosY);
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY + 8;
-      } else if (myPlayer.lookingLeft) 
-      {
-        objPosX = myPlayer.objPosX - 30;
-        objPosY = myPlayer.objPosY + 10;
-        image(arL, objPosX, objPosY);
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY + 8;
-      }
-      break;
-    case 2:
-      if (myPlayer.lookingUp) 
-      {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
-        objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
-        pushStyle();
-        LMG1_up.resize(16, 70);
-        image(LMG1_up, objPosX, objPosY);
-        popStyle();
-
-        myPlayer.muzzlePointX = objPosX + arU.width/2;
-        myPlayer.muzzlePointY = objPosY + 5;
-      } else if (myPlayer.lookingDown) 
-      {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
-        objPosY = myPlayer.objPosY + myPlayer.objHeight/2;
-        pushStyle();
-        LMG1_down.resize(16, 70);
-        image(LMG1_down, objPosX, objPosY);
-        popStyle();
-
-        myPlayer.muzzlePointX = objPosX + arU.width/2 + 1;
-        myPlayer.muzzlePointY = objPosY + arU.height/2 - 20;
-      } else if (myPlayer.lookingRight)
-      {
-        objPosX = myPlayer.objPosX;
-        objPosY = myPlayer.objPosY + 20;
-        pushStyle();
-        LMG1_right.resize(70, 16);
-        image(LMG1_right, objPosX, objPosY);
-        popStyle();
-
-        myPlayer.muzzlePointX = objPosX + 10;
-        myPlayer.muzzlePointY = objPosY + 2;
-      } else if (myPlayer.lookingLeft) 
-      {
-        objPosX = myPlayer.objPosX - 40;
-        objPosY = myPlayer.objPosY + 20;
-        pushStyle();
-        LMG1_left.resize(70, 16);
-        image(LMG1_left, objPosX, objPosY);
-        popStyle();
-
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY + 3;
-      }
-      break;
-    case 3:
-      if (myPlayer.lookingUp) 
-      {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY - myPlayer.objHeight/2 - 10;
-        pushStyle();
-        LMG2_up.resize(16, 70);
-        image(LMG2_up, objPosX, objPosY);
-        popStyle();
-        myPlayer.muzzlePointX = objPosX + arU.width/2;
-        myPlayer.muzzlePointY = objPosY + 5;
-      } else if (myPlayer.lookingDown) 
-      {
-        objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
-        objPosY = myPlayer.objPosY + myPlayer.objHeight/2-10;
-        pushStyle();
-        LMG2_down.resize(16, 70);
-        image(LMG2_down, objPosX, objPosY);
-        popStyle();
-        myPlayer.muzzlePointX = objPosX + arU.width/2 + 1;
-        myPlayer.muzzlePointY = objPosY + arU.height/2 - 20;
-      } else if (myPlayer.lookingRight)
-      {
-        objPosX = myPlayer.objPosX;
-        objPosY = myPlayer.objPosY + 15;
-        pushStyle();
-        LMG2_right.resize(70, 16);
-        image(LMG2_right, objPosX, objPosY);
-        popStyle();
-        myPlayer.muzzlePointX = objPosX + 15;
-        myPlayer.muzzlePointY = objPosY + 8;
-      } else if (myPlayer.lookingLeft) 
-      {
-        objPosX = myPlayer.objPosX - 42;
-        objPosY = myPlayer.objPosY + 15;
-        pushStyle();
-        LMG2_left.resize(70, 16);
-        image(LMG2_left, objPosX, objPosY);
-        popStyle();
-        myPlayer.muzzlePointX = objPosX;
-        myPlayer.muzzlePointY = objPosY + 8;
-      }
-      break;
->>>>>>> parent of 6a5fb24... zucht
     }
   }
 
 
   void shoot() {
 
-<<<<<<< HEAD
     myPlayer.muzzlePointX = objPosX;
     myPlayer.muzzlePointY = objPosY + 8;
 
-=======
-    switch(upgradeLevel)
-    {
-    case 1:
-      UI.capacityM1 = 300;
-
-      break;
-    case 2:
-      UI.capacityM1 = 600;
-      break;
-    case 3:
-      UI.capacityM1 = 900;
-      break;
-    }
->>>>>>> parent of 6a5fb24... zucht
     if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
       if (UI.ammoM1 > 0 ) {
         myPlayer.lookingUp = true;

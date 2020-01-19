@@ -41,14 +41,11 @@ Powerups powerUps;
 
 void setup()
 {
-<<<<<<< HEAD
   // tutorial video
   //tutorial = new Movie(this, "tutorial.mov");
   //For background tiles
   //X: -10
   //Y: -90
-=======
->>>>>>> parent of 6a5fb24... zucht
   size(1280, 720);
 
 

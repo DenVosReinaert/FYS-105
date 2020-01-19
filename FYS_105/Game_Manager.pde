@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-=======
-//Quinn Koene
->>>>>>> parent of 6a5fb24... zucht
 class Game_Manager {
   boolean login;
   boolean dead;
   boolean statspage;
   boolean creditspage;
-<<<<<<< HEAD
   boolean tutorialVideo;
-=======
-  boolean controls;
->>>>>>> parent of 6a5fb24... zucht
   boolean home;
   boolean hscore;
   boolean shake;
@@ -55,17 +47,10 @@ class Game_Manager {
 
 
     if (statspage) {
-<<<<<<< HEAD
       home = false;
       stats.draw();
       stats.keyReleased();
       chieves.draw();
-=======
-      //home = false;
-      //stats.draw();
-      //stats.keyReleased();
-      //chieves.draw();
->>>>>>> parent of 6a5fb24... zucht
     }
     if (creditspage) {
       home = false;
@@ -211,20 +196,11 @@ class Game_Manager {
     // Stats for devs (Show us information)
     if (key == 'p') 
     {
-<<<<<<< HEAD
       println("ID: " + User.currentUser);
       println("Player: " + ascore.name);
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
       println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + "Total Enemy Count: " + spawn.totalEnemyCount);
       println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
-=======
-      println("-------------------------------DEBUG-------------------------------");
-      println("PlayerName: " + ascore.name + " ID: " + User.currentUser);
-      println("Levens: " + UI.levens + " Shield: " + UI.shield);
-      println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + " Total Enemy Count: " + spawn.totalEnemyCount);
-      println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
-      println("Shop: " + shop.shopA);
->>>>>>> parent of 6a5fb24... zucht
     }
 
 

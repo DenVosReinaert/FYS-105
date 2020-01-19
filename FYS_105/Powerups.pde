@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// Reno Bisschop
->>>>>>> parent of 6a5fb24... zucht
 class Powerups extends GameObject {
 
   Timer powerUpLifeTimer = new Timer(10);
@@ -49,12 +45,9 @@ class Powerups extends GameObject {
         speedup.setGain(30);
         speedup.play();
         speedup.rewind();
-<<<<<<< HEAD
         shieldup.setGain(30);
         shieldup.play();
         shieldup.rewind();
-=======
->>>>>>> parent of 6a5fb24... zucht
         Remove(this);
       }
       break;

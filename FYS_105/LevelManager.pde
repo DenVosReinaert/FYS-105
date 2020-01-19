@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-//Adriaan Pronk
->>>>>>> parent of 6a5fb24... zucht
 class LevelManager
 {
   int lvlNum = 1;

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-//Ruben de Jager
->>>>>>> parent of 6a5fb24... zucht
 class Shop {
 
 

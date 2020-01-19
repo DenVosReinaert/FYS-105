@@ -3,10 +3,7 @@ import processing.video.*;
 
 
 
-<<<<<<< HEAD
 Movie tutorial;
-=======
->>>>>>> parent of 6a5fb24... zucht
 Minim minim;
 
 
@@ -19,17 +16,10 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 
 
 // Main menu
-<<<<<<< HEAD
 PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG; //controlImg;
 
 // UI
 PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb;
-=======
-PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG, controlImg;
-
-// UI
-PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb, arrow, seasonpass;
->>>>>>> parent of 6a5fb24... zucht
 
 //Achievements
 PImage[] chievePlate = new PImage[7];
@@ -38,11 +28,7 @@ PImage[] chievePlate = new PImage[7];
 PImage buckS, bulletDown, bulletLeft, bulletRight, bulletTurret;
 PImage handgunLeft, handgunRight, handgunUp, handgunDown, doubleBu, doubleBd, doubleBl, doubleBr, arL, arR, arU, arD, pumpL, pumpR, pumpU, pumpD;
 PImage LMG1_down, LMG1_up, LMG1_left, LMG1_right, LMG2_down, LMG2_up, LMG2_right, LMG2_left, rayGun_up, rayGun_down, rayGun_left, rayGun_right, rayGunP_up, rayGunP_down, rayGunP_left, rayGunP_right; 
-<<<<<<< HEAD
 PImage treeGun_up, treeGun_down, treeGun_left, treeGun_right, shotg_up, shotg_right, shotg_left, shotg_down; 
-=======
-PImage peanut, treeGun_up, treeGun_down, treeGun_left, treeGun_right, shotg_up, shotg_right, shotg_left, shotg_down, rayGunP_B_up, rayGunP_B_left, rayGunP_B_right, rayGunP_B_down; 
->>>>>>> parent of 6a5fb24... zucht
 
 // Shop
 PImage arLoad, arLoad2, arFullLoad, shotg_load, shotg_load2, shotg_fullLoad;
@@ -54,11 +40,7 @@ PImage bossBlood;
 PImage gruntBlood;
 PImage heavyBlood;
 
-<<<<<<< HEAD
 SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown;
-=======
-SpriteSheet mrSpooksLeft, mrSpooksRight, mrSpooksUp, mrSpooksDown, peanutS;
->>>>>>> parent of 6a5fb24... zucht
 
 
 //Enemies
@@ -87,12 +69,6 @@ void LoadAssets()
   shotg_fullLoad = loadImage("/data/sprites/Shop/ShotgunShellFullLoad.png");
 
   // UI
-<<<<<<< HEAD
-=======
-
-  seasonpass = loadImage("/data/img/LastStand-SEASONPASS.png");
-  arrow = loadImage("/data/sprites/UI/Arrow.png");
->>>>>>> parent of 6a5fb24... zucht
   healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
   healthbarSb = loadImage("/data/sprites/UI/HealthBarSlots_Backdrop.png");
   healthP = loadImage("/data/sprites/UI/PieceOfHealth.png");
@@ -142,27 +118,11 @@ void LoadAssets()
   rayGunP_down = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Bottom.png");
   rayGunP_left = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Left.png");
   rayGunP_right = loadImage("/data/sprites/Guns/Handgun_RaygunPINK_Right.png");
-<<<<<<< HEAD
-=======
-
-  // Pink gun ammo cases
-  rayGunP_B_up = loadImage("/data/sprites/UI/Raygun_Shell.png");
-  rayGunP_B_down = loadImage("/data/sprites/Raygun_ShellD.png");
-  rayGunP_B_left = loadImage("/data/sprites/Raygun_ShellL.png");
-  rayGunP_B_right = loadImage("/data/sprites/Raygun_ShellR.png");
-
-
->>>>>>> parent of 6a5fb24... zucht
   // Final pistol upgrade!
   treeGun_up = loadImage("/data/sprites/Guns/Handgun_Tree_Top.png");
   treeGun_down = loadImage("/data/sprites/Guns/Handgun_Tree_Down.png");
   treeGun_left = loadImage("/data/sprites/Guns/Handgun_Tree_Left.png");
   treeGun_right = loadImage("/data/sprites/Guns/Handgun_Tree_Right.png");
-<<<<<<< HEAD
-=======
-  peanutS = new SpriteSheet("/data/sprites/Bullets/PindaShell-sheet.png", 8);
-  peanut = loadImage("/data/sprites/Bullets/PindaShell.png");
->>>>>>> parent of 6a5fb24... zucht
 
   doubleBu = loadImage("/data/sprites/DoubleBarrel_Top.png");
   doubleBd = loadImage("/data/sprites/DoubleBarrel_Down.png");
@@ -192,11 +152,7 @@ void LoadAssets()
 
   // Main Menu
   scrBgr = loadImage("/data/img/mainMenu_scorePage.png");
-<<<<<<< HEAD
   //  controlImg = loadImage("/data/img/controls.png");
-=======
-  controlImg = loadImage("/data/img/controls.png");
->>>>>>> parent of 6a5fb24... zucht
   main = loadImage("/data/img/LastStand-MainMenu.png");
   // Login
   login = loadImage("/data/img/LastStand-Login.png");

@@ -63,7 +63,6 @@ class Login {
 
     // The dot under the letters depending on which state they are
     if (state == 1) {
-<<<<<<< HEAD
       //circle(width/2-135, height/2 + 20, 10);
     }
     if (state == 2) {
@@ -73,21 +72,6 @@ class Login {
       //circle(width/2 + 25, height/2 + 20, 10);
     }
     if (state == 4) {
-=======
-      image(arrow, width/2-125, height/2 - 100);
-      //circle(width/2-135, height/2 + 20, 10);
-    }
-    if (state == 2) {
-      image(arrow, width/2-45, height/2 - 100);
-      //circle(width/2 - 55, height/2 + 20, 10);
-    }
-    if (state == 3) {
-      image(arrow, width/2 + 35, height/2 - 100);
-      //circle(width/2 + 25, height/2 + 20, 10);
-    }
-    if (state == 4) {
-      image(arrow, width/2 + 115, height/2 - 100);
->>>>>>> parent of 6a5fb24... zucht
       //circle(width/2 + 105, height/2 + 20, 10);
     }
 
@@ -114,11 +98,8 @@ class Login {
     text(""+letter2, xPos2, height/2 - 20);
     text(""+letter3, xPos3, height/2 - 20);
     text(""+letter4, xPos4, height/2 - 20);
-<<<<<<< HEAD
     textSize(15);
     text("PRESS START TO LOG IN", width/2, height/2 + 50);
-=======
->>>>>>> parent of 6a5fb24... zucht
     popStyle();
   }
 
@@ -126,17 +107,11 @@ class Login {
     if (gamemngr.login) {
       if (key == '\n') {
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
-<<<<<<< HEAD
         println("name: " + ascore.name);
         User.idCheck();
         println("ID: " + User.currentUser);
         Friends.totalFriends();
         Friends.totalPlayers();
-=======
-        User.idCheck();
-        //Friends.totalFriends();
-        //Friends.totalPlayers();
->>>>>>> parent of 6a5fb24... zucht
         // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!

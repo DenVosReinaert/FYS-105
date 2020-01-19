@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-//Ruben de Jager
->>>>>>> parent of 6a5fb24... zucht
 class Boss1 extends GameObject {
 
   Boss1() {
@@ -117,11 +113,7 @@ class Boss1 extends GameObject {
         if (objPosX < GameObjectRef.gameObject.get(i).objPosX + GameObjectRef.gameObject.get(i).objWidth && objPosX + objWidth > GameObjectRef.gameObject.get(i).objPosX && objPosY < GameObjectRef.gameObject.get(i).objPosY + GameObjectRef.gameObject.get(i).objHeight && objPosY + objHeight > GameObjectRef.gameObject.get(i).objPosY)
         {
           hpBarTotal -= hpBarTotal/hp;
-<<<<<<< HEAD
           hp--;
-=======
-          hp --;
->>>>>>> parent of 6a5fb24... zucht
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
