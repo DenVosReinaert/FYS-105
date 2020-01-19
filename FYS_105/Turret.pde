@@ -79,19 +79,6 @@ class Turret extends GameObject
     bbB.y = objPosY + objHeight - bbCH + 5;
 
 
-
-    //Collison Box Wireframes for checks
-    //pushStyle();
-    //noFill();
-    //stroke(255);
-    //rect(bbL.x, bbL.y, bbSW, bbSH);
-    //rect(bbR.x, bbR.y, bbSW, bbSH);
-    //rect(bbT.x, bbT.y, bbCW, bbCH);
-    //rect(bbB.x, bbB.y, bbCW, bbCH);
-    //popStyle();
-
-
-
     //Collision statement Player & Enemy
 
     if ((myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX) > bbL.x && myPlayer.objPosX + myPlayer.moveVelX < bbL.x + bbSW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbL.y && myPlayer.objPosY + myPlayer.moveVelY < bbL.y + bbSH)
