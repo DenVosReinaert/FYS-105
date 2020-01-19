@@ -19,7 +19,7 @@ class Powerups extends GameObject {
     objWidth = 20;
     objHeight = 20;
 
-    randomPowerUp = round(random(-0.5, totalPowerUps+0.5));  //Sets the randomPowerUp to a random number
+    randomPowerUp = round(random(0.5, totalPowerUps+0.5));  //Sets the randomPowerUp to a random number
 
     powerUpLifeTimer.Reset();
   }
