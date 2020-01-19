@@ -2,17 +2,15 @@
 class Shotgun extends GameObject {
 
 
-  Timer cooldownTimer = new Timer(1.5);
+  Timer cooldownTimer = new Timer(1.5); //Sets the cooldown to shoot on 1.5 sec
 
   Shotgun() {
-    knockback = 40;
-    upgradeLevel = 1;
+    knockback = 40;    //The knockback you get when you shoot with the Shotgun
+    upgradeLevel = 1;  //Initializes the upgradeLevel of the Shotgun, which is 1
   }
 
-  //shotg_up, shotg_right, shotg_left, shotg_down; 
-
   void holdingGun() {
-
+    // Show weapon sprite based on which way the player is facing
     switch(upgradeLevel)
     {
     case 1:
@@ -142,7 +140,7 @@ class Shotgun extends GameObject {
 
 
   void shoot() {
-
+    //The capacity of the MachineGuns in the upgrades
     switch(upgradeLevel)
     {
     case 1:
@@ -155,7 +153,7 @@ class Shotgun extends GameObject {
       UI.capacityS1 = 60;
       break;
     }
-
+    //Shoot at the direction based on which way the player is facing
     if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
 
 
@@ -180,7 +178,9 @@ class Shotgun extends GameObject {
         pump_shotg_empty.play();
         pump_shotg_empty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
+    } 
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -205,7 +205,9 @@ class Shotgun extends GameObject {
         pump_shotg_empty.play();
         pump_shotg_empty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
+    } 
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -229,7 +231,9 @@ class Shotgun extends GameObject {
         pump_shotg_empty.play();
         pump_shotg_empty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
+    } 
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
 
       if ( UI.ammoS1 > 0) {
@@ -253,7 +257,7 @@ class Shotgun extends GameObject {
         pump_shotg_empty.rewind();
       }
     }
-    if (cooldownTimer.TimerDone())
+    if (cooldownTimer.TimerDone())     //When you shoot, the cooldowntimer resets so you can't shoot immediately
       cooldownTimer.Reset();
   }
 }
