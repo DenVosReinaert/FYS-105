@@ -230,7 +230,7 @@ class MachineGun extends GameObject {
         AR1Empty.rewind();
       }
     }
-    if (cooldownTimer.TimerDone())    //
+    if (cooldownTimer.TimerDone())    //When you shoot, the cooldowntimer resets so you can't shoot immediately
       cooldownTimer.Reset();
   }
 }
