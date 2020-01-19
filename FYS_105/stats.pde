@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// Reno Bisschop
+>>>>>>> parent of 6a5fb24... zucht
 class stats { 
   int textX = 155;
   int totalFriends;

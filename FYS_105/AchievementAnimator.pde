@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//Adriaan Pronk
+>>>>>>> parent of 6a5fb24... zucht
 class AchievementAnimator extends GameObject
 {
   Timer achievementRetractTimer = new Timer(10);

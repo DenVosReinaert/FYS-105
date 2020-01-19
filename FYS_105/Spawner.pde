@@ -71,7 +71,11 @@ class Spawner extends GameObject {
         popStyle();
       }
 
+<<<<<<< HEAD
       if (waveTextTimer.TimerDone() && !waveFinished && !waveInProgress)
+=======
+      if (waveTextTimer.TimerDone() && !waveFinished && !waveInProgress && totalEnemyCount != 0)
+>>>>>>> parent of 6a5fb24... zucht
         waveInProgress = true;
 
       if (waveFinished)     //When the wave is finished and there are no gameObjects on the screen, show the arrows, and if the round number is even show the shop
@@ -103,6 +107,7 @@ class Spawner extends GameObject {
   void NextWave()
   {
     shop.Reset();
+<<<<<<< HEAD
 
 
 
@@ -110,6 +115,10 @@ class Spawner extends GameObject {
     waveFinished = false;
 
 
+=======
+    waveInProgress = false;      //Reset wave progress
+    waveFinished = false;
+>>>>>>> parent of 6a5fb24... zucht
     spawn.wave ++;      //Set current wave number to the next
 
     countBrt = round(random(wave, wave + 1));    //Adjust enemy count to the new wave number
@@ -121,7 +130,10 @@ class Spawner extends GameObject {
       countBss = round(wave / 5);
     } else spawnBssFinished = true;
 
+<<<<<<< HEAD
     totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
+=======
+>>>>>>> parent of 6a5fb24... zucht
 
 
     spawnBrtFinished = false;
@@ -142,6 +154,10 @@ class Spawner extends GameObject {
     myPlayer.objPosY = height/2 - myPlayer.objHeight/2;
 
     lvlMngr.lvlNum = round(random(0, 9));
+<<<<<<< HEAD
+=======
+    totalEnemyCount = countBrt + countSpd + countGrnt + countHvy + countBss;
+>>>>>>> parent of 6a5fb24... zucht
   }
 
 

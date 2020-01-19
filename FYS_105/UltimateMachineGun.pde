@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// Reno Bisschop
+>>>>>>> parent of 6a5fb24... zucht
 class UltimateMachineGun extends GameObject {
 
   Timer cooldownTimer = new Timer(0.05);

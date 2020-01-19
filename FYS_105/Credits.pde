@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//Dylan Vermeulen
+>>>>>>> parent of 6a5fb24... zucht
 class Credits {
   void draw() {
     float garfieldX = 0, garfieldY = height - garfieldS.frameHeight;

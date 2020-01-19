@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//Adriaan Pronk
+>>>>>>> parent of 6a5fb24... zucht
 public class GameObject {
 
   ArrayList<GameObject> gameObject = new ArrayList();
@@ -35,7 +39,11 @@ public class GameObject {
 
   float powerUpChance;
 
+<<<<<<< HEAD
   int shopItemNumber, itemPrice;
+=======
+  int shopItemNumber, itemPrice, upgradeLevel;
+>>>>>>> parent of 6a5fb24... zucht
 
   float tileSize;
 

@@ -41,6 +41,7 @@ class Bullet extends GameObject {
 
     switch(bulletState) {
     case 1:
+<<<<<<< HEAD
       objWidth = bulletRight.width;
       objHeight = bulletRight.height;
       image(bulletRight, objPosX, objPosY);
@@ -59,6 +60,70 @@ class Bullet extends GameObject {
       objWidth = bulletDown.width;
       objHeight = bulletDown.height;
       image(bulletDown, objPosX, objPosY);
+=======
+      if ( myPlayer.pistol.upgradeLevel == 2) {
+        objWidth = rayGunP_B_right.width;
+        objHeight = rayGunP_B_right.height;
+        image(rayGunP_B_right, objPosX, objPosY);
+      } else if (myPlayer.pistol.upgradeLevel == 3) {
+        objWidth = bulletRight.width;
+        objHeight = bulletRight.height;
+        peanutS.draw(objPosX, objPosY);
+        peanutS.update();
+      } else {
+        objWidth = bulletRight.width;
+        objHeight = bulletRight.height;
+        image(bulletRight, objPosX, objPosY);
+      }
+      break;
+    case 2:
+      if ( myPlayer.pistol.upgradeLevel == 2) {
+        objWidth = rayGunP_B_left.width;
+        objHeight = rayGunP_B_left.height;
+        image(rayGunP_B_left, objPosX, objPosY);
+      } else if (myPlayer.pistol.upgradeLevel == 3) {
+        objWidth = bulletRight.width;
+        objHeight = bulletRight.height;
+        peanutS.draw(objPosX, objPosY);
+        peanutS.update();
+      } else {
+        objWidth = bulletLeft.width;
+        objHeight = bulletLeft.height;
+        image(bulletLeft, objPosX, objPosY);
+      }
+      break;
+    case 3:
+      if ( myPlayer.pistol.upgradeLevel == 2) {
+        objWidth = rayGunP_B_up.width;
+        objHeight = rayGunP_B_up.height;
+        image(rayGunP_B_up, objPosX, objPosY);
+      } else if (myPlayer.pistol.upgradeLevel == 3) {
+        objWidth = bullet.width;
+        objHeight = bullet.height;
+        peanutS.draw(objPosX, objPosY);
+        peanutS.update();
+      } else {
+        objWidth = bullet.width;
+        objHeight = bullet.height;
+        image(bullet, objPosX, objPosY);
+      }
+      break;
+    case 4:
+      if ( myPlayer.pistol.upgradeLevel == 2) {
+        objWidth = rayGunP_B_down.width;
+        objHeight = rayGunP_B_down.height;
+        image(rayGunP_B_down, objPosX, objPosY);
+      } else if (myPlayer.pistol.upgradeLevel == 3) {
+        objWidth = bulletDown.width;
+        objHeight = bulletDown.height;
+        peanutS.draw(objPosX, objPosY);
+        peanutS.update();
+      } else {
+        objWidth = bulletDown.width;
+        objHeight = bulletDown.height;
+        image(bulletDown, objPosX, objPosY);
+      }
+>>>>>>> parent of 6a5fb24... zucht
       break;
     case 5:
       objWidth = buckS.width;

@@ -17,6 +17,7 @@ class UI {
   int hitValueLeftOvers;
 
   // ammo machinegun
+<<<<<<< HEAD
   int ammoM1 = 5;
   int magM1 = 30;
   int maxM1 = 300;
@@ -26,6 +27,19 @@ class UI {
   // ammo shotgun
   int ammoS1 = 5;
   int maxS1 = 20;
+=======
+  int ammoM1 = 5; // Original 5
+  int magM1; // Original 30
+  int maxM1 = 30; // Original 300
+  int capacityM1; //Max capacity
+  int clipM1; // Original 6
+  int reloadM1 = 240;
+
+  // ammo shotgun
+  int ammoS1 = 5; // Origineel 5
+  int maxS1 = 5; // Origineel 20
+  int capacityS1; //Max capacity
+>>>>>>> parent of 6a5fb24... zucht
   int reloadS1 = 240;
 
   // Ammo Pistol
@@ -56,9 +70,14 @@ class UI {
             hitValueLeftOvers = hitValue - shield;
             shield -= hitValue;
             levens -= hitValueLeftOvers;
+<<<<<<< HEAD
           }
           else
           shield -= hitValue;
+=======
+          } else
+            shield -= hitValue;
+>>>>>>> parent of 6a5fb24... zucht
         }
 
       hitValue = 0;
@@ -81,11 +100,17 @@ class UI {
 
   void draw() {
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 6a5fb24... zucht
     if (game) {
 
       // the shield won't get above 2
       if (UI.shield >= 2) {
         UI.shield = 2;
+<<<<<<< HEAD
 
         // the shield won't get below 0
         if (UI.shield <= 0) {
@@ -98,6 +123,20 @@ class UI {
         }
       }
 
+=======
+      }
+      // the shield won't get below 0
+      if (UI.shield < 0) {
+        UI.shield = 0;
+      }
+
+      // the 'levens' won't get above 5
+      if (UI.levens >= 5) {
+        UI.levens = 5;
+      }
+
+
+>>>>>>> parent of 6a5fb24... zucht
       if (!ableToBeHit && hitStun.TimerDone())
       {
         ableToBeHit = true;
@@ -116,6 +155,7 @@ class UI {
       }
       // Pistol ammo (draw the five yellow lines left top)
       if (ammoP > 0 && myPlayer.currentGun == myPlayer.pistoll) {
+<<<<<<< HEAD
         image(bullet, ammoX, ammoY);
         if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
           image(bullet, ammoX + ammoXs, ammoY);
@@ -127,6 +167,49 @@ class UI {
           }
           if (ammoP > 4 && myPlayer.currentGun == myPlayer.pistoll) {
             image(bullet, ammoX + (ammoXs * 4), ammoY);
+=======
+        if ( myPlayer.pistol.upgradeLevel == 2) {
+          image(rayGunP_B_up, ammoX, ammoY);
+        } else if ( myPlayer.pistol.upgradeLevel == 3) {
+          image(peanut, ammoX, ammoY);
+        } else {
+          image(bullet, ammoX, ammoY);
+        }
+        if (ammoP > 1 && myPlayer.currentGun == myPlayer.pistoll) {
+          if ( myPlayer.pistol.upgradeLevel == 2) {
+            image(rayGunP_B_up, ammoX + ammoXs, ammoY);
+          } else if ( myPlayer.pistol.upgradeLevel == 3) {
+            image(peanut, ammoX + ammoXs, ammoY);
+          } else {
+            image(bullet, ammoX + ammoXs, ammoY);
+          }
+          if (ammoP > 2 && myPlayer.currentGun == myPlayer.pistoll) {
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 2), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 2), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 2), ammoY);
+            }
+          }
+          if (ammoP > 3 && myPlayer.currentGun == myPlayer.pistoll) {
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 3), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 3), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 3), ammoY);
+            }
+          }
+          if (ammoP > 4 && myPlayer.currentGun == myPlayer.pistoll) {
+            if ( myPlayer.pistol.upgradeLevel == 2) {
+              image(rayGunP_B_up, ammoX + (ammoXs * 4), ammoY);
+            } else if ( myPlayer.pistol.upgradeLevel == 3) {
+              image(peanut, ammoX + (ammoXs * 4), ammoY);
+            } else {
+              image(bullet, ammoX + (ammoXs * 4), ammoY);
+            }
+>>>>>>> parent of 6a5fb24... zucht
           }
         }
       }
@@ -140,6 +223,15 @@ class UI {
         ammoM1 = 5;
         clipM1--;
       }
+<<<<<<< HEAD
+=======
+
+      if (maxM1 >= capacityM1)
+        maxM1 = capacityM1;
+      if (maxS1 >= capacityS1)
+        maxS1 = capacityS1;
+
+>>>>>>> parent of 6a5fb24... zucht
       if (myPlayer.currentGun == myPlayer.machinegun) {
         if (magM1 == 0 && maxM1 > 0) {
           reloadM1--;
@@ -328,6 +420,7 @@ class UI {
         gamemngr.dead = true; // set player to dead
       }
     }
+<<<<<<< HEAD
     // Main menu
     // show depending on boolean
     if (gamemngr.home) {
@@ -338,6 +431,21 @@ class UI {
       image(main, 0, 0);
       textSize(31);
       text("TUTORIAL", 563, 150);
+=======
+
+
+    // Main menu
+    // show depending on boolean
+    if (gamemngr.home) {
+      tutorial();
+      pushStyle();
+      main.resize(width, height);
+      seasonpass.resize(width, height);
+      // show line under buttons depending what state is
+      image(main, 0, 0);
+      textSize(31);
+      text("CONTROLS", 563, 150);
+>>>>>>> parent of 6a5fb24... zucht
       if (state == 1) {
         fill(200);
         rect(134, 477, 285, 5);
@@ -362,6 +470,7 @@ class UI {
         rect(563, 150, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
+<<<<<<< HEAD
       popStyle();
     }
 
@@ -381,6 +490,32 @@ class UI {
   //    }
   //  }
   //}
+=======
+      image(seasonpass, 0, 0);
+      popStyle();
+    }
+
+
+    chieves.draw();
+    if (gamemngr.controls) {
+      controlImg.resize(width, height);
+      image(controlImg, 0, 0);
+
+      if (keyCode == DOWN) {
+        gamemngr.controls = false;
+        gamemngr.home = true;
+      }
+    }
+  }
+
+  void tutorial() {
+    if (gamemngr.controls) {
+      if (keyCode == ENTER) {
+        gamemngr.controls = false;
+      }
+    }
+  }
+>>>>>>> parent of 6a5fb24... zucht
 
   void keyPressed() {
     if (gamemngr.home) {
@@ -424,7 +559,13 @@ class UI {
 
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
+<<<<<<< HEAD
           gamemngr.statspage = true;
+=======
+          gamemngr.shake = true;
+          gamemngr.shakeAmount = 4;
+          //gamemngr.statspage = true;
+>>>>>>> parent of 6a5fb24... zucht
         }
         if (state == 4) { // Credits button
           gamemngr.creditspage = true;
@@ -440,9 +581,16 @@ class UI {
           gamemngr.hscore = true;
         }
         // Tutorial button
+<<<<<<< HEAD
         //if (state == 5) { 
         //  gamemngr.tutorialVideo = true;
         //}
+=======
+        if (state == 5) { 
+          gamemngr.controls = true;
+          gamemngr.home = false;
+        }
+>>>>>>> parent of 6a5fb24... zucht
       }
     }
   }

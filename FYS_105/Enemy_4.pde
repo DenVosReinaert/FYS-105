@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//Ruben de Jager
+>>>>>>> parent of 6a5fb24... zucht
 class Brute extends GameObject {
 
   Brute() {
@@ -131,7 +135,11 @@ class Brute extends GameObject {
             ascore.score += scoreGain * ascore.combo;
           }
           for (int j=0; j < 20; j++) {
+<<<<<<< HEAD
             Add(new Particle(objPosX + objWidth/2, objPosY + objHeight/2));
+=======
+            Add(new ParticleHeavy(objPosX + objWidth/2, objPosY + objHeight/2));
+>>>>>>> parent of 6a5fb24... zucht
           }//for
         }
       }

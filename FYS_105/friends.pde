@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// Reno Bisschop
+>>>>>>> parent of 6a5fb24... zucht
 class friends {
 
   String pName; // Player Name
