@@ -1,22 +1,9 @@
 //Adriaan Pronk
 class AchievementManager
 {
-
-
-  //int chieveFalse = 0;
-
   int achieved, achievementAnimsActive, totalAchievements;
-  String tempId;
 
   float startPosX, startPosY, endPosX, endPosY;
-
-  float[] currentPosX = new float[totalAchievements];                                      //OBSOLETE
-  float[] currentPosY = new float[totalAchievements];                                      //OBSOLETE
-
-  int[] oldschoolTimer = new int[totalAchievements];                                       //OBSOLETE
-
-  //boolean[] achievementAnim = new boolean[totalAchievements];
-
 
   ArrayList<AchievementAnimator> achievementAnim = new ArrayList<AchievementAnimator>();   //Creates a list of instances for the animations of an achievement plate when they are unlocked.
 

@@ -48,15 +48,10 @@ public class GameObject {
 
   GameObject() 
   {
-
     spawnerPos0 = new PVector();                                                                           //Initializing of the spawner position vectors
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();
     spawnerPos3 = new PVector();
-    //for(int i = 0; i < gameObject.size(); i ++)
-    //{
-    //  GameObject gameobject = new GameObject();
-    //}
   }
 
 
@@ -64,14 +59,9 @@ public class GameObject {
   {    
   }
 
-  boolean Dead() {
-    return false;
-  }
-
   void Add(GameObject object)                                                                             //Instantiate the given object in the gameObject list
   {
     GameObjectRef.gameObject.add(object); 
-    //println("A new object has been created");
   }
 
   void Remove(GameObject object)                                                                          //Remove the instance of the given object from the gameObject list
@@ -79,9 +69,8 @@ public class GameObject {
     GameObjectRef.gameObject.remove(object);
   }
 
-  void drawObjects() {                                                                                    //Run the draw function of each instance in the gameObject list
-    //println(gameObject);
-
+  void drawObjects()
+  {                                                                                    //Run the draw function of each instance in the gameObject list
     for (int i = 0; i < gameObject.size(); i++) {
       gameObject.get(i).draw();
     }

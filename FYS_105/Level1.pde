@@ -1,12 +1,6 @@
 //Adriaan Pronk
 class Level1
 {
-
-
-
-
-
-
   void setup()
   {
   }
@@ -23,13 +17,11 @@ class Level1
     Layer4();
   }
 
-
   void Layer1()
   {
 
     image(levelTemplate, 0, 0);
   }
-
 
   void Layer2()
   {  
@@ -40,14 +32,11 @@ class Level1
     flowerPatch.update();
   }
 
-
   void Layer3()
   {
     GameObjectRef.drawObjects();
     myPlayer.draw();
   }
-
-
 
   void Layer4()
   {

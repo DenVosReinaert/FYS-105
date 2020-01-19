@@ -3,7 +3,6 @@ class AchievementAnimator extends GameObject
 {
   
   Timer achievementRetractTimer = new Timer(10);
-
   int achievementNumber;
 
 
@@ -17,6 +16,7 @@ class AchievementAnimator extends GameObject
 
     objPosX = objPosXInput;
     objPosY = objPosYInput;
+    
     achievementRetractTimer.Reset();                                                         //Reset the timer
   }
 
