@@ -4,7 +4,7 @@ class MachineGun extends GameObject {
 
 
 
-  Timer cooldownTimer = new Timer(0.2);
+  Timer cooldownTimer = new Timer(0.2);    //Sets a cooldown on the gun for 0.2 sec
 
 
   MachineGun() 
@@ -15,8 +15,9 @@ class MachineGun extends GameObject {
 
   void holdingGun() {
 
-    switch(upgradeLevel) {     //Using the switch so you can switch between upgradeLevels
-    case 1:                    //First case in the switch
+    switch(upgradeLevel) {  
+      // Show weapon sprite based on which way the player is facing
+    case 1:                    
       if (myPlayer.lookingUp)  //This will draw the AR from upgradeLevel 1 if the player is looking up
       {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;   //Sets the position of the AR image
@@ -50,8 +51,8 @@ class MachineGun extends GameObject {
         myPlayer.muzzlePointX = objPosX;     
         myPlayer.muzzlePointY = objPosY + 8;
       }
-      break; //stop the case
-    case 2:          //Second case in the switch
+      break; 
+    case 2:          
       if (myPlayer.lookingUp)     //This will draw the AR from upgradeLevel 2 if the player is looking up
       {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2;
@@ -97,8 +98,8 @@ class MachineGun extends GameObject {
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY + 3;
       }
-      break;  //Stop the case
-    case 3:      //Third case in the switch
+      break;  
+    case 3:     
       if (myPlayer.lookingUp)    //This will draw the AR from upgradeLevel 3 if the player is looking up
       {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
@@ -140,7 +141,7 @@ class MachineGun extends GameObject {
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY + 8;
       }
-      break;   //Stop the case
+      break;   
     }
   }
 

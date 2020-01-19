@@ -1,15 +1,15 @@
 // Reno Bisschop
 class Powerups extends GameObject {
 
-  Timer powerUpLifeTimer = new Timer(10);
+  Timer powerUpLifeTimer = new Timer(10);  //How long the powerup will stay on the the screen
 
-  int randomPowerUp;
-  int totalPowerUps = 4;
+  int randomPowerUp;        //
+  int totalPowerUps = 4;    //
 
   float tempObjPosX, tempObjPosY;
 
   //initiales the width and height of the powerups.
-  Powerups(float objPosX, float objPosY) {
+  Powerups(float objPosX, float objPosY) {  //
 
     powerUpChance = 2;
 
@@ -19,7 +19,7 @@ class Powerups extends GameObject {
     objWidth = 20;
     objHeight = 20;
 
-    randomPowerUp = round(random(0, totalPowerUps));
+    randomPowerUp = round(random(0, totalPowerUps));  //Sets the randomPowerUp to a random number
 
     powerUpLifeTimer.Reset();
   }
