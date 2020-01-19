@@ -31,7 +31,7 @@ class Powerups extends GameObject {
       Remove(this);
     }
 
-    //4 possible powerups that can drop.
+    //4 possible powerups that can drop when an enemy dies.
     switch(randomPowerUp) {
     case 1:
       //SPEEDUP
