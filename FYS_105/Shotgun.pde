@@ -140,7 +140,7 @@ class Shotgun extends GameObject {
 
 
   void shoot() {
-    //The capacity of the MachineGuns in the upgrades
+    //The capacity of the Shotguns in the upgrades
     switch(upgradeLevel)
     {
     case 1:
