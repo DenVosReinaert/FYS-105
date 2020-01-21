@@ -471,9 +471,9 @@ class UI {
 
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
-          gamemngr.shake = true;
-          gamemngr.shakeAmount = 4;
-          //gamemngr.statspage = true;
+          //gamemngr.shake = true;
+          //gamemngr.shakeAmount = 4;
+          gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
           gamemngr.creditspage = true;

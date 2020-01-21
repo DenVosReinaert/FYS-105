@@ -43,15 +43,15 @@ class stats {
           popStyle();
         }
       }
-      for (int i = 0; i < totalPlayers; i++) {
+      for (int i = 0; i < aPlayers; i++) {
         textSize(20);
-        text("" + players[i], 900, (260 + (totalFriends * 30)) + (30 * i));
+        text("" + players[i], 900, (255 + (totalFriends * 30)) + (30 * i));
         pushStyle();
         if (cursorPosY2 == i) {
           fill(0, 200, 0);
           selected = players[i];
         }
-        text("ADD", 820, (260 + (totalFriends * 30)) + (30 * i) );
+        text("ADD", 820, (255 + (totalFriends * 30)) + (30 * i) );
         popStyle();
       }
     }

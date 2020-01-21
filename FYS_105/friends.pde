@@ -3,6 +3,8 @@ class friends {
 
   String playerName; // Player Name
   String friendName; // Friends Name
+  String idRelation; // id relation between friend and player
+  int tempidRelation; // temporary id relation between friend and player
   int playerID; //Player ID
 
   void setup() {
@@ -22,8 +24,17 @@ class friends {
 
   void addFriend() { // Function to add a friend when selected is not in Friendslist (stats menu)
     getID(); // run function getID to receive an ID
+    msql.query( "SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" ); // Get highest idRelation
+    while (msql.next() ) { 
+      idRelation = msql.getString("idRelation"); // get the highest relation ID
+    }
     if (playerID > 0) { // if playerID is higher than 0
-      msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
+      if (idRelation == null) {
+        tempidRelation = 1;
+      } else {
+        tempidRelation = tempidRelation + 1;
+      }
+      msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempidRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
       println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
       totalFriends();
     }
@@ -37,21 +48,32 @@ class friends {
   }
 
   void totalPlayers() { // Function to grab all users that are not friends of current playing player
-    msql.query( "SELECT COUNT(DISTINCT u.idUser) FROM User u LEFT JOIN Friends f ON u.idUser != f.idFriends WHERE f.User_idUser = '%s' AND u.nameUser != '%s'", User.currentUser, ascore.name );
+    msql.query( "SELECT COUNT(u.idUser) FROM User u LEFT JOIN Friends f ON f.User_idUser != '%s'", User.currentUser);
     // Select a not already selected u.idUser(ID of player that is NOT a friend of current playing player) from the database where u.idUser is not the same as f.idFriends if f.User_idUser(ID of the current playing player) is the same id
     while (msql.next() ) { // Continue to the next line
       String tPlayers; // String to count TotalPlayers
-      tPlayers = msql.getString("COUNT(DISTINCT u.idUser)"); // Attach COUNT(DISTINCT u.idUser) (total of users not friends with current player) to the String tPlayers
+      tPlayers = msql.getString("COUNT(u.idUser)"); // Attach COUNT(DISTINCT u.idUser) (total of users not friends with current player) to the String tPlayers
       stats.totalPlayers = parseInt(tPlayers); // set stats.totalPlayers as the number version of the tPlayers String
       println("Total Players: " + stats.totalPlayers);
       if (stats.totalPlayers >= 0) { // if stats.totalPlayers is higher or same as 0 (to stop it from selecting if there are no users)
-        msql.query("SELECT DISTINCT u.nameUser FROM User u LEFT JOIN Friends f ON u.idUser != f.idFriends WHERE f.User_idUser = '%s' AND u.nameUser != '%s'", User.currentUser, ascore.name);
-        //  Select a not already selected u.nameUser(Name of an user that is NOT a friend of current playing player) from database where u.idUser is not the same as f.idFriends if f.user_idUser(ID of the current playing player) is the same id
-        while (msql.next() ) { // Continue to the next line
-          playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
-          println("NAME: " + playerName);
-          stats.players = append(stats.players, playerName); // Add playerName to array stats.players
-          //stats.aPlayers++; // Increase the array size of stats.players
+        if (stats.totalFriends >= 0 ) {
+          msql.query("SELECT DISTINCT u.nameUser FROM User u LEFT JOIN Friends f ON u.idUser != f.idFriends WHERE f.User_idUser = '%s' AND u.nameUser != '%s' LIMIT %s", User.currentUser, ascore.name, 13 - stats.totalFriends);
+          //  Select a not already selected u.nameUser(Name of an user that is NOT a friend of current playing player) from database where u.idUser is not the same as f.idFriends if f.user_idUser(ID of the current playing player) is the same id
+          while (msql.next() ) { // Continue to the next line
+            playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
+            println("NAME: " + playerName);
+            stats.players = append(stats.players, playerName); // Add playerName to array stats.players
+            stats.aPlayers++; // Increase the array size of stats.players
+          }
+        }
+        if (stats.totalFriends == 0) {
+          msql.query( "SELECT DISTINCT nameUser FROM User WHERE idUser != '%s' LIMIT %s", User.currentUser, 13 - stats.totalFriends);
+          while ( msql.next() ) {
+            playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
+            println("NAME: " + playerName);
+            stats.players = append(stats.players, playerName); // Add playerName to array stats.players
+            stats.aPlayers++; // Increase the array size of stats.players
+          }
         }
       } else {
         println("Couldn't find any users");

@@ -48,10 +48,10 @@ class Game_Manager {
 
 
     if (statspage) {
-      //home = false;
-      //stats.draw();
-      //stats.keyReleased();
-      //chieves.draw();
+      home = false;
+      stats.draw();
+      stats.keyReleased();
+      chieves.draw();
     }
     if (creditspage) {
       home = false;

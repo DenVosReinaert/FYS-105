@@ -55,8 +55,7 @@ class aScore {
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     } else {
-      //println("Old Score: " + oScore);
-      //println("New Score: " + score);
+      println("ERROR: Couldn't input score!");
     }
   }
 
