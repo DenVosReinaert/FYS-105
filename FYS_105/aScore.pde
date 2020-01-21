@@ -12,7 +12,7 @@ class aScore {
 
   aScore() {
     combo = 1;
-    totalSoundTracks = 2;
+    totalSoundTracks = 2; // Tracks for combo misses
   }
 
   void draw() {
