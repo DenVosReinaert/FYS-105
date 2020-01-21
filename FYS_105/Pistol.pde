@@ -3,7 +3,8 @@ class Pistol extends GameObject {
   Timer cooldownTimer = new Timer(1);
 
   Pistol() {
-    knockback = 5;
+    knockback = 5;       //The knockback you get when you shoot with the MachineGun
+    upgradeLevel = 1;    //Initializes the upgradeLevel of the MachineGun, which is 1
   }
 
 
@@ -47,12 +48,12 @@ class Pistol extends GameObject {
 
 
   void shoot() {
-
+    //Sets the muzzlepoint on the position of the gun, so the bullet starts from the gun
     myPlayer.muzzlePointX = objPosX;
     myPlayer.muzzlePointY = objPosY;
 
 
-
+    //Shoot at the direction based on which way the player is facing
     if (cooldownTimer.TimerDone() && myPlayer.shootingUp) {
 
 
@@ -70,7 +71,9 @@ class Pistol extends GameObject {
         pistolEmpty.play();
         pistolEmpty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
+    }
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingDown) {
 
 
       if (UI.ammoP > 0) {
@@ -87,7 +90,9 @@ class Pistol extends GameObject {
         pistolEmpty.play();
         pistolEmpty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
+    } 
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingLeft) {
 
 
       if (UI.ammoP > 0) {
@@ -104,7 +109,9 @@ class Pistol extends GameObject {
         pistolEmpty.play();
         pistolEmpty.rewind();
       }
-    } else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
+    } 
+    //Shoot at the direction based on which way the player is facing
+    else if (cooldownTimer.TimerDone() && myPlayer.shootingRight) {
 
 
       if (UI.ammoP > 0) {
@@ -122,7 +129,7 @@ class Pistol extends GameObject {
         pistolEmpty.rewind();
       }
     }
-    if (cooldownTimer.TimerDone())
+    if (cooldownTimer.TimerDone())  //When you shoot, the cooldowntimer resets so you can't shoot immediately
       cooldownTimer.Reset();
   }
 }

@@ -1,6 +1,6 @@
 class Powerups extends GameObject {
 
-  Timer powerUpLifeTimer = new Timer(10);
+  Timer powerUpLifeTimer = new Timer(10);  //How long the powerup will stay on the the screen
 
   int randomPowerUp;
   int totalPowerUps = 4;
@@ -8,7 +8,7 @@ class Powerups extends GameObject {
   float tempObjPosX, tempObjPosY;
 
   //initiales the width and height of the powerups.
-  Powerups(float objPosX, float objPosY) {
+  Powerups(float objPosX, float objPosY) { 
 
     powerUpChance = 2;
 
@@ -18,7 +18,7 @@ class Powerups extends GameObject {
     objWidth = 20;
     objHeight = 20;
 
-    randomPowerUp = round(random(0, totalPowerUps));
+    randomPowerUp = round(random(0.5, totalPowerUps+0.5));  //Sets the randomPowerUp to a random number
 
     powerUpLifeTimer.Reset();
   }
@@ -30,6 +30,7 @@ class Powerups extends GameObject {
       Remove(this);
     }
 
+    //4 possible powerups that can drop when an enemy dies.
     switch(randomPowerUp) {
     case 1:
       //SPEEDUP
@@ -170,13 +171,6 @@ class Powerups extends GameObject {
 //    ShieldUp();
 //  }
 //}
-
-
-
-
-
-
-
 
 
 //How the shield power-up works

@@ -12,46 +12,40 @@ class Pillar extends GameObject
     objHeight = pillar.height;
   }
 
-  void draw(float objPosX, float objPosY)
+  void draw(float objPosX, float objPosY)                              //Draw the object on the location that was given.
   {
     objPosX += objWidth/4;
 
-    bbSW = 10;
-    bbSH = objHeight/3 - 10;
+    bbSW = 10;                                                         //BoundingBox Side Width
+    bbSH = objHeight/3 - 10;                                           //BoundingBox Side Height
 
-    bbCW = objWidth - 10;
-    bbCH = bbSW;
+    bbCW = objWidth - 10;                                              //BoundingBox Cap Width
+    bbCH = bbSW;                                                       //BoundingBox cap Height
 
 
     //LEFT
-    bbL.x = objPosX;
+    bbL.x = objPosX;                                                   //BoundingBox Left positioning
     bbL.y = objPosY + (objHeight/3 * 2) + 5;
 
     //RIGHT
-    bbR.x = objPosX + objWidth - bbSW;
+    bbR.x = objPosX + objWidth - bbSW;                                 //BoundingBox Right positioning
     bbR.y = bbL.y;
 
     //TOP
-    bbT.x = objPosX + 5;
+    bbT.x = objPosX + 5;                                               //BoundingBox Top positioning
     bbT.y = bbL.y - 5;
 
     //BOTTOM
-    bbB.x = bbT.x;
+    bbB.x = bbT.x;                                                     //BoundingBox Bottom positiong
     bbB.y = objPosY + objHeight - bbCH + 5;
 
 
 
-    //
-
 
     image(pillar, objPosX, objPosY);
 
-    //rect(myPlayer.playerPosX, myPlayer.playerPosY, 5, 5);
-    //rect(myPlayer.playerPosX + myPlayer.playerWidth, myPlayer.playerPosY + myPlayer.playerHeight, -5, -5);
-
 
     //Collision statement Player & Enemy
-
     if ((myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX) > bbL.x && myPlayer.objPosX + myPlayer.moveVelX < bbL.x + bbSW && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > bbL.y && myPlayer.objPosY + myPlayer.moveVelY < bbL.y + bbSH)
     {
       myPlayer.collRight = true;
@@ -78,15 +72,9 @@ class Pillar extends GameObject
       myPlayer.collBott = true;
     }
 
-    //Collision box visualisation
-    //pushStyle();
-    //noFill();
-    //stroke(255);
-    //rect(bbT.x, bbT.y, bbCW, bbCH);
-    //rect(bbB.x, bbB.y, bbCW, bbCH);
-    //rect(bbR.x, bbR.y, bbSW, bbSH);
-    //rect(bbL.x, bbL.y, bbSW, bbSH);
-    //popStyle();
+
+
+
 
     for (int i = 0; i < GameObjectRef.gameObject.size(); i ++)
     {
@@ -119,6 +107,8 @@ class Pillar extends GameObject
           GameObjectRef.gameObject.get(i).collBott = true;
         }
       }
+
+
 
 
       //Pillar Collision v Bullet

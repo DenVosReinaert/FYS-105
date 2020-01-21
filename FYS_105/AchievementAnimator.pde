@@ -1,28 +1,29 @@
 class AchievementAnimator extends GameObject
 {
+  
   Timer achievementRetractTimer = new Timer(10);
-
   int achievementNumber;
 
 
 
-  AchievementAnimator(int achievementNumberInput, float objPosXInput, float objPosYInput)
+  AchievementAnimator(int achievementNumberInput, float objPosXInput, float objPosYInput)    //Input the number of the achievement, the starting position for the X and Y axis
   {
 
     chieves.achievementAnimsActive++;
 
-    achievementNumber = achievementNumberInput;
+    achievementNumber = achievementNumberInput;                                              //Set the number the variables of this instance equal to the input values
 
     objPosX = objPosXInput;
     objPosY = objPosYInput;
-    achievementRetractTimer.Reset();
+    
+    achievementRetractTimer.Reset();                                                         //Reset the timer
   }
 
 
 
   void draw()
   {
-    switch(achievementNumber)
+    switch(achievementNumber)                                                                //Draw the correct image corresponding to the number of the achievement that has been unlocked. Have it retract after the timer has run out, then destroy this instance.
     {
     case 1:
       image(chievePlate[achievementNumber], objPosX, objPosY);

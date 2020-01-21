@@ -52,20 +52,22 @@ class Player extends GameObject {
   void draw() {
 
     // powerup SpeedUp
-    if (!speedUpCollected)
-    {
-      defaultSpeed = defaultSpeedInit;
-      diaSpeed = diaSpeedInit;
-    }
-
+    // checks if the timer still going
     if (speedUpCollected && !speedUpTimer.TimerDone())
     {
       defaultSpeed = defaultSpeedInit * 2;
       diaSpeed = diaSpeedInit * 2;
     }
-
+    // if timer is done --> sets speedUpCollected false
     if (speedUpCollected && speedUpTimer.TimerDone())
       speedUpCollected = false;
+
+    // resets the speed
+    if (!speedUpCollected)
+    {
+      defaultSpeed = defaultSpeedInit;
+      diaSpeed = diaSpeedInit;
+    }
 
 
     // Detects collision with pillars
@@ -135,12 +137,6 @@ class Player extends GameObject {
 
     if (myPlayer.currentGun == machinegun)
       machineGun.holdingGun();
-
-
-
-    // Assigns value to movementspeed
-
-
 
 
     // Normalises the speed when moving diagonally
@@ -294,20 +290,6 @@ class Player extends GameObject {
       nextGun = true;
       break;
     }
-    //// Controls for switching weapons on desktop
-    //if (key == '1') onekey = true;
-    //if (key == '2') twokey = true;
-    //if (key == '3') threekey = true;
-
-    //// Controls for switching weapons on a cycle with snes controller
-    //if (key == 'q')
-    //{
-    //  prevGun = true;
-    //}
-    //if (key =='e')
-    //{
-    //  nextGun = true;
-    //}
   }
   void keyReleased() {
 
@@ -357,14 +339,5 @@ class Player extends GameObject {
       shootingDown = false;
       break;
     }
-
-    //// Release for controls for switching weapons on desktop
-    //if (key == '1') onekey = true;
-    //if (key == '2') twokey = true;
-    //if (key == '3') threekey = true;
-
-    //// Release for controls for switching weapons on a cycle with snes controller 
-    //if (key == 'q') prevGun = false;
-    //if (key == 'e') nextGun = false;
   }
 }
