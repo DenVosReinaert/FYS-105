@@ -1,8 +1,8 @@
 // Reno Bisschop
 class friends {
 
-  String pName; // Player Name
-  String fName; // Friends Name
+  String playerName; // Player Name
+  String friendsName; // Friends Name
   int pID; //Player ID
 
   void setup() {
@@ -11,12 +11,12 @@ class friends {
   }
 
   void getID() { // Function to get id from the selected player (stats menu)
-    msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", pName); // query to select id where nameUser is the same as the name in pName
+    msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", playerName); // query to select id where nameUser is the same as the name in playerName
     while (msql.next() ) { // Continue
-      pID = parseInt(msql.getString("idUser")); // Id of user pName(nameUser) is set into pID and put as an int
+      pID = parseInt(msql.getString("idUser")); // Id of user playerName(nameUser) is set into pID and put as an int
     }
     if (pID == 0) { // if pID is empty
-      println("Couldn't find ID for " + pName);
+      println("Couldn't find ID for " + playerName);
     }
   }
 
@@ -24,7 +24,7 @@ class friends {
     getID(); // run function getID to receive an ID
     if (pID > 0) { // if pID is higher than 0
       msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", pID, User.currentUser); // Insert pID and User.currentUser(ID Of user playing) into database as 'Friends'
-      println("Yeehaw " + ascore.name + " and " + pName + " are now friends!");
+      println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
       totalFriends();
     }
   }
@@ -32,7 +32,7 @@ class friends {
   void removeFriend() { // Function to remove a friend when selected is not in Playerlist (stats menu)
     getID(); // run function getID to receive an ID
     msql.query( "DELETE FROM Friends WHERE User_idUser = '%s' AND idFriends = '%s'", User.currentUser, pID); // Remove the record where User_idUser is User.currentUser(ID of user playing) and idFriends is pID(ID of selected friend)
-    println("How sad! " + ascore.name + " deleted " + pName + " as a friend");
+    println("How sad! " + ascore.name + " deleted " + playerName + " as a friend");
     totalFriends(); // Run function total friends to update the friendlist in stats menu
   }
 
@@ -48,9 +48,9 @@ class friends {
         msql.query("SELECT DISTINCT u.nameUser FROM User u LEFT JOIN Friends f ON u.idUser != f.idFriends WHERE f.User_idUser = '%s' AND u.nameUser != '%s'", User.currentUser, ascore.name);
         //  Select a not already selected u.nameUser(Name of an user that is NOT a friend of current playing player) from database where u.idUser is not the same as f.idFriends if f.user_idUser(ID of the current playing player) is the same id
         while (msql.next() ) { // Continue to the next line
-          pName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string pName(playerName)
-          println("NAME: " + pName);
-          stats.players = append(stats.players, pName); // Add pName to array stats.players
+          playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
+          println("NAME: " + playerName);
+          stats.players = append(stats.players, playerName); // Add playerName to array stats.players
           //stats.aPlayers++; // Increase the array size of stats.players
         }
       } else {
@@ -70,20 +70,20 @@ class friends {
         msql.query( "SELECT u.nameUser FROM User u INNER JOIN Friends f ON u.idUser = f.idFriends WHERE f.User_idUser = '%s'", User.currentUser );
         // Select u.nameUser(Name of friend of current playing player) from database table User and Friends where u.idUser(id of player(ANY) ) is equal to f.idFriends(id of friend current playing player)
         while (msql.next() ) { // Continue to next line
-          fName = msql.getString("nameUser"); // Attach nameUser(Name of friend of current playing player) to string fName(friendName)
-          stats.friends = append(stats.friends, fName); // Add fName to array stats.friends
+          friendsName = msql.getString("nameUser"); // Attach nameUser(Name of friend of current playing player) to string friendsName(friendName)
+          stats.friends = append(stats.friends, friendsName); // Add friendsName to array stats.friends
           //stats.aFriends++; // Increase the array size of stats.friends
         }
       } else {
         println("Couldn't find any friends");
       }
     }
-    //msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", pName); // query to select id where nameUser is the same as the name in pName
+    //msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", playerName); // query to select id where nameUser is the same as the name in playerName
     //while (msql.next() ) { // Continue
-    //  pID = parseInt(msql.getString("idUser")); // Id of user pName(nameUser) is set into pID and put as an int
+    //  pID = parseInt(msql.getString("idUser")); // Id of user playerName(nameUser) is set into pID and put as an int
     //}
     //if (pID == 0) { // if pID is empty
-    //  println("Couldn't find ID for " + pName);
+    //  println("Couldn't find ID for " + playerName);
     //}
   }
 
@@ -91,7 +91,7 @@ class friends {
   //getID(); // run function getID to receive an ID
   //if (pID > 0) { // if pID is higher than 0
   //  msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", pID, User.currentUser); // Insert pID and User.currentUser(ID Of user playing) into database as 'Friends'
-  //  println("Yeehaw " + ascore.name + " and " + pName + " are now friends!");
+  //  println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
   //  totalFriends();
   //}
 }
@@ -99,7 +99,7 @@ class friends {
 //void removeFriend() { // Function to remove a friend when selected is not in Playerlist (stats menu)
 //getID(); // run function getID to receive an ID
 //msql.query( "DELETE FROM Friends WHERE User_idUser = '%s' AND idFriends = '%s'", User.currentUser, pID); // Remove the record where User_idUser is User.currentUser(ID of user playing) and idFriends is pID(ID of selected friend)
-//println("How sad! " + ascore.name + " deleted " + pName + " as a friend");
+//println("How sad! " + ascore.name + " deleted " + playerName + " as a friend");
 //totalFriends(); // Run function total friends to update the friendlist in stats menu
 
 
@@ -115,9 +115,9 @@ class friends {
 //    msql.query("SELECT DISTINCT u.nameUser FROM User u LEFT JOIN Friends f ON u.idUser != f.idFriends WHERE f.User_idUser = '%s' AND u.nameUser != '%s'", User.currentUser, ascore.name);
 //    //  Select a not already selected u.nameUser(Name of an user that is NOT a friend of current playing player) from database where u.idUser is not the same as f.idFriends if f.user_idUser(ID of the current playing player) is the same id
 //    while (msql.next() ) { // Continue to the next line
-//      pName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string pName(playerName)
-//      println("NAME: " + pName);
-//      stats.players = append(stats.players, pName); // Add pName to array stats.players
+//      playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
+//      println("NAME: " + playerName);
+//      stats.players = append(stats.players, playerName); // Add playerName to array stats.players
 //      stats.aPlayers++; // Increase the array size of stats.players
 //    }
 //  } else {
@@ -137,8 +137,8 @@ class friends {
 //    msql.query( "SELECT u.nameUser FROM User u INNER JOIN Friends f ON u.idUser = f.idFriends WHERE f.User_idUser = '%s'", User.currentUser );
 //    // Select u.nameUser(Name of friend of current playing player) from database table User and Friends where u.idUser(id of player(ANY) ) is equal to f.idFriends(id of friend current playing player)
 //    while (msql.next() ) { // Continue to next line
-//      fName = msql.getString("nameUser"); // Attach nameUser(Name of friend of current playing player) to string fName(friendName)
-//      stats.friends = append(stats.friends, fName); // Add fName to array stats.friends
+//      friendsName = msql.getString("nameUser"); // Attach nameUser(Name of friend of current playing player) to string friendsName(friendName)
+//      stats.friends = append(stats.friends, friendsName); // Add friendsName to array stats.friends
 //      stats.aFriends++; // Increase the array size of stats.friends
 //    }
 //  } else {
