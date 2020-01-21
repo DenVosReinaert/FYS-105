@@ -19,8 +19,8 @@ class aScore {
 
     if (score >= 100000 && !chieveUnlocked)
     {
-      chieves.UnlockAchievement(1);
-      chieveUnlocked = true;
+      //chieves.AddAchievementProgress(1, 100000);
+      //chieveUnlocked = true;
     } 
 
     float tCombo = combo - combo%0.01; // This is the number visible on the display
@@ -35,7 +35,7 @@ class aScore {
   }
 
 
-
+//
   void saveScore() {
     //println("Levens" + UI.levens);
     if (msql.connect() && UI.levens <= 0) {
