@@ -1,7 +1,8 @@
+//Adriaan Pronk
 public class GameObject {
 
-  ArrayList<GameObject> gameObject = new ArrayList();
-  String tag;
+  ArrayList<GameObject> gameObject = new ArrayList();                                                      //List of all GameObject instances
+  String tag;                                                                                              //Recognition tag
 
 
   PVector spawnerPos0, spawnerPos1, spawnerPos2, spawnerPos3;
@@ -19,8 +20,8 @@ public class GameObject {
 
   int totalEnemyCount;
 
-  float objPosX, objPosY, objWidth, objHeight;
-  float tempObjPosX, tempObjPosY;
+  float objPosX, objPosY, objWidth, objHeight;                                                             //Object positioning and dimensions
+  float tempObjPosX, tempObjPosY;                                                                          //Temporary object position in case of "homing" projectiles for example
   float scorePopUp, scorePopUpAlpha;
 
   float moveVelX, moveVelY;
@@ -47,44 +48,29 @@ public class GameObject {
 
   GameObject() 
   {
-
-    spawnerPos0 = new PVector();
+    spawnerPos0 = new PVector();                                                                           //Initializing of the spawner position vectors
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();
     spawnerPos3 = new PVector();
-    //for(int i = 0; i < gameObject.size(); i ++)
-    //{
-    //  GameObject gameobject = new GameObject();
-    //}
   }
 
 
   void draw()
   {    
-    noStroke();
-    //println("I have been drawn");
-
-    tileSize = 100;
-  }//enemyUpdate
-
-  boolean Dead() {
-    return false;
   }
 
-  void Add(GameObject object)
+  void Add(GameObject object)                                                                             //Instantiate the given object in the gameObject list
   {
     GameObjectRef.gameObject.add(object); 
-    //println("A new object has been created");
   }
 
-  void Remove(GameObject object)
+  void Remove(GameObject object)                                                                          //Remove the instance of the given object from the gameObject list
   {
     GameObjectRef.gameObject.remove(object);
   }
 
-  void drawObjects() {
-    //println(gameObject);
-
+  void drawObjects()
+  {                                                                                    //Run the draw function of each instance in the gameObject list
     for (int i = 0; i < gameObject.size(); i++) {
       gameObject.get(i).draw();
     }

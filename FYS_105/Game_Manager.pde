@@ -1,3 +1,4 @@
+//Quinn Koene
 class Game_Manager {
   boolean login;
   boolean dead;

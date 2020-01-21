@@ -1,3 +1,4 @@
+// Reno Bisschop
 class stats { 
   int textX = 155;
   int totalFriends;

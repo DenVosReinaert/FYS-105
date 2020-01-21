@@ -1,3 +1,4 @@
+//Adriaan Pronk
 class AchievementManager
 {
 
@@ -7,17 +8,10 @@ class AchievementManager
   int achieved, achievementAnimsActive, totalAchievements, progression, progressionCurrent;
   String tempId, dbDupeInsertCheck;
 
+
   float startPosX, startPosY, endPosX, endPosY;
 
-  float[] currentPosX = new float[totalAchievements];
-  float[] currentPosY = new float[totalAchievements];
-
-  int[] oldschoolTimer = new int[totalAchievements];
-
-  //boolean[] achievementAnim = new boolean[totalAchievements];
-
-
-  ArrayList<AchievementAnimator> achievementAnim = new ArrayList<AchievementAnimator>();
+  ArrayList<AchievementAnimator> achievementAnim = new ArrayList<AchievementAnimator>();   //Creates a list of instances for the animations of an achievement plate when they are unlocked.
 
 
 
@@ -35,15 +29,15 @@ class AchievementManager
 
   void draw()
   {
-    for (int i = 0; i < achievementAnim.size(); i++)
+    for (int i = 0; i < achievementAnim.size(); i++)                                                 //Call the draw function of every existing achievement animator that is in the existing list
     {
       achievementAnim.get(i).draw();
     }
 
     startPosX = width;
-    startPosY = height - chievePlate[1].height - (chievePlate[1].height * achievementAnimsActive);
+    startPosY = height - chievePlate[1].height - (chievePlate[1].height * achievementAnimsActive);   //Start the animation of an achievement plate in the bottom right corner
 
-    endPosX = width - chievePlate[1].width;
+    endPosX = width - chievePlate[1].width;                                                          //End the animation of an achievement plate when it is fully on screen
     endPosY = startPosY;
   }
 
@@ -52,6 +46,7 @@ class AchievementManager
   {
     if (msql.connect()) 
     {
+
       msql.query( "SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );
       while ( msql.next() ) 
       {
@@ -83,12 +78,13 @@ class AchievementManager
 
       if (achieved != 1 && progression == progressionGoal)
       {
+
         msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND progressionAchievement = '%s'", 1, User.currentUser, achievementNumber, progressionGoal);
 
         achievement.play();
         achievement.rewind();
 
-        achievementAnim.add(new AchievementAnimator(achievementNumber, startPosX, startPosY));
+        achievementAnim.add(new AchievementAnimator(achievementNumber, startPosX, startPosY));    //Create an instance of the achievement animator with the corresponding achievement number
       }
     }
   }

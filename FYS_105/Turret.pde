@@ -1,3 +1,4 @@
+//Adriaan Pronk
 class Turret extends GameObject
 {
 
@@ -76,19 +77,6 @@ class Turret extends GameObject
     //BOTTOM
     bbB.x = bbT.x;
     bbB.y = objPosY + objHeight - bbCH + 5;
-
-
-
-    //Collison Box Wireframes for checks
-    //pushStyle();
-    //noFill();
-    //stroke(255);
-    //rect(bbL.x, bbL.y, bbSW, bbSH);
-    //rect(bbR.x, bbR.y, bbSW, bbSH);
-    //rect(bbT.x, bbT.y, bbCW, bbCH);
-    //rect(bbB.x, bbB.y, bbCW, bbCH);
-    //popStyle();
-
 
 
     //Collision statement Player & Enemy

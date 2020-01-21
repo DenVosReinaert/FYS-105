@@ -1,10 +1,11 @@
+//Adriaan Pronk
 class LevelManager
 {
   int lvlNum = 1;
   int lvlCount = 9;
   int tileSize = 100;
 
-  Level1 lvl1 = new Level1();
+  Level1 lvl1 = new Level1();                                  //Initialization of each currently existin level
   Level2 lvl2 = new Level2();
   Level3 lvl3 = new Level3();
   Level4 lvl4 = new Level4();
@@ -14,9 +15,9 @@ class LevelManager
   Level8 lvl8 = new Level8();
   Level9 lvl9 = new Level9();
 
-  boolean apActive = false;
+  boolean apActive = false;                                    //Set the arrow pointers to inactive;
 
-  PVector apU, apD, apL, apR;
+  PVector apU, apD, apL, apR;                                  //Position vectors for each arrow pointer
 
 
   int turretCount = 4;
@@ -37,7 +38,7 @@ class LevelManager
     lvl8.setup();
     lvl9.setup();
 
-    apU = new PVector(width/2 - 33/2, 0);
+    apU = new PVector(width/2 - 33/2, 0);                     //Specify the values in the arrowpointer position vectors
     apD = new PVector(width/2 - 33/2, height - 49);
     apL = new PVector(0, height/2 - 38/2);
     apR = new PVector(width - 49, height/2 - 38/2);
@@ -60,7 +61,7 @@ class LevelManager
       lvlNum = 1;
 
 
-    switch(lvlNum) {
+    switch(lvlNum) {                                        //Run the draw function of the level corresponding to the current number of the level
     case 1:
       lvl1.draw();
       break;
@@ -110,19 +111,8 @@ class LevelManager
         ||
         (myPlayer.objPosX + myPlayer.moveVelX < apR.x + 49 && myPlayer.objPosX + myPlayer.objWidth + myPlayer.moveVelX > apR.x && myPlayer.objPosY + myPlayer.moveVelY < apR.y + 38 && myPlayer.objPosY + myPlayer.objHeight + myPlayer.moveVelY > apR.y))
       {
-        spawn.NextWave();
+        spawn.NextWave();                                      //If the player steps onto one of the arrow pointers run the NextWave function in the Spawner class
       }
     }
   }
 }
-
-
-//lvlMngr.turrets[0].draw(-60 + lvlMngr.tileSize * 2, -40 + lvlMngr.tileSize);
-//lvlMngr.turrets[1].draw(-60 + lvlMngr.tileSize * 9, -40 + lvlMngr.tileSize);
-//lvlMngr.turrets[2].draw(-60 + lvlMngr.tileSize * 2, -40 + lvlMngr.tileSize * 4);
-//lvlMngr.turrets[3].draw(-60 + lvlMngr.tileSize * 9, -40 + lvlMngr.tileSize * 4);
-
-//lvlMngr.pillars[0].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 1.5);
-//lvlMngr.pillars[1].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 1.5);
-//lvlMngr.pillars[2].draw(-60 + lvlMngr.tileSize * 3, -40 + lvlMngr.tileSize * 4.5 - 16);
-//lvlMngr.pillars[3].draw(-60 + lvlMngr.tileSize * 10, -40 + lvlMngr.tileSize * 4.5 - 16);
