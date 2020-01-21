@@ -64,12 +64,12 @@ class stats {
       }
       if (keyCode == RIGHT) {
         //if () {
-        //  selected = Friends.pName;
+        //  selected = Friends.playerName;
         //  Friends.getID();
         //  Friends.removeFriend();
         //}
         //if () {
-        //  selected = Friends.pName;
+        //  selected = Friends.playerName;
         //  Friends.getID();
         //  Friends.addFriend();
         //}
