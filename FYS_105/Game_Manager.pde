@@ -300,7 +300,7 @@ class Game_Manager {
 
           if (code.equals(codeKonami))
           {
-            chieves.UnlockAchievement(3);
+            chieves.AddAchievementProgress(3, 0);
 
             print("!KONAMI CODE HAS BEEN ENTERED!");
             if (trackNumber == 2)
@@ -311,7 +311,7 @@ class Game_Manager {
 
           if (code.equals(codeStreetFighter))
           {
-            chieves.UnlockAchievement(4);
+            chieves.AddAchievementProgress(4, 0);
 
             println("HADOUKEN!");
             if (trackNumber == 3)
@@ -321,7 +321,7 @@ class Game_Manager {
 
           if (code.equals(codeUndertale))
           {
-            chieves.UnlockAchievement(5);
+            chieves.AddAchievementProgress(5, 0);
 
             println("You're gonna have a bad time");
             if (trackNumber == 4)
@@ -331,7 +331,7 @@ class Game_Manager {
 
           if (code.equals(codeDoom))
           {
-            chieves.UnlockAchievement(6);
+            chieves.AddAchievementProgress(6, 0);
 
             println("At Doom's Gate");
             if (trackNumber == 5)
@@ -380,7 +380,7 @@ class Game_Manager {
 
           if (code.equals(codeKonami))
           {
-            chieves.UnlockAchievement(3);
+            chieves.AddAchievementProgress(3, 0);
 
             print("!KONAMI CODE HAS BEEN ENTERED!");
             if (trackNumber == 2)
@@ -391,7 +391,7 @@ class Game_Manager {
 
           if (code.equals(codeStreetFighter))
           {
-            chieves.UnlockAchievement(4);
+            chieves.AddAchievementProgress(4, 0);
 
             println("HADOUKEN!");
             if (trackNumber == 3)
@@ -401,7 +401,7 @@ class Game_Manager {
 
           if (code.equals(codeUndertale))
           {
-            chieves.UnlockAchievement(5);
+            chieves.AddAchievementProgress(5, 0);
 
             println("You're gonna have a bad time");
             if (trackNumber == 4)
@@ -411,7 +411,7 @@ class Game_Manager {
 
           if (code.equals(codeDoom))
           {
-            chieves.UnlockAchievement(6);
+            chieves.AddAchievementProgress(6, 0);
 
             println("At Doom's Gate");
             if (trackNumber == 5)

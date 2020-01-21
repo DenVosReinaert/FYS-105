@@ -1,7 +1,13 @@
 //Adriaan Pronk
 class AchievementManager
 {
-  int achieved, achievementAnimsActive, totalAchievements;
+
+
+  //int chieveFalse = 0;
+
+  int achieved, achievementAnimsActive, totalAchievements, progression, progressionCurrent;
+  String tempId, dbDupeInsertCheck;
+
 
   float startPosX, startPosY, endPosX, endPosY;
 
@@ -36,20 +42,45 @@ class AchievementManager
   }
 
 
-
-  void UnlockAchievement(int achievementNumber)
+  void AddAchievementProgress(int achievementNumber, int progressionGoal)
   {
-
     if (msql.connect()) 
     {
-      msql.query( "SELECT collectedAchievement FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );    //Check wether the user has achieved the mentioned achievement
+
+      msql.query( "SELECT Achievements_idAchievements FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );
+      while ( msql.next() ) 
+      {
+        dbDupeInsertCheck = msql.getString("Achievements_idAchievements");
+      }
+
+      if (dbDupeInsertCheck == null)
+      {
+        msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement, progressionAchievement) VALUES ('%s','%s','%s','%s')", User.currentUser, achievementNumber, 0, 0);
+      }
+
+
+      msql.query( "SELECT progressionAchievement FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );
+      while (msql.next() ) 
+      {
+        progression = parseInt(msql.getString("progressionAchievement"));
+      }
+
+      msql.query( "SELECT collectedAchievement FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber);
       while (msql.next() ) 
       {
         achieved = parseInt(msql.getString("collectedAchievement"));
       }
-      if (achieved != 1) 
+
+
+      if (progression < progressionGoal)
+        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", progression + 1, User.currentUser, achievementNumber, achieved);
+
+
+      if (achieved != 1 && progression == progressionGoal)
       {
-        msql.query("INSERT INTO User_has_Achievements (User_idUser, Achievements_idAchievements, collectedAchievement, progressionAchievement) VALUES ('%s','%s','%s','%s')", User.currentUser, achievementNumber, 1, 0);    //Add a record in the database stating that the user has unlocked the achievement
+
+        msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND progressionAchievement = '%s'", 1, User.currentUser, achievementNumber, progressionGoal);
+
         achievement.play();
         achievement.rewind();
 
