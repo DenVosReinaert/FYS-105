@@ -18,7 +18,7 @@ AudioPlayer loginMusic, gameMusic, megalovania, contraJungleTheme, guilesTheme, 
 PImage main, login, pillar, levelTemplate, scrBgr, pokemonMDB, statsBg, creditsBG, controlImg;
 
 // UI
-PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb, arrow, seasonpass;
+PImage healthbarS, healthbarSb, healthP, bullet, shotgunS, shieldP, shieldbarS, shieldbarSb, arrow;
 
 //Achievements
 PImage[] chievePlate = new PImage[7];
@@ -69,7 +69,6 @@ void LoadAssets()
 
   // UI
 
-  seasonpass = loadImage("/data/img/LastStand-SEASONPASS.png");
   arrow = loadImage("/data/sprites/UI/Arrow.png");
   healthbarS = loadImage("/data/sprites/UI/HealthBarSlots.png");
   healthbarSb = loadImage("/data/sprites/UI/HealthBarSlots_Backdrop.png");

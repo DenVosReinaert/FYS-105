@@ -375,7 +375,6 @@ class UI {
       tutorial();
       pushStyle();
       main.resize(width, height);
-      seasonpass.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
       textSize(31);
@@ -404,7 +403,6 @@ class UI {
         rect(563, 150, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
-      image(seasonpass, 0, 0);
       popStyle();
     }
 
