@@ -51,6 +51,7 @@ class Game_Manager {
       home = false;
       stats.draw();
       stats.keyReleased();
+      stats.keyPressed();
       chieves.draw();
     }
     if (creditspage) {

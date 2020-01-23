@@ -3,16 +3,20 @@ class friends {
 
   String playerName; // Player Name
   String friendName; // Friends Name
-  String idRelation; // id relation between friend and player
-  int tempidRelation; // temporary id relation between friend and player
   int playerID; //Player ID
+
+
+  friends() 
+  {
+  }
+
 
   void setup() {
   }
-  friends() {
-  }
 
-  void getID() { // Function to get id from the selected player (stats menu)
+
+  void getID() 
+  { // Function to get id from the selected player (stats menu)
     msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", playerName); // query to select id where nameUser is the same as the name in playerName
     while (msql.next() ) { // Continue
       playerID = parseInt(msql.getString("idUser")); // Id of user playerName(nameUser) is set into playerID and put as an int
@@ -20,21 +24,16 @@ class friends {
     if (playerID == 0) { // if playerID is empty
       println("Couldn't find ID for " + playerName);
     }
+    
   }
+
 
   void addFriend() { // Function to add a friend when selected is not in Friendslist (stats menu)
     getID(); // run function getID to receive an ID
-    msql.query( "SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" ); // Get highest idRelation
-    while (msql.next() ) { 
-      idRelation = msql.getString("idRelation"); // get the highest relation ID
-    }
+
     if (playerID > 0) { // if playerID is higher than 0
-      if (idRelation == null) {
-        tempidRelation = 1;
-      } else {
-        tempidRelation = tempidRelation + 1;
-      }
-      msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempidRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
+    
+      msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
       println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
       totalFriends();
     }
@@ -51,9 +50,9 @@ class friends {
     msql.query( "SELECT COUNT(u.idUser) FROM User u LEFT JOIN Friends f ON f.User_idUser != '%s'", User.currentUser);
     // Select a not already selected u.idUser(ID of player that is NOT a friend of current playing player) from the database where u.idUser is not the same as f.idFriends if f.User_idUser(ID of the current playing player) is the same id
     while (msql.next() ) { // Continue to the next line
-      String tPlayers; // String to count TotalPlayers
-      tPlayers = msql.getString("COUNT(u.idUser)"); // Attach COUNT(DISTINCT u.idUser) (total of users not friends with current player) to the String tPlayers
-      stats.totalPlayers = parseInt(tPlayers); // set stats.totalPlayers as the number version of the tPlayers String
+      int tPlayers; // String to count TotalPlayers
+      tPlayers = parseInt(msql.getString("COUNT(u.idUser)")); // Attach COUNT(DISTINCT u.idUser) (total of users not friends with current player) to the String tPlayers
+      stats.totalPlayers = tPlayers; // set stats.totalPlayers as the number version of the tPlayers String
       println("Total Players: " + stats.totalPlayers);
       if (stats.totalPlayers >= 0) { // if stats.totalPlayers is higher or same as 0 (to stop it from selecting if there are no users)
         if (stats.totalFriends >= 0 ) {
@@ -84,9 +83,9 @@ class friends {
   void totalFriends() { // Function to grab all friends of current playing player
     msql.query( "SELECT COUNT(User_idUser) FROM Friends WHERE User_idUser = '%s'", User.currentUser ); // Count all the friends the current playing player has by checking if id is in Friends
     while (msql.next() ) { // Continue to the next line
-      String tFriends; // String to count total friends
-      tFriends = msql.getString("COUNT(User_idUser)"); // Attach COUNT(User_idUser) (the amount of friends the current playing player has) to the String tFriends
-      stats.totalFriends = parseInt(tFriends); // Change the tFriends string into a number
+      int tFriends; // String to count total friends
+      tFriends = parseInt(msql.getString("COUNT(User_idUser)")); // Attach COUNT(User_idUser) (the amount of friends the current playing player has) to the String tFriends
+      stats.totalFriends = tFriends; // Change the tFriends string into a number
 
       if (stats.totalFriends != 0) { // to make sure it does not select when user has no friends
         msql.query( "SELECT u.nameUser FROM User u INNER JOIN Friends f ON u.idUser = f.idFriends WHERE f.User_idUser = '%s'", User.currentUser );
