@@ -18,7 +18,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
         objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
         image(doubleBu, objPosX, objPosY);
-        //handgunUp.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -26,7 +25,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
         objPosY = myPlayer.objPosY + myPlayer.objHeight/2+6;
         image(doubleBd, objPosX, objPosY);
-        //handgunDown.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -34,7 +32,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX - 7;
         objPosY = myPlayer.objPosY + 15;
         image(doubleBr, objPosX, objPosY);
-        //handgunRight.resize(35, 16);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -42,7 +39,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX - 30;
         objPosY = myPlayer.objPosY + 15;
         image(doubleBl, objPosX, objPosY);
-        //handgunLeft.resize(35, 16);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -54,7 +50,6 @@ class Shotgun extends GameObject {
         objPosY = myPlayer.objPosY - myPlayer.objHeight/2;
 
         image(pumpU, objPosX, objPosY);
-        //handgunUp.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -62,7 +57,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX + myPlayer.objWidth/2+4;
         objPosY = myPlayer.objPosY + myPlayer.objHeight/2+10;
         image(pumpD, objPosX, objPosY);
-        //handgunDown.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -70,7 +64,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX;
         objPosY = myPlayer.objPosY + 10;
         image(pumpR, objPosX, objPosY);
-        //handgunRight.resize(35, 16);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -78,7 +71,6 @@ class Shotgun extends GameObject {
         objPosX = myPlayer.objPosX - 30;
         objPosY = myPlayer.objPosY + 10;
         image(pumpL, objPosX, objPosY);
-        //handgunLeft.resize(35, 16);
 
         myPlayer.muzzlePointX = objPosX;
         myPlayer.muzzlePointY = objPosY;
@@ -94,7 +86,6 @@ class Shotgun extends GameObject {
         image(shotg_up, objPosX, objPosY);
 
         popStyle();
-        //handgunUp.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX + 8;
         myPlayer.muzzlePointY = objPosY - 15;
@@ -106,7 +97,6 @@ class Shotgun extends GameObject {
         image(shotg_down, objPosX, objPosY);
 
         popStyle();
-        //handgunDown.resize(8, 35);
 
         myPlayer.muzzlePointX = objPosX + 8;
         myPlayer.muzzlePointY = objPosY;
@@ -117,7 +107,6 @@ class Shotgun extends GameObject {
         shotg_right.resize(50, 45);
         image(shotg_right, objPosX, objPosY);
         popStyle();
-        //handgunRight.resize(35, 16);
 
         myPlayer.muzzlePointX = objPosX + 5;
         myPlayer.muzzlePointY = objPosY + 10;
