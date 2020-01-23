@@ -10,11 +10,17 @@ class stats {
   int cursorPosY = 0;
   int cursorPosY2 = -1;
   boolean nextEntry, prevEntry, selectEntry;
-  void setup() {
+
+  void setup() 
+  {
+    nextEntry = false;
+    prevEntry = false;
+    selectEntry = false;
   }
 
   void draw() { 
     if (gamemngr.statspage) {
+
       pushStyle();
       statsBg.resize(width, height);
       image(statsBg, 0, 0);
@@ -64,22 +70,24 @@ class stats {
         cursorPosY2 = players.length;
 
 
-      println(nextEntry);
 
       if (nextEntry)
       {
+        nextEntry = false;
         if (cursorPosY <= friends.length && cursorPosY2 == -1)
         {
           cursorPosY++;
         }
-        if ((cursorPosY2 <= players.length && cursorPosY == friends.length + 1))
+        if (cursorPosY2 <= players.length && cursorPosY == friends.length + 1)
         {
           cursorPosY2++;
         }
+        println("NEXT!");
       }
 
       if (prevEntry)
       {
+        prevEntry = false;
         if (cursorPosY >= 1 && cursorPosY2 == -1)
         {
           cursorPosY--;
@@ -88,18 +96,22 @@ class stats {
         {
           cursorPosY2--;
         }
+        println("PREV!");
       }
 
       if (selectEntry)
       {
+        selectEntry = false;
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
           Friends.getID();
           Friends.removeFriend();
         }
-        if (cursorPosY2 != -1 && cursorPosY == friends.length + 1) {
+        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
+        {
           Friends.getID();
           Friends.addFriend();
         }
+        println("SELECTED");
       }
     }
   }
