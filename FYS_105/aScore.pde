@@ -19,8 +19,8 @@ class aScore {
 
     if (score >= 100000 && !chieveUnlocked)
     {
-      //chieves.AddAchievementProgress(1, 100000);
-      //chieveUnlocked = true;
+      chieves.AddAchievementProgress(1, 0);
+      chieveUnlocked = true;
     } 
 
     float tCombo = combo - combo%0.01; // This is the number visible on the display in with decimals
