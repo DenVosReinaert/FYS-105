@@ -17,7 +17,7 @@ class AchievementManager
 
   AchievementManager()
   {
-    totalAchievements = 6;
+    totalAchievements = 10;
 
     msql.connect();
     achievementAnimsActive = 0;
