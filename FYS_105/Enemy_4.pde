@@ -123,6 +123,9 @@ class Brute extends GameObject {
 
           Remove(GameObjectRef.gameObject.get(i));
           ascore.combo += gamemngr.comboMultiplier;
+
+          chieves.AddAchievementProgress(11, 10);
+
           gamemngr.shakeAmount = 3;
           gamemngr.shake = true;
           if (hp == 0) {

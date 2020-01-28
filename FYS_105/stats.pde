@@ -109,7 +109,7 @@ class stats {
         }
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
         {
-          Friends.playerName = players[cursorPosY2];
+
           Friends.getID();
           Friends.addFriend();
         }
