@@ -34,7 +34,7 @@ class stats {
       textSize(40);
       for (int k = 0; k < enemyStats.length; k++)
       {
-        text("" + enemyStats[k], 250, textX + 200 + 40 * k);
+        text("" + enemyStats[k], 250, textX + 10 + 40 * k);
       }
       popStyle();
 
@@ -182,11 +182,12 @@ class stats {
   {
     if (msql.connect())
     {
-      for (int i = 0; i < enemyStats.length; i ++)
-      {
-        msql.query("SELECT CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount) AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON  k.enemyID = u.Killed_enemyID WHERE u.User_idUser = '%s' AND k.enemyID = '%s' ORDER BY k.enemyID ASC", User.currentUser, i);
-        enemyStats[i] = msql.getString("enemyStats");
-      }
+      while (msql.next())
+        for (int i = 0; i < enemyStats.length; i ++)
+        {
+          msql.query("SELECT CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount) AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON  k.enemyID = u.Killed_enemyID WHERE u.User_idUser = '%s' AND u.Killed_enemyID = '%s' ORDER BY k.enemyID ASC", User.currentUser, i);
+          enemyStats[i] = msql.getString("CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount)");
+        }
     }
   }
 }

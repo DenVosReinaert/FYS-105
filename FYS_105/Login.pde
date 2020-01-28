@@ -118,6 +118,7 @@ class Login {
         gamemngr.login = false;     
         gamemngr.home = true;
         chieves.FillKilledTable();
+        stats.GetStats();
       }
     }
     // Check what state & depending on state move through the letters upwards 
