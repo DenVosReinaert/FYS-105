@@ -10,16 +10,19 @@ class stats {
   String[] enemyStats = new String[5];
   int cursorPosY = 0;
   int cursorPosY2 = -1;
-  boolean nextEntry, prevEntry, selectEntry;
+  boolean nextEntry, prevEntry, selectEntry, statsRetreived;
 
   void setup() 
   {
     nextEntry = false;
     prevEntry = false;
     selectEntry = false;
+    statsRetreived = false;
   }
 
   void draw() { 
+    GetStats();
+
     if (gamemngr.statspage) {
 
       pushStyle();
@@ -30,12 +33,10 @@ class stats {
       text("'S", 440, textX);
       text("STATS", 520, textX);
 
+
       pushStyle();
       textSize(40);
-      for (int k = 0; k < enemyStats.length; k++)
-      {
-        text("" + enemyStats[k], 250, textX + 10 + 40 * k);
-      }
+      text("" + msql.getString("CONCAT(k.enemyName, '', u.killCount, '')"), 250, textX + 100 + 40);
       popStyle();
 
 
@@ -94,7 +95,7 @@ class stats {
         {
           cursorPosY2++;
         }
-        println("NEXT!");
+        //println("NEXT!");
       }
 
       if (prevEntry)
@@ -108,24 +109,24 @@ class stats {
         {
           cursorPosY2--;
         }
-        println("PREV!");
+        //println("PREV!");
       }
 
       if (selectEntry)
       {
         selectEntry = false;
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
-          Friends.playerName = players[cursorPosY];
-          Friends.getID();
-          Friends.removeFriend();
+          //Friends.playerName = players[cursorPosY];
+          //Friends.getID();
+          //Friends.removeFriend();
         }
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
         {
 
-          Friends.getID();
-          Friends.addFriend();
+          //Friends.getID();
+          //Friends.addFriend();
         }
-        println("SELECTED");
+        //println("SELECTED");
       }
     }
   }
@@ -180,14 +181,15 @@ class stats {
 
   void GetStats()
   {
-    if (msql.connect())
+
+    while (msql.next())
     {
-      while (msql.next())
-        for (int i = 0; i < enemyStats.length; i ++)
-        {
-          msql.query("SELECT CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount) AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON  k.enemyID = u.Killed_enemyID WHERE u.User_idUser = '%s' AND u.Killed_enemyID = '%s' ORDER BY k.enemyID ASC", User.currentUser, i);
-          enemyStats[i] = msql.getString("CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount)");
-        }
+      msql.query("SELECT CONCAT(k.enemyName, '', u.killCount, '') AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON u.Killed_enemyID = k.enemyID WHERE u.User_idUser = '%s' ORDER BY k.enemyID ASC", User.currentUser);
+      println(msql.getString("SELECT k.enemyName, u.killCount"));
+      for (int i = 0; i < enemyStats.length; i ++)
+      {
+        enemyStats[i] = msql.getString("enemyStats");
+      }
     }
   }
 }
