@@ -36,7 +36,7 @@ class stats {
 
       pushStyle();
       textSize(40);
-      text("" + msql.getString("CONCAT(k.enemyName, '', u.killCount, '')"), 250, textX + 100 + 40);
+      //text("" + msql.getString("CONCAT(k.enemyName, '', u.killCount, '')"), 250, textX + 100 + 40);
       popStyle();
 
 
@@ -183,14 +183,10 @@ class stats {
   {
     while (msql.next())
     {
-      msql.query("SELECT k.enemyName, u.killCount, CONCAT(k.enemyName, '', u.killCount, '') AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON u.Killed_enemyID = k.enemyID WHERE u.User_idUser = '%s' ORDER BY k.enemyID ASC", User.currentUser);
+      msql.query("SELECT k.enemyName, u.killCount FROM User_has_Killed u INNER JOIN Killed k ON u.Killed_enemyID = k.enemyID WHERE u.User_idUser = '%s' ORDER BY k.enemyID ASC", User.currentUser);
       println(msql.getString("SELECT k.enemyName, u.killCount"));
       for (int i = 0; i < enemyStats.length; i ++)
       {
-<<<<<<< HEAD
-=======
-        msql.query("SELECT u.killCount, u.Killed_enemyID, k.enemyName CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount) AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON  k.enemyID = u.Killed_enemyID WHERE u.User_idUser = '%s' AND k.enemyID = '%s' ORDER BY u.Killed_enemyID ASC", User.currentUser, i);
->>>>>>> parent of 56231f6... more changes
         enemyStats[i] = msql.getString("enemyStats");
       }
     }
