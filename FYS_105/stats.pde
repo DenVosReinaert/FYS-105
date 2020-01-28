@@ -103,11 +103,13 @@ class stats {
       {
         selectEntry = false;
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
+          Friends.playerName = players[cursorPosY];
           Friends.getID();
           Friends.removeFriend();
         }
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
         {
+          Friends.playerName = players[cursorPosY2];
           Friends.getID();
           Friends.addFriend();
         }
