@@ -187,6 +187,10 @@ class stats {
       println(msql.getString("SELECT k.enemyName, u.killCount"));
       for (int i = 0; i < enemyStats.length; i ++)
       {
+<<<<<<< HEAD
+=======
+        msql.query("SELECT u.killCount, u.Killed_enemyID, k.enemyName CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount) AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON  k.enemyID = u.Killed_enemyID WHERE u.User_idUser = '%s' AND k.enemyID = '%s' ORDER BY u.Killed_enemyID ASC", User.currentUser, i);
+>>>>>>> parent of 56231f6... more changes
         enemyStats[i] = msql.getString("enemyStats");
       }
     }
