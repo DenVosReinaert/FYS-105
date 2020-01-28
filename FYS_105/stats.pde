@@ -17,15 +17,15 @@ class stats {
     nextEntry = false;
     prevEntry = false;
     selectEntry = false;
-    statsRetreived = false;
-
-    msql.connect();
   }
 
   void draw() { 
-    GetStats();
+
 
     if (gamemngr.statspage) {
+
+      if (!statsRetreived)
+        GetStats();
 
       pushStyle();
       statsBg.resize(width, height);
@@ -190,10 +190,18 @@ class stats {
     {
       while (msql.next())
       {
+                  println("Fuck this shit");
         for (int i = 0; i < enemyStats.length; i++)
         {
-          msql.query("SELECT enemyName, killCount, CONCAT(enemyName, killCount) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
+
+          msql.query("SELECT enemyName, killCount FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
           enemyStats[i] = msql.getString("enemyStats");
+
+          if (i >= enemyStats.length)
+          {
+            println("GET FUCKED");
+            statsRetreived = true;
+          }
         }
       }
     }
