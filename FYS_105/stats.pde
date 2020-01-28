@@ -184,7 +184,7 @@ class stats {
 
     while (msql.next())
     {
-      msql.query("SELECT CONCAT(k.enemyName, '', u.killCount, '') AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON u.Killed_enemyID = k.enemyID WHERE u.User_idUser = '%s' ORDER BY k.enemyID ASC", User.currentUser);
+      msql.query("SELECT k.enemyName, u.killCount CONCAT(k.enemyName, '', u.killCount, '') AS enemyStats FROM User_has_Killed u INNER JOIN Killed k ON u.Killed_enemyID = k.enemyID WHERE u.User_idUser = '%s' ORDER BY k.enemyID ASC", User.currentUser);
       println(msql.getString("SELECT k.enemyName, u.killCount"));
       for (int i = 0; i < enemyStats.length; i ++)
       {
