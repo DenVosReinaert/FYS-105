@@ -131,7 +131,7 @@ class Boss1 extends GameObject {
 
             ascore.score += scoreGain * ascore.combo;
 
-            chieves.AddAchievementProgress(10, 5);
+            chieves.AddAchievementProgress(9, 5);
           }
           for (int j=0; j < 20; j++) {
             Add(new ParticleBoss(objPosX + objWidth/2, objPosY + objHeight/2));

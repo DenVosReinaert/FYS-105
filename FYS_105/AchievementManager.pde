@@ -17,9 +17,14 @@ class AchievementManager
 
   AchievementManager()
   {
-    totalAchievements = 10;
 
     msql.connect();
+
+    msql.query("SELECT COUNT(a.idAchievements) FROM Achievements a");
+
+    while (msql.next())
+      totalAchievements = parseInt(msql.getString("COUNT(a.idAchievements)"));
+
     achievementAnimsActive = 0;
   }
 
@@ -70,6 +75,7 @@ class AchievementManager
       {
         achieved = parseInt(msql.getString("collectedAchievement"));
       }
+
 
 
       if (progression < progressionGoal)
