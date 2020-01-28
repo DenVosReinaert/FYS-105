@@ -18,6 +18,8 @@ class stats {
     prevEntry = false;
     selectEntry = false;
     statsRetreived = false;
+
+    msql.connect();
   }
 
   void draw() { 
@@ -36,7 +38,10 @@ class stats {
 
       pushStyle();
       textSize(40);
-      text("" + enemyStats[0], 250, textX + 100 + 40);
+      for (int k = 0; k < enemyStats.length; k ++)
+      {
+        text("" + enemyStats[k], 250, textX + 100 + 40 * k);
+      }
       popStyle();
 
 
@@ -181,14 +186,16 @@ class stats {
 
   void GetStats()
   {
-    while (msql.next())
+    if (msql.connect())
     {
-      msql.query("SELECT enemyName, killCount, CONCAT_WS(enemyName, killCount) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' ORDER BY enemyID ASC", User.currentUser);
-      enemyStats[0] = msql.getString("enemyStats");
-      //for (int i = 0; i < enemyStats.length; i ++)
-      //{
-      //  enemyStats[i] = msql.getString("enemyStats");
-      //}
+      while (msql.next())
+      {
+        for (int i = 0; i < enemyStats.length; i++)
+        {
+          msql.query("SELECT enemyName, killCount, CONCAT(enemyName, killCount) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
+          enemyStats[i] = msql.getString("enemyStats");
+        }
+      }
     }
   }
 }
