@@ -36,7 +36,7 @@ class stats {
 
       pushStyle();
       textSize(40);
-      text("" + msql.getString(enemyStats[0]), 250, textX + 100 + 40);
+      text("" + enemyStats[0], 250, textX + 100 + 40);
       popStyle();
 
 
