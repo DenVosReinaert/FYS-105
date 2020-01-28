@@ -46,7 +46,11 @@ class Player extends GameObject {
     defaultSpeed = defaultSpeedInit;
 
     diaSpeedInit = (sqrt(sq(defaultSpeed) + sq(defaultSpeed)) / 2);
+
+
+
   }
+
 
 
   void draw() {
