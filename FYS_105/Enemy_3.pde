@@ -3,6 +3,7 @@ class Heavy extends GameObject {
 
   Heavy() {
     tag = "enemy";
+    objID = 4;
 
     scoreGain = 10;
 
@@ -140,7 +141,19 @@ class Heavy extends GameObject {
               Add(new Powerups(objPosX + objWidth/2, objPosY + objHeight/2));
             ascore.score += scoreGain * ascore.combo;
 
-            chieves.AddAchievementProgress(10, 10);
+            if (msql.connect())
+            {
+              msql.query("SELECT killCount FROM User_has_Killed WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", User.currentUser, objID);
+            }
+            while (msql.next())
+            {
+              killCount = parseInt(msql.getString("killCount"));
+            }
+
+            killCount++;
+            msql.query("UPDATE User_has_Killed SET killCount = '%s' WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", killCount, User.currentUser, objID);
+
+            chieves.AddAchievementProgress(10, 10, killCount);
           }
           for (int j=0; j < 20; j++) {
             Add(new ParticleHeavy(objPosX + objWidth/2, objPosY + objHeight/2));

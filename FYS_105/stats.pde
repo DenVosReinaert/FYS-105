@@ -7,6 +7,7 @@ class stats {
   int aFriends;
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
+  String[] enemyStats = new String[5];
   int cursorPosY = 0;
   int cursorPosY2 = -1;
   boolean nextEntry, prevEntry, selectEntry;
@@ -28,6 +29,17 @@ class stats {
       text("" + ascore.name, 300, textX);
       text("'S", 440, textX);
       text("STATS", 520, textX);
+
+      pushStyle();
+      textSize(40);
+      for (int k = 0; k < enemyStats.length; k++)
+      {
+        text("" + enemyStats[k], 200, textX + 200 + 40 * k);
+      }
+      popStyle();
+
+
+
       text("FRIENDS", 810, textX);
       fill(28, 28, 28);
       rect(781, 192, 259, 30 + (totalFriends * 30));
@@ -162,6 +174,18 @@ class stats {
       case 'w':
         prevEntry = false;
         break;
+      }
+    }
+  }
+
+  void GetStats()
+  {
+    if (msql.connect())
+    {
+      for (int i = 0; i < enemyStats.length; i ++)
+      {
+        msql.query("SELECT uk.killCount, uk.Killed_enemyID, k.enemyName FROM User_has_Killed uk INNER JOIN Killed k ON  uk.User_idUser = k. User_idUser WHERE uk.User_idUser = '%s'", User.currentUser);
+        enemyStats[i] = msql.getString("CONCAT(Killed_enemyID, ' ', k.enemyName, '          ', uk.killCount)");
       }
     }
   }

@@ -13,13 +13,14 @@ class aScore {
   aScore() {
     combo = 1;
     totalSoundTracks = 2; // Tracks for combo misses
+    chieveUnlocked = false;
   }
 
   void draw() {
 
     if (score >= 100000 && !chieveUnlocked)
     {
-      chieves.AddAchievementProgress(1, 0);
+      chieves.AddAchievementProgress(1, 0, 0);
       chieveUnlocked = true;
     } 
 
@@ -35,7 +36,7 @@ class aScore {
   }
 
 
-//
+  //
   void saveScore() {
     //println("Levens" + UI.levens);
     if (msql.connect() && UI.levens <= 0) {

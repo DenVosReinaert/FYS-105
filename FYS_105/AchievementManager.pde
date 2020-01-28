@@ -32,6 +32,7 @@ class AchievementManager
 
 
 
+
   void draw()
   {
     for (int i = 0; i < achievementAnim.size(); i++)                                                 //Call the draw function of every existing achievement animator that is in the existing list
@@ -47,7 +48,7 @@ class AchievementManager
   }
 
 
-  void AddAchievementProgress(int achievementNumber, int progressionGoal)
+  void AddAchievementProgress(int achievementNumber, int progressionGoal, int killCount)
   {
     if (msql.connect()) 
     {
@@ -78,19 +79,38 @@ class AchievementManager
 
 
 
-      if (progression < progressionGoal)
+      if (progression < progressionGoal && killCount == 0)
         msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", progression + 1, User.currentUser, achievementNumber, achieved);
-
+      else if (progression < progressionGoal && killCount != 0)
+      {
+        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", killCount, User.currentUser, achievementNumber, achieved);
+      }
 
       if (achieved != 1 && progression == progressionGoal)
       {
-
         msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND progressionAchievement = '%s'", 1, User.currentUser, achievementNumber, progressionGoal);
 
         achievement.play();
         achievement.rewind();
 
         achievementAnim.add(new AchievementAnimator(achievementNumber, startPosX, startPosY));    //Create an instance of the achievement animator with the corresponding achievement number
+      }
+    }
+  }
+
+  void FillKilledTable()
+  {
+    msql.query( "SELECT k.User_idUser FROM User_has_Killed k WHERE k.User_idUser = '%s'", User.currentUser);
+    while ( msql.next() ) 
+    {
+      dbDupeInsertCheck = msql.getString("User_idUser");
+    }
+
+    if (dbDupeInsertCheck == null)
+    {
+      for (int i = 0; i < 5; i ++)
+      {
+        msql.query("INSERT INTO User_has_Killed (User_idUser, Killed_enemyID, killCount) VALUES ('%s','%s','%s')", User.currentUser, i, 0);
       }
     }
   }

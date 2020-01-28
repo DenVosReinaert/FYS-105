@@ -117,6 +117,7 @@ class Login {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
         gamemngr.login = false;     
         gamemngr.home = true;
+        chieves.FillKilledTable();
       }
     }
     // Check what state & depending on state move through the letters upwards 
