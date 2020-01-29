@@ -6,7 +6,12 @@ class aScore {
   int totalSoundTracks; //number of sounds you want to use for the random
   int score; // The current score
   float combo; // The current combo or score multiplier
-  String oScore; // "Old Score" score already in scorelist belonging to player
+
+  int scoreID; // ID of the score
+  String totalScore; // totalScores
+  String lowScoreID; // lowest scoreID from player
+  String lowScore; // Lowest score belonging to player
+
   String name; // String containing inserted name from 'Login' class
   boolean chieveUnlocked;
 
@@ -40,21 +45,42 @@ class aScore {
   void saveScore() {
     //println("Levens" + UI.levens);
     if (msql.connect() && UI.levens <= 0) {
-      msql.query( "SELECT idScores, valueScores FROM Scores WHERE idScores = '%s' AND nameScores = '%s'", User.currentUser, ascore.name ); // Grab the score from the player
+      msql.query( " SELECT idScores FROM Scores ORDER BY idScores DESC LIMIT 1 " ); // Highest idScore
+      while (msql.next() ) {
+        scoreID = parseInt(msql.getString("idScores"));
+      }
+      if (scoreID == 0) {
+        scoreID = 1;
+      } else {
+        scoreID = scoreID + 1;
+      }
+      msql.query( "SELECT COUNT(User_idUser) FROM User_has_Scores WHERE User_idUser = '%s'", User.currentUser); // Count all scores
       while ( msql.next() ) {
-        oScore = msql.getString("valueScores"); // temporary score (score belonging to player)
-        //println("Select Score: " + oScore);
+        totalScore = msql.getString("COUNT(User_idUser)"); // Shows how many scores the player has
       }
-      //println("ID: " + User.currentUser);
-      if (oScore == null && User.currentUser != 0) { // if score doesn't exist make one
-        msql.query( "INSERT INTO Scores (idScores, nameScores, valueScores) VALUES ('%s','%s','%s')", User.currentUser, ascore.name, score );
-        //println("INSERT!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
+      msql.query( "SELECT s.valueScores,s.idScores FROM Scores s INNER JOIN User_has_Scores a ON a.Scores_idScores = s.idScores WHERE a.User_idUser = '%s' ORDER BY s.valueScores LIMIT 1", User.currentUser ); // Select lowest score from player
+      while (msql.next() ) {
+        lowScore = msql.getString("s.valueScores");
+        lowScoreID = msql.getString("s.idScores");
       }
-      if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
-        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s' AND nameScores = '%s'", score, User.currentUser, ascore.name ); // Update score
+
+      if (totalScore == null) {
+        println("Total Score empty..");
+      }
+      if (parseInt(totalScore) >= 10 && score > parseInt(lowScore) ) {
+        msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s'", score, lowScoreID); // Update score
         //println("UPDATE!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
       }
-      // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
+      //println("ID: " + User.currentUser);
+      if (User.currentUser != 0 && parseInt(totalScore) < 10) { // if score doesn't exist make one
+        msql.query( "INSERT INTO Scores (idScores, valueScores) VALUES ('%s','%s')", scoreID, score );
+        msql.query( "INSERT INTO User_has_Scores (User_idUser, Scores_idScores) VALUES ('%s','%s')", User.currentUser, scoreID );
+        //println("INSERT!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
+      }
+      //if (oScore != null && score > parseInt(oScore)) { // If score is bigger than the lowest score and idh is 20 then
+      //  msql.query( "UPDATE Scores SET valueScores = '%s' WHERE idScores = '%s' AND nameScores = '%s'", score, User.currentUser, ascore.name ); // Update score
+      //  //println("UPDATE!: " + oScore + " ID: " + User.currentUser + " Name: " + ascore.name);
+      //}
     } else {
       println("ERROR: Couldn't input score!");
     }
