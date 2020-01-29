@@ -7,6 +7,7 @@ class Game_Manager {
   boolean controls;
   boolean home;
   boolean hscore;
+  boolean pscore;
   boolean shake;
 
   int trackNumber;
@@ -45,7 +46,7 @@ class Game_Manager {
 
   void draw() {
 
-
+    User.keyPressed();
 
     if (statspage) {
       home = false;
@@ -93,6 +94,14 @@ class Game_Manager {
       chieves.draw();
     }
     if (hscore) {
+      if (hscoreA == 0) { // if hscoreA is 0 create a new hscorel (updates the scorelist)
+        hscorel = new hScorelijst();
+      }
+      hscoreA = 1;
+      hscorel.draw();
+    }
+
+    if (pscore) {
       if (hscoreA == 0) { // if hscoreA is 0 create a new hscorel (updates the scorelist)
         hscorel = new hScorelijst();
       }
@@ -457,6 +466,12 @@ class Game_Manager {
       if (keyCode == DOWN) {
         hscore = false;
         home = true;
+      }
+      if (pscore) {
+       if (keyCode == RIGHT) {
+        hscore = false;
+        pscore = true;
+       }
       }
     }
 
