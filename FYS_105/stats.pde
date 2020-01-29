@@ -8,6 +8,7 @@ class stats {
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
   String[] enemyStats = new String[5];
+  String totalKills;
   int cursorPosY = 0;
   int cursorPosY2 = -1;
   boolean nextEntry, prevEntry, selectEntry, statsRetreived;
@@ -42,6 +43,7 @@ class stats {
       {
         text("" + enemyStats[k], 250, textX + 100 + 40 * k);
       }
+      text("" + totalKills, 250, textX + 100 + 40 * enemyStats.length);
       popStyle();
 
 
@@ -203,6 +205,13 @@ class stats {
             statsRetreived = true;
           }
         }
+      }
+
+      msql.query("SELECT SUM(killCount) FROM User_has_Killed WHERE User_idUser = '%s'", User.currentUser);
+
+      while (msql.next())
+      {
+        totalKills =msql.getString("SUM(killCount)") + "      Total Kills";
       }
     }
   }
