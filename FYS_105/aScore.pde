@@ -19,7 +19,7 @@ class aScore {
 
     if (score >= 100000 && !chieveUnlocked)
     {
-      chieves.UnlockAchievement(1);
+      chieves.AddAchievementProgress(1, 0);
       chieveUnlocked = true;
     } 
 
@@ -35,7 +35,7 @@ class aScore {
   }
 
 
-
+//
   void saveScore() {
     //println("Levens" + UI.levens);
     if (msql.connect() && UI.levens <= 0) {
@@ -55,8 +55,7 @@ class aScore {
       }
       // UI.levens = -1; // set 'levens' to -1 (so it doesn't repeat)
     } else {
-      //println("Old Score: " + oScore);
-      //println("New Score: " + score);
+      println("ERROR: Couldn't input score!");
     }
   }
 

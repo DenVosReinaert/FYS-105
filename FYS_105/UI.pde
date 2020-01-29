@@ -375,7 +375,6 @@ class UI {
       tutorial();
       pushStyle();
       main.resize(width, height);
-      seasonpass.resize(width, height);
       // show line under buttons depending what state is
       image(main, 0, 0);
       textSize(31);
@@ -404,7 +403,6 @@ class UI {
         rect(563, 150, 153, 5);
         // rect(640, 525, 145, 5); // IF RECTMODE(CENTER)
       }
-      image(seasonpass, 0, 0);
       popStyle();
     }
 
@@ -471,9 +469,9 @@ class UI {
 
       if (keyCode == RIGHT) {
         if (state == 1) { // Stats button
-          gamemngr.shake = true;
-          gamemngr.shakeAmount = 4;
-          //gamemngr.statspage = true;
+          //gamemngr.shake = true;
+          //gamemngr.shakeAmount = 4;
+          gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button
           gamemngr.creditspage = true;

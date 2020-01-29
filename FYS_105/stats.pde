@@ -5,17 +5,22 @@ class stats {
   int totalPlayers;
   int aPlayers;
   int aFriends;
-  String selected;
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
   int cursorPosY = 0;
   int cursorPosY2 = -1;
+  boolean nextEntry, prevEntry, selectEntry;
 
-  void setup() {
+  void setup() 
+  {
+    nextEntry = false;
+    prevEntry = false;
+    selectEntry = false;
   }
 
   void draw() { 
     if (gamemngr.statspage) {
+
       pushStyle();
       statsBg.resize(width, height);
       image(statsBg, 0, 0);
@@ -43,53 +48,120 @@ class stats {
           popStyle();
         }
       }
-      for (int i = 0; i < totalPlayers; i++) {
+      for (int j = 0; j < players.length; j++) {
         textSize(20);
-        text("" + players[i], 900, (260 + (totalFriends * 30)) + (30 * i));
+        text("" + players[j], 900, (255 + (totalFriends * 30)) + (30 * j));
         pushStyle();
-        if (cursorPosY2 == i) {
+        if (cursorPosY2 == j) {
           fill(0, 200, 0);
-          selected = players[i];
         }
-        text("ADD", 820, (260 + (totalFriends * 30)) + (30 * i) );
+        text("ADD", 820, (255 + (totalFriends * 30)) + (30 * j) );
         popStyle();
+      }
+
+      if (cursorPosY > friends.length)
+        cursorPosY = friends.length + 1;
+      if (cursorPosY < 0)
+        cursorPosY = 0;
+
+      if (cursorPosY2 < -1)
+        cursorPosY2 = -1;
+      if (cursorPosY2 > players.length)
+        cursorPosY2 = players.length;
+
+
+
+      if (nextEntry)
+      {
+        nextEntry = false;
+        if (cursorPosY <= friends.length && cursorPosY2 == -1)
+        {
+          cursorPosY++;
+        }
+        if (cursorPosY2 <= players.length && cursorPosY == friends.length + 1)
+        {
+          cursorPosY2++;
+        }
+        println("NEXT!");
+      }
+
+      if (prevEntry)
+      {
+        prevEntry = false;
+        if (cursorPosY >= 1 && cursorPosY2 == -1)
+        {
+          cursorPosY--;
+        }
+        if (cursorPosY2 >= 0 && cursorPosY == friends.length + 1)
+        {
+          cursorPosY2--;
+        }
+        println("PREV!");
+      }
+
+      if (selectEntry)
+      {
+        selectEntry = false;
+        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
+          Friends.playerName = players[cursorPosY];
+          Friends.getID();
+          Friends.removeFriend();
+        }
+        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
+        {
+          Friends.playerName = players[cursorPosY2];
+          Friends.getID();
+          Friends.addFriend();
+        }
+        println("SELECTED");
       }
     }
   }
+  void keyPressed()
+  {
+    if (gamemngr.statspage)
+    {
+      switch(keyCode)
+      {
+      case RIGHT:
+        selectEntry = true;
+        break;
+      }
+
+      switch(key)
+      {
+      case 's':
+        nextEntry = true;
+        break;
+      case 'w':
+        prevEntry = true;
+        break;
+      }
+    }
+  }
+
   void keyReleased() {
     if (gamemngr.statspage) {
-      if (keyCode == DOWN) {
+
+      switch(keyCode)
+      {
+      case RIGHT:
+        selectEntry = false;
+        break;
+      case DOWN:
         gamemngr.statspage = false;
         gamemngr.home = true;
+        break;
       }
-      if (keyCode == RIGHT) {
-        //if () {
-        //  selected = Friends.playerName;
-        //  Friends.getID();
-        //  Friends.removeFriend();
-        //}
-        //if () {
-        //  selected = Friends.playerName;
-        //  Friends.getID();
-        //  Friends.addFriend();
-        //}
-      }
-      if (key == 'w') {
-        if (cursorPosY > 0 && cursorPosY < totalFriends-1) {
-         cursorPosY--; 
-        }
-        
-      }
-      if (key == 's') {
-        if (cursorPosY < totalFriends-1) { // if cursorPosY is tinier than totalFriends-1 (stops cursorPosY from moving beyond totalFriends)
-          cursorPosY++; // add numbers to cursorPosY
-        } else {
-          cursorPosY = totalFriends; // Keeps cursorPosY at totalFriends
-          cursorPosY2++; // CursorPosY2 goes down towards totalPlayers-1
-        }
-        if (cursorPosY2 > totalPlayers-1 ) { // if cursorPosY2 is tinier than totalPlayers-1 (stops cursorPosY from moving beyond totalFriends)
-          cursorPosY2 = totalPlayers-1; // add number to cursorPosY2
-        }
+
+      switch(key)
+      {
+      case 's':
+        nextEntry = false;
+        break;
+      case 'w':
+        prevEntry = false;
+        break;
       }
     }
   }

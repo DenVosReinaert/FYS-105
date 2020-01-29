@@ -128,6 +128,8 @@ class Speedster extends GameObject {
             if (powerUpChance <= 10)
               Add(new Powerups(objPosX + objWidth/2, objPosY + objHeight/2));
             ascore.score += scoreGain * ascore.combo;
+
+            chieves.AddAchievementProgress(8, 10);
           }
           for (int j=0; j < 20; j++) {
             Add(new ParticleGrunt(objPosX + objWidth/2, objPosY + objHeight/2));
