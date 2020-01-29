@@ -188,18 +188,21 @@ class stats {
   {
     if (msql.connect())
     {
+      for (int i = 0; i < enemyStats.length; i++)
+      {
+
+        msql.query("SELECT enemyName, killCount, CONCAT(enemyName, '          ', killCount) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", i, User.currentUser, i);
+      }
+
       while (msql.next())
       {
-                  println("Fuck this shit");
-        for (int i = 0; i < enemyStats.length; i++)
+        println("Fuck this shit");
+        for (int j = 0; j < enemyStats.length; j++)
         {
+          enemyStats[j] = msql.getString("");
 
-          msql.query("SELECT enemyName, killCount FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
-          enemyStats[i] = msql.getString("enemyStats");
-
-          if (i >= enemyStats.length)
+          if (j >= enemyStats.length)
           {
-            println("GET FUCKED");
             statsRetreived = true;
           }
         }
