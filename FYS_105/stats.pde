@@ -8,6 +8,7 @@ class stats {
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
   String[] enemyStats = new String[5];
+  String killChieves;
   String totalKills;
   int cursorPosY = 0;
   int cursorPosY2 = -1;
@@ -43,7 +44,9 @@ class stats {
       {
         text("" + enemyStats[k], 250, textX + 100 + 40 * k);
       }
-      text("" + totalKills, 250, textX + 100 + 40 * enemyStats.length);
+      text("" + totalKills, 250, textX + 100 + 40 * (enemyStats.length + 1));
+
+      text("" + killChieves, 250, textX + 100 + 40 * (enemyStats.length + 3));
       popStyle();
 
 
@@ -202,7 +205,6 @@ class stats {
 
           if (i >= enemyStats.length)
           {
-            statsRetreived = true;
           }
         }
       }
@@ -213,6 +215,13 @@ class stats {
       {
         totalKills =msql.getString("SUM(killCount)") + "      Total Kills";
       }
+
+      msql.query("SELECT idAchievements, descriptionAchievements FROM Achievements WHERE descriptionAchievements LIKE 'Kill%'");
+
+      while (msql.next())
+        killChieves = msql.getString("idAchievements");
     }
+
+    statsRetreived = true;
   }
 }
