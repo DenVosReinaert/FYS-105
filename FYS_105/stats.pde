@@ -190,18 +190,15 @@ class stats {
     {
       for (int i = 0; i < enemyStats.length; i++)
       {
+        msql.query("SELECT enemyName, killCount, CONCAT(killCount, '      ', enemyName) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
 
-        msql.query("SELECT enemyName, killCount, CONCAT(enemyName, '          ', killCount) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", i, User.currentUser, i);
-      }
-
-      while (msql.next())
-      {
-        println("Fuck this shit");
-        for (int j = 0; j < enemyStats.length; j++)
+        while (msql.next())
         {
-          enemyStats[j] = msql.getString("");
+          println("Fuck this shit");
 
-          if (j >= enemyStats.length)
+          enemyStats[i] = msql.getString("enemyStats");
+
+          if (i >= enemyStats.length)
           {
             statsRetreived = true;
           }
