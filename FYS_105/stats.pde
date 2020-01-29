@@ -203,7 +203,10 @@ class stats {
         {
           enemyStats[i] = msql.getString("enemyStats");
         }
+
+        //Get the name of the enemy + the amount that has been killed
       }
+
 
       msql.query("SELECT SUM(killCount) FROM User_has_Killed WHERE User_idUser = '%s'", User.currentUser);
 
@@ -211,12 +214,14 @@ class stats {
       {
         totalKills =msql.getString("SUM(killCount)") + "      Total Kills";
       }
+      //Calculate the amount of total enemies killed
 
       msql.query("SELECT COUNT(idAchievements) FROM Achievements WHERE descriptionAchievements LIKE 'Kill%'");
 
       while (msql.next())
         killChieves = msql.getString("COUNT(idAchievements)") + "      Kill Chieves";
     }
+    //Count the amount of achievements that require enemies to be killed
 
     statsRetreived = true;
   }
