@@ -189,6 +189,8 @@ class stats {
     }
   }
 
+
+  //ADRIAAN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   void GetStats()
   {
     if (msql.connect())
@@ -199,13 +201,7 @@ class stats {
 
         while (msql.next())
         {
-          println("Fuck this shit");
-
           enemyStats[i] = msql.getString("enemyStats");
-
-          if (i >= enemyStats.length)
-          {
-          }
         }
       }
 
@@ -224,4 +220,5 @@ class stats {
 
     statsRetreived = true;
   }
+  //===================================
 }

@@ -153,6 +153,7 @@ class Grunt extends GameObject {
             }
 
             killCount++;
+
             msql.query("UPDATE User_has_Killed SET killCount = '%s' WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", killCount, User.currentUser, objID);
 
             chieves.AddAchievementProgress(7, 10, killCount);

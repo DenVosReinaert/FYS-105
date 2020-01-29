@@ -65,6 +65,7 @@ class AchievementManager
       }
 
 
+
       msql.query( "SELECT progressionAchievement FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );
       while (msql.next() ) 
       {
@@ -78,19 +79,14 @@ class AchievementManager
       }
 
 
-
-      if (progression < progressionGoal && killCount == 0)
-        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", progression + 1, User.currentUser, achievementNumber, achieved);
-      else if (progression < progressionGoal && killCount != 0)
+      if (achieved != 1 && killCount != progressionGoal)
       {
-        while (msql.next())
-          msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", killCount, User.currentUser, achievementNumber, achieved);
+        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", killCount, User.currentUser, achievementNumber);
       }
 
-      if (achieved != 1 && progression == progressionGoal)
+      if (achieved != 1 && killCount >= progressionGoal)
       {
-        while (msql.next())
-          msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND progressionAchievement = '%s'", 1, User.currentUser, achievementNumber, progressionGoal);
+        msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", 1, User.currentUser, achievementNumber);
 
         achievement.play();
         achievement.rewind();
