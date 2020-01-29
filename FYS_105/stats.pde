@@ -216,10 +216,10 @@ class stats {
         totalKills =msql.getString("SUM(killCount)") + "      Total Kills";
       }
 
-      msql.query("SELECT idAchievements, descriptionAchievements FROM Achievements WHERE descriptionAchievements LIKE 'Kill%'");
+      msql.query("SELECT COUNT(idAchievements) FROM Achievements WHERE descriptionAchievements LIKE 'Kill%'");
 
       while (msql.next())
-        killChieves = msql.getString("idAchievements");
+        killChieves = msql.getString("COUNT(idAchievements)") + "      Kill Chieves";
     }
 
     statsRetreived = true;
