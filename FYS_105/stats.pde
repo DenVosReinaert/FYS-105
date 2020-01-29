@@ -38,6 +38,7 @@ class stats {
       text("STATS", 520, textX);
 
 
+//Enemy Kill stats
       pushStyle();
       textSize(40);
       for (int k = 0; k < enemyStats.length; k ++)
