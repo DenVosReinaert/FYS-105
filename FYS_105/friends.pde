@@ -19,6 +19,7 @@ class friends {
   void getID() { // Function to get id from the selected player (stats menu)
     msql.query( "SELECT idUser FROM User WHERE nameUser = '%s'", playerName); // query to select id where nameUser is the same as the name in playerName
     while (msql.next() ) { // Continue
+
       playerID = parseInt(msql.getString("idUser")); // Id of user playerName(nameUser) is set into playerID and put as an int
     }
     if (playerID == 0) { // if playerID is empty
@@ -28,6 +29,9 @@ class friends {
 
   void addFriend() { // Function to add a friend when selected is not in Friendslist (stats menu)
     getID(); // run function getID to receive an ID
+    if (playerID > 0) { // if playerID is higher than 0
+      msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
+
     msql.query( "SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" ); // Get highest idRelation
     while (msql.next() ) { 
       idRelation = msql.getString("idRelation"); // get the highest relation ID
