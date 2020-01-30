@@ -32,30 +32,30 @@ class friends {
     if (playerID > 0) { // if playerID is higher than 0
       msql.query( "INSERT INTO Friends (idFriends, User_idUser) VALUES ('%s', '%s')", playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
 
-    msql.query( "SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" ); // Get highest idRelation
-    while (msql.next() ) { 
-      idRelation = msql.getString("idRelation"); // get the highest relation ID
-    }
-    if (playerID > 0) { // if playerID is higher than 0
-
-      msql.query( " SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" );
-
-      while (msql.next() ) {
-        tempIdRelation = parseInt(msql.getString("idRelation")); // get highest id Relation to int
+      msql.query( "SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" ); // Get highest idRelation
+      while (msql.next() ) { 
+        idRelation = msql.getString("idRelation"); // get the highest relation ID
       }
-      if (tempIdRelation == 0) { // if id relation is 0 set it to 1
-        tempIdRelation = 1;
-      } else { 
-        tempIdRelation = tempIdRelation + 1; // set id relation to + 1 so it goes up
+      if (playerID > 0) { // if playerID is higher than 0
+
+        msql.query( " SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" );
+
+        while (msql.next() ) {
+          tempIdRelation = parseInt(msql.getString("idRelation")); // get highest id Relation to int
+        }
+        if (tempIdRelation == 0) { // if id relation is 0 set it to 1
+          tempIdRelation = 1;
+        } else { 
+          tempIdRelation = tempIdRelation + 1; // set id relation to + 1 so it goes up
+        }
+        msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempIdRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
+        println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
+        totalFriends();
+        stats.friends.add(stats.players.get(stats.cursorPosY2));
+        stats.players.remove(stats.players.get(stats.cursorPosY2));
       }
-      msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempIdRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
-      println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
-      totalFriends();
-      stats.friends.add(stats.players.get(stats.cursorPosY2));
-      stats.players.remove(stats.players.get(stats.cursorPosY2));
     }
   }
-
   void removeFriend() { // Function to remove a friend when selected is not in Playerlist (stats menu)
     getID(); // run function getID to receive an ID
     msql.query( "DELETE FROM Friends WHERE User_idUser = '%s' AND idFriends = '%s'", User.currentUser, playerID); // Remove the record where User_idUser is User.currentUser(ID of user playing) and idFriends is playerID(ID of selected friend)
