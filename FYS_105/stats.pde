@@ -3,14 +3,12 @@ class stats {
   int textX = 155;
   int totalFriends;
   int totalPlayers;
-  int aPlayers;
-  int aFriends;
-  String[] players = new String[aPlayers];
-  String[] friends = new String[aFriends];
+  ArrayList players = new ArrayList<String>();
+  ArrayList friends = new ArrayList<String>();
   String[] enemyStats = new String[5];
   int cursorPosY = 0;
   int cursorPosY2 = -1;
-  boolean nextEntry, prevEntry, selectEntry;
+  boolean nextEntry, prevEntry, selectEntry, statsRetreived;
 
   void setup() 
   {
@@ -20,7 +18,12 @@ class stats {
   }
 
   void draw() { 
+
+
     if (gamemngr.statspage) {
+
+      if (!statsRetreived)
+        GetStats();
 
       pushStyle();
       statsBg.resize(width, height);
@@ -30,11 +33,12 @@ class stats {
       text("'S", 440, textX);
       text("STATS", 520, textX);
 
+
       pushStyle();
       textSize(40);
-      for (int k = 0; k < enemyStats.length; k++)
+      for (int k = 0; k < enemyStats.length; k ++)
       {
-        text("" + enemyStats[k], 250, textX + 200 + 40 * k);
+        text("" + enemyStats[k], 250, textX + 100 + 40 * k);
       }
       popStyle();
 
@@ -51,7 +55,7 @@ class stats {
       } else {
         for (int i = 0; i < totalFriends; i++) {
           textSize(20);
-          text("" + friends[i], 900, 220 + (totalFriends * 20 * i/2) );
+          text("" + friends.get(i), 900, 220 + (totalFriends * 20 * i/2) );
           pushStyle();
           if (cursorPosY == i) {
             fill(100, 0, 0);
@@ -60,41 +64,46 @@ class stats {
           popStyle();
         }
       }
-      for (int j = 0; j < players.length; j++) {
+      if (totalPlayers <= 0) {
         textSize(20);
-        text("" + players[j], 900, (255 + (totalFriends * 30)) + (30 * j));
-        pushStyle();
-        if (cursorPosY2 == j) {
-          fill(0, 200, 0);
+        text("NO PLAYERS FOUND", 810, 255);
+      } else {
+        for (int j = 0; j < players.size(); j++) {
+          textSize(20);
+          text("" + players.get(j), 900, (255 + (totalFriends * 30)) + (30 * j));
+          pushStyle();
+          if (cursorPosY2 == j) {
+            fill(0, 200, 0);
+          }
+          text("ADD", 820, (255 + (totalFriends * 30)) + (30 * j) );
+          popStyle();
         }
-        text("ADD", 820, (255 + (totalFriends * 30)) + (30 * j) );
-        popStyle();
       }
 
-      if (cursorPosY > friends.length)
-        cursorPosY = friends.length + 1;
+      if (cursorPosY > friends.size())
+        cursorPosY = friends.size() + 1;
       if (cursorPosY < 0)
         cursorPosY = 0;
 
       if (cursorPosY2 < -1)
         cursorPosY2 = -1;
-      if (cursorPosY2 > players.length)
-        cursorPosY2 = players.length;
+      if (cursorPosY2 > players.size())
+        cursorPosY2 = players.size();
 
 
 
       if (nextEntry)
       {
         nextEntry = false;
-        if (cursorPosY <= friends.length && cursorPosY2 == -1)
+        if (cursorPosY <= friends.size() && cursorPosY2 == -1)
         {
           cursorPosY++;
         }
-        if (cursorPosY2 <= players.length && cursorPosY == friends.length + 1)
+        if (cursorPosY2 <= players.size() && cursorPosY == friends.size() + 1)
         {
           cursorPosY2++;
         }
-        println("NEXT!");
+        //println("NEXT!");
       }
 
       if (prevEntry)
@@ -104,28 +113,28 @@ class stats {
         {
           cursorPosY--;
         }
-        if (cursorPosY2 >= 0 && cursorPosY == friends.length + 1)
+        if (cursorPosY2 >= 0 && cursorPosY == friends.size() + 1)
         {
           cursorPosY2--;
         }
-        println("PREV!");
+        //println("PREV!");
       }
 
       if (selectEntry)
       {
         selectEntry = false;
-        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
-          Friends.playerName = players[cursorPosY];
+        if (cursorPosY != friends.size() + 1 && cursorPosY2 == -1 && friends.size() > 0) {
+          Friends.playerName = friends.get(cursorPosY).toString();
           Friends.getID();
           Friends.removeFriend();
         }
-        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
+        if (cursorPosY == friends.size() + 1 && cursorPosY2 >= 0 && players.size() > 0 && cursorPosY2 < players.size())
         {
-
+          Friends.playerName = players.get(cursorPosY2).toString();
           Friends.getID();
           Friends.addFriend();
         }
-        println("SELECTED");
+        //println("SELECTED");
       }
     }
   }
@@ -135,7 +144,7 @@ class stats {
     {
       switch(keyCode)
       {
-      case RIGHT:
+      case LEFT:
         selectEntry = true;
         break;
       }
@@ -157,7 +166,7 @@ class stats {
 
       switch(keyCode)
       {
-      case RIGHT:
+      case LEFT:
         selectEntry = false;
         break;
       case DOWN:
@@ -182,11 +191,21 @@ class stats {
   {
     if (msql.connect())
     {
-      for (int i = 0; i < enemyStats.length; i ++)
+      for (int i = 0; i < enemyStats.length; i++)
       {
-        msql.query("SELECT u.killCount, u.Killed_enemyID, k.enemyName FROM User_has_Killed u INNER JOIN Killed k ON  k.User_idUser = u. User_idUser WHERE u.User_idUser = '%s'", User.currentUser);
-        enemyStats[i] = msql.getString("CONCAT(u.Killed_enemyID, ' ', k.enemyName, '          ', u.killCount)");
+        msql.query("SELECT enemyName, killCount, CONCAT(killCount, '      ', enemyName) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
+
+        while (msql.next())
+        {
+
+          enemyStats[i] = msql.getString("enemyStats");
+
+          if (i >= enemyStats.length)
+          {
+          }
+        }
       }
     }
+    statsRetreived = true;
   }
 }

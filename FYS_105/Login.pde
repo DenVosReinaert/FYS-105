@@ -110,8 +110,13 @@ class Login {
       if (key == '\n') {
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
         User.idCheck(); // Check the user ID
-        Friends.totalFriends();
+        
+        stats.friends.clear();
+        stats.players.clear();
+
         Friends.totalPlayers();
+        Friends.totalFriends();
+
         // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
         //  for (int i = 0; i < bN; i++) {
         // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!

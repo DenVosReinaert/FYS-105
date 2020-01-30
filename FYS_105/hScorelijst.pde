@@ -13,11 +13,11 @@ class hScorelijst {
   hScorelijst() {
 
     if (msql.connect() && Ans < 10) { // Als geconnect is met database & Ans kleiner is dan 10
-      msql.query( "SELECT nameScores , valueScores FROM Scores ORDER BY valueScores DESC LIMIT 10");
+      msql.query( "SELECT u.nameUser, s.valueScores FROM Scores s INNER JOIN User_has_Scores o ON s.idScores = o.Scores_idScores INNER JOIN User u WHERE u.idUser = o.User_idUser ORDER BY s.valueScores DESC LIMIT 10");
       while ( msql.next() && Ans < 10) {
-        name = msql.getString("nameScores"); // string name is 'name' uit database
+        name = msql.getString("u.nameUser"); // string name is 'name' uit database
         names = append(names, name); // Voeg name toe aan de array names
-        score = msql.getString("valueScores"); // string score is 'score' uit database
+        score = msql.getString("s.valueScores"); // string score is 'score' uit database
         scores = append(scores, score); // Voeg score toe aan de array scores
         Asc++;
         Ans++;
@@ -42,7 +42,7 @@ class hScorelijst {
       text("Press 'B' to go back", 630, 680);
       if (scores.length == 0) {
         text("Huh? It's empty!", width/2, hScoreH+100); 
-        text("Play now and be the first!", width/4 + 80, hScoreH+160);
+        text("Play now and be the first!", width/2 + 80, hScoreH+160);
       }
       popStyle();
       textSize(40);

@@ -471,7 +471,6 @@ class UI {
         if (state == 1) { // Stats button
           //gamemngr.shake = true;
           //gamemngr.shakeAmount = 4;
-          stats.GetStats();
           gamemngr.statspage = true;
         }
         if (state == 4) { // Credits button

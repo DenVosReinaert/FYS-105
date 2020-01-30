@@ -6,11 +6,14 @@ class friends {
   String idRelation; // id relation between friend and player
   int tempidRelation; // temporary id relation between friend and player
   int playerID; //Player ID
+  int tempIdRelation;
+
+  friends() 
+  {
+  }
+
 
   void setup() {
-  }
-  
-  friends() {
   }
 
   void getID() { // Function to get id from the selected player (stats menu)
@@ -30,14 +33,22 @@ class friends {
       idRelation = msql.getString("idRelation"); // get the highest relation ID
     }
     if (playerID > 0) { // if playerID is higher than 0
-      if (idRelation == null) {
-        tempidRelation = 1;
-      } else {
-        tempidRelation = tempidRelation + 1;
+
+      msql.query( " SELECT idRelation FROM Friends ORDER BY idRelation DESC LIMIT 1" );
+
+      while (msql.next() ) {
+        tempIdRelation = parseInt(msql.getString("idRelation")); // get highest id Relation to int
       }
-      msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempidRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
+      if (tempIdRelation == 0) { // if id relation is 0 set it to 1
+        tempIdRelation = 1;
+      } else { 
+        tempIdRelation = tempIdRelation + 1; // set id relation to + 1 so it goes up
+      }
+      msql.query( "INSERT INTO Friends (idRelation, idFriends, User_idUser) VALUES ('%s', '%s', '%s')", tempIdRelation, playerID, User.currentUser); // Insert playerID and User.currentUser(ID Of user playing) into database as 'Friends'
       println("Yeehaw " + ascore.name + " and " + playerName + " are now friends!");
       totalFriends();
+      stats.friends.add(stats.players.get(stats.cursorPosY2));
+      stats.players.remove(stats.players.get(stats.cursorPosY2));
     }
   }
 
@@ -63,8 +74,7 @@ class friends {
           while (msql.next() ) { // Continue to the next line
             playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
             println("NAME: " + playerName);
-            stats.players = append(stats.players, playerName); // Add playerName to array stats.players
-            stats.aPlayers++; // Increase the array size of stats.players
+            stats.players.add(playerName); // Add playerName to array stats.players
           }
         }
         if (stats.totalFriends == 0) {
@@ -72,8 +82,7 @@ class friends {
           while ( msql.next() ) {
             playerName = msql.getString("nameUser"); // Attach nameUser(Name of an user that is not a friend of current playing player) to string playerName(playerName)
             println("NAME: " + playerName);
-            stats.players = append(stats.players, playerName); // Add playerName to array stats.players
-            stats.aPlayers++; // Increase the array size of stats.players
+            stats.players.add(playerName); // Add playerName to array stats.players
           }
         }
       } else {
@@ -94,8 +103,7 @@ class friends {
         // Select u.nameUser(Name of friend of current playing player) from database table User and Friends where u.idUser(id of player(ANY) ) is equal to f.idFriends(id of friend current playing player)
         while (msql.next() ) { // Continue to next line
           friendName = msql.getString("nameUser"); // Attach nameUser(Name of friend of current playing player) to string friendName(friendName)
-          stats.friends = append(stats.friends, friendName); // Add friendName to array stats.friends
-          //stats.aFriends++; // Increase the array size of stats.friends
+          stats.friends.add(friendName); // Add friendName to array stats.friends
         }
       } else {
         println("Couldn't find any friends");
