@@ -18,7 +18,7 @@ public class GameObject {
   float angleBetweenVector;
   PVector enemyVector, playerVector;
 
-  int totalEnemyCount;
+  int totalEnemyCount, objID, killCount;
 
   float objPosX, objPosY, objWidth, objHeight;                                                             //Object positioning and dimensions
   float tempObjPosX, tempObjPosY;                                                                          //Temporary object position in case of "homing" projectiles for example
@@ -43,11 +43,11 @@ public class GameObject {
   int[] idAchievement = new int[5];
 
 
-
+  String dbDupeInsertCheck;
 
 
   GameObject() 
-  {
+  { 
     spawnerPos0 = new PVector();                                                                           //Initializing of the spawner position vectors
     spawnerPos1 = new PVector();
     spawnerPos2 = new PVector();
@@ -56,12 +56,12 @@ public class GameObject {
 
 
   void draw()
-  {    
+  {
   }
 
   void Add(GameObject object)                                                                             //Instantiate the given object in the gameObject list
   {
-    GameObjectRef.gameObject.add(object); 
+    GameObjectRef.gameObject.add(object);
   }
 
   void Remove(GameObject object)                                                                          //Remove the instance of the given object from the gameObject list

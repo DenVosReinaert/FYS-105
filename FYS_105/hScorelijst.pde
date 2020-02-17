@@ -39,7 +39,8 @@ class hScorelijst {
       pushStyle();
       textAlign(CENTER);
       textSize(40);
-      text("Press 'B' to go back", 630, 680);
+      text("Press 'B' to go back", 200, 40);
+      text("Press 'SELECT' to reset your account", 640, 680);
       if (scores.length == 0) {
         text("Huh? It's empty!", width/2, hScoreH+100); 
         text("Play now and be the first!", width/4 + 80, hScoreH+160);

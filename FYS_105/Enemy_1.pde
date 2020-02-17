@@ -3,6 +3,7 @@ class Grunt extends GameObject {
 
   Grunt() {
     tag = "enemy";
+    objID = 2;
 
     scoreGain = 5;
 
@@ -141,7 +142,21 @@ class Grunt extends GameObject {
 
             ascore.score += scoreGain * ascore.combo;
 
-            chieves.AddAchievementProgress(7, 10);
+
+            if (msql.connect())
+            {
+              msql.query("SELECT killCount FROM User_has_Killed WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", User.currentUser, objID);
+            }
+            while (msql.next())
+            {
+              killCount = parseInt(msql.getString("killCount"));
+            }
+
+            killCount++;
+
+            msql.query("UPDATE User_has_Killed SET killCount = '%s' WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", killCount, User.currentUser, objID);
+
+            chieves.AddAchievementProgress(7, 10, killCount);
           }
           for (int j=0; j < 20; j++) {
             Add(new ParticleGrunt(objPosX + objWidth/2, objPosY + objHeight/2));

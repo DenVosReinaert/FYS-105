@@ -3,6 +3,7 @@ class Boss1 extends GameObject {
 
   Boss1() {
     tag = "enemy";
+    objID = 0;
     idAchievement[1] = 3;
     objWidth=100;
     objHeight=146;
@@ -122,16 +123,23 @@ class Boss1 extends GameObject {
           gamemngr.shake = true;
           if (hp == 0) {
 
-            //if (msql.connect())
-            //{
-            //  msql.query("UPDATE Achievements SET counterAchievements = '%s' FROM User_has_Achievements INNER JOIN Achievements ON User_has_Achievements.Achievements_idAchievements = Achievements.idAchievement WHERE Achievements_idAchievements = '%s' AND User_idUser = '%s'", (chieves.bossCounter + 1), idAchievement[1], User.currentUser);
-
-            //  chieves.UnlockAchievement(3);
-            //}
 
             ascore.score += scoreGain * ascore.combo;
 
-            chieves.AddAchievementProgress(10, 5);
+
+            if (msql.connect())
+            {
+              msql.query("SELECT killCount FROM User_has_Killed WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", User.currentUser, objID);
+            }
+            while (msql.next())
+            {
+              killCount = parseInt(msql.getString("killCount"));
+            }
+
+            killCount++;
+            msql.query("UPDATE User_has_Killed SET killCount = '%s' WHERE User_idUser = '%s' AND Killed_enemyID = '%s'", killCount, User.currentUser, objID);
+
+            chieves.AddAchievementProgress(9, 5, killCount);
           }
           for (int j=0; j < 20; j++) {
             Add(new ParticleBoss(objPosX + objWidth/2, objPosY + objHeight/2));

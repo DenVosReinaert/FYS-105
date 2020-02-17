@@ -7,9 +7,12 @@ class stats {
   int aFriends;
   String[] players = new String[aPlayers];
   String[] friends = new String[aFriends];
+  String[] enemyStats = new String[5];
+  String killChieves;
+  String totalKills;
   int cursorPosY = 0;
   int cursorPosY2 = -1;
-  boolean nextEntry, prevEntry, selectEntry;
+  boolean nextEntry, prevEntry, selectEntry, statsRetreived;
 
   void setup() 
   {
@@ -19,7 +22,12 @@ class stats {
   }
 
   void draw() { 
+
+
     if (gamemngr.statspage) {
+
+      if (!statsRetreived)
+        GetStats();
 
       pushStyle();
       statsBg.resize(width, height);
@@ -28,6 +36,22 @@ class stats {
       text("" + ascore.name, 300, textX);
       text("'S", 440, textX);
       text("STATS", 520, textX);
+
+
+//Enemy Kill stats
+      pushStyle();
+      textSize(40);
+      for (int k = 0; k < enemyStats.length; k ++)
+      {
+        text("" + enemyStats[k], 250, textX + 100 + 40 * k);
+      }
+      text("" + totalKills, 250, textX + 100 + 40 * (enemyStats.length + 1));
+
+      text("" + killChieves, 250, textX + 100 + 40 * (enemyStats.length + 3));
+      popStyle();
+
+
+
       text("FRIENDS", 810, textX);
       fill(28, 28, 28);
       rect(781, 192, 259, 30 + (totalFriends * 30));
@@ -82,7 +106,7 @@ class stats {
         {
           cursorPosY2++;
         }
-        println("NEXT!");
+        //println("NEXT!");
       }
 
       if (prevEntry)
@@ -96,24 +120,24 @@ class stats {
         {
           cursorPosY2--;
         }
-        println("PREV!");
+        //println("PREV!");
       }
 
       if (selectEntry)
       {
         selectEntry = false;
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
-          Friends.playerName = players[cursorPosY];
-          Friends.getID();
-          Friends.removeFriend();
+          //Friends.playerName = players[cursorPosY];
+          //Friends.getID();
+          //Friends.removeFriend();
         }
         if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
         {
-          Friends.playerName = players[cursorPosY2];
-          Friends.getID();
-          Friends.addFriend();
+
+          //Friends.getID();
+          //Friends.addFriend();
         }
-        println("SELECTED");
+        //println("SELECTED");
       }
     }
   }
@@ -165,4 +189,42 @@ class stats {
       }
     }
   }
+
+
+  //ADRIAAN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  void GetStats()
+  {
+    if (msql.connect())
+    {
+      for (int i = 0; i < enemyStats.length; i++)
+      {
+        msql.query("SELECT enemyName, killCount, CONCAT(killCount, '      ', enemyName) AS enemyStats FROM User_has_Killed INNER JOIN Killed ON Killed_enemyID = enemyID WHERE User_idUser = '%s' AND enemyID = '%s' ORDER BY enemyID ASC", User.currentUser, i);
+
+        while (msql.next())
+        {
+          enemyStats[i] = msql.getString("enemyStats");
+        }
+
+        //Get the name of the enemy + the amount that has been killed
+      }
+
+
+      msql.query("SELECT SUM(killCount) FROM User_has_Killed WHERE User_idUser = '%s'", User.currentUser);
+
+      while (msql.next())
+      {
+        totalKills =msql.getString("SUM(killCount)") + "      Total Kills";
+      }
+      //Calculate the amount of total enemies killed
+
+      msql.query("SELECT COUNT(idAchievements) FROM Achievements WHERE descriptionAchievements LIKE 'Kill%'");
+
+      while (msql.next())
+        killChieves = msql.getString("COUNT(idAchievements)") + "      Kill Chieves";
+    }
+    //Count the amount of achievements that require enemies to be killed
+
+    statsRetreived = true;
+  }
+  //===================================
 }

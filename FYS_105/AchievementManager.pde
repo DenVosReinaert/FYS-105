@@ -17,11 +17,17 @@ class AchievementManager
 
   AchievementManager()
   {
-    totalAchievements = 10;
 
     msql.connect();
+
+    msql.query("SELECT COUNT(a.idAchievements) FROM Achievements a");
+
+    while (msql.next())
+      totalAchievements = parseInt(msql.getString("COUNT(a.idAchievements)"));
+
     achievementAnimsActive = 0;
   }
+
 
 
 
@@ -42,7 +48,7 @@ class AchievementManager
   }
 
 
-  void AddAchievementProgress(int achievementNumber, int progressionGoal)
+  void AddAchievementProgress(int achievementNumber, int progressionGoal, int killCount)
   {
     if (msql.connect()) 
     {
@@ -59,6 +65,7 @@ class AchievementManager
       }
 
 
+
       msql.query( "SELECT progressionAchievement FROM User_has_Achievements WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", User.currentUser, achievementNumber );
       while (msql.next() ) 
       {
@@ -72,19 +79,36 @@ class AchievementManager
       }
 
 
-      if (progression < progressionGoal)
-        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND collectedAchievement = '%s'", progression + 1, User.currentUser, achievementNumber, achieved);
-
-
-      if (achieved != 1 && progression == progressionGoal)
+      if (achieved != 1 && killCount != progressionGoal)
       {
+        msql.query("UPDATE User_has_Achievements SET progressionAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", killCount, User.currentUser, achievementNumber);
+      }
 
-        msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s' AND progressionAchievement = '%s'", 1, User.currentUser, achievementNumber, progressionGoal);
+      if (achieved != 1 && killCount >= progressionGoal)
+      {
+        msql.query("UPDATE User_has_Achievements SET collectedAchievement = '%s' WHERE User_idUser = '%s' AND Achievements_idAchievements = '%s'", 1, User.currentUser, achievementNumber);
 
         achievement.play();
         achievement.rewind();
 
         achievementAnim.add(new AchievementAnimator(achievementNumber, startPosX, startPosY));    //Create an instance of the achievement animator with the corresponding achievement number
+      }
+    }
+  }
+
+  void FillKilledTable()
+  {
+    msql.query( "SELECT k.User_idUser FROM User_has_Killed k WHERE k.User_idUser = '%s'", User.currentUser);
+    while ( msql.next() ) 
+    {
+      dbDupeInsertCheck = msql.getString("User_idUser");
+    }
+
+    if (dbDupeInsertCheck == null)
+    {
+      for (int i = 0; i < 5; i ++)
+      {
+        msql.query("INSERT INTO User_has_Killed (User_idUser, Killed_enemyID, killCount) VALUES ('%s','%s','%s')", User.currentUser, i, 0);
       }
     }
   }
