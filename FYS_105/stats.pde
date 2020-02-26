@@ -3,10 +3,8 @@ class stats {
   int textX = 155;
   int totalFriends;
   int totalPlayers;
-  int aPlayers;
-  int aFriends;
-  String[] players = new String[aPlayers];
-  String[] friends = new String[aFriends];
+  ArrayList players = new ArrayList<String>();
+  ArrayList friends = new ArrayList<String>();
   String[] enemyStats = new String[5];
   String killChieves;
   String totalKills;
@@ -62,7 +60,7 @@ class stats {
       } else {
         for (int i = 0; i < totalFriends; i++) {
           textSize(20);
-          text("" + friends[i], 900, 220 + (totalFriends * 20 * i/2) );
+          text("" + friends.get(i), 900, 220 + (totalFriends * 20 * i/2) );
           pushStyle();
           if (cursorPosY == i) {
             fill(100, 0, 0);
@@ -71,37 +69,42 @@ class stats {
           popStyle();
         }
       }
-      for (int j = 0; j < players.length; j++) {
+      if (totalPlayers <= 0) {
         textSize(20);
-        text("" + players[j], 900, (255 + (totalFriends * 30)) + (30 * j));
-        pushStyle();
-        if (cursorPosY2 == j) {
-          fill(0, 200, 0);
+        text("NO PLAYERS FOUND", 810, 255);
+      } else {
+        for (int j = 0; j < players.size(); j++) {
+          textSize(20);
+          text("" + players.get(j), 900, (255 + (totalFriends * 30)) + (30 * j));
+          pushStyle();
+          if (cursorPosY2 == j) {
+            fill(0, 200, 0);
+          }
+          text("ADD", 820, (255 + (totalFriends * 30)) + (30 * j) );
+          popStyle();
         }
-        text("ADD", 820, (255 + (totalFriends * 30)) + (30 * j) );
-        popStyle();
       }
 
-      if (cursorPosY > friends.length)
-        cursorPosY = friends.length + 1;
+      if (cursorPosY > friends.size())
+        cursorPosY = friends.size() + 1;
       if (cursorPosY < 0)
         cursorPosY = 0;
 
       if (cursorPosY2 < -1)
         cursorPosY2 = -1;
-      if (cursorPosY2 > players.length)
-        cursorPosY2 = players.length;
+      if (cursorPosY2 > players.size())
+        cursorPosY2 = players.size();
 
 
 
       if (nextEntry)
       {
         nextEntry = false;
-        if (cursorPosY <= friends.length && cursorPosY2 == -1)
+        if (cursorPosY <= friends.size() && cursorPosY2 == -1)
         {
           cursorPosY++;
         }
-        if (cursorPosY2 <= players.length && cursorPosY == friends.length + 1)
+        if (cursorPosY2 <= players.size() && cursorPosY == friends.size() + 1)
         {
           cursorPosY2++;
         }
@@ -115,7 +118,7 @@ class stats {
         {
           cursorPosY--;
         }
-        if (cursorPosY2 >= 0 && cursorPosY == friends.length + 1)
+        if (cursorPosY2 >= 0 && cursorPosY == friends.size() + 1)
         {
           cursorPosY2--;
         }
@@ -125,16 +128,16 @@ class stats {
       if (selectEntry)
       {
         selectEntry = false;
-        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1) {
-          //Friends.playerName = players[cursorPosY];
-          //Friends.getID();
-          //Friends.removeFriend();
+        if (cursorPosY != friends.size() + 1 && cursorPosY2 == -1 && friends.size() > 0) {
+          Friends.playerName = friends.get(cursorPosY).toString();
+          Friends.getID();
+          Friends.removeFriend();
         }
-        if (cursorPosY != friends.length + 1 && cursorPosY2 == -1)
+        if (cursorPosY == friends.size() + 1 && cursorPosY2 >= 0 && players.size() > 0 && cursorPosY2 < players.size())
         {
-
-          //Friends.getID();
-          //Friends.addFriend();
+          Friends.playerName = players.get(cursorPosY2).toString();
+          Friends.getID();
+          Friends.addFriend();
         }
         //println("SELECTED");
       }
@@ -146,7 +149,7 @@ class stats {
     {
       switch(keyCode)
       {
-      case RIGHT:
+      case LEFT:
         selectEntry = true;
         break;
       }
@@ -168,7 +171,7 @@ class stats {
 
       switch(keyCode)
       {
-      case RIGHT:
+      case LEFT:
         selectEntry = false;
         break;
       case DOWN:
@@ -201,7 +204,12 @@ class stats {
 
         while (msql.next())
         {
+
           enemyStats[i] = msql.getString("enemyStats");
+
+          if (i >= enemyStats.length)
+          {
+          }
         }
 
         //Get the name of the enemy + the amount that has been killed
@@ -221,9 +229,9 @@ class stats {
       while (msql.next())
         killChieves = msql.getString("COUNT(idAchievements)") + "      Kill Chieves";
     }
+
     //Count the amount of achievements that require enemies to be killed
 
     statsRetreived = true;
   }
-  //===================================
 }

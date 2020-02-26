@@ -208,7 +208,8 @@ class Game_Manager {
     if (key == 'p') 
     {
       println("-------------------------------DEBUG-------------------------------");
-      println("PlayerName: " + ascore.name + " ID: " + User.currentUser);
+      println("PlayerName: " + ascore.name + " ID: " + User.currentUser + " Current score: " + ascore.score);
+      println("Total players(without current user): " + stats.totalPlayers + " Total friends: " + stats.totalFriends + " Players loaded: " + stats.players.size());
       println("Levens: " + UI.levens + " Shield: " + UI.shield);
       println("GameObjects: " + GameObjectRef.gameObject.size() + " Brt: " + spawn.countBrt + " Hvy: " + spawn.countHvy + " Grnt: " + spawn.countGrnt + " Spd: " + spawn.countSpd + " Bss: " + spawn.countBss + " Total Enemy Count: " + spawn.totalEnemyCount);
       println("Wave: " + spawn.wave + " In progress: " + spawn.waveInProgress + " Finished: " + spawn.waveFinished);
