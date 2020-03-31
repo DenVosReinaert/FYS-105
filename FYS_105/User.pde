@@ -41,6 +41,7 @@ class User {
     }
   }
   void keyPressed() {
+    // Resets user and score with cascade delete
     if (gamemngr.hscore && key == 'r') {
       println("user account reset!");
       msql.query("DELETE FROM User WHERE idUser = '%s'", User.currentUser); // resets the currentUser and the corresponding scores and achievements
