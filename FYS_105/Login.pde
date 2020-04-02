@@ -3,7 +3,10 @@
 
 
 class Login {
-
+  
+  boolean nameChange;
+  String newName;
+  
   // char containing the letter on screen
   char letter1;
   char letter2;
@@ -106,7 +109,7 @@ class Login {
   }
 
   void keyPressed() {
-    if (gamemngr.login) {
+    if (gamemngr.login && !nameChange) {
       if (key == '\n') {
         ascore.name = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
         User.idCheck(); // Check the user ID
@@ -125,6 +128,25 @@ class Login {
         chieves.FillKilledTable();
       }
     }
+    
+    if (gamemngr.login && nameChange) {
+      if (key == '\n') {
+        newName = str(letters[l1s]) + str(letters[l2s]) + str(letters[l3s]) + str(letters[l4s]);
+        User.idCheck(); // Check the user ID  
+
+        Friends.totalPlayers();
+        Friends.totalFriends();
+
+        // If button ^ pressed then save all letters into ascore.name & run function ascore.saveScore
+        //  for (int i = 0; i < bN; i++) {
+        // if (ascore.name != blacklist[i] ) { Attempt for blacklist, not working yet!
+        gamemngr.login = false;     
+        gamemngr.home = true;
+        chieves.FillKilledTable();
+        User.nameChange();
+      }
+    }
+    
     // Check what state & depending on state move through the letters upwards 
     if (key == 'w') {
       if (state == 1 && l1s < 36) {

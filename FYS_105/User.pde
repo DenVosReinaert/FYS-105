@@ -48,5 +48,14 @@ class User {
       gamemngr.hscore = false;
       gamemngr.login = true;
     }
+    if (gamemngr.hscore && key == 'e') {
+     println("Username changed!");
+     Login.nameChange = true;
+     gamemngr.hscore = false;
+     gamemngr.login = true;
+    }
+  }
+  void nameChange() {
+    msql.query("UPDATE User SET nameUser = '%s' WHERE nameUser = '%s'", Login.newName, ascore.name); 
   }
 }
