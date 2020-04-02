@@ -38,9 +38,11 @@ class hScorelijst {
       image(scrBgr, 0, 0);
       pushStyle();
       textAlign(CENTER);
-      textSize(40);
-      text("Press 'B' to go back", 200, 40);
-      text("Press 'SELECT' to reset your account", 640, 680);
+      textSize(35);
+      text("Press 'B' to go back", 180, 40);
+      text("Press 'SELECT' to reset your account", 640, 670);
+      text("Press 'R' to change your username", 640, 710);
+
       if (scores.length == 0) {
         text("Huh? It's empty!", width/2, hScoreH+100); 
         text("Play now and be the first!", width/2 + 80, hScoreH+160);
